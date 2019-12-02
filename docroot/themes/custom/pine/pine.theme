@@ -1,0 +1,48 @@
+<?php
+/**
+* Preprocess variables for the menu local task template.
+* @param $variables
+* Adding classes to the link element inside the menu-local-tasks
+*/
+function pine_preprocess_menu_local_task(&$variables) {
+  $variables['element']['#link']['url']->setOption(
+    'attributes',
+    array('class' =>
+      array(
+        'menu__link',
+        'menu-local-tasks__link'
+    )));
+}
+
+/**
+ * @param $variables
+ * @param $hook
+ * Adds the menu--vertical modifier class, when a menu is on one of the vertical regions
+ */
+function pine_preprocess_block(&$variables, $hook) {
+  $block_id = $variables['elements']['#id'];
+  $block = \Drupal\block\Entity\Block::load($block_id);
+
+  // Add any additional regions we want menus to be vertical on
+  $vertical_regions = [
+      'sidebar_first',
+      'secondary_menu',
+      'footer1',
+      'footer2',
+      'footer3'
+  ];
+
+  $region = $block->getRegion(); // current region
+
+  if (in_array($region, $vertical_regions) && (strpos($block->getPluginId(), 'system_menu_block') !== FALSE)) {
+    $variables['content']['#attributes']['class'] = "menu--vertical";
+
+    /*$variables['content']['#items']['menu_link_content']->setOption(
+      'attributes', array(
+        'class'=> array(
+          'menu__link'
+        )
+      )
+    );*/
+  }
+}
