@@ -1,0 +1,15 @@
+<?php
+/**
+* Preprocess variables for the menu local task template.
+* @param $variables
+* Adding classes to the link element inside the menu-local-tasks
+*/
+function pine_preprocess_menu_local_task(&$variables) {
+  $variables['element']['#link']['url']->setOption(
+    'attributes',
+    array('class' =>
+      array(
+        'menu__link',
+        'menu-local-tasks__link'
+    )));
+}
