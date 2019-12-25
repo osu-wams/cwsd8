@@ -24,7 +24,12 @@ function pine_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormSta
   if (isset($form_id)) {
     return;
   }
-  $form['title_hide_front'] = [
+  $form['pine_custom'] = [
+    '#type' => 'fieldset',
+    '#title' => t('Pine Settings'),
+    '#weight' => -10,
+  ];
+  $form['pine_custom']['title_hide_front'] = [
     '#type' => 'checkbox',
     '#title' => t('Hide node title on Site Front Page'),
     '#default_value' => theme_get_setting('title_hide_front'),
