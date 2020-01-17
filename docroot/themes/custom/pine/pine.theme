@@ -1,9 +1,14 @@
 <?php
+
 /**
+ * @file
  * Preprocess variables for the menu local task template.
- *
- * @param $variables
- * Adding classes to the link element inside the menu-local-tasks
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_preprocess_menu_local_task().
  */
 function pine_preprocess_menu_local_task(&$variables) {
   $variables['element']['#link']['url']->setOption(
@@ -20,7 +25,7 @@ function pine_preprocess_menu_local_task(&$variables) {
 /**
  * Implements hook_form_system_theme_settings_alter().
  */
-function pine_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id = NULL) {
+function pine_form_system_theme_settings_alter(&$form, FormStateInterface $form_state, $form_id = NULL) {
   if (isset($form_id)) {
     return;
   }
@@ -40,6 +45,8 @@ function pine_form_system_theme_settings_alter(&$form, \Drupal\Core\Form\FormSta
 /**
  * Implements hook_preprocess_HOOK().
  */
-function pine_preprocess_block(&$variables) {
-  $variables['hide_page_title_front'] = theme_get_setting('title_hide_front');
+function pine_preprocess_page_title(&$variables) {
+  $variables['is_front'] = \Drupal::service('path.matcher')->isFrontPage();
+  $variables['#cache']['contexts'][] = 'url.path.is_front';
+  $variables['hide_front_page_title'] = (bool) theme_get_setting('title_hide_front');
 }

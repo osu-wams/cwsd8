@@ -14,8 +14,11 @@
  * @ingroup themeable
  */
 #}
+{% if is_front and hide_front_page_title %}
+  {% set class = 'hidden' %}
+{% endif %}
 {{ title_prefix }}
 {% if title %}
-  <h1{{ title_attributes }}>{{ title }}</h1>
+  <h1{{ title_attributes.addClass(class) }}>{{ title }}</h1>
 {% endif %}
 {{ title_suffix }}
