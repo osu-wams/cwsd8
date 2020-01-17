@@ -12,6 +12,10 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "require": {
@@ -26,6 +30,7 @@
         "drupal/console": "^1.9",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
+        "drupal/entity_clone": "^1.0@beta",
         "drupal/fontawesome_menu_icons": "^1.7",
         "drupal/layout_builder_base": "^1.0@beta",
         "drupal/layout_builder_modal": "^1.0@alpha",
@@ -34,6 +39,7 @@
         "drupal/layout_library": "^1.0@beta",
         "drupal/lb_everywhere": "^1.0@alpha",
         "drupal/lb_ux": "^1.0@alpha",
+        "drupal/media_library_theme_reset": "^1.0@beta",
         "drupal/memcache": "^2.0",
         "drupal/module_filter": "^3.1",
         "drupal/pathauto": "^1.6",
@@ -46,9 +52,11 @@
         "oomphinc/composer-installers-extender": "^1.1"
     },
     "require-dev": {
+        "bower-asset/highlightjs": "^9.7",
         "drupal/core-dev": "^8.8",
         "drupal/devel": "^2.1",
-        "drupal/xhprof": "1.x-dev"
+        "drupal/xhprof": "1.x-dev",
+        "npm-asset/d3": "^3"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -64,9 +72,13 @@
                 "web-root": "docroot/"
             }
         },
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
             "docroot/core": ["type:drupal-core"],
-            "docroot/libraries/{$name}": ["type:drupal-library", "itsjavi/fontawesome-iconpicker"],
+            "docroot/libraries/{$name}": ["type:drupal-library", "type:npm-asset", "type:bower-asset", "itsjavi/fontawesome-iconpicker"],
             "docroot/modules/contrib/{$name}": ["type:drupal-module"],
             "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
             "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
