@@ -1,0 +1,26 @@
+uuid: 738c64a7-267e-4e07-a412-b600c11aa897
+langcode: en
+status: true
+dependencies:
+  module:
+    - ctools
+    - system
+id: user_stories_view
+label: 'User Stories View'
+code: ".user-grid {\r\n    display: flex;\r\n    justify-content: center;\r\n    align-items: flex-start;\r\n}\r\n.grid-item {\r\n    padding: 1rem;\r\n    margin: 0.5rem;\r\n}"
+media: all
+preprocess: true
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    bundles:
+      fancy: fancy
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+  current_theme:
+    id: current_theme
+    theme:
+      pine: pine
+    negate: false
+conditions_require_all: true
