@@ -20,6 +20,7 @@
     ],
     "require": {
         "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
         "drupal/acquia_connector": "^2.0",
         "drupal/acquia_purge": "^1.0",
         "drupal/admin_toolbar": "^2.0",
@@ -32,7 +33,9 @@
         "drupal/console": "^1.9",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
+        "drupal/default_content": "^1.0@alpha",
         "drupal/entity_clone": "1.x-dev",
+        "drupal/entity_share": "^2.0@alpha",
         "drupal/fontawesome_menu_icons": "^1.7",
         "drupal/layout_builder_base": "^1.0@beta",
         "drupal/layout_builder_modal": "^1.0@alpha",
@@ -70,6 +73,20 @@
         "sort-packages": true
     },
     "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "patches": {
+            "drupal/core": {
+                "3044117 layout builder updates": "https://www.drupal.org/files/issues/2019-10-31/expose-properties-config-section-form-with-tests-3044117-13.patch",
+                "3040354 entity type annotation": "https://www.drupal.org/files/issues/2019-10-28/3040354-10--will-fail.patch",
+                "2942975 Expose Layouts to API": "https://www.drupal.org/files/issues/2019-11-21/layout_builder-export-content-2942975-67.patch"
+            },
+            "drupal/layout_builder_styles": {
+                "3111518 LB Styles Updates": "https://www.drupal.org/files/issues/2020-02-05/layout_styles_get_current_layout-3111518-2.patch"
+            }
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "docroot/"
@@ -80,14 +97,33 @@
             "npm-asset"
         ],
         "installer-paths": {
-            "docroot/core": ["type:drupal-core"],
-            "docroot/libraries/{$name}": ["type:drupal-library", "type:npm-asset", "type:bower-asset", "itsjavi/fontawesome-iconpicker"],
-            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
-            "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
-            "docroot/modules/custom/{$name}": ["type:drupal-custom-module"],
-            "docroot/themes/custom/{$name}": ["type:drupal-custom-theme"]
+            "docroot/core": [
+                "type:drupal-core"
+            ],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset",
+                "itsjavi/fontawesome-iconpicker"
+            ],
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "docroot/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "docroot/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
         }
     }
 }
