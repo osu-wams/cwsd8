@@ -1,6 +1,6 @@
 {
-    "name": "drupal/recommended-project",
-    "description": "Project template for Drupal 8 projects with a relocated document root",
+    "name": "osu-wams/drupal",
+    "description": "Drupal Distribution for Oregon State Web and Mobile Services",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "homepage": "https://www.drupal.org/project/drupal",
@@ -12,35 +12,61 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/osu-wams/madrone.git"
         }
     ],
     "require": {
         "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
         "drupal/acquia_connector": "^2.0",
         "drupal/acquia_purge": "^1.0",
         "drupal/admin_toolbar": "^2.0",
+        "drupal/asset_injector": "^2.6",
         "drupal/block_blacklist": "^1.0",
         "drupal/cas": "^1.5",
         "drupal/cas_attributes": "^1.0@beta",
-        "drupal/console": "^1.9",
+        "drupal/config_ignore": "^2.2",
+        "drupal/config_split": "^1.4",
         "drupal/core-composer-scaffold": "^8.8",
         "drupal/core-recommended": "^8.8",
+        "drupal/default_content": "^1.0@alpha",
+        "drupal/entity_clone": "1.x-dev",
+        "drupal/entity_share": "^2.0@alpha",
+        "drupal/fontawesome_menu_icons": "^1.7",
+        "drupal/layout_builder_base": "^1.0@beta",
         "drupal/layout_builder_modal": "^1.0@alpha",
         "drupal/layout_builder_restrictions": "^2.3",
         "drupal/layout_builder_styles": "^1.0@beta",
         "drupal/layout_library": "^1.0@beta",
         "drupal/lb_everywhere": "^1.0@alpha",
         "drupal/lb_ux": "^1.0@alpha",
+        "drupal/media_library_theme_reset": "^1.0@beta",
         "drupal/memcache": "^2.0",
+        "drupal/menu_item_extras": "^2.10",
         "drupal/module_filter": "^3.1",
         "drupal/pathauto": "^1.6",
         "drupal/radix_layouts": "^4.1",
-        "drush/drush": "^10.0"
+        "drupal/smart_trim": "^1.2",
+        "drupal/views_layout": "^1.1",
+        "drush/drush": "^10.0",
+        "itsjavi/fontawesome-iconpicker": "^3.2",
+        "mnsami/composer-custom-directory-installer": "^2.0",
+        "oomphinc/composer-installers-extender": "^2.0",
+        "osu-wams/madrone": "1.x-dev"
     },
     "require-dev": {
+        "bower-asset/highlightjs": "^9.7",
         "drupal/core-dev": "^8.8",
-        "drupal/devel": "^2.1",
-        "drupal/xhprof": "1.x-dev"
+        "drupal/devel": "^4",
+        "kint-php/kint": "^3.3",
+        "npm-asset/d3": "^3"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -51,20 +77,57 @@
         "sort-packages": true
     },
     "extra": {
+        "composer-exit-on-patch-failure": true,
+        "patchLevel": {
+            "drupal/core": "-p2"
+        },
+        "patches": {
+            "drupal/core": {
+                "3044117 layout builder updates": "https://www.drupal.org/files/issues/2019-10-31/expose-properties-config-section-form-with-tests-3044117-13.patch",
+                "3040354 entity type annotation": "https://www.drupal.org/files/issues/2019-10-28/3040354-10--will-fail.patch",
+                "3062376 Template suggestions for custom block view modes": "https://www.drupal.org/files/issues/2019-12-30/3062376-15.patch"
+            },
+            "drupal/layout_builder_styles": {
+                "3111518 LB Styles Updates": "https://www.drupal.org/files/issues/2020-05-20/layout_styles_get_current_layout-3111518-6.patch"
+            }
+        },
         "drupal-scaffold": {
             "locations": {
                 "web-root": "docroot/"
             }
         },
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
-            "docroot/core": ["type:drupal-core"],
-            "docroot/libraries/{$name}": ["type:drupal-library"],
-            "docroot/modules/contrib/{$name}": ["type:drupal-module"],
-            "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
-            "docroot/modules/custom/{$name}": ["type:drupal-custom-module"],
-            "docroot/themes/custom/{$name}": ["type:drupal-custom-theme"]
+            "docroot/core": [
+                "type:drupal-core"
+            ],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset",
+                "itsjavi/fontawesome-iconpicker"
+            ],
+            "docroot/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "docroot/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "docroot/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ],
+            "drush/Commands/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "docroot/modules/custom/{$name}": [
+                "type:drupal-custom-module"
+            ],
+            "docroot/themes/custom/{$name}": [
+                "type:drupal-custom-theme"
+            ]
         }
     }
 }
