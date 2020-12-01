@@ -1,0 +1,39 @@
+#!/usr/bin/env bash
+set -e;
+drupal_settings() {
+  if [ -z "${DRUPAL_DBHOST}" ]; then
+      DRUPAL_DBHOST="localhost"
+  fi
+  if [ -z "${DRUPAL_DBPORT}" ]; then
+      DRUPAL_DBPORT="3306"
+  fi
+  DRUPAL_HASH_SALT=$(openssl rand -base64 16)
+  touch /var/www/html/docroot/sites/default/settings.local.php
+  cat<<EOT > /var/www/html/docroot/sites/default/settings.local.php
+<?php
+\$settings['trusted_host_patterns'] = [
+    '^.+.dev.oregonstate.edu\$',
+];
+\$settings['hash_salt'] = '${DRUPAL_HASH_SALT}';
+\$databases['default']['default'] = [
+    'database' => '${DRUPAL_DBNAME}',
+    'username' => '${DRUPAL_DBUSER}',
+    'password' => '${DRUPAL_DBPASS}',
+    'host' => '${DRUPAL_DBHOST}',
+    'port' => '${DRUPAL_DBPORT}',
+    'driver' => 'mysql',
+    'prefix' => '',
+    'collation' => 'utf8mb4_general_ci',
+];
+\$settings['file_temp_path'] = '/tmp';
+\$settings['config_sync_directory'] =  \$app_root . '/../config/' . basename(\$site_path);
+\$settings['config_vcs_directory'] =  \$app_root . '/../config/' . basename(\$site_path);
+EOT
+echo "Finished setting up Drupal settings!"
+}
+if [ -z "${DRUPAL_DBUSER}" ] || [ -z "${DRUPAL_DBPASS}" ] || [ -z "${DRUPAL_DBNAME}" ]; then
+    echo "No Database provided, you will have to follow setup process."
+else
+    drupal_settings
+fi
+exec "$@"
