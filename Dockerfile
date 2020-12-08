@@ -1,17 +1,19 @@
-FROM docker.io/library/php:7.4-apache
+FROM docker.io/library/php:7.4-apache AS production
 RUN set -eux; \
+  if command -v a2enmod; then \
+    a2enmod rewrite; \
+  fi; \
+  savedAptMark="$(apt-mark showmanual)"; \
   apt-get update; \
   apt-get upgrade -y; \
+  # Installing Just Build dependencies
   apt-get install -y --no-install-recommends \
-    git \
     libfreetype6-dev \
     libjpeg-dev \
     libmemcached-dev \
     libpng-dev \
     libpq-dev \
     libzip-dev \
-    mariadb-client \
-    vim \
   ; \
   yes ' ' | pecl install memcached; \
   docker-php-ext-configure gd \
@@ -27,7 +29,23 @@ RUN set -eux; \
     pdo_mysql \
     pdo_pgsql \
     zip \
-  ;
+  ; \
+  apt-mark auto '.*' > /dev/null; \
+  apt-mark manual $savedAptMark; \
+  # Installing packages we want to keep
+  apt-get install -y --no-install-recommends \
+    git \
+    mariadb-client \
+  ; \
+  ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
+  | awk '/=>/ { print $3 }' \
+  | sort -u \
+  | xargs -r dpkg-query -S \
+  | cut -d: -f1 \
+  | sort -u \
+  | xargs -rt apt-mark manual; \
+  apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
+  rm -rf /var/lib/apt/lists/*
 RUN { \
     echo 'opcache.memory_consumption=128'; \
     echo 'opcache.interned_strings_buffer=8'; \
@@ -45,9 +63,49 @@ RUN set -eux; \
 WORKDIR /var/www/html
 COPY --chown=www-data:www-data . /var/www/html
 USER www-data
-RUN composer install -o
+RUN composer install -o --no-dev
 USER root
 COPY docker-wams-entry /usr/local/bin
 ENV PATH "$PATH:/var/www/html/vendor/bin"
 ENTRYPOINT [ "docker-wams-entry" ]
 CMD [ "apache2-foreground" ]
+
+FROM production AS development
+RUN set -eux; \
+  apt-get update; \
+  apt-get upgrade -y; \
+  apt-get install -y \
+    vim \
+    nano \
+    wget \
+  ; \
+  yes ' ' | pecl install xdebug; \
+  docker-php-ext-enable xdebug; \
+  apt-get clean; \
+  git clone https://github.com/gruvbox-community/gruvbox.git /usr/share/vim/vim81/pack/default/start/gruvbox ; \
+  { \
+    echo 'syntax on'; \
+        echo 'set background=dark'; \
+        echo 'set colorcolumn=80'; \
+        echo 'set expandtab'; \
+        echo 'set incsearch'; \
+        echo 'set noerrorbells'; \
+        echo 'set number'; \
+        echo 'set relativenumber'; \
+        echo 'set shiftwidth=4'; \
+        echo 'set showmatch'; \
+        echo 'set smartcase'; \
+        echo 'set smartindent'; \
+        echo 'set t_Co=256'; \
+        echo 'set tabstop=4 softtabstop=4'; \
+        echo 'set termguicolors'; \
+        echo 'set wildmenu'; \
+        echo 'set wildmode=longest,full'; \
+        echo 'highlight ColorColumn ctermbg=0 guibg=lightgrey'; \
+        echo 'colorscheme gruvbox'; \
+        echo 'let g:skip_defaults_vim = 1'; \
+    } > /etc/vim/vimrc.local;
+USER www-data
+WORKDIR /var/www/html
+RUN composer install -o
+USER root
