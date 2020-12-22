@@ -35,6 +35,7 @@ RUN set -eux; \
   # Installing packages we want to keep
   apt-get install -y --no-install-recommends \
     git \
+    unzip \
     mariadb-client \
   ; \
   ldd "$(php -r 'echo ini_get("extension_dir");')"/*.so \
