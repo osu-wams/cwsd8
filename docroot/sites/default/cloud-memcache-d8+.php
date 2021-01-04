@@ -44,9 +44,9 @@ if (getenv('AH_SITE_ENVIRONMENT') &&
 
       // Set key_prefix to avoid drush cr flushing all bins on multisite.
       $settings['memcache']['key_prefix'] = $conf['acquia_hosting_site_info']['db']['name'] . '_';
-
-      // Settings for SASL Authenticated Memcached.
-      $settings['memcache']['options'][Memcached::OPT_BINARY_PROTOCOL] = TRUE;
+      
+      // Decrease latency.
+      $settings['memcache']['options'][Memcached::OPT_TCP_NODELAY] = TRUE;
 
       // Bootstrap cache.container with memcache rather than database.
       $settings['bootstrap_container_definition'] = [

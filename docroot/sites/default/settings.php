@@ -799,7 +799,7 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/cwsd8/cwsd8-settings.inc';
   // Memcached settings for Acquia Hosting
-  if (file_exists(DRUPAL_ROOT . '/sites/default/cloud-memcache-d8.php')) {
-    require(DRUPAL_ROOT . '/sites/default/cloud-memcache-d8.php');
+  if (file_exists($app_root . '/' . $site_path . '/cloud-memcache-d8+.php')) {
+    require($app_root . '/' . $site_path . '/cloud-memcache-d8+.php');
   }
 }
