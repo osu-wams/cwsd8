@@ -21,10 +21,13 @@ $sans: 'Gudea', sans-serif
 @import 'sass/layout/sidebar'
 @import 'sass/base/helpers'
 @import "sass/theme/feature-story"
+@import "sass/theme/block-hero"
 @import "sass/component/main-menu"
 @import "sass/component/buttons"
 @import 'sass/layout/footer'
 @import 'sass/state/states'
+@import 'sass/layout/layout-builder-styles'
+@import 'sass/layout/layout-inline-blocks'
 // MENUS
 
 
@@ -40,7 +43,8 @@ $sans: 'Gudea', sans-serif
 @media screen and (max-width: 544px)
   .paragraph--type--paragraph-icon-menu > div
     align-items: left
-    &> div a
+
+    & > div a
       padding: .7em .3em
       font-weight: normal
       vertical-align: top
@@ -48,6 +52,10 @@ $sans: 'Gudea', sans-serif
   .paragraph--type--paragraph-1-column.left-text > div > div,
   .paragraph--type--paragraph-1-column.right-text > div > div
     width: 100%
+  .hero-banner .hero-callout
+    margin-left: initial
+    width: 100%
+    box-sizing: border-box
 
 @media screen and (max-width: 992px)
   #block-homepage-main-menu
@@ -56,6 +64,7 @@ $sans: 'Gudea', sans-serif
     right: 0
     background: $dark
     width: 100%
+
     a
       color: #fff
       text-align: center
@@ -63,7 +72,9 @@ $sans: 'Gudea', sans-serif
     .fs-content
       position: static
       width: 100%
-      &> a
+
+      & > a
         font-size: 1.2rem
+
     img
       padding-bottom: .8rem

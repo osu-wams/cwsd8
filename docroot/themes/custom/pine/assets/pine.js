@@ -30,12 +30,12 @@
         /* Toggle main menu */
         $('#_toggle-mobile-menu').click(function(e) {
             e.preventDefault();
-            if ($("#block-homepage-main-menu").hasClass('hidden-md-down')) {
-                $(".main-menu").addClass('nav-stacked');
-                $('#block-homepage-main-menu').removeClass('hidden-md-down');
+            if ($("#block-pine-main-menu").hasClass('d-none')) {
+                $(".main-menu").addClass('flex-column align-items-center');
+                $('#block-pine-main-menu').removeClass('d-none');
             } else {
-                $(".main-menu").removeClass('nav-stacked');
-                $('#block-homepage-main-menu').addClass('hidden-md-down');
+                $(".main-menu").removeClass('flex-column align-items-center');
+                $('#block-pine-main-menu').addClass('d-none');
             }
         });
 

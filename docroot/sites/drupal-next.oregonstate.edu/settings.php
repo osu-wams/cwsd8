@@ -791,15 +791,15 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  *
  * Keep this code block at the end of this file to take full effect.
  */
-
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
 // Acquia specific settings.
 if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/cwsd8/cwsd8-settings.inc';
+  require '/var/www/site-php/cwsd8/drupal_next_oregonstate_edu-settings.inc';
   // Memcached settings for Acquia Hosting
   if (file_exists($app_root . '/' . $site_path . '/cloud-memcache-d8+.php')) {
     require($app_root . '/' . $site_path . '/cloud-memcache-d8+.php');
   }
 }
+
