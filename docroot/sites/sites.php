@@ -55,6 +55,5 @@
  * @see \Drupal\Core\DrupalKernel::getSitePath()
  * @see https://www.drupal.org/documentation/install/multi-site
  */
-$sites['drupal-next.dev.acquia.cws.oregonstate.edu'] = 'drupal-next.cws.oregonstate.edu';
-$sites['drupal-next.prod.acquia.cws.oregonstate.edu'] = 'drupal-next.cws.oregonstate.edu';
-$sites['drupal-next.stage.acquia.cws.oregonstate.edu'] = 'drupal-next.cws.oregonstate.edu';
+$sites['drupal-next.dev.oregonstate.edu'] = 'drupal-next.cws.oregonstate.edu';
+$sites['drupal-next.stage.oregonstate.edu'] = 'drupal-next.cws.oregonstate.edu';
