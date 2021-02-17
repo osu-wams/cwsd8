@@ -12,7 +12,8 @@ drupal_settings() {
   cat<<EOT > /var/www/html/docroot/sites/default/settings.local.php
 <?php
 \$settings['trusted_host_patterns'] = [
-    '^.+.dev.oregonstate.edu\$',
+    '^localhost$',
+    '^localhost.oregonstate.edu\$',
 ];
 \$settings['hash_salt'] = '${DRUPAL_HASH_SALT}';
 \$databases['default']['default'] = [
@@ -41,7 +42,7 @@ if [ -z "${DRUPAL_THEME_DEVEL}" ]; then
 else
   cp /var/www/html/docroot/sites/default/default.services.yml /var/www/html/docroot/sites/default/services.yml;
   sed -i 's/debug\:\ false/debug\:\ true/' /var/www/html/docroot/sites/default/services.yml;
-  sed -i 's/auto_reload\:\ null/auto_reload\:\ false/' /var/www/html/docroot/sites/default/services.yml;
+  sed -i 's/auto_reload\:\ null/auto_reload\:\ true/' /var/www/html/docroot/sites/default/services.yml;
   sed -i 's/cache\:\ true/cache\:\ false/' /var/www/html/docroot/sites/default/services.yml;
   echo "Finished setting up Theme Development Settings.";
 fi
