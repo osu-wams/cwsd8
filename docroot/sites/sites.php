@@ -1,6 +1,8 @@
 <?php
 $sites['brabhamm.dev.oregonstate.edu'] = 'brabhamm.cws.oregonstate.edu';
 $sites['brabhamm.stage.oregonstate.edu'] = 'brabhamm.cws.oregonstate.edu';
+$sites['dayo.dev.oregonstate.edu'] = 'dayo.cws.oregonstate.edu';
+$sites['dayo.stage.oregonstate.edu'] = 'dayo.cws.oregonstate.edu';
 $sites['drupal-next.dev.oregonstate.edu'] = 'drupal-next.cws.oregonstate.edu';
 $sites['drupal-next.stage.oregonstate.edu'] = 'drupal-next.cws.oregonstate.edu';
 $sites['fenns.dev.oregonstate.edu'] = 'fenns.cws.oregonstate.edu';
