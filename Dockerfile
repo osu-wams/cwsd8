@@ -86,25 +86,25 @@ RUN set -eux; \
   git clone https://github.com/gruvbox-community/gruvbox.git /usr/share/vim/vim81/pack/default/start/gruvbox ; \
   { \
     echo 'syntax on'; \
-        echo 'set background=dark'; \
-        echo 'set colorcolumn=80'; \
-        echo 'set expandtab'; \
-        echo 'set incsearch'; \
-        echo 'set noerrorbells'; \
-        echo 'set number'; \
-        echo 'set relativenumber'; \
-        echo 'set shiftwidth=4'; \
-        echo 'set showmatch'; \
-        echo 'set smartcase'; \
-        echo 'set smartindent'; \
-        echo 'set t_Co=256'; \
-        echo 'set tabstop=4 softtabstop=4'; \
-        echo 'set termguicolors'; \
-        echo 'set wildmenu'; \
-        echo 'set wildmode=longest,full'; \
-        echo 'highlight ColorColumn ctermbg=0 guibg=lightgrey'; \
-        echo 'colorscheme gruvbox'; \
-        echo 'let g:skip_defaults_vim = 1'; \
+    echo 'set background=dark'; \
+    echo 'set colorcolumn=80'; \
+    echo 'set expandtab'; \
+    echo 'set incsearch'; \
+    echo 'set noerrorbells'; \
+    echo 'set number'; \
+    echo 'set relativenumber'; \
+    echo 'set shiftwidth=4'; \
+    echo 'set showmatch'; \
+    echo 'set smartcase'; \
+    echo 'set smartindent'; \
+    echo 'set t_Co=256'; \
+    echo 'set tabstop=4 softtabstop=4'; \
+    echo 'set termguicolors'; \
+    echo 'set wildmenu'; \
+    echo 'set wildmode=longest,full'; \
+    echo 'highlight ColorColumn ctermbg=0 guibg=lightgrey'; \
+    echo 'colorscheme gruvbox'; \
+    echo 'let g:skip_defaults_vim = 1'; \
     } > /etc/vim/vimrc.local;
 USER www-data
 WORKDIR /var/www/html
