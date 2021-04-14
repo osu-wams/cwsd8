@@ -1,4 +1,5 @@
 FROM docker.io/library/php:7.4-apache AS production
+USER root
 RUN set -eux; \
   if command -v a2enmod; then \
     a2enmod rewrite; \
@@ -61,17 +62,20 @@ RUN set -eux; \
   curl https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -o composer-setup.php; \
   php composer-setup.php --install-dir=/usr/local/bin --filename=composer; \
   rm composer-setup.php;
-WORKDIR /var/www/html
-COPY --chown=www-data:www-data . /var/www/html
-USER www-data
-RUN composer install -o --no-dev
-USER root
 COPY docker-wams-entry /usr/local/bin
 ENV PATH "$PATH:/var/www/html/vendor/bin"
+WORKDIR /var/www/html
+USER www-data
+COPY --chown=www-data:www-data . /var/www/html
+RUN composer install -o --no-dev
+RUN mkdir -p /var/www/html/docroot/sites/default/files; \
+  chown -R www-data:www-data /var/www/html/docroot/sites/default/files;
+VOLUME /var/www/html/docroot/sites/default/files
 ENTRYPOINT [ "docker-wams-entry" ]
 CMD [ "apache2-foreground" ]
 
 FROM production AS development
+USER root
 RUN set -eux; \
   apt-get update; \
   apt-get upgrade -y; \
@@ -109,4 +113,3 @@ RUN set -eux; \
 USER www-data
 WORKDIR /var/www/html
 RUN composer install -o
-USER root
