@@ -33,7 +33,8 @@ drupal_settings() {
 \$memcached_exists = class_exists('Memcached', FALSE);
 \$memcache_services_yml = DRUPAL_ROOT . '/modules/contrib/memcache/memcache.services.yml';
 \$memcache_module_is_present = file_exists(\$memcache_services_yml);
-if (getenv('DRUPAL_MEMCACHE') == TRUE && \$memcache_module_is_present && (\$memcache_exists || \$memcached_exists)) {
+\$memcache_is_active = getenv('DRUPAL_MEMCACHE') ?: FALSE;
+if (\$memcache_is_active && \$memcache_module_is_present && (\$memcache_exists || \$memcached_exists)) {
   \$memcache_host = getenv('DRUPAL_MEMCACHEHOST') ?: '127.0.0.1';
   \$settings['memcache']['servers'] = [
     "\$memcache_host:11211" => 'default',
