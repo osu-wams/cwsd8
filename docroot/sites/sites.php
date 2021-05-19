@@ -15,5 +15,7 @@ $sites['mcdonalm.dev.oregonstate.edu'] = 'mcdonalm.cws.oregonstate.edu';
 $sites['mcdonalm.stage.oregonstate.edu'] = 'mcdonalm.cws.oregonstate.edu';
 $sites['paynesar.dev.oregonstate.edu'] = 'paynesar.cws.oregonstate.edu';
 $sites['paynesar.stage.oregonstate.edu'] = 'paynesar.cws.oregonstate.edu';
+$sites['profiles.dev.oregonstate.edu'] = 'profiles.oregonstate.edu';
+$sites['profiles.stage.oregonstate.edu'] = 'profiles.oregonstate.edu';
 $sites['simsk.dev.oregonstate.edu'] = 'simsk.cws.oregonstate.edu';
 $sites['simsk.stage.oregonstate.edu'] = 'simsk.cws.oregonstate.edu';
