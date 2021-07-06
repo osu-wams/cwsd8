@@ -797,7 +797,7 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 }
 // Acquia specific settings.
 if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/cwsd8/hansenm_cws_oregonstate_edu-settings.inc';
+  require '/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/hansenm_cws_oregonstate_edu-settings.inc';
   // Memcached settings for Acquia Hosting
   if (file_exists($app_root . '/' . $site_path . '/cloud-memcache-d8+.php')) {
     require($app_root . '/' . $site_path . '/cloud-memcache-d8+.php');
