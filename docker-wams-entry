@@ -13,6 +13,7 @@ drupal_settings() {
 <?php
 \$settings['trusted_host_patterns'] = [
     '^localhost\$',
+    '^.+\.localhost$',
     '^localhost.oregonstate.edu\$',
 ];
 \$settings['hash_salt'] = '${DRUPAL_HASH_SALT}';
@@ -29,6 +30,9 @@ drupal_settings() {
 \$settings['file_temp_path'] = '/tmp';
 \$settings['config_sync_directory'] =  \$app_root . '/../config/' . basename(\$site_path);
 \$settings['config_vcs_directory'] =  \$app_root . '/../config/' . basename(\$site_path);
+\$config['cas.settings']['forced_login']['enabled']=FALSE;
+\$config['cas.settings']['user_accounts']['prevent_normal_login']=FALSE;
+\$config['dx_messages.settings']['dx_api_key'] = getenv('DATA_DX_KEY');
 \$memcache_exists = class_exists('Memcache', FALSE);
 \$memcached_exists = class_exists('Memcached', FALSE);
 \$memcache_services_yml = DRUPAL_ROOT . '/modules/contrib/memcache/memcache.services.yml';
