@@ -49,12 +49,19 @@ RUN set -eux; \
   apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false; \
   rm -rf /var/lib/apt/lists/*
 RUN { \
-    echo 'opcache.memory_consumption=128'; \
-    echo 'opcache.interned_strings_buffer=8'; \
-    echo 'opcache.max_accelerated_files=4000'; \
-    echo 'opcache.revalidate_freq=60'; \
-    echo 'opcache.fast_shutdown=1'; \
-} > /usr/local/etc/php/conf.d/opcache-recommended.ini
+      echo 'opcache.memory_consumption=128'; \
+      echo 'opcache.interned_strings_buffer=8'; \
+      echo 'opcache.max_accelerated_files=4000'; \
+      echo 'opcache.revalidate_freq=60'; \
+      echo 'opcache.fast_shutdown=1'; \
+    } > /usr/local/etc/php/conf.d/opcache-recommended.ini; \
+    { \
+      echo 'max_execution_time = 300'; \
+      echo 'max_input_vars = 1500'; \
+      echo 'memory_limit = 256M';\
+      echo 'post_max_size = 256M'; \
+      echo 'upload_max_filesize = 256M'; \
+    } > /usr/local/etc/php/conf.d/docker-php-drupal.ini;
 RUN sed -i "s/\/var\/www\/html/\/var\/www\/html\/docroot/" /etc/apache2/sites-available/000-default.conf; \
   chown www-data:www-data /var/www;
 COPY --from=docker.io/library/composer /usr/bin/composer /usr/bin/composer
