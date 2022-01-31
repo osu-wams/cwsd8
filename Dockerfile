@@ -14,12 +14,14 @@ RUN set -eux; \
     libmemcached-dev \
     libpng-dev \
     libpq-dev \
+    libwebp-dev \
     libzip-dev \
   ; \
   yes ' ' | pecl install memcached; \
   docker-php-ext-configure gd \
     --with-freetype \
-    --with-jpeg=/usr \
+    --with-webp \
+    --with-jpeg \
   ; \
   docker-php-ext-enable \
     memcached \
