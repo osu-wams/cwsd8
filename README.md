@@ -1,11 +1,19 @@
 # Oregon State University Drupal
+
 This is the main OSU Drupal Distribution.
+
 ## Update and deploy to Acquia
-[Acquia Pipelines](https://docs.acquia.com/cloud-platform/pipelines/) will watch, build, and deploy versions when changes are detected.
+
+[Acquia Pipelines](https://docs.acquia.com/cloud-platform/pipelines/) will watch, build, and deploy versions when
+changes are detected.
+
 - The develop branch will build and deploy to Acquia Cloud Development environment
 - The master branch will build and deploy the Acquia Cloud Stage environment.
-- For Acquia Cloud Production an Acquia Cloud administrator will need to manually deploy code from the Stage environment to Production.
+- For Acquia Cloud Production an Acquia Cloud administrator will need to manually deploy code from the Stage environment
+  to Production.
+
 ### Update workflow
+
 1. Start in the development branch
    1. ```git pull && composer install```
    2. Check for updates ```composer outdated drupal/\*```
@@ -29,11 +37,22 @@ This is the main OSU Drupal Distribution.
    6. Log into Acquia Cloud
       1. Navigate to the Acquia Cloud Application and deploy the latest changes to prod from the Stage environment.
 
+## Create New Acquia Cloud Site
+
+1. To create a new site in OSU Drupal for Acquia Cloud run ```composer generate-site```
+2. This will ask you for the Production FQDN of the site to use and will create the sites' directory, populate the
+   settings.php and the memcache file for acquia cloud.
+3. Follow the Post Install steps to Create the Database and Domains.
+
 ## Local Development
+
 You can build the container locally or pull form the registry.
+
 ### Building Container
+
 We have a multi-stage Docker file to build. Most of the time the Development version will be used.
+
 - For the development version of the container:
-  - ```docker build --target=development --tag=osuwams/drupal:8-apache-dev .```
+  - ```docker build --target=development --tag=osuwams/drupal:9-apache-dev .```
 - For the Production version
-  - ```docker build --target=production --tag=osuwams/drupal:8-apache .```
+  - ```docker build --target=production --tag=osuwams/drupal:9-apache .```

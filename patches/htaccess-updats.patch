@@ -1,8 +1,8 @@
 diff --git a/.htaccess b/.htaccess
-index b1ee36bf4c..b4d6b14e94 100644
+index b1ee36bf4c..022697fd11 100644
 --- a/.htaccess
 +++ b/.htaccess
-@@ -115,6 +115,12 @@ AddEncoding gzip svgz
+@@ -115,6 +115,13 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -10,6 +10,7 @@ index b1ee36bf4c..b4d6b14e94 100644
 +  RewriteCond %{HTTPS} off
 +  RewriteCond %{HTTP:X-Forwarded-Proto} !https
 +  RewriteCond %{HTTP_HOST} !(.*)\.?localhost [NC]
++  RewriteCond %{HTTP_HOST} !^osuwams\.ews\.oregonstate\.edu$ [NC]
 +  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [NE,L,R=301]
 +
    # Redirect common PHP files to their new locations.
