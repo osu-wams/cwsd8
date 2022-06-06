@@ -16,7 +16,8 @@ class SiteGenerator {
     $baseDir = getcwd();
     $siteName = strtolower($io->ask('Site Production FQDN: '));
     if (!is_dir($baseDir . "/docroot/sites/{$siteName}")) {
-      $databaseName = str_replace('.', '_', $siteName);
+      // Match any character that is not a word.
+      $databaseName = preg_replace('/[\W]+/', '_', $siteName);
       mkdir($baseDir . "/docroot/sites/{$siteName}");
       $settingsFile = file_get_contents($baseDir . "/scripts/site-template/settings.php");
       $settingsFile = str_replace("DOMAIN", $databaseName, $settingsFile);
