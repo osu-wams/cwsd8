@@ -7,7 +7,9 @@
 
 site="$1"
 target_env="$2"
-echo"Using Drush Launcher Version"
-echo $(drush10 --version)
-#drush10 @$site.$target_env updatedb --yes --no-ansi
-find sites -maxdepth 1 -type d -not -name sites -printf '%f\n' | while IFS=/ read -r DOMAIN; do printf "%s," ${DOMAIN}; drush -l $DOMAIN updatedb -y; drush -l $DOMAIN cr; done
+app_root="/var/www/html/${site}.${target_env}/docroot"
+sites_folder="${app_root}/sites"
+find ${sites_folder} -maxdepth 1 -type d -not -name sites -printf '%f\n' | while IFS=/ read -r DOMAIN; do printf "%s," "${DOMAIN}"; \
+  drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" updatedb -y; \
+  drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" cr; \
+done
