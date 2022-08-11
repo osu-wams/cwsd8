@@ -2,7 +2,7 @@
 /**
  * @file
  * Contains caching configuration.
- * Last change: 09/19/2019
+ * Last change: 2022-08-01
  */
 
 use Composer\Autoload\ClassLoader;
@@ -16,10 +16,16 @@ use Composer\Autoload\ClassLoader;
  *
  * @see https://www.drupal.org/node/2766509
  */
+
+
+// Determine if site is currently running under Acquia Cloud Next.
+$is_acquia_cloud_next = (getenv("HOME") == "/home/clouduser");
+
 if (getenv('AH_SITE_ENVIRONMENT') &&
   array_key_exists('memcache', $settings) &&
   array_key_exists('servers', $settings['memcache']) &&
-  !empty($settings['memcache']['servers'])
+  !empty($settings['memcache']['servers']) &&
+  !$is_acquia_cloud_next
 ) {
   // Check for PHP Memcached libraries.
   $memcache_exists = class_exists('Memcache', FALSE);
@@ -95,6 +101,9 @@ if (getenv('AH_SITE_ENVIRONMENT') &&
         ],
       ];
 
+      // Content Hub 2.x requires the Depcalc module which needs to use the database backend.
+      $settings['cache']['bins']['depcalc'] = 'cache.backend.database';
+
       // Use memcache for bootstrap, discovery, config instead of fast chained
       // backend to properly invalidate caches on multiple webs.
       // See https://www.drupal.org/node/2754947
@@ -107,4 +116,3 @@ if (getenv('AH_SITE_ENVIRONMENT') &&
     }
   }
 }
-
