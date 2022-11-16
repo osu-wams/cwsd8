@@ -801,8 +801,9 @@ if (file_exists('/var/www/site-php')) {
     $settings['file_temp_path'] = "/mnt/gfs/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/tmp";
   }
   // Memcached settings for Acquia Hosting
-  if (file_exists($app_root . '/' . $site_path . '/cloud-memcache-d8+.php')) {
-    require($app_root . '/' . $site_path . '/cloud-memcache-d8+.php');
+  $memcache_settings_file = DRUPAL_ROOT . "/../vendor/acquia/memcache-settings/memcache.settings.php";
+  if (file_exists($memcache_settings_file)) {
+    require_once $memcache_settings_file;
   }
 }
 

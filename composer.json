@@ -66,6 +66,14 @@
             "url": "https://github.com/osu-wams/osu_default_content.git"
         },
         {
+            "type": "vcs",
+            "url": "https://github.com/osu-wams/osu_icon_field.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/osu-wams/osu_google_tag.git"
+        },
+        {
             "type": "package",
             "package": {
                 "name": "toc/toc",
@@ -79,10 +87,12 @@
         }
     ],
     "require": {
+        "acquia/memcache-settings": "^1.2",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "drupal-ckeditor-libraries-group/codesnippet": "^4.17",
         "drupal-ckeditor-libraries-group/div": "^4.17",
+        "drupal-ckeditor-libraries-group/liststyle": "^4.20",
         "drupal/acquia_connector": "^4@beta",
         "drupal/acquia_purge": "^1.0",
         "drupal/address": "^1.9",
@@ -99,13 +109,14 @@
         "drupal/cas": "^2.0@beta",
         "drupal/cas_attributes": "^2@beta",
         "drupal/ckeditor_div_manager": "^2.0",
+        "drupal/ckeditor_liststyle": "^1.4",
         "drupal/ckeditor_scayt": "^1.3",
         "drupal/codesnippet": "^1.7",
         "drupal/component": "@rc",
         "drupal/config_ignore": "^2.2",
         "drupal/config_split": "^1.4",
-        "drupal/core-composer-scaffold": "9.4.7",
-        "drupal/core-recommended": "9.4.7",
+        "drupal/core-composer-scaffold": "^9.4.0",
+        "drupal/core-recommended": "^9.4.0",
         "drupal/ctools": "^3.10",
         "drupal/date_ap_style": "^1.5",
         "drupal/default_content": "^2.0@alpha",
@@ -113,7 +124,7 @@
         "drupal/easy_breadcrumb": "^2.0",
         "drupal/editor_advanced_link": "^2.0",
         "drupal/editor_file": "^1.6",
-        "drupal/editoria11y": "^1.0",
+        "drupal/editoria11y": "^2.0",
         "drupal/entity_clone": "^1.0@beta",
         "drupal/entitygroupfield": "^1.0@alpha",
         "drupal/exclude_node_title": "^1.3",
@@ -121,9 +132,10 @@
         "drupal/feeds_ex": "^1.0beta",
         "drupal/feeds_tamper": "^2.0beta2",
         "drupal/field_group": "^3.1",
+        "drupal/file_delete": "^2.0",
         "drupal/fontawesome_menu_icons": "^1.7",
         "drupal/google_cse": "^3.2",
-        "drupal/google_tag": "^1.4",
+        "drupal/google_tag": "^1.5",
         "drupal/group": "^1.3",
         "drupal/group_content_menu": "^1.0@RC",
         "drupal/honeypot": "^2.1.2",
@@ -134,9 +146,10 @@
         "drupal/layout_builder_modal": "^1.0@alpha",
         "drupal/layout_builder_operation_link": "^2.0",
         "drupal/layout_builder_restrictions": "^2.3",
-        "drupal/libraries": "^3.0@alpha",
+        "drupal/libraries": "^4.0",
         "drupal/linkit": "^5.0@beta",
         "drupal/media_bulk_upload": "^3.0",
+        "drupal/media_entity_libsyn": "^2.2",
         "drupal/media_library_theme_reset": "^1.0@beta",
         "drupal/memcache": "^2.5",
         "drupal/menu_breadcrumb": "^1.16",
@@ -144,6 +157,7 @@
         "drupal/metatag": "^1.19",
         "drupal/migrate_plus": "^6.0",
         "drupal/module_filter": "^3.1",
+        "drupal/oembed_providers": "^2.1",
         "drupal/paragraphs": "^1.12",
         "drupal/pathauto": "^1.6",
         "drupal/recaptcha": "^3.1",
@@ -153,10 +167,11 @@
         "drupal/section_library": "^1.0",
         "drupal/slick": "^2.6",
         "drupal/slick_views": "^2.6",
-        "drupal/smart_trim": "^1.2",
+        "drupal/smart_trim": "^2.0",
         "drupal/superfish": "^1.4",
         "drupal/tamper": "^1.0alpha2",
         "drupal/tb_megamenu": "^1.6",
+        "drupal/text_field_formatter": "^2.0",
         "drupal/toc_js": "^2.0",
         "drupal/tour_ui": "@beta",
         "drupal/twig_tweak": "^3.1",
@@ -183,7 +198,9 @@
         "osu-wams/osu_bootstrap_layout_builder": "^1.0",
         "osu-wams/osu_ckeditor_plugins": "^1.0",
         "osu-wams/osu_default_content": "^1.0",
+        "osu-wams/osu_google_tag": "^1.0",
         "osu-wams/osu_groups": "^1.0@alpha",
+        "osu-wams/osu_icon_field": "^1.0",
         "osu-wams/osu_media": "^1.0",
         "osu-wams/osu_profile": "^1.0",
         "osu-wams/osu_roles": "^1.0",
@@ -193,7 +210,7 @@
         "toc/toc": "*"
     },
     "require-dev": {
-        "drupal/core-dev": "9.4.7",
+        "drupal/core-dev": "^9.4.0",
         "drupal/devel": "^5.0",
         "kint-php/kint": "^4.1",
         "npm-asset/d3": "^3",
@@ -244,8 +261,8 @@
                 "2951547-50": "https://www.drupal.org/files/issues/2022-07-13/f245f21ea664f22c81d8d28c6f0f4a42fb9a5890.patch",
                 "2719797-137 Use admin theme option on views": "https://www.drupal.org/files/issues/2022-01-17/2719797-137-9.3.x.patch",
                 "3131055-17 Adding extra p to ckeditor": "https://www.drupal.org/files/issues/2021-04-19/ckeditor-p-tag-added-to-media-3131055-17.patch",
-                "3119786-42 Layout builder default values": "https://www.drupal.org/files/issues/2022-02-08/3119786-defaultvalue-42.patch",
-                "2830725-23 Add block view modes to classes": "https://www.drupal.org/files/issues/2021-10-19/2830725-23.patch"
+                "2830725-23 Add block view modes to classes": "https://www.drupal.org/files/issues/2021-10-19/2830725-23.patch",
+                "2605218-77 Views Block Display skips preBlockBuild() call on ajax rebuild": "https://www.drupal.org/files/issues/2022-04-06/2605218-77.patch"
             },
             "drupal/bootstrap_layout_builder": {
                 "3203096 Column Alignment": "https://git.drupalcode.org/project/bootstrap_layout_builder/-/merge_requests/19.patch"
@@ -258,6 +275,9 @@
             },
             "drupal/entitygroupfield": {
                 "3183134-6": "https://www.drupal.org/files/issues/2022-04-04/entitygroupfield-matching-expected-dropbutton-markup-3183134-6.patch"
+            },
+            "drupal/feeds_tamper": {
+                "2983197-17 fix tamper error": "https://www.drupal.org/files/issues/2022-04-22/feeds_tamper-tamper-exception-catching-2983197-17.patch"
             },
             "drupal/group": {
                 "2815971-32 more contexts": "https://www.drupal.org/files/issues/2022-04-21/group-context-2815971-32.patch"
@@ -287,7 +307,8 @@
                 "type:drupal-core"
             ],
             "docroot/libraries/ckeditor/plugins/{$name}": [
-                "drupal-ckeditor-libraries-group/div"
+                "drupal-ckeditor-libraries-group/div",
+                "drupal-ckeditor-libraries-group/liststyle"
             ],
             "docroot/libraries/slick": [
                 "npm-asset/slick-carousel"
