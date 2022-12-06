@@ -801,6 +801,11 @@ if (file_exists('/var/www/site-php')) {
   if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
     $settings['file_temp_path'] = "/mnt/gfs/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/tmp";
   }
+  // Acquia cloud secrets file.
+  $secrets_file = "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/secrets.settings.php";
+  if (file_exists($secrets_file)) {
+    require $secrets_file;
+  }
   // Memcached settings for Acquia Hosting
   $memcache_settings_file = DRUPAL_ROOT . "/../vendor/acquia/memcache-settings/memcache.settings.php";
   if (file_exists($memcache_settings_file)) {
