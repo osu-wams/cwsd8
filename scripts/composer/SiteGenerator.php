@@ -22,7 +22,6 @@ class SiteGenerator {
       $settingsFile = file_get_contents($baseDir . "/scripts/site-template/settings.php");
       $settingsFile = str_replace("DOMAIN", $databaseName, $settingsFile);
       file_put_contents($baseDir . "/docroot/sites/{$siteName}/settings.php", $settingsFile);
-      copy($baseDir . "/scripts/site-template/cloud-memcache-d8+.php", $baseDir . "/docroot/sites/{$siteName}/cloud-memcache-d8+.php");
       // Update sites.php file with new domain
       /* @var $sites */
       include($baseDir . '/docroot/sites/sites.php');
