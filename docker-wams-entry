@@ -11,6 +11,9 @@ drupal_settings() {
   touch /var/www/html/docroot/sites/default/settings.local.php
   cat<<EOT > /var/www/html/docroot/sites/default/settings.local.php
 <?php
+if (PHP_SAPI === 'cli') {
+  ini_set('memory_limit', '512M');
+}
 \$settings['trusted_host_patterns'] = [
     '^localhost\$',
     '^.+\.localhost$',
