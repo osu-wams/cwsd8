@@ -1,4 +1,6 @@
 <?php
+$sites['arts.dev.oregonstate.edu'] = 'arts.oregonstate.edu';
+$sites['arts.stage.oregonstate.edu'] = 'arts.oregonstate.edu';
 $sites['beyond.dev.oregonstate.edu'] = 'beyond.oregonstate.edu';
 $sites['beyond.stage.oregonstate.edu'] = 'beyond.oregonstate.edu';
 $sites['brabhamm.dev.oregonstate.edu'] = 'brabhamm.cws.oregonstate.edu';
