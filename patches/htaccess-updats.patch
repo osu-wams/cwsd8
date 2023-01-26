@@ -1,11 +1,15 @@
 diff --git a/.htaccess b/.htaccess
-index 4d19147cc4..250e6e6259 100644
+index 98ead1fbc1..e4d8312ed4 100644
 --- a/.htaccess
 +++ b/.htaccess
-@@ -120,6 +120,13 @@ AddEncoding gzip svgz
+@@ -120,6 +120,17 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
++  # use a noindex robots on any env not prod
++  RewriteCond %{ENV:AH_SITE_ENVIRONMENT} !prod
++  RewriteRule ^robots\.txt$ robots_noindex.txt [L]
++
 +  # Redirects for SSL of the site
 +  RewriteCond %{HTTPS} off
 +  RewriteCond %{HTTP:X-Forwarded-Proto} !https
