@@ -794,6 +794,12 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
 if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
   include $app_root . '/' . $site_path . '/settings.local.php';
 }
+// Newrelic Multisite
+if (extension_loaded('newrelic')) {
+  $exploded_path = explode('/', dirname(__FILE__));
+  $site_domain = array_pop($exploded_path);
+  newrelic_set_appname("$site_domain;d8cws", '', 'true');
+}
 // Acquia specific settings.
 if (file_exists('/var/www/site-php')) {
   require '/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/engineering_oregonstate_edu-settings.inc';
