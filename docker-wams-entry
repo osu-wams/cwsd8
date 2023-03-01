@@ -1,15 +1,11 @@
 #!/usr/bin/env bash
-set -e;
+set -e
 drupal_settings() {
-  if [ -z "${DRUPAL_DBHOST}" ]; then
-      DRUPAL_DBHOST="localhost"
-  fi
-  if [ -z "${DRUPAL_DBPORT}" ]; then
-      DRUPAL_DBPORT="3306"
-  fi
   DRUPAL_HASH_SALT=$(openssl rand -base64 16)
   touch /var/www/html/docroot/sites/default/settings.local.php
-  cat<<EOT > /var/www/html/docroot/sites/default/settings.local.php
+  # Variable set with ${VARIABLE:-default} will use the default if VARIABLE is not set or is null
+  # https://www.gnu.org/software/bash/manual/bash.html#Shell-Parameter-Expansion
+  cat <<EOT >/var/www/html/docroot/sites/default/settings.local.php
 <?php
 if (PHP_SAPI === 'cli') {
   ini_set('memory_limit', '512M');
@@ -25,8 +21,8 @@ if (PHP_SAPI === 'cli') {
     'database' => '${DRUPAL_DBNAME}',
     'username' => '${DRUPAL_DBUSER}',
     'password' => '${DRUPAL_DBPASS}',
-    'host' => '${DRUPAL_DBHOST}',
-    'port' => '${DRUPAL_DBPORT}',
+    'host' => '${DRUPAL_DBHOST:-localhost}',
+    'port' => '${DRUPAL_DBPORT:-3306}',
     'driver' => 'mysql',
     'prefix' => '',
     'collation' => 'utf8mb4_general_ci',
@@ -105,20 +101,41 @@ if (\$memcache_is_active && \$memcache_module_is_present && (\$memcache_exists |
   \$settings['cache']['default'] = 'cache.backend.memcache';
 }
 EOT
-echo "Finished setting up Drupal settings!"
+  echo "Finished setting up Drupal settings!"
+}
+drupal_migrate_settings() {
+  echo "Setting up Migration Database Settings."
+  cat <<EOT >>/var/www/html/docroot/sites/default/settings.local.php
+\$databases['migrate']['default'] = [
+    'database' => '${DRUPAL_MIGRATE_DBNAME}',
+    'username' => '${DRUPAL_MIGRATE_DBUSER}',
+    'password' => '${DRUPAL_MIGRATE_DBPASS}',
+    'host' => '${DRUPAL_MIGRATE_DBHOST:-localhost}',
+    'port' => '${DRUPAL_MIGRATE_DBPORT:-3306}',
+    'driver' => 'mysql',
+    'prefix' => '',
+    'collation' => 'utf8mb4_general_ci',
+];
+EOT
+  echo "Finished setting up Migration Database Settings."
 }
 if [ -z "${DRUPAL_DBUSER}" ] || [ -z "${DRUPAL_DBPASS}" ] || [ -z "${DRUPAL_DBNAME}" ]; then
-    echo "No Database provided, you will have to follow setup process."
+  echo "No Database provided, you will have to follow setup process."
 else
-    drupal_settings
+  drupal_settings
+fi
+if [ -z "${DRUPAL_MIGRATE_DBHOST}" ] && [ -z "${DRUPAL_MIGRATE_DBUSER}" ] && [ -z "${DRUPAL_MIGRATE_DBPASS}" ] && [ -z "${DRUPAL_MIGRATE_DBNAME}" ]; then
+  echo "Not setting up migrate database connection"
+else
+  drupal_migrate_settings
 fi
 if [ -z "${DRUPAL_THEME_DEVEL}" ]; then
-  echo "Running in Production Mode";
+  echo "Running in Production Mode"
 else
-  cp /var/www/html/docroot/sites/default/default.services.yml /var/www/html/docroot/sites/default/services.yml;
-  sed -i 's/debug\:\ false/debug\:\ true/' /var/www/html/docroot/sites/default/services.yml;
-  sed -i 's/auto_reload\:\ null/auto_reload\:\ true/' /var/www/html/docroot/sites/default/services.yml;
-  sed -i 's/cache\:\ true/cache\:\ false/' /var/www/html/docroot/sites/default/services.yml;
-  echo "Finished setting up Theme Development Settings.";
+  cp /var/www/html/docroot/sites/default/default.services.yml /var/www/html/docroot/sites/default/services.yml
+  sed -i 's/debug\:\ false/debug\:\ true/' /var/www/html/docroot/sites/default/services.yml
+  sed -i 's/auto_reload\:\ null/auto_reload\:\ true/' /var/www/html/docroot/sites/default/services.yml
+  sed -i 's/cache\:\ true/cache\:\ false/' /var/www/html/docroot/sites/default/services.yml
+  echo "Finished setting up Theme Development Settings."
 fi
 exec "$@"
