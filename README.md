@@ -107,8 +107,17 @@ container
 is 'drupal'.
 
 ```sql
-CREATE DATABASE drupal_oregognstate_edu CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-GRANT ALL PRIVILEGES ON `drupal_oregognstate_edu`.* TO `drupal`@`%`
+CREATE DATABASE drupal_oregonstate_edu CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+GRANT ALL PRIVILEGES ON `drupal_oregonstate_edu`.* TO `drupal`@`%`;
+```
+
+Copy the Database file into the Drupal Container. This assumes the Drupal service is defined as `drupal`
+```shell
+docker compose cp drupal_oregonstate_edu.sql drupal:/var/www/
+```
+Import the Migrate source Database into the newly created Database. This assumes the Database service is defined as `database`
+```shell
+mysql -u drupal -p -h database drupal_oregonstate_edu < drupal_oregonstate_edu.sql
 ```
 
 To place all files from the source drupal site for Files migration copy them to:
