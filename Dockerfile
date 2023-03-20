@@ -1,4 +1,4 @@
-FROM docker.io/osuwams/php:8.1-apache AS production
+FROM ghcr.io/osu-wams/php:8.1-apache AS production
 COPY docker-wams-entry /usr/local/bin
 ENV PATH "$PATH:/var/www/html/vendor/bin"
 WORKDIR /var/www/html
@@ -11,7 +11,7 @@ VOLUME /var/www/html/docroot/sites/default/files
 ENTRYPOINT [ "docker-wams-entry" ]
 CMD [ "apache2-foreground" ]
 
-FROM docker.io/osuwams/php:8.1-apache-dev AS development
+FROM ghcr.io/osu-wams/php:8.1-apache-dev AS development
 COPY docker-wams-entry /usr/local/bin
 ENV PATH "$PATH:/var/www/html/vendor/bin"
 WORKDIR /var/www/html
