@@ -1,4 +1,6 @@
 <?php
+$sites['accessosu.dev.oregonstate.edu'] = 'accessosu.oregonstate.edu';
+$sites['accessosu.stage.oregonstate.edu'] = 'accessosu.oregonstate.edu';
 $sites['arts.dev.oregonstate.edu'] = 'arts.oregonstate.edu';
 $sites['arts.stage.oregonstate.edu'] = 'arts.oregonstate.edu';
 $sites['beyond.dev.oregonstate.edu'] = 'beyond.oregonstate.edu';
@@ -11,6 +13,8 @@ $sites['colantoe.dev.oregonstate.edu'] = 'colantoe.cws.oregonstate.edu';
 $sites['colantoe.stage.oregonstate.edu'] = 'colantoe.cws.oregonstate.edu';
 $sites['ctl.dev.oregonstate.edu'] = 'ctl.oregonstate.edu';
 $sites['ctl.stage.oregonstate.edu'] = 'ctl.oregonstate.edu';
+$sites['dce.dev.oregonstate.edu'] = 'dce.oregonstate.edu';
+$sites['dce.stage.oregonstate.edu'] = 'dce.oregonstate.edu';
 $sites['designforimpact.dev.oregonstate.edu'] = 'designforimpact.oregonstate.edu';
 $sites['designforimpact.stage.oregonstate.edu'] = 'designforimpact.oregonstate.edu';
 $sites['dreya.dev.oregonstate.edu'] = 'dreya.cws.oregonstate.edu';
