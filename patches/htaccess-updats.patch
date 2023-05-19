@@ -1,14 +1,18 @@
 diff --git a/.htaccess b/.htaccess
-index 98ead1fbc1..e4d8312ed4 100644
+index 1575c51f3d..5e440b95d0 100644
 --- a/.htaccess
 +++ b/.htaccess
-@@ -120,6 +120,17 @@ AddEncoding gzip svgz
+@@ -120,6 +120,21 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
 +  # use a noindex robots on any env not prod
 +  RewriteCond %{ENV:AH_SITE_ENVIRONMENT} !prod
 +  RewriteRule ^robots\.txt$ robots_noindex.txt [L]
++
++  # Site Redirects
++  RewriteCond %{HTTP_HOST} ^prax\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://liberalarts.oregonstate.edu/prax/$1 [R=permanent,L]
 +
 +  # Redirects for SSL of the site
 +  RewriteCond %{HTTPS} off
