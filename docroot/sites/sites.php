@@ -87,3 +87,5 @@ $sites['uit.dev.oregonstate.edu'] = 'uit.oregonstate.edu';
 $sites['uit.stage.oregonstate.edu'] = 'uit.oregonstate.edu';
 $sites['vannormk.dev.oregonstate.edu'] = 'vannormk.cws.oregonstate.edu';
 $sites['vannormk.stage.oregonstate.edu'] = 'vannormk.cws.oregonstate.edu';
+$sites['visitosu.dev.oregonstate.edu'] = 'visitosu.oregonstate.edu';
+$sites['visitosu.stage.oregonstate.edu'] = 'visitosu.oregonstate.edu';
