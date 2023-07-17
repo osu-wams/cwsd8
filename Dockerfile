@@ -6,7 +6,9 @@ USER www-data
 COPY --chown=www-data:www-data . /var/www/html
 RUN composer install -o --no-dev
 RUN mkdir -p /var/www/html/docroot/sites/default/files; \
-  chown -R www-data:www-data /var/www/html/docroot/sites/default/files;
+  chown -R www-data:www-data /var/www/html/docroot/sites/default/files; \
+  mkdir -p /var/www/files-private; \
+  chown -R www-data:www-data /var/www/files-private;
 VOLUME /var/www/html/docroot/sites/default/files
 ENTRYPOINT [ "docker-wams-entry" ]
 CMD [ "apache2-foreground" ]
