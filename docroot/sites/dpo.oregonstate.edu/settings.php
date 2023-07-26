@@ -840,7 +840,7 @@ if (extension_loaded('newrelic')) {
 }
 // Acquia specific settings.
 if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/dpd_oregonstate_edu-settings.inc';
+  require '/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/dpo_oregonstate_edu-settings.inc';
   if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
     $settings['file_temp_path'] = "/mnt/gfs/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/tmp";
     $settings['file_private_path'] = '/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'] . '/' . $site_path . '/files-private';
