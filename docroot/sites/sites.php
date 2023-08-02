@@ -1,6 +1,10 @@
 <?php
+$sites['academicaffairs.dev.oregonstate.edu'] = 'academicaffairs.oregonstate.edu';
+$sites['academicaffairs.stage.oregonstate.edu'] = 'academicaffairs.oregonstate.edu';
 $sites['accessosu.dev.oregonstate.edu'] = 'accessosu.oregonstate.edu';
 $sites['accessosu.stage.oregonstate.edu'] = 'accessosu.oregonstate.edu';
+$sites['admissions.dev.oregonstate.edu'] = 'admissions.oregonstate.edu';
+$sites['admissions.stage.oregonstate.edu'] = 'admissions.oregonstate.edu';
 $sites['arts.dev.oregonstate.edu'] = 'arts.oregonstate.edu';
 $sites['arts.stage.oregonstate.edu'] = 'arts.oregonstate.edu';
 $sites['beyond.dev.oregonstate.edu'] = 'beyond.oregonstate.edu';
@@ -9,6 +13,8 @@ $sites['brabhamm.dev.oregonstate.edu'] = 'brabhamm.cws.oregonstate.edu';
 $sites['brabhamm.stage.oregonstate.edu'] = 'brabhamm.cws.oregonstate.edu';
 $sites['calverta.dev.oregonstate.edu'] = 'calverta.cws.oregonstate.edu';
 $sites['calverta.stage.oregonstate.edu'] = 'calverta.cws.oregonstate.edu';
+$sites['cio.dev.oregonstate.edu'] = 'cio.oregonstate.edu';
+$sites['cio.stage.oregonstate.edu'] = 'cio.oregonstate.edu';
 $sites['colantoe.dev.oregonstate.edu'] = 'colantoe.cws.oregonstate.edu';
 $sites['colantoe.stage.oregonstate.edu'] = 'colantoe.cws.oregonstate.edu';
 $sites['coreeducation.dev.oregonstate.edu'] = 'coreeducation.oregonstate.edu';
