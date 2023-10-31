@@ -20,7 +20,6 @@ foreach ($roles as $role) {
   $differences = array_diff($role_permissions, $permissions);
   if ($differences) {
     foreach ($differences as $permission) {
-      \Robo\Robo::
       $role->revokePermission($permission);
     }
     $role->save();
