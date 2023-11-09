@@ -118,7 +118,62 @@
                     "composer/installers": "^1.0 || ^2.0"
                 }
             }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "highcharts/drilldown",
+                "version": "10.0.0",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "highcharts_drilldown"
+                },
+                "dist": {
+                    "url": "https://code.highcharts.com/10.0.0/modules/drilldown.js",
+                    "type": "file"
+                },
+                "require": {
+                    "composer/installers": "^1.0 || ^2.0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "highcharts/data",
+                "version": "10.0.0",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "highcharts_data"
+                },
+                "dist": {
+                    "url": "https://code.highcharts.com/10.0.0/modules/data.js",
+                    "type": "file"
+                },
+                "require": {
+                    "composer/installers": "^1.0 || ^2.0"
+                }
+            }
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "highcharts/maps",
+                "version": "10.0.0",
+                "type": "drupal-library",
+                "extra": {
+                    "installer-name": "highcharts_maps"
+                },
+                "dist": {
+                    "url": "https://code.highcharts.com/maps/10.0.0/modules/map.js",
+                    "type": "file"
+                },
+                "require": {
+                    "composer/installers": "^1.0 || ^2.0"
+                }
+            }
         }
+
     ],
     "require": {
         "acquia/memcache-settings": "^1.2",
@@ -254,9 +309,13 @@
         "drupal/webform": "^6.1",
         "drupal/xmlsitemap": "^1.4",
         "drush/drush": "^12",
+        "highcharts/data": "^10.0",
+        "highcharts/drilldown": "^10.0",
+        "highcharts/maps": "^10.0",
         "mnsami/composer-custom-directory-installer": "^2.0",
         "npm-asset/blazy": "^1.8",
-        "npm-asset/chart.js": "^4.4",
+        "npm-asset/chart.js": "^3.3",
+        "npm-asset/chartjs-adapter-date-fns": "^2",
         "npm-asset/dompurify": "^3.0",
         "npm-asset/dropzone": "^5.9",
         "npm-asset/fontawesome-iconpicker": "^3.2",
@@ -419,6 +478,9 @@
             ],
             "docroot/libraries/slick": [
                 "npm-asset/slick-carousel"
+            ],
+            "docroot/libraries/chartjs":[
+                "npm-asset/chart.js"
             ],
             "docroot/libraries/{$name}": [
                 "type:drupal-library",
