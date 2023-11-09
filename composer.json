@@ -256,6 +256,7 @@
         "drush/drush": "^12",
         "mnsami/composer-custom-directory-installer": "^2.0",
         "npm-asset/blazy": "^1.8",
+        "npm-asset/chart.js": "^4.4",
         "npm-asset/dompurify": "^3.0",
         "npm-asset/dropzone": "^5.9",
         "npm-asset/fontawesome-iconpicker": "^3.2",
@@ -281,7 +282,8 @@
         "osu-wams/osu_simple_popup_blocks": "^1.0",
         "osu-wams/osu_standard": "^1.0",
         "osu-wams/osu_story": "^1.0",
-        "toc/toc": "^0.3.2"
+        "toc/toc": "^0.3.2",
+        "wikimedia/composer-merge-plugin": "^2.1"
     },
     "require-dev": {
         "drupal/core-dev": "^10.1",
@@ -320,7 +322,8 @@
             "drupal/core-composer-scaffold": true,
             "mnsami/composer-custom-directory-installer": true,
             "oomphinc/composer-installers-extender": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "wikimedia/composer-merge-plugin": true
         }
     },
     "extra": {
@@ -386,6 +389,12 @@
             "drupal/token" :{
                 "1198032-54": "https://www.drupal.org/files/issues/2021-08-11/1198032-token-paginated-54.patch"
             }
+        },
+        "merge-plugin": {
+            "include": [
+                "docroot/modules/contrib/charts/modules/charts_highcharts/composer.json",
+                "docroot/modules/contrib/charts/modules/charts_google/composer.json"
+            ]
         },
         "drupal-scaffold": {
             "file-mapping": {
