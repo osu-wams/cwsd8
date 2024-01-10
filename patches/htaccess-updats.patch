@@ -28,6 +28,14 @@ index 4031da475c..7dfbb8153f 100644
 +  RewriteCond %{HTTP_HOST} ^dpd\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://dpo.oregonstate.edu/$1 [R=permanent,L]
 +
++  # Site Redirects
++  RewriteCond %{HTTP_HOST} ^transboundarywaters\.science\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
++
++  # Site Redirects
++  RewriteCond %{HTTP_HOST} ^www\.transboundarywaters\.orst\.edu [NC]
++  RewriteRule (.*) https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
++
 +  # Redirects for SSL of the site
 +  RewriteCond %{HTTPS} off
 +  RewriteCond %{HTTP:X-Forwarded-Proto} !https
