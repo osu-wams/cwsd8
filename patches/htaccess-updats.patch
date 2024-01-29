@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475c..346e08aa1c 100644
+index 4031da475c..28f119843c 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,13 +12,17 @@ index 4031da475c..346e08aa1c 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,33 @@ AddEncoding gzip svgz
+@@ -113,6 +116,35 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
 +  # use a noindex robots on any env not prod
 +  RewriteCond %{ENV:AH_SITE_ENVIRONMENT} !prod
 +  RewriteRule ^robots\.txt$ robots_noindex.txt [L]
++
++  # Blocking bot for user agent.
++  RewriteCond %{HTTP_USER_AGENT} ^ClaudeBot
++  RewriteRule .* - [F,L]
 +
 +  # Redirect all www sites to non www
 +  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
@@ -28,11 +32,9 @@ index 4031da475c..346e08aa1c 100644
 +  RewriteCond %{HTTP_HOST} ^dpd\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://dpo.oregonstate.edu/$1 [R=permanent,L]
 +
-+  # Site Redirects
 +  RewriteCond %{HTTP_HOST} ^transboundarywaters\.science\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
 +
-+  # Site Redirects
 +  RewriteCond %{HTTP_HOST} ^www.transboundarywaters\.orst.\edu [NC]
 +  RewriteRule (.*) https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
 +
