@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475c..28f119843c 100644
+index 4031da475c..0cfbf2fb1b 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,7 +12,7 @@ index 4031da475c..28f119843c 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,35 @@ AddEncoding gzip svgz
+@@ -113,6 +116,39 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -22,6 +22,10 @@ index 4031da475c..28f119843c 100644
 +
 +  # Blocking bot for user agent.
 +  RewriteCond %{HTTP_USER_AGENT} ^ClaudeBot
++  RewriteRule .* - [F,L]
++
++  # Handle autodiscover.xml posts
++  RewriteCond %{REQUEST_URI} ^/autodiscover/autodiscover.xml [NC]
 +  RewriteRule .* - [F,L]
 +
 +  # Redirect all www sites to non www
