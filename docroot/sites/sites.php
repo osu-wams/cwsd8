@@ -1,6 +1,8 @@
 <?php
 $sites['academicaffairs.dev.oregonstate.edu'] = 'academicaffairs.oregonstate.edu';
 $sites['academicaffairs.stage.oregonstate.edu'] = 'academicaffairs.oregonstate.edu';
+$sites['accessibility.dev.oregonstate.edu'] = 'accessibility.oregonstate.edu';
+$sites['accessibility.stage.oregonstate.edu'] = 'accessibility.oregonstate.edu';
 $sites['accessosu.dev.oregonstate.edu'] = 'accessosu.oregonstate.edu';
 $sites['accessosu.stage.oregonstate.edu'] = 'accessosu.oregonstate.edu';
 $sites['admissions.dev.oregonstate.edu'] = 'admissions.oregonstate.edu';
