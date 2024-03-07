@@ -229,3 +229,5 @@ $sites['visitosu.dev.oregonstate.edu'] = 'visitosu.oregonstate.edu';
 $sites['visitosu.stage.oregonstate.edu'] = 'visitosu.oregonstate.edu';
 $sites['welcome.dev.oregonstate.edu'] = 'welcome.oregonstate.edu';
 $sites['welcome.stage.oregonstate.edu'] = 'welcome.oregonstate.edu';
+$sites['wellwater.dev.oregonstate.edu'] = 'wellwater.oregonstate.edu';
+$sites['wellwater.stage.oregonstate.edu'] = 'wellwater.oregonstate.edu';
