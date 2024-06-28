@@ -337,5 +337,7 @@ $sites['wellwater.dev.oregonstate.edu'] = 'wellwater.oregonstate.edu';
 $sites['wellwater.stage.oregonstate.edu'] = 'wellwater.oregonstate.edu';
 $sites['wic.dev.oregonstate.edu'] = 'wic.oregonstate.edu';
 $sites['wic.stage.oregonstate.edu'] = 'wic.oregonstate.edu';
+$sites['writingcenter.dev.oregonstate.edu'] = 'writingcenter.oregonstate.edu';
+$sites['writingcenter.stage.oregonstate.edu'] = 'writingcenter.oregonstate.edu';
 $sites['yourpath.dev.oregonstate.edu'] = 'yourpath.oregonstate.edu';
 $sites['yourpath.stage.oregonstate.edu'] = 'yourpath.oregonstate.edu';
