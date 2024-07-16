@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475c..484db3366b 100644
+index 4031da475c..20dbdfc594 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -77,3 +77,13 @@ index 4031da475c..484db3366b 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
+@@ -184,3 +245,9 @@ AddEncoding gzip svgz
+   # Disable Proxy header, since it's an attack vector.
+   RequestHeader unset Proxy
+ </IfModule>
++<IfModule mod_setenvif.c>
++  SetEnvIf AH_CLIENT_IP ^23\.108\.252\.102$ DENY=1
++  Order allow,deny
++  Allow From All
++  Deny from env=DENY
++</IfModule>
