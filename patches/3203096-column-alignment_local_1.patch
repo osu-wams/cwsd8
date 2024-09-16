@@ -1,0 +1,1001 @@
+From 20833a5c657c5f3abcb0ab2e32548b9761242d19 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?M=C3=A1rio=20Reis?= <mario@imagexmedia.com>
+Date: Wed, 1 Jun 2022 13:05:16 -0300
+Subject: [PATCH 1/4] Issue #3203096: Column Alignment
+
+---
+ bootstrap_layout_builder.libraries.yml        |   6 ++
+ .../positioning-align-items.css               |  19 ++++
+ css/layout-tab-styles.css                     |  29 +++++
+ images/plugins/align-items/align-baseline.svg |   2 +
+ images/plugins/align-items/align-center.svg   |   1 +
+ images/plugins/align-items/align-end.svg      |   1 +
+ images/plugins/align-items/align-start.svg    |   1 +
+ images/plugins/align-items/align-stretch.svg  |   1 +
+ images/plugins/positioning-icon.svg           |  17 +++
+ .../positioning-align-items.scss              |  19 ++++
+ scss/layout-tab-styles.scss                   |   2 +-
+ scss/themes/plugins/_align-items.scss         |  30 ++++++
+ .../BootstrapStyles/Style/AlignItems.php      | 100 ++++++++++++++++++
+ .../StylesGroup/Positioning.php               |  34 ++++++
+ 14 files changed, 261 insertions(+), 1 deletion(-)
+ create mode 100644 css/blb_example_classes/positioning-align-items.css
+ create mode 100644 images/plugins/align-items/align-baseline.svg
+ create mode 100644 images/plugins/align-items/align-center.svg
+ create mode 100644 images/plugins/align-items/align-end.svg
+ create mode 100644 images/plugins/align-items/align-start.svg
+ create mode 100644 images/plugins/align-items/align-stretch.svg
+ create mode 100644 images/plugins/positioning-icon.svg
+ create mode 100644 scss/blb_example_classes/positioning-align-items.scss
+ create mode 100644 scss/themes/plugins/_align-items.scss
+ create mode 100644 src/Plugin/BootstrapStyles/Style/AlignItems.php
+ create mode 100644 src/Plugin/BootstrapStyles/StylesGroup/Positioning.php
+
+diff --git a/bootstrap_layout_builder.libraries.yml b/bootstrap_layout_builder.libraries.yml
+index eb989d1..74999c7 100644
+--- a/bootstrap_layout_builder.libraries.yml
++++ b/bootstrap_layout_builder.libraries.yml
+@@ -5,3 +5,9 @@ layout_builder_form_style:
+       css/layout-tab-styles.css: { }
+   js:
+     js/layout-tab-scripts.js: { }
++
++# align_items
++plugin.align_items.build:
++  css:
++    theme:
++      css/blb_example_classes/positioning-align-items.css: { }
+diff --git a/css/blb_example_classes/positioning-align-items.css b/css/blb_example_classes/positioning-align-items.css
+new file mode 100644
+index 0000000..f475a53
+--- /dev/null
++++ b/css/blb_example_classes/positioning-align-items.css
+@@ -0,0 +1,19 @@
++.blb-align-items-start {
++  align-items: flex-start;
++}
++
++.blb-align-items-end {
++  align-items: flex-end;
++}
++
++.blb-align-items-center {
++  align-items: center;
++}
++
++.blb-align-items-baseline {
++  align-items: baseline;
++}
++
++.blb-align-items-stretch {
++  align-items: stretch;
++}
+diff --git a/css/layout-tab-styles.css b/css/layout-tab-styles.css
+index da9d422..b8dcbd3 100644
+--- a/css/layout-tab-styles.css
++++ b/css/layout-tab-styles.css
+@@ -1,3 +1,32 @@
++#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label {
++  font-size: 0;
++  text-indent: -999em;
++}
++
++#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon {
++  margin-bottom: 0;
++}
++
++#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon[class*="start"] {
++  background-image: url("../images/plugins/align-items/align-start.svg");
++}
++
++#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon[class*="end"] {
++  background-image: url("../images/plugins/align-items/align-end.svg");
++}
++
++#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon[class*="baseline"] {
++  background-image: url("../images/plugins/align-items/align-baseline.svg");
++}
++
++#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon[class*="stretch"] {
++  background-image: url("../images/plugins/align-items/align-stretch.svg");
++}
++
++#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon[class*="center"] {
++  background-image: url("../images/plugins/align-items/align-center.svg");
++}
++
+ #drupal-off-canvas .blb_breakpoint_cols label {
+   font-size: .875rem;
+   position: relative;
+diff --git a/images/plugins/align-items/align-baseline.svg b/images/plugins/align-items/align-baseline.svg
+new file mode 100644
+index 0000000..1a34337
+--- /dev/null
++++ b/images/plugins/align-items/align-baseline.svg
+@@ -0,0 +1,2 @@
++<svg id="eT1M7S32ol61" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 524 423" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="translate(-23 9.19833)"><line x1="127.02735" y1="0" x2="-127.02735" y2="0" transform="matrix(1.89995 0 0 5 285 391.083)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><text dx="0" dy="0" font-size="12" font-weight="400" transform="matrix(18.7244 0 0 18.7244 132.691 372.986)" fill="#5c606b" stroke-width="0"><tspan y="0" font-family="&quot;eT1M7S32ol61:::Lora&quot;" font-size="24.9375" font-weight="400" font-style="normal" fill="#5c606b" stroke-width="0"><![CDATA[A]]></tspan><tspan font-family="&quot;eT1M7S32ol61:::Lora&quot;" font-size="24.9375" font-weight="400" font-style="normal" fill="#5c606b" stroke-width="0"><![CDATA[
++      ]]></tspan><tspan x="0" y="49.875" font-family="&quot;eT1M7S32ol61:::Lora&quot;" font-size="24.9375" font-weight="400" font-style="normal" fill="#5c606b" stroke-width="0"><![CDATA[ ]]></tspan></text></g><style><![CDATA[@font-face {font-family: 'eT1M7S32ol61:::Lora';font-style: normal;font-weight: 400;src: url(data:font/ttf;charset=utf-8;base64,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) format('truetype');}]]></style></svg>
+\ No newline at end of file
+diff --git a/images/plugins/align-items/align-center.svg b/images/plugins/align-items/align-center.svg
+new file mode 100644
+index 0000000..103c2b8
+--- /dev/null
++++ b/images/plugins/align-items/align-center.svg
+@@ -0,0 +1 @@
++<svg id="el6dXjc5Iua1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 570 427.5" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="matrix(-1 0 0 1 605.000008-28.024704)"><line x1="-300.235457" y1="0" x2="300.235457" y2="0" transform="matrix(.95 0 0 8 320 241.268995)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.15 336.86759 74.211845)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.5746 144.199954 41.725709)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/></g></svg>
+\ No newline at end of file
+diff --git a/images/plugins/align-items/align-end.svg b/images/plugins/align-items/align-end.svg
+new file mode 100644
+index 0000000..c39a5cc
+--- /dev/null
++++ b/images/plugins/align-items/align-end.svg
+@@ -0,0 +1 @@
++<svg id="eVqNGXOlDdc1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 570 427.5" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="matrix(-1 0 0 1 605.000008-28.024704)"><line x1="-300.235457" y1="0" x2="300.235457" y2="0" transform="matrix(.95 0 0 8 320 431.312)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.15 337.782 108.2151)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.5746 144.201 41.22)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/></g></svg>
+\ No newline at end of file
+diff --git a/images/plugins/align-items/align-start.svg b/images/plugins/align-items/align-start.svg
+new file mode 100644
+index 0000000..9008fa5
+--- /dev/null
++++ b/images/plugins/align-items/align-start.svg
+@@ -0,0 +1 @@
++<svg id="eDQoHgiG5WV1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 570 427.5" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="matrix(-1 0 0-1 605.224 456.872)"><line x1="-300.235457" y1="0" x2="300.235457" y2="0" transform="matrix(.95 0 0 8 320 431.312)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.15 337.782 108.2151)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.5746 144.201 41.22)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/></g></svg>
+\ No newline at end of file
+diff --git a/images/plugins/align-items/align-stretch.svg b/images/plugins/align-items/align-stretch.svg
+new file mode 100644
+index 0000000..b576560
+--- /dev/null
++++ b/images/plugins/align-items/align-stretch.svg
+@@ -0,0 +1 @@
++<svg id="e1IxlX6veBW1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 570 427.5" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="matrix(-1 0 0-1 605.224 456.872)"><line x1="-300.235457" y1="0" x2="300.235457" y2="0" transform="matrix(.95 0 0 8 320 431.312)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><line x1="-300.235457" y1="0" x2="300.235457" y2="0" transform="matrix(.95 0 0 8 320 51.2151)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.5746 337.782 41.2151)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.5746 144.201 41.22)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/></g></svg>
+\ No newline at end of file
+diff --git a/images/plugins/positioning-icon.svg b/images/plugins/positioning-icon.svg
+new file mode 100644
+index 0000000..4771100
+--- /dev/null
++++ b/images/plugins/positioning-icon.svg
+@@ -0,0 +1,17 @@
++<svg id="e8zPZ2iS9bJ1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 33 33"
++     shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="24" height="21">
++  <g transform="matrix(0-1 1 0-1.496262 34.494499)">
++    <path
++          d="M3.60539,14.403527c-.66014.002626-1.1943.537809-1.19561,1.197954-.00124.318339.12402.624135.34824.850114s.52903.353631.84737.354873h1.90359L0.35381,21.952259C0.12733,22.177539,0,22.483803,0,22.803244s.12733.625705.35381.850984c.23762.234385.56209.359249.89553.344616.30266-.009039.59073-.132135.80645-.344616l5.15751-5.16454v1.912968c.00258.659245.53636,1.19303,1.19561,1.195601.65924-.002571,1.19303-.536356,1.1956-1.195601v-4.801175c-.00134-.660137-.53547-1.19531-1.1956-1.197954h-4.80352Z"
++          transform="matrix(-.707107-.707107-.707107 0.707107 34.969322-2.370901)"/>
++    <path
++          d="M3.60539,14.403527c-.66014.002626-1.1943.537809-1.19561,1.197954-.00124.318339.12402.624135.34824.850114s.52903.353631.84737.354873h1.90359L0.35381,21.952259C0.12733,22.177539,0,22.483803,0,22.803244s.12733.625705.35381.850984c.23762.234385.56209.359249.89553.344616.30266-.009039.59073-.132135.80645-.344616l5.15751-5.16454v1.912968c.00258.659245.53636,1.19303,1.19561,1.195601.65924-.002571,1.19303-.536356,1.1956-1.195601v-4.801175c-.00134-.660137-.53547-1.19531-1.1956-1.197954h-4.80352Z"
++          transform="matrix(.707107-.707107-.707107-.707107 38.359344 34.973404)"/>
++    <path
++          d="M3.60539,14.403527c-.66014.002626-1.1943.537809-1.19561,1.197954-.00124.318339.12402.624135.34824.850114s.52903.353631.84737.354873h1.90359L0.35381,21.952259C0.12733,22.177539,0,22.483803,0,22.803244s.12733.625705.35381.850984c.23762.234385.56209.359249.89553.344616.30266-.009039.59073-.132135.80645-.344616l5.15751-5.16454v1.912968c.00258.659245.53636,1.19303,1.19561,1.195601.65924-.002571,1.19303-.536356,1.1956-1.195601v-4.801175c-.00134-.660137-.53547-1.19531-1.1956-1.197954h-4.80352Z"
++          transform="matrix(.707107 0.707107 0.707107-.707107 1.026597 38.363426)"/>
++    <path
++          d="M3.60539,14.403527c-.66014.002626-1.1943.537809-1.19561,1.197954-.00124.318339.12402.624135.34824.850114s.52903.353631.84737.354873h1.90359L0.35381,21.952259C0.12733,22.177539,0,22.483803,0,22.803244s.12733.625705.35381.850984c.23762.234385.56209.359249.89553.344616.30266-.009039.59073-.132135.80645-.344616l5.15751-5.16454v1.912968c.00258.659245.53636,1.19303,1.19561,1.195601.65924-.002571,1.19303-.536356,1.1956-1.195601v-4.801175c-.00134-.660137-.53547-1.19531-1.1956-1.197954h-4.80352Z"
++          transform="matrix(-.707107 0.707107 0.707107 0.707107-2.370348 1.029441)"/>
++  </g>
++</svg>
+diff --git a/scss/blb_example_classes/positioning-align-items.scss b/scss/blb_example_classes/positioning-align-items.scss
+new file mode 100644
+index 0000000..f475a53
+--- /dev/null
++++ b/scss/blb_example_classes/positioning-align-items.scss
+@@ -0,0 +1,19 @@
++.blb-align-items-start {
++  align-items: flex-start;
++}
++
++.blb-align-items-end {
++  align-items: flex-end;
++}
++
++.blb-align-items-center {
++  align-items: center;
++}
++
++.blb-align-items-baseline {
++  align-items: baseline;
++}
++
++.blb-align-items-stretch {
++  align-items: stretch;
++}
+diff --git a/scss/layout-tab-styles.scss b/scss/layout-tab-styles.scss
+index 33ad87c..cd8febc 100644
+--- a/scss/layout-tab-styles.scss
++++ b/scss/layout-tab-styles.scss
+@@ -1,7 +1,7 @@
+ @import "variables";
+ @import "mixins";
+-
+ #drupal-off-canvas {
++  @import "themes/plugins/align-items";
+ 
+   // Container Type
+   //.blb_container_type {
+diff --git a/scss/themes/plugins/_align-items.scss b/scss/themes/plugins/_align-items.scss
+new file mode 100644
+index 0000000..db6d81a
+--- /dev/null
++++ b/scss/themes/plugins/_align-items.scss
+@@ -0,0 +1,30 @@
++$text_alignment_icon_path: '../images/plugins/align-items/';
++
++.field-align-items .fieldset-wrapper > div > div {
++  input {
++    + label {
++      font-size: 0;
++      text-indent: -999em;
++
++      .input-icon {
++        margin-bottom: 0;
++
++        &[class*="start"] {
++          background-image: url($text_alignment_icon_path + 'align-start.svg');
++        }
++        &[class*="end"] {
++          background-image: url($text_alignment_icon_path + 'align-end.svg');
++        }
++        &[class*="baseline"] {
++          background-image: url($text_alignment_icon_path + 'align-baseline.svg');
++        }
++        &[class*="stretch"] {
++          background-image: url($text_alignment_icon_path + 'align-stretch.svg');
++        }
++        &[class*="center"] {
++          background-image: url($text_alignment_icon_path + 'align-center.svg');
++        }
++      }
++    }
++  }
++}
+diff --git a/src/Plugin/BootstrapStyles/Style/AlignItems.php b/src/Plugin/BootstrapStyles/Style/AlignItems.php
+new file mode 100644
+index 0000000..af41d75
+--- /dev/null
++++ b/src/Plugin/BootstrapStyles/Style/AlignItems.php
+@@ -0,0 +1,100 @@
++<?php
++
++namespace Drupal\bootstrap_layout_builder\Plugin\BootstrapStyles\Style;
++
++use Drupal\bootstrap_styles\Style\StylePluginBase;
++use Drupal\Core\Form\FormStateInterface;
++
++/**
++ * Style AlignItems class.
++ *
++ * @package Drupal\bootstrap_layout_builder\Plugin\Style
++ *
++ * @Style(
++ *   id = "align_items",
++ *   title = @Translation("Align Items"),
++ *   group_id = "positioning",
++ *   weight = 0
++ * )
++ */
++class AlignItems extends StylePluginBase {
++
++  /**
++   * {@inheritDoc}
++   */
++  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
++    $config = $this->config();
++
++    $form['positioning']['align_items'] = [
++      '#type' => 'textarea',
++      '#default_value' => $config->get('align_items'),
++      '#title' => $this->t('Align Items'),
++      '#cols' => 60,
++      '#rows' => 5,
++    ];
++
++    return $form;
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
++    $this->config()
++      ->set('align_items', $form_state->getValue('align_items'))
++      ->save();
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function buildStyleFormElements(array &$form, FormStateInterface $form_state, $storage) {
++    $form['align_items'] = [
++      '#type' => 'radios',
++      '#title' => $this->t('Align Items'),
++      '#options' => $this->getStyleOptions('align_items'),
++      '#default_value' => $storage['align_items']['class'] ?? NULL,
++      '#validated' => TRUE,
++      '#attributes' => [
++        'class' => ['field-align-items', 'bs_input-boxes'],
++      ],
++    ];
++
++    // Add icons to the container types.
++    foreach ($form['align_items']['#options'] as $key => $value) {
++      $form['align_items']['#options'][$key] = '<span class="input-icon ' . $key . '"></span>' . $value;
++    }
++
++    return $form;
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function submitStyleFormElements(array $group_elements) {
++    return [
++      'align_items' => [
++        'class' => $group_elements['align_items'],
++      ],
++    ];
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function build(array $build, array $storage, $theme_wrapper = NULL) {
++    $classes = [];
++    if (isset($storage['align_items']['class'])) {
++      $classes[] = $storage['align_items']['class'];
++    }
++
++    // Add the classes to the build.
++    $build = $this->addClassesToBuild($build, $classes);
++
++    // Attach blb-classes to the build.
++    $build['#attached']['library'][] = 'bootstrap_layout_builder/plugin.align_items.build';
++
++    return $build;
++  }
++
++}
+diff --git a/src/Plugin/BootstrapStyles/StylesGroup/Positioning.php b/src/Plugin/BootstrapStyles/StylesGroup/Positioning.php
+new file mode 100644
+index 0000000..648835c
+--- /dev/null
++++ b/src/Plugin/BootstrapStyles/StylesGroup/Positioning.php
+@@ -0,0 +1,34 @@
++<?php
++
++namespace Drupal\bootstrap_layout_builder\Plugin\BootstrapStyles\StylesGroup;
++
++use Drupal\bootstrap_styles\StylesGroup\StylesGroupPluginBase;
++use Drupal\Core\Form\FormStateInterface;
++
++/**
++ * Style group Positioning class.
++ *
++ * @package Drupal\bootstrap_layout_builder\Plugin\StylesGroup
++ *
++ * @StylesGroup(
++ *   id = "positioning",
++ *   title = @Translation("Positioning"),
++ *   weight = 6,
++ *   icon = "bootstrap_layout_builder/images/plugins/positioning-icon.svg"
++ * )
++ */
++class Positioning extends StylesGroupPluginBase {
++
++  /**
++   * {@inheritdoc}
++   */
++  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
++    $form['positioning'] = [
++      '#type' => 'details',
++      '#title' => $this->t('Positioning'),
++      '#open' => FALSE,
++    ];
++    return $form;
++  }
++
++}
+-- 
+2.46.0
+
+
+From 230e42ef0fdb87ccd59b181cade52c2f7c6a1813 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?M=C3=A1rio=20Reis?= <mario@imagexmedia.com>
+Date: Wed, 1 Jun 2022 14:37:51 -0300
+Subject: [PATCH 2/4] Issue #3203096: Column Alignment
+
+---
+ .../positioning-align-items.css               |  19 ----
+ .../positioning-items-alignment.css           |  19 ++++
+ css/layout-tab-styles.css                     |  24 ++---
+ .../align-baseline.svg                        |   0
+ .../align-center.svg                          |   0
+ .../align-end.svg                             |   0
+ .../align-start.svg                           |   0
+ .../align-stretch.svg                         |   0
+ .../positioning-items-alignment.scss          |  19 ++++
+ scss/layout-tab-styles.scss                   |   2 +-
+ scss/themes/plugins/_align-items.scss         |  30 ------
+ scss/themes/plugins/_items-alignment.scss     |  30 ++++++
+ .../BootstrapStyles/Style/ItemsAlignment.php  | 100 ++++++++++++++++++
+ 13 files changed, 181 insertions(+), 62 deletions(-)
+ delete mode 100644 css/blb_example_classes/positioning-align-items.css
+ create mode 100644 css/blb_example_classes/positioning-items-alignment.css
+ rename images/plugins/{align-items => items-alignment}/align-baseline.svg (100%)
+ rename images/plugins/{align-items => items-alignment}/align-center.svg (100%)
+ rename images/plugins/{align-items => items-alignment}/align-end.svg (100%)
+ rename images/plugins/{align-items => items-alignment}/align-start.svg (100%)
+ rename images/plugins/{align-items => items-alignment}/align-stretch.svg (100%)
+ create mode 100644 scss/blb_example_classes/positioning-items-alignment.scss
+ delete mode 100644 scss/themes/plugins/_align-items.scss
+ create mode 100644 scss/themes/plugins/_items-alignment.scss
+ create mode 100644 src/Plugin/BootstrapStyles/Style/ItemsAlignment.php
+
+diff --git a/css/blb_example_classes/positioning-align-items.css b/css/blb_example_classes/positioning-align-items.css
+deleted file mode 100644
+index f475a53..0000000
+--- a/css/blb_example_classes/positioning-align-items.css
++++ /dev/null
+@@ -1,19 +0,0 @@
+-.blb-align-items-start {
+-  align-items: flex-start;
+-}
+-
+-.blb-align-items-end {
+-  align-items: flex-end;
+-}
+-
+-.blb-align-items-center {
+-  align-items: center;
+-}
+-
+-.blb-align-items-baseline {
+-  align-items: baseline;
+-}
+-
+-.blb-align-items-stretch {
+-  align-items: stretch;
+-}
+diff --git a/css/blb_example_classes/positioning-items-alignment.css b/css/blb_example_classes/positioning-items-alignment.css
+new file mode 100644
+index 0000000..064d286
+--- /dev/null
++++ b/css/blb_example_classes/positioning-items-alignment.css
+@@ -0,0 +1,19 @@
++.blb-items_alignment-start {
++  align-items: flex-start;
++}
++
++.blb-items_alignment-end {
++  align-items: flex-end;
++}
++
++.blb-items_alignment-center {
++  align-items: center;
++}
++
++.blb-items_alignment-baseline {
++  align-items: baseline;
++}
++
++.blb-items_alignment-stretch {
++  align-items: stretch;
++}
+diff --git a/css/layout-tab-styles.css b/css/layout-tab-styles.css
+index b8dcbd3..4f017ca 100644
+--- a/css/layout-tab-styles.css
++++ b/css/layout-tab-styles.css
+@@ -1,30 +1,30 @@
+-#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label {
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label {
+   font-size: 0;
+   text-indent: -999em;
+ }
+ 
+-#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon {
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon {
+   margin-bottom: 0;
+ }
+ 
+-#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon[class*="start"] {
+-  background-image: url("../images/plugins/align-items/align-start.svg");
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon[class*="start"] {
++  background-image: url("../images/plugins/items-alignment/align-start.svg");
+ }
+ 
+-#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon[class*="end"] {
+-  background-image: url("../images/plugins/align-items/align-end.svg");
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon[class*="end"] {
++  background-image: url("../images/plugins/items-alignment/align-end.svg");
+ }
+ 
+-#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon[class*="baseline"] {
+-  background-image: url("../images/plugins/align-items/align-baseline.svg");
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon[class*="baseline"] {
++  background-image: url("../images/plugins/items-alignment/align-baseline.svg");
+ }
+ 
+-#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon[class*="stretch"] {
+-  background-image: url("../images/plugins/align-items/align-stretch.svg");
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon[class*="stretch"] {
++  background-image: url("../images/plugins/items-alignment/align-stretch.svg");
+ }
+ 
+-#drupal-off-canvas .field-align-items .fieldset-wrapper > div > div input + label .input-icon[class*="center"] {
+-  background-image: url("../images/plugins/align-items/align-center.svg");
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon[class*="center"] {
++  background-image: url("../images/plugins/items-alignment/align-center.svg");
+ }
+ 
+ #drupal-off-canvas .blb_breakpoint_cols label {
+diff --git a/images/plugins/align-items/align-baseline.svg b/images/plugins/items-alignment/align-baseline.svg
+similarity index 100%
+rename from images/plugins/align-items/align-baseline.svg
+rename to images/plugins/items-alignment/align-baseline.svg
+diff --git a/images/plugins/align-items/align-center.svg b/images/plugins/items-alignment/align-center.svg
+similarity index 100%
+rename from images/plugins/align-items/align-center.svg
+rename to images/plugins/items-alignment/align-center.svg
+diff --git a/images/plugins/align-items/align-end.svg b/images/plugins/items-alignment/align-end.svg
+similarity index 100%
+rename from images/plugins/align-items/align-end.svg
+rename to images/plugins/items-alignment/align-end.svg
+diff --git a/images/plugins/align-items/align-start.svg b/images/plugins/items-alignment/align-start.svg
+similarity index 100%
+rename from images/plugins/align-items/align-start.svg
+rename to images/plugins/items-alignment/align-start.svg
+diff --git a/images/plugins/align-items/align-stretch.svg b/images/plugins/items-alignment/align-stretch.svg
+similarity index 100%
+rename from images/plugins/align-items/align-stretch.svg
+rename to images/plugins/items-alignment/align-stretch.svg
+diff --git a/scss/blb_example_classes/positioning-items-alignment.scss b/scss/blb_example_classes/positioning-items-alignment.scss
+new file mode 100644
+index 0000000..064d286
+--- /dev/null
++++ b/scss/blb_example_classes/positioning-items-alignment.scss
+@@ -0,0 +1,19 @@
++.blb-items_alignment-start {
++  align-items: flex-start;
++}
++
++.blb-items_alignment-end {
++  align-items: flex-end;
++}
++
++.blb-items_alignment-center {
++  align-items: center;
++}
++
++.blb-items_alignment-baseline {
++  align-items: baseline;
++}
++
++.blb-items_alignment-stretch {
++  align-items: stretch;
++}
+diff --git a/scss/layout-tab-styles.scss b/scss/layout-tab-styles.scss
+index cd8febc..32ef06e 100644
+--- a/scss/layout-tab-styles.scss
++++ b/scss/layout-tab-styles.scss
+@@ -1,7 +1,7 @@
+ @import "variables";
+ @import "mixins";
+ #drupal-off-canvas {
+-  @import "themes/plugins/align-items";
++  @import "themes/plugins/items-alignment";
+ 
+   // Container Type
+   //.blb_container_type {
+diff --git a/scss/themes/plugins/_align-items.scss b/scss/themes/plugins/_align-items.scss
+deleted file mode 100644
+index db6d81a..0000000
+--- a/scss/themes/plugins/_align-items.scss
++++ /dev/null
+@@ -1,30 +0,0 @@
+-$text_alignment_icon_path: '../images/plugins/align-items/';
+-
+-.field-align-items .fieldset-wrapper > div > div {
+-  input {
+-    + label {
+-      font-size: 0;
+-      text-indent: -999em;
+-
+-      .input-icon {
+-        margin-bottom: 0;
+-
+-        &[class*="start"] {
+-          background-image: url($text_alignment_icon_path + 'align-start.svg');
+-        }
+-        &[class*="end"] {
+-          background-image: url($text_alignment_icon_path + 'align-end.svg');
+-        }
+-        &[class*="baseline"] {
+-          background-image: url($text_alignment_icon_path + 'align-baseline.svg');
+-        }
+-        &[class*="stretch"] {
+-          background-image: url($text_alignment_icon_path + 'align-stretch.svg');
+-        }
+-        &[class*="center"] {
+-          background-image: url($text_alignment_icon_path + 'align-center.svg');
+-        }
+-      }
+-    }
+-  }
+-}
+diff --git a/scss/themes/plugins/_items-alignment.scss b/scss/themes/plugins/_items-alignment.scss
+new file mode 100644
+index 0000000..6e5de28
+--- /dev/null
++++ b/scss/themes/plugins/_items-alignment.scss
+@@ -0,0 +1,30 @@
++$items_alignment_icon_path: '../images/plugins/items-alignment/';
++
++.field-items-alignment .fieldset-wrapper > div > div {
++  input {
++    + label {
++      font-size: 0;
++      text-indent: -999em;
++
++      .input-icon {
++        margin-bottom: 0;
++
++        &[class*="start"] {
++          background-image: url($items_alignment_icon_path + 'align-start.svg');
++        }
++        &[class*="end"] {
++          background-image: url($items_alignment_icon_path + 'align-end.svg');
++        }
++        &[class*="baseline"] {
++          background-image: url($items_alignment_icon_path + 'align-baseline.svg');
++        }
++        &[class*="stretch"] {
++          background-image: url($items_alignment_icon_path + 'align-stretch.svg');
++        }
++        &[class*="center"] {
++          background-image: url($items_alignment_icon_path + 'align-center.svg');
++        }
++      }
++    }
++  }
++}
+diff --git a/src/Plugin/BootstrapStyles/Style/ItemsAlignment.php b/src/Plugin/BootstrapStyles/Style/ItemsAlignment.php
+new file mode 100644
+index 0000000..192c762
+--- /dev/null
++++ b/src/Plugin/BootstrapStyles/Style/ItemsAlignment.php
+@@ -0,0 +1,100 @@
++<?php
++
++namespace Drupal\bootstrap_layout_builder\Plugin\BootstrapStyles\Style;
++
++use Drupal\bootstrap_styles\Style\StylePluginBase;
++use Drupal\Core\Form\FormStateInterface;
++
++/**
++ * Style ItemsAlignment class.
++ *
++ * @package Drupal\bootstrap_layout_builder\Plugin\Style
++ *
++ * @Style(
++ *   id = "items_alignment",
++ *   title = @Translation("Items Alignment"),
++ *   group_id = "positioning",
++ *   weight = 0
++ * )
++ */
++class ItemsAlignment extends StylePluginBase {
++
++  /**
++   * {@inheritDoc}
++   */
++  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
++    $config = $this->config();
++
++    $form['positioning']['items_alignment'] = [
++      '#type' => 'textarea',
++      '#default_value' => $config->get('items_alignment'),
++      '#title' => $this->t('Items Alignment'),
++      '#cols' => 60,
++      '#rows' => 5,
++    ];
++
++    return $form;
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
++    $this->config()
++      ->set('items_alignment', $form_state->getValue('items_alignment'))
++      ->save();
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function buildStyleFormElements(array &$form, FormStateInterface $form_state, $storage) {
++    $form['items_alignment'] = [
++      '#type' => 'radios',
++      '#title' => $this->t('Items Alignment'),
++      '#options' => $this->getStyleOptions('items_alignment'),
++      '#default_value' => $storage['items_alignment']['class'] ?? NULL,
++      '#validated' => TRUE,
++      '#attributes' => [
++        'class' => ['field-items-alignment', 'bs_input-boxes'],
++      ],
++    ];
++
++    // Add icons to the container types.
++    foreach ($form['items_alignment']['#options'] as $key => $value) {
++      $form['items_alignment']['#options'][$key] = '<span class="input-icon ' . $key . '"></span>' . $value;
++    }
++
++    return $form;
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function submitStyleFormElements(array $group_elements) {
++    return [
++      'items_alignment' => [
++        'class' => $group_elements['items_alignment'],
++      ],
++    ];
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function build(array $build, array $storage, $theme_wrapper = NULL) {
++    $classes = [];
++    if (isset($storage['items_alignment']['class'])) {
++      $classes[] = $storage['items_alignment']['class'];
++    }
++
++    // Add the classes to the build.
++    $build = $this->addClassesToBuild($build, $classes);
++
++    // Attach blb-classes to the build.
++    $build['#attached']['library'][] = 'bootstrap_layout_builder/plugin.items_alignment.build';
++
++    return $build;
++  }
++
++}
+-- 
+2.46.0
+
+
+From bde66bbbb6c5fbd7de19929a5fe951cccd85ca01 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?M=C3=A1rio=20Reis?= <mario@imagexmedia.com>
+Date: Wed, 1 Jun 2022 14:40:41 -0300
+Subject: [PATCH 3/4] Issue #3203096: Column Alignment
+
+---
+ .../BootstrapStyles/Style/AlignItems.php      | 100 ------------------
+ 1 file changed, 100 deletions(-)
+ delete mode 100644 src/Plugin/BootstrapStyles/Style/AlignItems.php
+
+diff --git a/src/Plugin/BootstrapStyles/Style/AlignItems.php b/src/Plugin/BootstrapStyles/Style/AlignItems.php
+deleted file mode 100644
+index af41d75..0000000
+--- a/src/Plugin/BootstrapStyles/Style/AlignItems.php
++++ /dev/null
+@@ -1,100 +0,0 @@
+-<?php
+-
+-namespace Drupal\bootstrap_layout_builder\Plugin\BootstrapStyles\Style;
+-
+-use Drupal\bootstrap_styles\Style\StylePluginBase;
+-use Drupal\Core\Form\FormStateInterface;
+-
+-/**
+- * Style AlignItems class.
+- *
+- * @package Drupal\bootstrap_layout_builder\Plugin\Style
+- *
+- * @Style(
+- *   id = "align_items",
+- *   title = @Translation("Align Items"),
+- *   group_id = "positioning",
+- *   weight = 0
+- * )
+- */
+-class AlignItems extends StylePluginBase {
+-
+-  /**
+-   * {@inheritDoc}
+-   */
+-  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
+-    $config = $this->config();
+-
+-    $form['positioning']['align_items'] = [
+-      '#type' => 'textarea',
+-      '#default_value' => $config->get('align_items'),
+-      '#title' => $this->t('Align Items'),
+-      '#cols' => 60,
+-      '#rows' => 5,
+-    ];
+-
+-    return $form;
+-  }
+-
+-  /**
+-   * {@inheritDoc}
+-   */
+-  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
+-    $this->config()
+-      ->set('align_items', $form_state->getValue('align_items'))
+-      ->save();
+-  }
+-
+-  /**
+-   * {@inheritDoc}
+-   */
+-  public function buildStyleFormElements(array &$form, FormStateInterface $form_state, $storage) {
+-    $form['align_items'] = [
+-      '#type' => 'radios',
+-      '#title' => $this->t('Align Items'),
+-      '#options' => $this->getStyleOptions('align_items'),
+-      '#default_value' => $storage['align_items']['class'] ?? NULL,
+-      '#validated' => TRUE,
+-      '#attributes' => [
+-        'class' => ['field-align-items', 'bs_input-boxes'],
+-      ],
+-    ];
+-
+-    // Add icons to the container types.
+-    foreach ($form['align_items']['#options'] as $key => $value) {
+-      $form['align_items']['#options'][$key] = '<span class="input-icon ' . $key . '"></span>' . $value;
+-    }
+-
+-    return $form;
+-  }
+-
+-  /**
+-   * {@inheritDoc}
+-   */
+-  public function submitStyleFormElements(array $group_elements) {
+-    return [
+-      'align_items' => [
+-        'class' => $group_elements['align_items'],
+-      ],
+-    ];
+-  }
+-
+-  /**
+-   * {@inheritDoc}
+-   */
+-  public function build(array $build, array $storage, $theme_wrapper = NULL) {
+-    $classes = [];
+-    if (isset($storage['align_items']['class'])) {
+-      $classes[] = $storage['align_items']['class'];
+-    }
+-
+-    // Add the classes to the build.
+-    $build = $this->addClassesToBuild($build, $classes);
+-
+-    // Attach blb-classes to the build.
+-    $build['#attached']['library'][] = 'bootstrap_layout_builder/plugin.align_items.build';
+-
+-    return $build;
+-  }
+-
+-}
+-- 
+2.46.0
+
+
+From 66e36e35a52b3db3f782f7ff487d9dcb76b9ed38 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?M=C3=A1rio=20Reis?= <mario@imagexmedia.com>
+Date: Wed, 1 Jun 2022 15:06:30 -0300
+Subject: [PATCH 4/4] Issue #3203096: Column Alignment
+
+---
+ bootstrap_layout_builder.libraries.yml        |  6 +++---
+ .../positioning-items-alignment.css           | 10 +++++-----
+ .../positioning-align-items.scss              | 19 -------------------
+ .../positioning-items-alignment.scss          | 10 +++++-----
+ 4 files changed, 13 insertions(+), 32 deletions(-)
+ delete mode 100644 scss/blb_example_classes/positioning-align-items.scss
+
+diff --git a/bootstrap_layout_builder.libraries.yml b/bootstrap_layout_builder.libraries.yml
+index 74999c7..c86f92b 100644
+--- a/bootstrap_layout_builder.libraries.yml
++++ b/bootstrap_layout_builder.libraries.yml
+@@ -6,8 +6,8 @@ layout_builder_form_style:
+   js:
+     js/layout-tab-scripts.js: { }
+ 
+-# align_items
+-plugin.align_items.build:
++# items_alignment
++plugin.items_alignment.build:
+   css:
+     theme:
+-      css/blb_example_classes/positioning-align-items.css: { }
++      css/blb_example_classes/positioning-items-alignment.css: { }
+diff --git a/css/blb_example_classes/positioning-items-alignment.css b/css/blb_example_classes/positioning-items-alignment.css
+index 064d286..40d3979 100644
+--- a/css/blb_example_classes/positioning-items-alignment.css
++++ b/css/blb_example_classes/positioning-items-alignment.css
+@@ -1,19 +1,19 @@
+-.blb-items_alignment-start {
++.blb-items-alignment-start {
+   align-items: flex-start;
+ }
+ 
+-.blb-items_alignment-end {
++.blb-items-alignment-end {
+   align-items: flex-end;
+ }
+ 
+-.blb-items_alignment-center {
++.blb-items-alignment-center {
+   align-items: center;
+ }
+ 
+-.blb-items_alignment-baseline {
++.blb-items-alignment-baseline {
+   align-items: baseline;
+ }
+ 
+-.blb-items_alignment-stretch {
++.blb-items-alignment-stretch {
+   align-items: stretch;
+ }
+diff --git a/scss/blb_example_classes/positioning-align-items.scss b/scss/blb_example_classes/positioning-align-items.scss
+deleted file mode 100644
+index f475a53..0000000
+--- a/scss/blb_example_classes/positioning-align-items.scss
++++ /dev/null
+@@ -1,19 +0,0 @@
+-.blb-align-items-start {
+-  align-items: flex-start;
+-}
+-
+-.blb-align-items-end {
+-  align-items: flex-end;
+-}
+-
+-.blb-align-items-center {
+-  align-items: center;
+-}
+-
+-.blb-align-items-baseline {
+-  align-items: baseline;
+-}
+-
+-.blb-align-items-stretch {
+-  align-items: stretch;
+-}
+diff --git a/scss/blb_example_classes/positioning-items-alignment.scss b/scss/blb_example_classes/positioning-items-alignment.scss
+index 064d286..40d3979 100644
+--- a/scss/blb_example_classes/positioning-items-alignment.scss
++++ b/scss/blb_example_classes/positioning-items-alignment.scss
+@@ -1,19 +1,19 @@
+-.blb-items_alignment-start {
++.blb-items-alignment-start {
+   align-items: flex-start;
+ }
+ 
+-.blb-items_alignment-end {
++.blb-items-alignment-end {
+   align-items: flex-end;
+ }
+ 
+-.blb-items_alignment-center {
++.blb-items-alignment-center {
+   align-items: center;
+ }
+ 
+-.blb-items_alignment-baseline {
++.blb-items-alignment-baseline {
+   align-items: baseline;
+ }
+ 
+-.blb-items_alignment-stretch {
++.blb-items-alignment-stretch {
+   align-items: stretch;
+ }
+-- 
+2.46.0
+
