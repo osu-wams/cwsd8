@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475c..977c9ce8e8 100644
+index 4031da475c..d1827bcaaf 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,7 +12,7 @@ index 4031da475c..977c9ce8e8 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,66 @@ AddEncoding gzip svgz
+@@ -113,6 +116,87 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -51,6 +51,9 @@ index 4031da475c..977c9ce8e8 100644
 +  RewriteCond %{HTTP_HOST} ^international\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://global.oregonstate.edu/$1 [R=permanent,L]
 +
++  RewriteCond %{HTTP_HOST} ^today\.oregonstate\.edu/news [NC]
++  RewriteRule (.*) https://news.oregonstate.edu/ [R=permanent,L]
++
 +  RewriteCond %{HTTP_HOST} ^nextgreatstartup\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://business.oregonstate.edu/nextgreatstartup [R=permanent,L]
 +
@@ -69,6 +72,24 @@ index 4031da475c..977c9ce8e8 100644
 +  RewriteCond %{HTTP_HOST} ^tourism\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://seagrant.oregonstate.edu/tourism/ [R=permanent,L]
 +
++  RewriteCond %{HTTP_HOST} ^dce\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://see.oregonstate.edu/dce/ [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^ela\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://see.oregonstate.edu/ela/ [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^craftcenter\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://see.oregonstate.edu/craft-center/ [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^osupc\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://see.oregonstate.edu/ela/osu-program-council/ [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^omn\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://see.oregonstate.edu/ela/orange-media-network/ [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^clubs\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://see.oregonstate.edu/ela/clubs-organizations/ [R=permanent,L]
++
 +  # Redirects for SSL of the site
 +  RewriteCond %{HTTPS} off
 +  RewriteCond %{HTTP:X-Forwarded-Proto} !https
@@ -79,7 +100,7 @@ index 4031da475c..977c9ce8e8 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +247,9 @@ AddEncoding gzip svgz
+@@ -184,3 +268,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
