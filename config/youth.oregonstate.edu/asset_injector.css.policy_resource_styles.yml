@@ -1,0 +1,35 @@
+uuid: 7efec30b-c272-4a7f-9111-4ff63caece5d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+    - system
+id: policy_resource_styles
+label: 'Policy Resource Styles'
+code: |-
+  .views-field-field-print-pdf- a {
+  	color: hsl(0 0% 100%);
+    text-decoration-color: hsl(0 0% 100%);
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      policy_resources: policy_resources
+contexts: {  }
+conditions_require_all: true

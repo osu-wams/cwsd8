@@ -1,0 +1,30 @@
+uuid: 7ed07747-1673-4ae7-86f5-feffcbc4208a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - node.type.policy_resources
+    - taxonomy.vocabulary.resource_categories
+id: node.policy_resources.field_category
+field_name: field_category
+entity_type: node
+bundle: policy_resources
+label: Category
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      resource_categories: resource_categories
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

@@ -1,0 +1,30 @@
+uuid: d5c925cf-cb1a-449f-ac1e-62fa7487ca69
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type
+    - node.type.policy_resources
+    - taxonomy.vocabulary.type_of_guidance
+id: node.policy_resources.field_type
+field_name: field_type
+entity_type: node
+bundle: policy_resources
+label: Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      type_of_guidance: type_of_guidance
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

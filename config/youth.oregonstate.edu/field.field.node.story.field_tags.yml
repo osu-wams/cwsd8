@@ -1,0 +1,31 @@
+uuid: 0c18e568-eb9f-4546-88cc-876ff3d7af0b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tags
+    - node.type.story
+    - taxonomy.vocabulary.tags
+_core:
+  default_config_hash: KTVQ-giHnehAK3ODgjSgp9DuB5HXcLcrlak0TsgZrp0
+id: node.story.field_tags
+field_name: field_tags
+entity_type: node
+bundle: story
+label: Tags
+description: 'The <em>tags</em> used here will be used to show the latest related stories as well as possible people/researchers involved.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tags: tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

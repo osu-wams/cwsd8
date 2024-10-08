@@ -1,0 +1,56 @@
+uuid: f1ac3246-4e08-4efc-ad3b-2cf65c580fbe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.kaltura.field_media_oembed_video
+    - media.type.kaltura
+  module:
+    - media
+    - path
+_core:
+  default_config_hash: Ig23CFcCpd9llPe_QWbaipMnS4TuhGq4XEG3uiT4mac
+id: media.kaltura.default
+targetEntityType: media
+bundle: kaltura
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_media_oembed_video:
+    type: oembed_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 100
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  name: true
