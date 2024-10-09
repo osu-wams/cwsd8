@@ -329,6 +329,7 @@ $sites['scholarships.dev.oregonstate.edu'] = 'scholarships.oregonstate.edu';
 $sites['scholarships.stage.oregonstate.edu'] = 'scholarships.oregonstate.edu';
 $sites['scl.liberalarts.dev.oregonstate.edu'] = 'scl.liberalarts.oregonstate.edu';
 $sites['scl.liberalarts.stage.oregonstate.edu'] = 'scl.liberalarts.oregonstate.edu';
+$sites['scs.oregonstate.edu'] = 'sccs.oregonstate.edu';
 $sites['seagrant.dev.oregonstate.edu'] = 'seagrant.oregonstate.edu';
 $sites['seagrant.stage.oregonstate.edu'] = 'seagrant.oregonstate.edu';
 $sites['searchadvocate.dev.oregonstate.edu'] = 'searchadvocate.oregonstate.edu';
