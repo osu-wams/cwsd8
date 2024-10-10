@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475c..addc582ab4 100644
+index 4031da475c..7b09095d14 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,7 +12,7 @@ index 4031da475c..addc582ab4 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,90 @@ AddEncoding gzip svgz
+@@ -113,6 +116,93 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -42,6 +42,9 @@ index 4031da475c..addc582ab4 100644
 +  RewriteCond %{HTTP_HOST} ^covid\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://studenthealth.oregonstate.edu/covid-19-info [R=permanent,L]
 +
++  RewriteCond %{HTTP_HOST} ^dce\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://see.oregonstate.edu/dce/ [R=permanent,L]
++
 +  RewriteCond %{HTTP_HOST} ^dosa\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://studentaffairs.oregonstate.edu/DOSA [R=permanent,L]
 +
@@ -51,20 +54,20 @@ index 4031da475c..addc582ab4 100644
 +  RewriteCond %{HTTP_HOST} ^international\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://global.oregonstate.edu/$1 [R=permanent,L]
 +
++  RewriteCond %{HTTP_HOST} ^nextgreatstartup\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://business.oregonstate.edu/nextgreatstartup [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^semiconductor\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://engineering.oregonstate.edu/research/semiconductor/ [R=permanent,L]
++
 +  RewriteCond %{HTTP_HOST} ^today\.oregonstate\.edu$ [NC]
 +  RewriteRule ^news/?$ https://news.oregonstate.edu/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^today\.oregonstate\.edu [NC]
 +  RewriteRule ^news/(.*)$ https://news.oregonstate.edu/news/$1 [R=permanent,L]
 +
-+  RewriteCond %{HTTP_HOST} ^nextgreatstartup\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://business.oregonstate.edu/nextgreatstartup [R=permanent,L]
-+
 +  RewriteCond %{HTTP_HOST} ^robotics\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://engineering.oregonstate.edu/CoRIS [R=permanent,L]
-+
-+  RewriteCond %{HTTP_HOST} ^semiconductor\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://engineering.oregonstate.edu/research/semiconductor/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^transboundarywaters\.science\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
@@ -74,9 +77,6 @@ index 4031da475c..addc582ab4 100644
 +
 +  RewriteCond %{HTTP_HOST} ^tourism\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://seagrant.oregonstate.edu/tourism/ [R=permanent,L]
-+
-+  RewriteCond %{HTTP_HOST} ^dce\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://see.oregonstate.edu/dce/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^ela\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://see.oregonstate.edu/ela/ [R=permanent,L]
@@ -93,6 +93,9 @@ index 4031da475c..addc582ab4 100644
 +  RewriteCond %{HTTP_HOST} ^clubs\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://see.oregonstate.edu/ela/clubs-organizations/ [R=permanent,L]
 +
++  RewriteCond %{HTTP_HOST} ^sccs\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://scs.oregonstate.edu/$1 [R=permanent,L]
++
 +  # Redirects for SSL of the site
 +  RewriteCond %{HTTPS} off
 +  RewriteCond %{HTTP:X-Forwarded-Proto} !https
@@ -103,7 +106,7 @@ index 4031da475c..addc582ab4 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +271,9 @@ AddEncoding gzip svgz
+@@ -184,3 +274,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
