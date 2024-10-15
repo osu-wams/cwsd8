@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475c..7b09095d14 100644
+index 4031da475c..4da9a5a013 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,7 +12,7 @@ index 4031da475c..7b09095d14 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,93 @@ AddEncoding gzip svgz
+@@ -113,6 +116,96 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -96,6 +96,9 @@ index 4031da475c..7b09095d14 100644
 +  RewriteCond %{HTTP_HOST} ^sccs\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://scs.oregonstate.edu/$1 [R=permanent,L]
 +
++  RewriteCond %{HTTP_HOST} ^dri\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://arcs.oregonstate.edu/$1 [R=permanent,L]
++
 +  # Redirects for SSL of the site
 +  RewriteCond %{HTTPS} off
 +  RewriteCond %{HTTP:X-Forwarded-Proto} !https
@@ -106,7 +109,7 @@ index 4031da475c..7b09095d14 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +274,9 @@ AddEncoding gzip svgz
+@@ -184,3 +277,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
