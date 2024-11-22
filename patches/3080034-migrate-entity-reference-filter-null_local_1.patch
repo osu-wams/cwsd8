@@ -1,0 +1,53 @@
+From 5fab349b5fe9cf2eccad7cba8cb9a71ae0fb9506 Mon Sep 17 00:00:00 2001
+From: Joshua Jaquith <joshua@hope-now.com>
+Date: Fri, 11 Nov 2022 15:15:15 -0600
+Subject: [PATCH 1/2] Issue 3080034 - 17 - Return empty arry when sort key not
+ found
+
+---
+ .../src/Plugin/migrate/process/d7/FieldInstanceSettings.php     | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/modules/field/src/Plugin/migrate/process/d7/FieldInstanceSettings.php b/core/modules/field/src/Plugin/migrate/process/d7/FieldInstanceSettings.php
+index 5236e5507a38..0f76568ecbcb 100644
+--- a/core/modules/field/src/Plugin/migrate/process/d7/FieldInstanceSettings.php
++++ b/core/modules/field/src/Plugin/migrate/process/d7/FieldInstanceSettings.php
+@@ -46,7 +46,7 @@ public function transform($value, MigrateExecutableInterface $migrate_executable
+         'field' => '_none',
+         'direction' => 'ASC',
+       ];
+-      if (!empty(array_filter($field_settings['handler_settings']['sort']))) {
++      if (!empty(array_filter($field_settings['handler_settings']['sort'] ?? []))) {
+         if ($field_settings['handler_settings']['sort']['type'] == "property") {
+           $sort = [
+             'field' => $field_settings['handler_settings']['sort']['property'],
+-- 
+GitLab
+
+
+From 782bb1460bc6f0546e9dc050037b305d7fd0bdba Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?benjamin=20melan=C3=A7on?= <ben@agaric.coop>
+Date: Fri, 19 May 2023 17:44:13 -0400
+Subject: [PATCH 2/2] Issue 3080034 - Return empty array if multiple exposed
+ input lacks group info
+
+---
+ core/modules/views/src/Plugin/views/filter/FilterPluginBase.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/core/modules/views/src/Plugin/views/filter/FilterPluginBase.php b/core/modules/views/src/Plugin/views/filter/FilterPluginBase.php
+index d489c561d5e2..78bfa0429ac5 100644
+--- a/core/modules/views/src/Plugin/views/filter/FilterPluginBase.php
++++ b/core/modules/views/src/Plugin/views/filter/FilterPluginBase.php
+@@ -111,7 +111,7 @@ public function init(ViewExecutable $view, DisplayPluginBase $display, array &$o
+     }
+ 
+     if ($this->multipleExposedInput()) {
+-      $this->group_info = array_filter($options['group_info']['default_group_multiple']);
++      $this->group_info = array_filter($options['group_info']['default_group_multiple'] ?? []);
+       $this->options['expose']['multiple'] = TRUE;
+     }
+ 
+-- 
+GitLab
+
