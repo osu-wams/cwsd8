@@ -908,4 +908,7 @@ if (file_exists('/var/www/site-php')) {
   if (file_exists($secrets_file)) {
     require $secrets_file;
   }
+  if (preg_match("/^\/admin\/people\/permissions/", $_SERVER["REQUEST_URI"])) {
+    ini_set("memory_limit", "512M");
+  }
 }
