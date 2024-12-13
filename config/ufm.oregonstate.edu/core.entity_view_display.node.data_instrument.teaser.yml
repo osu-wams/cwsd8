@@ -1,0 +1,43 @@
+uuid: 636d17f7-4de9-4c95-87d5-15bc7cf6e8f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.data_instrument.body
+    - field.field.node.data_instrument.field_data_category
+    - field.field.node.data_instrument.field_data_category_icon
+    - field.field.node.data_instrument.field_link_to_dashboard
+    - field.field.node.data_instrument.field_questions_can_answer_text
+    - field.field.node.data_instrument.field_questions_this_can_answer
+    - field.field.node.data_instrument.field_short_desc
+    - node.type.data_instrument
+  module:
+    - text
+    - user
+id: node.data_instrument.teaser
+targetEntityType: node
+bundle: data_instrument
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_data_category: true
+  field_data_category_icon: true
+  field_link_to_dashboard: true
+  field_questions_can_answer_text: true
+  field_questions_this_can_answer: true
+  field_short_desc: true
