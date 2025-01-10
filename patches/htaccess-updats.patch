@@ -1,8 +1,6 @@
-diff --git a/.htaccess b/.htaccess
-index 4031da475cf..29ae1baeb68 100644
---- a/.htaccess
-+++ b/.htaccess
-@@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
+--- drupal-10.1.0/.htaccess	2023-06-22 01:59:06
++++ .htaccess	2025-01-10 14:43:33
+@@ -22,6 +22,9 @@
  AddType image/svg+xml svg svgz
  AddEncoding gzip svgz
  
@@ -12,7 +10,7 @@ index 4031da475cf..29ae1baeb68 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,109 @@ AddEncoding gzip svgz
+@@ -113,6 +116,118 @@
    # uncomment the following line:
    # RewriteBase /
  
@@ -48,6 +46,15 @@ index 4031da475cf..29ae1baeb68 100644
 +
 +  RewriteCond %{HTTP_HOST} ^iar\.oregonstate\.edu [NC]
 +  RewriteRule ^ https://data.oregonstate.edu [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^banner\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://technology.oregonstate.edu/banner [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^linc\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://uit.oregonstate.edu/linc [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^iar\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://data.oregonstate.edu [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^cimrs\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://cimers.oregonstate.edu/$1 [R=permanent,L]
@@ -122,7 +129,7 @@ index 4031da475cf..29ae1baeb68 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +290,9 @@ AddEncoding gzip svgz
+@@ -184,3 +299,9 @@
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
