@@ -1,5 +1,5 @@
 --- drupal-10.1.0/.htaccess	2023-06-22 01:59:06
-+++ .htaccess	2025-01-10 14:43:33
++++ .htaccess	2025-01-10 15:02:57
 @@ -22,6 +22,9 @@
  AddType image/svg+xml svg svgz
  AddEncoding gzip svgz
@@ -10,7 +10,7 @@
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,118 @@
+@@ -113,6 +116,115 @@
    # uncomment the following line:
    # RewriteBase /
  
@@ -43,9 +43,6 @@
 +
 +  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
 +  RewriteRule ^ https://uit.oregonstate.edu [R=permanent,L]
-+
-+  RewriteCond %{HTTP_HOST} ^iar\.oregonstate\.edu [NC]
-+  RewriteRule ^ https://data.oregonstate.edu [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^banner\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://technology.oregonstate.edu/banner [R=permanent,L]
@@ -129,7 +126,7 @@
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +299,9 @@
+@@ -184,3 +296,9 @@
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
