@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475cf..9238e0d2a03 100644
+index 4031da475cf..c44e3599412 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,7 +12,7 @@ index 4031da475cf..9238e0d2a03 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,115 @@ AddEncoding gzip svgz
+@@ -113,6 +116,129 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -33,11 +33,8 @@ index 4031da475cf..9238e0d2a03 100644
 +  RewriteRule ^(.*)$ https://%1/$1 [R=permanent,L]
 +
 +  # Site Redirects
-+  RewriteCond %{HTTP_HOST} ^box\.oregonstate\.edu [NC]
-+  RewriteRule ^ https://technology.oregonstate.edu/service/box [R=permanent,L]
-+
-+  RewriteCond %{HTTP_HOST} ^zoom\.oregonstate\.edu [NC]
-+  RewriteRule ^ https://technology.oregonstate.edu/service/zoom [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^(box|banner|zoom)\.oregonstate\.edu [NC]
++  RewriteRule ^ https://technology.oregonstate.edu/service/%1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
 +  RewriteCond %{REQUEST_URI} /administrative-computing-(0|1) [NC]
@@ -46,14 +43,33 @@ index 4031da475cf..9238e0d2a03 100644
 +  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
 +  RewriteRule ^ https://uit.oregonstate.edu [R=permanent,L]
 +
-+  RewriteCond %{HTTP_HOST} ^banner\.oregonstate\.edu [NC]
-+  RewriteRule ^ https://technology.oregonstate.edu/service/banner [R=permanent,L]
-+
 +  RewriteCond %{HTTP_HOST} ^linc\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://uit.oregonstate.edu/linc [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^iar\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://data.oregonstate.edu [R=permanent,L]
++
++  # Search Advocate Site Redirection
++  RewriteCond %{HTTP_HOST} ^searchadvocate\.oregonstate\.edu [NC]
++  RewriteRule ^about/becoming-search-advocate https://hr.oregonstate.edu/search-advocate-program/becoming-search-advocate [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^searchadvocate\.oregonstate\.edu [NC]
++  RewriteRule ^search-advocate-resources https://hr.oregonstate.edu/search-advocate-program/search-advocate-resources [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^searchadvocate\.oregonstate\.edu [NC]
++  RewriteRule ^home/search-advocate-workshops https://hr.oregonstate.edu/search-advocate-program/search-advocate-workshops [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^searchadvocate\.oregonstate\.edu [NC]
++  RewriteRule ^about/osu-search-advocate-directory/program-staff https://hr.oregonstate.edu/search-advocate-program/search-advocate-program-staff [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^searchadvocate\.oregonstate\.edu [NC]
++  RewriteRule ^about/search-advocacy-beyond-osu https://hr.oregonstate.edu/search-advocate-program/search-advocacy-beyond-osu [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^searchadvocate\.oregonstate\.edu [NC]
++  RewriteRule ^find-search-advocate https://hr.oregonstate.edu/search-advocate-program/find-search-advocate [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^searchadvocate\.oregonstate\.edu [NC]
++  RewriteRule ^ https://hr.oregonstate.edu/search-advocate-program [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^cimrs\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://cimers.oregonstate.edu/$1 [R=permanent,L]
@@ -88,10 +104,8 @@ index 4031da475cf..9238e0d2a03 100644
 +  RewriteCond %{HTTP_HOST} ^robotics\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://engineering.oregonstate.edu/CoRIS [R=permanent,L]
 +
-+  RewriteCond %{HTTP_HOST} ^transboundarywaters\.science\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
-+
-+  RewriteCond %{HTTP_HOST} ^www.transboundarywaters\.orst.\edu [NC]
++  RewriteCond %{HTTP_HOST} ^transboundarywaters\.science\.oregonstate\.edu [NC,OR]
++  RewriteCond %{HTTP_HOST} ^transboundarywaters\.orst.\edu [NC]
 +  RewriteRule (.*) https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^tourism\.oregonstate\.edu [NC]
@@ -128,7 +142,7 @@ index 4031da475cf..9238e0d2a03 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +296,9 @@ AddEncoding gzip svgz
+@@ -184,3 +310,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
