@@ -1,0 +1,56 @@
+uuid: 2dc40bdb-3ec9-428d-b7c4-033bf7782989
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: osu_hero_slash
+label: 'OSU Hero Slash'
+code: |-
+  .osu-container-bottom-mobile {
+    flex-direction: column-reverse;
+  }
+
+  .osu-callout-slash {
+    background-color: var(--bs-dark);
+    border-top: 5px solid var(--bs-primary);
+  }
+
+  .bg-video.bg-image.background-local-video:has(.osu-hero-slash-wrapper) {
+    & video {
+      display: none;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    .osu-callout-slash {
+      border-top: none;
+      border-bottom: 5px solid var(--bs-primary);
+      background-color: rgba(var(--bs-dark-rgb), 0.90);
+      clip-path: polygon(0 0, 100% 0, 80% 100%, 0% 100%);
+    }
+
+    .bg-video.bg-image.background-local-video:has(.osu-hero-slash-wrapper) {
+      & video {
+        display: initial;
+      }
+    }
+
+    .osu-container-bottom-mobile {
+      flex-direction: row;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,47 @@
+uuid: 2dd08eb9-5645-48f7-aa50-5cf597b37627
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - osu_migrations
+      - paragraphs_to_layout_builder
+_core:
+  default_config_hash: u_W48GbOCToIAvbHolJ_M8KYtPHJTo9KGrJoMQTKtsc
+id: paragraph_accordion__to__layout_builder
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Layout content'
+  - 'OSU Paragraphs'
+  - OSU
+migration_group: paragraphs_to_layout_builder
+label: 'Drupal 7 paragraph_3_col Paragraphs'
+source:
+  plugin: d7_paragraphs_item
+  bundle: paragraph_accordion
+  key: migrate
+process:
+  type:
+    plugin: default_value
+    default_value: osu_accordion
+  field_osu_paragraph_item:
+    plugin: accordion_item
+    source:
+      - field_p_accordion_header
+      - field_p_accordion_group
+  field_p_accordion_heading: field_p_accordion_header
+  info:
+    plugin: default_value
+    default_value: 'Migrated d7 paragraph paragraph_accordion'
+  reusable:
+    plugin: default_value
+    default_value: 0
+destination:
+  plugin: 'entity:block_content'
+migration_dependencies:
+  required: {  }
+  optional: {  }
