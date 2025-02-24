@@ -1,6 +1,8 @@
---- drupal-10.4.0/.htaccess	2024-12-17 14:40:31
-+++ .htaccess	2025-02-14 15:09:44
-@@ -22,6 +22,9 @@
+diff --git a/.htaccess b/.htaccess
+index 4031da475cf..532258e1ddb 100644
+--- a/.htaccess
++++ b/.htaccess
+@@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
  AddType image/svg+xml svg svgz
  AddEncoding gzip svgz
  
@@ -10,7 +12,7 @@
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,135 @@
+@@ -113,6 +116,169 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -31,12 +33,46 @@
 +  RewriteRule ^(.*)$ https://%1/$1 [R=permanent,L]
 +
 +  # Site Redirects
++  # IS site redirects
 +  RewriteCond %{HTTP_HOST} ^(box|banner|zoom)\.oregonstate\.edu [NC]
-+  RewriteRule ^ https://technology.oregonstate.edu/service/%1 [R=permanent,L]
++  RewriteRule ^ https://technology.oregonstate.edu/services/%1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
 +  RewriteCond %{REQUEST_URI} /administrative-computing-(0|1) [NC]
-+  RewriteRule ^ https://technology.oregonstate.edu/service/banner [R=permanent,L]
++  RewriteRule ^ https://technology.oregonstate.edu/services/banner [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
++  RewriteCond %{REQUEST_URI} /zoom [NC]
++  RewriteRule ^ https://technology.oregonstate.edu/services/zoom [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
++  RewriteCond %{REQUEST_URI} /duo [NC]
++  RewriteRule ^ https://technology.oregonstate.edu/services/duo [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
++  RewriteCond %{REQUEST_URI} /telecom/?$ [NC]
++  RewriteRule ^ https://technology.oregonstate.edu/services/phones-and-voicemail [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
++  RewriteCond %{REQUEST_URI} /exchangeonline [NC]
++  RewriteRule ^ https://technology.oregonstate.edu/services/outlook-exchange-online [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
++  RewriteCond %{REQUEST_URI} /cts [NC,OR]
++  RewriteCond %{REQUEST_URI} /media-services [NC]
++  RewriteRule ^ https://uit.oregonstate.edu/tsa/academic-technologies [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
++  RewriteCond %{REQUEST_URI} /telephone-coordinators [NC]
++  RewriteRule ^ https://mysupport.oregonstate.edu/kb?id=kb_article_view&sysparm_article=KB0010941 [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
++  RewriteCond %{REQUEST_URI} /telecom/request-phonenetwork-service-or-repair [NC]
++  RewriteRule ^ https://mysupport.oregonstate.edu/esp?id=sc_cat_item&sys_id=633c95fa97ed8ed01b28bf98c253afa1 [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
++  RewriteCond %{REQUEST_URI} /ois [NC]
++  RewriteRule ^ https://uit.oregonstate.edu/ois [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^is\.oregonstate\.edu [NC]
 +  RewriteRule ^ https://uit.oregonstate.edu [R=permanent,L]
@@ -146,7 +182,7 @@
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +316,9 @@
+@@ -184,3 +350,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
