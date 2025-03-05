@@ -1,0 +1,63 @@
+uuid: 5190b519-bb83-4e0b-b2e1-7a29189f2e94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.historical_leadership.field_historical_end_date
+    - field.field.node.historical_leadership.field_historical_photo
+    - field.field.node.historical_leadership.field_historical_start_date
+    - field.field.node.historical_leadership.field_names_of_persons
+    - node.type.historical_leadership
+  module:
+    - datetime
+    - image
+    - text
+    - user
+id: node.historical_leadership.default
+targetEntityType: node
+bundle: historical_leadership
+mode: default
+content:
+  field_historical_end_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: long
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_historical_photo:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_historical_start_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: long
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_names_of_persons:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

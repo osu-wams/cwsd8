@@ -1,0 +1,43 @@
+uuid: 8b8a0ce0-670a-416d-ab49-9aeaca32ce33
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.past_conference.field_conference_photos
+    - field.field.node.past_conference.field_past_conference_details
+    - image.style.thumbnail
+    - node.type.past_conference
+  module:
+    - image
+    - text
+    - user
+id: node.past_conference.default
+targetEntityType: node
+bundle: past_conference
+mode: default
+content:
+  field_conference_photos:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: thumbnail
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_past_conference_details:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
