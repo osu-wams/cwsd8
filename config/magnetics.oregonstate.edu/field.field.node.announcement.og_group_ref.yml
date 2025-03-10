@@ -1,0 +1,31 @@
+uuid: 5bf1fe07-7519-4b4b-bb44-5b6173a8bd38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.og_group_ref
+    - node.type.announcement
+id: node.announcement.og_group_ref
+field_name: og_group_ref
+entity_type: node
+bundle: announcement
+label: 'Unit or Group'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: title
+      direction: ASC
+    membership_type: og_membership_type_default
+    behaviors:
+      og_behavior:
+        status: true
+      views-select-list:
+        status: 1
+field_type: entity_reference

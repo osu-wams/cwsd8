@@ -1,0 +1,31 @@
+uuid: 1978642c-5847-46f3-9dac-f0cc038bd757
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pub_osu_profile
+    - node.type.osu_profile
+    - node.type.publications
+_core:
+  default_config_hash: ttec_eR5YpaXfeshsERDfQMd6oKYklT1q3seFQ5XArI
+id: node.publications.field_pub_osu_profile
+field_name: field_pub_osu_profile
+entity_type: node
+bundle: publications
+label: 'OSU Profile'
+description: 'Add <em>Profile</em> pages to show publications on the respective profiles.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      osu_profile: osu_profile
+    sort:
+      field: field_profile_last_name
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

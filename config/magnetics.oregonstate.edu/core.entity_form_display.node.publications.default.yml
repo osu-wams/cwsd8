@@ -1,0 +1,318 @@
+uuid: 4d2023ba-e236-49f1-8339-dd4956ade728
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.publications.body
+    - field.field.node.publications.field_osu_organizations
+    - field.field.node.publications.field_pub_abstract
+    - field.field.node.publications.field_pub_authors
+    - field.field.node.publications.field_pub_book_title
+    - field.field.node.publications.field_pub_date_published
+    - field.field.node.publications.field_pub_doi
+    - field.field.node.publications.field_pub_issn
+    - field.field.node.publications.field_pub_issue
+    - field.field.node.publications.field_pub_journal
+    - field.field.node.publications.field_pub_osu_profile
+    - field.field.node.publications.field_pub_pages
+    - field.field.node.publications.field_pub_publisher
+    - field.field.node.publications.field_pub_publisher_city
+    - field.field.node.publications.field_pub_pubmed_id
+    - field.field.node.publications.field_pub_series_title
+    - field.field.node.publications.field_pub_type
+    - field.field.node.publications.field_pub_volume
+    - field.field.node.publications.field_pub_year_publication
+    - node.type.publications
+  module:
+    - content_moderation
+    - datetime
+    - field_group
+    - link
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_pub_book_group:
+      children:
+        - field_pub_book_title
+        - field_pub_series_title
+        - field_pub_publisher
+        - field_pub_publisher_city
+      label: 'Book/Book Chapter'
+      region: content
+      parent_name: ''
+      weight: 8
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_journal_journal_article:
+      children:
+        - field_pub_journal
+        - field_pub_volume
+        - field_pub_pages
+        - field_pub_issue
+      label: 'Journal/Journal Article'
+      region: content
+      parent_name: ''
+      weight: 9
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+    group_identifiers:
+      children:
+        - field_pub_doi
+        - field_pub_pubmed_id
+        - field_pub_issn
+      label: Identifiers
+      region: content
+      parent_name: ''
+      weight: 10
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        description: ''
+        required_fields: true
+        open: false
+        weight: 0
+_core:
+  default_config_hash: sqr1t2c2HE4jD3gSw7Y0FEUNTrLkzR97u8cyf-roXXA
+id: node.publications.default
+targetEntityType: node
+bundle: publications
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 5
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_osu_organizations:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_abstract:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_authors:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_book_title:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_date_published:
+    type: datetime_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_pub_doi:
+    type: link_default
+    weight: 9
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_pub_issn:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_issue:
+    type: string_textfield
+    weight: 23
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_journal:
+    type: string_textfield
+    weight: 20
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_osu_profile:
+    type: entity_reference_autocomplete
+    weight: 11
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_pages:
+    type: string_textfield
+    weight: 22
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_publisher:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_publisher_city:
+    type: string_textfield
+    weight: 15
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_pubmed_id:
+    type: link_default
+    weight: 10
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_pub_series_title:
+    type: string_textfield
+    weight: 13
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_type:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_volume:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_year_publication:
+    type: number
+    weight: 7
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 14
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 12
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true
