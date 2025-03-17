@@ -1,8 +1,6 @@
-diff --git a/.htaccess b/.htaccess
-index 4031da475cf..1528727d003 100644
---- a/.htaccess
-+++ b/.htaccess
-@@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
+--- ../drupal-10.4.4/.htaccess	2025-03-05 13:58:07
++++ ../.htaccess	2025-03-17 12:26:57
+@@ -22,6 +22,9 @@
  AddType image/svg+xml svg svgz
  AddEncoding gzip svgz
  
@@ -12,7 +10,7 @@ index 4031da475cf..1528727d003 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,179 @@ AddEncoding gzip svgz
+@@ -113,6 +116,182 @@
    # uncomment the following line:
    # RewriteBase /
  
@@ -179,6 +177,9 @@ index 4031da475cf..1528727d003 100644
 +  RewriteCond %{HTTP_HOST} ^undocumented\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://immigrationbeavs.oregonstate.edu/$1 [R=permanent,L]
 +
++  RewriteCond %{HTTP_HOST} ^facultyaffairs\.undocumented\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://academicaffairs.oregonstate.edu/$1 [R=permanent,L]
++
 +  RewriteCond %{HTTP_HOST} hr\.oregonstate\.edu [NC]
 +  RewriteRule sites/hr.oregonstate.edu/files/documents/general/incl_weather_matrix.pdf https://hr.oregonstate.edu/closures-or-curtailment-operations-including-inclement-weather [R=permanent,L]
 +
@@ -192,7 +193,7 @@ index 4031da475cf..1528727d003 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +360,9 @@ AddEncoding gzip svgz
+@@ -184,3 +363,9 @@
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
