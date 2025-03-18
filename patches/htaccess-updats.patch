@@ -1,5 +1,5 @@
 --- ../drupal-10.4.4/.htaccess	2025-03-05 13:58:07
-+++ ../.htaccess	2025-03-18 14:55:25
++++ ../.htaccess	2025-03-18 16:16:53
 @@ -22,6 +22,9 @@
  AddType image/svg+xml svg svgz
  AddEncoding gzip svgz
@@ -10,10 +10,11 @@
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,264 @@
+@@ -112,7 +115,264 @@
+   # If your site is running in a VirtualDocumentRoot at http://example.com/,
    # uncomment the following line:
    # RewriteBase /
- 
++
 +  # use a noindex robots on any env not prod
 +  RewriteCond %{ENV:AH_SITE_ENVIRONMENT} !prod
 +  RewriteRule ^robots\.txt$ robots_noindex.txt [L]
@@ -146,7 +147,7 @@
 +  RewriteCond %{HTTP_HOST} ^transboundarywaters\.science\.oregonstate\.edu [NC,OR]
 +  RewriteCond %{HTTP_HOST} ^transboundarywaters\.orst.\edu [NC]
 +  RewriteRule (.*) https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
-+
+ 
 +  RewriteCond %{HTTP_HOST} ^tourism\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://seagrant.oregonstate.edu/tourism/ [R=permanent,L]
 +
@@ -258,7 +259,6 @@
 +  RewriteRule ^(.*)$ https://surplus.oregonstate.edu/public-sales/online-sales [R=301,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
-+  RewriteCond %{REQUEST_URI} ^/$
 +  RewriteRule ^(.*)$ http://dfa.oregonstate.edu/ [R=301,L]
 +  # End FA => DFA Redirects
 +
@@ -275,7 +275,7 @@
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +445,9 @@
+@@ -184,3 +444,9 @@
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
