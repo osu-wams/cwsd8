@@ -1,6 +1,8 @@
---- ../drupal-10.4.4/.htaccess	2025-03-05 13:58:07
-+++ ../.htaccess	2025-03-18 16:16:53
-@@ -22,6 +22,9 @@
+diff --git a/.htaccess b/.htaccess
+index 4031da475cf..cbaa4057b85 100644
+--- a/.htaccess
++++ b/.htaccess
+@@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
  AddType image/svg+xml svg svgz
  AddEncoding gzip svgz
  
@@ -10,11 +12,10 @@
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -112,7 +115,264 @@
-   # If your site is running in a VirtualDocumentRoot at http://example.com/,
+@@ -113,6 +116,264 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
-+
+ 
 +  # use a noindex robots on any env not prod
 +  RewriteCond %{ENV:AH_SITE_ENVIRONMENT} !prod
 +  RewriteRule ^robots\.txt$ robots_noindex.txt [L]
@@ -147,7 +148,7 @@
 +  RewriteCond %{HTTP_HOST} ^transboundarywaters\.science\.oregonstate\.edu [NC,OR]
 +  RewriteCond %{HTTP_HOST} ^transboundarywaters\.orst.\edu [NC]
 +  RewriteRule (.*) https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
- 
++
 +  RewriteCond %{HTTP_HOST} ^tourism\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://seagrant.oregonstate.edu/tourism/ [R=permanent,L]
 +
@@ -178,7 +179,7 @@
 +  RewriteCond %{HTTP_HOST} ^undocumented\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://immigrationbeavs.oregonstate.edu/$1 [R=permanent,L]
 +
-+  RewriteCond %{HTTP_HOST} ^facultyaffairs\.undocumented\.oregonstate\.edu [NC]
++  RewriteCond %{HTTP_HOST} ^facultyaffairs\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://academicaffairs.oregonstate.edu/$1 [R=permanent,L]
 +
 +  # Aye yi yi FA => DFA Redirects
@@ -259,6 +260,7 @@
 +  RewriteRule ^(.*)$ https://surplus.oregonstate.edu/public-sales/online-sales [R=301,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
++  RewriteCond %{REQUEST_URI} ^/$
 +  RewriteRule ^(.*)$ http://dfa.oregonstate.edu/ [R=301,L]
 +  # End FA => DFA Redirects
 +
@@ -275,7 +277,7 @@
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +444,9 @@
+@@ -184,3 +445,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
