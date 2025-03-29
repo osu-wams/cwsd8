@@ -1,0 +1,38 @@
+uuid: 8a327a00-5ed5-498e-b903-2a643b994612
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.webcast.field_related_agenda
+    - field.field.node.webcast.field_related_materials
+    - node.type.webcast
+  module:
+    - text
+    - user
+id: node.webcast.default
+targetEntityType: node
+bundle: webcast
+mode: default
+content:
+  field_related_agenda:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_related_materials:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

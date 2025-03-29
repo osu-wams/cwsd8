@@ -1,0 +1,28 @@
+uuid: 50a3931a-30d4-4772-bd87-16ba679e4911
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_committee_membership
+    - node.type.committee
+id: node.committee.field_committee_membership
+field_name: field_committee_membership
+entity_type: node
+bundle: committee
+label: Membership
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:user'
+  handler_settings:
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    filter:
+      type: role
+    include_anonymous: true
+field_type: entity_reference

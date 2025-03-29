@@ -1,0 +1,65 @@
+uuid: b2418783-26e9-4d12-b5af-a2a5f12b8672
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.highlight.field_image_highlight
+    - field.field.node.highlight.field_link_highlight
+    - field.field.node.highlight.field_summary_highlight
+    - field.field.node.highlight.field_weight_highlight
+    - node.type.highlight
+  module:
+    - image
+    - link
+    - options
+    - text
+    - user
+id: node.highlight.default
+targetEntityType: node
+bundle: highlight
+mode: default
+content:
+  field_image_highlight:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link_highlight:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_summary_highlight:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_weight_highlight:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
