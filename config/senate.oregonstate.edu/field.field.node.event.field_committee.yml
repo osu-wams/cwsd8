@@ -1,0 +1,32 @@
+uuid: d3c3fa5f-df61-4226-86ab-6c4d952ec243
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_committee
+    - node.type.committee
+    - node.type.event
+id: node.event.field_committee
+field_name: field_committee
+entity_type: node
+bundle: event
+label: Committee
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      committee: committee
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      test_field_behavior:
+        status: 0
+      views-select-list:
+        status: 0
+field_type: entity_reference

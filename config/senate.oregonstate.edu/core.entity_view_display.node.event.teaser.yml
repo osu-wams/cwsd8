@@ -1,0 +1,51 @@
+uuid: cf3b14d5-0bf1-46da-90be-a7236f8bde9e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.event.body
+    - field.field.node.event.field_agenda
+    - field.field.node.event.field_attendance
+    - field.field.node.event.field_calendar
+    - field.field.node.event.field_committee
+    - field.field.node.event.field_event_documents
+    - field.field.node.event.field_event_type
+    - field.field.node.event.field_location
+    - field.field.node.event.field_minutes
+    - field.field.node.event.field_start_date
+    - field.field.node.event.field_subject
+    - node.type.event
+  module:
+    - text
+    - user
+id: node.event.teaser
+targetEntityType: node
+bundle: event
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_agenda: true
+  field_attendance: true
+  field_calendar: true
+  field_committee: true
+  field_event_documents: true
+  field_event_type: true
+  field_location: true
+  field_minutes: true
+  field_start_date: true
+  field_subject: true

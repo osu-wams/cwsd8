@@ -1,0 +1,33 @@
+uuid: 33ac14e3-1693-4906-9aac-76a70915a3be
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.from_the_president.body
+    - field.field.node.from_the_president.field_pres_msg_subject
+    - node.type.from_the_president
+  module:
+    - text
+    - user
+id: node.from_the_president.teaser
+targetEntityType: node
+bundle: from_the_president
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_pres_msg_subject: true

@@ -132,13 +132,4 @@ if [ -z "${DRUPAL_MIGRATE_DBHOST}" ] && [ -z "${DRUPAL_MIGRATE_DBUSER}" ] && [ -
 else
   drupal_migrate_settings
 fi
-if [ -z "${DRUPAL_THEME_DEVEL}" ]; then
-  echo "Running in Production Mode"
-else
-  cp /var/www/html/docroot/sites/default/default.services.yml /var/www/html/docroot/sites/default/services.yml
-  sed -i 's/debug\:\ false/debug\:\ true/' /var/www/html/docroot/sites/default/services.yml
-  sed -i 's/auto_reload\:\ null/auto_reload\:\ true/' /var/www/html/docroot/sites/default/services.yml
-  sed -i 's/cache\:\ true/cache\:\ false/' /var/www/html/docroot/sites/default/services.yml
-  echo "Finished setting up Theme Development Settings."
-fi
 exec "$@"

@@ -1,0 +1,55 @@
+uuid: 0c257239-db20-4a07-a5ca-c3570184651f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.committee.body
+    - field.field.node.committee.field_committee_ad_hoc
+    - field.field.node.committee.field_committee_ad_hoc_status
+    - field.field.node.committee.field_committee_category
+    - field.field.node.committee.field_committee_documents
+    - field.field.node.committee.field_committee_external_links
+    - field.field.node.committee.field_committee_goals
+    - field.field.node.committee.field_committee_guidelines
+    - field.field.node.committee.field_committee_membership
+    - field.field.node.committee.field_committee_mission
+    - field.field.node.committee.field_committee_standing_rules
+    - field.field.node.committee.field_committee_values
+    - field.field.node.committee.field_committee_vision
+    - node.type.committee
+  module:
+    - text
+    - user
+id: node.committee.teaser
+targetEntityType: node
+bundle: committee
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_committee_ad_hoc: true
+  field_committee_ad_hoc_status: true
+  field_committee_category: true
+  field_committee_documents: true
+  field_committee_external_links: true
+  field_committee_goals: true
+  field_committee_guidelines: true
+  field_committee_membership: true
+  field_committee_mission: true
+  field_committee_standing_rules: true
+  field_committee_values: true
+  field_committee_vision: true
