@@ -19,8 +19,12 @@ process_chunk() {
   for (( i=start; i<end && i<TOTAL_DOMAINS; i++ )); do
     local DOMAIN="${DOMAIN_ARRAY[$i]}"
     echo "Updating ${DOMAIN}"
-    drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" updatedb -y
-    drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" cr
+    if ! drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" updatedb -y; then
+      echo "ERROR: updatedb failed for ${DOMAIN}" >&2
+    fi
+    if ! drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" cr; then
+      echo "ERROR: cr failed for ${DOMAIN}" >&2
+    fi
     echo "Finished Updating ${DOMAIN}"
   done
 }
