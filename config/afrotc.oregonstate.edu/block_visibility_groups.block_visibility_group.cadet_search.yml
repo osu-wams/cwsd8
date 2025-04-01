@@ -1,0 +1,25 @@
+uuid: 6af3c2f0-86d6-4b54-88ac-98669f524a0f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - user
+id: cadet_search
+label: cadet-search
+logic: and
+conditions:
+  04d44001-f94d-470d-8269-4941beed3939:
+    id: request_path
+    negate: false
+    uuid: 04d44001-f94d-470d-8269-4941beed3939
+    pages: /cadets
+  2a79d2cf-5f97-435d-a2ef-d5749077b48e:
+    id: user_role
+    negate: false
+    uuid: 2a79d2cf-5f97-435d-a2ef-d5749077b48e
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated
+allow_other_conditions: null
