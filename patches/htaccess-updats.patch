@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475cf..c7a23291eeb 100644
+index 4031da475cf..1a3977a8ff1 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,7 +12,7 @@ index 4031da475cf..c7a23291eeb 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,11 +116,282 @@ AddEncoding gzip svgz
+@@ -113,6 +116,280 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -191,6 +191,9 @@ index 4031da475cf..c7a23291eeb 100644
 +  RewriteCond %{HTTP_HOST} ^facultyaffairs\.oregonstate\.edu [NC]
 +  RewriteRule (.*) https://academicaffairs.oregonstate.edu/$1 [R=permanent,L]
 +
++  RewriteCond %{HTTP_HOST} ^accreditation\.oregonstate\.edu [NC]
++  RewriteRule (.*) https://academicaffairs.oregonstate.edu/support/accreditation [R=permanent,L]
++
 +  # Aye yi yi FA => DFA Redirects
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/budget/tuition-fees$
@@ -290,13 +293,7 @@ index 4031da475cf..c7a23291eeb 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-   RewriteCond %{REQUEST_URI} !core
--  RewriteRule ^ %1/core/%2 [L,QSA,R=301]
-+  RewriteRule ^ %1/core/%2 [L,QSA,R=permanent]
- 
-   # Rewrite install.php during installation to see if mod_rewrite is working
-   RewriteRule ^core/install\.php core/install.php?rewrite=ok [QSA,L]
-@@ -184,3 +458,9 @@ AddEncoding gzip svgz
+@@ -184,3 +461,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
