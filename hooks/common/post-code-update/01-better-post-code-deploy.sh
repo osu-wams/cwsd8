@@ -17,7 +17,6 @@ process_chunk() {
   local end=$2
 
   for (( i=start; i<end && i<TOTAL_DOMAINS; i++ )); do
-    run_drush "${DOMAIN_ARRAY[$i]}"
     local DOMAIN="${DOMAIN_ARRAY[$i]}"
     echo "Updating ${DOMAIN}"
     drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" updatedb -y
