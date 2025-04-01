@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475cf..cf008e7fe09 100644
+index 4031da475cf..c7a23291eeb 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,7 +12,7 @@ index 4031da475cf..cf008e7fe09 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,273 @@ AddEncoding gzip svgz
+@@ -113,11 +116,282 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -194,83 +194,87 @@ index 4031da475cf..cf008e7fe09 100644
 +  # Aye yi yi FA => DFA Redirects
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/budget/tuition-fees$
-+  RewriteRule ^(.*)$ https://budget.oregonstate.edu/tuition-fees [R=301,L]
++  RewriteRule ^(.*)$ https://budget.oregonstate.edu/tuition-fees [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/classification-specifications$
-+  RewriteRule ^(.*)$ https://hr.oregonstate.edu/classification-specifications [R=301,L]
++  RewriteRule ^(.*)$ https://hr.oregonstate.edu/classification-specifications [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/ [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/business-process-forum$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/business-process-forum [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/business-process-forum [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/payroll$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/payroll [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/payroll [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/payroll/direct-deposit-sign-up$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/payroll/direct-deposit-how-sign [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/payroll/direct-deposit-how-sign [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/payroll/w2-w4-tax-information$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/w2-w4-tax-information [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/w2-w4-tax-information [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/student-accounts$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/services/student-accounts [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/services/student-accounts [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/student-accounts/1098t$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/1098t-online-access [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/1098t-online-access [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/student-accounts/billing$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/student-accounts/student-billing [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/student-accounts/student-billing [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/student-accounts/billing/payment-plans$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/student-accounts/payment-plans [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/student-accounts/payment-plans [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/student-accounts/tuition-refund-appeal$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/student-accounts/tuition-refund-appeal [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/student-accounts/tuition-refund-appeal [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/student-resources/information-regarding-personal-checks$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/information-regarding-personal-checks [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/information-regarding-personal-checks [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/controllers-unit/travel-and-expense$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/accounts-payable [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/accounts-payable [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/eProcurement$
-+  RewriteRule ^(.*)$ https://eprocurement.oregonstate.edu/ [R=301,L]
++  RewriteRule ^(.*)$ https://eprocurement.oregonstate.edu/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/faq/what-are-different-types-mandatory-fees$
-+  RewriteRule ^(.*)$ https://finance.oregonstate.edu/what-are-different-types-mandatory-fees [R=301,L]
++  RewriteRule ^(.*)$ https://finance.oregonstate.edu/what-are-different-types-mandatory-fees [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/fis-manual/000-introductory-material/003-list-exhibits/account-codes/group$
-+  RewriteRule ^(.*)$ https://oregonstateuniversity.sharepoint.com/sites/CUPP [R=301,L]
++  RewriteRule ^(.*)$ https://oregonstateuniversity.sharepoint.com/sites/CUPP [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/fiscal-program/guidelines/exhibits/ex003-02-account-codes$
-+  RewriteRule ^(.*)$ https://oregonstateuniversity.sharepoint.com/sites/CUPP [R=301,L]
++  RewriteRule ^(.*)$ https://oregonstateuniversity.sharepoint.com/sites/CUPP [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/surplus/public-sales/online-sales$
-+  RewriteRule ^(.*)$ https://surplus.oregonstate.edu/public-sales/online-sales [R=301,L]
++  RewriteRule ^(.*)$ https://surplus.oregonstate.edu/public-sales/online-sales [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
++  RewriteCond %{REQUEST_URI} ^/fiscal-policy-program/03-110-206-parking-fines-and-permit-sales$
++  RewriteRule ^(.*)$ https://oregonstateuniversity.sharepoint.com/sites/CUPP/SitePages/Parking-Fines-and-Permit-Sales.aspx [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
 +  RewriteCond %{REQUEST_URI} ^/$
-+  RewriteRule ^(.*)$ http://dfa.oregonstate.edu/ [R=301,L]
++  RewriteRule ^(.*)$ http://dfa.oregonstate.edu/ [R=permanent,L]
 +  # End FA => DFA Redirects
 +
 +  RewriteCond %{HTTP_HOST} hr\.oregonstate\.edu [NC]
@@ -281,17 +285,23 @@ index 4031da475cf..cf008e7fe09 100644
 +  RewriteCond %{HTTP:X-Forwarded-Proto} !https
 +  RewriteCond %{HTTP_HOST} !(.*)\.?localhost [NC]
 +  RewriteCond %{HTTP_HOST} !^osuwams\.ews\.oregonstate\.edu$ [NC]
-+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [NE,L,R=301]
++  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [NE,L,R=permanent]
 +
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +454,9 @@ AddEncoding gzip svgz
+   RewriteCond %{REQUEST_URI} !core
+-  RewriteRule ^ %1/core/%2 [L,QSA,R=301]
++  RewriteRule ^ %1/core/%2 [L,QSA,R=permanent]
+ 
+   # Rewrite install.php during installation to see if mod_rewrite is working
+   RewriteRule ^core/install\.php core/install.php?rewrite=ok [QSA,L]
+@@ -184,3 +458,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
 +<IfModule mod_setenvif.c>
-+  SetEnvIf AH_CLIENT_IP ^23\.108\.252\.102$ DENY=1
++  #SetEnvIf AH_CLIENT_IP ^23\.108\.252\.102$ DENY=1
 +  Order allow,deny
 +  Allow From All
 +  Deny from env=DENY
