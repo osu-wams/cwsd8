@@ -116,18 +116,6 @@
         {
             "type": "package",
             "package": {
-                "name": "toc/toc",
-                "version": "0.3.2",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://raw.githubusercontent.com/jgallen23/toc/greenkeeper/update-all/dist/toc.min.js",
-                    "type": "file"
-                }
-            }
-        },
-        {
-            "type": "package",
-            "package": {
                 "name": "apache/echarts",
                 "version": "5.3.2",
                 "type": "drupal-library",
@@ -422,6 +410,7 @@
         "cweagans/composer-patches": "^1.6",
         "drupal-ckeditor-libraries-group/codesnippet": "^4.17",
         "drupal-ckeditor-libraries-group/div": "^4.17",
+        "drupal-ckeditor-libraries-group/liststyle": "^4.22",
         "drupal/acquia_connector": "^4.0",
         "drupal/acquia_purge": "^1.0",
         "drupal/address": "^2.0",
@@ -663,6 +652,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "config": {
+        "preferred-install": "dist",
         "platform": {
             "php": "8.2"
         },
@@ -763,7 +753,8 @@
             ],
             "docroot/libraries/ckeditor/plugins/{$name}": [
                 "drupal-ckeditor-libraries-group/div",
-                "drupal-ckeditor-libraries-group/liststyle"
+                "drupal-ckeditor-libraries-group/liststyle",
+                "ckeditor/liststyle"
             ],
             "docroot/libraries/slick": [
                 "npm-asset/slick-carousel"
@@ -772,6 +763,7 @@
                 "npm-asset/chart.js"
             ],
             "docroot/libraries/{$name}": [
+                "type:ckeditor-plugin",
                 "type:drupal-library",
                 "type:npm-asset",
                 "type:bower-asset"
