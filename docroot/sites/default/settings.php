@@ -894,15 +894,15 @@ if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
 if (extension_loaded('newrelic')) {
   $exploded_path = explode('/', dirname(__FILE__));
   $site_domain = array_pop($exploded_path);
-  newrelic_set_appname("$site_domain;d8cws", '', 'true');
+  newrelic_set_appname("$site_domain;{$_ENV['AH_SITE_GROUP']}", '', 'true');
 }
 // Acquia specific settings.
 if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/cwsd8-settings.inc';
+  require "/var/www/site-php/{$_ENV['AH_SITE_GROUP']}/cwsd8-settings.inc";
   $config['automated_cron.settings']['interval'] = 0;
   if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
     $settings['file_temp_path'] = "/mnt/gfs/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/tmp";
-    $settings['file_private_path'] = '/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'] . '/' . $site_path . '/files-private';
+    $settings['file_private_path'] = "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/$site_path/files-private";
   }
   // Acquia cloud secrets file.
   $secrets_file = "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/secrets.settings.php";
