@@ -1,0 +1,28 @@
+uuid: aa4960c5-3ed4-4a57-b0d6-9c72bcab4104
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: directory_tweaks
+label: 'Directory Tweaks'
+code: |-
+  .directory .views-field-nothing,
+  .directory .field-content,
+  .directory .directory-card {
+  	height: 100%;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

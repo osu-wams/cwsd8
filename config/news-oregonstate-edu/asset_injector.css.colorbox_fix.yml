@@ -1,0 +1,28 @@
+uuid: 748edf5c-4a69-4ee7-8848-50b06a4c36ca
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.sitewide
+  module:
+    - block_visibility_groups
+    - system
+id: colorbox_fix
+label: 'Colorbox fix'
+code: |-
+  .block-field-blocknodenews-releasefield-multimedia img {
+  	margin-bottom: 16px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: sitewide
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,29 @@
+uuid: dead5f9b-654d-450a-95db-c000c69c07ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_thematic_tags
+    - node.type.news_release
+    - taxonomy.vocabulary.tags
+id: node.news_release.field_thematic_tags
+field_name: field_thematic_tags
+entity_type: node
+bundle: news_release
+label: 'Thematic Tags'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tags: tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

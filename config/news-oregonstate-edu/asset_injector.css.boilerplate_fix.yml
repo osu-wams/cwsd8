@@ -1,0 +1,28 @@
+uuid: 7e221400-0384-4a9a-93e8-0b2121f9382b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.sitewide
+  module:
+    - block_visibility_groups
+    - system
+id: boilerplate_fix
+label: 'Boilerplate Fix'
+code: |-
+  .boilerplate-block h2 {
+  	display:none !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: sitewide
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

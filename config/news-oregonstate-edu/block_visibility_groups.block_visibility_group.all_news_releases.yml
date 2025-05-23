@@ -1,0 +1,20 @@
+uuid: c17a38e1-4454-4cbe-a334-6a14439df442
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: all_news_releases
+label: all_news_releases
+logic: and
+conditions:
+  e2ecfa8d-3d37-4355-a49a-05d63044c9af:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e2ecfa8d-3d37-4355-a49a-05d63044c9af
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      news_release: news_release
+      story: story
+allow_other_conditions: null

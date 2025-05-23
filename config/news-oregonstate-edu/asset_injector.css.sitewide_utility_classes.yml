@@ -1,0 +1,46 @@
+uuid: 081649a2-1479-4e7d-a428-f3b12ddb6a36
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: sitewide_utility_classes
+label: 'Sitewide - utility classes'
+code: |-
+  .grid-gap-2rem {
+      display: grid;
+      gap: 2rem;
+  }
+
+  @media (min-width: 766px) {
+      .grid-cards-xl-three-column  {
+          grid-template-columns: 1fr 1fr;
+      }
+  }
+
+  @media (min-width: 1200px) {
+      .grid-cards-xl-three-column  {
+          grid-template-columns: repeat(3, 1fr);
+      }
+  }
+
+  /*CLICKABLE BLOCK*/
+  .clickable-block {
+    position: relative;
+
+    .block__content a::before, 
+    .views-field a::before {
+      position: absolute;
+      content: '';
+      inset: 0;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

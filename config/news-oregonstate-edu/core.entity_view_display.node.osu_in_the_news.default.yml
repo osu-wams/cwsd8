@@ -1,0 +1,53 @@
+uuid: 218c3e94-6f68-4f54-81fe-64369f690562
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_in_the_news.field_link_to_news
+    - field.field.node.osu_in_the_news.field_meta_tags
+    - field.field.node.osu_in_the_news.field_news_source
+    - node.type.osu_in_the_news
+  module:
+    - link
+    - metatag
+    - user
+id: node.osu_in_the_news.default
+targetEntityType: node
+bundle: osu_in_the_news
+mode: default
+content:
+  field_link_to_news:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_news_source:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  addtoany: true
+  entitygroupfield: true

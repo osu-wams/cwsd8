@@ -1,0 +1,29 @@
+uuid: 2ec9b4b7-403f-4f6d-8077-46a392df2fc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type_of_fellowship
+    - node.type.personal_profile
+    - taxonomy.vocabulary.media_fellowship_type
+id: node.personal_profile.field_type_of_fellowship
+field_name: field_type_of_fellowship
+entity_type: node
+bundle: personal_profile
+label: 'Type of Fellowship'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      media_fellowship_type: media_fellowship_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference
