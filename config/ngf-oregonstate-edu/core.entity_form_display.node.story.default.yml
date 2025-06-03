@@ -1,0 +1,146 @@
+uuid: 6a9bb6d7-1daf-4a6a-bcf4-422bba9f583b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.story.body
+    - field.field.node.story.field_meta_tags
+    - field.field.node.story.field_osu_organizations
+    - field.field.node.story.field_osu_story_caption
+    - field.field.node.story.field_osu_story_cover_image
+    - field.field.node.story.field_osu_story_external_url
+    - field.field.node.story.field_tags
+    - field.field.node.story.layout_builder__layout
+    - node.type.story
+  module:
+    - link
+    - media_library
+    - metatag
+    - path
+    - text
+_core:
+  default_config_hash: k0EgoDgBnLFQDiRPGS10SdU78i9ZCZoyazIRV28xNV4
+id: node.story.default
+targetEntityType: node
+bundle: story
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 10
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 14
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_osu_organizations:
+    type: entity_reference_autocomplete
+    weight: 12
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_osu_story_caption:
+    type: string_textfield
+    weight: 13
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_osu_story_cover_image:
+    type: media_library_widget
+    weight: 8
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_osu_story_external_url:
+    type: link_default
+    weight: 9
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_tags:
+    type: entity_reference_autocomplete
+    weight: 11
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  layout_builder__layout: true

@@ -1,0 +1,35 @@
+uuid: 78316cca-e01f-426f-b697-e90844330183
+langcode: en
+status: true
+dependencies:
+  module:
+    - linkit
+_core:
+  default_config_hash: cppU8kJIAdj0E-9gpRgXMLF9Y34YZh4WIV7hkNvnEP8
+name: 'Text and links'
+format: text_and_links
+weight: 0
+filters:
+  filter_html:
+    id: filter_html
+    provider: filter
+    status: true
+    weight: -10
+    settings:
+      allowed_html: '<a href hreflang> <em> <strong> <p>'
+      filter_html_help: true
+      filter_html_nofollow: false
+  filter_url:
+    id: filter_url
+    provider: filter
+    status: true
+    weight: 0
+    settings:
+      filter_url_length: 72
+  linkit:
+    id: linkit
+    provider: linkit
+    status: true
+    weight: 0
+    settings:
+      title: true
