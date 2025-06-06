@@ -919,7 +919,7 @@ if (file_exists('/var/www/site-php')) {
   }
   if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
     $settings['file_temp_path'] = "/mnt/gfs/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/tmp";
-    $settings['file_private_path'] = "/mnt/files/ $_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/{$site_path}/files-private";
+    $settings['file_private_path'] = "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/{$site_path}/files-private";
   }
   // Acquia cloud secrets file.
   $secrets_file = "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/secrets.settings.php";
