@@ -15,10 +15,10 @@ class SiteGenerator {
     $io = $event->getIO();
     $baseDir = getcwd();
     $siteName = strtolower($io->ask('Site Production FQDN: '));
-    if (!is_dir($baseDir . "/docroot/sites/{$siteName}")) {
+    if (!is_dir("{$baseDir}/docroot/sites/{$siteName}")) {
       // Match any character that is not a word.
       $databaseName = preg_replace('/[\W]+/', '_', $siteName);
-      mkdir($baseDir . "/docroot/sites/{$siteName}");
+      mkdir("{$baseDir}/docroot/sites/{$siteName}");
       $settingsFile = file_get_contents($baseDir . "/scripts/site-template/settings.php");
       $settingsFile = str_replace("DOMAIN", $databaseName, $settingsFile);
       file_put_contents($baseDir . "/docroot/sites/{$siteName}/settings.php", $settingsFile);
@@ -37,6 +37,12 @@ class SiteGenerator {
       foreach ($sites as $key => $value) {
         $siteString = "\$sites['{$key}'] = '{$value}';" . PHP_EOL;
         file_put_contents($baseDir . '/docroot/sites/sites.php', $siteString, FILE_APPEND);
+      }
+      // Create config directory for Acquia Cloud
+      $configFolder = preg_replace('/[\W]+/', '-', $siteName);
+      if (!is_dir($baseDir . "/config/{$configFolder}")) {
+        mkdir("{$baseDir}/config/{$configFolder}");
+        copy("{$baseDir}/config/drupal-oregonstate-edu/.htaccess", "{$baseDir}/config/{$configFolder}/.htaccess");
       }
       $postInstallSteps = [
         "Post Script Steps:",
