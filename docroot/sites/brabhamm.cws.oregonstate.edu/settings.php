@@ -898,11 +898,27 @@ if (extension_loaded('newrelic')) {
 }
 // Acquia specific settings.
 if (file_exists('/var/www/site-php')) {
-  require '/var/www/site-php/' . $_ENV['AH_SITE_GROUP'] . '/brabhamm_cws_oregonstate_edu-settings.inc';
+  global $conf;
+  // Do not autoconnect to database.
+  $conf['acquia_hosting_settings_autoconnect'] = FALSE;
+  require "/var/www/site-php/{$_ENV['AH_SITE_GROUP']}/brabhamm_cws_oregonstate_edu-settings.inc";
+  // Set the MySQL variable values.
+  $databases['default']['default']['init_commands'] = [
+    'transaction_isolation' => 'SET SESSION transaction_isolation="READ-COMMITTED"'
+  ];
+  // Connect to database.
+  if (function_exists('acquia_hosting_db_choose_active')) {
+    acquia_hosting_db_choose_active(
+      $conf['acquia_hosting_site_info']['db'],
+      'default',
+      $databases,
+      $conf,
+    );
+  }
   $config['automated_cron.settings']['interval'] = 0;
   if (isset($_ENV['AH_SITE_ENVIRONMENT'])) {
     $settings['file_temp_path'] = "/mnt/gfs/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/tmp";
-    $settings['file_private_path'] = '/mnt/files/' . $_ENV['AH_SITE_GROUP'] . '.' . $_ENV['AH_SITE_ENVIRONMENT'] . '/' . $site_path . '/files-private';
+    $settings['file_private_path'] = "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/{$site_path}/files-private";
   }
   // Acquia cloud secrets file.
   $secrets_file = "/mnt/files/{$_ENV['AH_SITE_GROUP']}.{$_ENV['AH_SITE_ENVIRONMENT']}/secrets.settings.php";
