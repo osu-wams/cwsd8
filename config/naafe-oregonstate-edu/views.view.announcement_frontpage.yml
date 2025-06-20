@@ -1,0 +1,593 @@
+uuid: 05dff037-c6bb-4655-a6e4-d637c2858038
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.storage.node.body
+    - field.storage.node.image
+    - image.style.medium
+    - node.type.announcement
+  module:
+    - datetime
+    - image
+    - node
+    - text
+    - user
+id: announcement_frontpage
+label: 'Announcement Frontpage'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'Announcement Frontpage'
+      fields:
+        path:
+          id: path
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: true
+            path: '[path]'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          absolute: false
+          ui_name: ''
+        image:
+          id: image
+          table: node__image
+          field: image
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<div class="announcement-image">{{ image }}</div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: fid
+          type: image
+          settings:
+            image_link: ''
+            image_style: medium
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<div class="announcement-title">{{ title }}</div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          settings:
+            link_to_entity: 0
+          ui_name: ''
+        body:
+          id: body
+          table: node__body
+          field: body
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<div class="announcement-body">{{ body }}</div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 100
+            word_boundary: true
+            ellipsis: true
+            more_link: true
+            more_link_text: 'Read more'
+            more_link_path: '[path]'
+            strip_tags: true
+            trim: true
+            preserve_tags: ''
+            html: true
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+        perm: 'access content'
+      cache:
+        type: none
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          plugin_id: date
+          order: DESC
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            announcement: announcement
+          group: 1
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        publish_date_value:
+          id: publish_date_value
+          table: node__publish_date
+          field: publish_date_value
+          relationship: none
+          group_type: group
+          plugin_id: datetime
+          operator: '<='
+          value:
+            min: null
+            max: null
+            value: now
+            type: offset
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles: {  }
+            operator_label: ''
+            limit_operators: false
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+          granularity: day
+          form_type: date_select
+          default_to_date: ''
+          year_range: '-3:+3'
+          add_delta: ''
+        expiration_date_value:
+          id: expiration_date_value
+          table: node__expiration_date
+          field: expiration_date_value
+          relationship: none
+          group_type: group
+          plugin_id: datetime
+          operator: '>'
+          value:
+            min: null
+            max: null
+            value: '12AM today'
+            type: offset
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles: {  }
+            operator_label: ''
+            limit_operators: false
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+          granularity: day
+          form_type: date_select
+          default_to_date: ''
+          year_range: '-3:+3'
+          add_delta: ''
+        no_expiration_value:
+          id: no_expiration_value
+          table: node__no_expiration
+          field: no_expiration_value
+          relationship: none
+          group_type: group
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 2
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_label: ''
+            limit_operators: false
+            available_operators: {  }
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+          reduce_duplicates: 0
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+          2: OR
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            path: path
+            image: image
+            title: title
+            body: title
+          default: '-1'
+          info:
+            path:
+              align: ''
+              separator: ''
+              empty_column: true
+            image:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-left
+              separator: ''
+              empty_column: false
+            title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            body:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          row_class_special: 0
+          class: announcements-table
+      row:
+        type: 'entity:node'
+        options:
+          build_mode: teaser
+          links: true
+          comments: false
+      query:
+        type: views_query
+        options: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: ''
+          empty: false
+          ui_name: ''
+          content:
+            value: '<h5>News & Announcements</h5>'
+            format: basic_html
+          tokenize: 0
+      display_extenders: {  }
+      style_plugin: table
+      style_options:
+        grouping: {  }
+        row_class: ''
+        default_row_class: 1
+        row_class_special: 0
+        override: 1
+        sticky: 0
+        caption: ''
+        summary: ''
+        class: announcements-table
+        columns:
+          path: path
+          image: image
+          title: title
+          body: title
+        info:
+          path:
+            align: ''
+            separator: ''
+            empty_column: 1
+          image:
+            sortable: 0
+            default_sort_order: asc
+            align: views-align-left
+            separator: ''
+            empty_column: 0
+          title:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          body:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+        default: '-1'
+        empty_table: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.image'
+  block:
+    id: block
+    display_title: Block
+    display_plugin: block
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        pager: true
+        style_plugin: true
+        style_options: true
+        row_plugin: true
+        row_options: true
+        pager_options: true
+      display_extenders: {  }
+      field:
+        title:
+          link_to_node: 1
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.image'

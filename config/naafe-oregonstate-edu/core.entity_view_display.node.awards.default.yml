@@ -1,0 +1,57 @@
+uuid: 5b7256a9-7660-40a6-9c4d-cb3bf4daed19
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.awards.body
+    - field.field.node.awards.field_award_title
+    - field.field.node.awards.field_award_type
+    - field.field.node.awards.field_award_year
+    - node.type.awards
+  module:
+    - options
+    - text
+    - user
+id: node.awards.default
+targetEntityType: node
+bundle: awards
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_award_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_award_type:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_award_year:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
