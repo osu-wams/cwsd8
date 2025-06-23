@@ -1,0 +1,62 @@
+uuid: a9df45f9-eb26-43eb-b957-01d875233f44
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - osu_migrations
+      - paragraphs_to_layout_builder
+_core:
+  default_config_hash: 1LO5sSmIYKQ5jbgM9nSJb3u0KI3u7i-WMUzyPuBUf0Q
+id: paragraph_2_col_left__to__layout_builder
+class: null
+field_plugin_method: null
+cck_plugin_method: null
+migration_tags:
+  - 'Drupal 7'
+  - Content
+  - 'Layout content'
+  - 'OSU Paragraphs'
+  - OSU
+migration_group: paragraphs_to_layout_builder
+label: 'Drupal 7 paragraph_2_col Paragraphs'
+source:
+  plugin: d7_paragraphs_item
+  bundle: paragraph_2_col
+  key: migrate
+process:
+  type:
+    plugin: default_value
+    default_value: paragraph_block
+  body:
+    -
+      plugin: sub_process
+      source: field_p_2_col_left_main
+      process:
+        value:
+          plugin: osu_media_wysiwyg_filter
+          source: value
+        format:
+          plugin: default_value
+          default_value: full_html
+  field_eb_background_fc:
+    plugin: file_background
+    source: field_p_2_col_left_bg
+    custom_source_lookup: upgrade_d7_media_images
+  field_styles:
+    plugin: class_list
+    source: field_p_2_col_styles
+  info:
+    plugin: default_value
+    default_value: 'Migrated d7 paragraph paragraph_2_col'
+  reusable:
+    plugin: default_value
+    default_value: 0
+destination:
+  plugin: 'entity:block_content'
+migration_dependencies:
+  required:
+    - upgrade_d7_files
+    - upgrade_d7_users_with_roles
+    - upgrade_d7_media_images
+  optional: {  }

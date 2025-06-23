@@ -1,0 +1,33 @@
+uuid: 0d0badca-5654-4995-ab72-bb7d03d67073
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_video_embed
+    - media.type.kaltura
+    - media.type.local_video
+    - media.type.remote_video
+    - node.type.bn_video
+id: node.bn_video.field_video_embed
+field_name: field_video_embed
+entity_type: node
+bundle: bn_video
+label: Video
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      kaltura: kaltura
+      local_video: local_video
+      remote_video: remote_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: kaltura
+field_type: entity_reference

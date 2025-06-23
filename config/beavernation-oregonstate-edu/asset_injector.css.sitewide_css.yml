@@ -1,0 +1,123 @@
+uuid: e0f7c9dc-ba27-4b26-812c-5dfc122776df
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: sitewide_css
+label: 'Sitewide CSS'
+code: |+
+  /*add spacing between buttons VRB 6.12.2025 */
+  .btn {
+  	margin:5px !important;
+  }
+
+
+  /* secondary header styling/remove left border on Bootstrap alerts DAC 5.13.2024 */
+  .alert {border-left:0 !important;
+  background-color:#212529;
+  color:#ffffff;
+  border: 0;
+  border-radius: 0;
+  }
+
+  .alert .alert-warning {
+  	background-color:#212529;
+  }
+
+  main {
+  	background-color:#eeeeee;
+  }
+
+
+  @media (max-width:767px) {
+      main {
+      margin-left: -20px;
+      margin-right: -20px;
+      padding: 20px;
+      }
+  }
+
+  @media (max-width:480px) {
+      main {
+      margin-left: 0px;
+      margin-right: 0px;
+      padding: 0 10px;
+      }
+  }
+
+  /* Hide search box */
+
+  .d-lg-block {display:none !important;}
+
+  /* Hide "theme" */
+
+  legend {display:none;}
+
+  /* site title adjustments 
+
+  .block-system-branding-block a {
+  	font-size: 3rem;
+  	text-transform: uppercase;
+  	font-family: 'Stratum2Web',sans-serif;
+    font-weight: 600;
+  }*/
+
+  /* card styling */
+
+  .views-row {
+      line-height: 1.4rem;
+      color: #464646;
+      font-size:14px;
+      width: 98%;
+      float: left;
+      padding:2%;
+
+      -webkit-transition: all 0.6s ease-in-out;
+      -moz-transition: all 0.6s ease-in-out;
+      -ms-transition: all 0.6s ease-in-out;
+      -o-transition: all 0.6s ease-in-out;
+      transition: all 0.6s ease-in-out;
+      display: inline-block;
+  }
+
+  .views-field-field-video-caption, .views-field-field-story-caption {
+      padding: 20px;
+      background: #fff;
+      font-size: 16px;
+      border-radius: 0 0 8px 8px;
+  }
+
+  .views-row p {
+     margin: 0!important;
+  }
+
+  .views-field-field-thumbnail-image {
+  overflow:hidden;
+  }
+
+  .views-field-field-thumbnail-image img{
+      border-radius: 8px 8px 0 0;
+
+      -webkit-transition: all 0.6s ease-in-out;
+      -moz-transition: all 0.6s ease-in-out;
+      -ms-transition: all 0.6s ease-in-out;
+      -o-transition: all 0.6s ease-in-out;
+      transition: all 0.6s ease-in-out;
+      display: inline-block;
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

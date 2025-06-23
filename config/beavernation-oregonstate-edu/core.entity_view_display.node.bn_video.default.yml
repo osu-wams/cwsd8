@@ -1,0 +1,50 @@
+uuid: 48a1cb5d-fd3a-4307-bb69-6a81142209db
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.bn_video.field_audience
+    - field.field.node.bn_video.field_college
+    - field.field.node.bn_video.field_location
+    - field.field.node.bn_video.field_theme
+    - field.field.node.bn_video.field_video_caption
+    - field.field.node.bn_video.field_video_embed
+    - field.field.node.bn_video.field_video_thumbnail
+    - node.type.bn_video
+  module:
+    - text
+    - user
+id: node.bn_video.default
+targetEntityType: node
+bundle: bn_video
+mode: default
+content:
+  field_video_caption:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_video_embed:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  addtoany: true
+  entitygroupfield: true
+  field_audience: true
+  field_college: true
+  field_location: true
+  field_theme: true
+  field_video_thumbnail: true
