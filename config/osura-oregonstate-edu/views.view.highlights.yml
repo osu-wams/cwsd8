@@ -1,0 +1,162 @@
+uuid: 283db6d6-2b30-4c38-be72-609e0da91a52
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_highlight
+    - field.storage.node.field_link_highlight
+    - field.storage.node.field_summary_highlight
+    - field.storage.node.field_weight_highlight
+    - node.type.highlight
+  module:
+    - image
+    - link
+    - node
+    - options
+    - text
+    - user
+id: highlights
+label: Highlights
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: Highlights
+      fields:
+        field_link_highlight:
+          id: field_link_highlight
+          table: node__field_link_highlight
+          field: field_link_highlight
+          plugin_id: field
+          label: ''
+          exclude: true
+          element_label_colon: false
+          click_sort_column: url
+          type: link
+          settings: {  }
+        field_image_highlight:
+          id: field_image_highlight
+          table: node__field_image_highlight
+          field: field_image_highlight
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: true
+            make_link: true
+            path: '{{ field_link_highlight }}'
+          element_label_colon: false
+          click_sort_column: fid
+          settings:
+            image_style: 270-wide-scale
+            image_link: ''
+        field_summary_highlight:
+          id: field_summary_highlight
+          table: node__field_summary_highlight
+          field: field_summary_highlight
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+        field_weight_highlight:
+          id: field_weight_highlight
+          table: node__field_weight_highlight
+          field: field_weight_highlight
+          plugin_id: field
+          exclude: true
+          empty_zero: true
+          type: list_key
+      pager:
+        type: some
+        options:
+          items_per_page: 5
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+      cache:
+        type: none
+      sorts:
+        field_weight_highlight_value:
+          id: field_weight_highlight_value
+          table: node__field_weight_highlight
+          field: field_weight_highlight_value
+          plugin_id: standard
+          order: DESC
+        random:
+          id: random
+          table: views
+          field: random
+          plugin_id: random
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            highlight: highlight
+      style:
+        type: default
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      use_more_always: false
+      display_extenders: {  }
+      style_plugin: default
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_image_highlight'
+        - 'config:field.storage.node.field_link_highlight'
+        - 'config:field.storage.node.field_summary_highlight'
+        - 'config:field.storage.node.field_weight_highlight'
+  block:
+    id: block
+    display_title: Block
+    display_plugin: block
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        hide_admin_links: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_image_highlight'
+        - 'config:field.storage.node.field_link_highlight'
+        - 'config:field.storage.node.field_summary_highlight'
+        - 'config:field.storage.node.field_weight_highlight'
