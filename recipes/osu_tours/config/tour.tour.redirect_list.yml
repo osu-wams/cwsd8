@@ -1,0 +1,64 @@
+langcode: en
+status: true
+dependencies: { }
+id: redirect_list
+label: 'Redirects - Overview Page'
+routes:
+  - route_name: redirect.list
+tips:
+  overview:
+    id: overview
+    plugin: text
+    label: 'Redirects Overview'
+    weight: -10
+    position: auto
+    selector:
+    body: 'You can add, manage and delete redirects from this page. Redirects are where old URLs are sent to (redirected) to new ones using 301 (permanent) redirects. It helps ensure users and search engines reach the correct pages by managing URL changes. This is important for ensuring that visitors and search engines find the current information. '
+  add_redirect:
+    id: add_redirect
+    plugin: text
+    label: 'Add Redirect'
+    weight: -10
+    position: bottom-end
+    selector: .button.button--action.button--primary
+    body: 'Click the <strong>Add redirect</strong> button to create a new redirect. Ensure that the source path does not have an existing alias, or the redirect will not work. <a href="https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Links.aspx#redirects" target="_blank">Read the full explanation and instructions</a></p>'
+  from:
+    id: from
+    plugin: text
+    label: From
+    weight: -10
+    position: bottom-end
+    selector: '#view-redirect-source-path-table-column'
+    body: 'The original URL that users are trying to access'
+  to:
+    id: to
+    plugin: text
+    label: To
+    weight: -10
+    position: bottom-end
+    selector: '#view-redirect-redirect-uri-table-column'
+    body: 'The destination URL where users will be redirected.'
+  status_code:
+    id: status_code
+    plugin: text
+    label: 'Status Code'
+    weight: -10
+    position: bottom-end
+    selector: '#view-status-code-table-column'
+    body: 'Indicates the type of redirect. For example, 301 (Moved Permanently) is the most common. Learn more about <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Status" target="_blank">status codes.</a>'
+  edit_delete:
+    id: edit_delete
+    plugin: text
+    label: 'Edit an existing alias'
+    weight: -10
+    position: bottom-end
+    selector: .edit.dropbutton__item.dropbutton-action
+    body: 'It is best practice to edit an existing redirect rather than creating a new one if the path needs to change. Drupal will not allow duplicate redirects, so always update an existing redirect when necessary instead of adding a new one.'
+  more_options:
+    id: more_options
+    plugin: text
+    label: 'More Options'
+    weight: -10
+    position: bottom
+    selector: .dropbutton-widget
+    body: 'Click this drop-down arrow to reveal the delete option. '
