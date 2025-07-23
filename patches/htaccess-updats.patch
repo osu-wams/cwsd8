@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475cf..c7bfbc7c8fd 100644
+index 4031da475cf..5ff0f31333d 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,7 +12,7 @@ index 4031da475cf..c7bfbc7c8fd 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,304 @@ AddEncoding gzip svgz
+@@ -113,6 +116,310 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -283,6 +283,12 @@ index 4031da475cf..c7bfbc7c8fd 100644
 +  RewriteCond %{HTTP_HOST} ^mycard\.oregonstate\.edu [NC]
 +  RewriteRule ^(.*)$ https://idx.transactcampus.com/accounts/oregonstate-edu/osu-id-card [R=permanent,L]
 +
++  # SF Lightning web compontents don't use full paths for assets.
++  # See https://salesforce.stackexchange.com/questions/211581/lightning-icons-svg-not-displaying-in-lightning-out
++  RewriteCond %{HTTP_HOST} hr\.oregonstate\.edu [NC]
++  RewriteCond %{REQUEST_URI} /_slds/icons/utility-sprite/svg [NC]
++  RewriteRule ^(.*)$ https://oregonstate.my.site.com/%{REQUEST_URI} [R=permanent,L]
++
 +  RewriteCond %{HTTP_HOST} hr\.oregonstate\.edu [NC]
 +  RewriteRule sites/hr.oregonstate.edu/files/documents/general/incl_weather_matrix.pdf https://hr.oregonstate.edu/closures-or-curtailment-operations-including-inclement-weather [R=permanent,L]
 +
@@ -317,7 +323,7 @@ index 4031da475cf..c7bfbc7c8fd 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +485,9 @@ AddEncoding gzip svgz
+@@ -184,3 +491,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
