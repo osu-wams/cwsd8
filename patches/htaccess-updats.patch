@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475cf..89d608bef65 100644
+index 4031da475cf..60953ece201 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,7 +12,7 @@ index 4031da475cf..89d608bef65 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,313 @@ AddEncoding gzip svgz
+@@ -113,6 +116,338 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -310,6 +310,31 @@ index 4031da475cf..89d608bef65 100644
 +  RewriteCond %{HTTP_HOST} ^gradschool\.dev\.oregonstate\.edu [NC]
 +  RewriteRule ^(.*)$ https://graduate.dev.oregonstate.edu/$1 [R=permanent,L]
 +
++  # Gradwater
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule degree-programs https://graduate.oregonstate.edu/water-resources-graduate-program/degree-programs [R=permanent,L]
++  RewriteRule water-resources-engineering-wre https://graduate.oregonstate.edu/water-resources-graduate-program/water-resources-engineering [R=permanent,L]
++  RewriteRule water-resources-science-wrs https://graduate.oregonstate.edu/water-resources-graduate-program/water-resources-science [R=permanent,L]
++  RewriteRule water-resources-policy-and-management-wrpm https://graduate.oregonstate.edu/water-resources-graduate-program/water-resources-policy-and-management-wrpm [R=permanent,L]
++  RewriteRule concurrent-jdms-degree-program https://graduate.oregonstate.edu/water-resources-graduate-program/jdms-degree-program [R=permanent,L]
++  RewriteRule student-resources-0 https://graduate.oregonstate.edu/water-resources-graduate-program/student-resources [R=permanent,L]
++  RewriteRule student-resources https://graduate.oregonstate.edu/water-resources-graduate-program/timeline [R=permanent,L]
++  RewriteRule hydro-community https://graduate.oregonstate.edu/water-resources-graduate-program/hydro-community [R=permanent,L]
++  RewriteRule travel-and-reimbursements https://graduate.oregonstate.edu/water-resources-graduate-program/travel-and-reimbursements [R=permanent,L]
++  RewriteRule summer-workshop-2025  https://graduate.oregonstate.edu/water-resources-graduate-program/travel-and-reimbursements [R=permanent,L]
++  RewriteRule people  https://graduate.oregonstate.edu/water-resources-graduate-program/water-resources-faculty [R=permanent,L]
++  RewriteRule faculty-directory https://graduate.oregonstate.edu/water-resources-graduate-program/administrative-team [R=permanent,L]
++  RewriteRule alumni  https://graduate.oregonstate.edu/water-resources-graduate-program/directory/alumni-grad-papers [R=permanent,L]
++  RewriteRule scholarship https://graduate.oregonstate.edu/water-resources-graduate-program/scholarships [R=permanent,L]
++  RewriteRule applicants  https://graduate.oregonstate.edu/water-resources-graduate-program/admissions-how-apply [R=permanent,L]
++  RewriteRule donate  https://graduate.oregonstate.edu/water-resources-graduate-program/donate [R=permanent,L]
++  RewriteRule applicant-faqs  https://graduate.oregonstate.edu/water-resources-graduate-program/applicant-faqs [R=permanent,L]
++  RewriteRule employment-resources  https://graduate.oregonstate.edu/water-resources-graduate-program/employment-resources [R=permanent,L]
++  RewriteRule hydro-community https://graduate.oregonstate.edu/water-resources-graduate-program/hydro-community [R=permanent,L]
++  RewriteRule travel-and-reimbursements https://graduate.oregonstate.edu/water-resources-graduate-program/travel-and-reimbursements [R=permanent,L]
++  RewriteRule professional-engineering-pe-licensure-information-wre-students  https://graduate.oregonstate.edu/water-resources-graduate-program/professional-engineering-pe-licensure-information-wre-students [R=permanent,L]
++  RewriteRule (.*) https://graduate.oregonstate.edu/water-resources-graduate-program [R=permanent,L]
++
 +  RewriteCond %{HTTP_HOST} ufio\.oregonstate\.edu [NC]
 +  RewriteRule ^(.*)$ https://fpm.oregonstate.edu/$1 [R=permanent,L]
 +
@@ -326,7 +351,7 @@ index 4031da475cf..89d608bef65 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +494,9 @@ AddEncoding gzip svgz
+@@ -184,3 +519,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
