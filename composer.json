@@ -617,20 +617,6 @@
         "drupal/yearonly": "^9.1",
         "drush/drush": "^13.4",
         "google/charts": "^45.0",
-        "highcharts/3d": "^12.1",
-        "highcharts/accessibility": "^12.1",
-        "highcharts/annotations": "^12.1",
-        "highcharts/boost": "^12.1",
-        "highcharts/data": "^12.1",
-        "highcharts/drilldown": "^12.1",
-        "highcharts/export-data": "^12.1",
-        "highcharts/exporting": "^12.1",
-        "highcharts/high-contrast-light": "^12.1",
-        "highcharts/highcharts": "^12.1",
-        "highcharts/maps": "^12.1",
-        "highcharts/more": "^12.1",
-        "highcharts/no-data-to-display": "^12.1",
-        "highcharts/pattern-fill": "^12.1",
         "mnsami/composer-custom-directory-installer": "^2.0",
         "npm-asset/blazy": "^1.8",
         "npm-asset/chart.js": "^4.4",
@@ -640,6 +626,7 @@
         "npm-asset/dropzone": "^5.9",
         "npm-asset/fontawesome-iconpicker": "^3.2",
         "npm-asset/fonticonpicker--fonticonpicker": "^3.1",
+        "npm-asset/highcharts": "^12.3",
         "npm-asset/jquery-ui-touch-punch": "^0.2.3",
         "npm-asset/nouislider": "^15.8",
         "npm-asset/slick-carousel": "1.8.0",
@@ -695,6 +682,12 @@
         "generate-site": "osuwams\\SiteGenerator::generate",
         "post-drupal-scaffold-cmd": [
             "cd docroot && patch -p1 <../patches/htaccess-updats.patch"
+        ],
+        "post-install-cmd": [
+            "./scripts/highcharts-post-install.sh"
+        ],
+        "post-update-cmd": [
+            "./scripts/highcharts-post-install.sh"
         ]
     },
     "minimum-stability": "stable",
