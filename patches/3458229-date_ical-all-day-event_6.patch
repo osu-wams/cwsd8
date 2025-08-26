@@ -1,0 +1,86 @@
+From 2e33e6de95f25b30436d6bf65bd7c51cc923e555 Mon Sep 17 00:00:00 2001
+From: Matthew Brabham <brabham.matthew@gmail.com>
+Date: Thu, 7 Aug 2025 11:41:22 -0700
+Subject: [PATCH] Add variable for a Date Only type of event and set it if the
+ data is only a date. Use the modify() function of DateTime to add a day per
+ iCal standards for an all day event.
+
+Update the newEvent to check if we are only a date event and add the ['VALUE' => 'DATE'] per iCal standards to inform the system that this is a Date only event and should be treated as an All Day event.
+---
+ src/DateICal.php | 31 ++++++++++++++++++++++---------
+ 1 file changed, 22 insertions(+), 9 deletions(-)
+
+diff --git a/src/DateICal.php b/src/DateICal.php
+index 7a753be..7b0d66a 100644
+--- a/src/DateICal.php
++++ b/src/DateICal.php
+@@ -32,6 +32,7 @@ class DateICal implements DateICalInterface {
+     foreach ($events as $row_index => $field) {
+       $start = $field['date_field'];
+       $end = NULL;
++      $dateOnly = FALSE;
+       if (is_array($start)) {
+         $start = $field['date_field']['value'];
+         $end = $field['date_field']['end_value'] ?? NULL;
+@@ -48,6 +49,7 @@ class DateICal implements DateICalInterface {
+       }
+       else {
+         if (strlen($start) === 10) {
++          $dateOnly = TRUE;
+           $start .= 'T00:00:00';
+           $start = new \DateTime($start);
+           $start->setTimezone($dateUTCTimeZone);
+@@ -64,8 +66,9 @@ class DateICal implements DateICalInterface {
+         }
+         else {
+           if (strlen($end) === 10) {
+-            $end .= 'T23:59:59';
++            $end .= '00:00:00';
+             $end = new \DateTime($end);
++            $end->modify('+1 day');
+             $end->setTimezone($dateUTCTimeZone);
+           }
+           else {
+@@ -76,7 +79,8 @@ class DateICal implements DateICalInterface {
+       else {
+         $end = clone $start;
+         $end->setTimezone($dateTimeZone);
+-        $end->setTime(23, 59, 59);
++        $end->setTime(0, 0, 0);
++        $end->modify('+1 day');
+         $end->setTimezone($dateUTCTimeZone);
+       }
+       if ($start > $end) {
+@@ -84,13 +88,22 @@ class DateICal implements DateICalInterface {
+         $end = clone $start;
+         $start = $temp;
+       }
+-      $event = $vcalendar->newVevent()
+-        ->setTransp(Vcalendar::OPAQUE)
+-        ->setClass(Vcalendar::P_BLIC)
+-        ->setSequence($row_index + 1)
+-        ->setDtstart($start->setTimezone($dateTimeZone))
+-        ->setDtend($end->setTimezone($dateTimeZone));
+-
++      if ($dateOnly) {
++        $event = $vcalendar->newVevent()
++          ->setTransp(Vcalendar::OPAQUE)
++          ->setClass(Vcalendar::P_BLIC)
++          ->setSequence($row_index + 1)
++          ->setDtstart($start->format('Ymd'), ['VALUE' => 'DATE'])
++          ->setDtend($end->format('Ymd'), ['VALUE' => 'DATE']);
++      }
++      else {
++        $event = $vcalendar->newVevent()
++          ->setTransp(Vcalendar::OPAQUE)
++          ->setClass(Vcalendar::P_BLIC)
++          ->setSequence($row_index + 1)
++          ->setDtstart($start->setTimezone($dateTimeZone))
++          ->setDtend($end->setTimezone($dateTimeZone));
++      }
+       // Render description.
+       if (!empty($field['description_field'])) {
+         $event->setDescription((string) $field['description_field']);
+-- 
+GitLab
+

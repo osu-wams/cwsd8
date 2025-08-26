@@ -1,5 +1,5 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475cf..2c386c31f80 100644
+index 4031da475cf..6157af48747 100644
 --- a/.htaccess
 +++ b/.htaccess
 @@ -22,6 +22,9 @@ DirectoryIndex index.php index.html index.htm
@@ -12,7 +12,7 @@ index 4031da475cf..2c386c31f80 100644
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +116,298 @@ AddEncoding gzip svgz
+@@ -113,6 +116,359 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -33,6 +33,9 @@ index 4031da475cf..2c386c31f80 100644
 +  RewriteRule ^(.*)$ https://%1/$1 [R=permanent,L]
 +
 +  # Site Redirects
++  # LSAMP
++  RewriteCond %{HTTP_HOST} lsamp.oregonstate.edu [NC]
++  RewriteRule (.*) https://eop.oregonstate.edu/apply-eop [R=permanent,L]
 +  # IS site redirects
 +  RewriteCond %{HTTP_HOST} ^(box|banner|zoom)\.oregonstate\.edu [NC]
 +  RewriteRule ^ https://technology.oregonstate.edu/services/%1 [R=permanent,L]
@@ -82,22 +85,22 @@ index 4031da475cf..2c386c31f80 100644
 +  RewriteRule ^ https://uit.oregonstate.edu [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^linc\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://uit.oregonstate.edu/linc [R=permanent,L]
++  RewriteRule ^(.*)$ https://uit.oregonstate.edu/linc [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^uit-at\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://uit.oregonstate.edu/tsa/academic-technologies [R=permanent,L]
++  RewriteRule ^(.*)$ https://uit.oregonstate.edu/tsa/academic-technologies [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^iar\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://data.oregonstate.edu [R=permanent,L]
++  RewriteRule ^(.*)$ https://data.oregonstate.edu [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^apa\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://curriculummanagement.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://curriculummanagement.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^apa\.stage\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://curriculummanagement.stage.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://curriculummanagement.stage.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^apa\.dev\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://curriculummanagement.dev.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://curriculummanagement.dev.oregonstate.edu/$1 [R=permanent,L]
 +
 +  # Search Advocate Site Redirection
 +  RewriteCond %{HTTP_HOST} ^searchadvocate\.oregonstate\.edu [NC]
@@ -122,28 +125,28 @@ index 4031da475cf..2c386c31f80 100644
 +  RewriteRule ^ https://hr.oregonstate.edu/search-advocate-program [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^cimrs\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://cimers.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://cimers.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^covid\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://studenthealth.oregonstate.edu/covid-19-info [R=permanent,L]
++  RewriteRule ^(.*)$ https://studenthealth.oregonstate.edu/covid-19-info [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^dce\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://see.oregonstate.edu/dce/ [R=permanent,L]
++  RewriteRule ^(.*)$ https://see.oregonstate.edu/dce/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^dosa\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://studentaffairs.oregonstate.edu/DOSA [R=permanent,L]
++  RewriteRule ^(.*)$ https://studentaffairs.oregonstate.edu/DOSA [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^dpd\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://dpo.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://dpo.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^international\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://global.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://global.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^nextgreatstartup\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://business.oregonstate.edu/nextgreatstartup [R=permanent,L]
++  RewriteRule ^(.*)$ https://business.oregonstate.edu/nextgreatstartup [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^semiconductor\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://engineering.oregonstate.edu/research/semiconductor/ [R=permanent,L]
++  RewriteRule ^(.*)$ https://engineering.oregonstate.edu/research/semiconductor/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^today\.oregonstate\.edu$ [NC]
 +  RewriteRule ^news/?$ https://news.oregonstate.edu/ [R=permanent,L]
@@ -152,44 +155,44 @@ index 4031da475cf..2c386c31f80 100644
 +  RewriteRule ^news/(.*)$ https://news.oregonstate.edu/news/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^robotics\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://engineering.oregonstate.edu/CoRIS [R=permanent,L]
++  RewriteRule ^(.*)$ https://engineering.oregonstate.edu/CoRIS [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^transboundarywaters\.science\.oregonstate\.edu [NC,OR]
 +  RewriteCond %{HTTP_HOST} ^transboundarywaters\.orst.\edu [NC]
-+  RewriteRule (.*) https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://transboundarywaters.ceoas.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^tourism\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://seagrant.oregonstate.edu/tourism/ [R=permanent,L]
++  RewriteRule ^(.*)$ https://seagrant.oregonstate.edu/tourism/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^ela\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://see.oregonstate.edu/ela/ [R=permanent,L]
++  RewriteRule ^(.*)$ https://see.oregonstate.edu/ela/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^craftcenter\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://see.oregonstate.edu/craft-center/ [R=permanent,L]
++  RewriteRule ^(.*)$ https://see.oregonstate.edu/craft-center/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^osupc\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://see.oregonstate.edu/ela/osu-program-council/ [R=permanent,L]
++  RewriteRule ^(.*)$ https://see.oregonstate.edu/ela/osu-program-council/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^omn\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://see.oregonstate.edu/ela/orange-media-network/ [R=permanent,L]
++  RewriteRule ^(.*)$ https://see.oregonstate.edu/ela/orange-media-network/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^sccs\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://scs.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://scs.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^dri\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://arcs.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://arcs.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^healthycampus\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://beaverhealthy.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://beaverhealthy.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^undocumented\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://immigrationbeavs.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://immigrationbeavs.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^facultyaffairs\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://academicaffairs.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://academicaffairs.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^accreditation\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://academicaffairs.oregonstate.edu/support/accreditation [R=permanent,L]
++  RewriteRule ^(.*)$ https://academicaffairs.oregonstate.edu/support/accreditation [R=permanent,L]
 +
 +  # Aye yi yi FA => DFA Redirects
 +  RewriteCond %{HTTP_HOST} ^fa\.oregonstate\.edu$ [NC]
@@ -283,23 +286,81 @@ index 4031da475cf..2c386c31f80 100644
 +  RewriteCond %{HTTP_HOST} ^mycard\.oregonstate\.edu [NC]
 +  RewriteRule ^(.*)$ https://idx.transactcampus.com/accounts/oregonstate-edu/osu-id-card [R=permanent,L]
 +
++  # SF Lightning web compontents don't use full paths for assets.
++  # See https://salesforce.stackexchange.com/questions/211581/lightning-icons-svg-not-displaying-in-lightning-out
++  RewriteCond %{HTTP_HOST} hr\.oregonstate\.edu [NC]
++  RewriteCond %{REQUEST_URI} /_slds/icons/utility-sprite/svg [NC]
++  RewriteRule ^(.*)$ https://oregonstate.my.site.com%{REQUEST_URI} [R=permanent,L]
++
 +  RewriteCond %{HTTP_HOST} hr\.oregonstate\.edu [NC]
 +  RewriteRule sites/hr.oregonstate.edu/files/documents/general/incl_weather_matrix.pdf https://hr.oregonstate.edu/closures-or-curtailment-operations-including-inclement-weather [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} welcome\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://newstudents.oregonstate.edu/ [R=permanent,L]
++  RewriteRule ^(.*)$ https://newstudents.oregonstate.edu/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} trio-sss\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://trio.oregonstate.edu/ [R=permanent,L]
++  RewriteRule ^(.*)$ https://trio.oregonstate.edu/ [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} gradschool\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://graduate.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://graduate.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^gradschool\.stage\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://graduate.stage.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://graduate.stage.oregonstate.edu/$1 [R=permanent,L]
 +
 +  RewriteCond %{HTTP_HOST} ^gradschool\.dev\.oregonstate\.edu [NC]
-+  RewriteRule (.*) https://graduate.dev.oregonstate.edu/$1 [R=permanent,L]
++  RewriteRule ^(.*)$ https://graduate.dev.oregonstate.edu/$1 [R=permanent,L]
++
++  # Gradwater
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule degree-programs https://graduate.oregonstate.edu/water-resources-graduate-program/degree-programs [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule water-resources-engineering-wre https://graduate.oregonstate.edu/water-resources-graduate-program/water-resources-engineering [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule water-resources-science-wrs https://graduate.oregonstate.edu/water-resources-graduate-program/water-resources-science [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule water-resources-policy-and-management-wrpm https://graduate.oregonstate.edu/water-resources-graduate-program/water-resources-policy-and-management-wrpm [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule concurrent-jdms-degree-program https://graduate.oregonstate.edu/water-resources-graduate-program/jdms-degree-program [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule student-resources-0 https://graduate.oregonstate.edu/water-resources-graduate-program/student-resources [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule student-resources https://graduate.oregonstate.edu/water-resources-graduate-program/timeline [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule hydro-community https://graduate.oregonstate.edu/water-resources-graduate-program/hydro-community [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule travel-and-reimbursements https://graduate.oregonstate.edu/water-resources-graduate-program/travel-and-reimbursements [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule summer-workshop-2025  https://graduate.oregonstate.edu/water-resources-graduate-program/travel-and-reimbursements [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule people  https://graduate.oregonstate.edu/water-resources-graduate-program/water-resources-faculty [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule faculty-directory https://graduate.oregonstate.edu/water-resources-graduate-program/administrative-team [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule alumni  https://graduate.oregonstate.edu/water-resources-graduate-program/directory/alumni-grad-papers [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule scholarship https://graduate.oregonstate.edu/water-resources-graduate-program/scholarships [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule applicants  https://graduate.oregonstate.edu/water-resources-graduate-program/admissions-how-apply [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule donate  https://graduate.oregonstate.edu/water-resources-graduate-program/donate [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule applicant-faqs  https://graduate.oregonstate.edu/water-resources-graduate-program/applicant-faqs [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule employment-resources  https://graduate.oregonstate.edu/water-resources-graduate-program/employment-resources [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule hydro-community https://graduate.oregonstate.edu/water-resources-graduate-program/hydro-community [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule travel-and-reimbursements https://graduate.oregonstate.edu/water-resources-graduate-program/travel-and-reimbursements [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule professional-engineering-pe-licensure-information-wre-students  https://graduate.oregonstate.edu/water-resources-graduate-program/professional-engineering-pe-licensure-information-wre-students [R=permanent,L]
++  RewriteCond %{HTTP_HOST} ^gradwater.oregonstate.edu [NC]
++  RewriteRule (.*) https://graduate.oregonstate.edu/water-resources-graduate-program [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} ufio\.oregonstate\.edu [NC]
++  RewriteRule ^(.*)$ https://fpm.oregonstate.edu/$1 [R=permanent,L]
++
++  RewriteCond %{HTTP_HOST} thinkdifferently\.liberalarts\.oregonstate\.edu [NC]
++  RewriteRule ^(.*)$ https://liberalarts.oregonstate.edu/cla-contact-form [R=permanent,L]
 +
 +  # Redirects for SSL of the site
 +  RewriteCond %{HTTPS} off
@@ -311,7 +372,7 @@ index 4031da475cf..2c386c31f80 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +479,9 @@ AddEncoding gzip svgz
+@@ -184,3 +540,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
