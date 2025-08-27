@@ -1,0 +1,58 @@
+uuid: 37cf2604-44bb-4c06-9563-03cb695c37af
+langcode: en
+status: true
+dependencies: {  }
+id: url_aliases
+label: 'Aliases - Overview Page'
+routes:
+  -
+    route_name: entity.path_alias.collection
+tips:
+  overview:
+    id: overview
+    plugin: text
+    label: 'Alias Overview'
+    weight: -100
+    position: auto
+    selector:
+    body: "<p>This URL Aliases page helps you manage user-friendly URLs for your site by replacing system-generated paths (like /node/10) with meaningful, readable URLs (like /about-us).</p>\r\n<p>Typically you don't need to create aliases manually, as this process is automated for basic pages, groups, stories and profiles. However, there a few actions that you may need to take here that we'll cover in this tour.</p>\r\n\r\n"
+  list:
+    id: list
+    plugin: text
+    label: List
+    weight: -99
+    position: bottom-end
+    selector: '.page-wrapper a[href="/admin/config/search/path"]'
+    body: '<p>The List displays all existing URL aliases alongside their system paths, helping you see which friendly URLs map to specific pages. You can edit or manage these aliases from this section to keep your website URLs organized and user-friendly.</p>'
+  patterns:
+    id: patterns
+    plugin: text
+    label: Patterns
+    weight: -98
+    position: bottom-end
+    selector: '.page-wrapper a[href="/admin/config/search/path/patterns"]'
+    body: '<p>Patterns allows you to define automatic rules for generating URL aliases based on content properties. You can see what patterns exist and create your own patterns as needed to avoid creating them manually.</p>'
+  bulk_generate:
+    id: bulk_generate
+    plugin: text
+    label: 'Bulk Generate'
+    weight: -97
+    position: bottom-end
+    selector: '.page-wrapper a[href="/admin/config/search/path/update_bulk"]'
+    body: "<p>Bulk Generate allows you to create or update multiple URL aliases at once for different types of content, such as basic pages, any custom content types, or group content. You can choose to generate new aliases for un-aliased paths, update old ones, or regenerate all aliases based on new rules.</p>\r\n<p>This functionality is most useful if you have re-named a custom content type or created a new pattern and want to update all the URLs for existing content in bulk.</p> "
+  add_alias:
+    id: add_alias
+    plugin: text
+    label: 'Add Alias'
+    weight: -96
+    position: bottom-end
+    selector: .button.button--action.button--primary
+    body: "<p>Add alias allows you to create a user-friendly URL for an existing system path. You enter the original system path (e.g., `/node/28`) and specify a custom alias (e.g., `/about`) to make the URL easier to remember and access.</p>\r\n<p>Typically you won't be adding aliases unless you have accidentally deleted an auto-generated one that you need to restore.</p> "
+  edit_delete:
+    id: edit_delete
+    plugin: text
+    label: Edit/Delete
+    weight: -95
+    position: bottom-end
+    selector: .dropbutton-widget
+    body: "<p>You can edit an existing alias here or delete an alias by clicking the drop-down button. </p> \r\n<p>You will need to delete an alias if you want to create a redirect for a page that you haven't deleted in your website. You can read more <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Links.aspx#redirects-on-content-that-still-exists\" target=\"_blank\">detailed information and instructions for how aliases and redirects work</a>."

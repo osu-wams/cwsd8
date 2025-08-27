@@ -1,0 +1,50 @@
+uuid: 0c069b3f-9e9e-453d-9942-ceb7f612a91e
+langcode: en
+status: true
+dependencies: {  }
+id: menus
+label: 'Menus - Menu Overview Page'
+routes:
+  -
+    route_name: entity.menu.collection
+tips:
+  intro:
+    id: intro
+    plugin: text
+    label: 'Menus Overview'
+    weight: -10
+    position: auto
+    selector:
+    body: '<p>On this page you can add, edit and delete menus. Read the Drupal How-tos entry for <a href="https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Menus.aspx" target="_blank">more details on menus.</a></p>'
+  add_menu:
+    id: add_menu
+    plugin: text
+    label: 'Add Menu'
+    weight: -10
+    position: right
+    selector: '.page-wrapper a[href="/admin/structure/menu/add"]'
+    body: "<p>Click the <strong>Add menu</strong> button to be sent to the menu creation page. You'll want your pages that you want to link to already created to be able to build out your menu.</p>"
+  existing_menus:
+    id: existing_menus
+    plugin: text
+    label: 'Existing Menus'
+    weight: -10
+    position: top
+    selector: .block-system-main-block
+    body: "<p>Here you can see all of the existing menus and their descriptions. Using the description field can help with the long-term management of your website to know what the menu is used for and what pages it shows up on.</p>\r\n<p><strong>Note:</strong>This list doesn't include group menus. These are managed via the group they are nested under. You can find more details about <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Menus.aspx#group-menus\" target=\"_blank\">editing group menus</a> on the Drupal How-tos.</p>"
+  edit_menu:
+    id: edit_menu
+    plugin: text
+    label: 'Edit Menu'
+    weight: -10
+    position: top
+    selector: '.dropbutton-widget .edit'
+    body: '<p>Click <strong>Edit Menu</strong> to add links, rearrange and/or nest menu links, and remove links. If you want to change where and when a menu appears on your site, you need to do that from the <strong><a href="/admin/structure/block" target="_blank">Block Layout</a></strong> page.</p>'
+  drop_down:
+    id: drop_down
+    plugin: text
+    label: 'Directly Add Menu Link'
+    weight: -10
+    position: top
+    selector: .dropbutton__toggle
+    body: '<p>Click this drop-down arrow toggle to quickly add a top level menu link to the corresponding menu.</p>'
