@@ -53,9 +53,9 @@ You can build the container locally or pull form the registry.
 We have a multi-stage Docker file to build. Most of the time the Development version will be used.
 
 - For the development version of the container:
-  - ```docker build --target=development --tag=osuwams/drupal:9-apache-dev .```
+  - ```docker build --secret id=composer_auth,src=$HOME/.config/composer/auth.json --target=development --tag=osuwams/drupal:10-apache-dev .```
 - For the Production version
-  - ```docker build --target=production --tag=osuwams/drupal:9-apache .```
+  - ```docker build --secret id=composer_auth,src=$HOME/.config/composer/auth.json --target=production --tag=osuwams/drupal:10-apache .```
 
 ## Environment Variables that can be set
 
