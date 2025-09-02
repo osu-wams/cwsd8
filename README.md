@@ -44,6 +44,21 @@ changes are detected.
    settings.php and the memcache file for acquia cloud.
 3. Follow the Post Install steps to Create the Database and Domains.
 
+## Recipe
+Drupal Recipes automate module installation & configuration by creating scripts that can install modules and themes and set up  configuration on an existing Drupal installation.
+
+To Use a Recipe navigate to the docroot folder for Drupal and run:
+```shell
+drush recipe ../recipes/<name of recipe folder>
+```
+for examle, adding the OSU Tours Recipe:
+```shell
+drush recipe ../recipes/osu_tours
+```
+
+Recipes can be chained together in the recipe.yaml.
+
+
 ## Local Development
 
 You can build the container locally or pull form the registry.
