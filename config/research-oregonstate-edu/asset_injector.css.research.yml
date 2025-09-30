@@ -1,0 +1,179 @@
+uuid: 2c57943c-57fd-46ac-92a9-441181b2daa2
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: research
+label: Research
+code: |-
+  .orange-header {
+  	font-family: "Stratum2Web", serif; 
+  	color: #d73f09;
+  }
+  .gray-header {
+  	font-family: "Stratum2Web", serif; 
+  	color: #292929;
+  }
+  @media (min-width: 1201px) {
+        .large-font { font-size: 3.5rem;
+      }
+      .medium-font {
+      	font-size:2.5rem;
+      }
+      .text-center-image {
+  			padding:90px 0 0 25px;
+  		}
+  		.mobile {
+  			display:none;
+  		}
+  }
+  @media (max-width: 1200px) {
+      .large-font {
+          font-size: 3rem;
+      }
+      .text-center-image {
+  			padding:5px 0 0 0px;
+  		}
+  		.desktop {
+  			display:none;
+  		}
+  }
+  .image-circle,
+  .image-circle img {
+      -o-object-fit: cover;
+      object-fit: cover;
+      border-radius: 50% !important;
+      margin-inline: auto;
+      margin-block: 1em;
+  }
+  .block-field-blockblock-contenticon-with-factfield-large-fact {
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1;
+      font-family: "Stratum2Web", sans-serif;
+  }
+  .iframe-16x9 {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      height: unset;
+  }
+  .img-fluid {
+      max-width: 100%;
+      height: auto;
+  }
+  .img-fluid-top-border-radius {
+      max-width: 100%;
+      height: auto;
+      border-top-right-radius: 12px;
+      border-top-left-radius: 12px;
+  }
+  .top-border-radius {
+  	  border-top-right-radius: 12px;
+      border-top-left-radius: 12px;
+  }
+  @media (min-width: 990px) {
+      .offset-photo {
+          grid-column: 1 / 3;
+      }
+  }
+  .image-zoom {
+    transition: transform .2s; /* Animation */
+  }
+  .image-zoom:hover {
+  	transform: scale(1.3); /* (130% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  [data-aos][data-aos][data-aos-duration="400"], body[data-aos-duration="400"] [data-aos] {
+      transition-duration: 1s;
+  }
+  #scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(30, 33, 36, 0.5);
+    color: #ffffff;
+    border: none;
+    border-radius:5px;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+      /* Container for the iframe to maintain aspect ratio */
+      .youtube-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 aspect ratio (9/16 = 0.5625) */
+        height: 0;
+        overflow: hidden;
+      }
+
+      /* Style the iframe to fill the container */
+      .youtube-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0; /* Remove iframe border */
+      }
+      
+  /* Styling the container of the Drupal media element */
+  .media-container {
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+  }
+
+  /* Targeting the Drupal media element */
+  drupal-media[data-entity-type="media"] {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Ensure the video or iframe inside maintains aspect ratio */
+  drupal-media[data-entity-type="media"] video,
+  drupal-media[data-entity-type="media"] iframe {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Adjust to the video's native aspect ratio, e.g., 16:9 */
+  }
+
+  /* Fallback for older browsers that don't support aspect-ratio */
+  @supports not (aspect-ratio: 16 / 9) {
+    drupal-media[data-entity-type="media"] .media-content {
+      position: relative;
+      padding-bottom: 56.25%; /* 9/16 = 0.5625 for 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+    }
+    drupal-media[data-entity-type="media"] video,
+    drupal-media[data-entity-type="media"] iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .display-image-link .link-purpose-external-icon {
+      height: .875em;
+      display: none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/2024-research-and-innovation-annual-report\r\n/node/7101/layout\r\n/node/7646/\r\n/node/7646/layout\r\n/2025-research-and-innovation-annual-report"
+contexts: {  }
+conditions_require_all: true

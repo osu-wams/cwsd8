@@ -1,0 +1,61 @@
+uuid: 59580933-7b5a-4f27-bbd1-785480d44abd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: ora_impact_stories_block
+label: 'ORA - Impact Stories Block'
+code: |-
+  		.block-views-blockimpact-stories-block-block-1 .views-col{
+  			width: 31%;
+  		}
+  		.block-views-blockimpact-stories-block-block-1 .col-1, .block-views-blockimpact-stories-block-block-1 .col-2 {
+  			margin-right: 3.5%;
+  		}
+
+      .block-views-blockimpact-stories-block-block-1 .views-field-title a {
+          font-size: 20px;
+          font-weight: 700;
+          color: #d73f09;
+          text-decoration: none;
+      }
+
+      .block-views-blockimpact-stories-block-block-1 .views-field-title a:hover {
+          text-decoration: underline;
+      }
+
+      .block-views-blockimpact-stories-block-block-1 .views-field-field-researcher-s- {
+          font-style: italic;
+      }
+
+      .block-views-blockimpact-stories-block-block-1 .views-col {
+      		padding: 2rem;
+          box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+      }
+
+      .block-views-blockimpact-stories-block-block-1 .view-row {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          grid-gap: 2rem;
+      }
+      .mc-field-group label {
+      	display: block;
+      }
+      input#mc-embedded-subscribe {
+      	margin-top:0.5rem;
+      }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /ora
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,37 @@
+uuid: 93c32ee8-ac82-4ea6-87aa-23e1c02937a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.tools_and_services.body
+    - field.field.node.tools_and_services.field_front_page_order
+    - field.field.node.tools_and_services.field_icon
+    - field.field.node.tools_and_services.field_tools_link
+    - node.type.tools_and_services
+  module:
+    - text
+    - user
+id: node.tools_and_services.teaser
+targetEntityType: node
+bundle: tools_and_services
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_front_page_order: true
+  field_icon: true
+  field_tools_link: true

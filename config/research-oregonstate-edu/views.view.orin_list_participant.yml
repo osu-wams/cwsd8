@@ -1,0 +1,730 @@
+uuid: 873fb2b9-9d31-4283-a189-aa11eded69fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_persondescription
+    - field.storage.node.field_personservices
+    - field.storage.node.field_photo
+    - field.storage.node.field_strengths
+    - node.type.orin_participant
+  module:
+    - image
+    - node
+    - text
+    - user
+id: orin_list_participant
+label: ORIN_List_Participant
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: ORIN_List_Participant
+      fields:
+        field_photo:
+          id: field_photo
+          table: node__field_photo
+          field: field_photo
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: fid
+          type: image
+          settings:
+            image_link: content
+            image_style: 75x75-scale-crop
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+        field_persondescription:
+          id: field_persondescription
+          table: node__field_persondescription
+          field: field_persondescription
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+      pager:
+        type: full
+        options:
+          items_per_page: 1000
+          pagination_heading_level: h4
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+        perm: 'access content'
+      cache:
+        type: none
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          plugin_id: date
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            orin_participant: orin_participant
+      style:
+        type: grid
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns: 3
+          alignment: horizontal
+          row_class_special: 1
+          fill_single_line: 1
+          caption: Personnel
+          summary: ''
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline:
+            field_photo: field_photo
+            field_personname: field_personname
+            field_persondescription: field_persondescription
+          separator: '|'
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      style_plugin: grid
+      style_options:
+        grouping: {  }
+        row_class: ''
+        default_row_class: 1
+        row_class_special: 1
+        columns: '3'
+        alignment: horizontal
+        fill_single_line: 1
+        caption: Personnel
+        summary: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_persondescription'
+        - 'config:field.storage.node.field_photo'
+  page:
+    id: page
+    display_title: Page
+    display_plugin: page
+    position: 2
+    display_options:
+      title: 'ORIN Network Participants'
+      fields:
+        field_photo:
+          id: field_photo
+          table: node__field_photo
+          field: field_photo
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: fid
+          type: image
+          settings:
+            image_link: content
+            image_style: 150x150-scale-crop
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          settings:
+            link_to_entity: 1
+          ui_name: ''
+        field_persondescription:
+          id: field_persondescription
+          table: node__field_persondescription
+          field: field_persondescription
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: Position/Title
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+        field_strengths:
+          id: field_strengths
+          table: node__field_strengths
+          field: field_strengths
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: Experience
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+        field_personservices:
+          id: field_personservices
+          table: node__field_personservices
+          field: field_personservices
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: Services
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+      sorts:
+        last_name_value:
+          id: last_name_value
+          table: node__last_name
+          field: last_name_value
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: 'Last Name'
+            order: ASC
+          exposed: true
+          ui_name: ''
+        field_strengths_value:
+          id: field_strengths_value
+          table: node__field_strengths
+          field: field_strengths_value
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: Experience
+            order: ASC
+          exposed: true
+          ui_name: ''
+        field_personservices_value:
+          id: field_personservices_value
+          table: node__field_personservices
+          field: field_personservices_value
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: Services
+            order: ASC
+          exposed: true
+          ui_name: ''
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: false
+          columns:
+            field_photo: field_photo
+            field_persondescription: field_persondescription
+            field_strengths: field_strengths
+            field_personservices: field_personservices
+          default: '-1'
+          info:
+            field_photo:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-left
+              separator: ''
+              empty_column: false
+            field_persondescription:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-center
+              separator: ''
+              empty_column: false
+            field_strengths:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-center
+              separator: ''
+              empty_column: false
+            field_personservices:
+              sortable: false
+              default_sort_order: asc
+              align: views-align-center
+              separator: ''
+              empty_column: false
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          row_class_special: 1
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline:
+            field_photo: field_photo
+            field_personname: field_personname
+            field_persondescription: field_persondescription
+          separator: '|'
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        style: false
+        row: false
+        fields: false
+        sorts: false
+        header: false
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: 'Preface text'
+          empty: true
+          ui_name: ''
+          content:
+            value: 'Below is a list of OSU Research Impacts Network participants. Use the filter to sort participants by their name, the service they offer, or their strengths in research impacts. <strong>Click on profile pictures to read more.</strong>'
+            format: basic_html
+          tokenize: 0
+      display_extenders: {  }
+      path: ord/orin/orin-list-participant
+      style_plugin: table
+      style_options:
+        grouping: {  }
+        row_class: ''
+        default_row_class: 0
+        row_class_special: 1
+        override: 1
+        sticky: 0
+        caption: ''
+        summary: ''
+        columns:
+          field_photo: field_photo
+          field_persondescription: field_persondescription
+          field_strengths: field_strengths
+          field_personservices: field_personservices
+        info:
+          field_photo:
+            sortable: 0
+            default_sort_order: asc
+            align: views-align-left
+            separator: ''
+            empty_column: 0
+          field_persondescription:
+            sortable: 0
+            default_sort_order: asc
+            align: views-align-center
+            separator: ''
+            empty_column: 0
+          field_strengths:
+            sortable: 0
+            default_sort_order: asc
+            align: views-align-center
+            separator: ''
+            empty_column: 0
+          field_personservices:
+            sortable: 0
+            default_sort_order: asc
+            align: views-align-center
+            separator: ''
+            empty_column: 0
+        default: '-1'
+        empty_table: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_persondescription'
+        - 'config:field.storage.node.field_personservices'
+        - 'config:field.storage.node.field_photo'
+        - 'config:field.storage.node.field_strengths'

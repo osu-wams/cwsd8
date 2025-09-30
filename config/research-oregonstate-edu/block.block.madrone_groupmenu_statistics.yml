@@ -1,0 +1,39 @@
+uuid: a9199547-7314-4e9b-af9d-79260800cb3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group_content_menu.group_content_menu_type.group
+  module:
+    - block_visibility_groups
+    - group_content_menu
+    - system
+  theme:
+    - madrone
+id: madrone_groupmenu_statistics
+theme: madrone
+region: sidebar
+weight: 0
+provider: null
+plugin: 'group_content_menu:group'
+settings:
+  id: 'group_content_menu:group'
+  label: Statistics
+  label_display: visible
+  provider: group_content_menu
+  context_mapping:
+    group: '@group.group_route_context:group'
+  level: 1
+  depth: 0
+  expand_all_items: false
+  relative_visibility: false
+  theme_hook_suggestion: ''
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/statistics\r\n/statistics/*\r\n/awards/faculty/*"

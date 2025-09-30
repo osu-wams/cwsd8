@@ -1,0 +1,196 @@
+uuid: 3d626d02-558c-4c3e-9274-0c6e96d5bcb7
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - user
+id: content_plus
+label: 'Content Plus'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'Content Plus'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+        timestamp:
+          id: timestamp
+          table: node_revision
+          field: timestamp
+          relationship: none
+          group_type: group
+          label: 'Updated date'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          ui_name: ''
+          custom_date_format: ''
+          second_date_format_custom: ''
+          second_date_format: long
+          timezone: ''
+          settings:
+            date_format: long
+      pager:
+        type: full
+        options:
+          items_per_page: 100
+          pagination_heading_level: h4
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+        perm: 'access content'
+      cache:
+        type: none
+      sorts:
+        timestamp:
+          id: timestamp
+          table: node_revision
+          field: timestamp
+          relationship: none
+          group_type: group
+          order: ASC
+          expose:
+            label: 'Last Updated'
+            order: ASC
+          exposed: true
+          ui_name: ''
+          granularity: second
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: standard
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+      style:
+        type: table
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      relationships:
+        uid:
+          id: uid
+          table: node_field_data
+          field: uid
+          relationship: none
+          group_type: group
+          admin_label: author
+          entity_type: node
+          plugin_id: standard
+          required: false
+          ui_name: ''
+          label: author
+      use_ajax: true
+      display_extenders: {  }
+      style_plugin: table
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page:
+    id: page
+    display_title: Page
+    display_plugin: page
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      path: content-plus
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

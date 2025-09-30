@@ -1,0 +1,31 @@
+uuid: 8deb440d-0eee-4ef9-8428-d878200bf4c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.research_news.body
+    - node.type.research_news
+  module:
+    - text
+    - user
+id: node.research_news.teaser
+targetEntityType: node
+bundle: research_news
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

@@ -1,0 +1,35 @@
+uuid: 8244dbf9-8974-4e33-bd0a-55998b9f6d98
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.sidebar_carousel.body
+    - field.field.node.sidebar_carousel.field_story_link
+    - field.field.node.sidebar_carousel.image
+    - node.type.sidebar_carousel
+  module:
+    - text
+    - user
+id: node.sidebar_carousel.teaser
+targetEntityType: node
+bundle: sidebar_carousel
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_story_link: true
+  image: true

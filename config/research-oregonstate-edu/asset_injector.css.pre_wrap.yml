@@ -1,0 +1,31 @@
+uuid: e9e8b8a5-3cf7-4886-b1da-3b68cdf4d71e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: pre_wrap
+label: 'Pre Wrap'
+code: |-
+  pre {
+   background: #fff;
+   white-space: pre-wrap;       /* css-3 */
+   white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+   white-space: -pre-wrap;      /* Opera 4-6 */
+   white-space: -o-pre-wrap;    /* Opera 7 */
+   word-wrap: break-word;       /* Internet Explorer 5.5+ */
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /ori/provide-suggestions-or-report-concerns
+contexts: {  }
+conditions_require_all: true

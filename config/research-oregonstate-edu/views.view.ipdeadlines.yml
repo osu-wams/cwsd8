@@ -1,0 +1,245 @@
+uuid: ba0edcb4-224f-44ad-a123-1600ab124eb3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_deadline_date
+    - node.type.incentive_program_deadlines
+  module:
+    - datetime
+    - node
+    - user
+id: ipdeadlines
+label: IPdeadlines
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'Open Incentive Programs / Deadlines'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+        field_deadline_date:
+          id: field_deadline_date
+          table: node__field_deadline_date
+          field: field_deadline_date
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            datetime_type: datetime
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+      pager:
+        type: some
+        options:
+          items_per_page: 4
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+      cache:
+        type: none
+      sorts:
+        field_deadline_date_value:
+          id: field_deadline_date_value
+          table: node__field_deadline_date
+          field: field_deadline_date_value
+          relationship: none
+          group_type: group
+          plugin_id: datetime
+          order: ASC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+        field_deadline_date_value_1:
+          id: field_deadline_date_value_1
+          table: node__field_deadline_date
+          field: field_deadline_date_value
+          relationship: none
+          group_type: group
+          plugin_id: datetime
+          order: ASC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            incentive_program_deadlines: incentive_program_deadlines
+        field_deadline_date_value:
+          id: field_deadline_date_value
+          table: node__field_deadline_date
+          field: field_deadline_date_value
+          relationship: none
+          group_type: group
+          plugin_id: datetime
+          operator: '>'
+          value:
+            min: null
+            max: null
+            value: now
+            type: offset
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles: {  }
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+          granularity: second
+          form_type: date_select
+          default_to_date: ''
+          year_range: '-0:+0'
+          add_delta: ''
+      style:
+        type: default
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      style_plugin: default
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_deadline_date'
+  block:
+    id: block
+    display_title: Block
+    display_plugin: block
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_deadline_date'

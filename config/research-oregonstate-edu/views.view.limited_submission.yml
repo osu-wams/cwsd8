@@ -1,0 +1,2341 @@
+uuid: 10f61b68-715a-465b-8976-46790dcaf84f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_agency_deadline
+    - field.storage.node.field_date_open
+    - field.storage.node.field_expiration
+    - field.storage.node.field_important_notes
+    - field.storage.node.field_limit
+    - field.storage.node.field_sponsor
+    - field.storage.node.field_status
+    - node.type.program
+  module:
+    - contextual
+    - datetime
+    - node
+    - text
+    - user
+id: limited_submission
+label: 'Limited Submission Opportunities'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'Limited Submission Opportunities - Searchable List'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Program Title'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          settings:
+            link_to_entity: 1
+          ui_name: ''
+        field_sponsor:
+          id: field_sponsor
+          table: node__field_sponsor
+          field: field_sponsor
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: Sponsor
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+        field_expiration:
+          id: field_expiration
+          table: node__field_expiration
+          field: field_expiration
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'ORD Internal Deadline'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            datetime_type: date
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_agency_deadline:
+          id: field_agency_deadline
+          table: node__field_agency_deadline
+          field: field_agency_deadline
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Agency Deadline'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            datetime_type: date
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_status:
+          id: field_status
+          table: node__field_status
+          field: field_status
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: Status
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_limit:
+          id: field_limit
+          table: node__field_limit
+          field: field_limit
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Limit per Institution'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_important_notes:
+          id: field_important_notes
+          table: node__field_important_notes
+          field: field_important_notes
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Important Notes'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          group_type: group
+          plugin_id: entity_link_edit
+          label: 'Edit Program'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'Edit Program'
+          ui_name: ''
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          plugin_id: custom
+          label: 'Add New Program'
+          exclude: true
+          alter:
+            alter_text: true
+            text: 'Add New Program'
+            make_link: true
+            path: node/add/program
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          ui_name: ''
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          plugin_id: custom
+          label: 'Edit View'
+          exclude: true
+          alter:
+            alter_text: true
+            text: 'Edit View'
+            make_link: true
+            path: admin/structure/views/view/limited_submission/edit/block
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          ui_name: ''
+        contextual_links:
+          id: contextual_links
+          table: views
+          field: contextual_links
+          relationship: none
+          group_type: group
+          plugin_id: contextual_links
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          destination: true
+          fields:
+            nothing: nothing
+            edit_node: edit_node
+            nothing_1: nothing_1
+            field_sponsor: '0'
+            title: '0'
+            field_expiration: '0'
+          ui_name: ''
+      pager:
+        type: none
+        options:
+          items_per_page: 0
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          autosubmit: 0
+          autosubmit_hide: 1
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+        perm: 'access content'
+      cache:
+        type: none
+      sorts:
+        field_sponsor_value:
+          id: field_sponsor_value
+          table: node__field_sponsor
+          field: field_sponsor_value
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: DESC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+        field_sponsor_value_1:
+          id: field_sponsor_value_1
+          table: node__field_sponsor
+          field: field_sponsor_value
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+        field_agency_deadline_value:
+          id: field_agency_deadline_value
+          table: node__field_agency_deadline
+          field: field_agency_deadline_value
+          relationship: none
+          group_type: group
+          plugin_id: datetime
+          order: ASC
+          expose:
+            label: 'Agency Deadline (field_agency_deadline)'
+            order: ASC
+          exposed: false
+          ui_name: ''
+        field_status_value:
+          id: field_status_value
+          table: node__field_status
+          field: field_status_value
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: 'Status (field_status)'
+            order: ASC
+          exposed: false
+          ui_name: ''
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          plugin_id: bundle
+          operator: in
+          value:
+            program: program
+          group: 1
+          exposed: false
+          expose:
+            operator_id: type_op
+            label: Type
+            description: ''
+            use_operator: false
+            operator: type_op
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+              group_user: group_user
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+        field_source_value:
+          id: field_source_value
+          table: node__field_source
+          field: field_source_value
+          relationship: none
+          group_type: group
+          plugin_id: string
+          operator: '='
+          value: External
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+        status_1:
+          id: status_1
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: 'Program Title'
+            description: ''
+            use_operator: false
+            operator: title_op
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+              group_user: group_user
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            title: title
+            field_sponsor: field_sponsor
+            field_expiration: field_expiration
+            field_deadline_date: field_deadline_date
+            field_agency_deadline: field_agency_deadline
+            field_status: field_status
+            field_limit: field_limit
+            field_important_notes: field_important_notes
+            edit_node: edit_node
+            nothing: nothing
+            nothing_1: nothing_1
+            contextual_links: field_expiration
+          default: field_sponsor
+          info:
+            title:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_sponsor:
+              sortable: true
+              default_sort_order: desc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_expiration:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_deadline_date:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_agency_deadline:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_status:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_limit:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_important_notes:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            edit_node:
+              align: ''
+              separator: ''
+              empty_column: false
+            nothing:
+              align: ''
+              separator: ''
+              empty_column: false
+            nothing_1:
+              align: ''
+              separator: ''
+              empty_column: false
+            contextual_links:
+              align: ''
+              separator: ''
+              empty_column: false
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          row_class_special: 1
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      use_ajax: true
+      display_extenders: {  }
+      style_plugin: table
+      style_options:
+        grouping: {  }
+        row_class: ''
+        default_row_class: 1
+        row_class_special: 1
+        override: 1
+        sticky: 0
+        caption: ''
+        summary: ''
+        columns:
+          title: title
+          field_sponsor: field_sponsor
+          field_expiration: field_expiration
+          field_deadline_date: field_deadline_date
+          field_agency_deadline: field_agency_deadline
+          field_status: field_status
+          field_limit: field_limit
+          field_important_notes: field_important_notes
+          edit_node: edit_node
+          nothing: nothing
+          nothing_1: nothing_1
+          contextual_links: field_expiration
+        info:
+          title:
+            sortable: 1
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_sponsor:
+            sortable: 1
+            default_sort_order: desc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_expiration:
+            sortable: 1
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_deadline_date:
+            sortable: 1
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_agency_deadline:
+            sortable: 1
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_status:
+            sortable: 1
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_limit:
+            sortable: 1
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_important_notes:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          edit_node:
+            align: ''
+            separator: ''
+            empty_column: 0
+          nothing:
+            align: ''
+            separator: ''
+            empty_column: 0
+          nothing_1:
+            align: ''
+            separator: ''
+            empty_column: 0
+          contextual_links:
+            align: ''
+            separator: ''
+            empty_column: 0
+        default: field_sponsor
+        empty_table: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_agency_deadline'
+        - 'config:field.storage.node.field_expiration'
+        - 'config:field.storage.node.field_important_notes'
+        - 'config:field.storage.node.field_limit'
+        - 'config:field.storage.node.field_sponsor'
+        - 'config:field.storage.node.field_status'
+  block:
+    id: block
+    display_title: 'Table View'
+    display_plugin: block
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        access: true
+        access_options: true
+      display_description: ''
+      display_extenders: {  }
+      block_description: 'Full Submission List'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_agency_deadline'
+        - 'config:field.storage.node.field_expiration'
+        - 'config:field.storage.node.field_important_notes'
+        - 'config:field.storage.node.field_limit'
+        - 'config:field.storage.node.field_sponsor'
+        - 'config:field.storage.node.field_status'
+  block_1:
+    id: block_1
+    display_title: Block
+    display_plugin: block
+    position: 3
+    display_options:
+      enabled: false
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_agency_deadline'
+        - 'config:field.storage.node.field_expiration'
+        - 'config:field.storage.node.field_important_notes'
+        - 'config:field.storage.node.field_limit'
+        - 'config:field.storage.node.field_sponsor'
+        - 'config:field.storage.node.field_status'
+  block_2:
+    id: block_2
+    display_title: Block
+    display_plugin: block
+    position: 4
+    display_options:
+      enabled: false
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_agency_deadline'
+        - 'config:field.storage.node.field_expiration'
+        - 'config:field.storage.node.field_important_notes'
+        - 'config:field.storage.node.field_limit'
+        - 'config:field.storage.node.field_sponsor'
+        - 'config:field.storage.node.field_status'
+  block_3:
+    id: block_3
+    display_title: Accordion
+    display_plugin: block
+    position: 5
+    display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Program Title'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: strong
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          settings:
+            link_to_entity: 0
+          ui_name: ''
+        field_date_open:
+          id: field_date_open
+          table: node__field_date_open
+          field: field_date_open
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Date Open'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: span
+          element_class: ''
+          element_label_type: strong
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            datetime_type: date
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_sponsor:
+          id: field_sponsor
+          table: node__field_sponsor
+          field: field_sponsor
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: Sponsor
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: span
+          element_class: ''
+          element_label_type: strong
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_expiration:
+          id: field_expiration
+          table: node__field_expiration
+          field: field_expiration
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'ORD Notice of Intent Deadline'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: span
+          element_class: ''
+          element_label_type: strong
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            datetime_type: date
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_agency_deadline:
+          id: field_agency_deadline
+          table: node__field_agency_deadline
+          field: field_agency_deadline
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Agency Deadline'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: span
+          element_class: ''
+          element_label_type: strong
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_default
+          settings:
+            datetime_type: date
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_status:
+          id: field_status
+          table: node__field_status
+          field: field_status
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: Status
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: span
+          element_class: ''
+          element_label_type: strong
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_limit:
+          id: field_limit
+          table: node__field_limit
+          field: field_limit
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Limit per Institution'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: span
+          element_class: ''
+          element_label_type: strong
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_important_notes:
+          id: field_important_notes
+          table: node__field_important_notes
+          field: field_important_notes
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Important Notes'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: span
+          element_class: ''
+          element_label_type: strong
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          group_type: group
+          plugin_id: entity_link_edit
+          label: 'Edit Program'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: 'Edit Program'
+          ui_name: ''
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          plugin_id: custom
+          label: 'Add New Program'
+          exclude: true
+          alter:
+            alter_text: true
+            text: 'Add New Program'
+            make_link: true
+            path: node/add/program
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          ui_name: ''
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          plugin_id: custom
+          label: 'Edit View'
+          exclude: true
+          alter:
+            alter_text: true
+            text: 'Edit View'
+            make_link: true
+            path: admin/structure/views/view/limited_submission/edit/block
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          ui_name: ''
+        contextual_links:
+          id: contextual_links
+          table: views
+          field: contextual_links
+          relationship: none
+          group_type: group
+          plugin_id: contextual_links
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          destination: true
+          fields:
+            nothing: nothing
+            edit_node: edit_node
+            nothing_1: nothing_1
+            field_sponsor: '0'
+            title: '0'
+            field_expiration: '0'
+          ui_name: ''
+        path:
+          id: path
+          table: node
+          field: view_node
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: entity_link
+          label: Path
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          absolute: false
+          ui_name: ''
+        nothing_2:
+          id: nothing_2
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          plugin_id: custom
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<p><a href="{{ path }}">Full Details</a></p>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          ui_name: ''
+      sorts:
+        field_sponsor_value:
+          id: field_sponsor_value
+          table: node__field_sponsor
+          field: field_sponsor_value
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: DESC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+        field_agency_deadline_value:
+          id: field_agency_deadline_value
+          table: node__field_agency_deadline
+          field: field_agency_deadline_value
+          relationship: none
+          group_type: group
+          plugin_id: datetime
+          order: ASC
+          expose:
+            label: 'Agency Deadline (field_agency_deadline)'
+            order: ASC
+          exposed: false
+          ui_name: ''
+        field_status_value:
+          id: field_status_value
+          table: node__field_status
+          field: field_status_value
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: 'Status (field_status)'
+            order: ASC
+          exposed: false
+          ui_name: ''
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          plugin_id: bundle
+          operator: in
+          value:
+            program: program
+          group: 1
+          exposed: false
+          expose:
+            operator_id: type_op
+            label: Type
+            description: ''
+            use_operator: false
+            operator: type_op
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+              group_user: group_user
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+        field_source_value:
+          id: field_source_value
+          table: node__field_source
+          field: field_source_value
+          relationship: none
+          group_type: group
+          plugin_id: string
+          operator: '='
+          value: External
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+        status_1:
+          id: status_1
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+        combine:
+          id: combine
+          table: views
+          field: combine
+          relationship: none
+          group_type: group
+          plugin_id: combine
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: combine_op
+            label: 'Search Programs'
+            description: ''
+            use_operator: false
+            operator: combine_op
+            identifier: combine
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_label: ''
+            limit_operators: 0
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          fields:
+            title: title
+            field_sponsor: field_sponsor
+            field_important_notes: field_important_notes
+          ui_name: ''
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          grouping: {  }
+          title_field: title
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        access: true
+        style: false
+        row: false
+        fields: false
+        sorts: false
+        filters: false
+        filter_groups: false
+        header: false
+        access_options: true
+      display_description: ''
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: ''
+          empty: false
+          ui_name: ''
+          content:
+            value: |-
+              <style>
+              	.views-exposed-widgets {
+              		display: flex;
+              	}
+
+              	.views-submit-button {
+              		align-self: flex-end;
+              	}
+
+              	input#edit-combine {
+              		margin: 10px 0 0;
+              		border-radius: 0;
+              		height: 33px;
+              	}
+
+              	input#edit-submit-limited-submission {
+              		background: #d73f09 !important;
+              		border-radius: 0;
+              		box-shadow: none;
+              		font-size: 18px;
+              		margin-top: 0;
+              	}
+
+              	.view-limited-submission .accordion-group {
+              		max-width: 800px;
+              	}
+
+              </style>
+            format: basic_html
+          tokenize: 0
+      display_extenders: {  }
+      block_description: ''
+      style_plugin: views_bootstrap_accordion_plugin_style
+      style_options:
+        grouping: {  }
+        title_field: title
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_agency_deadline'
+        - 'config:field.storage.node.field_date_open'
+        - 'config:field.storage.node.field_expiration'
+        - 'config:field.storage.node.field_important_notes'
+        - 'config:field.storage.node.field_limit'
+        - 'config:field.storage.node.field_sponsor'
+        - 'config:field.storage.node.field_status'

@@ -1,0 +1,35 @@
+uuid: 314f4e3f-8c9d-433a-b135-466c185b1364
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.impact_story.body
+    - field.field.node.impact_story.field_impact_photo
+    - field.field.node.impact_story.field_researcher_s_
+    - node.type.impact_story
+  module:
+    - text
+    - user
+id: node.impact_story.teaser
+targetEntityType: node
+bundle: impact_story
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_impact_photo: true
+  field_researcher_s_: true

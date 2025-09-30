@@ -1,0 +1,33 @@
+uuid: ca99145b-4bfd-4652-883d-b8979060d55e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.incentive_program_deadlines.body
+    - field.field.node.incentive_program_deadlines.field_deadline_date
+    - node.type.incentive_program_deadlines
+  module:
+    - text
+    - user
+id: node.incentive_program_deadlines.teaser
+targetEntityType: node
+bundle: incentive_program_deadlines
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_deadline_date: true
