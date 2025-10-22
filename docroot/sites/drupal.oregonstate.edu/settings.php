@@ -929,4 +929,10 @@ if (file_exists('/var/www/site-php')) {
   if (preg_match("/^\/admin\/people\/permissions/", $_SERVER["REQUEST_URI"])) {
     ini_set("memory_limit", "512M");
   }
+  if (preg_match("/^\/batch", $_SERVER["REQUEST_URI"])) {
+    ini_set("memory_limit", "1G");
+  }
+}
+if (PHP_SAPI === 'cli') {
+  ini_set('memory_limit', '1G');
 }
