@@ -898,6 +898,16 @@ if (extension_loaded('newrelic')) {
   $site_domain = array_pop($exploded_path);
   newrelic_set_appname("$site_domain;d8cws", '', 'true');
 }
+
+if (PHP_SAPI === 'cli') {
+  ini_set('memory_limit', '1G');
+}
+
+// Up the memory limites for batches.
+if (isset($_SERVER['REQUEST_URI']) && str_contains($_SERVER['REQUEST_URI'], '/batch')) {
+  ini_set('memory_limit', '1G');
+}
+
 // Acquia specific settings.
 if (file_exists('/var/www/site-php')) {
   global $conf;
@@ -929,10 +939,4 @@ if (file_exists('/var/www/site-php')) {
   if (preg_match("/^\/admin\/people\/permissions/", $_SERVER["REQUEST_URI"])) {
     ini_set("memory_limit", "512M");
   }
-  if (preg_match("/^\/batch", $_SERVER["REQUEST_URI"])) {
-    ini_set("memory_limit", "1G");
-  }
-}
-if (PHP_SAPI === 'cli') {
-  ini_set('memory_limit', '1G');
 }
