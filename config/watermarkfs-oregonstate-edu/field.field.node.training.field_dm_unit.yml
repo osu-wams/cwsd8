@@ -1,0 +1,29 @@
+uuid: 64cad6ba-6f57-4dd8-9506-feba1ea22ffd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dm_unit
+    - node.type.training
+    - taxonomy.vocabulary.dm_colleges
+id: node.training.field_dm_unit
+field_name: field_dm_unit
+entity_type: node
+bundle: training
+label: 'Applies To'
+description: 'Use ctrl-click to highlight more than one unit.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      dm_colleges: dm_colleges
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,44 @@
+uuid: f8512ed2-7cb7-4908-9278-4677bd584d7f
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 59HkckAbQHTerV5Ty5vXbjBUEScLIl0yWW5UovL0iVc
+id: people_page_tour
+label: 'Users - People Page Tour'
+routes:
+  -
+    route_name: entity.user.collection
+tips:
+  overview:
+    id: overview
+    plugin: text
+    label: Overview
+    weight: -10
+    position: auto
+    selector: null
+    body: "<p>You can add people to your website to edit the content, update menus, manage groups, and configure your website. </p>\r\n<p>If you want to add someone to your public directory to show they work in your unit, you want to use the Profile content type instead <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Content-Creation.aspx#how-to-create-a-profile\" target=\"_blank\">(instructions for adding a profile). </a> Adding someone to edit the website no longer adds a public profile of them to your directory. </p>\r\n<p>For full details about permissions, visit the Drupal how-to <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/People.aspx\" target=\"_blank\">Permissions article</a>.</p>\r\n"
+  add_user_option:
+    id: add_user_option
+    plugin: text
+    label: 'Add User Option'
+    weight: -10
+    position: right
+    selector: '.page-wrapper a[href="/admin/people/create"]'
+    body: '<p>We do not use the Add User option, as we require an ONID account to log into a website. Use the <strong>Add CAS users(s)</strong> button instead.</p>'
+  add_cas_user_option:
+    id: add_cas_user_option
+    plugin: text
+    label: 'Add CAS User Option'
+    weight: -10
+    position: right
+    selector: '.page-wrapper a[href="/admin/people/create/cas-bulk"]'
+    body: "<p>This <strong>Add CAS User</strong> option is the method we use to add people to edit websites.</p>\r\n<p>You need their ONID username, which you can find in the <a href=\"https://directory.oregonstate.edu/\" target=\"_blank\">OSU Directory</a>(requires log in).</p>\r\n<p><strong>Double check that they don't already have an account in the site, otherwise you'll run into errors adding them.</strong></p>"
+  edit_button:
+    id: edit_button
+    plugin: text
+    label: 'Edit Button'
+    weight: -10
+    position: left
+    selector: .edit
+    body: "<p>Use the Edit Button next to each name to update roles or block them from your site if you don't want them to be able to edit the site anymore. We do not recommend cancelling accounts.</p>"

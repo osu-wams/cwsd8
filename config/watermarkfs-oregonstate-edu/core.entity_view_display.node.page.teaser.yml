@@ -1,0 +1,37 @@
+uuid: c5bf9cee-bcb3-4b2f-93ed-297de0c31872
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.page.body
+    - field.field.node.page.field_meta_tags
+    - field.field.node.page.field_osu_meta_image
+    - field.field.node.page.layout_builder__layout
+    - node.type.page
+  module:
+    - text
+    - user
+_core:
+  default_config_hash: 7kG2vK6cNe-JvfGJfhKtXBzSrRemeWsaRoYwVjm0g-g
+id: node.page.teaser
+targetEntityType: node
+bundle: page
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  links:
+    weight: 101
+    region: content
+hidden:
+  field_meta_tags: true
+  field_osu_meta_image: true
+  layout_builder__layout: true
+  toc_js: true

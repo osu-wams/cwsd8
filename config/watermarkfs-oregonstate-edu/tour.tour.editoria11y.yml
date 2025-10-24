@@ -1,0 +1,60 @@
+uuid: 318b978e-e189-429e-8842-1aa7fcc2dcff
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: AVH7DxZd_--R6kjXgmZnpjecQPE1RzRjehUbQNxOBj8
+id: editoria11y
+label: Editoria11y
+routes:
+  -
+    route_name: editoria11y.reports_dashboard
+tips:
+  editoria11y_dashboard:
+    id: editoria11y_dashboard
+    plugin: text
+    label: 'Editoria11y Dashboard'
+    weight: -100
+    position: auto
+    selector: null
+    body: '<p>Editoria11y is the built-in accessibility checker in OSU Drupal 10 websites. This dashboard flags accessibility issues across the site for content editors to resolve to prevent potential accessibility errors from impacting users. Content authors must resolve issues in the dashboard to ensure WCAG 2.1 AA compliance for Oregon State University.</p>'
+  top_issues:
+    id: top_issues
+    plugin: text
+    label: 'Top Issues'
+    weight: -99
+    position: top
+    selector: .view-display-id-block_top_issues
+    body: '<p>Highlights the most common accessibility issues across the site. If certain accessibility problems occur much more frequently than others, this may suggest a wider site-wide concern.</p>'
+  pages_with_the_most_issues:
+    id: pages_with_the_most_issues
+    plugin: text
+    label: 'Pages with the Most Issues'
+    weight: -98
+    position: top
+    selector: .view-display-id-block_top_results
+    body: '<p>Shows the pages that have the highest concentration of accessibility issues, making it useful for determining which page to begin with.</p>'
+  recent_issues:
+    id: recent_issues
+    plugin: text
+    label: 'Recent Issues'
+    weight: -97
+    position: bottom
+    selector: .view-display-id-block_recent_issues
+    body: '<p>Displays recently flagged issues. Each time a page is saved, Editoria11y checks the page and updates this list. Stay informed about recent content updates and ensure all material is fully compliant.</p>'
+  recent_dismissals:
+    id: recent_dismissals
+    plugin: text
+    label: 'Recent Dismissals'
+    weight: -96
+    position: bottom
+    selector: .view-display-id-recent_dismissals
+    body: '<p>It shows recently resolved issues along with the authors who made those changes. This feature is helpful for double-checking whether any resolved issues were accidentally marked as OK and for identifying any issues that may have been overlooked.</p>'
+  export_results:
+    id: export_results
+    plugin: text
+    label: 'Export Results'
+    weight: -10
+    position: left
+    selector: .item-list
+    body: '<p>Download accessibility reports as a CSV spreadsheet.</p>'

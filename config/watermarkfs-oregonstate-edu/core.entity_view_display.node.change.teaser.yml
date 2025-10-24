@@ -1,0 +1,41 @@
+uuid: 7c529dbb-4a45-402d-a7c0-f1552e7ebe33
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.change.body
+    - field.field.node.change.field_change_date
+    - field.field.node.change.field_change_scope
+    - field.field.node.change.field_change_type
+    - field.field.node.change.field_description
+    - field.field.node.change.field_status
+    - node.type.change
+  module:
+    - text
+    - user
+id: node.change.teaser
+targetEntityType: node
+bundle: change
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_change_date: true
+  field_change_scope: true
+  field_change_type: true
+  field_description: true
+  field_status: true

@@ -1,0 +1,803 @@
+uuid: 1b7302ca-54de-4188-b520-7445916bc515
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_dm_unit
+    - node.type.training
+    - taxonomy.vocabulary.dm_colleges
+  content:
+    - 'taxonomy_term:dm_colleges:22dc5e13-6cf5-43b7-ab4e-c320944027de'
+    - 'taxonomy_term:dm_colleges:70f8cecd-17c4-419f-a55f-8014b4f8eae9'
+    - 'taxonomy_term:dm_colleges:7c1e5ea8-d9db-4285-bdeb-db890c4ed930'
+    - 'taxonomy_term:dm_colleges:896a378d-ffde-4c2f-8546-81584a82e3a0'
+    - 'taxonomy_term:dm_colleges:8dc266b0-d0b9-46e6-8f30-188b4434b72b'
+    - 'taxonomy_term:dm_colleges:da2e0b35-2fce-40e0-93bb-3f0258e8002f'
+    - 'taxonomy_term:dm_colleges:efc7e194-7fe1-47af-972f-a82824c6d538'
+  module:
+    - node
+    - taxonomy
+    - user
+id: training
+label: Training
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: Training
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+        field_dm_unit:
+          id: field_dm_unit
+          table: node__field_dm_unit
+          field: field_dm_unit
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: tid
+          type: entity_reference_label
+          settings:
+            target_type: taxonomy_term
+          group_column: tid
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: 0
+      pager:
+        type: full
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 0
+          total_pages: null
+          id: 0
+          tags:
+            next: 'next ›'
+            previous: '‹ previous'
+            first: '« first'
+            last: 'last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 20, 40, 60'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+        perm: 'access content'
+      cache:
+        type: none
+      sorts:
+        title_1:
+          id: title_1
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            training: training
+        field_dm_unit_tid:
+          id: field_dm_unit_tid
+          table: node__field_dm_unit
+          field: field_dm_unit_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_dm_unit_tid_op
+            label: 'DM Unit (field_dm_unit)'
+            description: null
+            use_operator: false
+            operator: in
+            identifier: field_dm_unit_tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: dm_colleges
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+          ui_name: ''
+          field_name: field_dm_unit
+      style:
+        type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_tags: {  }
+      css_class: ''
+      group_by: false
+      display_extenders: {  }
+      style_plugin: default
+      style_options:
+        grouping:
+          -
+            field: field_dm_unit
+            rendered: 1
+            rendered_strip: 0
+        row_class: ''
+        default_row_class: 1
+        row_class_special: 1
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_dm_unit'
+  block_1:
+    id: block_1
+    display_title: 'All Units Training Information'
+    display_plugin: block
+    position: 3
+    display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            training: training
+        field_dm_unit_tid:
+          id: field_dm_unit_tid
+          table: node__field_dm_unit
+          field: field_dm_unit_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            36: 36
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_dm_unit_tid_op
+            label: 'DM Unit (field_dm_unit)'
+            description: null
+            use_operator: false
+            operator: in
+            identifier: field_dm_unit_tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: dm_colleges
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+          ui_name: ''
+          field_name: field_dm_unit
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        fields: false
+        sorts: true
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page_1:
+    id: page_1
+    display_title: 'Individual Page'
+    display_plugin: page
+    position: 3
+    display_options:
+      title: ''
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: field_dm_unit
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: term_name
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          convert_spaces: false
+      empty:
+        http_status_code:
+          id: http_status_code
+          table: views
+          field: http_status_code
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: http_status_code
+          empty: true
+          status_code: 404
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: 'There are no training materials matching this term. Please see the <a href="/training">training page</a> for all available trainings.'
+            format: full_html
+          tokenize: false
+      arguments:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: field_dm_unit
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: string
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: true
+          title: '{{ arguments.name }} Training'
+          default_argument_type: taxonomy_tid
+          default_argument_options:
+            term_page: '1'
+            node: false
+            limit: false
+            vids: {  }
+            anyall: ','
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          glossary: false
+          limit: 0
+          case: ucwords
+          path_case: none
+          transform_dash: true
+          break_phrase: false
+          add_table: false
+          require_value: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            training: training
+        field_dm_unit_tid:
+          id: field_dm_unit_tid
+          table: node__field_dm_unit
+          field: field_dm_unit_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            36: 36
+            6: 6
+            11: 11
+            16: 16
+            21: 21
+            31: 31
+            41: 41
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_dm_unit_tid_op
+            label: 'DM Unit (field_dm_unit)'
+            description: null
+            use_operator: false
+            operator: in
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_dm_unit_tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: dm_colleges
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+          ui_name: ''
+          field_name: field_dm_unit
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: true
+          replica: false
+          query_tags: {  }
+      defaults:
+        empty: false
+        query: false
+        title: false
+        css_class: false
+        relationships: false
+        fields: false
+        sorts: true
+        arguments: false
+        filters: false
+        filter_groups: false
+      relationships:
+        field_dm_unit:
+          id: field_dm_unit
+          table: node__field_dm_unit
+          field: field_dm_unit
+          relationship: none
+          group_type: group
+          admin_label: 'field_dm_unit: Taxonomy term'
+          plugin_id: standard
+          required: false
+      css_class: 'container mb-6'
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: '[arguments:0]'
+          tokenize: false
+      path: training/%
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page_2:
+    id: page_2
+    display_title: 'All Units Page'
+    display_plugin: page
+    position: 3
+    display_options:
+      title: 'General Training for All'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            training: training
+        field_dm_unit_tid:
+          id: field_dm_unit_tid
+          table: node__field_dm_unit
+          field: field_dm_unit_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            36: 36
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_dm_unit_tid_op
+            label: 'DM Unit (field_dm_unit)'
+            description: null
+            use_operator: false
+            operator: in
+            identifier: field_dm_unit_tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: dm_colleges
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+          ui_name: ''
+          field_name: field_dm_unit
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        css_class: false
+        fields: false
+        sorts: true
+        filters: false
+        filter_groups: false
+      css_class: 'container mb-6'
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: training/general
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

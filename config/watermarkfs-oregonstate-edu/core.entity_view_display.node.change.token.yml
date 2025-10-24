@@ -1,0 +1,62 @@
+uuid: 924345b1-c713-443f-834d-8efb42464b35
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.token
+    - field.field.node.change.body
+    - field.field.node.change.field_change_date
+    - field.field.node.change.field_change_scope
+    - field.field.node.change.field_change_type
+    - field.field.node.change.field_description
+    - field.field.node.change.field_status
+    - node.type.change
+  module:
+    - datetime
+    - options
+    - text
+    - user
+id: node.change.token
+targetEntityType: node
+bundle: change
+mode: token
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_change_date:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: long
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_change_scope:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_change_type:
+    type: list_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_description: true
+  field_status: true
