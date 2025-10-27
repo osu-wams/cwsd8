@@ -1,0 +1,45 @@
+diff --git a/src/Form/ShurlyEditForm.php b/src/Form/ShurlyEditForm.php
+index 6c3148e..090ef4f 100644
+--- a/src/Form/ShurlyEditForm.php
++++ b/src/Form/ShurlyEditForm.php
+@@ -105,10 +105,11 @@ class ShurlyEditForm extends FormBase {
+       '#disabled' => TRUE,
+     ];
+ 
+-    $form['destination'] = [
++    $form['new_destination'] = [
+       '#type' => 'textfield',
+       '#title' => 'destination',
+-      '#value' => $shurly_link[$rid]->destination,
++      '#maxlength' => 2048,
++      '#default_value' => $shurly_link[$rid]->destination,
+     ];
+ 
+     $form['rid'] = [
+@@ -133,7 +134,7 @@ class ShurlyEditForm extends FormBase {
+    * {@inheritdoc}
+    */
+   public function validateForm(array &$form, FormStateInterface $form_state) {
+-    if (!shurly_validate_long($form_state->getValue('destination'))) {
++    if (!shurly_validate_long($form_state->getValue('new_destination'))) {
+       $form_state->setErrorByName('long_url', $this->t('Invalid URL'));
+     }
+   }
+@@ -145,7 +146,7 @@ class ShurlyEditForm extends FormBase {
+     $storage = &$form_state->getStorage();
+ 
+     $rid = $storage['shurly']['rid'];
+-    $new_destination = $form_state->getValue('destination');
++    $new_destination = $form_state->getValue('new_destination');
+ 
+     $request_time = \Drupal::time()->getRequestTime();
+ 
+@@ -171,7 +172,7 @@ class ShurlyEditForm extends FormBase {
+       ->query('UPDATE {shurly} SET destination = :new_destination, count = :reset_count WHERE rid = :rid', [
+         ':new_destination' => $new_destination,
+         ':reset_count' => 0,
+-        'rid' => $rid,
++        ':rid' => $rid,
+       ]);
+ 
+     unset($storage['shurly']);
