@@ -1,0 +1,43 @@
+uuid: caf1df74-5f04-45c0-8fdc-f7f45e5a0246
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - views
+id: academic_calendar_administrative_views
+label: 'Academic Calendar Administrative Views'
+routes:
+  -
+    route_name: entity.view.edit_form
+    route_params:
+      view: academic_calendar
+  -
+    route_name: entity.view.edit_display_form
+    route_params:
+      view: academic_calendar
+tips:
+  academic_date_updates:
+    id: academic_date_updates
+    plugin: text
+    label: 'Academic Date Updates'
+    weight: -10
+    position: auto
+    selector: ''
+    body: 'To update the Academic Calendar Default Date range filter follow these steps.'
+  contextual_filter_for_dates:
+    id: contextual_filter_for_dates
+    plugin: text
+    label: 'Contextual Filter for dates'
+    weight: -9
+    position: left
+    selector: '#edit-displays-settings-settings-content-tab-content-details-columns-third .views-ui-display-tab-bucket.argument'
+    body: 'The Academic Calendar will use this filter to apply a date range for out Dates. This will be used by default for anyone who visits the calendar and will have to be updated periodically.'
+  date_range_contextual_filter:
+    id: date_range_contextual_filter
+    plugin: text
+    label: 'Date Range Contextual Filter'
+    weight: -7
+    position: top
+    selector: '.views-ui-display-tab-bucket.argument .views-display-setting'
+    body: "<p>Click the link for the Contextual filter will bring up a Modal and in that modal we can change the default date range. This filter will use a full `Year-Month-Day` with two dashes to separate the start and end ranges.</p>\r\n<p><em>e.g. 2024-09-01--2026-08-31</em></p>"

@@ -1,0 +1,49 @@
+uuid: 6c6b2604-7f6e-45a7-b6fe-99c220981e00
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: academic_calendar
+label: 'Academic Calendar'
+code: |-
+  const feedIconLinks = document.querySelectorAll('div.feed-icons a.feed-icon');
+  feedIconLinks.forEach((feedLink) => {
+      if (feedLink.text.includes('Filtered')) {
+        feedLink.classList.add('d-none');
+      }
+    },
+  );
+  const searchParams = new URLSearchParams(window.location.search);
+  if (searchParams.size > 0 && !(searchParams.has('page') && searchParams.size === 1)) {
+    console.log(searchParams);
+    feedIconLinks.forEach((feedLink) => {
+      if (feedLink.text.includes('Filtered')) {
+        feedLink.classList.remove('d-none');
+      }
+      if (feedLink.text.includes('Full')) {
+        feedLink.classList.add('d-none');
+      }
+    });
+  }
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/academic-calendar\r\n/academic-calendar/*\r\n/academic-calendar-archive\r\n/academic-calendar-archive/*\r\n/osu-academic-calendar\r\n/osu-academic-calendar/*"
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,1529 @@
+uuid: c6a8b15f-7b0e-4415-b790-c2dbc47cfae8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.node.field_send_date
+    - node.type.student_emails
+    - taxonomy.vocabulary.student_services
+  module:
+    - datetime
+    - node
+    - taxonomy
+    - text
+    - user
+    - views_bootstrap
+id: student_email_logs
+label: 'Student Email Logs'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'Archived Student Email Logs 2020-2021'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+          settings:
+            link_to_entity: false
+        body:
+          id: body
+          table: node__body
+          field: body
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+        field_send_date:
+          id: field_send_date
+          table: node__field_send_date
+          field: field_send_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_custom
+          settings:
+            timezone_override: ''
+            date_format: 'D, n/j/y'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          alter:
+            alter_text: true
+            text: 'Link to this Email'
+            make_link: true
+            path: '[path]'
+          element_label_colon: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ field_send_date }} : {{ title }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+      pager:
+        type: full
+        options:
+          pagination_heading_level: h4
+          items_per_page: 20
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+      cache:
+        type: none
+      sorts:
+        field_send_date_value:
+          id: field_send_date_value
+          table: node__field_send_date
+          field: field_send_date_value
+          plugin_id: datetime
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            student_emails: student_emails
+          group: 1
+        tid:
+          id: tid
+          table: taxonomy_index
+          field: tid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: tid_op
+            label: 'Filter by Category'
+            description: ''
+            use_operator: false
+            operator: in
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: student_services
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        body_value:
+          id: body_value
+          table: node__body
+          field: body_value
+          plugin_id: string
+          operator: contains
+          group: 1
+          exposed: true
+          expose:
+            operator_id: body_value_op
+            label: 'Search for a topic'
+            operator: body_value_op
+            identifier: body_value
+            remember_roles:
+              authenticated: authenticated
+        body_format:
+          id: body_format
+          table: node__body
+          field: body_format
+          plugin_id: string
+          operator: or
+          exposed: true
+          expose:
+            operator_id: body_format_op
+            label: 'Body (body:format)'
+            operator: body_format_op
+            identifier: body_format
+        field_send_date_value:
+          id: field_send_date_value
+          table: node__field_send_date
+          field: field_send_date_value
+          plugin_id: datetime
+          operator: '<'
+          value:
+            max: '2021-09-01'
+            value: '2021-09-01'
+      style:
+        type: views_bootstrap_accordion
+        options:
+          grouping: {  }
+          panel_output: single
+          panel_title_field: nothing
+          flush: false
+          behavior: closed
+          sections:
+            first: 0
+            middle: 0
+            last: 0
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline:
+            title: title
+            field_send_date: field_send_date
+          separator: ''
+          hide_empty: true
+      query:
+        type: views_query
+        options: {  }
+      css_class: 'container p-2 my-2'
+      use_more_always: false
+      display_extenders: {  }
+      style_plugin: views_bootstrap_accordion_plugin_style
+      style_options:
+        title_field: nothing
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_send_date'
+  page:
+    id: page
+    display_title: 21-22
+    display_plugin: page
+    position: 2
+    display_options:
+      title: 'Archived Student Email Logs 2021-2022'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+          settings:
+            link_to_entity: false
+        body:
+          id: body
+          table: node__body
+          field: body
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+        field_send_date:
+          id: field_send_date
+          table: node__field_send_date
+          field: field_send_date
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+          settings:
+            format_type: custom
+            custom_date_format: m/d/Y
+            fromto: both
+            multiple_number: ''
+            multiple_from: ''
+            multiple_to: ''
+            show_remaining_days: 0
+            show_repeat_rule: show
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          alter:
+            alter_text: true
+            text: 'Link to this Email'
+            make_link: true
+            path: '[path]'
+          element_label_colon: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          alter:
+            text: '{{ field_send_date }} : {{ title }}'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            student_emails: student_emails
+          group: 1
+        tid:
+          id: tid
+          table: taxonomy_index
+          field: tid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: tid_op
+            label: 'Filter by Category'
+            description: ''
+            use_operator: false
+            operator: in
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: student_services
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        body_value:
+          id: body_value
+          table: node__body
+          field: body_value
+          plugin_id: string
+          operator: contains
+          group: 1
+          exposed: true
+          expose:
+            operator_id: body_value_op
+            label: 'Search for a topic'
+            operator: body_value_op
+            identifier: body_value
+            remember_roles:
+              authenticated: authenticated
+        body_format:
+          id: body_format
+          table: node__body
+          field: body_format
+          plugin_id: string
+          operator: or
+          exposed: true
+          expose:
+            operator_id: body_format_op
+            label: 'Body (body:format)'
+            operator: body_format_op
+            identifier: body_format
+        field_send_date_value:
+          id: field_send_date_value
+          table: node__field_send_date
+          field: field_send_date_value
+          plugin_id: datetime
+          operator: between
+          value:
+            min: '2021-09-01'
+            max: '2022-09-01'
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        fields: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: log-emails-sent-students-student-communications-21-22
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_send_date'
+  page_1:
+    id: page_1
+    display_title: 20-21
+    display_plugin: page
+    position: 3
+    display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+          settings:
+            link_to_entity: false
+        body:
+          id: body
+          table: node__body
+          field: body
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+        field_send_date:
+          id: field_send_date
+          table: node__field_send_date
+          field: field_send_date
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+          settings:
+            format_type: custom
+            custom_date_format: m/d/Y
+            fromto: both
+            multiple_number: ''
+            multiple_from: ''
+            multiple_to: ''
+            show_remaining_days: 0
+            show_repeat_rule: show
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          alter:
+            alter_text: true
+            text: 'Link to this Email'
+            make_link: true
+            path: '[path]'
+          element_label_colon: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          alter:
+            text: '{{ field_send_date }} : {{ title }}'
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        fields: false
+      display_description: ''
+      display_extenders: {  }
+      path: log-emails-sent-students-student-communications-20-21
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_send_date'
+  page_2:
+    id: page_2
+    display_title: 22-23
+    display_plugin: page
+    position: 4
+    display_options:
+      title: 'Archived Student Email Logs 2022-2023'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+          settings:
+            link_to_entity: false
+        body:
+          id: body
+          table: node__body
+          field: body
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+        field_send_date:
+          id: field_send_date
+          table: node__field_send_date
+          field: field_send_date
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+          settings:
+            format_type: custom
+            custom_date_format: m/d/Y
+            fromto: both
+            multiple_number: ''
+            multiple_from: ''
+            multiple_to: ''
+            show_remaining_days: 0
+            show_repeat_rule: show
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          alter:
+            alter_text: true
+            text: 'Link to this Email'
+            make_link: true
+            path: '[path]'
+          element_label_colon: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          alter:
+            text: '{{ field_send_date }} : {{ title }}'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            student_emails: student_emails
+          group: 1
+        tid:
+          id: tid
+          table: taxonomy_index
+          field: tid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: tid_op
+            label: 'Filter by Category'
+            description: ''
+            use_operator: false
+            operator: in
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: student_services
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        body_value:
+          id: body_value
+          table: node__body
+          field: body_value
+          plugin_id: string
+          operator: contains
+          group: 1
+          exposed: true
+          expose:
+            operator_id: body_value_op
+            label: 'Search for a topic'
+            operator: body_value_op
+            identifier: body_value
+            remember_roles:
+              authenticated: authenticated
+        body_format:
+          id: body_format
+          table: node__body
+          field: body_format
+          plugin_id: string
+          operator: or
+          exposed: true
+          expose:
+            operator_id: body_format_op
+            label: 'Body (body:format)'
+            operator: body_format_op
+            identifier: body_format
+        field_send_date_value:
+          id: field_send_date_value
+          table: node__field_send_date
+          field: field_send_date_value
+          plugin_id: datetime
+          operator: between
+          value:
+            min: '2022-09-01'
+            max: '2023-09-01'
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        fields: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders: {  }
+      path: log-emails-sent-students-student-communications-22-23
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_send_date'
+  page_3:
+    id: page_3
+    display_title: 23-24
+    display_plugin: page
+    position: 5
+    display_options:
+      title: 'Archived Student Email Logs 23-24'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+          settings:
+            link_to_entity: false
+        body:
+          id: body
+          table: node__body
+          field: body
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+        field_send_date:
+          id: field_send_date
+          table: node__field_send_date
+          field: field_send_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: datetime_custom
+          settings:
+            timezone_override: ''
+            date_format: 'D, n/j/y'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          alter:
+            alter_text: true
+            text: 'Link to this Email'
+            make_link: true
+            path: '[path]'
+          element_label_colon: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          alter:
+            text: '{{ field_send_date }} : {{ title }}'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            student_emails: student_emails
+          group: 1
+        tid:
+          id: tid
+          table: taxonomy_index
+          field: tid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: tid_op
+            label: 'Filter by Category'
+            description: ''
+            use_operator: false
+            operator: in
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: student_services
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        body_value:
+          id: body_value
+          table: node__body
+          field: body_value
+          plugin_id: string
+          operator: contains
+          group: 1
+          exposed: true
+          expose:
+            operator_id: body_value_op
+            label: 'Search for a topic'
+            operator: body_value_op
+            identifier: body_value
+            remember_roles:
+              authenticated: authenticated
+        body_format:
+          id: body_format
+          table: node__body
+          field: body_format
+          plugin_id: string
+          operator: or
+          exposed: true
+          expose:
+            operator_id: body_format_op
+            label: 'Body (body:format)'
+            operator: body_format_op
+            identifier: body_format
+        field_send_date_value:
+          id: field_send_date_value
+          table: node__field_send_date
+          field: field_send_date_value
+          relationship: none
+          group_type: group
+          plugin_id: datetime
+          operator: between
+          value:
+            min: '2023-09-02'
+            max: '2024-09-01'
+            value: null
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles: {  }
+            operator_label: ''
+            limit_operators: false
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+          granularity: day
+          form_type: date_select
+          default_date: ''
+          default_to_date: ''
+          year_range: '-3:+3'
+          add_delta: ''
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        fields: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: log-emails-sent-students-student-communications-23-24
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_send_date'
+  page_4:
+    id: page_4
+    display_title: 24-25
+    display_plugin: page
+    position: 5
+    display_options:
+      title: 'Archived Student Email Logs 2024-2025'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            student_emails: student_emails
+          group: 1
+        tid:
+          id: tid
+          table: taxonomy_index
+          field: tid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: tid_op
+            label: 'Filter by Category'
+            description: ''
+            use_operator: false
+            operator: in
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: student_services
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        body_value:
+          id: body_value
+          table: node__body
+          field: body_value
+          plugin_id: string
+          operator: contains
+          group: 1
+          exposed: true
+          expose:
+            operator_id: body_value_op
+            label: 'Search for a topic'
+            operator: body_value_op
+            identifier: body_value
+            remember_roles:
+              authenticated: authenticated
+        body_format:
+          id: body_format
+          table: node__body
+          field: body_format
+          plugin_id: string
+          operator: or
+          exposed: true
+          expose:
+            operator_id: body_format_op
+            label: 'Body (body:format)'
+            operator: body_format_op
+            identifier: body_format
+        field_send_date_value:
+          id: field_send_date_value
+          table: node__field_send_date
+          field: field_send_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: between
+          value:
+            min: '2024-09-02'
+            max: '2025-09-01'
+            value: ''
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+            operator_label: ''
+            limit_operators: false
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+          granularity: day
+          form_type: date_select
+          default_date: ''
+          default_to_date: ''
+          year_range: '-3:+3'
+          add_delta: ''
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        fields: true
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: log-emails-sent-students-student-communications-24-25
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_send_date'
+  page_5:
+    id: page_5
+    display_title: 25-26
+    display_plugin: page
+    position: 5
+    display_options:
+      title: 'Current Student Email Logs 2025-2026'
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            student_emails: student_emails
+          group: 1
+        tid:
+          id: tid
+          table: taxonomy_index
+          field: tid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: tid_op
+            label: 'Filter by Category'
+            description: ''
+            use_operator: false
+            operator: in
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: student_services
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        body_value:
+          id: body_value
+          table: node__body
+          field: body_value
+          plugin_id: string
+          operator: contains
+          group: 1
+          exposed: true
+          expose:
+            operator_id: body_value_op
+            label: 'Search for a topic'
+            operator: body_value_op
+            identifier: body_value
+            remember_roles:
+              authenticated: authenticated
+        body_format:
+          id: body_format
+          table: node__body
+          field: body_format
+          plugin_id: string
+          operator: or
+          exposed: true
+          expose:
+            operator_id: body_format_op
+            label: 'Body (body:format)'
+            operator: body_format_op
+            identifier: body_format
+        field_send_date_value:
+          id: field_send_date_value
+          table: node__field_send_date
+          field: field_send_date_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: between
+          value:
+            min: '2025-09-02'
+            max: '2026-09-01'
+            value: ''
+            type: date
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: ''
+            operator_label: ''
+            limit_operators: false
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+          granularity: day
+          form_type: date_select
+          default_date: ''
+          default_to_date: ''
+          year_range: '-3:+3'
+          add_delta: ''
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        fields: true
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: log-emails-sent-students-student-communications
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_send_date'

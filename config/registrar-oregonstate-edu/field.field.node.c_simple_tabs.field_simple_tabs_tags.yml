@@ -1,0 +1,29 @@
+uuid: 864c2e65-3547-4b81-8270-97e0d084af4c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_simple_tabs_tags
+    - node.type.c_simple_tabs
+    - taxonomy.vocabulary.simple_tabs_content
+id: node.c_simple_tabs.field_simple_tabs_tags
+field_name: field_simple_tabs_tags
+entity_type: node
+bundle: c_simple_tabs
+label: 'Simple Tabs Tags'
+description: 'Assign one or more taxonomy terms to group related tabs together. This facilitates the creation of curated lists and allows users to find related tabs easily.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      simple_tabs_content: simple_tabs_content
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

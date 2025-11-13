@@ -1,0 +1,71 @@
+uuid: 3a8361ab-3fe0-434b-8f40-7b1dcfe1773b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: em_global_links
+label: 'EM Global Links'
+code: |-
+  /* EM Header Links DAC 8.7.2024 */
+
+  #block-madrone-emgloballinks {
+      margin-top: 20px;
+      text-align:center;
+      padding:0 5px;
+      border:none;
+  }
+
+  #block-madrone-emgloballinks  .alert {
+      text-align: center;
+  }
+
+  #block-madrone-emgloballinks .btn.btn-secondary {
+      background-color: #000;
+      color: #fff;
+      /*border: 2px solid #000;*/
+      border:none;
+      border-radius: 5px;
+      text-transform: uppercase;
+      font-size:13.5px;
+  }
+
+  #block-madrone-emgloballinks .btn.btn-secondary a:hover{ 
+    text-decoration:none;
+  }
+
+  #block-madrone-emgloballinks .btn.btn-secondary:focus {
+  background-color:gray;  
+    
+  }
+  #block-madrone-emgloballinks .btn.btn-secondary:hover {
+  background-color:gray;  
+    
+  }
+
+  @media (min-width:1092px) {
+  #block-madrone-emgloballinks {
+      position: absolute;
+      top: -3px;
+      right: 300px;
+      margin-top:0!important;
+  }}
+
+  @media (max-width:1091px) {
+  #block-madrone-emgloballinks {
+      display: none;
+  }}
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

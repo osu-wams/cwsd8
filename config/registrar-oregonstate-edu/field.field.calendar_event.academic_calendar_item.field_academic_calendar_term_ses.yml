@@ -1,0 +1,29 @@
+uuid: 2cb24d0d-61a3-45c5-9037-1ef103860f3a
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.calendar_event.academic_calendar_item
+    - field.storage.calendar_event.field_academic_calendar_term_ses
+    - taxonomy.vocabulary.academic_calendar_term_session
+id: calendar_event.academic_calendar_item.field_academic_calendar_term_ses
+field_name: field_academic_calendar_term_ses
+entity_type: calendar_event
+bundle: academic_calendar_item
+label: 'Academic Calendar term session'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      academic_calendar_term_session: academic_calendar_term_session
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

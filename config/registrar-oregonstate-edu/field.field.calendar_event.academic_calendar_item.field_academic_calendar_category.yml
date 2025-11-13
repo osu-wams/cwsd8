@@ -1,0 +1,29 @@
+uuid: e5b995aa-fc34-4649-9225-a24c072b6b44
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.calendar_event.academic_calendar_item
+    - field.storage.calendar_event.field_academic_calendar_category
+    - taxonomy.vocabulary.academic_calendar_category
+id: calendar_event.academic_calendar_item.field_academic_calendar_category
+field_name: field_academic_calendar_category
+entity_type: calendar_event
+bundle: academic_calendar_item
+label: Category
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      academic_calendar_category: academic_calendar_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

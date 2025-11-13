@@ -1,0 +1,29 @@
+uuid: 8c35d6dd-3af2-487f-9178-1e22a88b63ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.calendar_event.academic_calendar_item
+    - field.storage.calendar_event.field_academic_calendar_student
+    - taxonomy.vocabulary.academic_calendar_student
+id: calendar_event.academic_calendar_item.field_academic_calendar_student
+field_name: field_academic_calendar_student
+entity_type: calendar_event
+bundle: academic_calendar_item
+label: Students
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      academic_calendar_student: academic_calendar_student
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,160 @@
+uuid: 3b563aef-15fd-484c-8faf-48da48558ba1
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.calendar_event.academic_calendar_item
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_category
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_dl_only
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_link
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_term
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_term_ses
+    - field.field.calendar_event.academic_calendar_item.field_academic_date_range
+  module:
+    - eck
+    - feeds_tamper
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      f3f043c1-058a-4467-9930-2723ea71e45d:
+        true_value: 'Y'
+        false_value: 'N'
+        match_case: false
+        no_match_value: false
+        uuid: f3f043c1-058a-4467-9930-2723ea71e45d
+        plugin: convert_boolean
+        source: show_in_download_only
+        weight: 0
+        label: 'Convert to Boolean'
+label: 'Academic Calendar Dates'
+id: academic_calendar_dates
+description: 'Provide a way to bulk create Academic Calendar Dates for Registrar'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:calendar_event'
+processor_configuration:
+  values:
+    type: academic_calendar_item
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  description:
+    value: Description
+    label: Description
+    machine_name: description
+    type: csv
+  term:
+    value: Term
+    label: Term
+    machine_name: term
+    type: csv
+  date_from:
+    value: 'Date From'
+    label: 'Date From'
+    machine_name: date_from
+    type: csv
+  date_to:
+    value: 'Date To'
+    label: 'Date To'
+    machine_name: date_to
+    type: csv
+  category:
+    value: Category
+    label: Category
+    machine_name: category
+    type: csv
+  term_session:
+    value: 'Term Session'
+    label: 'Term Session'
+    machine_name: term_session
+    type: csv
+  link:
+    value: Link
+    label: Link
+    machine_name: link
+    type: csv
+  show_in_download_only:
+    value: 'Show in Download Only'
+    label: 'Show in Download Only'
+    machine_name: show_in_download_only
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_academic_calendar_term
+    map:
+      target_id: term
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 0
+      autocreate_bundle: academic_calendar_term
+  -
+    target: field_academic_date_range
+    map:
+      value: date_from
+      end_value: date_to
+    settings:
+      language: ''
+      timezone: America/Los_Angeles
+  -
+    target: field_academic_calendar_category
+    map:
+      target_id: category
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: academic_calendar_category
+  -
+    target: field_academic_calendar_term_ses
+    map:
+      target_id: term_session
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: academic_calendar_term_session
+  -
+    target: field_academic_calendar_link
+    map:
+      uri: link
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_academic_calendar_dl_only
+    map:
+      value: show_in_download_only
+    settings:
+      language: null

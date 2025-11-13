@@ -1,0 +1,2616 @@
+uuid: d857db89-310a-432b-837e-f248e4f99e20
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.calendar_event.academic_calendar_item
+    - field.storage.calendar_event.field_academic_calendar_category
+    - field.storage.calendar_event.field_academic_calendar_link
+    - field.storage.calendar_event.field_academic_date_range
+    - field.storage.calendar_event.field_body
+    - system.menu.main
+    - taxonomy.vocabulary.academic_calendar_category
+    - taxonomy.vocabulary.academic_calendar_term
+    - taxonomy.vocabulary.academic_calendar_term_session
+  module:
+    - better_exposed_filters
+    - contextual_range_filter
+    - date_ical
+    - datetime
+    - datetime_range
+    - eck
+    - link
+    - taxonomy
+    - text
+    - user
+    - views_bootstrap
+id: academic_calendar
+label: 'Academic Calendar'
+module: views
+description: 'Provides a way to view and Download Academic Dates.'
+tag: 'OSU, Academic Calendar, Dates'
+base_table: calendar_event_field_data
+base_field: id
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Academic Calendar'
+      fields:
+        field_academic_date_range:
+          id: field_academic_date_range
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range
+          relationship: none
+          group_type: group
+          admin_label: 'Grouping Month Year (Date)'
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: month_year
+            from_to: start_date
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_academic_date_range_1:
+          id: field_academic_date_range_1
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Month/Day
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: cal-date
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: simple_month_and_day
+            from_to: both
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_academic_date_range_2:
+          id: field_academic_date_range_2
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Day of Week'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: cal-dow
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: day_only
+            from_to: both
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_academic_calendar_link:
+          id: field_academic_calendar_link
+          table: calendar_event__field_academic_calendar_link
+          field: field_academic_calendar_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link_separate
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        title:
+          id: title
+          table: calendar_event_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: null
+          entity_field: title
+          plugin_id: field
+          label: Name
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: true
+            path: '{{ field_academic_calendar_link }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        operations:
+          id: operations
+          table: calendar_event
+          field: operations
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: calendar_event
+          plugin_id: entity_operations
+          label: 'Operations links'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          destination: false
+      pager:
+        type: full
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 50
+          total_pages: null
+          id: 0
+          tags:
+            next: 'Next ›'
+            previous: '‹ Previous'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: true
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              field_academic_calendar_category_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_academic_calendar_term_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_academic_calendar_term_ses_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+              field_academic_date_range_value_1:
+                plugin_id: default
+                advanced:
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  is_secondary: false
+                  hide_label: false
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: 'There are no Academic Dates that meet your filter requirements'
+            format: full_html
+          tokenize: false
+      sorts:
+        field_academic_date_range_value:
+          id: field_academic_date_range_value
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: day
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: calendar_event_field_data
+          field: status
+          entity_type: calendar_event
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: calendar_event_field_data
+          field: type
+          entity_type: calendar_event
+          entity_field: type
+          plugin_id: bundle
+          value:
+            academic_calendar_item: academic_calendar_item
+          group: 1
+        field_academic_calendar_archive_value:
+          id: field_academic_calendar_archive_value
+          table: calendar_event__field_academic_calendar_archive
+          field: field_academic_calendar_archive_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_academic_calendar_dl_only_value:
+          id: field_academic_calendar_dl_only_value
+          table: calendar_event__field_academic_calendar_dl_only
+          field: field_academic_calendar_dl_only_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_academic_calendar_category_target_id:
+          id: field_academic_calendar_category_target_id
+          table: calendar_event__field_academic_calendar_category
+          field: field_academic_calendar_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: Category
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_calendar_category_target_id_op
+            label: Category
+            description: ''
+            use_operator: false
+            operator: field_academic_calendar_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: category
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: academic_calendar_category
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_academic_calendar_term_target_id:
+          id: field_academic_calendar_term_target_id
+          table: calendar_event__field_academic_calendar_term
+          field: field_academic_calendar_term_target_id
+          relationship: none
+          group_type: group
+          admin_label: Term
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_calendar_term_target_id_op
+            label: Term
+            description: ''
+            use_operator: false
+            operator: field_academic_calendar_term_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: term
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: academic_calendar_term
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_academic_calendar_term_ses_target_id:
+          id: field_academic_calendar_term_ses_target_id
+          table: calendar_event__field_academic_calendar_term_ses
+          field: field_academic_calendar_term_ses_target_id
+          relationship: none
+          group_type: group
+          admin_label: 'Term Session'
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_calendar_term_ses_target_id_op
+            label: 'Term Session'
+            description: ''
+            use_operator: false
+            operator: field_academic_calendar_term_ses_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: term_session
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+              alert_author: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: academic_calendar_term_session
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_academic_date_range_value_1:
+          id: field_academic_date_range_value_1
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range_value
+          relationship: none
+          group_type: group
+          admin_label: 'Academic Year'
+          plugin_id: datetime
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_date_range_value_1_op
+            label: 'Academic Date Range (field_academic_date_range)'
+            description: null
+            use_operator: false
+            operator: field_academic_date_range_value_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_academic_date_range_value_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: null
+            max_placeholder: null
+            placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'Academic Year'
+            description: ''
+            identifier: academic_year
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 2024-2025
+                operator: between
+                value:
+                  min: '2024-07-01'
+                  max: '2025-06-30'
+                  value: ''
+                  type: date
+              2:
+                title: 2025-2026
+                operator: between
+                value:
+                  min: '2025-07-01'
+                  max: '2026-06-30'
+                  value: ''
+                  type: date
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: views_bootstrap_table
+        options:
+          grouping:
+            -
+              field: field_academic_date_range
+              rendered: true
+              rendered_strip: false
+          row_class: ''
+          default_row_class: true
+          columns:
+            field_academic_date_range: field_academic_date_range
+            field_academic_date_range_1: field_academic_date_range_1
+            field_academic_date_range_2: field_academic_date_range_2
+            field_academic_calendar_link: field_academic_calendar_link
+            title: title
+            operations: operations
+          default: '-1'
+          info:
+            field_academic_date_range:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: true
+              responsive: ''
+            field_academic_date_range_1:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: true
+              responsive: ''
+            field_academic_date_range_2:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: true
+              responsive: ''
+            field_academic_calendar_link:
+              align: ''
+              separator: ''
+              empty_column: true
+              responsive: ''
+            title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: true
+              responsive: ''
+            operations:
+              align: ''
+              separator: ''
+              empty_column: true
+              responsive: ''
+          override: true
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+          responsive: false
+          table_class_custom: ''
+          bootstrap_styles:
+            bordered: '0'
+            borderless: '0'
+            sm: sm
+            hover: hover
+            striped: striped
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships: {  }
+      css_class: 'academic-calendar container p-4'
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags:
+        - 'config:field.storage.calendar_event.field_academic_calendar_link'
+        - 'config:field.storage.calendar_event.field_academic_date_range'
+  feed_1:
+    id: feed_1
+    display_title: 'Filtered Feed'
+    display_plugin: feed
+    position: 4
+    display_options:
+      title: 'Filtered Academic Calendar'
+      fields:
+        field_academic_date_range:
+          id: field_academic_date_range
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range
+          relationship: none
+          group_type: group
+          admin_label: 'Event Date'
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: html_datetime
+            from_to: both
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_academic_date_range_2:
+          id: field_academic_date_range_2
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Day of Week'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: cal-dow
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: day_only
+            from_to: both
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        title:
+          id: title
+          table: calendar_event_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: null
+          entity_field: title
+          plugin_id: field
+          label: Name
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_body:
+          id: field_body
+          table: calendar_event__field_body
+          field: field_body
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_academic_calendar_category:
+          id: field_academic_calendar_category
+          table: calendar_event__field_academic_calendar_category
+          field: field_academic_calendar_category
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      pager:
+        type: none
+        options:
+          offset: 0
+      style:
+        type: date_ical
+        options:
+          cal_name: 'Academic Calendar'
+          no_calname: false
+          disable_webcal: false
+          exclude_dtstamp: false
+          unescape_punctuation: false
+          skip_blank_dates: true
+          download_directly: true
+      row:
+        type: date_ical
+        options:
+          date_field: field_academic_date_range
+          end_field: ''
+          summary_field: title
+          description_field: field_body
+          location_field: ''
+          categories_field: field_academic_calendar_category
+          organizer_field: ''
+          status_field: ''
+          url_field: ''
+          attendee_field: ''
+          alarm_field: ''
+          attach_field: ''
+          geo_field: ''
+          rrule: ''
+          rrule_field: ''
+      defaults:
+        title: false
+        fields: false
+        filters: true
+        filter_groups: true
+        sitename_title: false
+      display_description: 'ICS feed for dates passed from the filter.'
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: osu-academic-calendar/filtered-calendar.ics
+      sitename_title: false
+      displays:
+        default: '0'
+        page_1: '0'
+        page_2: '0'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user.permissions
+      tags:
+        - 'config:field.storage.calendar_event.field_academic_calendar_category'
+        - 'config:field.storage.calendar_event.field_academic_date_range'
+        - 'config:field.storage.calendar_event.field_body'
+  feed_2:
+    id: feed_2
+    display_title: 'Full Feed'
+    display_plugin: feed
+    position: 3
+    display_options:
+      title: 'Full Academic Calendar'
+      fields:
+        field_academic_date_range:
+          id: field_academic_date_range
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range
+          relationship: none
+          group_type: group
+          admin_label: 'Event Date'
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: html_datetime
+            from_to: both
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_academic_date_range_2:
+          id: field_academic_date_range_2
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Day of Week'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: cal-dow
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: day_only
+            from_to: both
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        title:
+          id: title
+          table: calendar_event_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: null
+          entity_field: title
+          plugin_id: field
+          label: Name
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_body:
+          id: field_body
+          table: calendar_event__field_body
+          field: field_body
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_academic_calendar_category:
+          id: field_academic_calendar_category
+          table: calendar_event__field_academic_calendar_category
+          field: field_academic_calendar_category
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      filters:
+        status:
+          id: status
+          table: calendar_event_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: calendar_event
+          entity_field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        type:
+          id: type
+          table: calendar_event_field_data
+          field: type
+          entity_type: calendar_event
+          entity_field: type
+          plugin_id: bundle
+          value:
+            academic_calendar_item: academic_calendar_item
+          group: 1
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: date_ical
+        options:
+          cal_name: 'Full Academic Calendar'
+          no_calname: false
+          disable_webcal: false
+          exclude_dtstamp: false
+          unescape_punctuation: false
+          skip_blank_dates: true
+          download_directly: true
+      row:
+        type: date_ical
+        options:
+          date_field: field_academic_date_range
+          end_field: ''
+          summary_field: title
+          description_field: field_body
+          location_field: ''
+          categories_field: field_academic_calendar_category
+          organizer_field: ''
+          status_field: ''
+          url_field: ''
+          attendee_field: ''
+          alarm_field: ''
+          attach_field: ''
+          geo_field: ''
+          rrule: ''
+          rrule_field: ''
+      defaults:
+        title: false
+        exposed_form: false
+        fields: false
+        filters: false
+        filter_groups: false
+        sitename_title: false
+      display_description: 'The Full academic calendar'
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: osu-academic-calendar/full-calendar.ics
+      sitename_title: false
+      displays:
+        default: '0'
+        page_1: '0'
+        page_2: '0'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - user.permissions
+      tags:
+        - 'config:field.storage.calendar_event.field_academic_calendar_category'
+        - 'config:field.storage.calendar_event.field_academic_date_range'
+        - 'config:field.storage.calendar_event.field_body'
+  page_1:
+    id: page_1
+    display_title: 'Active Page'
+    display_plugin: page
+    position: 1
+    display_options:
+      filters:
+        status:
+          id: status
+          table: calendar_event_field_data
+          field: status
+          entity_type: calendar_event
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: calendar_event_field_data
+          field: type
+          entity_type: calendar_event
+          entity_field: type
+          plugin_id: bundle
+          value:
+            academic_calendar_item: academic_calendar_item
+          group: 1
+        field_academic_calendar_archive_value:
+          id: field_academic_calendar_archive_value
+          table: calendar_event__field_academic_calendar_archive
+          field: field_academic_calendar_archive_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_academic_calendar_dl_only_value:
+          id: field_academic_calendar_dl_only_value
+          table: calendar_event__field_academic_calendar_dl_only
+          field: field_academic_calendar_dl_only_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_academic_calendar_category_target_id:
+          id: field_academic_calendar_category_target_id
+          table: calendar_event__field_academic_calendar_category
+          field: field_academic_calendar_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: Category
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_calendar_category_target_id_op
+            label: Category
+            description: ''
+            use_operator: false
+            operator: field_academic_calendar_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: category
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: academic_calendar_category
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_academic_calendar_term_target_id:
+          id: field_academic_calendar_term_target_id
+          table: calendar_event__field_academic_calendar_term
+          field: field_academic_calendar_term_target_id
+          relationship: none
+          group_type: group
+          admin_label: Term
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_calendar_term_target_id_op
+            label: Term
+            description: ''
+            use_operator: false
+            operator: field_academic_calendar_term_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: term
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: academic_calendar_term
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_academic_calendar_term_ses_target_id:
+          id: field_academic_calendar_term_ses_target_id
+          table: calendar_event__field_academic_calendar_term_ses
+          field: field_academic_calendar_term_ses_target_id
+          relationship: none
+          group_type: group
+          admin_label: 'Term Session'
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_calendar_term_ses_target_id_op
+            label: 'Term Session'
+            description: ''
+            use_operator: false
+            operator: field_academic_calendar_term_ses_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: term_session
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+              alert_author: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: academic_calendar_term_session
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_academic_date_range_value_1:
+          id: field_academic_date_range_value_1
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range_value
+          relationship: none
+          group_type: group
+          admin_label: 'Academic Year'
+          plugin_id: datetime
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_date_range_value_1_op
+            label: 'Academic Date Range (field_academic_date_range)'
+            description: null
+            use_operator: false
+            operator: field_academic_date_range_value_1_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_academic_date_range_value_1
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            min_placeholder: null
+            max_placeholder: null
+            placeholder: null
+          is_grouped: true
+          group_info:
+            label: 'Academic Year'
+            description: ''
+            identifier: academic_year
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              2:
+                title: 2025-2026
+                operator: between
+                value:
+                  min: '2025-07-01'
+                  max: '2026-06-30'
+                  value: ''
+                  type: date
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        arguments: true
+        filters: false
+        filter_groups: false
+      display_description: 'The current Academic Calendar'
+      display_comment: 'This view provides a helpful table display for the Academic Calendar Dates ECK. There are two "feeds" used as iCal dates to help download and add to anyone''s Calendar'
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: osu-academic-calendar
+      menu:
+        type: normal
+        title: 'Academic Calendar'
+        description: ''
+        weight: -50
+        expanded: false
+        menu_name: main
+        parent: ''
+        context: '0'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags:
+        - 'config:field.storage.calendar_event.field_academic_calendar_link'
+        - 'config:field.storage.calendar_event.field_academic_date_range'
+  page_2:
+    id: page_2
+    display_title: 'Archive Page'
+    display_plugin: page
+    position: 2
+    display_options:
+      title: 'Past Academic Calendar'
+      arguments:
+        field_academic_date_range_value_full_date:
+          id: field_academic_date_range_value_full_date
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range_value_full_date
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: date_range
+          default_action: empty
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: false
+          title: ''
+          default_argument_type: fixed
+          default_argument_options:
+            argument: ''
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: false
+          validate:
+            type: none
+            fail: 'not found'
+          validate_options: {  }
+          break_phrase: false
+          relative_dates: 0
+          not: 0
+      filters:
+        status:
+          id: status
+          table: calendar_event_field_data
+          field: status
+          entity_type: calendar_event
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: calendar_event_field_data
+          field: type
+          entity_type: calendar_event
+          entity_field: type
+          plugin_id: bundle
+          value:
+            academic_calendar_item: academic_calendar_item
+          group: 1
+        field_academic_calendar_archive_value:
+          id: field_academic_calendar_archive_value
+          table: calendar_event__field_academic_calendar_archive
+          field: field_academic_calendar_archive_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_academic_calendar_dl_only_value:
+          id: field_academic_calendar_dl_only_value
+          table: calendar_event__field_academic_calendar_dl_only
+          field: field_academic_calendar_dl_only_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '0'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_academic_calendar_category_target_id:
+          id: field_academic_calendar_category_target_id
+          table: calendar_event__field_academic_calendar_category
+          field: field_academic_calendar_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_calendar_category_target_id_op
+            label: Category
+            description: ''
+            use_operator: false
+            operator: field_academic_calendar_category_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: category
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: academic_calendar_category
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_academic_calendar_term_target_id:
+          id: field_academic_calendar_term_target_id
+          table: calendar_event__field_academic_calendar_term
+          field: field_academic_calendar_term_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_calendar_term_target_id_op
+            label: Term
+            description: ''
+            use_operator: false
+            operator: field_academic_calendar_term_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: term
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: academic_calendar_term
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_academic_calendar_term_ses_target_id:
+          id: field_academic_calendar_term_ses_target_id
+          table: calendar_event__field_academic_calendar_term_ses
+          field: field_academic_calendar_term_ses_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_calendar_term_ses_target_id_op
+            label: 'Term Session'
+            description: ''
+            use_operator: false
+            operator: field_academic_calendar_term_ses_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: term_session
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: academic_calendar_term_session
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+        field_academic_date_range_value:
+          id: field_academic_date_range_value
+          table: calendar_event__field_academic_date_range
+          field: field_academic_date_range_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: datetime
+          operator: '='
+          value:
+            min: ''
+            max: ''
+            value: ''
+            type: date
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_academic_date_range_value_op
+            label: Date
+            description: 'Filter for a specific date (2020-10-24)'
+            use_operator: false
+            operator: field_academic_date_range_value_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: academic_date_exact
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            min_placeholder: ''
+            max_placeholder: ''
+            placeholder: '2020-10-24'
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      defaults:
+        title: false
+        arguments: false
+        filters: false
+        filter_groups: false
+      display_description: 'The Archived Academic Calendar'
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: osu-academic-calendar/archive/%
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user.permissions
+      tags:
+        - 'config:field.storage.calendar_event.field_academic_calendar_link'
+        - 'config:field.storage.calendar_event.field_academic_date_range'

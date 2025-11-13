@@ -1,0 +1,71 @@
+uuid: c2a1f463-1936-4696-a2ae-2b52cd88c757
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.calendar_event.teaser
+    - eck.eck_type.calendar_event.academic_calendar_item
+    - field.field.calendar_event.academic_calendar_item.feeds_item
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_archive
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_category
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_dl_only
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_link
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_student
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_term
+    - field.field.calendar_event.academic_calendar_item.field_academic_calendar_term_ses
+    - field.field.calendar_event.academic_calendar_item.field_academic_date_range
+    - field.field.calendar_event.academic_calendar_item.field_body
+  module:
+    - layout_builder
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: calendar_event.academic_calendar_item.teaser
+targetEntityType: calendar_event
+bundle: academic_calendar_item
+mode: teaser
+content:
+  field_academic_calendar_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_academic_calendar_student:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_body:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  changed: true
+  created: true
+  feeds_item: true
+  field_academic_calendar_archive: true
+  field_academic_calendar_dl_only: true
+  field_academic_calendar_link: true
+  field_academic_calendar_term: true
+  field_academic_calendar_term_ses: true
+  field_academic_date_range: true
+  uid: true

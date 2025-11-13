@@ -1,0 +1,49 @@
+uuid: 91a9d022-d70b-4772-b7e1-1d2bdca400e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.student_emails.body
+    - field.field.node.student_emails.field_category
+    - field.field.node.student_emails.field_send_date
+    - node.type.student_emails
+  module:
+    - datetime
+    - text
+    - user
+id: node.student_emails.default
+targetEntityType: node
+bundle: student_emails
+mode: default
+content:
+  body:
+    type: text_default
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_send_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: long
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
