@@ -1,0 +1,46 @@
+uuid: 09d72d63-5b2a-4781-a225-4f9d47b781db
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: my_url_dashboard_display
+label: 'My URL Dashboard display'
+code: |
+  #views-exposed-form-shurly-my-urls-block-1 {
+    justify-content: start !important;
+    
+    .js-form-type-select {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+    ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding-left: 0.5rem;
+  }
+
+    li {
+    	display: block;
+    }
+    
+    .form-label {
+    	font-weight: bold;
+    }
+  }
+
+  .shurly .child {
+  	display: grid;
+  	grid-template-columns: 80% 20%;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

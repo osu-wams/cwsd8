@@ -1,0 +1,31 @@
+uuid: 4491e0f9-0abe-4167-8157-da249734d14f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: fix
+label: 'Fix for edit page'
+code: |-
+  #madrone-content-container {
+    display: grid;
+    place-items: center;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/shurly/edit/*'
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,92 @@
+uuid: b62d4a18-affa-47f6-bdd1-a4c3f9b3056e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.osu_profile.field_osu_organizations
+    - field.field.node.osu_profile.field_profile_address
+    - field.field.node.osu_profile.field_profile_biography
+    - field.field.node.osu_profile.field_profile_credentials
+    - field.field.node.osu_profile.field_profile_curriculum_vitae
+    - field.field.node.osu_profile.field_profile_email
+    - field.field.node.osu_profile.field_profile_first_name
+    - field.field.node.osu_profile.field_profile_image
+    - field.field.node.osu_profile.field_profile_last_name
+    - field.field.node.osu_profile.field_profile_middle_name
+    - field.field.node.osu_profile.field_profile_office_phone
+    - field.field.node.osu_profile.field_profile_primary_title
+    - field.field.node.osu_profile.field_profile_pronouns
+    - node.type.osu_profile
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+      restricted_categories: {  }
+      blacklisted_blocks: {  }
+      whitelisted_blocks: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+_core:
+  default_config_hash: _jo-_rFapzZliVFsN8xV8LTvXpdXdvm5DYB2yB6GA34
+id: node.osu_profile.teaser
+targetEntityType: node
+bundle: osu_profile
+mode: teaser
+content:
+  field_preferred_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_profile_biography:
+    type: text_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden:
+  entitygroupfield: true
+  field_osu_organizations: true
+  field_profile_address: true
+  field_profile_credentials: true
+  field_profile_curriculum_vitae: true
+  field_profile_email: true
+  field_profile_first_name: true
+  field_profile_image: true
+  field_profile_last_name: true
+  field_profile_middle_name: true
+  field_profile_office_phone: true
+  field_profile_primary_title: true
+  field_profile_pronouns: true

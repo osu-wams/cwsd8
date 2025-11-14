@@ -1,0 +1,38 @@
+uuid: bbf28222-f023-4753-882d-623d87c0790e
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - paragraphs_to_layout_builder
+      - osu_migrations
+_core:
+  default_config_hash: daznyuSe1M_2HFf-rxtsLeqVNYmbcVAmbxNj9_wkeqQ
+id: content
+label: Nodes
+description: 'A container for migrating Node entities'
+source_type: 'Drupal 7'
+module: null
+shared_configuration:
+  process:
+    nid: nid
+    vid: vid
+    type: type
+    langcode:
+      plugin: static_map
+      bypass: true
+      source: language
+      map:
+        und: en
+    title: title
+    uid: node_uid
+    status: status
+    created: created
+    changed: changed
+    promote: promote
+    sticky: sticky
+    revision_uid: revision_uid
+    revision_log: log
+    revision_timestamp: timestamp
+  destination:
+    plugin: 'entity:node'

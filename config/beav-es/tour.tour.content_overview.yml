@@ -1,0 +1,116 @@
+uuid: d1d4250d-34e0-473a-b8e1-02fde2a95da3
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: oPX2e7OKJ_HbiHw-1EKedquJ9lGiHd_v9d6I9e3C7BU
+id: content_overview
+label: 'Content Overview'
+routes:
+  -
+    route_name: system.admin_content
+tips:
+  purpose:
+    id: purpose
+    plugin: text
+    label: 'Content Page Overview'
+    weight: -100
+    position: auto
+    selector: null
+    body: "<p>The Content page serves as a central hub for managing site content. From this page, you can create, edit, and find most of the content in your site. </p>\r\n<p>You can also access all your Blocks, Feeds, Sitewide alerts, Files, Media, and the Layout Builder Library via the sub-menu. </p>\r\n<p>If you have content moderation and scheduling turned on, you can view drafts of moderated content and content that is scheduled to be published or unpublished.  </p>"
+  content:
+    id: content
+    plugin: text
+    label: Content
+    weight: -99
+    position: right
+    selector: '#block-claro-primary-local-tasks a[data-drupal-link-system-path="admin/content"]'
+    body: "<p>The Content tab (where you are now) is where you can find and manage most of your site content. Search by title and/or filter by content type or published/unpublished status. </p>\r\n<p>If you have the permissions, you can bulk edit, delete, and publish/unpublish content. </p>"
+  blocks:
+    id: blocks
+    plugin: text
+    label: Blocks
+    weight: -98
+    position: right
+    selector: '#block-claro-primary-local-tasks a[data-drupal-link-system-path="admin/content/block"]'
+    body: "<p>Manage blocks, which are reusable pieces of content placed in different regions of your site. It's a powerful functionality that allows you to edit information in 1 place, but can show up on every page in your website. </p>\r\n<p>You can add, configure, and place blocks in specific regions like the header, sidebar, or footer. It also allows you to control visibility settings based on content type, user roles, or pages.</p>\r\n<p>These aren't the blocks that are used in Layout Builder. Those are called in-line blocks and can only be placed on 1 page.</p>"
+  feeds:
+    id: feeds
+    plugin: text
+    label: Feeds
+    weight: -97
+    position: right
+    selector: '#block-claro-primary-local-tasks a[data-drupal-link-system-path="admin/content/feed"]'
+    body: "<p>The Feeds tab is advanced functionality that allows you to import, process, and manage structured data from external sources like CSV, XML, RSS or JSON.</p>\r\n<p>You can configure feed importers, map data fields to content types, and schedule automatic imports. This is useful for bulk content creation.</p>"
+  sitewide_alerts:
+    id: sitewide_alerts
+    plugin: text
+    label: 'Sitewide Alerts'
+    weight: -96
+    position: top
+    selector: '#block-claro-primary-local-tasks a[href="/admin/content/sitewide_alert"]'
+    body: "<p>View all the Sitewide Alerts that are active on your site or previously posted alerts.</p>\r\n<p>Sitewide Alerts are high-priority messages that can posted at the top of your website. You can find <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Content-Creation.aspx#how-to-create-a-sitewide-alert\" target=\"_blank\">step by step instructions</a> for posting an alert on the Drupal how-tos.</p>"
+  files:
+    id: files
+    plugin: text
+    label: Files
+    weight: -95
+    position: right
+    selector: '#block-claro-primary-local-tasks a[data-drupal-link-system-path="admin/content/files"]'
+    body: "<p>This tab allows you see all the files uploaded to your site. You are able to delete files here, but to upload and manage media (images, videos, documents), use Media Library (the next submenu item). If you need to remove a file completely from your site, you'll want to delete it from the Media Library and this Files tab.</p>\r\n<p>The usage count on this page isn't accurate as it can't account for when media is used in Layout Builder.</p>"
+  media:
+    id: media
+    plugin: text
+    label: Media
+    weight: -94
+    position: right
+    selector: '#block-claro-primary-local-tasks a[data-drupal-link-system-path="admin/content/media"]'
+    body: '<p>This is your Media Library. The Media tab is used to manage all media assets like images, videos, documents, and remote media (e.g., YouTube or Kaltura videos). You can add, bulk add, edit, and reuse media across your site with using Media.</p>'
+  layout_builder_library:
+    id: layout_builder_library
+    plugin: text
+    label: 'Layout Builder Library'
+    weight: -93
+    position: right
+    selector: '#block-claro-primary-local-tasks a[data-drupal-link-system-path="admin/content/section-library"]'
+    body: '<p>The Layout Builder Library tab allows you to manage reusable layout templates for pages and content. You can create, edit, and organize layouts to streamline page design while ensuring consistency. These templates can be applied to any piece of content in your website that uses Layout Builder.</p>'
+  filter:
+    id: filter
+    plugin: text
+    label: 'Filter by Title'
+    weight: -92
+    position: right
+    selector: 'input#edit-title'
+    body: "<p>Search by exact page title—this isn't like Google searching your website. You need to search by the exact title of the page. Very useful for finding pages that are not linked yet and need work.</p>"
+  filter_by_content_type:
+    id: filter_by_content_type
+    plugin: text
+    label: 'Filter by Content Type'
+    weight: -91
+    position: top
+    selector: 'select#edit-type'
+    body: '<p>Use this drop-down to filter by the content type. A lot of times, you are working with just basic pages, but there are other types of content in your site to work with, such as profiles or stories, or any other custom type that has been created in your site.</p>'
+  filter_by_publish_status:
+    id: filter_by_publish_status
+    plugin: text
+    label: 'Filter by Publish Status'
+    weight: -90
+    position: top
+    selector: 'select#edit-status'
+    body: "<p>By default, this list will show you everything that is published (publicly viewable) or unpublished (only viewable if you're logged in). Filter by one or the other to see what you have published or unpublished. This is useful for knowing the scope of work if you're updating let's say all the published profiles in your website.</p>"
+  reset:
+    id: reset
+    plugin: text
+    label: Reset
+    weight: -89
+    position: right
+    selector: '[data-drupal-selector="edit-submit-content"]'
+    body: '<p>You need to click this <strong>Filter</strong> button to see your results. If you have filtered, there will be a <strong>Reset</strong> button to clear all selected filters and restores the full content list.</p>'
+  bulk_updates:
+    id: bulk_updates
+    plugin: text
+    label: 'Bulk Updates'
+    weight: -88
+    position: right
+    selector: '#edit-bulk-actions-container .views-bulk-actions__item--preceding-actions #edit-action'
+    body: "<p>If you have selected multiple items from the list above, you will be able to bulk update or delete them. <em>Proceed with caution.</em> Deleting pages/nodes is a permanent action that can't be undone. Certain editing is difficult to undo.</p> \r\n<p>Be absolutely certain that you want to apply the bulk action to the items you have selected.</p>"

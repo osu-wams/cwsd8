@@ -1,0 +1,27 @@
+uuid: 036d875d-fc55-4297-830c-ae8f063c7052
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: hide_search_bar
+label: 'Hide search bar'
+code: |-
+  #search-block-form,
+  #block-madrone-search {
+  	display: none !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

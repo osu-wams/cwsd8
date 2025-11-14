@@ -1,0 +1,52 @@
+uuid: a59f1797-d1d3-4b67-96e6-45c275de3179
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: Q5AeXbPxKSVa7j2FZTj49xN5uJg1Ys5Yf0ZiXkW0tmE
+id: redirect
+label: 'Redirects - Create'
+routes:
+  -
+    route_name: redirect.add
+tips:
+  overview:
+    id: overview
+    plugin: text
+    label: 'Redirects Overview'
+    weight: -10
+    position: auto
+    selector: null
+    body: "<p>This page allows you to add a URL redirect by setting up:</p>\r\n<ul>\r\n<li><strong>source</strong> (old URL) with what you put in the <strong>path field</strong></li>\r\n<li>and a <strong>destination</strong> (new URL where you want people to end up) with what you put in the <strong>to field</strong>.</li>\r\n</ul>"
+  path:
+    id: path
+    plugin: text
+    label: Path
+    weight: -10
+    position: bottom-end
+    selector: '#edit-redirect-source-0-path'
+    body: "<p>This is the URL that you want to redirect <strong>from</strong>. This is the \"old\" URL. </p>\r\n<p>Ensure that the path you are redirecting does not already have an assigned alias, otherwise the redirect won't work. If an alias exists, you can either delete the page or the alias before setting up the redirect. Here are instructions for <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Links.aspx#redirects-on-content-that-still-exists\" target=\"_blank\">deleting an alias.</a></p>\r\n<p><strong>Note about dev sites:</strong> If you are working in a dev site, the path will include .dev in the path. If your dev site is pushed to production, it will automatically update to use the production URL.</p> "
+  to:
+    id: to
+    plugin: text
+    label: To
+    weight: -10
+    position: bottom-end
+    selector: '#edit-redirect-redirect-0-uri'
+    body: '<p>Start typing to search for an internal page on this site. If you want to link to an external website, enter the full URL (e.g., "https://example.com"). Internal links should be selected from the search, while external links need to be copy/pasted into this field.</p>'
+  redirect_status:
+    id: redirect_status
+    plugin: text
+    label: 'Redirect Status'
+    weight: -10
+    position: bottom-end
+    selector: '#edit-status-code'
+    body: '<p>The redirect status determines how browsers and search engines handle the redirect. Use "301 Moved Permanently" unless you have a specific reason to choose a different status. Rarely will you use any other status besides 301.</p>'
+  save:
+    id: save
+    plugin: text
+    label: Save
+    weight: -10
+    position: top
+    selector: '#edit-submit'
+    body: "<p>Click <strong>Save</strong> to implement your redirect. You should test you redirect in another browser to ensure that it's firing properly for logged-out visitors to your site.</p>\r\n<p>If your redirect isn't working, be sure to check that there isn't an alias on the page. You can't redirect from a page that has an alias. <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Links.aspx#redirects-on-content-that-still-exists\" target=\"_blank\">Read the full explanation and instructions.</a></p>"
