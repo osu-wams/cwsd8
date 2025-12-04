@@ -62,7 +62,6 @@ $sites['beyond.stage.oregonstate.edu'] = 'beyond.oregonstate.edu';
 $sites['blogs.dev.oregonstate.edu'] = 'blogs.oregonstate.edu';
 $sites['blogs.stage.oregonstate.edu'] = 'blogs.oregonstate.edu';
 $sites['brabhamm.dev.oregonstate.edu'] = 'brabhamm.cws.oregonstate.edu';
-$sites['brabhamm.dev.oregonstate.edu'] = 'brabhamm.cws.oregonstate.edu';
 $sites['brabhamm.stage.oregonstate.edu'] = 'brabhamm.cws.oregonstate.edu';
 $sites['budget.dev.oregonstate.edu'] = 'budget.oregonstate.edu';
 $sites['budget.stage.oregonstate.edu'] = 'budget.oregonstate.edu';
