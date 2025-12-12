@@ -1,0 +1,26 @@
+From 92c437edf9f91cde0e1ce6b3ed0be3cc5980b57c Mon Sep 17 00:00:00 2001
+From: Sean Fremouw <sean.fremouw@fremouwconsulting.com>
+Date: Thu, 11 Dec 2025 16:29:26 -0800
+Subject: [PATCH] 3562773-argumentcounterror-too-few: add required parameters
+ to help() call in charts_api_example_help
+
+---
+ modules/charts_api_example/charts_api_example.module | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/modules/charts_api_example/charts_api_example.module b/modules/charts_api_example/charts_api_example.module
+index a998c48..9daef4a 100755
+--- a/modules/charts_api_example/charts_api_example.module
++++ b/modules/charts_api_example/charts_api_example.module
+@@ -15,7 +15,7 @@ use Drupal\Core\Routing\RouteMatchInterface;
+  */
+ #[LegacyHook]
+ function charts_api_example_help($route_name, RouteMatchInterface $route_match) {
+-  return \Drupal::service('charts_api_example.hooks')->help();
++  return \Drupal::service('charts_api_example.hooks')->help($route_name, $route_match);
+ }
+
+ /**
+--
+GitLab
+
