@@ -1,0 +1,40 @@
+uuid: e777c89b-8daa-41a0-b827-e7f912114bde
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+    - system
+id: pet_memorials
+label: 'Pet Memorials'
+code: |-
+  .field--name-field-pet-photo {
+  	display: flex;
+  	flex-wrap: wrap;
+  	gap: .5em;
+  	
+  	.field__item {
+  		flex: 0 1 auto;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      pet_memorial: pet_memorial
+contexts: {  }
+conditions_require_all: true

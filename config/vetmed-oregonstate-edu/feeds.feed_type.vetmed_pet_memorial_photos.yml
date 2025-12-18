@@ -1,0 +1,83 @@
+uuid: d2dde82f-dda8-4ddc-9833-cad577a1806d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.image.field_media_image
+    - media.type.image
+  module:
+    - feeds_ex
+    - media
+label: 'VetMed Pet Memorial Photos'
+id: vetmed_pet_memorial_photos
+description: ''
+help: ''
+import_period: -1
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: jsonpath
+parser_configuration:
+  context:
+    value: '[*]'
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+processor: 'entity:media'
+processor_configuration:
+  values:
+    bundle: image
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  pet_photo_name:
+    value: pet_photo_name
+    label: pet_photo_name
+    machine_name: pet_photo_name
+    type: json
+  pet_photo_url:
+    value: pet_photo_url
+    label: pet_photo_url
+    machine_name: pet_photo_url
+    type: json
+  pet_photo_alt:
+    value: pet_photo_alt
+    label: pet_photo_alt
+    machine_name: pet_photo_alt
+    type: json
+mappings:
+  -
+    target: name
+    map:
+      value: pet_photo_name
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_media_image
+    map:
+      target_id: pet_photo_url
+      alt: pet_photo_alt
+      title: pet_photo_name
+    settings:
+      language: ''
+      reference_by: fid
+      autocreate: 0
+      existing: '2'
+      autocreate_bundle: false

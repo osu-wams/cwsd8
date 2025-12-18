@@ -1,0 +1,199 @@
+uuid: c2697f41-ecce-45e1-9f42-bf07baa2069f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.vdl_test.body
+    - field.field.node.vdl_test.field_collection_protocol
+    - field.field.node.vdl_test.field_diagnostic_section
+    - field.field.node.vdl_test.field_setup_days
+    - field.field.node.vdl_test.field_shipping_requirements
+    - field.field.node.vdl_test.field_species
+    - field.field.node.vdl_test.field_specimen_requirements
+    - field.field.node.vdl_test.field_test_fee
+    - field.field.node.vdl_test.field_turn_around_time
+    - node.type.vdl_test
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      791540b9-400b-4647-9c21-a26b8e4f76f3:
+        separator: '|'
+        limit: null
+        uuid: 791540b9-400b-4647-9c21-a26b8e4f76f3
+        plugin: explode
+        source: species
+        weight: 0
+        label: Explode
+      aac515ec-fb93-4ad8-b6ca-b882282e0ab4:
+        separator: '|'
+        limit: null
+        uuid: aac515ec-fb93-4ad8-b6ca-b882282e0ab4
+        plugin: explode
+        source: setup_days
+        weight: 0
+        label: Explode
+label: 'VDL Tests'
+id: vdl_tests
+description: 'Used to manage the VDL Tests that are offered'
+help: 'Please use a CSV with headings to import. If you want to completely update the list it is best to delete all previously imported nodes.'
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: csv
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: vdl_test
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: true
+  owner_id: 1
+custom_sources:
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  species:
+    value: Species
+    label: Species
+    machine_name: species
+    type: csv
+  diagnostic_section:
+    value: 'Diagnostic Section'
+    label: 'Diagnostic Section'
+    machine_name: diagnostic_section
+    type: csv
+  test_fee:
+    value: 'Test Fee'
+    label: 'Test Fee'
+    machine_name: test_fee
+    type: csv
+  tat:
+    value: TAT
+    label: TAT
+    machine_name: tat
+    type: csv
+  setup_days:
+    value: 'Setup Days'
+    label: 'Setup Days'
+    machine_name: setup_days
+    type: csv
+  shipping_requirements:
+    value: 'Shipping Requirements'
+    label: 'Shipping Requirements'
+    machine_name: shipping_requirements
+    type: csv
+  specimen_requirements:
+    value: 'Specimen Requirements'
+    label: 'Specimen Requirements'
+    machine_name: specimen_requirements
+    type: csv
+  collection_protocol:
+    value: 'Collection Protocol'
+    label: 'Collection Protocol'
+    machine_name: collection_protocol
+    type: csv
+  additional_info:
+    value: 'Additional Info'
+    label: 'Additional Info'
+    machine_name: additional_info
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_species
+    map:
+      target_id: species
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: vdl_speiecs
+      feeds_item: false
+  -
+    target: field_diagnostic_section
+    map:
+      target_id: diagnostic_section
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: vdl_diagnostic_section
+      feeds_item: false
+  -
+    target: field_test_fee
+    map:
+      value: test_fee
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_turn_around_time
+    map:
+      value: tat
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_setup_days
+    map:
+      target_id: setup_days
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: vdl_setup_days
+      feeds_item: false
+  -
+    target: field_shipping_requirements
+    map:
+      value: shipping_requirements
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_specimen_requirements
+    map:
+      value: specimen_requirements
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_collection_protocol
+    map:
+      value: collection_protocol
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: body
+    map:
+      value: additional_info
+      summary: ''
+    settings:
+      language: ''
+      format: full_html

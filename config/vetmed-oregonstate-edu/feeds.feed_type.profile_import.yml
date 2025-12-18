@@ -1,0 +1,277 @@
+uuid: 5f4edad6-ba79-4e8a-8ebe-07fc2fd92db5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_profile.field_osu_organizations
+    - field.field.node.osu_profile.field_profile_address
+    - field.field.node.osu_profile.field_profile_biography
+    - field.field.node.osu_profile.field_profile_credentials
+    - field.field.node.osu_profile.field_profile_email
+    - field.field.node.osu_profile.field_profile_first_name
+    - field.field.node.osu_profile.field_profile_image
+    - field.field.node.osu_profile.field_profile_last_name
+    - field.field.node.osu_profile.field_profile_middle_name
+    - field.field.node.osu_profile.field_profile_office_phone
+    - field.field.node.osu_profile.field_profile_primary_title
+    - field.field.node.osu_profile.field_profile_research_career_in
+    - node.type.osu_profile
+  module:
+    - address
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      fa033c50-97d8-47d4-a693-2105017fc758:
+        default_value: US
+        only_if_empty: false
+        uuid: fa033c50-97d8-47d4-a693-2105017fc758
+        plugin: default_value
+        source: country
+        weight: 0
+        label: 'Set value or default value'
+      a6b31072-04f7-43ae-b254-e0d5c2d7d4ca:
+        separator: '|'
+        limit: null
+        uuid: a6b31072-04f7-43ae-b254-e0d5c2d7d4ca
+        plugin: explode
+        source: functional_group
+        weight: 0
+        label: Explode
+      4407e9ff-4430-49b3-a8e1-124a98029275:
+        separator: ', '
+        limit: null
+        uuid: 4407e9ff-4430-49b3-a8e1-124a98029275
+        plugin: explode
+        source: credentials
+        weight: 0
+        label: Explode
+label: 'Profile Import'
+id: profile_import
+description: ''
+help: 'This feed will be used to Import data from Drupal 7 profiles to drupal ∞ profiles.'
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: osu_profile
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 6
+custom_sources:
+  preferred_name:
+    value: 'Preferred Name'
+    label: 'Preferred Name'
+    machine_name: preferred_name
+    type: csv
+  first_name:
+    value: 'First Name'
+    label: 'First Name'
+    machine_name: first_name
+    type: csv
+  middle_name:
+    value: 'Middle Name'
+    label: 'Middle Name'
+    machine_name: middle_name
+    type: csv
+  last_name:
+    value: 'Last Name'
+    label: 'Last Name'
+    machine_name: last_name
+    type: csv
+  position:
+    value: Position
+    label: Position
+    machine_name: position
+    type: csv
+  e_mail_address:
+    value: 'E-mail address'
+    label: 'E-mail address'
+    machine_name: e_mail_address
+    type: csv
+  functional_group:
+    value: 'Functional Group'
+    label: 'Functional Group'
+    machine_name: functional_group
+    type: csv
+  office_phone:
+    value: 'Office Phone'
+    label: 'Office Phone'
+    machine_name: office_phone
+    type: csv
+  research_career_interests:
+    value: 'Research/Career Interests'
+    label: 'Research/Career Interests'
+    machine_name: research_career_interests
+    type: csv
+  biography:
+    value: Biography
+    label: Biography
+    machine_name: biography
+    type: csv
+  country:
+    value: Country
+    label: Country
+    machine_name: country
+    type: blank
+  state:
+    value: State
+    label: State
+    machine_name: state
+    type: csv
+  city:
+    value: City
+    label: City
+    machine_name: city
+    type: csv
+  zip:
+    value: ZIP
+    label: ZIP
+    machine_name: zip
+    type: csv
+  street:
+    value: Street
+    label: Street
+    machine_name: street
+    type: csv
+  path:
+    value: Path
+    label: Path
+    machine_name: path
+    type: csv
+  credentials:
+    value: Credentials
+    label: Credentials
+    machine_name: credentials
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: preferred_name
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_profile_first_name
+    map:
+      value: first_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_middle_name
+    map:
+      value: middle_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_last_name
+    map:
+      value: last_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_primary_title
+    map:
+      value: position
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_email
+    map:
+      value: e_mail_address
+    settings:
+      language: null
+      defuse: false
+    unique: {  }
+  -
+    target: field_profile_office_phone
+    map:
+      value: office_phone
+    settings:
+      language: null
+  -
+    target: field_profile_research_career_in
+    map:
+      value: research_career_interests
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_profile_biography
+    map:
+      value: biography
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_profile_address
+    map:
+      langcode: ''
+      country_code: country
+      administrative_area: state
+      locality: city
+      dependent_locality: ''
+      postal_code: zip
+      sorting_code: ''
+      address_line1: street
+      address_line2: ''
+      address_line3: ''
+      organization: ''
+      given_name: ''
+      additional_name: ''
+      family_name: ''
+    settings:
+      language: null
+  -
+    target: field_osu_organizations
+    map:
+      target_id: functional_group
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: osu_organization
+  -
+    target: field_profile_image
+    map:
+      target_id: path
+      alt: ''
+      title: ''
+    settings:
+      language: ''
+      reference_by: fid
+      autocreate: 1
+      existing: '2'
+      autocreate_bundle: false
+  -
+    target: field_profile_credentials
+    map:
+      value: credentials
+    settings:
+      language: null
+    unique: {  }

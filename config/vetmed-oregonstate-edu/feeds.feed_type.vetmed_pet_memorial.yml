@@ -1,0 +1,195 @@
+uuid: b6390ba8-4321-470a-b294-c8792fae5ea9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.pet_memorial.title
+    - field.field.node.pet_memorial.body
+    - field.field.node.pet_memorial.field_feeds_item_uuid
+    - field.field.node.pet_memorial.field_human_names
+    - field.field.node.pet_memorial.field_pet_photo
+    - field.field.node.pet_memorial.field_pm_unique_id
+    - node.type.pet_memorial
+  module:
+    - feeds_ex
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      50a7e432-4243-4ad4-ba72-83f53b89d87d:
+        uuid: 50a7e432-4243-4ad4-ba72-83f53b89d87d
+        plugin: html_entity_decode
+        source: pet_names
+        weight: 0
+        label: 'HTML entity decode'
+label: 'VetMed Pet Memorial'
+id: vetmed_pet_memorial
+description: 'A way to import Drupal 7 nodes'
+help: 'This feed will use the Services View endpoint configured on Drupal 7.'
+import_period: -1
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: jsonpath
+parser_configuration:
+  context:
+    value: '[*]'
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: pet_memorial
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 6
+custom_sources:
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: json
+  created:
+    value: created
+    label: created
+    machine_name: created
+    type: json
+  changed:
+    value: changed
+    label: changed
+    machine_name: changed
+    type: json
+  status:
+    value: status
+    label: status
+    machine_name: status
+    type: json
+  path:
+    value: path
+    label: path
+    machine_name: path
+    type: json
+  human_names:
+    value: human_names
+    label: human_names
+    machine_name: human_names
+    type: json
+  unique_id:
+    value: unique_id
+    label: unique_id
+    machine_name: unique_id
+    type: json
+  pet_photo:
+    value: pet_photo
+    label: pet_photo
+    machine_name: pet_photo
+    type: json
+  pet_photo_filename:
+    value: 'pet_photo.[*].filename'
+    label: 'pet_photo.[*].filename'
+    machine_name: pet_photo_filename
+    type: json
+  pet_names:
+    value: pet_names
+    label: pet_names
+    machine_name: pet_names
+    type: json
+  memorial:
+    value: memorial
+    label: memorial
+    machine_name: memorial
+    type: json
+  uuid:
+    value: UUID
+    label: UUID
+    machine_name: uuid
+    type: json
+mappings:
+  -
+    target: title
+    map:
+      value: pet_names
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: created
+    map:
+      value: created
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: revision_timestamp
+    map:
+      value: changed
+    settings:
+      timezone: UTC
+  -
+    target: status
+    map:
+      value: status
+    settings:
+      language: null
+  -
+    target: path
+    map:
+      alias: path
+      pathauto: ''
+    settings:
+      language: null
+  -
+    target: field_human_names
+    map:
+      value: human_names
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pm_unique_id
+    map:
+      value: unique_id
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pet_photo
+    map:
+      target_id: pet_photo_filename
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 0
+      autocreate_bundle: image
+  -
+    target: body
+    map:
+      value: memorial
+      summary: ''
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_feeds_item_uuid
+    map:
+      value: uuid
+    settings:
+      language: null
+    unique:
+      value: 1

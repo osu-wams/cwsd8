@@ -1,0 +1,41 @@
+uuid: 6fb5bbbd-3ec8-4dbb-afa7-4ae2495e58a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.pet_memorial.body
+    - field.field.node.pet_memorial.feeds_item
+    - field.field.node.pet_memorial.field_feeds_item_uuid
+    - field.field.node.pet_memorial.field_human_names
+    - field.field.node.pet_memorial.field_pet_photo
+    - field.field.node.pet_memorial.field_pm_unique_id
+    - node.type.pet_memorial
+  module:
+    - text
+    - user
+id: node.pet_memorial.teaser
+targetEntityType: node
+bundle: pet_memorial
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true
+  field_feeds_item_uuid: true
+  field_human_names: true
+  field_pet_photo: true
+  field_pm_unique_id: true

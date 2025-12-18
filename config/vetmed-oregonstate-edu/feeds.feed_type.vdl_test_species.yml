@@ -1,0 +1,70 @@
+uuid: 70143557-2816-46e5-8a07-ba308c802992
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.vdl_speiecs.field_species_common_name
+    - taxonomy.vocabulary.vdl_speiecs
+  module:
+    - feeds_ex
+    - taxonomy
+label: 'VDL Test Species'
+id: vdl_test_species
+description: 'Import Species used for VDL Tests'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: json
+  directory: 'private://feeds'
+parser: jsonpath
+parser_configuration:
+  context:
+    value: '.*'
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+processor: 'entity:taxonomy_term'
+processor_configuration:
+  values:
+    vid: vdl_speiecs
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: false
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  name:
+    value: name
+    label: name
+    machine_name: name
+    type: json
+  common:
+    value: common
+    label: common
+    machine_name: common
+    type: json
+mappings:
+  -
+    target: name
+    map:
+      value: name
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_species_common_name
+    map:
+      value: common
+    settings:
+      language: null
+    unique: {  }
