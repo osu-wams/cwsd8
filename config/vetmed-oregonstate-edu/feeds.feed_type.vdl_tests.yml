@@ -10,6 +10,7 @@ dependencies:
     - field.field.node.vdl_test.field_shipping_requirements
     - field.field.node.vdl_test.field_species
     - field.field.node.vdl_test.field_specimen_requirements
+    - field.field.node.vdl_test.field_test_codes
     - field.field.node.vdl_test.field_test_fee
     - field.field.node.vdl_test.field_turn_around_time
     - node.type.vdl_test
@@ -40,6 +41,7 @@ id: vdl_tests
 description: 'Used to manage the VDL Tests that are offered'
 help: 'Please use a CSV with headings to import. If you want to completely update the list it is best to delete all previously imported nodes.'
 import_period: -1
+import_period_per_feed: false
 fetcher: upload
 fetcher_configuration:
   allowed_extensions: csv
@@ -115,6 +117,11 @@ custom_sources:
     value: 'Additional Info'
     label: 'Additional Info'
     machine_name: additional_info
+    type: csv
+  test_codes:
+    value: 'Test Codes'
+    label: 'Test Codes'
+    machine_name: test_codes
     type: csv
 mappings:
   -
@@ -197,3 +204,13 @@ mappings:
     settings:
       language: ''
       format: full_html
+  -
+    target: field_test_codes
+    map:
+      target_id: test_codes
+    settings:
+      language: ''
+      reference_by: name
+      feeds_item: guid
+      autocreate: 1
+      autocreate_bundle: vdl_test_codes
