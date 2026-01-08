@@ -10,6 +10,7 @@ dependencies:
     - field.storage.node.field_shipping_requirements
     - field.storage.node.field_species
     - field.storage.node.field_specimen_requirements
+    - field.storage.node.field_test_codes
     - field.storage.node.field_test_fee
     - field.storage.node.field_turn_around_time
     - node.type.vdl_test
@@ -839,6 +840,69 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field_test_codes:
+          id: field_test_codes
+          table: node__field_test_codes
+          field: field_test_codes
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
         type: mini
         options:
@@ -873,6 +937,8 @@ display:
           bef:
             general:
               autosubmit: false
+              auto_submit_sort_only: false
+              autosubmit_breakpoint: ''
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
               autosubmit_textfield_minimum_length: 3
@@ -882,36 +948,34 @@ display:
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
-              autosubmit_breakpoint: ''
-              auto_submit_sort_only: false
             filter:
               title:
                 plugin_id: default
                 advanced:
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   placeholder_text: ''
                   collapsible: false
                   collapsible_disable_automatic_open: false
+                  open_by_default: false
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
-                  open_by_default: false
-                  sort_options_method: alphabetical_asc
-                  sort_options_natural: true
               field_species_target_id_entityreference_filter:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   rewrite:
                     filter_rewrite_values: ''
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
+                  open_by_default: false
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
-                  open_by_default: false
-                  sort_options_method: alphabetical_asc
-                  sort_options_natural: true
       access:
         type: perm
         options:
@@ -1169,6 +1233,67 @@ display:
           hierarchy: false
           limit: true
           error_message: true
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          relationship: field_test_codes
+          group_type: group
+          admin_label: ''
+          entity_type: taxonomy_term
+          entity_field: name
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: name_op
+            label: 'Test Codes'
+            description: ''
+            use_operator: false
+            operator: name_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: test_codes
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+              alert_author: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: views_bootstrap_accordion
         options:
@@ -1191,7 +1316,16 @@ display:
           distinct: false
           replica: false
           query_tags: {  }
-      relationships: {  }
+      relationships:
+        field_test_codes:
+          id: field_test_codes
+          table: node__field_test_codes
+          field: field_test_codes
+          relationship: none
+          group_type: group
+          admin_label: 'field_test_codes: Taxonomy term'
+          plugin_id: standard
+          required: false
       css_class: 'container p-2 my-2'
       group_by: true
       header: {  }
@@ -1215,6 +1349,7 @@ display:
         - 'config:field.storage.node.field_shipping_requirements'
         - 'config:field.storage.node.field_species'
         - 'config:field.storage.node.field_specimen_requirements'
+        - 'config:field.storage.node.field_test_codes'
         - 'config:field.storage.node.field_test_fee'
         - 'config:field.storage.node.field_turn_around_time'
         - taxonomy_term_list
@@ -1268,6 +1403,7 @@ display:
         - 'config:field.storage.node.field_shipping_requirements'
         - 'config:field.storage.node.field_species'
         - 'config:field.storage.node.field_specimen_requirements'
+        - 'config:field.storage.node.field_test_codes'
         - 'config:field.storage.node.field_test_fee'
         - 'config:field.storage.node.field_turn_around_time'
         - taxonomy_term_list
@@ -1301,6 +1437,7 @@ display:
         - 'config:field.storage.node.field_shipping_requirements'
         - 'config:field.storage.node.field_species'
         - 'config:field.storage.node.field_specimen_requirements'
+        - 'config:field.storage.node.field_test_codes'
         - 'config:field.storage.node.field_test_fee'
         - 'config:field.storage.node.field_turn_around_time'
         - taxonomy_term_list
