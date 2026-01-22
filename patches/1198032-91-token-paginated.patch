@@ -1,0 +1,269 @@
+From 48456d00c0bfb10ef47aaf30e9adf3be2ec5ce3c Mon Sep 17 00:00:00 2001
+From: Saurabh Vijayvargiya <saurabhvv0808@gmail.com>
+Date: Thu, 20 Mar 2025 16:55:15 +0530
+Subject: [PATCH 1/2] Issue #1198032: Updated code in hook_token_info and
+ hook_tokens and updated the test as well.
+
+---
+ src/Hook/TokenTokenInfoHooks.php              | 10 ++++
+ src/Hook/TokenTokensHooks.php                 | 51 ++++++++++++-------
+ tests/src/Functional/TokenCurrentPageTest.php | 17 +++++--
+ 3 files changed, 55 insertions(+), 23 deletions(-)
+
+diff --git a/src/Hook/TokenTokenInfoHooks.php b/src/Hook/TokenTokenInfoHooks.php
+index e7830d4..10f3bf7 100644
+--- a/src/Hook/TokenTokenInfoHooks.php
++++ b/src/Hook/TokenTokenInfoHooks.php
+@@ -339,6 +339,16 @@ final class TokenTokenInfoHooks {
+       'description' => $this->t('The URL of the current page.'),
+       'type' => 'url',
+     ];
++    $info['tokens']['current-page']['url-paginated'] = [
++     'name' => $this->t('URL (paginated)'),
++     'description' => $this->t('The URL of the current page with pager query.'),
++     'type' => 'url',
++    ];
++    $info['tokens']['current-page']['url-with-query'] = [
++     'name' => $this->t('URL (with query string)'),
++     'description' => $this->t('The URL of the current page with query string.'),
++     'type' => 'url',
++    ];
+     $info['tokens']['current-page']['page-number'] = [
+       'name' => $this->t('Page number'),
+       'description' => $this->t('The page number of the current page when viewing paged lists.'),
+diff --git a/src/Hook/TokenTokensHooks.php b/src/Hook/TokenTokensHooks.php
+index f9cec55..ea92060 100644
+--- a/src/Hook/TokenTokensHooks.php
++++ b/src/Hook/TokenTokensHooks.php
+@@ -468,11 +468,18 @@ final class TokenTokensHooks {
+             break;
+ 
+           case 'url':
++          case 'url-paginated':
++          case 'url-with-query':
+             $bubbleable_metadata->addCacheContexts([
+               'url.path',
+             ]);
+             try {
+               $url = Url::createFromRequest($request)->setOptions($url_options);
++              if (($name == 'url-paginated') && ($page = $request->query->get('page'))) {
++                $url->setOption('query', ['page' => $page]);
++              } elseif ($name == 'url-with-query') {
++                $url->setOption('query', $request->query->all());
++              }
+             }
+             catch (\Exception) {
+               // Url::createFromRequest() can fail, e.g. on 404 pages.
+@@ -543,28 +550,34 @@ final class TokenTokensHooks {
+         }
+       }
+       // Chained token relationships.
+-      if ($url_tokens = $this->token->findWithPrefix($tokens, 'url')) {
+-        $url = NULL;
+-        try {
+-          $url = Url::createFromRequest($request)->setOptions($url_options);
+-        }
+-        catch (\Exception) {
+-          // Url::createFromRequest() can fail, e.g. on 404 pages.
+-          // Fall back and try again with Url::fromUserInput().
++      $prefixes = ['url', 'url-paginated', 'url-wih-query'];
++      foreach ($prefixes as $prefix) {
++        if ($url_tokens = $this->token()->findWithPrefix($tokens, $prefix)) {
++          $url = NULL;
+           try {
+-            $url = Url::fromUserInput($request->getPathInfo(), $url_options);
+-          }
+-          catch (\Exception) {
+-            // Instantiation would fail again on malformed urls.
++            $url = Url::createFromRequest($request)->setOptions($url_options);
++            if (($prefix == 'url-paginated') && ($page = $request->query->get('page'))) {
++              $url->setOption('query', ['page' => $page]);
++            } elseif ($prefix == 'url-with-query') {
++              $url->setOption('query', $request->query->all());
++            }
++          } catch (\Exception) {
++            // Url::createFromRequest() can fail, e.g. on 404 pages.
++            // Fall back and try again with Url::fromUserInput().
++            try {
++              $url = Url::fromUserInput($request->getPathInfo(), $url_options);
++            } catch (\Exception $e) {
++              // Instantiation would fail again on malformed urls.
++            }
+           }
++          // Add cache contexts to ensure this token functions on a per-path basis
++          $bubbleable_metadata->addCacheContexts([
++            'url.path',
++          ]);
++          $replacements += $this->token()->generate('url', $url_tokens, [
++            'url' => $url,
++          ], $options, $bubbleable_metadata);
+         }
+-        // Add cache contexts to ensure this token functions on a per-path basis.
+-        $bubbleable_metadata->addCacheContexts([
+-          'url.path',
+-        ]);
+-        $replacements += $this->token->generate('url', $url_tokens, [
+-          'url' => $url,
+-        ], $options, $bubbleable_metadata);
+       }
+     }
+     // URL tokens.
+diff --git a/tests/src/Functional/TokenCurrentPageTest.php b/tests/src/Functional/TokenCurrentPageTest.php
+index f517014..f2d3ba4 100644
+--- a/tests/src/Functional/TokenCurrentPageTest.php
++++ b/tests/src/Functional/TokenCurrentPageTest.php
+@@ -42,26 +42,35 @@ class TokenCurrentPageTest extends TokenTestBase {
+ 
+     $this->drupalCreateContentType(['type' => 'page']);
+     $node = $this->drupalCreateNode(['title' => 'Node title', 'path' => ['alias' => '/node-alias']]);
++    $query = ['foo' => 'bar', 'page' => 2];
+     $tokens = [
+       '[current-page:title]' => 'Node title',
+       '[current-page:url]' => $node->toUrl('canonical', ['absolute' => TRUE])->toString(),
++      '[current-page:url-paginated]' => $node->toUrl('canonical', ['absolute' => TRUE, 'query' => ['page' => 2]])->toString(),
++      '[current-page:url-with-query]' => $node->toUrl('canonical', ['absolute' => TRUE, 'query' => $query])->toString(),
+       '[current-page:url:absolute]' => $node->toUrl('canonical', ['absolute' => TRUE])->toString(),
+-      '[current-page:url:relative]' => $node->toUrl()->toString(),
++      '[current-page:url-paginated:absolute]' => $node->toUrl('canonical', ['absolute' => TRUE, 'query' => ['page' => 2]])->toString(),
++      '[current-page:url-with-query:absolute]' => $node->toUrl('canonical', ['absolute' => TRUE, 'query' => $query])->toString(),
++      '[current-page:url:relative]' => $node->toUrl('canonical')->toString(),
++      '[current-page:url-paginated:relative]' => $node->toUrl('canonical', ['query' => ['page' => 2]])->toString(),
++      '[current-page:url-with-query:relative]' => $node->toUrl('canonical', ['query' => $query])->toString(),
+       '[current-page:url:alias]' => '/node-alias',
+       '[current-page:url:args:value:0]' => 'node-alias',
+       '[current-page:url:args:value:1]' => NULL,
+       '[current-page:url:unaliased]' => $node->toUrl('canonical', ['absolute' => TRUE, 'alias' => TRUE])->toString(),
++      '[current-page:url-paginated:unaliased]' => $node->toUrl('canonical', ['absolute' => TRUE, 'alias' => TRUE, 'query' => ['page' => 2]])->toString(),
++      '[current-page:url-with-query:unaliased]' => $node->toUrl('canonical', ['absolute' => TRUE, 'alias' => TRUE, 'query' => $query])->toString(),
+       '[current-page:url:unaliased:args:value:0]' => 'node',
+       '[current-page:url:unaliased:args:value:1]' => $node->id(),
+       '[current-page:url:unaliased:args:value:2]' => NULL,
+-      '[current-page:page-number]' => 1,
+-      '[current-page:query:foo]' => 'bar',
++      '[current-page:page-number]' => 3,
++      '[current-page:query:foo]' => $query['foo'],
+       '[current-page:query:bar]' => NULL,
+       // Deprecated tokens
+       '[current-page:arg:0]' => 'node',
+       '[current-page:arg:1]' => 1,
+       '[current-page:arg:2]' => NULL,
+     ];
+-    $this->assertPageTokens("/node/{$node->id()}", $tokens, [], ['url_options' => ['query' => ['foo' => 'bar']]]);
++    $this->assertPageTokens("/node/{$node->id()}", $tokens, [], ['url_options' => ['query' => $query]]);
+   }
+ }
+-- 
+GitLab
+
+
+From 266302edff16e2f8c19f33a6d6aa18332aec8483 Mon Sep 17 00:00:00 2001
+From: Saurabh Vijayvargiya <saurabhvv0808@gmail.com>
+Date: Thu, 20 Mar 2025 17:40:59 +0530
+Subject: [PATCH 2/2] Issue #1198032: Fixed the test and phpcs issues in the
+ test file.
+
+---
+ src/Hook/TokenTokensHooks.php                 |  2 +-
+ tests/src/Functional/TokenCurrentPageTest.php | 42 +++++++++++++++----
+ 2 files changed, 34 insertions(+), 10 deletions(-)
+
+diff --git a/src/Hook/TokenTokensHooks.php b/src/Hook/TokenTokensHooks.php
+index ea92060..3465d41 100644
+--- a/src/Hook/TokenTokensHooks.php
++++ b/src/Hook/TokenTokensHooks.php
+@@ -550,7 +550,7 @@ final class TokenTokensHooks {
+         }
+       }
+       // Chained token relationships.
+-      $prefixes = ['url', 'url-paginated', 'url-wih-query'];
++      $prefixes = ['url', 'url-paginated', 'url-with-query'];
+       foreach ($prefixes as $prefix) {
+         if ($url_tokens = $this->token()->findWithPrefix($tokens, $prefix)) {
+           $url = NULL;
+diff --git a/tests/src/Functional/TokenCurrentPageTest.php b/tests/src/Functional/TokenCurrentPageTest.php
+index f2d3ba4..b3e165f 100644
+--- a/tests/src/Functional/TokenCurrentPageTest.php
++++ b/tests/src/Functional/TokenCurrentPageTest.php
+@@ -16,7 +16,12 @@ class TokenCurrentPageTest extends TokenTestBase {
+    */
+   protected static $modules = ['node'];
+ 
+-  function testCurrentPageTokens() {
++  /**
++   * Tests the generation of [current-page:*] tokens on various pages.
++   *
++   * @throws \Drupal\Core\Entity\EntityMalformedException
++   */
++  public function testCurrentPageTokens() {
+     // Cache clear is necessary because the frontpage was already cached by an
+     // initial request.
+     $this->rebuildAll();
+@@ -33,7 +38,7 @@ class TokenCurrentPageTest extends TokenTestBase {
+       '[current-page:page-number]' => 1,
+       '[current-page:query:foo]' => NULL,
+       '[current-page:query:bar]' => NULL,
+-      // Deprecated tokens
++      // Deprecated tokens.
+       '[current-page:arg:0]' => 'user',
+       '[current-page:arg:1]' => 'login',
+       '[current-page:arg:2]' => NULL,
+@@ -47,30 +52,49 @@ class TokenCurrentPageTest extends TokenTestBase {
+       '[current-page:title]' => 'Node title',
+       '[current-page:url]' => $node->toUrl('canonical', ['absolute' => TRUE])->toString(),
+       '[current-page:url-paginated]' => $node->toUrl('canonical', ['absolute' => TRUE, 'query' => ['page' => 2]])->toString(),
+-      '[current-page:url-with-query]' => $node->toUrl('canonical', ['absolute' => TRUE, 'query' => $query])->toString(),
++      '[current-page:url-with-query]' => htmlspecialchars(
++        $node->toUrl('canonical', ['absolute' => TRUE, 'query' => $query])->toString(),
++        ENT_NOQUOTES
++      ),
+       '[current-page:url:absolute]' => $node->toUrl('canonical', ['absolute' => TRUE])->toString(),
+-      '[current-page:url-paginated:absolute]' => $node->toUrl('canonical', ['absolute' => TRUE, 'query' => ['page' => 2]])->toString(),
+-      '[current-page:url-with-query:absolute]' => $node->toUrl('canonical', ['absolute' => TRUE, 'query' => $query])->toString(),
++      '[current-page:url-paginated:absolute]' => $node->toUrl(
++        'canonical',
++        ['absolute' => TRUE, 'query' => ['page' => 2]]
++      )->toString(),
++      '[current-page:url-with-query:absolute]' => htmlspecialchars(
++        $node->toUrl('canonical', ['absolute' => TRUE, 'query' => $query])->toString(),
++        ENT_NOQUOTES
++      ),
+       '[current-page:url:relative]' => $node->toUrl('canonical')->toString(),
+       '[current-page:url-paginated:relative]' => $node->toUrl('canonical', ['query' => ['page' => 2]])->toString(),
+-      '[current-page:url-with-query:relative]' => $node->toUrl('canonical', ['query' => $query])->toString(),
++      '[current-page:url-with-query:relative]' => htmlspecialchars(
++        $node->toUrl('canonical', ['query' => $query])->toString(),
++        ENT_NOQUOTES
++      ),
+       '[current-page:url:alias]' => '/node-alias',
+       '[current-page:url:args:value:0]' => 'node-alias',
+       '[current-page:url:args:value:1]' => NULL,
+       '[current-page:url:unaliased]' => $node->toUrl('canonical', ['absolute' => TRUE, 'alias' => TRUE])->toString(),
+-      '[current-page:url-paginated:unaliased]' => $node->toUrl('canonical', ['absolute' => TRUE, 'alias' => TRUE, 'query' => ['page' => 2]])->toString(),
+-      '[current-page:url-with-query:unaliased]' => $node->toUrl('canonical', ['absolute' => TRUE, 'alias' => TRUE, 'query' => $query])->toString(),
++      '[current-page:url-paginated:unaliased]' => $node->toUrl(
++        'canonical',
++        ['absolute' => TRUE, 'alias' => TRUE, 'query' => ['page' => 2]]
++      )->toString(),
++      '[current-page:url-with-query:unaliased]' => htmlspecialchars(
++        $node->toUrl('canonical', ['absolute' => TRUE, 'alias' => TRUE, 'query' => $query])->toString(),
++        ENT_NOQUOTES
++      ),
+       '[current-page:url:unaliased:args:value:0]' => 'node',
+       '[current-page:url:unaliased:args:value:1]' => $node->id(),
+       '[current-page:url:unaliased:args:value:2]' => NULL,
+       '[current-page:page-number]' => 3,
+       '[current-page:query:foo]' => $query['foo'],
+       '[current-page:query:bar]' => NULL,
+-      // Deprecated tokens
++      // Deprecated tokens.
+       '[current-page:arg:0]' => 'node',
+       '[current-page:arg:1]' => 1,
+       '[current-page:arg:2]' => NULL,
+     ];
+     $this->assertPageTokens("/node/{$node->id()}", $tokens, [], ['url_options' => ['query' => $query]]);
+   }
++
+ }
+-- 
+GitLab
+
