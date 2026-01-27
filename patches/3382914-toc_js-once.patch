@@ -1,0 +1,34 @@
+--- js/toc_js.js
++++ js/toc_js.js
+@@ -1,6 +1,6 @@
+ /**
+  * Toc_js.
+  */
+-(function ($) {
++(function ($, Drupal, once) {
+   'use strict';
+
+   Drupal.behaviors.toc_js = {
+@@ -9,7 +9,7 @@
+     attach: function (context, settings) {
+       var verboseIdCache = {};
+
+-      $('.toc-js', context).each(function () {
++      $(context).find('.toc-js').once('tocjs').each(function () {
+         var nav = $(this).find('nav');
+         var options = {
+           listType: $(this).data('list-type') == 'ol' ? '<ol/>' : '<ul/>',
+--- toc_js.libraries.yml
++++ toc_js.libraries.yml
+@@ -5,6 +5,7 @@
+   js:
+     js/toc_js.js: {}
+   dependencies:
+-    - core/jquery
+-    - core/drupal
++    - core/jquery
++    - core/drupal
++    - core/once
+   tocjs:
+     js:
+       js/toc.js: { minified: true }
