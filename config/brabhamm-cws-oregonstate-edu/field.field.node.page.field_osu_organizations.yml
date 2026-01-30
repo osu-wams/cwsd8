@@ -1,0 +1,29 @@
+uuid: 1cfc74bd-2887-4d95-bb45-54337b3a723a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_osu_organizations
+    - node.type.page
+    - taxonomy.vocabulary.osu_organization
+id: node.page.field_osu_organizations
+field_name: field_osu_organizations
+entity_type: node
+bundle: page
+label: Organizations
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      osu_organization: osu_organization
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

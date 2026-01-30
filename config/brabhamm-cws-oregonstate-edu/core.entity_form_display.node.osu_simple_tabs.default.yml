@@ -1,0 +1,201 @@
+uuid: 3e746b79-ffcf-43d7-86d2-0556c1aa8f5f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_simple_tabs.body
+    - field.field.node.osu_simple_tabs.field_simple_tab_column_left
+    - field.field.node.osu_simple_tabs.field_simple_tab_column_middle
+    - field.field.node.osu_simple_tabs.field_simple_tab_column_right
+    - field.field.node.osu_simple_tabs.field_simple_tab_sort_weight
+    - field.field.node.osu_simple_tabs.field_simple_tabs_tags
+    - field.field.node.osu_simple_tabs.layout_builder__layout
+    - node.type.osu_simple_tabs
+  module:
+    - field_group
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_simple_tab_columns:
+      children:
+        - group_simple_tab_column_left
+        - group_simple_tab_middle_column
+        - group_simple_tab_right_column
+      label: 'Simple Tab Columns'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        direction: horizontal
+        width_breakpoint: 640
+    group_simple_tab_column_left:
+      children:
+        - field_simple_tab_column_left
+      label: 'Left Column'
+      region: content
+      parent_name: group_simple_tab_columns
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: open
+        description: ''
+        required_fields: true
+    group_simple_tab_middle_column:
+      children:
+        - field_simple_tab_column_middle
+      label: 'Middle Column'
+      region: content
+      parent_name: group_simple_tab_columns
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_simple_tab_right_column:
+      children:
+        - field_simple_tab_column_right
+      label: 'Right Column'
+      region: content
+      parent_name: group_simple_tab_columns
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        formatter: closed
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: PcsujG59lyqWmskXiyR6jUKyqgwZZL1miC8Loj8ab40
+id: node.osu_simple_tabs.default
+targetEntityType: node
+bundle: osu_simple_tabs
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_simple_tab_column_left:
+    type: text_textarea
+    weight: 21
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_simple_tab_column_middle:
+    type: text_textarea
+    weight: 22
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_simple_tab_column_right:
+    type: text_textarea
+    weight: 23
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_simple_tab_sort_weight:
+    type: number
+    weight: 8
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_simple_tabs_tags:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 11
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 9
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  layout_builder__layout: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

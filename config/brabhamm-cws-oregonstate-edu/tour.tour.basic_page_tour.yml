@@ -1,0 +1,134 @@
+uuid: fa9175dd-3bca-4b51-834a-47b2a3141770
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: '-5cp_4K_-y_JkT923bOhewdaPZpvhLuPsdQQ3TUR4_Q'
+id: basic_page_tour
+label: 'Edit Functions Tour'
+routes:
+  -
+    route_name: entity.node.edit_form
+  -
+    route_name: node.add
+tips:
+  title:
+    id: title
+    plugin: text
+    label: Title
+    weight: -100
+    position: bottom
+    selector: .field--name-title
+    body: "<p>This title will appear in large orange text above content placed in the body or Layout Builder.</p>\r\n<p>It is Heading 1 by default and can be removed from display by toggling on \"Exclude title from display\". Read the <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Content-Creation.aspx#how-to-hide-the-page-title\" target=\"_blank\">Drupal how to remove page title</a> for step by step instructions.</p>"
+  exclude_node_title:
+    id: exclude_node_title
+    plugin: text
+    label: 'Exclude Node Title'
+    weight: -99
+    position: bottom
+    selector: .form-item--exclude-node-title
+    body: '<p>Check this box if you want to exclude the page title from its default location of centered text above any Layout Builder content. You must replace the default title with a Heading 1 in Layout Builder or the Body field for accessibility and SEO. Refer to the Site Building Guide''s <a href="https://drupal.oregonstate.edu/site-building-guide/elements#toc-headings" target="_blank">information about Heading 1s</a> for more details.</p>'
+  groups_description:
+    id: groups_description
+    plugin: text
+    label: 'Adding to a Group'
+    weight: -98
+    position: bottom
+    selector: '#edit-entitygroupfield-text'
+    body: '<p>By default, a page isn''t added to a group, but you can use the drop-down below to select the group you want to add the page to. Instructions and more details related to <a href="https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Groups.aspx" target="_blank">Groups</a> is available on the Drupal How-tos.</p>'
+  button_to_add_to_group:
+    id: button_to_add_to_group
+    plugin: text
+    label: 'Add to Group'
+    weight: -97
+    position: bottom
+    selector: '#edit-entitygroupfield-add-more-add-more-button'
+    body: "<p>After you have selected the group from the drop-down, be sure to click this <strong>Add to group</strong> button. Otherwise, it won't be added to the group.</p>"
+  summary:
+    id: summary
+    plugin: text
+    label: Summary
+    weight: -96
+    position: top
+    selector: .link-edit-summary
+    body: "<p>Add a summary to your page for your meta description. By default, it will use the text added to this body field in this Edit screen. It won't automatically use text in Layout Builder.</p>\r\n<p>The meta description is the short amount of text that shows up below the title in social media posts and on search results. This will help with your webpage's ranking in search results. Not sure what a meta description is or how to write one? Check out Moz's <a href=\"https://moz.com/learn/seo/meta-description\" target=\"_blank\">guide on meta descriptions</a>.</p>"
+  body:
+    id: body
+    plugin: text
+    label: Body
+    weight: -95
+    position: top
+    selector: .field--type-text-with-summary
+    body: '<p>The body can be filled with text, links, images, etc., but with limited ability to create complex layouts. This is perfect for simple pages with text and an image or two. Everything inserted here will show below the title of the page.</p>'
+  meta_image:
+    id: meta_image
+    plugin: text
+    label: 'Meta Image'
+    weight: -94
+    position: right
+    selector: '#field_osu_meta_image-media-library-wrapper'
+    body: '<p>Meta images are small preview photos that will show when the webpage is shared via social media or shown in search results. For more information read through the <a href="https://blogs.oregonstate.edu/drupalista/2023/04/17/basic-metadata-settings/" target="_blank">Basic Metadata Settings</a> blog post.</p>'
+  published:
+    id: published
+    plugin: text
+    label: Published
+    weight: -93
+    position: right
+    selector: .form-item--status-value
+    body: '<p>Toggle this to publish the site to the live site. This means the content will be publicly visible and searchable.</p>'
+  change_state:
+    id: change_state
+    plugin: text
+    label: 'Change State'
+    weight: -92
+    position: top
+    selector: '#edit-moderation-state-wrapper'
+    body: "<p>Change the status to published if you are ready for your page to be made public and searchable. You can change it to a draft state if you want to continue working later but aren't ready for your page to be live.</p>"
+  save:
+    id: save
+    plugin: text
+    label: Save
+    weight: -91
+    position: top
+    selector: '#edit-submit'
+    body: '<p>Click <strong>Save</strong> to save all your changes. If your page is published, then it will become live and anyone with the URL can view it and it can be shown in search results. </p>'
+  save_preview_and_delete:
+    id: save_preview_and_delete
+    plugin: text
+    label: Delete
+    weight: -90
+    position: top
+    selector: '#edit-delete'
+    body: "<p><strong>Deleting a page is not reversible via the admin interface. Be certain that you want to delete it.</strong> While DX takes backups of your website, it requires your entire website to be rolled back to that backup and any changes made anywhere in the site between that backup and the time of request will be lost. Oftentimes, it's less work to re-create the page from scratch.</p>\r\n<p>You can always unpublish a page if you don't want it publicly available and delete it when you're certain you don't need it back.</p>"
+  menu_settings:
+    id: menu_settings
+    plugin: text
+    label: 'Menu Settings'
+    weight: -89
+    position: top
+    selector: .menu-link-form
+    body: "<p>Here you can add this page to a menu. Provide the title that will show in the menu, which doesn't have to match the page title.</p>\r\n<p>From the <strong>Parent link</strong> drop down, select which menu it will appear in. You can also choose to nest it under an existing item, or keep it top level. The weight will determine the order in which it will appear in the menu. It's easier to go to <a href=\"/admin/structure/menu\" target=\"_blank\"><strong>Structure > Menus</strong></a> and use the click and drag interface for ordering and nesting menu items. This method is best for quickly adding pages to the top level of your menu.</p>"
+  url_alias:
+    id: url_alias
+    plugin: text
+    label: 'URL Alias'
+    weight: -88
+    position: top
+    selector: .path-form
+    body: "<p>The URL alias is a human-friendly URL that gets automatically generated when you create and save content</p>\r\n<p>By default, the alias will be the title of the page, converted into a URL friendly format</p>\r\n<p>Here you have the option of using the automatically generated URL alias or making a custom one by unchecking <strong>Generate automatic URL alias</strong>, which will allow you to type in your own URL alias. Using a custom one will require more maintenance down the road as it will not automatically update based on title.</p>"
+  url_redirects:
+    id: url_redirects
+    plugin: text
+    label: 'URL Redirects'
+    weight: -87
+    position: bottom
+    selector: .redirect-table
+    body: "<p>Here you can add a URL redirect <strong>TO</strong> this page. This is for if you have another page in your site that if someone visits and you want them to end up at this page.</p>\r\n<p>First, click <strong><a href=\"/admin/config/search/redirect/add\" target=\"_blank\">Add URL redirect</a></strong>, which will take you to the redirect form. Provide the URL path that you want to have trigger a redirect to this page.</p>\r\n<p>For more information, read the <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Links.aspx#redirects\" target=\"_blank\">Drupal How-to on redirects</a>.</p>"
+  scheduling_options:
+    id: scheduling_options
+    plugin: text
+    label: 'Scheduling Options'
+    weight: -86
+    position: left
+    selector: .scheduler-form
+    body: "<p>You can schedule content to be published at a later date entered below if you have something that needs to be published at a specific time. Read the <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Scheduled-Content.aspx\" target=\"_blank\">Drupal how-to on scheduled content</a> for more details.</p>\r\n<p><strong>Note:</strong> Scheduling requires some additional setup by DX in order to work in a timely manner. By default, the site doesn't publish content scheduled on a short interval, so your content may not go live as you expected it to without this additional configuration. You can <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/How-to-request-support.aspx\" target=\"_blank\">fill out a ticket</a> to request this configuration.</p>"

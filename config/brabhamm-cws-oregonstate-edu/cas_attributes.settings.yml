@@ -1,0 +1,22 @@
+_core:
+  default_config_hash: jrM9znGr4Pg-RtX5oAAdHoYXp_TEbzXpRgzBczciD2M
+sitewide_token_support: true
+token_allowed_attributes: {  }
+field:
+  sync_frequency: 2
+  overwrite: true
+  mappings:
+    name: '[cas:attribute:givenName] [cas:attribute:surname]'
+    mail: '[cas:attribute:osuprimarymail]'
+role:
+  sync_frequency: 2
+  deny_login_no_match: false
+  deny_registration_no_match: false
+  mappings:
+    -
+      rid: dx_administrator
+      method: exact_any
+      attribute: entitlement_drupal
+      value: 'urn:mace:oregonstate.edu:entitlement:drupal-admin'
+      negate: false
+      remove_without_match: true

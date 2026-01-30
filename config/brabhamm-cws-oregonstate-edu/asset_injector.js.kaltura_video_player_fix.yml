@@ -1,0 +1,30 @@
+uuid: 73114efe-1997-4943-b8f4-33f5ff06af98
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: kaltura_video_player_fix
+label: 'Kaltura Video Player Fix'
+code: |-
+  document.querySelectorAll('.media--type-kaltura iframe.media-oembed-content').forEach(iframe => {
+    iframe.addEventListener('load', () => {
+      const iframeDocument = iframe.contentDocument || iframe.contentWindow.document;
+      const kPlayer = iframeDocument.querySelector('div#kplayer.playerv3');
+      if (kPlayer) {
+        kPlayer.style.cssText = 'position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;';
+      }
+    });
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,37 @@
+uuid: b6abc693-e14c-4799-85bc-d28c2292b0a5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.academic_calendar_item.body
+    - field.field.node.academic_calendar_item.field_academic_calendar_dates
+    - field.field.node.academic_calendar_item.field_category
+    - field.field.node.academic_calendar_item.field_student
+    - node.type.academic_calendar_item
+  module:
+    - text
+    - user
+id: node.academic_calendar_item.teaser
+targetEntityType: node
+bundle: academic_calendar_item
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_academic_calendar_dates: true
+  field_category: true
+  field_student: true

@@ -1,0 +1,46 @@
+uuid: 77b2fc4a-2661-4e81-a7ee-3460e8d08a0f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: giant_rabbit_hero
+label: 'Giant Rabbit Hero'
+code: |-
+  .osu-max-width-600 {
+  	max-width: 600px;
+  }
+  .osu-max-width-700 {
+  	max-width: 700px;
+  }
+  .giant-rabbit-hero-wrapper {
+  	margin-block-start: -11em;
+  }
+
+  .osu-clip {
+  	clip-path: var(--osu-clip-path, initial);
+  }
+
+  .osu-clip-top-right {
+    --osu-clip-path: polygon(90% 0,100% 25%,100% 100%,0 100%, 0 0);
+    clip-path: var(--osu-clip-path, initial);
+  }
+
+  .osu-clip-top-left {
+    --osu-clip-path: polygon(10% 0,100% 0%,100% 100%,0 100%, 0 25%);
+    clip-path: var(--osu-clip-path, initial);
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

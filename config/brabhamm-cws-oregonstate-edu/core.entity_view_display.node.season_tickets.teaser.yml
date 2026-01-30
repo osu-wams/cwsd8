@@ -1,0 +1,35 @@
+uuid: 72259ae4-a0c9-440f-aaa3-669f4ed3b790
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.season_tickets.body
+    - field.field.node.season_tickets.field_season_ticket_cover
+    - field.field.node.season_tickets.field_season_ticket_event_date
+    - node.type.season_tickets
+  module:
+    - text
+    - user
+id: node.season_tickets.teaser
+targetEntityType: node
+bundle: season_tickets
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_season_ticket_cover: true
+  field_season_ticket_event_date: true

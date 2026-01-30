@@ -1,0 +1,60 @@
+uuid: e3d3f8ce-5272-43e1-94a5-8c1770d19bba
+langcode: en
+status: true
+dependencies:
+  module:
+    - redirect
+label: 'Redirect Testing'
+id: redirect_testing
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:redirect'
+processor_configuration:
+  values:
+    type: redirect
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: false
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  path:
+    value: Path
+    label: Path
+    machine_name: path
+    type: csv
+  redirect:
+    value: Redirect
+    label: Redirect
+    machine_name: redirect
+    type: csv
+mappings:
+  -
+    target: redirect_source
+    map:
+      path: path
+      query: ''
+    settings: {  }
+  -
+    target: redirect_redirect
+    map:
+      uri: redirect
+      title: ''
+    settings: {  }

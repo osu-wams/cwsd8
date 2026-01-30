@@ -1,0 +1,41 @@
+uuid: 57964401-179e-483f-b01d-16ec018a6c32
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: clip_path_block
+label: 'Clip Path Block'
+code: |
+  const heroClipBlock = document.querySelectorAll('.block-inline-blockgiant-rabbit-hero-with-clip');
+
+  heroClipBlock.forEach(heroClip => {
+    heroClipWrapper = heroClip.querySelector('.giant-rabbit-hero-wrapper');
+    const alignmentSelector = heroClip.querySelector('.field--name-field-c-block-alignment');
+    const heroClipImage = heroClip.querySelector('.field--name-field-osu-card-image');
+    alignmentSelector.classList.add('d-none');
+    heroClipImage.classList.add('position-relative');
+    switch(alignmentSelector.innerText) {
+      case 'Left':
+        heroClipWrapper.classList.add('osu-clip-top-left');
+        heroClipWrapper.style.marginLeft = '33em';
+        break;
+      case 'Right':
+        heroClipWrapper.classList.add('osu-clip-top-right');
+        heroClipImage.style.marginLeft = '27.5em';
+        break;
+    }
+    
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

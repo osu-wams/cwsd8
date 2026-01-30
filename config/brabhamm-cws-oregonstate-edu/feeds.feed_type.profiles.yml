@@ -1,0 +1,255 @@
+uuid: c4c998ba-c9fa-47f0-b1a2-c33df8c1eeac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_profile.field_osu_organizations
+    - field.field.node.osu_profile.field_profile_address
+    - field.field.node.osu_profile.field_profile_biography
+    - field.field.node.osu_profile.field_profile_email
+    - field.field.node.osu_profile.field_profile_first_name
+    - field.field.node.osu_profile.field_profile_last_name
+    - field.field.node.osu_profile.field_profile_middle_name
+    - field.field.node.osu_profile.field_profile_office_phone
+    - node.type.osu_profile
+  module:
+    - address
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      2304e6db-2772-4533-a9c2-08639c7f06cc:
+        separator: '|'
+        limit: null
+        uuid: 2304e6db-2772-4533-a9c2-08639c7f06cc
+        plugin: explode
+        source: functional_group
+        weight: 0
+        label: Explode
+      18af2ddb-f7b7-4153-b21b-b386ed0eb850:
+        default_value: US
+        only_if_empty: false
+        uuid: 18af2ddb-f7b7-4153-b21b-b386ed0eb850
+        plugin: default_value
+        source: country
+        weight: 0
+        label: 'Set value or default value'
+      a313368b-073f-4953-8675-c60b3dc6d2ab:
+        default_value: '97331'
+        only_if_empty: true
+        uuid: a313368b-073f-4953-8675-c60b3dc6d2ab
+        plugin: default_value
+        source: zip
+        weight: 0
+        label: 'Set value or default value'
+      85bbecf7-1f1f-4570-946d-d6b880d5810c:
+        default_value: Corvallis
+        only_if_empty: true
+        uuid: 85bbecf7-1f1f-4570-946d-d6b880d5810c
+        plugin: default_value
+        source: city
+        weight: 0
+        label: 'Set value or default value'
+      fecf9dcd-648f-4a0a-beee-80fd8145c85f:
+        default_value: OR
+        only_if_empty: true
+        uuid: fecf9dcd-648f-4a0a-beee-80fd8145c85f
+        plugin: default_value
+        source: state
+        weight: 0
+        label: 'Set value or default value'
+      3c3858e4-e9a0-4b02-a473-9c0828a6267b:
+        default_value: '700 SW 30th Street'
+        only_if_empty: true
+        uuid: 3c3858e4-e9a0-4b02-a473-9c0828a6267b
+        plugin: default_value
+        source: street
+        weight: 0
+        label: 'Set value or default value'
+      229f8d82-c8e9-4c88-89b4-35ca7f53b78f:
+        find: '/([a-z])([A-Z])/'
+        replace: '\\1 \\2'
+        limit: null
+        uuid: 229f8d82-c8e9-4c88-89b4-35ca7f53b78f
+        plugin: find_replace_regex
+        source: first_name
+        weight: 0
+        label: 'Find replace REGEX'
+      ad619962-0ac9-47ed-9ddb-9a121a24a6fd:
+        operation: ucfirst
+        uuid: ad619962-0ac9-47ed-9ddb-9a121a24a6fd
+        plugin: convert_case
+        source: first_name
+        weight: 1
+        label: 'Convert case'
+label: Profiles
+id: profiles
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: osu_profile
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 6
+custom_sources:
+  first_name:
+    value: 'First Name'
+    label: 'First Name'
+    machine_name: first_name
+    type: csv
+  middle_name:
+    value: 'Middle Name'
+    label: 'Middle Name'
+    machine_name: middle_name
+    type: csv
+  last_name:
+    value: 'Last Name'
+    label: 'Last Name'
+    machine_name: last_name
+    type: csv
+  e_mail_address:
+    value: 'E-mail address'
+    label: 'E-mail address'
+    machine_name: e_mail_address
+    type: csv
+  office_phone:
+    value: 'Office Phone'
+    label: 'Office Phone'
+    machine_name: office_phone
+    type: csv
+  affiliated:
+    value: Affiliated
+    label: Affiliated
+    machine_name: affiliated
+    type: csv
+  biography:
+    value: Biography
+    label: Biography
+    machine_name: biography
+    type: csv
+  city:
+    value: City
+    label: City
+    machine_name: city
+    type: csv
+  zip:
+    value: ZIP
+    label: ZIP
+    machine_name: zip
+    type: csv
+  street:
+    value: Street
+    label: Street
+    machine_name: street
+    type: csv
+  state:
+    value: State
+    label: State
+    machine_name: state
+    type: csv
+  '':
+    value: ''
+    label: ''
+    machine_name: ''
+    type: blank
+  country:
+    value: Country
+    label: Country
+    machine_name: country
+    type: blank
+  functional_group:
+    value: 'Functional Group'
+    label: 'Functional Group'
+    machine_name: functional_group
+    type: csv
+mappings:
+  -
+    target: field_profile_first_name
+    map:
+      value: first_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_middle_name
+    map:
+      value: middle_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_last_name
+    map:
+      value: last_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_email
+    map:
+      value: e_mail_address
+    settings:
+      language: null
+      defuse: false
+    unique: {  }
+  -
+    target: field_profile_office_phone
+    map:
+      value: office_phone
+    settings:
+      language: null
+  -
+    target: field_osu_organizations
+    map:
+      target_id: functional_group
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_profile_biography
+    map:
+      value: biography
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_profile_address
+    map:
+      langcode: ''
+      country_code: country
+      administrative_area: state
+      locality: city
+      dependent_locality: ''
+      postal_code: zip
+      sorting_code: ''
+      address_line1: street
+      address_line2: ''
+      organization: ''
+      given_name: ''
+      additional_name: ''
+      family_name: ''
+    settings:
+      language: null

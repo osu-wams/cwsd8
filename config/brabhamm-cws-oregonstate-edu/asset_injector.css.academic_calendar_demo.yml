@@ -1,0 +1,54 @@
+uuid: b8a925a7-8bd6-499b-90a1-7090e10036d3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: academic_calendar_demo
+label: 'Academic Calendar Demo'
+code: |
+  .views-view-bootstrap-table {
+  		caption {
+  	  caption-side: top;
+  	  color: var(--bs-primary);
+  	  padding-block: 1rem;
+  	  font-weight: bolder;
+  	  font-size: 2em;
+  	  text-align: left;
+  	  font-family: "Stratum2Web";
+  	  line-height: 1;
+  	}
+
+  	thead tr th{
+  		border-top: 1px solid var(--bs-dark);
+  		border-bottom: 1px solid var(--bs-dark);
+  		background-color: transparent;
+  	}
+
+  	tbody {
+  		.cal-date {
+  			width: 8em;
+  		}
+  		.cal-dow {
+  	    width: 10em;
+  	  }
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /academic-calendar-demo
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

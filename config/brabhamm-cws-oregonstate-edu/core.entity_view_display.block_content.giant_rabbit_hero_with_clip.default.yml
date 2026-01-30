@@ -1,0 +1,105 @@
+uuid: 875d777c-82bf-4b34-a233-bc22cad3bcf6
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.giant_rabbit_hero_with_clip
+    - field.field.block_content.giant_rabbit_hero_with_clip.body
+    - field.field.block_content.giant_rabbit_hero_with_clip.field_c_block_alignment
+    - field.field.block_content.giant_rabbit_hero_with_clip.field_c_block_heading
+    - field.field.block_content.giant_rabbit_hero_with_clip.field_c_block_sub_heading
+    - field.field.block_content.giant_rabbit_hero_with_clip.field_osu_card_image
+  module:
+    - field_group
+    - layout_builder
+    - layout_builder_restrictions
+    - options
+    - text
+    - text_field_formatter
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_test:
+      children:
+        - field_c_block_heading
+        - field_c_block_sub_heading
+      label: 'Giant Rabbit Hero Wrapper'
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: 'giant-rabbit-hero-wrapper bg-osuorange text-bucktoothwhite py-5 px-4 osu-max-width-700 position-relative osu-clip'
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: block_content.giant_rabbit_hero_with_clip.default
+targetEntityType: block_content
+bundle: giant_rabbit_hero_with_clip
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_c_block_alignment:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_c_block_heading:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h2
+      wrap_class: 'display-2 fw-bold text-uppercase'
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_c_block_sub_heading:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: div
+      wrap_class: fs-4
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_osu_card_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: 800x450
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

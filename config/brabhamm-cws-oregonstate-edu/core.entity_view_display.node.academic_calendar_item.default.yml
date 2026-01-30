@@ -1,0 +1,69 @@
+uuid: b11c0d1e-d0e9-4ef3-a8ac-c52c12834166
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.academic_calendar_item.body
+    - field.field.node.academic_calendar_item.field_academic_calendar_dates
+    - field.field.node.academic_calendar_item.field_category
+    - field.field.node.academic_calendar_item.field_student
+    - node.type.academic_calendar_item
+  module:
+    - date_ap_style
+    - text
+    - user
+id: node.academic_calendar_item.default
+targetEntityType: node
+bundle: academic_calendar_item
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_academic_calendar_dates:
+    type: daterange_ap_style
+    label: above
+    settings:
+      always_display_year: true
+      use_today: false
+      cap_today: false
+      display_day: true
+      display_time: false
+      hide_date: false
+      time_before_date: false
+      display_noon_and_midnight: false
+      capitalize_noon_and_midnight: false
+      use_all_day: false
+      separator: endash
+      timezone: ''
+      month_only: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_student:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entitygroupfield: true

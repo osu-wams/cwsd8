@@ -1,0 +1,18 @@
+uuid: 1c892acd-1eaf-4148-a8a3-da0ba89e4e41
+langcode: en
+status: true
+dependencies: {  }
+id: needs_review_notification
+workflow: editorial
+transitions:
+  send_to_review: send_to_review
+roles:
+  content_reviewer: content_reviewer
+author: true
+site_mail: true
+emails: ''
+subject: 'Content in needs review at [site:name]'
+body:
+  value: "<p>Dear Reviewer(s),</p>\r\n\r\n<p>We're excited to share with you a new piece of content on our website that requires your review! The content can be found at <a href=\"[node:url:unaliased]/latest\">[node:title]</a>. The author left the following message:</p>\r\n\r\n<p>[node:log]</p>\r\n\r\n<p>Please log in to the Drupal and navigate to the <a href=\"[site:base-path]/admin/content/moderated\">Content Moderation</a> page to view the content. Your review will help us ensure the quality and accuracy of our content.</p>\r\n\r\n<p>Please take a few minutes to check that the content meets our accessibility standards and is accurate and up-to-date. If everything looks good, please use the Moderation Sidebar and Click \"Publish\". If there's anything that needs attention, don't worry! You can use the \"Request changes\" transition to send it back to draft for further review.</p>\r\n\r\n<p>Thank you for your time and expertise!</p>\r\n\r\n<p>Best regards,</p>\r\n\r\n<p>Digital Experience™</p>\r\n"
+  format: full_html
+label: 'Needs Review Notification'

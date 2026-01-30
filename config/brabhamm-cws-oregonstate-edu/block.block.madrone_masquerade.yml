@@ -1,0 +1,34 @@
+uuid: e787c0ec-75ac-43c0-b80f-bde0b3a987a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - masquerade
+    - user
+  theme:
+    - madrone
+id: madrone_masquerade
+theme: madrone
+region: footer
+weight: -10
+provider: null
+plugin: masquerade
+settings:
+  id: masquerade
+  label: Masquerade
+  label_display: '0'
+  provider: masquerade
+  show_unmasquerade_link: false
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated
