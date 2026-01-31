@@ -1,0 +1,64 @@
+name: 'OSU Trash'
+description: 'Provides Trash for OSU Drupal'
+type: 'User Interface'
+install:
+  - trash
+config:
+  strict: false
+  actions:
+    trash.settings:
+      simpleConfigUpdate:
+        enabled_entity_types:
+          node: { }
+          block_content: { }
+          media: { }
+        auto_purge:
+          enabled: true
+          after: '90 days'
+    user.role.content_authors:
+      grantPermissions:
+        - 'access trash'
+        - 'purge node entities'
+        - 'purge media entities'
+        - 'restore media entities'
+        - 'restore node entities'
+        - 'view deleted entities'
+    user.role.manage_content:
+      grantPermissions:
+        - 'access trash'
+        - 'purge node entities'
+        - 'purge media entities'
+        - 'restore node entities'
+        - 'restore media entities'
+        - 'view deleted entities'
+    user.role.manage_blocks:
+      grantPermissions:
+        - 'access trash'
+        - 'purge block_content entities'
+        - 'restore block_content entities'
+        - 'view deleted entities'
+    user.role.manage_site_configuration:
+      grantPermissions:
+        - 'administer trash'
+    user.role.architect:
+      grantPermissions:
+        - 'access trash'
+        - 'administer trash'
+        - 'purge block_content entities'
+        - 'purge node entities'
+        - 'purge media entities'
+        - 'restore block_content entities'
+        - 'restore media entities'
+        - 'restore node entities'
+        - 'view deleted entities'
+    user.role.dx_administrator:
+      grantPermissions:
+        - 'access trash'
+        - 'administer trash'
+        - 'purge block_content entities'
+        - 'purge node entities'
+        - 'purge media entities'
+        - 'restore block_content entities'
+        - 'restore media entities'
+        - 'restore node entities'
+        - 'view deleted entities'
