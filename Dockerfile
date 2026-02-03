@@ -1,4 +1,4 @@
-FROM ghcr.io/osu-wams/php:8.4-apache AS production
+FROM ghcr.io/osu-wams/php:8.3-apache AS production
 COPY docker-wams-entry /usr/local/bin
 ENV PATH="$PATH:/var/www/html/vendor/bin"
 WORKDIR /var/www/html
@@ -14,7 +14,7 @@ VOLUME /var/www/html/docroot/sites/default/files
 ENTRYPOINT [ "docker-wams-entry" ]
 CMD [ "apache2-foreground" ]
 
-FROM ghcr.io/osu-wams/php:8.4-apache-dev AS development
+FROM ghcr.io/osu-wams/php:8.3-apache-dev AS development
 USER root
 RUN echo 'sendmail_path = "/usr/local/bin/mhsendmail --smtp-addr=mailhog:1025"' > /usr/local/etc/php/conf.d/sendmail.ini;
 USER www-data
