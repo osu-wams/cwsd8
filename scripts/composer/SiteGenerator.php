@@ -17,7 +17,7 @@ class SiteGenerator {
     $siteName = strtolower($io->ask('Site Production FQDN: '));
     if (!is_dir("{$baseDir}/docroot/sites/{$siteName}")) {
       // Match any character that is not a word.
-      $databaseName = preg_replace('/[\W]+/', '_', $siteName);
+      $databaseName = preg_replace('/\W+/', '_', $siteName);
       mkdir("{$baseDir}/docroot/sites/{$siteName}");
       $settingsFile = file_get_contents($baseDir . "/scripts/site-template/settings.php");
       $settingsFile = str_replace("DOMAIN", $databaseName, $settingsFile);
@@ -39,7 +39,7 @@ class SiteGenerator {
         file_put_contents($baseDir . '/docroot/sites/sites.php', $siteString, FILE_APPEND);
       }
       // Create config directory for Acquia Cloud
-      $configFolder = preg_replace('/[\W]+/', '-', $siteName);
+      $configFolder = preg_replace('/\W+/', '-', $siteName);
       if (!is_dir($baseDir . "/config/{$configFolder}")) {
         mkdir("{$baseDir}/config/{$configFolder}");
         copy("{$baseDir}/config/drupal-oregonstate-edu/.htaccess", "{$baseDir}/config/{$configFolder}/.htaccess");
