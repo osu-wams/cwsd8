@@ -903,7 +903,7 @@ if (file_exists('/var/www/site-php')) {
   global $conf;
   // Do not autoconnect to database.
   $conf['acquia_hosting_settings_autoconnect'] = FALSE;
-  require "/var/www/site-php/{$_ENV['AH_SITE_GROUP']}/campus_services_dev_oregonstate_edu-settings.inc";
+  require "/var/www/site-php/{$_ENV['AH_SITE_GROUP']}/campus_services_oregonstate_edu-settings.inc";
   // Set the MySQL variable values.
   $databases['default']['default']['init_commands'] = [
     'transaction_isolation' => 'SET SESSION transaction_isolation="READ-COMMITTED"'
