@@ -213,13 +213,11 @@ display:
             default_group_multiple: {  }
             group_items: {  }
       style:
-        type: grid_responsive
+        type: default
         options:
+          row_class: ''
+          default_row_class: true
           uses_fields: false
-          columns: 1
-          cell_min_width: 100
-          grid_gutter: 10
-          alignment: horizontal
       row:
         type: 'entity:node'
         options:
@@ -233,6 +231,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: container
       link_display: page_1
       link_url: ''
       header:
@@ -250,7 +249,10 @@ display:
           tokenize: true
           bypass_access: false
       footer: {  }
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
     cache_metadata:
       max-age: -1
       contexts:
