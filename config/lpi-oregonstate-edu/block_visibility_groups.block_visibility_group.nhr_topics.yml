@@ -1,0 +1,25 @@
+uuid: 2ab3eb27-932d-415f-b6b1-805b15283c5c
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - user
+id: nhr_topics
+label: nhr-topics
+logic: and
+conditions:
+  f838c407-57ac-417b-9a78-54ebd71972f5:
+    id: request_path
+    negate: false
+    uuid: f838c407-57ac-417b-9a78-54ebd71972f5
+    pages: '/nhr/conditions/*'
+  a80deca8-6c39-4612-88d7-2d4f5c9d481e:
+    id: user_role
+    negate: false
+    uuid: a80deca8-6c39-4612-88d7-2d4f5c9d481e
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated
+allow_other_conditions: null

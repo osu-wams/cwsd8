@@ -1,0 +1,45 @@
+uuid: 66538ac9-c4cf-4d31-a1c3-0cccd2f703b4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.hdi_topics.body
+    - field.field.node.hdi_topics.field_authors_and_reviewers
+    - field.field.node.hdi_topics.field_hdi_printer_friendly_pdf
+    - field.field.node.hdi_topics.field_infographic
+    - field.field.node.hdi_topics.field_infographic_pdf
+    - field.field.node.hdi_topics.field_meta_tags
+    - field.field.node.hdi_topics.field_related_conditions
+    - field.field.node.hdi_topics.field_relevant_external_links
+    - node.type.hdi_topics
+  module:
+    - text
+    - user
+id: node.hdi_topics.teaser
+targetEntityType: node
+bundle: hdi_topics
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_authors_and_reviewers: true
+  field_hdi_printer_friendly_pdf: true
+  field_infographic: true
+  field_infographic_pdf: true
+  field_meta_tags: true
+  field_related_conditions: true
+  field_relevant_external_links: true

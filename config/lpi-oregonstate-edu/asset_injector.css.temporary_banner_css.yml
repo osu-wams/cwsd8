@@ -1,0 +1,104 @@
+uuid: 6989548d-6a49-4b44-b914-7bc6744aaca6
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+id: temporary_banner_css
+label: 'Temporary Banner CSS'
+code: |-
+  .temp-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    color: #000;
+    padding: 15px 20px; /* Reduced padding */
+    font-size: 1em; /* Smaller font size */
+    font-weight: 400;
+    font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    z-index: 9999;
+    box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100px;
+  }
+
+  .banner-close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    background: none;
+    border: none;
+    color: #999;
+    font-size: 22px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+  }
+
+  .banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1300px; /* Slightly wider */
+    gap: 80px; /* Push images farther out */
+    flex-wrap: nowrap;
+    padding: 0 40px;
+  }
+
+  .banner-img {
+    height: 120px; /* Slightly smaller image */
+    width: auto;
+    flex-shrink: 0;
+  }
+
+  .banner-text {
+    flex-grow: 1;
+    margin: 0;
+    text-align: center;
+    line-height: 1.4;
+    font-size: 1em;
+  }
+
+  .banner-text a {
+    color: #0074bc;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .banner-content {
+      flex-direction: column;
+      gap: 20px;
+      text-align: center;
+    }
+
+    .banner-img {
+      height: 90px;
+    }
+
+    .banner-close {
+      top: 8px;
+      right: 12px;
+    }
+  }
+
+  .temp-banner .banner-text a {
+    color: #0074bc !important;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,25 @@
+uuid: cef95772-5f4c-4e42-95a7-3e0bbe262ce9
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - user
+id: nhr_front_page
+label: nhr-front-page
+logic: and
+conditions:
+  a83382c5-85d7-49b5-8675-40f879e41915:
+    id: request_path
+    negate: false
+    uuid: a83382c5-85d7-49b5-8675-40f879e41915
+    pages: /nhr
+  7065474c-aa52-4af9-9951-cfdcfccac287:
+    id: user_role
+    negate: false
+    uuid: 7065474c-aa52-4af9-9951-cfdcfccac287
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated
+allow_other_conditions: null

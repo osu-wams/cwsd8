@@ -1,0 +1,36 @@
+uuid: c6f97446-ac11-417c-b4cc-3a7080a13b7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_card
+    - field.field.media.kaltura.field_media_oembed_video
+    - media.type.kaltura
+  module:
+    - layout_builder
+    - media
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: media.kaltura.media_card
+targetEntityType: media
+bundle: kaltura
+mode: media_card
+content:
+  field_media_oembed_video:
+    type: oembed
+    label: visually_hidden
+    settings:
+      max_width: 640
+      max_height: 480
+      loading:
+        attribute: eager
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

@@ -1,0 +1,31 @@
+uuid: 9c50fa0a-e350-44c3-b030-3a380ba6215f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_streaming_video
+    - media.type.local_video
+    - media.type.remote_video
+    - node.type.webinar
+id: node.webinar.field_streaming_video
+field_name: field_streaming_video
+entity_type: node
+bundle: webinar
+label: 'Streaming Video'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      local_video: local_video
+      remote_video: remote_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: local_video
+field_type: entity_reference

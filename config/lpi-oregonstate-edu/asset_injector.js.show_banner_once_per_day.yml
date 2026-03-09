@@ -1,0 +1,35 @@
+uuid: a21e9bd0-2c19-41e1-91bf-30263c81d747
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+id: show_banner_once_per_day
+label: 'Temporary Banner JS'
+code: |-
+  document.addEventListener('DOMContentLoaded', function () {
+    const banner = document.querySelector('.temp-banner');
+    const closeBtn = document.querySelector('.banner-close');
+
+    if (banner) {
+      banner.style.display = 'flex'; // Always show on load
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function () {
+        banner.style.display = 'none';
+      });
+    }
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

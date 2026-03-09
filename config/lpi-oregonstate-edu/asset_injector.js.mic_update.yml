@@ -1,0 +1,53 @@
+uuid: 78665b50-0035-4029-a3ab-436afec76665
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: mic_update
+label: 'MIC Update'
+code: |-
+  var expandedAll = false;
+
+  function expandAll() {
+      if (expandedAll == false) {
+          var e = document.getElementsByTagName('input');
+          for (var i = 0; e[i]; i++) {
+
+              if (e[i].id.substring(0, 17) == "expandableHeading") {
+                  e[i].checked = true;
+              }
+
+          }
+          expandedAll = true;
+          document.getElementById("expandAllButton").value = "Collapse All";
+      } else {
+          var e2 = document.getElementsByTagName('input');
+          for (var i = 0; e2[i]; i++) {
+
+              if (e2[i].id.substring(0, 17) == "expandableHeading") {
+                  e2[i].checked = false;
+              }
+
+          }
+          expandedAll = false;
+          document.getElementById("expandAllButton").value = "Expand All";
+      }
+  }
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/mic/*'
+contexts: {  }
+conditions_require_all: true
