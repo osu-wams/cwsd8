@@ -372,7 +372,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-2 pb-3\">\r\n  <div class=\"fst-italic\">{{ created }}</div>\r\n  <div><a href=\"{{ field_osu_story_external_url }}\" class=\"story-card__link osu-link-orange\">{{ title }}</a></div>\r\n</div>\r\n"
+            text: "{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-2 pb-3\">\r\n  <!--<div class=\"fst-italic\">{{ created }}</div> -->\r\n  <div><a href=\"{{ field_osu_story_external_url }}\" class=\"story-card__link osu-link-orange\">{{ title }}</a></div>\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -716,16 +716,18 @@ display:
           click_sort_column: value
           type: timestamp_ap_style
           settings:
-            always_display_year: true
+            always_display_year: false
             use_today: false
             cap_today: false
             display_day: false
             display_time: false
+            hide_date: false
             time_before_date: false
             display_noon_and_midnight: true
             capitalize_noon_and_midnight: false
             use_all_day: false
             timezone: ''
+            month_only: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -931,7 +933,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-2 pb-3\">\r\n  <div class=\"fst-italic\">{{ created }}</div>\r\n  <div><a href=\"{{ field_osu_story_external_url }}\" class=\"story-card__link osu-link-orange\">{{ title }}</a></div>\r\n</div>\r\n"
+            text: "{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-2 pb-3\">\r\n  <!-- <div class=\"fst-italic\">{{ created }}</div> -->\r\n  <div><a href=\"{{ field_osu_story_external_url }}\" class=\"story-card__link osu-link-orange\">{{ title }}</a></div>\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -1649,3 +1651,4 @@ display:
       tags:
         - 'config:field.storage.node.field_osu_story_cover_image'
         - 'config:field.storage.node.field_osu_story_external_url'
+
