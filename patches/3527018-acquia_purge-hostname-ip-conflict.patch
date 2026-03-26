@@ -1,0 +1,51 @@
+From c774afb6fad931321d3c316945f8f480de67532c Mon Sep 17 00:00:00 2001
+From: Alejandro Garza <18994-janusman@users.noreply.drupalcode.org>
+Date: Tue, 10 Jun 2025 18:15:01 +0000
+Subject: [PATCH 1/2] Update file AcquiaCloudPurger.php
+
+---
+ src/Plugin/Purge/Purger/AcquiaCloudPurger.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Plugin/Purge/Purger/AcquiaCloudPurger.php b/src/Plugin/Purge/Purger/AcquiaCloudPurger.php
+index 74953fc..c9df995 100644
+--- a/src/Plugin/Purge/Purger/AcquiaCloudPurger.php
++++ b/src/Plugin/Purge/Purger/AcquiaCloudPurger.php
+@@ -397,7 +397,7 @@ class AcquiaCloudPurger extends PurgerBase implements DebuggerAwareInterface, Pu
+           yield $inv->getId() => function ($poolopt) use ($inv, $ipv4, $token) {
+             $uri = str_replace('https://', 'http://', $inv->getExpression());
+             $host = parse_url($uri, PHP_URL_HOST);
+-            $uri = str_replace($host, $ipv4, $uri);
++            $uri = str_replace("://{$host}/", "://{$ipv4}/", $uri);
+             $opt = [
+               'headers' => [
+                 'X-Acquia-Purge' => $token,
+-- 
+GitLab
+
+
+From d6e0babd314023c8bdf5e73fc0ad5a9caa628a8f Mon Sep 17 00:00:00 2001
+From: Alejandro Garza <18994-janusman@users.noreply.drupalcode.org>
+Date: Tue, 10 Jun 2025 18:34:04 +0000
+Subject: [PATCH 2/2] Added to function invalidateUrls()
+
+---
+ src/Plugin/Purge/Purger/AcquiaCloudPurger.php | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/src/Plugin/Purge/Purger/AcquiaCloudPurger.php b/src/Plugin/Purge/Purger/AcquiaCloudPurger.php
+index c9df995..144d9a8 100644
+--- a/src/Plugin/Purge/Purger/AcquiaCloudPurger.php
++++ b/src/Plugin/Purge/Purger/AcquiaCloudPurger.php
+@@ -334,7 +334,7 @@ class AcquiaCloudPurger extends PurgerBase implements DebuggerAwareInterface, Pu
+           yield $inv->getId() => function ($poolopt) use ($inv, $ipv4, $token) {
+             $uri = $inv->getExpression();
+             $host = parse_url($uri, PHP_URL_HOST);
+-            $uri = str_replace($host, $ipv4, $uri);
++            $uri = str_replace("://{$host}/", "://{$ipv4}/", $uri);
+             $opt = [
+               'headers' => [
+                 'X-Acquia-Purge' => $token,
+-- 
+GitLab
+
