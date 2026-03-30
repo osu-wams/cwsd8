@@ -1,0 +1,27 @@
+name: 'OSU Security'
+description: 'Recipe for OSU Standard gameplay'
+type: 'Administration'
+install:
+  - captcha
+  - recaptcha
+  - seckit
+config:
+  actions:
+    seckit.settings:
+      simpleConfigUpdate:
+        seckit_xss:
+          csp:
+            checkbox: TRUE
+            upgrade-req: TRUE
+            default-src: "'self' 'unsafe-inline' 'unsafe-eval' data: blob: *"
+        seckit_ssl:
+          hsts: TRUE
+          hsts_max_age: 10368000
+        seckit_various:
+          referrer_policy: TRUE
+          referrer_policy_policy: 'no-referrer-when-downgrade'
+    captcha.settings:
+      simpleConfigUpdate:
+        default_challenge: "recaptcha/reCAPTCHA"
+        default_validation: 1
+        persistence: 1
