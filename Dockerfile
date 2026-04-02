@@ -10,7 +10,7 @@ RUN mkdir -p /var/www/html/docroot/sites/default/files; \
   chown -R www-data:www-data /var/www/html/docroot/sites/default/files; \
   mkdir -p /var/www/files-private; \
   chown -R www-data:www-data /var/www/files-private;
-VOLUME /var/www/html/docroot/sites/default/files
+VOLUME ["/var/www/html/docroot/sites/default/files", "/var/www/files-private"]
 ENTRYPOINT [ "docker-wams-entry" ]
 CMD [ "apache2-foreground" ]
 
