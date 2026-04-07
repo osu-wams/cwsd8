@@ -1,4 +1,4 @@
-uuid: 1332431f-7fce-42a4-bf4f-59020964ec48
+uuid: null
 langcode: en
 status: true
 dependencies:
@@ -13,6 +13,7 @@ dependencies:
     - field.field.node.story.field_osu_story_external_url
     - field.field.node.story.field_osu_story_realtime_seo
     - field.field.node.story.field_tags
+    - field.field.node.story.field_weight
     - field.field.node.story.layout_builder__layout
     - node.type.story
   module:
@@ -22,6 +23,7 @@ dependencies:
     - metatag
     - path
     - text
+    - weight
     - yoast_seo
 third_party_settings:
   field_group:
@@ -33,7 +35,7 @@ third_party_settings:
       label: 'Search Engine Optimization (SEO) Information'
       region: content
       parent_name: ''
-      weight: 15
+      weight: 16
       format_type: details
       format_settings:
         classes: ''
@@ -64,9 +66,16 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  field_c_weight:
+    type: number
+    weight: 13
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
   field_meta_tags:
     type: metatag_firehose
-    weight: 14
+    weight: 15
     region: content
     settings:
       sidebar: true
@@ -100,7 +109,7 @@ content:
     third_party_settings: {  }
   field_osu_story_caption:
     type: string_textfield
-    weight: 13
+    weight: 14
     region: content
     settings:
       size: 60
@@ -140,6 +149,12 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  field_weight:
+    type: weight_selector
+    weight: 13
+    region: content
+    settings: {  }
     third_party_settings: {  }
   path:
     type: path
