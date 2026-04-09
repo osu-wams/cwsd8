@@ -597,10 +597,10 @@ display:
         link_url: false
       css_class: 'landing-stories mx-auto'
       display_description: 'A view block for the Research Insiders landing page.'
-      use_more: false
+      use_more: true
       use_more_always: true
       use_more_text: 'Read More Stories'
-      link_display: page_1
+      link_display: stories_archive
       link_url: ''
       display_extenders:
         metatag_display_extender:
@@ -1144,8 +1144,8 @@ display:
     display_plugin: page
     position: 2
     display_options:
-      enabled: false
-      title: 'All Stories'
+      enabled: true
+      title: 'Research Insiders'
       fields:
         field_osu_story_cover_image:
           id: field_osu_story_cover_image
@@ -1667,6 +1667,52 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_osu_organizations_target_id:
+          id: field_osu_organizations_target_id
+          table: node__field_osu_organizations
+          field: field_osu_organizations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            - 211
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: osu_organization
+          type: textfield
+          hierarchy: false
+          limit: true
+          error_message: true
       filter_groups:
         operator: AND
         groups:
@@ -1702,7 +1748,7 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-      path: all-stories
+      path: research-insiders-archive
     cache_metadata:
       max-age: -1
       contexts:
