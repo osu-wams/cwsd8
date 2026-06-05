@@ -1,0 +1,113 @@
+langcode: en
+status: true
+dependencies: {  }
+id: layout_builder
+label: 'Layout Builder'
+routes:
+  -
+    route_name: layout_builder.overrides.node.view
+tips:
+  overview:
+    id: overview
+    plugin: text
+    label: 'Layout Builder Overview'
+    weight: -100
+    position: auto
+    selector: ''
+    body: "<p>Welcome to Layout Builder! This is where you can build out the design of your page using this flexible tool to produce a variety of layouts and designs.</p>\r\n<p>You can read more details and follow step by step instructions on the <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Layout-Builder.aspx\" target=\"blank\">Layout Builder Drupal how-to page</a>.</p>\r\n<p>On the Site Building Guide, you can learn the <a href=\"https://drupal.oregonstate.edu/site-building-guide/layouts/layout-basics\" target=\"blank\">fundamentals of how Layout Builder works </a> with the Layout Basics page and <a href=\"https://drupal.oregonstate.edu/site-building-guide/layouts\" target=\"blank\">examples of different layouts.</a></p> "
+  title:
+    id: title
+    plugin: text
+    label: Title
+    weight: -99
+    position: top-end
+    selector: .page-title
+    body: '<p>This is the title of the page you are building with Layout Builder.</p>'
+  submit_button:
+    id: submit_button
+    plugin: text
+    label: 'Save Layout Button'
+    weight: -98
+    position: bottom
+    selector: '#node-page-layout-builder-form #edit-submit'
+    body: '<p>Below these buttons is where you go to build out your page. When you are happy with all of your changes, click the <strong>Save Layout</strong> button to make all of your changes public.</p>'
+  discard_button:
+    id: discard_button
+    plugin: text
+    label: 'Discard your Changes'
+    weight: -97
+    position: bottom
+    selector: '#node-page-layout-builder-form #edit-discard-changes'
+    body: "<p>If you don't want to keep your changes, click the <strong>Discard Changes</strong> button. If you hit the back button here, a draft of your changes in Layout Builder will be saved that you can return to. </p>\r\n<p><strong>Note:</strong>  if you combine hitting the back button and rolling back to an older revision under the Revisions tab, you can get an unexpected version of your page when returning to this screen. You will return to the last temporary draft of Layout Builder, not of the revision you reverted back to. If this happens, just discard changes and return back to Layout Builder to edit the current revision.</p>\r\n"
+  toggle_content_preview:
+    id: toggle_content_preview
+    plugin: text
+    label: 'Toggle Content Preview'
+    weight: -96
+    position: bottom-start
+    selector: .form-item-toggle-content-preview
+    body: "<p>This will toggle whether or not you see the content (text, images, background images, etc.) of your layout. If you uncheck this, you will only see the titles of the blocks. </p> \r\n<p>This can be useful when building out the layout of a content type or working with long pages. For guidance on how to build out a long page, see the <a href=\"https://drupal.oregonstate.edu/site-building-guide/page-examples/long-page-example\" target=\"blank\">Long Page Example</a> on the Site Building Guide. </p>"
+  revert:
+    id: revert
+    plugin: text
+    label: 'Revert to Defaults'
+    weight: -10
+    position: auto-start
+    selector: '#edit-revert'
+    body: "<p><strong>Use with caution.</strong> This will revert to the default layout for the content type. If you're working with a basic page, you will lose any content you have added via Layout Builder.</p>"
+  layout_builder_message:
+    id: layout_builder_message
+    plugin: text
+    label: 'Layout Builder Message'
+    weight: -10
+    position: auto-start
+    selector: '#edit-layout-builder-message'
+    body: "<p>This message is confirming that you that you are editing this single item. </p> \r\n<p>If you have the permissions, you can edit the template for this content type—this is for more advanced site builders who can work with custom content types.</p>  "
+  add_page_template_to_library:
+    id: add_page_template_to_library
+    plugin: text
+    label: 'Add Page Template to Library'
+    weight: -10
+    position: right
+    selector: .layout-builder__link--add-template-to-library
+    body: "<p>This will add the <em>entire page</em> to the Layout Builder library, a repository of all the saved layouts to this individual site.</p>\r\n<p><strong>Note:</strong> there is a memory limit for this functionality. You will receive an error if your page is too long to add to the library. Due to the high level of customization of Layout Builder, we are unable to provide an exact number of sections where you will reach this limit.</p>"
+  add_section:
+    id: add_section
+    plugin: text
+    label: 'Add Section'
+    weight: -10
+    position: top-start
+    selector: '.layout-builder__link--add:first-child'
+    body: "<p>Click <strong>Add section</strong> to add a new section and start building a layout from scratch. This method is recommended for those who are more familiar with Layout Builder. If you do go this route, be sure to check your layout on mobile.</p> \r\n<p>If you're just starting out with Layout Builder, we recommend starting with the templates provided. These are pre-built sections that you can either use out of the box or tweak according to your needs. Read the next tip to learn how to add a template.</p> \r\n"
+  import_from_library:
+    id: import_from_library
+    plugin: text
+    label: 'Import from Library'
+    weight: -10
+    position: top-start
+    selector: .layout-builder__link--import-from-library
+    body: '<p>To quickly get started with your page, you can choose from the pre-built templates that we provided and what other editors of the site have added. You can see <a href="https://drupal.oregonstate.edu/site-building-guide/layouts/layout-builder-library" target="_blank">examples of the pre-built templates</a> on the Site Building Guide.</p>'
+  configure_section:
+    id: configure_section
+    plugin: text
+    label: 'Configure Section'
+    weight: -10
+    position: right
+    selector: '.layout-builder__section .layout-builder__link--configure'
+    body: "<p>This is where you configure settings for the entire section. This can affect the behavior of your columns, the height of the entire section, background, etc. For a full list, check out <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Layout-Builder.aspx#adding-a-section\" target=\"_blank\">Adding a section</a> on the Drupal how-tos.</p>\r\n<p>You can configure many style settings on both the section or a block. We recommend keeping as many settings at the section level as possible for ease of future editing. While this isn't always possible (if you want each block to have a different background photo), it can be helpful to set the spacing at the section, rather than having to set spacing on every block.</p> \r\n<p>There are lot of settings here but here are some to highlight: </p>\r\n<ul>\r\n<li><strong>Background:</strong> you can set a background color, photo or video. See guidance on <a href=\"https://drupal.oregonstate.edu/site-building-guide/visuals/background-videos\" target=\"_blank\">how to use background videos that are accessible</a>.</li>\r\n<li><strong>Typography:</strong> if you want to quickly center all the text in your section, you can do so in the Typography section</li>\r\n<li><strong>Positioning:</strong> (unique to sections only) this sets the blocks to either stretch to fill the space, pin to the top or bottom, or center themselves.</li>\r\n</ul>"
+  add_section_to_layout_builder_library:
+    id: add_section_to_layout_builder_library
+    plugin: text
+    label: 'Add Section to Layout Builder Library'
+    weight: -10
+    position: top
+    selector: '.layout-builder__section .layout-builder__link--add-section-to-library'
+    body: "<p>If you have a section that you've built from scratch or tweaked a template that you'd like to easily use elsewhere in the site, you can add it to the Layout Builder Library. </p>\r\n<p>You can see everything you've add at your <a href=\"/admin/content/section-library\" target=\"_blank\">Layout Builder Library admin page</a>. This is also where you can delete layouts. </p> "
+  add_block:
+    id: add_block
+    plugin: text
+    label: 'Add Block'
+    weight: -10
+    position: top
+    selector: '.layout-builder__add-block .layout-builder__link--add'
+    body: "<p>Blocks are smaller containers for content to place inside a column of a section. A block can contain just about anything, but most commonly, it will contain text, links, buttons, and images. </p>\r\n<p>Different block types can provide different functionality or appearance, like accordions or cards, etc. </p>\r\n<p>Read the Drupal how-tos on <a href=\"https://oregonstateuniversity.sharepoint.com/sites/Drupal/SitePages/Layout-Builder.aspx#adding-blocks\" target=\"_blank\">adding blocks</a> for step by step instructions and links to examples of each block type.</p> "
