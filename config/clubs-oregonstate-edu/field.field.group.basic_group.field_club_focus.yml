@@ -1,0 +1,29 @@
+uuid: e88ef4f6-f7ab-4b2e-8c40-99128f42898d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_club_focus
+    - group.type.basic_group
+    - taxonomy.vocabulary.club_focus
+id: group.basic_group.field_club_focus
+field_name: field_club_focus
+entity_type: group
+bundle: basic_group
+label: 'Club Focus'
+description: "<p>This provides keywords for what this club exists for. <br/>\r\nSelect the category that best suits the club/organization.</p>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      club_focus: club_focus
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,72 @@
+uuid: ad5e79ad-1441-4870-918a-3449c26716ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: chatbox
+label: Chatbot
+code: |-
+  const chatContainer = document.querySelector(".chat-container");
+  const chatButton = document.querySelector(".chat-button");
+  const chatDialog = document.querySelector("#block-madrone-chatbotembedtest");
+
+  function toggleChat() {
+      if (chatContainer.open) {
+          chatContainer.close();
+          chatButton.setAttribute("aria-expanded", "false");
+          chatButton.focus(); // Return focus to the button when the dialog closes
+      } else {
+          chatContainer.show();
+          chatButton.setAttribute("aria-expanded", "true");
+          chatContainer.focus();
+      }
+  }
+
+  function closeChat() {
+      if (chatContainer.open) {
+          chatContainer.close();
+          chatButton.setAttribute("aria-expanded", "false");
+          // Return focus to the chat button when the dialog closes
+          chatButton.focus();
+      }
+  }
+
+  chatButton.addEventListener('click', toggleChat);
+
+  // Dismiss with Esc key
+  document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+          event.stopPropagation();
+          event.preventDefault();
+          closeChat();
+      }
+  });
+
+  // Dismiss by clicking outside the dialog
+  document.addEventListener('click', (event) => {
+      if (chatContainer.open && !chatDialog.contains(event.target) && !chatButton.contains(event.target)) {
+          closeChat();
+      }
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/3698\r\n/future-students\r\n/test"
+contexts: {  }
+conditions_require_all: true

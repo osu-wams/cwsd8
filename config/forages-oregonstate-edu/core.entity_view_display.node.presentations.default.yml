@@ -1,0 +1,59 @@
+uuid: a1090757-8848-4b84-ac65-5b900e3af3e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.presentations.body
+    - field.field.node.presentations.field_pdf
+    - field.field.node.presentations.field_ppt
+    - field.field.node.presentations.field_thumbnail
+    - node.type.presentations
+  module:
+    - file
+    - image
+    - user
+id: node.presentations.default
+targetEntityType: node
+bundle: presentations
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_pdf:
+    type: file_default
+    label: inline
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_ppt:
+    type: file_default
+    label: inline
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_thumbnail:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: 150x150-scale-crop
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  entitygroupfield: true

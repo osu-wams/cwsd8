@@ -1,0 +1,19 @@
+uuid: a0592c3e-4b3c-4c52-ae89-95c99728c6d0
+langcode: en
+status: true
+dependencies:
+  module:
+    - user
+id: group
+label: group
+logic: and
+conditions:
+  24c08262-9ab7-4fd5-8c4c-f00b900bd40b:
+    id: user_role
+    negate: false
+    uuid: 24c08262-9ab7-4fd5-8c4c-f00b900bd40b
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated
+allow_other_conditions: null

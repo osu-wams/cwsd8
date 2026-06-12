@@ -1,0 +1,43 @@
+uuid: 086314c7-f93a-44be-8080-f257a753657b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.board_actions.body
+    - field.field.node.board_actions.field_agenda_item_number
+    - field.field.node.board_actions.field_date
+    - field.field.node.board_actions.field_motion
+    - field.field.node.board_actions.field_other
+    - field.field.node.board_actions.field_resolution
+    - field.field.node.board_actions.field_resolution_number
+    - node.type.board_actions
+  module:
+    - text
+    - user
+id: node.board_actions.teaser
+targetEntityType: node
+bundle: board_actions
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_agenda_item_number: true
+  field_date: true
+  field_motion: true
+  field_other: true
+  field_resolution: true
+  field_resolution_number: true

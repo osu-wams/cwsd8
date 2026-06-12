@@ -1,0 +1,42 @@
+uuid: 4bce4a8b-32c8-43fc-b1d0-8a80cff6c13b
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: job_openings_add_soft_hyphen_after_slash
+label: 'Job Openings add space after slash'
+code: |-
+  Array.from(document.getElementsByClassName("job-posting-card")).forEach((card) => {
+  	const header = card.querySelector('h4');
+  	const searchStrLen = header.textContent.length;
+    let startIndex = 0, index;
+    const indices = [];
+    while ((index = header.textContent.indexOf('/', startIndex)) > -1) {
+      indices.push(index);
+      startIndex = index + searchStrLen;
+    }
+    let text = header.textContent;
+    console.log(indices);
+    indices.forEach((i, ind) => {
+    	text = [text.slice(0, i + ind), "\u{00AD}", text.slice(i + ind)].join('');
+    });
+    header.textContent = text;
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/45816
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,58 @@
+uuid: 75039868-ac24-40e2-a82d-e9aac50c73fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: policies_details_block_styling
+label: 'Policies Details Block Styling'
+code: |
+  #block-madrone-views-block-policies-block-1 .views-row {
+      background: #006A8E;
+      color: #fff;
+      font-size: 18px;
+      padding: 15px;
+      line-height: 1.5;
+      border-radius: 10px;
+  }
+
+  #block-madrone-views-block-policies-block-1 .views-row {
+      background: #006A8E;
+      color: #fff;
+      font-size: 18px;
+      padding: 15px;
+      line-height: 1.5;
+      border-radius: 10px;
+      margin: 10px 0px;
+      max-width: 650px;
+  }
+  #block-madrone-views-block-policies-block-1 .views-field-nothing {
+      font-weight: 900;
+  }
+
+  #block-madrone-views-block-policies-block-1 .views-row a, .field-name-field-policy-info .views-row a {
+      color: #fff;
+  }
+
+  #block-madrone-views-block-policies-block-1 .views-label, .field-name-field-policy-info .views-label {
+    color:#fff;
+    margin-right:10px;
+  }
+
+  #block-madrone-views-block-policies-block-1 {
+  	margin-left: 3.5em;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/academic-freedom\r\n/fixed-equipment\r\n/free-speech\r\n/international_travel\r\n/policy/*\r\n/UPSM/*\r\n"
+contexts: {  }
+conditions_require_all: true

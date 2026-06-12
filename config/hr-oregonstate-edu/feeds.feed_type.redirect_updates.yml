@@ -1,0 +1,60 @@
+uuid: 7899ea74-4f89-4bb9-91f9-9b0a53194a48
+langcode: en
+status: true
+dependencies:
+  module:
+    - redirect
+label: 'Redirect Updates'
+id: redirect_updates
+description: 'A feed to import redirects in Drupal'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:redirect'
+processor_configuration:
+  values:
+    type: redirect
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: false
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  source:
+    value: Source
+    label: Source
+    machine_name: source
+    type: csv
+  destination:
+    value: Destination
+    label: Destination
+    machine_name: destination
+    type: csv
+mappings:
+  -
+    target: redirect_source
+    map:
+      path: source
+      query: ''
+    settings: {  }
+  -
+    target: redirect_redirect
+    map:
+      uri: destination
+      title: ''
+    settings: {  }

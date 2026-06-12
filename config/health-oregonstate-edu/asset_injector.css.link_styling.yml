@@ -1,0 +1,113 @@
+uuid: 2bb27871-8a48-4664-95d0-f1407a3cb31b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: link_styling
+label: 'link styling'
+code: |-
+  .madrone-content a:not(.nav-link, .btn, .text-white, .linktree) {
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+      text-decoration-color: #d73f09;
+      text-decoration-thickness: max(0.08em,2px);
+      text-underline-offset: 0.17em;
+      font-weight: 500;
+      }
+      
+      .madrone-content a:hover:not(.nav-link, .btn, .text-white, .linktree), a:focus:not(.nav-link, .btn, .text-white, .linktree) {
+          text-decoration-line: underline;
+          text-decoration-style: dashed;
+           text-decoration-color: #423e3c;
+           text-decoration-thickness: max(0.08em, 2px);
+           text-underline-offset: 0.17em;
+           text-decoration-style: dashed;
+           color:#d73f09;
+           font-weight: 500;
+      }
+      
+      
+      a:focus:not(.nav-link, .btn, .text-white, .linktree) {
+          text-decoration-line: none;
+      }
+      
+      
+      
+      /*  and to account for all the migrated classes */ 
+      
+      
+      
+      .madrone-content a.pine-link-bold {
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+      text-decoration-color: #d73f09;
+      text-decoration-thickness: max(0.08em,2px);
+      text-underline-offset: 0.17em;
+      font-weight: 500;
+      }
+      
+      .madrone-content a.pine-link-bold:hover {
+          text-decoration-line: underline;
+          text-decoration-style: dashed;
+           text-decoration-color: #423e3c;
+           text-decoration-thickness: max(0.08em, 2px);
+           text-underline-offset: 0.17em;
+           text-decoration-style: dashed;
+           color:#d73f09;
+           font-weight: 500;
+          transition: background-color 0.2s ease-out;
+          transition-property: background-color;
+          transition-duration: 0.2s;
+          transition-timing-function: ease-out;
+          transition-delay: initial;
+      }
+      
+      
+      
+      /*  let's try this with a shorter class      */
+      
+      .madrone-content a.plb {
+          transition: color 0.2s ease-out;
+          transition-property: color;
+          transition-duration: 0.1s;
+          transition-timing-function: ease-out;
+          transition-delay: initial;
+      text-decoration-line: underline;
+      text-decoration-style: solid;
+      text-decoration-color: #d73f09;
+      text-decoration-thickness: max(0.08em,2px);
+      text-underline-offset: 0.17em;
+      font-weight: 500;
+      }
+      
+      .madrone-content a.plb:hover {
+          text-decoration-line: underline;
+          text-decoration-style: dashed;
+           text-decoration-color: #423e3c;
+           text-decoration-thickness: max(0.08em, 2px);
+           text-underline-offset: 0.17em;
+           text-decoration-style: dashed;
+           color:#d73f09;
+           font-weight: 500;
+          transition: background-color 0.2s ease-out;
+          transition-property: background-color;
+          transition-duration: 0.2s;
+          transition-timing-function: ease-out;
+          transition-delay: initial;
+      }
+      
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

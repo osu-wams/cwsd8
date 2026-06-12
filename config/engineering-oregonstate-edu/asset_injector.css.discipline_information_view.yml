@@ -1,0 +1,46 @@
+uuid: 969aa474-8421-4f9f-9cf1-3aff931724ab
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: discipline_information_view
+label: 'Degree type and location (view styling test)'
+code: |-
+  /*
+  styling for the Degree Type and Location sidebar on discipline pages
+  */
+
+
+  .Degree-types{
+  	border-radius: 3px !important;
+  	background-color: #B8DDE1 !important;
+  	padding: 5px !important;
+  	display: inline-block !important;
+  	margin-bottom: 5px !important;
+  }
+
+  .Degree-types-text{
+  	color: #000 !important;
+
+  	/* Main/Body Small */
+  	font-family: "Open Sans";
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 300;
+  	line-height: 130%; /* 18.2px */
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/45091\r\n/node/45051"
+contexts: {  }
+conditions_require_all: true

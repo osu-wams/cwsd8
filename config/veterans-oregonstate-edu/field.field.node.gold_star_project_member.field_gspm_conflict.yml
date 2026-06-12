@@ -1,0 +1,29 @@
+uuid: 71da287d-f873-42ea-9e38-e7a87b695a3b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gspm_conflict
+    - node.type.gold_star_project_member
+    - taxonomy.vocabulary.military_conflicts
+id: node.gold_star_project_member.field_gspm_conflict
+field_name: field_gspm_conflict
+entity_type: node
+bundle: gold_star_project_member
+label: Conflict
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      military_conflicts: military_conflicts
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

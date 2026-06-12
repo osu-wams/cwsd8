@@ -1,0 +1,23 @@
+uuid: c7019ae9-ddb1-428e-b831-2c7190ea5134
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.seminar_video_page
+  module:
+    - node
+id: seminar_video
+label: 'Seminar Video'
+type: 'canonical_entities:node'
+pattern: '/seminars/[node:title]'
+selection_criteria:
+  f877183b-e41f-41e3-9b39-b702164150a8:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      seminar_video_page: seminar_video_page
+selection_logic: and
+weight: 3
+relationships: {  }

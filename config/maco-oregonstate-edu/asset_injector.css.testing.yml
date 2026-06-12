@@ -1,0 +1,42 @@
+uuid: 15b3bd1b-d317-4a16-a4b1-d65b15238872
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: testing
+label: TESTING
+code: |-
+  .block-field-blocknodeprogramtitle {
+    position: absolute;
+    z-index: 99;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    h1 {
+      color: white;
+      font-size: 6rem;
+      text-shadow: 5px 5px black;
+      -webkit-text-stroke: 2px;
+    }
+   
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      program: program
+contexts: {  }
+conditions_require_all: true

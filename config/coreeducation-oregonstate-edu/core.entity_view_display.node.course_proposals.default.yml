@@ -1,0 +1,123 @@
+uuid: 4a01b53e-4a89-44e4-a2bf-080069a3ffff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.course_proposals.body
+    - field.field.node.course_proposals.feeds_item
+    - field.field.node.course_proposals.field_college_units
+    - field.field.node.course_proposals.field_course_number
+    - field.field.node.course_proposals.field_course_proposal_category
+    - field.field.node.course_proposals.field_course_proposal_group
+    - field.field.node.course_proposals.field_credits
+    - field.field.node.course_proposals.field_date_approved
+    - field.field.node.course_proposals.field_date_submitted
+    - field.field.node.course_proposals.field_location_modality
+    - field.field.node.course_proposals.field_statement_of_intent_status
+    - node.type.course_proposals
+  module:
+    - datetime
+    - options
+    - text
+    - user
+id: node.course_proposals.default
+targetEntityType: node
+bundle: course_proposals
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_college_units:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_course_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_course_proposal_category:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 110
+    region: content
+  field_course_proposal_group:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 109
+    region: content
+  field_credits:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_date_approved:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 108
+    region: content
+  field_date_submitted:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_location_modality:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_statement_of_intent_status:
+    type: boolean
+    label: above
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true

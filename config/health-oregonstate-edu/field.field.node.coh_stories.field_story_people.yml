@@ -1,0 +1,29 @@
+uuid: ede75f27-6fcf-4428-aaed-8de0dd0980d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_story_people
+    - node.type.coh_stories
+    - node.type.osu_profile
+id: node.coh_stories.field_story_people
+field_name: field_story_people
+entity_type: node
+bundle: coh_stories
+label: 'Story people'
+description: 'Link to people in story that have a profile page. Faculty, staff, students, etc ... '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      osu_profile: osu_profile
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,30 @@
+uuid: 46276160-1bd9-4d55-9c36-827669165a28
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_practice_focus
+    - node.type.health_care_resource
+    - taxonomy.vocabulary.practice_focus
+id: node.health_care_resource.field_practice_focus
+field_name: field_practice_focus
+entity_type: node
+bundle: health_care_resource
+label: 'Practice Focus'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      practice_focus: practice_focus
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

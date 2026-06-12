@@ -1,0 +1,403 @@
+uuid: ca8e64a5-b98f-4e83-b253-bf912416c48b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: historical_context
+label: 'Historical Context'
+code: |+
+  .timeline-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory; /* snap cards */
+    position: relative;
+    scrollbar-width: none;
+  }
+  .timeline-wrapper::-webkit-scrollbar { display: none; }
+
+  /* Cards */
+  .assist-timeline-card {
+    flex: 0 0 auto;
+    width: 280px;
+    margin: 0 0.5rem;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-left: 4px solid #423e3c;
+    min-height: 350px;
+    box-sizing: border-box;
+  }
+
+  .assist-timeline-card:hover {
+    transform: translateY(-3px);
+  }
+
+  /* Card content */
+  .assist-timeline-card .assist-timeline-header {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: #423e3c;
+      border-bottom: 1px solid #ecf0f1;
+      padding-bottom: 0.4rem;
+  }
+
+  .assist-timeline-header {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-bottom: 0.8rem;
+      color: #423e3c;
+      border-bottom: 1px solid #ecf0f1;
+      padding-bottom: 0.4rem;
+  }
+
+  .assist-timeline-card .assist-timeline-body {
+      color: #423e3c;
+      font-size: 0.95rem;
+  }
+
+  .assist-timeline-body {
+      color: #423e3c;
+      font-size: 0.95rem;
+  }
+
+  /* Arrows */
+  .timeline-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    color: #fff;
+    font-size: 1.5rem;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 10;
+    user-select: none;
+  }
+  .timeline-arrow.left { left: -45px; }
+  .timeline-arrow.right { right: -45px; }
+
+  /* Dots */
+  .timeline-dots {
+    position: absolute;
+    bottom: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+  }
+  .timeline-dots .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: #ccc;
+    cursor: pointer;
+  }
+  .timeline-dots .dot.active { background: #423e3c; }
+
+  .assist-vision-circle-image{
+  	clip-path: circle(50%); 
+  	shape-outside: circle(45%);
+  	width: 500px; 
+  	height: 500px; 
+  	float: right; 
+  	margin: 5%;
+    display: block;
+    border-radius: 50%;
+    -webkit-clip-path: circle(50%);
+    clip-path: circle(50%);
+    -webkit-shape-outside: circle(45%);
+    shape-outside: circle(45%);
+    -webkit-shape-margin: 15px;
+    shape-margin: 15px;
+  }
+  .assist-vision-circle-image-bottom{
+  	width: 0px; 
+  	height: 0px; 
+  }
+
+  .vision-bottom-paragraph{
+  	margin-top: 2rem;
+  }
+  .assist-historical-headers{
+  	font-family: 'Stratum2Web', serif; 
+  	font-size: 4rem;
+  }
+
+  .assist-vision-div{
+  	padding-left: 15%; 
+  	padding-right: 15%; 
+  	padding-top: 5%; 
+  	padding-bottom: 2%; 
+  	background-color: #fff;
+  }
+
+  .committee-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    justify-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+  }
+
+  .committee-card {
+    perspective: 1000px; 
+    width: 220px;
+    height: 220px; 
+    margin-bottom: 2rem;
+  }
+
+  .card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+  }
+
+  .committee-card:hover .card-inner {
+    transform: rotateY(180deg);
+  }
+
+  .card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white !important;
+  }
+
+  .card-front {
+    background: transparent;
+  }
+
+  .card-back {
+    background-color: #D73F09;
+    color: white !important;
+    transform: rotateY(180deg);
+    border-radius: 15px;
+    padding: 1rem;
+    justify-content: center;
+    clip-path: circle(50%);
+    width: 220px;
+    height: 220px;
+  }
+
+  .orange-circle {
+    width: 220px;
+    height: 220px;
+    border: 5px solid #D73F09;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .assist-adv-committee-img {
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    clip-path: circle(50%);
+    overflow: hidden !important;
+  }
+  .assist-profile-name {
+    display: block;
+    font-size: 1rem;
+    margin: 0.25rem 0;
+    font-weight: bold;
+  	font-family: 'Stratum2Web', Serif;
+  	text-align: center;
+    color: white !important;
+  }
+
+  .assist-profile-name a {
+  	color: white !important;
+  }
+    .assist-z-index-top {
+      position: absolute;
+      z-index: 4;
+  		margin-top: 8rem;
+    }
+    .assist-lead {
+      background-color: #D73F09;
+      color: white;
+      padding: 0.25rem 0.5rem;
+      line-height: 1.5;
+  		font-family: 'Stratum2Web', Serif;
+  		border-radius: 10px;
+    }
+    .committee-title {
+        text-align: center;
+        margin-top: 1rem;
+        font-weight: bold;
+    }
+
+    .text-align-center {
+        text-align: center;
+    }
+  /* Tablet styles */
+  @media (max-width: 1024px) {
+      .committee-row {
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1.5rem;
+          padding: 1rem;
+      }
+      
+      .committee-card {
+          width: 200px;
+          height: 200px;
+      }
+      
+      .orange-circle, .card-back {
+          width: 200px;
+          height: 200px;
+      }
+      
+      .assist-adv-committee-img {
+          width: 180px;
+          height: 180px;
+      }
+      
+      .assist-z-index-top {
+          margin-top: 7rem;
+      }
+
+      .assist-vision-circle-image{
+          width: 300px;
+          height: 300px;
+      }
+
+      .assist-vision-circle-image-bottom{
+          width: 300px; 
+          height: 300px;
+          margin: 6%;
+          clip-path: circle(50%); 
+          shape-outside: circle(45%);
+          float:left;
+      }
+
+      .assist-vision-div {
+          padding-left: 10%; 
+          padding-right: 10%; 
+          padding-top: 5%;
+          padding-bottom: 5%;
+      }
+
+      .vision-bottom-paragraph{
+          text-align: right;
+      }
+  }
+
+  /* Mobile styles */
+  @media (max-width: 600px) {
+      .committee-row {
+          grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+          gap: 1rem;
+          padding: 0.5rem;
+      }
+      
+      .committee-card {
+          width: 180px;
+          height: 180px;
+      }
+      
+      .orange-circle, .card-back {
+          width: 180px;
+          height: 180px;
+      }
+      
+      .assist-adv-committee-img {
+          width: 160px;
+          height: 160px;
+      }
+      
+      .assist-z-index-top {
+          margin-top: 6rem;
+      }
+      
+      .assist-profile-name {
+          font-size: 0.9rem;
+          color: white!important;
+      }
+      
+
+      .assist-vision-circle-image{
+          width: 200px;
+          height: 200px;
+      }
+
+      .assist-vision-circle-image-bottom{
+          width: 200px; 
+          height: 200px;
+          margin: 6%;
+          clip-path: circle(50%); 
+          shape-outside: circle(45%);
+          float:left;
+      }
+
+      .assist-vision-div {
+          padding-left: 10%; 
+          padding-right: 10%; 
+          padding-top: 5%;
+          padding-bottom: 5%;
+      }
+
+      .vision-bottom-paragraph{
+          text-align: right;
+      }
+  }
+
+  /* Extra small mobile */
+  @media (max-width: 460px) {
+      .committee-row {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+      }
+      
+      .committee-card {
+          width: 160px;
+          height: 160px;
+          margin: 0 auto 1rem;
+      }
+      
+      .orange-circle, .card-back {
+          width: 160px;
+          height: 160px;
+      }
+      
+      .assist-adv-committee-img {
+          width: 140px;
+          height: 140px;
+      }
+      
+      .assist-z-index-top {
+          margin-top: 5.5rem;
+      }
+
+      .assist-historical-headers{
+          font-size: 3rem !important;
+      }
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

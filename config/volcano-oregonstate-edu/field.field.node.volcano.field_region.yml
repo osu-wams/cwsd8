@@ -1,0 +1,30 @@
+uuid: 43941d6a-c573-427c-933d-e44a43fceb80
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_region
+    - node.type.volcano
+    - taxonomy.vocabulary.countries
+id: node.volcano.field_region
+field_name: field_region
+entity_type: node
+bundle: volcano
+label: Country
+description: 'Enter the country where the volcano is located.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      countries: countries
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

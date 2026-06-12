@@ -1,0 +1,105 @@
+uuid: 4c6f80a5-31ce-4cf8-bfc3-0dae65bb050f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.paragraph_2_col.field_p_2_col_left_bg
+    - field.field.paragraph.paragraph_2_col.field_p_2_col_left_main
+    - field.field.paragraph.paragraph_2_col.field_p_2_col_right_bg
+    - field.field.paragraph.paragraph_2_col.field_p_2_col_right_main
+    - image.style.thumbnail
+    - paragraphs.paragraphs_type.paragraph_2_col
+  module:
+    - field_group
+    - image
+    - text
+third_party_settings:
+  field_group:
+    group_p_2_col_wrapper:
+      children:
+        - group_p_2_col_left_wrapper
+        - group_p_2_col_right_wrapper
+      label: '2 column paragraph'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        required_fields: true
+    group_p_2_col_left_wrapper:
+      children:
+        - field_p_2_col_left_main
+        - field_p_2_col_left_bg
+      label: 'Left column'
+      region: content
+      parent_name: group_p_2_col_wrapper
+      weight: 1
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        required_fields: true
+    group_p_2_col_right_wrapper:
+      children:
+        - field_p_2_col_right_main
+        - field_p_2_col_right_bg
+      label: 'Right column'
+      region: content
+      parent_name: group_p_2_col_wrapper
+      weight: 2
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+        required_fields: true
+id: paragraph.paragraph_2_col.default
+targetEntityType: paragraph
+bundle: paragraph_2_col
+mode: default
+content:
+  field_p_2_col_left_bg:
+    type: image_image
+    weight: 3
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_p_2_col_left_main:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_p_2_col_right_bg:
+    type: image_image
+    weight: 5
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_p_2_col_right_main:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

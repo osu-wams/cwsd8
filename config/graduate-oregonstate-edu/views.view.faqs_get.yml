@@ -1,0 +1,495 @@
+uuid: 9f544a64-d2f1-49f4-ac47-5fb86e3f496d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.node.field_faq_topic_term
+    - node.type.faq
+    - taxonomy.vocabulary.faq_topic
+  content:
+    - 'taxonomy_term:faq_topic:5de92d52-000c-4468-a7a4-6bf56380da2c'
+  module:
+    - contextual
+    - node
+    - taxonomy
+    - text
+    - user
+id: faqs_get
+label: 'FAQs for GET'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'Frequently Asked Questions'
+      fields:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            text: "<i class=\"icon icon-link\">&nbsp;</i>\r\n"
+            path: 'node/{{ nid }}'
+            alt: 'Link to this question and answer.'
+            target: popup
+          element_label_colon: false
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            text: '{{ title }} {{ nid }}'
+            make_link: true
+            path: 'node/{{ nid }}?display=compact'
+            absolute: true
+            alt: '[title]'
+            target: popup
+            word_boundary: false
+            ellipsis: false
+          element_type: p
+          element_label_colon: false
+          element_default_classes: false
+          settings:
+            link_to_entity: false
+        body:
+          id: body
+          table: node__body
+          field: body
+          plugin_id: field
+          label: ''
+          exclude: true
+          element_class: content
+          element_label_colon: false
+        field_faq_topic_term:
+          id: field_faq_topic_term
+          table: node__field_faq_topic_term
+          field: field_faq_topic_term
+          plugin_id: field
+          label: ''
+          exclude: true
+          element_label_colon: false
+          type: entity_reference_label
+          settings:
+            target_type: taxonomy_term
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          plugin_id: entity_link_edit
+          label: ''
+          exclude: true
+          element_label_colon: false
+          text: 'Edit this FAQ'
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: ''
+          exclude: true
+          alter:
+            text: 'Create a New FAQ'
+            make_link: true
+            path: node/add/faq
+          element_label_colon: false
+        contextual_links:
+          id: contextual_links
+          table: views
+          field: contextual_links
+          plugin_id: contextual_links
+          label: ''
+          element_label_colon: false
+          fields:
+            edit_node: edit_node
+            nothing: nothing
+            title: '0'
+            body: '0'
+            field_faq_topic_term: '0'
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: basic
+        options:
+          submit_button: 'Search the FAQ List'
+      access:
+        type: perm
+      cache:
+        type: none
+      sorts:
+        weight:
+          id: weight
+          table: taxonomy_term_field_data
+          field: weight
+          relationship: field_faq_topic_term_tid
+          plugin_id: standard
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: standard
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+          group: 1
+        field_faq_topic_term_tid:
+          id: field_faq_topic_term_tid
+          table: node__field_faq_topic_term
+          field: field_faq_topic_term_target_id
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_faq_topic_term_tid_op
+            label: Topic
+            operator: in
+            identifier: field_faq_topic_term_tid
+            remember: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              site_admin: site_admin
+              site_architect: site_architect
+              content_manager: content_manager
+              content_author: content_author
+              moderator_of_all_groups: moderator_of_all_groups
+              moderator_of_all_webforms: moderator_of_all_webforms
+              grad_school_staff: grad_school_staff
+              onid_user: onid_user
+          vid: faq_topic
+          type: select
+          hierarchy: true
+          error_message: false
+          field_name: field_faq_topic_term
+      style:
+        type: default
+        options:
+          grouping:
+            -
+              field: field_faq_topic_term
+              rendered: true
+              rendered_strip: false
+          row_class: leaf
+          default_row_class: false
+          row_class_special: false
+          class: menu
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      relationships:
+        field_faq_topic_term_tid:
+          id: field_faq_topic_term_tid
+          table: node__field_faq_topic_term
+          field: field_faq_topic_term_target_id
+          plugin_id: standard
+          target_type: taxonomy_term
+          field_name: field_faq_topic_term
+      use_more_always: false
+      display_extenders: {  }
+      style_plugin: list
+      style_options:
+        grouping:
+          -
+            field: field_faq_topic_term
+            rendered: 1
+            rendered_strip: 0
+        row_class: leaf
+        default_row_class: false
+        row_class_special: false
+        class: menu
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_faq_topic_term'
+  page_1:
+    id: page_1
+    display_title: 'GET Page'
+    display_plugin: page
+    position: 2
+    display_options:
+      enabled: false
+      title: 'Frequently Asked Questions for the Graduate Application Toolkit (GET)'
+      fields:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          plugin_id: field
+          exclude: true
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          relationship: none
+          group_type: group
+          plugin_id: entity_link_edit
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          text: Edit
+          ui_name: ''
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: true
+            text: '<h3 id="{{ nid }}"><a href="#">{{ title }}</a> <a href="/graduate-education-toolkit/faqs-get#{{ nid }}"><i class="icon-bookmark icon-muted"></i></a></h3>'
+            path: '#'
+            alt: '[title]'
+            target: popup
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+          element_default_classes: false
+          settings:
+            link_to_entity: false
+        body:
+          id: body
+          table: node__body
+          field: body
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ body }} {{ edit_node }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+      sorts:
+        sticky:
+          id: sticky
+          table: node_field_data
+          field: sticky
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: DESC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+          exposed: false
+          granularity: second
+          ui_name: ''
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+          group: 1
+        tid:
+          id: tid
+          table: taxonomy_index
+          field: tid
+          plugin_id: taxonomy_index_tid
+          operator: in
+          value:
+            92: 92
+          vid: faq_topic
+          type: select
+      style:
+        type: default
+        options:
+          row_class_special: false
+          wrapper_class: faq-item-list
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        use_ajax: false
+        style: false
+        row: false
+        fields: false
+        sorts: false
+        filters: false
+        filter_groups: false
+        footer: false
+      use_ajax: true
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: ''
+          empty: false
+          ui_name: ''
+          content:
+            value: ''
+            format: full_html
+          tokenize: 0
+      display_extenders: {  }
+      path: get/faq
+      style_plugin: list
+      style_options:
+        row_class_special: false
+        wrapper_class: faq-item-list
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'

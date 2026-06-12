@@ -1,0 +1,30 @@
+uuid: 0dd389b0-cb09-4ab9-9c18-fbade6d48a6c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_location
+    - node.type.academic_program
+    - taxonomy.vocabulary.program_location
+id: node.academic_program.field_program_location
+field_name: field_program_location
+entity_type: node
+bundle: academic_program
+label: 'Program Location'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      program_location: program_location
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

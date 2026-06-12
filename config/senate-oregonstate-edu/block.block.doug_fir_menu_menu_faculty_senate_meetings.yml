@@ -5,9 +5,14 @@ dependencies:
   config:
     - system.menu.menu-faculty-senate-meetings
   module:
+    - block_class
+    - block_visibility_groups
     - system
   theme:
     - madrone
+third_party_settings:
+  block_class:
+    classes: mb-3
 id: doug_fir_menu_menu_faculty_senate_meetings
 theme: madrone
 region: sidebar
@@ -16,8 +21,8 @@ provider: null
 plugin: 'system_menu_block:menu-faculty-senate-meetings'
 settings:
   id: 'system_menu_block:menu-faculty-senate-meetings'
-  label: ''
-  label_display: '0'
+  label: Proceedings
+  label_display: visible
   provider: system
   level: 1
   depth: 0
@@ -26,28 +31,8 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: |-
-      /proceedings
-      /president
-      /message-senate-president-*
-      /scheduled-meetings
-      /faculty-senate-meeting-agendas
-      /*faculty-senate-agenda
-      /faculty-senate-meeting-minutes
-      /*faculty-senate-minutes
-      /motion*
-      /resolution*
-      /resolutions
-      /resolutions*
-      /*resolution
-      /resolutions/*
-      /faculty-senate-recorded-meetings
-      /faculty-senate-meetings
-      /faculty-forums-and-workshops
-      /webex-instructions
-      /statement*
-      /*athletic*
-      /webcast/*
-      /*webcast
-      /forum*
-      /faculty-forum*
+    pages: "/proceedings\r\n/president\r\n/message-senate-president-*\r\n/scheduled-meetings\r\n/faculty-senate-meeting-agendas\r\n/*faculty-senate-agenda\r\n/faculty-senate-meeting-minutes\r\n/*faculty-senate-minutes\r\n/motion*\r\n/resolution*\r\n/resolutions\r\n/resolutions*\r\n/*resolution\r\n/resolutions/*\r\n/faculty-senate-recorded-meetings\r\n/faculty-senate-meetings\r\n/faculty-forums-and-workshops\r\n/webex-instructions\r\n/statement*\r\n/*athletic*\r\n/webcast/*\r\n/*webcast\r\n/forum*\r\n/faculty-forum*\r\n/faculty-senate-meeting-agendas-meeting-dates*\r\n/faculty-senate-meeting-minutes-recordings*"
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

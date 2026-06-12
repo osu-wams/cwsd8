@@ -1,0 +1,29 @@
+uuid: 1b594e8b-08a6-4cd9-8012-7252772e1571
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gallery_terms
+    - node.type.gallery_image
+    - taxonomy.vocabulary.gallery_terms
+id: node.gallery_image.field_gallery_terms
+field_name: field_gallery_terms
+entity_type: node
+bundle: gallery_image
+label: 'Gallery Terms'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      gallery_terms: gallery_terms
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

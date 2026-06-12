@@ -1,0 +1,161 @@
+uuid: 1f98dd62-2d99-4a9a-8bed-d9c77a1d83b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: custom_footer
+label: 'Custom Footer'
+code: |-
+  footer.container-fluid.g-0.mt-auto {
+  	background:#232323;
+  	margin-top:150px!important;
+  }
+
+  .madrone-copyright {
+  display:none!important;
+  }
+
+  #madrone-footer-container {
+  	display: grid;
+      gap: 5px;
+      grid-template-columns: auto auto auto;
+      grid-template-rows: 50px 230px 100px;
+  }
+
+  #block-footersocial {
+  	    grid-column-start: 1;
+      grid-row-start: 1;
+      grid-row-end: 3;
+  }
+
+  #block-praxfooterlogo {
+  	    grid-column-start: 2;
+      grid-row-start: 1;
+      grid-row-end: 1;
+  }
+
+  #block-footer {
+  	  grid-column-start: 2;
+      grid-row-start: 2;
+      grid-row-end: 2;
+    max-width: 300px;
+    margin:20px 0;
+  }
+
+  ul.menu.menu--footer.nav.nav-pills.menu--level-1 {
+      display:block;
+      margin-left:-20px;
+  }
+
+  .menu--footer li.nav-item {
+  	min-width: 110px;
+
+  }
+
+  footer a.nav-link:hover {
+  	background:none;
+  	color:#d73f09;
+  }
+
+  footer a.nav-link.active.is-active {
+  	background:none!important;
+  	color:#fff;
+  }
+
+  #block-footersocialcontent {
+  	    grid-column-start: 2;
+      grid-row-start: 3;
+      grid-row-end: 3;
+  }
+
+  #block-footersocial a{
+  	margin-right:10px;
+  	text-decoration:none;
+  }
+
+  #block-footersocial a:hover {
+  	text-decoration:none;
+  	color:#d73f09;
+  }
+
+  #block-footermailchimpsignup {
+  		grid-column-start: 3;
+      grid-row-start: 1;
+      grid-row-end: 2;
+  }
+
+  #block-footersignup {
+  	grid-column-start: 3;
+      grid-row-start: 3;
+      grid-row-end: 3;
+  }
+
+  #mc_embed_signup {
+  	background:none!important;
+  }
+
+  #mc_embed_signup form {
+  	margin:0!important;
+  }
+
+  input#mc-embedded-subscribe { 
+  	background:#d73f09!important;
+  	border-radius:0!important;
+  }
+
+  input#mc-embedded-subscribe:hover {
+  	background:#003B5C!important;
+  }
+
+  input#mce-EMAIL {
+  		border-radius:0!important;
+  }
+
+  #mc_embed_signup .indicates-required {
+  	display:none!important;
+  }
+
+
+  span#mce-EMAIL-HELPERTEXT {
+  	display:none!important;
+  }
+
+  .praxfooterbutton {
+  	background:#d73f09;
+  	border-radius:0!important;
+  }
+
+  .praxfooterbutton:hover { 
+  	background:#003B5C;
+  }
+
+
+  @media screen and (max-width: 768px) {
+
+  #madrone-footer-container {
+  	display:block;
+  }
+
+  #block-footersocial {
+  	margin-bottom:30px;
+  }
+
+  #block-footermailchimpsignup {
+  	margin:40px 0;
+  }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

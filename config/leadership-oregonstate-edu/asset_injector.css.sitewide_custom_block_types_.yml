@@ -1,0 +1,152 @@
+uuid: 3fc57a2b-f65d-4f72-bd3b-12d12396edf5
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: sitewide_custom_block_types_
+label: 'Sitewide- custom block types '
+code: |-
+  /* TABLE OF CONTENTS
+  1. Full Width Card
+  2. Simple Card
+  3. Large Number Card
+  4. Clickable Block
+  5. Orange Hover Card
+  6. Large Fact
+  */
+  .card-full-width-photo {
+      position: relative;
+    }
+    .card-full-width-photo img {
+      width: 100%;
+      border-radius: 10px 10px 0 0;
+    }
+    .card-full-width-photo a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+
+    .block-inline-blocksimple-card,
+    .block-inline-blocksimple-card > .block__content,
+    .block-inline-blocksimple-card .simple-card {
+      height: 100%;
+    }
+
+    .field--name-field-large-number {
+      font-size: 2.5rem;
+      line-height: 1;
+      color: #d73f09;
+      font-family: "Stratum2Web", serif;
+      font-weight: 600;
+    }
+    @media (min-width: 992px) {
+      .field--name-field-large-number {
+        font-size: 3.5rem;
+      }
+    }
+
+    .clickable-block {
+      position: relative;
+    }
+    .clickable-block .block__content a::before {
+      position: absolute;
+      content: "";
+      inset: 0;
+    }
+
+    .clickable-block img {
+        margin-bottom: 1rem;
+    }
+
+    .orange-card-hover {
+      position: relative;
+      height: 100%;
+    }
+    .block-inline-blockorange-hover-card .col-12 {
+      position: unset;
+    }
+    .block-inline-blockorange-hover-card > .block__content,
+    .block-inline-blockorange-hover-card .orange-card-hover {
+      height: 100%;
+    }
+    .block-inline-blockorange-hover-card .orange-card-hover {
+      transition: all 0.4s ease;
+    }
+    .block-inline-blockorange-hover-card .orange-card-hover:hover {
+      background-color: #d73f09 !important;
+      color: #fff;
+    }
+    .block-inline-blockorange-hover-card i {
+      font-size: 5rem;
+    }
+    .block-inline-blockorange-hover-card a {
+      text-decoration: none;
+      color: #212529;
+    }
+    .orange-card-hover a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+    .block-inline-blockorange-hover-card a:hover {
+      text-decoration: underline;
+      color: #fff;
+    }
+
+    /*.block-field-blockblock-contenticon-with-factfield-fact-icon i {*/
+    /*  color: #d73f09;*/
+    /*}*/
+
+    .block-field-blockblock-contenticon-with-factfield-large-fact {
+      font-size: 2rem;
+      font-weight: 600;
+      line-height: 1;
+      font-family: "Stratum2Web", sans-serif;
+    }
+
+    .block-inline-blockhover-card {
+      position: relative;
+      transition: transform 0.2s ease;
+      height: 100%;
+    }
+    .block-inline-blockhover-card > .block__content,
+    .block-inline-blockhover-card .hover-card {
+      height: 100%;
+    }
+    .block-inline-blockhover-card i {
+      font-size: 4rem;
+    }
+    .block-inline-blockhover-card:hover {
+      transform: scale(1.05);
+    }
+    .block-inline-blockhover-card .field--name-field-hover-card-link a {
+      color: #d73f09;
+      font-family: "Open Sans", sans-serif;
+      font-size: 28px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .block-inline-blockhover-card .field--name-field-hover-card-link a:hover {
+      text-decoration: underline;
+    }
+    .block-inline-blockhover-card .field--name-field-hover-card-link a::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+    }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

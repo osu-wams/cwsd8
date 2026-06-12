@@ -1,0 +1,39 @@
+uuid: 3b9b4f3b-9689-44ae-ae73-20e96848a801
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - ctools_block
+    - system
+  theme:
+    - madrone
+id: madrone_capability
+theme: madrone
+region: footer
+weight: -5
+provider: null
+plugin: 'entity_field:node:field_capability'
+settings:
+  id: 'entity_field:node:field_capability'
+  label: Capability
+  label_display: visible
+  provider: ctools_block
+  context_mapping:
+    entity: '@node.node_route_context:node'
+  formatter:
+    type: entity_reference_label
+    weight: 0
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/2756

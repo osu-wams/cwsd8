@@ -1,0 +1,29 @@
+uuid: c5fa0c2b-f26f-4b6d-b2ab-29049469443c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: unpublished_bg
+label: 'unpublished BG'
+code: |-
+  .node--unpublished, .group--unpublished {
+      background-color: #f7f5f5;
+  }
+  .trans-bg {
+  	background-color: rgba(255, 255, 255, 0.7);
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /executive-search-services
+contexts: {  }
+conditions_require_all: true

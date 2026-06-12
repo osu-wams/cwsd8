@@ -1,0 +1,49 @@
+uuid: 9e9aa0ad-0366-4aef-af77-0a863c2457d0
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: details
+label: 'Details HTML element (add to distro)'
+code: |
+  details {
+  	margin-block-end: .5rem;
+  }
+
+  summary {
+      background: #fff;
+      padding: 0.6rem;
+      border-radius: 0.1rem;
+      border-inline-start: 3px solid #d73f09;
+      box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.15);
+      transition: background 0.2s ease-in, color 0.2s ease-in;
+       font-weight: 600;
+
+      &:hover,
+      &[aria-expanded="true"] {
+          background: #212529;
+          color: #fff;
+      }
+  }
+
+  .details-wrapper {
+      padding-inline: 1.9rem;
+      padding-block: 1rem;
+      margin-block-end: 1rem;
+      background: #fff;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

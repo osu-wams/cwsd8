@@ -1,0 +1,1543 @@
+uuid: 50d1943a-ffd4-45f0-9777-e499cf86bbb0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_agp_appdate
+    - field.storage.node.field_program_agp_comments
+    - field.storage.node.field_program_agp_date_details
+    - field.storage.node.field_program_agp_degree_type
+    - field.storage.node.field_program_agp_link
+    - field.storage.node.field_program_agp_undergrad
+    - field.storage.node.field_program_name
+    - node.type.program
+  module:
+    - date_ap_style
+    - datetime
+    - link
+    - node
+    - options
+    - text
+    - user
+    - views_bootstrap
+id: accelerated_graduate_platform_list
+label: 'Accelerated Graduate Platform List'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: "Programs Participating in the Accelerated Master's Platform"
+      fields:
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          exclude: true
+          alter:
+            absolute: true
+          element_label_colon: false
+          absolute: true
+        field_program_name:
+          id: field_program_name
+          table: node__field_program_name
+          field: field_program_name
+          plugin_id: field
+          alter:
+            alter_text: true
+            text: '<a href="{{ path }}">{{ field_program_name }}</a>'
+        field_program_agp_undergrad:
+          id: field_program_agp_undergrad
+          table: node__field_program_agp_undergrad
+          field: field_program_agp_undergrad
+          plugin_id: field
+          label: 'Undergraduate Programs'
+        field_program_agp_appdate:
+          id: field_program_agp_appdate
+          table: node__field_program_agp_appdate
+          field: field_program_agp_appdate
+          plugin_id: field
+          label: 'Application Deadline'
+          settings:
+            format_type: short
+            fromto: both
+            multiple_number: ''
+            multiple_from: ''
+            multiple_to: ''
+            show_repeat_rule: show
+        field_program_agp_date_details:
+          id: field_program_agp_date_details
+          table: node__field_program_agp_date_details
+          field: field_program_agp_date_details
+          plugin_id: field
+          label: 'Deadline Details'
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          plugin_id: entity_link_edit
+          label: ''
+          element_label_colon: false
+          text: Edit
+      pager:
+        type: none
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+      cache:
+        type: time
+        results_lifespan: '300'
+        results_lifespan_custom: '0'
+        output_lifespan: '300'
+        output_lifespan_custom: '0'
+      sorts:
+        field_program_name_value:
+          id: field_program_name_value
+          table: node__field_program_name
+          field: field_program_name_value
+          plugin_id: standard
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            program: program
+        field_program_agp_participation_value:
+          id: field_program_agp_participation_value
+          table: node__field_program_agp_participation
+          field: field_program_agp_participation_value
+          plugin_id: boolean
+          operator: or
+          value: '1'
+      style:
+        type: default
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      css_class: view__amp-list
+      use_more_always: false
+      display_extenders: {  }
+      style_plugin: default
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_program_agp_appdate'
+        - 'config:field.storage.node.field_program_agp_date_details'
+        - 'config:field.storage.node.field_program_agp_undergrad'
+        - 'config:field.storage.node.field_program_name'
+  block_1:
+    id: block_1
+    display_title: Block
+    display_plugin: block
+    position: 3
+    display_options:
+      fields:
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          exclude: true
+          alter:
+            absolute: true
+          element_label_colon: false
+          absolute: true
+        field_program_name:
+          id: field_program_name
+          table: node__field_program_name
+          field: field_program_name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: '<a href="{{ path }}">{{ field_program_name }}</a>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_undergrad:
+          id: field_program_agp_undergrad
+          table: node__field_program_agp_undergrad
+          field: field_program_agp_undergrad
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Qualifying Undergraduate Programs'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: h3
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_appdate:
+          id: field_program_agp_appdate
+          table: node__field_program_agp_appdate
+          field: field_program_agp_appdate
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Application Deadline'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: h3
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp_ap_style
+          settings:
+            always_display_year: 0
+            use_today: 0
+            cap_today: 0
+            display_day: 0
+            month_only: 0
+            display_time: 0
+            hide_date: 0
+            time_before_date: 0
+            display_noon_and_midnight: 0
+            capitalize_noon_and_midnight: 0
+            use_all_day: 0
+            timezone: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_date_details:
+          id: field_program_agp_date_details
+          table: node__field_program_agp_date_details
+          field: field_program_agp_date_details
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Deadline Details'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: h3
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_comments:
+          id: field_program_agp_comments
+          table: node__field_program_agp_comments
+          field: field_program_agp_comments
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_degree_type:
+          id: field_program_agp_degree_type
+          table: node__field_program_agp_degree_type
+          field: field_program_agp_degree_type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Degree Types Awarded'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: h3
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_link:
+          id: field_program_agp_link
+          table: node__field_program_agp_link
+          field: field_program_agp_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: 'Visit the department AMP page'
+            make_link: true
+            path: '{{ field_program_agp_link__uri }}'
+            absolute: true
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            program: program
+        field_program_agp_participation_value:
+          id: field_program_agp_participation_value
+          table: node__field_program_agp_participation
+          field: field_program_agp_participation_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_program_status_value:
+          id: field_program_status_value
+          table: node__field_program_status
+          field: field_program_status_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: list_field
+          operator: not
+          value:
+            not_accepting_applications_at_this_time: not_accepting_applications_at_this_time
+            draft_page: draft_page
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: views_bootstrap_accordion
+        options:
+          grouping: {  }
+          panel_title_field: field_program_name
+          flush: false
+          behavior: closed
+          sections:
+            first: 0
+            middle: 0
+            last: 0
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      defaults:
+        style: false
+        row: false
+        fields: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      block_description: 'AMP list accordion'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_program_agp_appdate'
+        - 'config:field.storage.node.field_program_agp_comments'
+        - 'config:field.storage.node.field_program_agp_date_details'
+        - 'config:field.storage.node.field_program_agp_degree_type'
+        - 'config:field.storage.node.field_program_agp_link'
+        - 'config:field.storage.node.field_program_agp_undergrad'
+        - 'config:field.storage.node.field_program_name'
+  page:
+    id: page
+    display_title: 'Page - table'
+    display_plugin: page
+    position: 2
+    display_options:
+      fields:
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          exclude: true
+          alter:
+            absolute: true
+          element_label_colon: false
+          absolute: true
+        field_program_name:
+          id: field_program_name
+          table: node__field_program_name
+          field: field_program_name
+          plugin_id: field
+          alter:
+            alter_text: true
+            text: '<a href="{{ path }}">{{ field_program_name }}</a>'
+        field_program_agp_undergrad:
+          id: field_program_agp_undergrad
+          table: node__field_program_agp_undergrad
+          field: field_program_agp_undergrad
+          plugin_id: field
+          label: 'Undergraduate Programs'
+        field_program_agp_appdate:
+          id: field_program_agp_appdate
+          table: node__field_program_agp_appdate
+          field: field_program_agp_appdate
+          plugin_id: field
+          label: 'Application Deadline'
+          settings:
+            format_type: short
+            fromto: both
+            multiple_number: ''
+            multiple_from: ''
+            multiple_to: ''
+            show_repeat_rule: show
+        field_program_agp_date_details:
+          id: field_program_agp_date_details
+          table: node__field_program_agp_date_details
+          field: field_program_agp_date_details
+          plugin_id: field
+          label: 'Deadline Details'
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          plugin_id: entity_link_edit
+          label: ''
+          element_label_colon: false
+          text: Edit
+      access:
+        type: none
+      style:
+        type: table
+        options:
+          columns:
+            path: path
+            field_program_name: field_program_name
+            field_program_agp_undergrad: field_program_agp_undergrad
+            field_program_agp_appdate: field_program_agp_appdate
+            field_program_agp_date_details: field_program_agp_date_details
+            edit_node: edit_node
+          default: '-1'
+          info:
+            path:
+              align: ''
+              separator: ''
+              empty_column: false
+            field_program_name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_program_agp_undergrad:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_program_agp_appdate:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_program_agp_date_details:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            edit_node:
+              align: ''
+              separator: ''
+              empty_column: false
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        access: false
+        style: false
+        row: false
+        fields: false
+        access_options: false
+      display_description: ''
+      display_extenders: {  }
+      path: accelerated-masters-platform/list-table
+      menu:
+        type: none
+        title: 'Program List'
+        description: ''
+        weight: 0
+        menu_name: main
+        context: '0'
+        name: main
+        context_only_inline: 0
+      style_plugin: table
+      style_options:
+        columns:
+          path: path
+          field_program_name: field_program_name
+          field_program_agp_undergrad: field_program_agp_undergrad
+          field_program_agp_appdate: field_program_agp_appdate
+          field_program_agp_date_details: field_program_agp_date_details
+          edit_node: edit_node
+        default: '-1'
+        info:
+          path:
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_program_name:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_program_agp_undergrad:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_program_agp_appdate:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_program_agp_date_details:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          edit_node:
+            align: ''
+            separator: ''
+            empty_column: 0
+      access_options: null
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+      tags:
+        - 'config:field.storage.node.field_program_agp_appdate'
+        - 'config:field.storage.node.field_program_agp_date_details'
+        - 'config:field.storage.node.field_program_agp_undergrad'
+        - 'config:field.storage.node.field_program_name'
+  page_2:
+    id: page_2
+    display_title: 'Page accordions'
+    display_plugin: page
+    position: 3
+    display_options:
+      fields:
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          label: ''
+          exclude: true
+          alter:
+            absolute: true
+          element_label_colon: false
+          absolute: true
+        field_program_name:
+          id: field_program_name
+          table: node__field_program_name
+          field: field_program_name
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: '<a href="{{ path }}">{{ field_program_name }}</a>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_undergrad:
+          id: field_program_agp_undergrad
+          table: node__field_program_agp_undergrad
+          field: field_program_agp_undergrad
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Qualifying Undergraduate Programs'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: h3
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_appdate:
+          id: field_program_agp_appdate
+          table: node__field_program_agp_appdate
+          field: field_program_agp_appdate
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Application Deadline'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: h3
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp_ap_style
+          settings:
+            always_display_year: 0
+            use_today: 0
+            cap_today: 0
+            display_day: 0
+            month_only: 0
+            display_time: 0
+            hide_date: 0
+            time_before_date: 0
+            display_noon_and_midnight: 0
+            capitalize_noon_and_midnight: 0
+            use_all_day: 0
+            timezone: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_date_details:
+          id: field_program_agp_date_details
+          table: node__field_program_agp_date_details
+          field: field_program_agp_date_details
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Deadline Details'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: h3
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_comments:
+          id: field_program_agp_comments
+          table: node__field_program_agp_comments
+          field: field_program_agp_comments
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_degree_type:
+          id: field_program_agp_degree_type
+          table: node__field_program_agp_degree_type
+          field: field_program_agp_degree_type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Degree Types Awarded'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: h3
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_program_agp_link:
+          id: field_program_agp_link
+          table: node__field_program_agp_link
+          field: field_program_agp_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: 'Visit the department AMP page'
+            make_link: true
+            path: '{{ field_program_agp_link__uri }}'
+            absolute: true
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            program: program
+        field_program_agp_participation_value:
+          id: field_program_agp_participation_value
+          table: node__field_program_agp_participation
+          field: field_program_agp_participation_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: views_bootstrap_accordion
+        options:
+          grouping: {  }
+          panel_title_field: field_program_name
+          flush: false
+          behavior: closed
+          sections:
+            first: 0
+            middle: 0
+            last: 0
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      defaults:
+        style: false
+        row: false
+        fields: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: amp-accordions
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_program_agp_appdate'
+        - 'config:field.storage.node.field_program_agp_comments'
+        - 'config:field.storage.node.field_program_agp_date_details'
+        - 'config:field.storage.node.field_program_agp_degree_type'
+        - 'config:field.storage.node.field_program_agp_link'
+        - 'config:field.storage.node.field_program_agp_undergrad'
+        - 'config:field.storage.node.field_program_name'

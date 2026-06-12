@@ -1,0 +1,51 @@
+uuid: 69bbb8b1-a0a4-4060-84d4-87aa7c42197c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_2024_theme_version_2
+label: 'Clean water symposium (hero title/background)'
+code: |-
+  /*===================================
+  * Background images
+  ===================================*/
+
+  @media only screen and (max-width: 600px) {
+   .hero-background-image{
+   	background-image: url(https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/2025-01/CWS-hero-tablet.jpg) !important;
+   	max-height: 400px !important;
+   }
+  }
+
+  @media only screen and (min-width: 767px) and (max-width: 1199px) {
+   .hero-background-image{
+   	background-image: url(https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/2025-01/CWS-hero-tablet.jpg) !important;
+   	max-height: 400px !important;
+   }
+   
+   .hero-title{
+   	width: 50%;
+   	margin-bottom: 25%;
+   }
+  }
+
+
+  .hero-title{
+  	display: block;
+  	vertical-align: center;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/43001
+contexts: {  }
+conditions_require_all: true

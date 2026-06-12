@@ -1,0 +1,29 @@
+uuid: 3a5ddde5-be11-4235-abf3-bf9943fc541c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_osu_organizations
+    - node.type.academic_program
+    - taxonomy.vocabulary.osu_organization
+id: node.academic_program.field_osu_organizations
+field_name: field_osu_organizations
+entity_type: node
+bundle: academic_program
+label: Organizations
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      osu_organization: osu_organization
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

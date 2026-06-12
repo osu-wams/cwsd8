@@ -1,0 +1,56 @@
+uuid: b402ce69-83a9-4d3a-b1b0-2ae780519805
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: view_degree
+label: 'Degrees view (form, margin)'
+code: |
+  /*=============================================
+  Form on Degrees View Page
+  =============================================*/
+
+
+  /* Default styles for all screens */
+  .bef-exposed-form .form--inline > .form-item {
+      float: left;
+      width: 100%; /* 100% width for mobile screens */
+  }
+
+  /* Media query for screens larger than 768px */
+  @media (min-width: 769px) {
+      .bef-exposed-form .form--inline > .form-item {
+          width: 48%; /* 48% width for larger screens */
+      }
+  }
+
+  /* Reduces the top and bottom margins from the view filters*/
+  .views-exposed-form .form--inline > div.form-actions {
+    /* margin-block-start: 2.5rem; */
+    margin-block-start: 0rem;
+  }
+
+  /* Remove top margin */
+  .mt-3 {
+    margin-top: 0rem !important;
+  }
+
+  /* Remove bottom margin */
+  .my-3, a.button {
+    margin-bottom: 0rem !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/951
+contexts: {  }
+conditions_require_all: true

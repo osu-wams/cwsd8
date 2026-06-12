@@ -1,0 +1,318 @@
+uuid: f82359c2-25f0-4ab5-9f03-9b9750e6cb53
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: menu_hamburger_homepage
+label: 'Menu hamburger homepage'
+code: |-
+  /* Removed global body and * resets to avoid conflicts with Drupal admin */
+
+  .menu-container {
+      position: relative;
+      background: transparent;
+      z-index: 1000;
+  }
+
+  .menu-trigger {
+      margin: 0 auto;
+      padding: 0;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+  }
+
+  .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #d73f09;
+  }
+
+  .hamburger {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin: -100px 350px 0 0;
+  }
+
+  .hamburger span {
+      width: 28px;
+      height: 3px;
+      background: #333;
+      transition: all 0.3s ease;
+      border-radius: 2px;
+  }
+
+  .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+  }
+
+  .hamburger.active span:nth-child(2) {
+      opacity: 0;
+  }
+
+  .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(7px, -7px);
+  }
+
+  .megamenu {
+      width: 100%;
+      max-height: 0;
+      background: #1a1a1a;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 1001;
+  }
+
+  .megamenu.active {
+      max-height: 80vh;
+      overflow-y: auto;
+  }
+
+  .megamenu-content {
+      padding: 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+  }
+
+  .menu-section {
+     /* margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #333;*/
+  }
+
+  .menu-section:last-child {
+      border-bottom: none;
+  }
+
+  .menu-section h3 {
+      font-size: 0.9rem;
+      color: #999;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+  }
+
+  .menu-links {
+      list-style: none;
+  }
+
+  .menu-links li {
+      margin-bottom: 0.75rem;
+  }
+
+  .menu-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      display: block;
+      transition: color 0.2s ease;
+  }
+
+  .menu-links a:hover {
+      color: #d73f09;
+  }
+
+  .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+  }
+
+  .tool-card {
+      display: block;
+      text-align: center;
+      padding: 1rem;
+      background: transparent;
+      border-radius: 8px;
+      text-decoration: none;
+      color: white;
+      transition: background 0.2s ease;
+  }
+
+  .tool-card:hover {
+      background: #2a2a2a;
+  }
+
+  .tool-icon {
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 0.75rem auto;
+  }
+
+  .tool-icon img,
+  .tool-icon drupal-media {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+  }
+
+  .tool-name {
+      text-align: center;
+      font-weight: 500;
+      display: block;
+  }
+
+  .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+      z-index: 999;
+  }
+
+  .overlay.active {
+      opacity: 1;
+      visibility: visible;
+  }
+
+  .demo-content {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 2rem;
+  }
+
+  .demo-content h1 {
+      color: #333;
+      margin-bottom: 1rem;
+  }
+
+  .demo-content p {
+      color: #666;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+  }
+
+  @media (max-width: 990px) {
+      .hamburger {
+          margin-right: 100px!important;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .menu-grid {
+          grid-template-columns: 1fr;
+      }
+      
+      .megamenu-content {
+          grid-template-columns: 1fr;
+      }
+  }
+
+  .hp-icons-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      align-items: flex-start;
+      max-width: 800px;
+      margin: 0 auto;
+  }
+
+  .hp-icons-column {
+      width: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .hp-icons-icon {
+      width: 80px;
+      height: 80px;
+      object-fit: contain;
+      margin-bottom: 10px;
+  }
+
+  .hp-icons-title, 
+  .hp-icons-title a {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #fff;
+      text-decoration: none;
+  }
+
+  .hp-icons-title a:hover {
+      text-decoration: underline;
+  }
+
+  /* Styles for larger screens */
+  @media (min-width: 601px) {
+      .quick-links {
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0rem;
+      }
+  }
+
+  /* Responsive design for mobile */
+  @media (max-width: 600px) {
+      .hp-icons-container {
+          flex-direction: column;
+          align-items: center;
+      }
+      
+      .hp-icons-column {
+          margin-bottom: 30px;
+      }
+      
+      .quick-links {
+          display: grid;
+          grid-template-columns: repeat(1, 1fr);
+          gap: 0rem;
+      }
+  }
+
+  .link-purpose-icon {
+      display: none!important;
+  }
+
+  /* Add this new rule */
+  .hp-icons-container .quick-links {
+      width: 100%;
+      margin-top: 40px;
+  }
+
+  .quick-links a {
+      font-size: 0.95rem;
+      padding: 0;
+      color: white;
+      text-decoration: none;
+      transition: color 0.2s ease;
+  }
+
+  .quick-links a:hover {
+      color: #d73f09;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'
+contexts: {  }
+conditions_require_all: true

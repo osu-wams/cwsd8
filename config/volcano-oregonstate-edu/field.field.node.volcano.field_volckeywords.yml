@@ -1,0 +1,30 @@
+uuid: 99223531-2b42-48d1-96e7-4c63ad967708
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_volckeywords
+    - node.type.volcano
+    - taxonomy.vocabulary.definitions
+id: node.volcano.field_volckeywords
+field_name: field_volckeywords
+entity_type: node
+bundle: volcano
+label: Keywords
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      definitions: definitions
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

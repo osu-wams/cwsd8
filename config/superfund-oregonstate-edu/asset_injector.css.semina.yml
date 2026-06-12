@@ -1,0 +1,27 @@
+uuid: 785b4e66-c806-4bd8-902f-64181abb97b9
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: semina
+label: 'Seminar pages CSS'
+code: |-
+  .col-xxl-3 #superfish-news-menu li a[href="/news/seminars"]{
+  	background-color: var(--bs-black) !important;
+  	color: var(--bs-white);
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/news/seminars/*'
+contexts: {  }
+conditions_require_all: true

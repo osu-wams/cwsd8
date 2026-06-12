@@ -1,0 +1,46 @@
+uuid: 7dd30bde-0104-4b83-a30d-3f8c864a8f55
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: individual_blog_pages
+label: 'Individual Blog and Publication Pages'
+code: |
+  .col-xxl-3 #superfish-main li a[href="/news/blog"],.col-xxl-3 #superfish-publications-menu li a[href="/news/blog"] {
+  	background-color: var(--bs-black) !important;
+  	color: var(--bs-white);
+  }
+  .col-xxl-3 #superfish-main li a[href="/our-research/publications"],.col-xxl-3 #superfish-publications-menu li a[href="/our-research/publications"] {
+  	background-color: var(--bs-black) !important;
+  	color: var(--bs-white);
+  }
+
+  .field--name-field-pub-authors .field__item::after {
+    content: ", ";
+  }
+
+  .field--name-field-pub-authors .field__item:last-child::after {
+    content: ""; /* Remove comma after last item */
+  }
+  .field--name-field-pub-authors .field__item {
+    display: inline-block;
+  }
+
+  .block-field-blocknodetrainee-profiletitle h1{
+  	font-size:1.75em;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/news/blog/*\r\n/our-research/publications/*\r\n/our-research/authors/*\r\n/our-research/authors*"
+contexts: {  }
+conditions_require_all: true

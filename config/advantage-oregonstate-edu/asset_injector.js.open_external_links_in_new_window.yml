@@ -1,0 +1,37 @@
+uuid: 87405e45-3c0d-4d83-ac2a-48b97c46fa2a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: open_external_links_in_new_window
+label: 'Open External Links in New Window'
+code: |
+  /*
+   * Automatically opens external links in a new window
+   * and adds an accessibility tooltip ("Opens in a new window").
+   * Internal OSU links are unaffected.
+   */
+  document.addEventListener('DOMContentLoaded', function () {
+    var links = document.querySelectorAll('a[href]');
+    links.forEach(function(link) {
+      var href = link.getAttribute('href');
+      if (href.startsWith('http') && !href.includes(window.location.hostname)) {
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+        link.setAttribute('title', 'Opens in a new window');
+      }
+    });
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

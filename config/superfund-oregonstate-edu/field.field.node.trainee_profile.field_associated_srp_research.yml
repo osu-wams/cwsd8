@@ -1,0 +1,29 @@
+uuid: a7973904-2962-4fe7-b9a5-e4aae1990e9f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_associated_srp_research
+    - node.type.trainee_profile
+    - taxonomy.vocabulary.srp_research
+id: node.trainee_profile.field_associated_srp_research
+field_name: field_associated_srp_research
+entity_type: node
+bundle: trainee_profile
+label: 'Associated SRP Research'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      srp_research: srp_research
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

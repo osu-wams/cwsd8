@@ -1,0 +1,267 @@
+uuid: 7f43c30d-0236-4aea-965c-d73c5bccbcc8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.engr_oregon_stater_awards.feeds_item
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_award_category
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_award_type
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_award_year
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_biography
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_degrees
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_department
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_file_attachment
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_first_name
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_graduation_year
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_image
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_last_name
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_nominating_dept
+    - field.field.node.engr_oregon_stater_awards.field_meta_tags
+    - field.field.node.engr_oregon_stater_awards.layout_builder__layout
+    - node.type.engr_oregon_stater_awards
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - field_group
+    - file
+    - media_library
+    - metatag
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_award_details:
+      children:
+        - field_engr_osa_award_type
+        - field_engr_osa_award_year
+        - field_engr_osa_award_category
+      label: 'Award Details'
+      region: content
+      parent_name: ''
+      weight: 8
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_award_recipient_informatio:
+      children:
+        - field_engr_osa_first_name
+        - field_engr_osa_last_name
+        - field_engr_osa_image
+        - field_engr_osa_graduation_year
+        - field_engr_osa_department
+        - field_engr_osa_degrees
+        - field_engr_osa_biography
+      label: 'Award Recipient Information'
+      region: content
+      parent_name: ''
+      weight: 9
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_deprecated:
+      children:
+        - field_engr_osa_nominating_dept
+      label: Deprecated
+      region: content
+      parent_name: ''
+      weight: 11
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        required_fields: true
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: node.engr_oregon_stater_awards.default
+targetEntityType: node
+bundle: engr_oregon_stater_awards
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_engr_osa_award_category:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_engr_osa_award_type:
+    type: options_buttons
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_engr_osa_award_year:
+    type: number
+    weight: 10
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_engr_osa_biography:
+    type: text_textarea
+    weight: 16
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_engr_osa_degrees:
+    type: string_textfield
+    weight: 15
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_engr_osa_department:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_engr_osa_file_attachment:
+    type: file_generic
+    weight: 10
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_engr_osa_first_name:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_engr_osa_graduation_year:
+    type: number
+    weight: 13
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_engr_osa_image:
+    type: media_library_widget
+    weight: 12
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_engr_osa_last_name:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_engr_osa_nominating_dept:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 12
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  feeds_item: true
+  layout_builder__layout: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

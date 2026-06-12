@@ -1,0 +1,34 @@
+uuid: 6ec668e3-e780-4550-ae71-f60f37292e07
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.student_handbook_page.body
+    - field.field.node.student_handbook_page.layout_builder__layout
+    - node.type.student_handbook_page
+  module:
+    - text
+    - user
+id: node.student_handbook_page.teaser
+targetEntityType: node
+bundle: student_handbook_page
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  layout_builder__layout: true
+  toc_js: true

@@ -1,0 +1,41 @@
+uuid: 1a233d4c-157b-496f-acca-a73fb1f16cb8
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: google_search_embed
+label: 'google search embed'
+code: |
+  /* default_v6+en.css | https://www.google.com/cse/static/element/b33cba5881f68fbf/default_v6+en.css */
+
+  .gsc-control-cse, .gsc-control-cse .gsc-table-result {
+    /* font-size: 14px; */
+    /* line-height: 22px; */
+    font-size: 1.1rem !important;
+    line-height: 1.4 !important;
+  }
+
+  .gsc-wrapper {
+    /* max-width: 700px; */
+    max-width: 95ch !important;
+    margin-inline: auto;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/search/osu*'
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

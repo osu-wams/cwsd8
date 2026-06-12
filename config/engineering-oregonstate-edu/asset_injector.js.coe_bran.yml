@@ -1,0 +1,78 @@
+uuid: 486cde81-fd7e-4f26-abbf-97f2748ed563
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: coe_bran
+label: 'COE Brand Blocks'
+code: |
+  /*==============================
+  	COE Accordions
+  ================================*/
+  const coe_accordions = document.querySelectorAll(".paragraph--type--coe-accordion-content");
+
+  coe_accordions.forEach((el) => {
+  	const acc_button = el.querySelector(".field--name-field-coe-acc-section-titl, .field--name-field-coe-accordion-title");
+  	const acc_content = el.querySelector(".field--name-field-coe-accordion-section-body");
+  	acc_button && acc_button.addEventListener("click", function () {
+  		el.classList.toggle("accordion-open");
+      if (acc_content.style.maxHeight) {
+      	acc_content.style.maxHeight = acc_content.scrollHeight + "px";
+        setTimeout(() => {acc_content.style.maxHeight = null;}, 10);
+      } else {
+        acc_content.style.maxHeight = acc_content.scrollHeight + "px";
+        setTimeout(() => {
+        	acc_content.style.maxHeight = "none";
+        }, 500);
+      }
+  	})
+  });
+
+  /*==============================
+  	Animated Ticker
+  ================================*/
+  const tickerButtons = document.querySelectorAll(".animated-ticker-button");
+
+  tickerButtons.forEach(button => {
+  	const tickerContent = button.parentElement.querySelector(".animated-ticker-content");
+
+  	if (!tickerContent) return;
+
+  	// Start paused if reduced motion is preferred (WCAG Accessibility)
+  	let tickerPaused = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  	const pauseSVG = '<svg width="18" height="18" viewBox="0 0 13 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 18V0h4v18zM13 0v18H9V0z" fill="currentColor"/></svg>';
+  	const playSVG = '<svg width="16" height="16" viewBox="-2 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 8 0 16V0z" fill="currentColor"/></svg>';
+
+  	function updateTickerButton() {
+  		// Update play/pause icons
+  		button.innerHTML = tickerPaused ? playSVG : pauseSVG;
+
+  		// Update aria-label
+  		button.setAttribute("aria-label", tickerPaused ? "Play Animation" : "Pause Animation");
+
+  		// Update animation play state
+  		tickerContent.style.animationPlayState = tickerPaused ? "paused" : "running";
+  	}
+
+  	// Toggle pause state and update button on click
+  	button.addEventListener("click", () => {
+  		tickerPaused = !tickerPaused;
+  		updateTickerButton();
+  	})
+
+  	updateTickerButton();
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

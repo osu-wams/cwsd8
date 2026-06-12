@@ -1,0 +1,44 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.osu_accordion_section.field_osu_paragraph_item
+    - field.field.paragraph.osu_accordion_section.field_p_accordion_heading
+    - paragraphs.paragraphs_type.osu_accordion_section
+  module:
+    - paragraphs
+id: paragraph.osu_accordion_section.default
+targetEntityType: paragraph
+bundle: osu_accordion_section
+mode: default
+content:
+  field_osu_paragraph_item:
+    type: paragraphs
+    weight: 1
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: closed
+      closed_mode: summary
+      autocollapse: all
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: osu_accordion_item
+      features:
+        add_above: '0'
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_p_accordion_heading:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

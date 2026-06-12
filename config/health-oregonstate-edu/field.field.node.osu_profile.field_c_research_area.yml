@@ -1,0 +1,29 @@
+uuid: beb9825c-85ba-4373-a317-bd266026111b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_c_research_area
+    - node.type.osu_profile
+    - taxonomy.vocabulary.signature_research
+id: node.osu_profile.field_c_research_area
+field_name: field_c_research_area
+entity_type: node
+bundle: osu_profile
+label: 'Research Area'
+description: 'Refer to which <a href="https://health.oregonstate.edu/research/projects-programs-and-labs">Projects, Program and Labs</a>.a tenured track faculty belongs.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      signature_research: signature_research
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

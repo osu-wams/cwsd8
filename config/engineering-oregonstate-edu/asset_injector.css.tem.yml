@@ -1,0 +1,85 @@
+uuid: 31a90fbf-4df4-4252-b7ea-14dc732a0e6e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: tem
+label: 'Temp Agenda Page CSS'
+code: |-
+  .field--name-field-coe-accordion-title h3{
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	/* Main/H6 */
+  	font-family: "Open Sans" !important;
+  	font-size: 20px !important;
+  	font-weight: 600 !important;
+  	line-height: 130% !important;
+  }
+
+  .h4{
+  	margin-top: 12px;
+  	margin-bottom: 0px;
+  }
+
+  .info-row {
+    display: flex;
+    flex-wrap: wrap; /* allows wrapping */
+    margin-bottom: 6px;
+  }
+
+  .info-row:last-of-type {
+    margin-bottom: 20px;
+  }
+
+  .label-text {
+    min-width: 120px;
+  }
+
+  .value-text {
+    flex: 1;
+  }
+
+  /* Mobile behavior */
+  @media (max-width: 576px) {
+    .label-text {
+      min-width: 100%; /* forces label to take full row */
+      margin-bottom: 2px;
+    }
+
+    .value-text {
+      flex: 100%; /* pushes value to next line */
+    }
+    
+    .info-row{
+    	padding-bottom: 10px;
+    }
+  }
+
+  .field--name-field-coe-accordion-section-body > *:first-child{
+  	padding-top: 20px !important;
+  }
+
+  .round-image img {
+  	object-fit: cover;
+  	width: 180px;
+  	height: 180px;
+  	border-radius: 50%;
+  	object-position: center;
+  	margin-bottom: 20px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/54321\r\n/node/54651\r\n/node/54656"
+contexts: {  }
+conditions_require_all: true

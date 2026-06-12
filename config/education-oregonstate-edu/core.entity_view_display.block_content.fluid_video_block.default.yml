@@ -1,0 +1,69 @@
+uuid: 939934ea-84ec-42a1-a4de-51f891378c68
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.fluid_video_block
+    - field.field.block_content.fluid_video_block.field_video
+  module:
+    - layout_builder
+    - layout_discovery
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          3ac328a6-c9a7-415a-bbba-984e7c23bdc5:
+            uuid: 3ac328a6-c9a7-415a-bbba-984e7c23bdc5
+            region: content
+            configuration:
+              id: 'field_block:block_content:fluid_video_block:field_video'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: video_720
+                  link: false
+                third_party_settings: {  }
+            weight: 0
+            additional:
+              component_attributes:
+                block_attributes:
+                  id: ''
+                  class: ''
+                  style: ''
+                  data: ''
+                block_title_attributes:
+                  id: ''
+                  class: ''
+                  style: ''
+                  data: ''
+                block_content_attributes:
+                  id: ''
+                  class: embed-responsive
+                  style: ''
+                  data: ''
+        third_party_settings: {  }
+id: block_content.fluid_video_block.default
+targetEntityType: block_content
+bundle: fluid_video_block
+mode: default
+content:
+  field_video:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: video_720
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

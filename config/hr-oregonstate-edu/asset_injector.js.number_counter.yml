@@ -1,0 +1,64 @@
+uuid: 4023aeb9-ff6a-4d1f-92d3-92e711437493
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: number_counter
+label: number-counter
+code: |-
+  (function ($, Drupal) {
+
+  	var a = 0;
+  	$(window).scroll(function() {
+
+  		if ($('#counter').length) {
+  		  var oTop = $('#counter').offset().top - window.innerHeight;
+  		  if (a == 0 && $(window).scrollTop() > oTop) {
+  		    $('.counter-value').each(function() {
+  		      var $this = $(this),
+  		        countTo = $this.attr('data-count');
+  		        duration = $this.attr('data-duration');
+  		      $({
+  		        countNum: $this.text()
+  		      }).animate({
+  		          countNum: countTo
+  		        },
+
+  		        {
+
+  		          duration: parseInt(duration),
+  		          easing: 'swing',
+  		          step: function() {
+  		            $this.text(Math.floor(this.countNum));
+  		          },
+  		          complete: function() {
+  		            $this.text(this.countNum);
+  		          }
+
+  		        });
+  		    });
+  		    a = 1;
+  		  }
+  		}
+  	});
+
+
+  })(jQuery, Drupal);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/1/
+contexts: {  }
+conditions_require_all: true

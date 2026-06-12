@@ -1,0 +1,30 @@
+uuid: 4f6d65bc-8798-4098-98aa-1568180dea3b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_search_box
+label: 'GLOBAL search box (input width)'
+code: |-
+  /* fixed input width for search */
+
+  @media (min-width: 992px) {
+  	#block-madrone-search input {
+  		width: 280px; /** This can be removed if the bug is fixed at the theme level **/
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

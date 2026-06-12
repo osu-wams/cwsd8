@@ -1,0 +1,84 @@
+uuid: f40dfe55-5d8b-4eb8-8ab2-0092d9ce48fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.test_page_123.body
+    - field.field.node.test_page_123.layout_builder__layout
+    - node.type.test_page_123
+  module:
+    - layout_builder
+    - layout_discovery
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          4675da87-3020-418b-be6f-89b553424067:
+            uuid: 4675da87-3020-418b-be6f-89b553424067
+            region: content
+            configuration:
+              id: 'extra_field_block:node:test_page_123:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          1292c283-bdb6-4d2f-9f2f-d22a778e4d16:
+            uuid: 1292c283-bdb6-4d2f-9f2f-d22a778e4d16
+            region: content
+            configuration:
+              id: 'field_block:node:test_page_123:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          43d1b368-8a87-40aa-8893-6d330f8d6769:
+            uuid: 43d1b368-8a87-40aa-8893-6d330f8d6769
+            region: content
+            configuration:
+              id: 'extra_field_block:node:test_page_123:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+id: node.test_page_123.default
+targetEntityType: node
+bundle: test_page_123
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  layout_builder__layout: true

@@ -1,0 +1,316 @@
+uuid: f6f527a3-81d2-45a1-9bb7-3a42c82d0e0a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: timeline
+label: Timeline
+code: |-
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+      .timeline-container {
+        font-family: 'Inter', sans-serif;
+        background: transparent;
+        color: #ffffff;
+        padding: 48px 32px;
+        width: 100%;
+      }
+
+      /* ─── HORIZONTAL LAYOUT (default) ─── */
+
+      .timeline-scroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 8px;
+      }
+
+      .timeline-scroll::-webkit-scrollbar { height: 4px; }
+      .timeline-scroll::-webkit-scrollbar-track { background: #1e1e1e; border-radius: 2px; }
+      .timeline-scroll::-webkit-scrollbar-thumb { background: #3a3a3a; border-radius: 2px; }
+
+      .timeline-inner {
+        min-width: 900px;
+        display: flex;
+        position: relative;
+      }
+
+      .timeline-container .node {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+      }
+
+      .timeline-container .node-above {
+        min-height: 130px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: flex-start;
+        text-align: left;
+        padding: 0 6px 14px;
+      }
+
+      .timeline-container .node-below {
+        min-height: 130px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: left;
+        padding: 14px 6px 0;
+      }
+
+      .timeline-container .axis {
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        width: 100%;
+      }
+
+      .timeline-container .axis-line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: #3a4a4a;
+        transform: translateY(-50%);
+      }
+
+      .timeline-container .node:first-child .axis-line { left: 50%; }
+      .timeline-container .node:last-child  .axis-line { right: 50%; }
+
+      .timeline-container .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1.5px solid #5aafaa;
+        background: #111111;
+        z-index: 2;
+        position: relative;
+        transition: transform .25s ease, background .25s ease, box-shadow .25s ease;
+        flex-shrink: 0;
+        cursor: default;
+      }
+
+      .timeline-container .dot.filled {
+        background: #5aafaa;
+      }
+
+      .timeline-container .node:hover .dot {
+        transform: scale(1.6);
+        background: #5aafaa;
+        box-shadow: 0 0 10px rgba(90, 175, 170, 0.45);
+      }
+
+      .timeline-container .year {
+        font-size: 16px;
+        font-weight: 700;
+        color: #ffffff;
+        line-height: 1;
+        margin-bottom: 7px;
+        transition: color .2s;
+      }
+
+      .timeline-container .node:hover .year { color: #5aafaa; }
+
+      .timeline-container .label {
+        font-size: 12px;
+        color: #888888;
+        line-height: 1.5;
+        max-width: 110px;
+        transition: color .2s;
+      }
+
+      .timeline-container .node:hover .label { color: #aaaaaa; }
+
+      /* ─── VERTICAL LAYOUT (narrow screens) ─── */
+
+      @media (max-width: 860px) {
+
+        .timeline-container {
+          padding: 36px 24px;
+        }
+
+        /* kill horizontal scroll wrapper */
+        .timeline-scroll {
+          overflow-x: visible;
+          padding-bottom: 0;
+        }
+
+        .timeline-inner {
+          min-width: 0;
+          flex-direction: column;
+          align-items: stretch;
+        }
+
+        /* each node becomes a horizontal row: dot | content */
+        .timeline-container .node {
+          flex: none;
+          flex-direction: row;
+          align-items: stretch;
+          gap: 0;
+        }
+
+        /* hide the "above" placeholder entirely in vertical mode */
+        .timeline-container .node-above:empty,
+        .timeline-container .node-below:empty {
+          display: none;
+        }
+
+        /* axis becomes a vertical spine on the left */
+        .timeline-container .axis {
+          width: 40px;
+          height: auto;
+          flex-shrink: 0;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          padding: 0;
+        }
+
+        .timeline-container .axis-line {
+          top: 0;
+          bottom: 0;
+          left: 50%;
+          right: auto;
+          width: 1px;
+          height: 100%;
+          transform: translateX(-50%);
+          /* reset horizontal rule */
+          top: unset;
+        }
+
+        /* re-do axis-line as a vertical bar */
+        .timeline-container .axis-line {
+          position: absolute;
+          left: 50%;
+          top: 0;
+          bottom: 0;
+          width: 1px;
+          height: 100%;
+          background: #3a4a4a;
+          transform: translateX(-50%);
+        }
+
+        /* first node: line starts at dot, not top */
+        .timeline-container .node:first-child .axis-line {
+          top: 50%;
+          left: 50%;
+          right: auto;
+          bottom: 0;
+          width: 1px;
+          height: auto;
+          transform: translateX(-50%);
+        }
+
+        /* last node: line ends at dot */
+        .timeline-container .node:last-child .axis-line {
+          top: 0;
+          left: 50%;
+          right: auto;
+          bottom: 50%;
+          width: 1px;
+          height: auto;
+          transform: translateX(-50%);
+        }
+
+        /* dot sits at the top of the axis column, aligned with year */
+        .timeline-container .dot {
+          margin-top: 4px;
+          flex-shrink: 0;
+        }
+
+        /* node-above and node-below both become the text block beside the spine */
+        .timeline-container .node-above,
+        .timeline-container .node-below {
+          min-height: 0;
+          flex: 1;
+          justify-content: flex-start;
+          padding: 0 0 28px 0px;
+        }
+
+        /* align dot to top of text */
+        .timeline-container .axis {
+         /* align-items: flex-start;*/
+          align-items: center;
+          padding-top: 3px;
+        }
+
+        .timeline-container .label {
+          max-width: none;
+        }
+
+        /* remove stagger animation on mobile — just fade in */
+        .timeline-container .node-above,
+        .timeline-container .node-below {
+          animation: none;
+          opacity: 1;
+          transform: none;
+        }
+
+        /* subtle fade-in per node */
+        @media (prefers-reduced-motion: no-preference) {
+          .timeline-container .node {
+            opacity: 0;
+            transform: translateX(-8px);
+            animation: tlSlidein .4s ease forwards;
+          }
+          .timeline-container .node:nth-child(1) { animation-delay: .05s; }
+          .timeline-container .node:nth-child(2) { animation-delay: .10s; }
+          .timeline-container .node:nth-child(3) { animation-delay: .15s; }
+          .timeline-container .node:nth-child(4) { animation-delay: .20s; }
+          .timeline-container .node:nth-child(5) { animation-delay: .25s; }
+          .timeline-container .node:nth-child(6) { animation-delay: .30s; }
+          .timeline-container .node:nth-child(7) { animation-delay: .35s; }
+          .timeline-container .node:nth-child(8) { animation-delay: .40s; }
+          .timeline-container .node:nth-child(9) { animation-delay: .45s; }
+
+          @keyframes tlSlidein {
+            to { opacity: 1; transform: translateX(0); }
+          }
+        }
+      }
+
+      /* ─── HORIZONTAL reveal animation ─── */
+      @media (min-width: 861px) and (prefers-reduced-motion: no-preference) {
+        .timeline-container .node-above,
+        .timeline-container .node-below {
+          opacity: 0;
+          transform: translateY(10px);
+          animation: tlFadeUp .5s ease forwards;
+        }
+
+        .timeline-container .node:nth-child(1) .node-above { animation-delay: .05s; }
+        .timeline-container .node:nth-child(2) .node-below { animation-delay: .12s; }
+        .timeline-container .node:nth-child(3) .node-above { animation-delay: .19s; }
+        .timeline-container .node:nth-child(4) .node-below { animation-delay: .26s; }
+        .timeline-container .node:nth-child(5) .node-above { animation-delay: .33s; }
+        .timeline-container .node:nth-child(6) .node-below { animation-delay: .40s; }
+        .timeline-container .node:nth-child(7) .node-above { animation-delay: .47s; }
+        .timeline-container .node:nth-child(8) .node-below { animation-delay: .54s; }
+        .timeline-container .node:nth-child(9) .node-above { animation-delay: .61s; }
+
+        @keyframes tlFadeUp {
+          to { opacity: 1; transform: translateY(0); }
+        }
+      }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/245976\r\n/node/2148031"
+contexts: {  }
+conditions_require_all: true

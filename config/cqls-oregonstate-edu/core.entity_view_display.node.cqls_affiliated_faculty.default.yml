@@ -1,0 +1,97 @@
+uuid: dc057833-a328-4a4c-8e3b-5aa217ed1d46
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.cqls_affiliated_faculty.body
+    - field.field.node.cqls_affiliated_faculty.field_cqls_academic_title
+    - field.field.node.cqls_affiliated_faculty.field_cqls_af_department
+    - field.field.node.cqls_affiliated_faculty.field_cqls_af_last_name
+    - field.field.node.cqls_affiliated_faculty.field_cqls_af_name
+    - field.field.node.cqls_affiliated_faculty.field_cqls_af_profile
+    - field.field.node.cqls_affiliated_faculty.field_cqls_web_page
+    - node.type.cqls_affiliated_faculty
+  module:
+    - image
+    - link
+    - options
+    - text
+    - user
+id: node.cqls_affiliated_faculty.default
+targetEntityType: node
+bundle: cqls_affiliated_faculty
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_cqls_academic_title:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_cqls_af_department:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_cqls_af_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_cqls_af_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_cqls_af_profile:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_cqls_web_page:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

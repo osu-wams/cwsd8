@@ -1,0 +1,59 @@
+uuid: 3aace000-882c-49f2-9782-82340a4f1374
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: cbee_school_text
+label: 'CBEE all pages style changes (reduce header font, accent bar, button styling)'
+code: |-
+  /* =========================================================================================================
+  All CBEE group pages styling. Header font, accent bar, buttons 
+   ========================================================================================================= */
+
+  .block-system-branding-block a {
+      font-size: 1.1rem;
+  }
+
+  /*  Global Button Styling */
+
+  .btn.osu-btn-primary {
+      /*border-radius: 0px !important;*/
+      background-color: transparent;
+      color: black;
+      /*border-color: black;*/
+  }
+
+  .white-border-hover:hover {
+    border-color: white !important;
+  }
+
+  .btn.osu-btn-primary:hover {
+      background-color: #AA9D2E !important;
+      /*border-radius: 0px !important;*/
+      border-color: transparent !important;
+  }
+
+  /*  The color of the school accent bar on the top of each page on load */
+
+  .school-accent-bar {
+    height: 3px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background-color: #AA9D2E;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/6\r\n/group/6/*\r\n/CBEE/*\r\n/CBEE"
+contexts: {  }
+conditions_require_all: true

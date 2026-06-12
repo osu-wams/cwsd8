@@ -1,0 +1,123 @@
+uuid: 324b11b4-d5ca-4087-8245-912aec084f91
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event_feed_item.body
+    - field.field.node.event_feed_item.feeds_item
+    - field.field.node.event_feed_item.field_event_feed_item_date
+    - field.field.node.event_feed_item.field_event_feed_item_link
+    - node.type.event_feed_item
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - datetime_range
+    - link
+    - path
+    - text
+id: node.event_feed_item.default
+targetEntityType: node
+bundle: event_feed_item
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 121
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_event_feed_item_date:
+    type: daterange_default
+    weight: 122
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_event_feed_item_link:
+    type: link_default
+    weight: 123
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  feeds_item: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

@@ -1,0 +1,680 @@
+uuid: null
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_profile.feeds_item
+    - field.field.node.osu_profile.field__research_expertise
+    - field.field.node.osu_profile.field_c_engr_advising
+    - field.field.node.osu_profile.field_c_engr_affiliations
+    - field.field.node.osu_profile.field_c_engr_assistants
+    - field.field.node.osu_profile.field_c_engr_awards
+    - field.field.node.osu_profile.field_c_engr_classification
+    - field.field.node.osu_profile.field_c_engr_degrees
+    - field.field.node.osu_profile.field_c_engr_discipline
+    - field.field.node.osu_profile.field_c_engr_endowed_title
+    - field.field.node.osu_profile.field_c_engr_external_links
+    - field.field.node.osu_profile.field_c_engr_fax
+    - field.field.node.osu_profile.field_c_engr_hide_from_directory
+    - field.field.node.osu_profile.field_c_engr_research_interest
+    - field.field.node.osu_profile.field_c_engr_research_interests
+    - field.field.node.osu_profile.field_c_engr_secondary_title
+    - field.field.node.osu_profile.field_c_engr_teaching
+    - field.field.node.osu_profile.field_c_engr_title
+    - field.field.node.osu_profile.field_coe_profile_documents
+    - field.field.node.osu_profile.field_coe_profile_teaching
+    - field.field.node.osu_profile.field_engr_c_accepting_student
+    - field.field.node.osu_profile.field_engr_c_assistants
+    - field.field.node.osu_profile.field_engr_research_website
+    - field.field.node.osu_profile.field_field_c_engr_labs
+    - field.field.node.osu_profile.field_meta_tags
+    - field.field.node.osu_profile.field_osu_organizations
+    - field.field.node.osu_profile.field_profile_address
+    - field.field.node.osu_profile.field_profile_biography
+    - field.field.node.osu_profile.field_profile_cards_weight
+    - field.field.node.osu_profile.field_profile_email
+    - field.field.node.osu_profile.field_profile_first_name
+    - field.field.node.osu_profile.field_profile_image
+    - field.field.node.osu_profile.field_profile_last_name
+    - field.field.node.osu_profile.field_profile_middle_name
+    - field.field.node.osu_profile.field_profile_office_phone
+    - field.field.node.osu_profile.field_profile_primary_title
+    - field.field.node.osu_profile.field_profile_pronouns
+    - field.field.node.osu_profile.field_publications
+    - field.field.node.osu_profile.field_research_groups
+    - field.field.node.osu_profile.field_short_bio
+    - field.field.node.osu_profile.field_talened_people_description
+    - image.style.x_large
+    - node.type.osu_profile
+    - workflows.workflow.editorial
+  module:
+    - address
+    - content_moderation
+    - field_group
+    - file
+    - focal_point
+    - link
+    - metatag
+    - paragraphs
+    - path
+    - telephone
+    - text
+third_party_settings:
+  field_group:
+    group_personal_information:
+      children:
+        - field_profile_image
+        - field_profile_first_name
+        - field_profile_last_name
+        - field_profile_middle_name
+        - field_profile_pronouns
+        - field_c_engr_title
+        - field_profile_primary_title
+        - field_c_engr_endowed_title
+        - field_c_engr_secondary_title
+        - field_osu_organizations
+        - field_c_engr_classification
+      label: 'Personal Information'
+      region: content
+      parent_name: group_top_a
+      weight: 2
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_contact_information:
+      children:
+        - field_profile_email
+        - field_profile_office_phone
+        - field_c_engr_fax
+        - field_profile_address
+      label: 'Contact Information'
+      region: content
+      parent_name: group_top_a
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_advanced:
+      children:
+        - field_short_bio
+        - field_c_engr_affiliations
+        - field_c_engr_hide_from_directory
+        - field_profile_cards_weight
+        - field_c_engr_advising
+        - field_talened_people_description
+        - uid
+        - created
+        - promote
+        - sticky
+        - path
+        - url_redirects
+        - status
+      label: 'Form only/Hidden'
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: 'These fields are not displayed on the profile pages. Occasionally are used in databases connected to content and views. '
+        required_fields: true
+    group_top_a:
+      children:
+        - title
+        - group_personal_information
+        - group_contact_information
+        - field_engr_c_accepting_student
+      label: 'Top Area'
+      region: content
+      parent_name: ''
+      weight: 0
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: 'Fields that render in the top area of the profile, in order of appearance. '
+        required_fields: true
+    group_main_area:
+      children:
+        - group_pre_biography
+        - group_biography_and_other_detail
+        - group_research
+        - group_sidebar
+      label: 'Main Area'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: 'Fields that render in the main area of the profile. '
+        required_fields: true
+    group_pre_biography:
+      children: {  }
+      label: Pre-Biography
+      region: content
+      parent_name: group_main_area
+      weight: 20
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_biography_and_other_detail:
+      children:
+        - field_profile_biography
+        - field_c_engr_degrees
+        - field_c_engr_awards
+        - field_c_engr_teaching
+        - field_coe_profile_teaching
+        - field_coe_profile_documents
+      label: 'Biography and Other Details'
+      region: content
+      parent_name: group_main_area
+      weight: 21
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_research:
+      children:
+        - field_c_engr_research_interests
+        - field__research_expertise
+        - field_research_groups
+        - field_engr_research_website
+        - field_field_c_engr_labs
+        - field_publications
+      label: Research
+      region: hidden
+      parent_name: group_main_area
+      weight: 22
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_sidebar:
+      children:
+        - field_c_engr_assistants
+        - field_engr_c_assistants
+        - field_c_engr_external_links
+      label: Sidebar
+      region: hidden
+      parent_name: group_main_area
+      weight: 23
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: node.osu_profile.default
+targetEntityType: node
+bundle: osu_profile
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field__research_expertise:
+    type: text_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_advising:
+    type: text_textarea
+    weight: 16
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_affiliations:
+    type: entity_reference_autocomplete
+    weight: 13
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_assistants:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_awards:
+    type: string_textfield
+    weight: 24
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_classification:
+    type: options_select
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_c_engr_degrees:
+    type: string_textfield
+    weight: 23
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_discipline:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_endowed_title:
+    type: string_textfield
+    weight: 24
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_external_links:
+    type: link_default
+    weight: 9
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_c_engr_fax:
+    type: telephone_default
+    weight: 19
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_hide_from_directory:
+    type: boolean_checkbox
+    weight: 14
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_c_engr_labs:
+    type: link_default
+    weight: 31
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_c_engr_research_interests:
+    type: entity_reference_autocomplete
+    weight: 7
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_secondary_title:
+    type: string_textfield
+    weight: 25
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_teaching:
+    type: string_textfield
+    weight: 25
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_c_engr_title:
+    type: string_textfield
+    weight: 22
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_coe_profile_documents:
+    type: file_generic
+    weight: 27
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_coe_profile_teaching:
+    type: paragraphs
+    weight: 26
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_engr_c_accepting_student:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_engr_c_assistants:
+    type: paragraphs
+    weight: 8
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_engr_research_website:
+    type: link_default
+    weight: 11
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_field_c_engr_labs:
+    type: text_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_meta_tags:
+    type: metatag_firehose
+    weight: 3
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_osu_organizations:
+    type: options_select
+    weight: 26
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_profile_address:
+    type: address_default
+    weight: 20
+    region: content
+    settings:
+      wrapper_type: details
+    third_party_settings: {  }
+  field_profile_biography:
+    type: text_textarea
+    weight: 22
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_cards_weight:
+    type: number
+    weight: 15
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_email:
+    type: email_default
+    weight: 17
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_profile_first_name:
+    type: string_textfield
+    weight: 18
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_image:
+    type: image_focal_point
+    weight: 17
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: x_large
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  field_profile_last_name:
+    type: string_textfield
+    weight: 19
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_middle_name:
+    type: string_textfield
+    weight: 20
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_office_phone:
+    type: telephone_default
+    weight: 18
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_primary_title:
+    type: string_textfield
+    weight: 23
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_pronouns:
+    type: string_textfield
+    weight: 21
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_project_overview_title:
+    type: string_textfield
+    weight: 25
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_publications:
+    type: link_default
+    weight: 13
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_research_expertise:
+    type: entity_reference_autocomplete
+    weight: 32
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_research_groups:
+    type: link_default
+    weight: 10
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_short_bio:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_talened_people_description:
+    type: text_textarea
+    weight: 17
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_test:
+    type: options_select
+    weight: 27
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 20
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 24
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 21
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 18
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  feeds_item: true
+  field_c_engr_research_interest: true
+  layout_builder__layout: true
+  osu_a11y_remediation_email: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

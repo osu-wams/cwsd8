@@ -1,0 +1,29 @@
+uuid: abb0a681-a142-45a2-b390-3d2f1fdad12c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_room_style
+    - node.type.residence_hall
+    - taxonomy.vocabulary.residence_halls_room_types
+id: node.residence_hall.field_room_style
+field_name: field_room_style
+entity_type: node
+bundle: residence_hall
+label: 'Room Style'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      residence_halls_room_types: residence_halls_room_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

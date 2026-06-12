@@ -1,0 +1,167 @@
+uuid: a409ab39-6273-46f3-b363-416069f69cab
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.worksheet.body
+    - field.field.node.worksheet.field_featured_worksheet
+    - field.field.node.worksheet.field_handout_type
+    - field.field.node.worksheet.field_link_to_box_file
+    - field.field.node.worksheet.field_time_to_complete
+    - field.field.node.worksheet.field_topic
+    - field.field.node.worksheet.field_worksheet_file
+    - field.field.node.worksheet.field_worksheet_sort_weight
+    - field.field.node.worksheet.field_worksheet_thumbnail
+    - node.type.worksheet
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - link
+    - media_library
+    - path
+    - text
+id: node.worksheet.default
+targetEntityType: node
+bundle: worksheet
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 8
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_featured_worksheet:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_handout_type:
+    type: options_select
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link_to_box_file:
+    type: link_default
+    weight: 10
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_time_to_complete:
+    type: options_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_topic:
+    type: options_buttons
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_worksheet_file:
+    type: media_library_widget
+    weight: 11
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_worksheet_sort_weight:
+    type: number
+    weight: 16
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_worksheet_thumbnail:
+    type: media_library_widget
+    weight: 9
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

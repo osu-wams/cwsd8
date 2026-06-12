@@ -1,0 +1,31 @@
+uuid: ced6f54d-9e33-4bc7-8bdd-1eb936c3d50b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.program_reference
+    - field.storage.block_content.field_program
+    - node.type.continuing_education
+    - node.type.program
+id: block_content.program_reference.field_program
+field_name: field_program
+entity_type: block_content
+bundle: program_reference
+label: Program
+description: 'Select a Program to display.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      continuing_education: continuing_education
+      program: program
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: continuing_education
+field_type: entity_reference

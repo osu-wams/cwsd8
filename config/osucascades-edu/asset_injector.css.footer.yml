@@ -1,0 +1,33 @@
+uuid: 9d3a4682-8c08-4917-90ff-eb09e8a425f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: footer
+label: Footer
+code: |-
+  .social-media-icons a {
+    font-size: 1.65rem;
+    margin-right: 1rem;
+    transition: all 400ms ease;
+    
+    &:hover,
+    &:focus {
+      color: var(--bs-primary) !important;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

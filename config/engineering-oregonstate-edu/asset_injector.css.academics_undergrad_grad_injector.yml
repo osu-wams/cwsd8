@@ -1,0 +1,779 @@
+uuid: b7d6bb98-76c2-4a10-8860-7f5e04d5c860
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: academics_undergrad_grad_injector
+label: 'Academics Undergrad/Grad Injector'
+code: |
+  /*
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  	--UNDERGRAD/GRAD PAGES--
+  	
+  	Undergraduate Program and Graduate Program Content Types Styling
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  */
+
+  /*================================================================================================================================================================
+  	SECTION: Hero Styling
+  	
+  	PURPOSE: Hero section for grad/undergrad pages
+  	==============================================================================================================================================================*/
+
+  .block-field-blocknodeundergraduate-programfield-up-hero-image img,
+  .block-field-blocknodegraduate-programfield-gp-hero-image img {
+  	width: 100%;
+  	height: 420px;
+  	object-fit: cover;
+  }
+
+  .hero-pattern-container img {
+    z-index: 1 !important;
+    position: absolute;
+    top: 0;
+    right: -30px;
+  	width: 1000px;
+  	max-width: 1000px;
+  	height: 417px;
+  	object-fit: contain;
+  	object-position: right top;
+  }
+
+  .hero-pattern-container article {
+  	position: relative;
+  }
+
+  @media only screen and (max-width: 1399px) {
+  	.hero-pattern-container img {
+  		width: 815px;
+  	}
+  	.block-field-blocknodeundergraduate-programfield-hero-sub-heading h3,
+  	.block-field-blocknodeundergraduate-programtitle h1,
+  	.block-field-blocknodeundergraduate-programfield-up-hero-image img,
+  	.block-field-blocknodegraduate-programfield-gp-hero-image img,
+  	.block-field-blocknodegraduate-programfield-gp-hero-subheader h3,
+  	.block-field-blocknodegraduate-programtitle h1{
+  		margin-top: 32px;
+  	}
+  	.block-field-blocknodeundergraduate-programfield-up-hero-image img,
+  	.block-field-blocknodegraduate-programfield-gp-hero-image img {
+  		float: right;
+  		width: 62%;
+  		height: 300px;
+  	}
+  }
+
+  @media only screen and (max-width: 1199px) {
+  	.hero-pattern-container img {
+  		object-fit: cover;
+  		right: 0;
+  	}
+  }
+
+  @media only screen and (max-width: 991px) {
+  	.hero-pattern-container img {
+  		width: calc(100% - 50px);
+  		object-fit: contain;
+  	}
+  	.block-field-blocknodeundergraduate-programfield-up-hero-image img,
+  	.block-field-blocknodegraduate-programfield-gp-hero-image img {
+  		width: 100%;
+  	}
+  }
+
+  @media only screen and (max-width: 767px) {
+  	.hero-pattern-container img {
+  		right: 0;
+  		width: 300px;
+  		height: 450px;
+  		object-fit: cover;
+  		content: url("/sites/engineering.oregonstate.edu/files/2025-02/up-gp-hero-background.svg");
+  	}
+  	.block-field-blocknodeundergraduate-programfield-up-hero-image img,
+  	.block-field-blocknodegraduate-programfield-gp-hero-image img {
+  		height: 150px;
+  		width: 100%;
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Focus Area Section
+  	
+  	PURPOSE: Hero section for grad/undergrad pages
+  	==============================================================================================================================================================*/
+
+  /* Hide Focus Area When no cards are present */
+  div:has(> .ug-focus-area-headline):not(:has(.field--name-field-up-focus-area-cards)) .ug-focus-area-headline {
+      display: none;
+  }
+
+  /* Focus Area Body */
+  .ug-focus-area-body, 
+  .grad-focus-area-body {
+  	margin-top: 30px;
+  }
+
+   /*Focus Area Cards */
+  .block-field-blocknodeundergraduate-programfield-up-focus-area-cards,
+  .block-field-blocknodegraduate-programfield-gp-focus-area-cards {
+      margin-top: 12px;
+  }
+
+  .paragraph--type--coe-focus-area-cards {
+      background: #FFF;
+      height: 100%;
+      min-height: 121px;
+      border-radius: 5px;
+      position: relative; 
+      box-sizing: border-box;
+      border: 3px solid rgba(0, 133, 155, 0.12);
+      display: flex;
+      flex-direction: column;  
+      justify-content: space-between;
+      padding: 20px;
+      transition: border-color 0.5s ease;
+  }
+
+  /* Focus fixes */
+  .paragraph--type--coe-focus-area-cards {
+    /* existing styles */
+    outline: none;
+  }
+
+  .paragraph--type--coe-focus-area-cards a {
+    outline: 0; /* Maintain accessibility */
+  }
+
+  .paragraph--type--coe-focus-area-cards a:focus {
+    outline: 0;
+  }
+
+  .paragraph--type--coe-focus-area-cards:focus-within:not(:has(a:active))::after {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 2px solid #D73F09;
+    border-radius: 5px;
+    pointer-events: none;
+  }
+
+  /* Hover/Focus state */
+  .paragraph--type--coe-focus-area-cards:has(.field--name-field-coe-focus-area-link-title):hover,
+  .paragraph--type--coe-focus-area-cards:has(.field--name-field-coe-focus-area-link-title):focus,
+  .paragraph--type--coe-focus-area-cards:has(.field--name-field-coe-focus-area-link-html):hover,
+  .paragraph--type--coe-focus-area-cards:has(.field--name-field-coe-focus-area-link-html):focus,
+  .paragraph--type--coe-focus-area-cards:focus-within:not(:has(a:active)) {
+      border-color: rgb(0, 133, 155);
+  }
+
+  /* Active state */
+  .paragraph--type--coe-focus-area-cards:has(.field--name-field-coe-focus-area-link-title):active,
+  .paragraph--type--coe-focus-area-cards:has(.field--name-field-coe-focus-area-link-html):active {
+      border-color: rgb(0, 59, 92);
+  }
+
+  .field--name-field-up-focus-area-cards,
+  .field--name-field-gp-focus-area-cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+  }
+
+  .field--name-field-up-focus-area-cards > div.field__item,
+  .field--name-field-gp-focus-area-cards > div.field__item {
+    width: calc(50% - 10px);
+    margin-top: 20px;
+  }
+
+  .field--name-field-coe-focus-area-link-title a,
+  .field--name-field-coe-focus-area-link-html a > h4 {
+  	color: #000 !important;
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  	text-decoration: none;
+  	border-bottom: none;
+  	letter-spacing: 0px;
+  	text-transform: none;
+  }
+
+  .field--name-field-coe-focus-area-link-title a:hover,
+  .field--name-field-coe-focus-area-link-title a:focus,
+  .field--name-field-coe-focus-area-link-html a:hover,
+  .field--name-field-coe-focus-area-link-html a:focus
+  {
+  	color: #000 !important;
+  	border-bottom: none;
+  }
+
+  .field--name-field-coe-focus-area-link-title a:active,
+  .field--name-field-coe-focus-area-link-html a:active {
+  	color: #000 !important;
+  }
+
+  /* individual location items */
+  .paragraph--type--coe-focus-area-cards .field--name-field-coe-focus-area-campus .field__item {
+      color: #00859B;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 160%; /* 19.2px */
+      letter-spacing: 0.6px;
+      text-transform: uppercase;
+      margin-right: 10px; 
+  }
+
+  /* Ensure background stays transparent on active (click) */
+  .paragraph--type--coe-focus-area-cards .field--name-field-coe-focus-area-link-title a:active,
+  .paragraph--type--coe-focus-area-cards .field--name-field-coe-focus-area-link-html a:active {
+      background-color: transparent !important; 
+      color: #000 !important;
+  }
+
+  .field--name-field-coe-focus-area-link-title a::before,
+  .field--name-field-coe-focus-area-link-html a::before {
+  	content: '';
+  	position: absolute;
+  	inset: 0;
+  }
+
+  .field--name-field-coe-focus-area-campus {
+      display: flex;
+      margin-bottom: 5px; 
+  }
+
+  @media (max-width: 767px) {
+  	.field--name-field-up-focus-area-cards > div.field__item,
+  	.field--name-field-gp-focus-area-cards > div.field__item {
+          width: 100%;
+  	}
+  }
+
+  .ug-focus-area-detailed h4 {
+  	color: #00859B;
+  	margin-bottom: 20px;
+  }
+
+  .field--name-field-up-focus-area-detailed {
+  	display: flex;
+  	flex-direction: column;
+  	gap: 50px
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Program Features and Salary Expectations
+  	
+  	PURPOSE: Program features and salary expecations section for undergrad pages
+  	==============================================================================================================================================================*/
+
+
+  .program-features h2{
+  	 margin-bottom: 50px;
+  }
+
+  .career-prospects-title {
+  	margin-bottom: 48px;
+    border-bottom: 6px solid #000;
+  }
+
+  .field--name-field-up-career-prospects-body {
+  	width: 75%;
+  	margin-bottom: 30px;
+  }
+
+  /* Hide "Salary Expectations" header if the section doesn't exist */
+  .programfield-up-salary-expectation:not(:has( ~ .salary-expectation)) {
+    display: none;
+  }
+
+  .paragraph--type--coe-salary-expectations h5 {
+  	margin-top: 20px;
+  }
+
+  .salary-expectation-scale .field__item {
+      position: relative;
+      width: 100%;
+      height: 2px;
+      background-color: #AA9D2E;
+      margin: 20px 0;
+  }
+
+  .salary-expectation-scale .field__item::before,
+  .salary-expectation-scale .field__item::after,
+  .salary-expectation-scale .field__item span::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background-color: #AA9D2E;
+  }
+  .salary-expectation-scale .field__item::before {
+      left: 0;
+  }
+  .salary-expectation-scale .field__item::after {
+      right: 0;
+  }
+  .salary-expectation-scale .field__item span::before {
+      left: 50%;
+      transform: translateX(-50%);
+  }
+
+  .salary-expectation-graph {
+  	background: linear-gradient(90deg, #B8DDE1 0%, #027B8E 50%, #0D5257 100%);	
+  	width: 100%;
+  	height: 60px;
+  }
+
+  .paragraph--type--coe-salary-expectations .container {
+  	padding: 0;
+  }
+
+  @media only screen and (max-width: 767px) {
+  	.programfield-up-salary-expectation h4 {
+  		margin-bottom: 32px;
+  	}
+  	.paragraph--type--coe-salary-expectations h5 {
+  		margin-top:0px;
+  		margin-bottom: 0px;
+  	}
+     .paragraph--type--coe-salary-expectations {
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: left;
+    }
+    .salary-expectation-numbers,
+    .salary-expectation-graph {
+        width: 48%; /* Adjust as needed */
+    }
+    .salary-expectation-graph {
+  		background: linear-gradient(180deg, #B8DDE1 0%, #027B8E 50%, #0D5257 100%);	
+  		width: 120px;
+  		height: 391px;
+  		margin-right: 14px;
+  	}
+  	.salary-expectation-scale .field__item::before,
+  	.salary-expectation-scale .field__item::after,
+  	.salary-expectation-scale .field__item span::before {
+  	    content: '';
+  	    position: absolute;
+  	    width: 20px;
+  	    height: 2px;
+  	    background-color: #AA9D2E;
+  	}
+  	.salary-expectation-scale .field__item::before {
+  	    top: 0;
+  	    transform: translateX(-100%);
+  	}
+  	.salary-expectation-scale .field__item::after {
+  	    bottom: 0;
+  	    transform: translateX(-5%);
+  	}
+  	.salary-expectation-scale .field__item span::before {
+  	    top: 50%;
+  	    transform: translateX(-100%);
+  	}
+      .salary-expectation-numbers {
+          height: 391px; /* Ensure it takes full height of its container */
+      }
+      .salary-expectation-numbers > .container {
+          height: 100%;
+      }
+      .salary-expectations-figure .layout-builder__layout .col-12 {
+    	    display: flex;
+          flex-direction: row-reverse;
+          align-items: stretch;
+      }
+      .salary-expectation-numbers .layout-builder__layout {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: flex-start; 
+          height: 391px;
+      }
+      .salary-expectation-scale .field__item {
+          position: relative;
+          width: 2px;
+          height: 391px;
+          background-color: #AA9D2E;
+          margin: 0 20px;
+      }
+      .salary-expectation-numbers .block-layout-builder {
+          text-align: left !important;
+      }
+      .salary-expectation-numbers .salary-item h2 {
+          margin-bottom: 5px;
+      }
+      .salary-expectation-numbers .salary-item .field__item {
+          font-weight: bold;
+      }
+  }
+
+  .ug-main-section:has(.career-opportunities-block) .career-prospects-title {
+    display: block;
+  }
+
+  .ug-main-section .career-prospects-title {
+    display: none;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Student Groups Section
+  	
+  	PURPOSE: Image styling for student groups section
+  	==============================================================================================================================================================*/
+
+  .student-groups-section img {
+      object-fit: cover;
+      width: 100%;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Competition and Awards Section
+  	
+  	PURPOSE: Competition and Awards section on graduate and undergraduate pages
+  	==============================================================================================================================================================*/
+
+  .competitionandawards-container:not(:has(.field--name-field-up-competitions-and-awards)) {
+      display: none;
+  }
+
+  .field--name-field-up-competitions-and-awards h3 {
+  	margin: 16px 0;
+  }
+
+  .field--name-field-up-competitions-and-awards .field--name-field-coe-2-col-img-txt-headline::before {
+  	content: "Competitions & Awards";
+  }
+
+  .field--name-field-up-competitions-and-awards img {
+  	object-fit: cover;
+  	width: 100%;
+  	height: auto;
+  }
+
+  .competitionandawards-container {
+  	background-image: url(https://engineering.dev.oregonstate.edu/sites/engineering.oregonstate.edu/files/2024-10/topography-20.svg);
+      background-repeat: no-repeat;
+      background-size: 80%;
+      background-position: 150% 60%;
+  }
+
+  .competitionandawards-container .paragraph--type--coe-image-with-text {
+  	display: flex;
+  	flex-direction: row-reverse;
+  	align-items: center;
+  }
+
+  .competitionandawards-container .paragraph--type--coe-image-with-text > div {
+  	width: 50%;
+  }
+
+
+  .competitionandawards-container .paragraph--type--coe-image-with-text > div:nth-child(2){ 
+  	padding-right: 128px; 
+  } 
+
+
+  /*Mobile Styling*/
+  @media only screen and (max-width: 993px) { 
+  	.competitionandawards-container .paragraph--type--coe-image-with-text > div:nth-child(2) { 
+  		padding-right: 10px; 
+  	}
+  }
+
+  @media only screen and (max-width: 767px) {
+  	 .field--name-field-up-competitions-and-awards img {
+  		margin-top: 92px;
+  	} 
+  	.competitionandawards-container {
+  		background-size: 150%;
+      background-position: 0 450px;
+  	}
+  	.competitionandawards-container .paragraph--type--coe-image-with-text {
+  		flex-direction: column-reverse;
+  	}
+  	.competitionandawards-container .paragraph--type--coe-image-with-text > div {
+  		width: 100%;
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Beyond the Classroom Styling
+  	
+  	PURPOSE: Beyond the classroom section for grad/undergrad pages
+  	==============================================================================================================================================================*/
+
+  .field--name-field-up-beyond-classroom-cards .paragraph,
+  .field--name-field-gp-beyond-classroom-cards .paragraph {
+  	border: 3px solid #d73f09;
+      border-radius: 5px;
+      padding: 50px;
+      margin-bottom: 30px;
+  }
+
+  .field--name-field-up-beyond-classroom-cards .paragraph h4,
+  .field--name-field-gp-beyond-classroom-cards .paragraph h4 {
+  	margin-bottom: 20px;
+  }
+
+  @media screen and (max-width: 767px) {
+  	.field--name-field-up-beyond-classroom-body,
+  	.field--name-field-gp-beyond-classroom-body {
+  		margin-bottom: 50px;
+  	}
+  }
+
+  main:not(:has(.block-field-blocknodeundergraduate-programfield-up-beyond-classroom-body)) .ug-beyond-header, 
+  main:not(:has(.block-field-blocknodeundergraduate-programfield-up-beyond-classroom-body)) .ug-beyond-section,
+  main:not(:has(.block-field-blocknodegraduate-programfield-gp-beyond-classroom-body)) .gp-beyond-header,
+  main:not(:has(.block-field-blocknodegraduate-programfield-gp-beyond-classroom-body)) .gp-beyond-section {
+  	display: none;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Faculty Research Areas Styling
+  	
+  	PURPOSE: Styles faculty research areas blocks used on graduate page
+  	==============================================================================================================================================================*/
+
+  /*Display Research Areas into 2-col*/
+  @media only screen and (min-width: 768px) {
+  	.field--name-field-gp-faculty-research-areas {
+  		display: flex;
+  		flex-wrap: wrap;
+  		justify-content: space-between;
+  	}
+  	.field--name-field-gp-faculty-research-areas > div {
+  		width: calc(50% - 10px);
+  	}
+  	/*Faculty Research Area body set width */
+  	.block-field-blocknodegraduate-programfield-gp-faculty-research-body {
+  		width: 75%;
+  	}
+  }
+
+  .field--name-field-gp-faculty-research-areas .field--name-field-coe-text-w-link-link {
+      margin-bottom: 50px;
+  }
+
+  div.block-layout-builder:has(.faculty-research-areas):not(:has(~ .block-field-blocknodegraduate-programfield-gp-faculty-research-body)) {
+  	display: none;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Lab and Research Section
+  	
+  	PURPOSE: Grad lab and research section
+  	==============================================================================================================================================================*/
+  	
+  .field--name-field-gp-labs-and-research .field--name-field-coe-text-w-link-text {
+  	width: 75%;
+  	padding-bottom: 10px
+  }
+
+  @media screen and (max-width: 767px){
+  	.field--name-field-gp-labs-and-research .field--name-field-coe-text-w-link-text{
+  		width: 100%;
+  	}
+  }
+
+  @media screen and (min-width: 768px){
+  	.field--name-field-gp-labs-and-research .field--name-field-coe-text-w-link-link {
+  		display: flex;
+    	flex-wrap: wrap;
+    	justify-content: space-between;
+    	align-items: center;
+  	}
+  	.field--name-field-gp-labs-and-research .field--name-field-coe-text-w-link-link > div {
+  		width: calc(50% - 10px);
+  	}
+  	.field--name-field-gp-labs-and-research .field--name-field-coe-text-w-link-link > div:first-child:nth-last-child(1),
+  	.field--name-field-gp-labs-and-research .field--name-field-coe-text-w-link-link > div:first-child:nth-last-child(1) ~ div,
+  	.field--name-field-gp-labs-and-research .field--name-field-coe-text-w-link-link > div:first-child:nth-last-child(2),
+  	.field--name-field-gp-labs-and-research .field--name-field-coe-text-w-link-link > div:first-child:nth-last-child(2) ~ div,
+  	.field--name-field-gp-labs-and-research .field--name-field-coe-text-w-link-link > div:first-child:nth-last-child(3),
+  	.field--name-field-gp-labs-and-research .field--name-field-coe-text-w-link-link > div:first-child:nth-last-child(3) ~ div {
+  		width: 100%;
+  	}
+  }
+
+  .field--name-field-gp-labs-and-research .paragraph {
+  	margin-bottom: 90px;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Program Details Tabs Styling
+  	
+  	PURPOSE: Styling overrides for tabs paragraph type for the program details sections on undergrad/grad content types
+  	==============================================================================================================================================================*/
+  	
+  .field--name-field-gp-program-details .field--name-field-osu-paragraph-body div:has(> .orange-arrow-link) {
+  	margin-bottom: 18px;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Oregon Lifestyle Styling
+  	
+  	PURPOSE: Oregon Lifestyle section for grad pages
+  	==============================================================================================================================================================*/
+    
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Lifestyle Layout Styling
+  	
+  	Used to define layout of Oregon Lifestyle section
+  	----------------------------------------------------------------------------*/
+
+  /* Move text up onto image */
+   /** MXC specificity below **/
+  .oregon-lifestyle {
+  	position: relative;
+      margin-top: -440px;
+      width: 58.33333333%;
+  }
+
+  /* Tablet Sizing */
+  @media only screen and (max-width: 992px) {
+       /** MXC specificity below **/
+  	.oregon-lifestyle {
+  		width: 75%;
+  	}
+  	 /** MXC specificity below **/
+  	.oregon-lifestyle p{
+  		width: 100%;
+  	}
+  }
+
+  /* Mobile Sizing */
+  @media only screen and (max-width: 767px){
+       /** MXC specificity below **/
+  	.oregon-lifestyle {
+  		width: 100%;
+  	}
+  	/* Different gradient for mobile */
+  	.field--name-field-gp-oregon-lifestyle-bg .field__item::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+  		background: linear-gradient(139deg, rgba(0, 59, 92, 0.60) 19.27%, rgba(0, 59, 92, 0.40) 60.82%, rgba(0, 59, 92, 0.00) 85.16%);	
+  	}
+  	.field--name-field-gp-oregon-lifestyle-bg img {
+  		min-height: 700px;
+  		max-height: 700px;
+  	}
+  }
+
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Lifestyle Image Styling
+  	
+  	Used to define image styling of Oregon Lifestyle section
+  	----------------------------------------------------------------------------*/
+    
+  .field--name-field-gp-oregon-lifestyle-bg img {
+  	width: 100%;
+  	min-height: 500px;
+  	max-height: 600px;
+      object-fit: cover;
+  }
+
+  .field--name-field-gp-oregon-lifestyle-bg .field__item {
+      position: relative; 
+  }
+
+  /* Gradient */
+  .field--name-field-gp-oregon-lifestyle-bg .field__item::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, rgba(0, 59, 92, 0.60) 9.69%, rgba(0, 59, 92, 0.40) 50.47%, rgba(0, 59, 92, 0.00) 88.47%);
+  }
+
+  main:not(:has(.field--name-field-gp-oregon-lifestyle-bg)) .oregon-lifestyle {
+  	display: none;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Special Event Styling
+  	
+  	PURPOSE: Special Event section for grad pages
+  	==============================================================================================================================================================*/
+
+  .field--name-field-gp-special-event .paragraph--type--coe-image-with-text {
+  	display: flex;
+  	flex-direction: row-reverse;
+  	align-items: center;
+  }
+
+  .field--name-field-gp-special-event .paragraph--type--coe-image-with-text > div {
+  	width: 50%;
+  }
+
+  /*Special Event Series Title styling */
+  .field--name-field-gp-special-event .paragraph--type--coe-image-with-text .field--name-field-coe-2-col-img-txt-headline h3 {
+  	margin-top: 24px;
+  }
+
+  .field--name-field-gp-special-event .paragraph--type--coe-image-with-text .field--name-field-coe-2-col-img-txt-headline::before {
+  	content: "Special Event Series";
+  }
+
+  .field--name-field-gp-special-event .paragraph--type--coe-image-with-text .field--name-field-coe-2-col-img-txt-body {
+  	margin: 20px 0 30px;
+  }
+
+  .field--name-field-gp-special-event .paragraph--type--coe-image-with-text img {
+  	width: 100%;
+  	object-fit: cover;
+  	flex-shrink: 0;
+  }
+
+  .field--name-field-gp-special-event .paragraph--type--coe-image-with-text > div:nth-child(2) {
+  	padding-right: 128px;
+  }
+
+  @media only screen and (max-width: 992px) {
+  	.field--name-field-gp-special-event .paragraph--type--coe-image-with-text > div:nth-child(2) {
+  		padding-right: 20px;
+  	}
+  }
+
+  /*Dimension updates for Tablet screen */
+  @media only screen and (max-width: 767px) {
+  	.field--name-field-gp-special-event .paragraph--type--coe-image-with-text {
+  		flex-direction: column-reverse;
+  		gap: 48px;
+  	}
+  	.field--name-field-gp-special-event .paragraph--type--coe-image-with-text > div {
+  		width: 100%;
+  	}
+  	.field--name-field-gp-special-event .paragraph--type--coe-image-with-text > div:nth-child(2) {
+  		padding-right: 0;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/academics/programs/*/undergraduate\r\n/academics/programs/*/graduate"
+contexts: {  }
+conditions_require_all: true

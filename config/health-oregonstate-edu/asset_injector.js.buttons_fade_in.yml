@@ -1,0 +1,163 @@
+uuid: ac0cc7f5-1af9-4df6-83a3-9cceb43862a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: buttons_fade_in
+label: 'buttons fade in'
+code: |-
+  (() => {
+    'use strict';
+
+    // Constants
+    const ROOT_MARGIN_PX = 500;
+    const VISIBLE_CLASS = 'is-visible';
+
+    // State
+    let observer = null;
+    let sentinel = null;
+
+    /**
+     * Toggle button container visibility based on scroll position
+     */
+    function handleIntersection(entries) {
+      const buttonContainer = document.querySelector('.side-button-container');
+      if (!buttonContainer) return;
+
+      const [entry] = entries;
+      buttonContainer.classList.toggle(VISIBLE_CLASS, !entry.isIntersecting);
+    }
+
+    /**
+     * Handle click/keyboard activation on wrapper elements
+     */
+    function handleWrapperActivation(wrapper) {
+      const link = wrapper.querySelector('a');
+      link?.click();
+    }
+
+    /**
+     * Set up clickable wrappers with proper accessibility
+     */
+    function initClickableWrappers() {
+      const container = document.querySelector('.side-button-container');
+      if (!container) return;
+
+      // Event delegation - single listener on container
+      container.addEventListener('click', (e) => {
+        const wrapper = e.target.closest('.side-item-wrapper');
+        if (wrapper) handleWrapperActivation(wrapper);
+      });
+
+      container.addEventListener('keydown', (e) => {
+        if (e.key !== 'Enter' && e.key !== ' ') return;
+        
+        const wrapper = e.target.closest('.side-item-wrapper');
+        if (wrapper) {
+          e.preventDefault();
+          handleWrapperActivation(wrapper);
+        }
+      });
+
+      // Set ARIA attributes
+      container.querySelectorAll('.side-item-wrapper').forEach(wrapper => {
+        const link = wrapper.querySelector('a');
+        wrapper.setAttribute('role', 'link');
+        wrapper.setAttribute('tabindex', '0');
+        
+        // Mirror the link's accessible name if available
+        if (link) {
+          const label = link.textContent?.trim() || link.getAttribute('aria-label');
+          if (label) wrapper.setAttribute('aria-label', label);
+        }
+      });
+    }
+
+    /**
+     * Set up scroll-based visibility observer
+     */
+    function initScrollObserver() {
+      if (!('IntersectionObserver' in window)) {
+        console.warn('IntersectionObserver not supported');
+        return;
+      }
+
+      observer = new IntersectionObserver(handleIntersection, {
+        root: null,
+        rootMargin: `${ROOT_MARGIN_PX}px`,
+        threshold: 1.0
+      });
+
+      sentinel = document.createElement('div');
+      sentinel.className = 'scroll-sentinel';
+      sentinel.setAttribute('aria-hidden', 'true');
+      Object.assign(sentinel.style, {
+        position: 'absolute',
+        top: '0',
+        left: '0',
+        height: '1px',
+        width: '1px',
+        pointerEvents: 'none'
+      });
+
+      document.body.prepend(sentinel);
+      observer.observe(sentinel);
+    }
+
+    /**
+     * Cleanup function for SPAs or dynamic content
+     */
+    function destroy() {
+      if (observer) {
+        observer.disconnect();
+        observer = null;
+      }
+      if (sentinel) {
+        sentinel.remove();
+        sentinel = null;
+      }
+    }
+
+    /**
+     * Initialize all functionality
+     */
+    function init() {
+      const buttonContainer = document.querySelector('.side-button-container');
+      
+      if (!buttonContainer) {
+        console.warn('Button container not found. Side button functionality disabled.');
+        return;
+      }
+
+      initClickableWrappers();
+      initScrollObserver();
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+    // Expose destroy for cleanup if needed
+    window.sideButtonCleanup = destroy;
+  })();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

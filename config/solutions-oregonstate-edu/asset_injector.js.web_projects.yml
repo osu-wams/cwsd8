@@ -1,0 +1,186 @@
+uuid: b84d50a1-c7b4-4adb-827b-192d6698c036
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: web_projects
+label: Projects
+code: |-
+  (function (Drupal) {
+    'use strict';
+
+    Drupal.behaviors.coverflowCarousel = {
+      attach: function (context, settings) {
+        const container = document.querySelector('.projects-container');
+        if (!container || container.classList.contains('coverflow-initialized')) return;
+        
+        container.classList.add('coverflow-initialized');
+        const items = Array.from(container.querySelectorAll('.video-container-portfolio.views-row'));
+        
+        if (items.length === 0) return;
+        
+        let currentIndex = (Math.round((items.length/2)-1));
+        
+        // Create navigation
+        const nav = document.createElement('div');
+        nav.className = 'coverflow-nav';
+        nav.innerHTML = `
+          <button class="coverflow-btn prev" aria-label="Previous">‹</button>
+          <button class="coverflow-btn next" aria-label="Next">›</button>
+        `;
+        container.appendChild(nav);
+        
+        // Create indicator dots
+        const indicators = document.createElement('div');
+        indicators.className = 'coverflow-indicators';
+        items.forEach((_, i) => {
+          const dot = document.createElement('button');
+          dot.className = 'coverflow-dot';
+          dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+          dot.addEventListener('click', () => goToSlide(i));
+          indicators.appendChild(dot);
+        });
+        container.appendChild(indicators);
+        
+        // Setup video hover effects
+        function setupVideoHover(item) {
+          const article = item.querySelector('article');
+          const videoBlock = item.querySelector('.block-field-blocknodeprojectsfield-project-video');
+          const video = item.querySelector('video');
+          
+          if (!article || !videoBlock || !video) return;
+          
+          article.addEventListener('mouseenter', () => {
+            videoBlock.style.opacity = '1';
+            videoBlock.style.pointerEvents = 'auto';
+            video.play().catch(e => console.log('Video play failed:', e));
+          });
+          
+          article.addEventListener('mouseleave', () => {
+            videoBlock.style.opacity = '0';
+            videoBlock.style.pointerEvents = 'none';
+            video.pause();
+            video.currentTime = 0;
+          });
+        }
+        
+        // Initialize video hover for all items
+        items.forEach(item => setupVideoHover(item));
+        
+        function updateCarousel() {
+          items.forEach((item, i) => {
+            const offset = i - currentIndex;
+            item.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next');
+            
+            // Reset video when not active
+            const video = item.querySelector('video');
+            const videoBlock = item.querySelector('.block-field-blocknodeprojectsfield-project-video');
+            if (video && videoBlock && Math.abs(offset) > 0) {
+              video.pause();
+              video.currentTime = 0;
+              videoBlock.style.opacity = '0';
+              videoBlock.style.pointerEvents = 'none';
+            }
+            
+            if (offset === 0) {
+              item.classList.add('active');
+            } else if (offset === -1) {
+              item.classList.add('prev');
+            } else if (offset === 1) {
+              item.classList.add('next');
+            } else if (offset < -1) {
+              item.classList.add('far-prev');
+            } else if (offset > 1) {
+              item.classList.add('far-next');
+            }
+            
+            // Apply 3D transform
+            const translateX = offset * 280;
+            const translateZ = Math.abs(offset) * -200;
+            const translateY = Math.abs(offset) * -10;
+            const scale = offset === 0 ? 1 : 0.75;
+            const opacity = Math.abs(offset) > 2 ? 0 : 1 - (Math.abs(offset) * 0.2);
+            
+            item.style.transform = `
+              translateX(${translateX}px) 
+              translateY(${translateY}px)
+              translateZ(${translateZ}px) 
+             
+            `;
+         /*   item.style.opacity = opacity;*/
+            item.style.zIndex = 100 - Math.abs(offset);
+            if (offset === 0) {
+  					  item.style.filter = "brightness(1)";
+  					} else {
+  					  item.style.filter = "brightness(0.5)";
+  					}
+          });
+          
+          // Update indicators
+          document.querySelectorAll('.coverflow-dot').forEach((dot, i) => {
+            dot.classList.toggle('active', i === currentIndex);
+          });
+        }
+        
+        function goToSlide(index) {
+          currentIndex = Math.max(0, Math.min(index, items.length - 1));
+          updateCarousel();
+        }
+        
+        function nextSlide() {
+          if (currentIndex < items.length - 1) {
+            currentIndex++;
+            updateCarousel();
+          }
+        }
+        
+        function prevSlide() {
+          if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+          }
+        }
+        
+        // Navigation event listeners
+        nav.querySelector('.next').addEventListener('click', nextSlide);
+        nav.querySelector('.prev').addEventListener('click', prevSlide);
+        
+        // Keyboard navigation
+        container.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') prevSlide();
+          if (e.key === 'ArrowRight') nextSlide();
+        });
+        
+        // Click on items to center them
+        items.forEach((item, i) => {
+          item.addEventListener('click', (e) => {
+            if (i !== currentIndex) {
+              e.preventDefault();
+              goToSlide(i);
+            }
+          });
+        });
+        
+        // Initialize
+        updateCarousel();
+      }
+    };
+  })(Drupal);
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/1261\r\n/node/951\r\n/node/916\r\n/node/921\r\n/node/911\r\n/node/1401\r\n/node/1726\r\n/node/1406\r\n/group/11"
+contexts: {  }
+conditions_require_all: true

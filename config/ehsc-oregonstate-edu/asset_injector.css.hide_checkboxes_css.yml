@@ -1,0 +1,26 @@
+uuid: 8d4d108b-b63d-4a49-8eaf-6a1bcda6a0fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: hide_checkboxes_css
+label: 'Hide checkboxes CSS'
+code: |-
+  input[type='checkbox'] {
+    display: none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/admin/*\r\n/admin\r\n/user/*\r\n/node/*/edit\r\n/node/*/layout\r\n/taxonomy/term/*/edit\r\n/node/add/*\r\n/node/add\r\n/*/request\r\n/*/contact\r\n/*/*/request\r\n/*/*/contact"
+contexts: {  }
+conditions_require_all: true

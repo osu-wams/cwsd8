@@ -1,0 +1,75 @@
+uuid: 05ae65b7-136e-49a9-a081-083834bd011f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_main_menu
+label: 'GLOBAL main menu and group menu (media overrides)'
+code: |-
+  /* ==========================================================================
+     Global main menu overrides 
+     ========================================================================== */
+
+
+  .madrone-primary-menu > .block-superfish ul.sf-menu li a, 
+  .madrone-primary-menu > .block-superfish ul.sf-menu li a:not(.sf-depth-1) {
+  	padding: 1rem !important;
+  }
+
+  /** Position items side by side, with group hamburger on right **/
+
+  @media screen and (max-width: 810px) {
+    #madrone-primary-menu-container {
+    	display: flex;
+    	flex-direction: row-reverse;
+    }
+    #block-madrone-main-menu,
+    .main-group-school-menu {
+    	flex-grow: 1;
+    }
+    
+   	#group-content-menu li a {
+   		padding: 1rem .5rem;
+   	}
+   	
+   	#block-madrone-main-menu li a {
+   		padding: 1rem .5rem !important;
+   	}
+  }
+
+  @media screen and (max-width: 480px) {
+    #group-content-menu li a {
+  	  padding: 1rem .35rem;
+  	  font-size: 11px;
+    }
+  }
+
+  /** Group Menu Hide Hamburger **/
+
+  @media screen and (max-width: 768px) {
+  	#group-content-menu-accordion {
+  		display: none !important;
+  	}
+  	#group-content-menu {
+  		display: flex !important;
+  	}
+  	/** Hack to force display mobile menu **/
+    #superfish-main {
+    	display: flex !important;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

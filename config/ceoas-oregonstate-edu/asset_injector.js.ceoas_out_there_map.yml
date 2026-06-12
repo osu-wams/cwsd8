@@ -1,0 +1,869 @@
+uuid: 8fb3a550-a10f-439b-933b-b11bdbcba40d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: ceoas_out_there_map
+label: ceoas-out-there-map
+code: |2
+   function initialize() {
+      const CEOAS_Latlng = new google.maps.LatLng(44.568562,-123.279707);
+  	const myCenterLatlng = new google.maps.LatLng(13,-123.279707);
+      const myOptions = {
+        zoom: 2,
+        center: myCenterLatlng,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
+        mapId: "7dcff21d79511b03", // Map ID is required for advanced markers.
+      };
+  	
+      const map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+      
+      // have only ONE infowindow so that only one will be open at a time
+      let infowindowX = new google.maps.InfoWindow({maxWidth: 500, headerDisabled: true}); 
+
+  	const title01 = "Quinault Canyon, Washington - Andrew Thurber (1)";
+      const marker01 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(47.354423, -125.133843),
+          map: map,
+          title: title01
+      });
+      google.maps.event.addListener(marker01, 'click', function() {
+      	infowindowX.setContent('<span class="fs-6 text-success">' + title01 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/andrew-thurber">Andrew Thurber<\/a> was part of an exploratory cruise to Washington’s Quinault Canyon in September of 2020. He was particularly interested in finding and characterizing methane seeps in the area.');
+      	infowindowX.open(map,marker01);
+      });
+  	
+      const title02 = "Gulkana Glacier, Alaska - Erin Pettit (2)";
+      const marker02 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(63.241103, -145.467586),
+          map: map,
+          title: title02
+      });
+      google.maps.event.addListener(marker02, 'click', function() {
+      	infowindowX.setContent('<span class="fs-6 text-success">' + title02 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/erin-pettit">Erin Pettit<\/a> has been using Alaska’s Gulkana Glacier, and other glacial sites, to stand in for Europa, Jupiter’s icy moon! She and a team have been testing a special seismometer that may be used on a Europa lander in a future NASA mission.');
+  		infowindowX.open(map,marker02);
+      });
+   
+  	const title03 = "LeConte Glacier, Alaska (3)";
+      const marker03 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(56.946390, -132.329389),
+          map: map,
+          title: title03
+      });
+      google.maps.event.addListener(marker03, 'click', function() {
+      	infowindowX.setContent('<span class="fs-6 text-success">' + title03 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/jonathan-nash">Jonathan Nash<\/a> is part of a team studying the LeConte Glacier in southeast Alaska. New acoustic observations mapping the changing face of the glacier show that the rate of submarine melt is much higher than previously predicted by scientific theory. The area is considered too dangerous for manned vessels to reach, so Nash’s engineering team has developed autonomous research vessels – essentially robotic boats – that can deploy sensors in these previously inaccessible areas.');		
+  		infowindowX.open(map,marker03);
+      });
+
+  	const title04 = "HJ Andrews Experimental Forest, Lane County, Oregon (4)";
+      const marker04 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(44.212223, -122.255278),
+          map: map,
+          title: title04
+      });
+      google.maps.event.addListener(marker04, 'click', function() {
+      	infowindowX.setContent('<span class="fs-6 text-success">' + title04 + "</span><br />" + 'Geographer <a href="//ceoas.oregonstate.edu/directory/julia-jones">Julia Jones<\/a> is very much at home in the <a href="https://andrewsforest.oregonstate.edu/">HJ Andrews Experimental Forest<\/a>, a Long-Term Ecological Research site in Lane County, Ore., administered by OSU and its partners. Her extensive research there has included exploring the conditions that lead to extreme flooding events induced by rain falling on snowpack. In another study of the forest’s use of water, she found that plantation forests beyond the age of 20 years used twice as much summertime water as old-growth forests.');		
+  		infowindowX.open(map,marker04);
+      });
+
+  	const title05 = "Green Island, Taiwan - Jennifer Fehrenbacher (5)";
+      const marker05 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(22.662138, 121.490145),
+          map: map,
+          title: title05
+      });	
+      google.maps.event.addListener(marker05, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title05 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/jennifer-fehrenbacher">Jennifer Fehrenbacher<\/a> and two students spent part of the summer of 2019 at a marine lab on Green Island off Taiwan collecting foraminifera from the ocean and raising them in the lab. These single-celled organisms incorporate seawater chemicals into their shells, and the shells of long-dead forams can therefor reveal clues about past climates.');		
+  		infowindowX.open(map,marker05);
+      });	
+
+  	const title06 = "Arctic Ocean - Jenny Hutchings (6)";
+      const marker06 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(84, 137),
+          map: map,
+          title: title06
+      });
+      google.maps.event.addListener(marker06, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title06 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/jennifer-hutchings">Jenny Hutchings<\/a> and a graduate student participated in the 2019-20 MOSAiC expedition, in which scientists studied the changing Arctic from a research vessel that was purposely trapped in the ice and drifting. MOSAiC, the largest polar study in history, aimed to take the closest look ever at the Arctic as the epicenter of global warming and to gain fundamental insights into global climate change.');
+  		infowindowX.open(map,marker06);
+      });	
+  	
+  	const title07 = "North Atlantic Ocean (7)";
+      const marker07 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(61,-24),
+          map: map,
+          title: title07
+      });
+      google.maps.event.addListener(marker07, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title07 + "</span><br />" + 'A <a href="//oregonstate.edu/ua/ncs/archives/2015/feb/scientists-find-deep-ocean-evidence-atlantic-overturning-decline">study<\/a> led by <a href="//ceoas.oregonstate.edu/directory/andreas-schmittner">Andreas Schmittner<\/a> found evidence that a system of currents that brings warm water from the tropics to the North Atlantic declined at the end of the last ice age. This decline affected regional climate and provides insight into potential future climate dynamics.');
+  		infowindowX.open(map,marker07);
+      });	
+
+  	const title08 = "Andrew Thurber and Rick Colwell - Colorado (8)";
+      const marker08 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(38.84940948927145, -106.91713741510418),
+          map: map,
+          title: title08
+      });
+      google.maps.event.addListener(marker08, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title08 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/andrew-thurber">Andrew Thurber<\/a> and <a href="//ceoas.oregonstate.edu/directory/frederick-colwell">Rick Colwell<\/a> have been investigating microbial communities and methane dynamics in the watershed of the East River near Crested Butte, CO, with an emphasis on wintertime (brrr!) sampling.');
+  		infowindowX.open(map,marker08);
+      });	
+
+  	const title09 = "Krill, Western Antarctic peninsula (9)";
+      const marker09 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-66.206333, -73.520308),
+          map: map,
+          title: title09
+      });
+      google.maps.event.addListener(marker09, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title09 + "</span><br />" + 'Krill, tiny shrimp-like crustaceans, swarm and thrive in Antarctic waters, supporting a diverse ecosystem that includes some of the world’s largest whales.  <a href="//ceoas.oregonstate.edu//directory/kim-bernard">Kim Bernard<\/a> and some of her students have spent two austral winters at Palmer Station in Antarctica studying the diets, health and ecology of juvenile krill.');		
+  		infowindowX.open(map,marker09);
+      });
+  	
+  	const title10 = "Alan Hills, East Antarctica - Ed Brook and Christo Buizert (10)";
+      const marker10 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-76.7, 159.7),
+          map: map,
+          title: title10
+      });
+      google.maps.event.addListener(marker10, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title10 + "</span><br />" + 'The Center for Oldest Ice Exploration (COLDEX), a multi-institution NSF-funded initiative headed up by <a href="//ceoas.oregonstate.edu/directory/ed-brook">Ed Brook<\/a> and <a href="//ceoas.oregonstate.edu/directory/christo-buizert">Christo Buizert<\/a>, is looking for the oldest ice on the planet. This ice contains clues to past climates in ice that may be as old as two to three million years. The project has had its first field season, focused on the Allan Hills in East Antarctica.');
+  		infowindowX.open(map,marker10);
+  	});
+
+  	const title11 = "Clarion-Clipperton Zone in the North Pacific - Astrid Leitner (11)";
+      const marker11 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(20.083685312088672, -132.2713083312764),
+          map: map,
+          title: title11
+      });
+      google.maps.event.addListener(marker11, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title11 + "</span><br />" + 'Deep-sea ecologist <a href="//ceoas.oregonstate.edu/directory/astrid-leitner">Astrid Leitner<\/a> studies how dramatic and complex undersea features like canyons and seamounts in the deep ocean affect biological communities, especially predators and prey. One place she has studied extensively is an underwater feature called the Clarion-Clipperton Zone in the North Pacific.');
+  		infowindowX.open(map,marker11);
+      });
+
+  	const title12 = "Atlantic Ocean - Kipp Shearman (12)";
+      const marker12 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(34.389433, -75.229262),
+          map: map,
+          title: title12
+      });
+      google.maps.event.addListener(marker12, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title12 + "</span><br />" + 'Physical oceanographer <a href="//ceoas.oregonstate.edu/directory/r-kipp-shearman">Kipp Shearman<\/a> likes to know what makes the coastal ocean tick. While he has studied physical phenomena all over the world, one focus area has been the Gulf Stream in the Atlantic Ocean. For example, in one recent study he looked at how mixing between two gyres – roughly circular ocean currents -- in the North Atlantic occurs across the Gulf Stream front.');		
+  		infowindowX.open(map,marker12);
+      });
+
+  	const title13 = "Tahiti: Ancient lava flows (13)";
+      const marker13 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-17.628449, -149.574905),
+          map: map,
+          title: title13
+      });
+      google.maps.event.addListener(marker13, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title13 + "</span><br />" + 'The last time the Earth’s magnetic field reversed direction was about 770,000 years ago, and some research has suggested that a weakening of the magnetic field presaged the switch. A team of CEOAS researchers, including <a href="//ceoas.oregonstate.edu/directory/antonius-koppers">Anthony Koppers<\/a>, Brendan Reilly, <a href="//ceoas.oregonstate.edu/directory/joseph-stoner">Joe Stoner<\/a> and <a href="https://kevinkonrad.weebly.com/">Kevin Konrad<\/a> examined ancient lava flows in Tahiti’s Punaru’u Valley to look for evidence of this weakening and determine the timing of the reversal with more precision.');
+  		infowindowX.open(map,marker13);
+      });
+
+  	const title14 = "Palamós Canyon, Mediterranean Sea  - Miguel Goñi (14)";
+      const marker14 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(41.61640914597724, 3.499999980144658),
+          map: map,
+          title: title14
+      });
+      google.maps.event.addListener(marker14, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title14 + "</span><br />" + 'Red shrimp trawled up from the depths of the Palamós Canyon in the northwestern Mediterranean are considered one of the finest crustacean delicacies in the world. <a href="//ceoas.oregonstate.edu/directory/miguel-goni">Miguel Goñi<\/a> is part of a team that has been studying some of the environmental impacts of bottom trawling for shrimp and other species in the canyon.');
+  		infowindowX.open(map,marker14);
+      });
+
+  	const title15 = "Chuckchi Sea  - Miguel Goñi (15)";
+      const marker15 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(69.0265042,-177.5256858),
+          map: map,
+          title: title15
+      });
+      google.maps.event.addListener(marker15, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title15 + "</span><br />" + 'On oceanographic expeditions to the Chuckchi Sea, <a href="//ceoas.oregonstate.edu/directory/miguel-goni">Miguel Goñi<\/a> is studying how Arctic phytoplankton productivity works in the summertime when nutrients start to run out in the surface layers of the ocean.');		
+  		infowindowX.open(map,marker15);
+      });
+
+  	const title16 = "Sagarmatha National Park, Nepal - Emily Eidam (16)";
+      const marker16 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(27.933546608359574, 86.70265600926372),
+          map: map,
+          title: title16
+      });
+      google.maps.event.addListener(marker16, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title16 + "</span><br />" + 'In Sagarmatha National Park in Nepal, <a href="//ceoas.oregonstate.edu/directory/emily-eidam">Emily Eidam<\/a> and colleagues have been studying the sometimes-extreme water-level fluctuations in the region’s glacial lakes. These studies are important in a time of melting glaciers, as flooding and water availability have implications for nearby communities.');
+  		infowindowX.open(map,marker16);
+      });
+
+  	const title17 = "Nepal - John Nabelek (17)";
+      const marker17 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(27.809081, 84.967846),
+          map: map,
+          title: title17
+      });
+      google.maps.event.addListener(marker17, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title17 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/john-nabelek">John Nabelek<\/a> and a student were involved in installation of a monitoring system to record earthquakes and their aftershocks in the mountains of Tibet. Installed after a large quake in 2015, the network of instruments known as the Nepal Array Measuring Aftershock Seismicity Trailing Earthquake network (yes, NAMASTE) was in place for 11 months.');		
+  		infowindowX.open(map,marker17);
+      });
+
+  	const title18 = "Bermuda - Adam Schultz (18)";
+      const marker18 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(32.300419, -64.788375),
+          map: map,
+          title: title18
+      });
+      google.maps.event.addListener(marker18, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title18 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/adam-schultz">Adam Schultz<\/a> and colleagues have been studying the geomagnetic properties and electrical conductivity of the Earth’s mantle near Bermuda. They found anomalously high electrical conductivity in the area, likely attributable to hot and wet molten material rising beneath the mantle.');
+  		infowindowX.open(map,marker18);
+      });
+
+  	const title19 = "Tigray, Ethiopia - Jamon Van Den Hoek (19)";
+      const marker19 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(13.567231415163425, 39.42380528183428),
+          map: map,
+          title: title19
+      });
+      google.maps.event.addListener(marker19, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title19 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/jamon-van-den-hoek">Jamon Van Den Hoek<\/a> contributed data to a Washington Post study that used satellite imagery and analysis to document gravesites related to massacres in the Tigray region of Ethiopia last year.');		
+  		infowindowX.open(map,marker19);
+      });
+  	
+  	const title20 = "Southern Ocean - Yvette Spitz and Ricardo Matano (20)";
+      const marker20 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-52.150914, -40.469173),
+          map: map,
+          title: title20
+      });
+      google.maps.event.addListener(marker20, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title20 + "</span><br />" + 'Despite high nutrient inputs, parts of the Southern Ocean are still low in phytoplankton productivity, likely because of a lack of iron. In particular, productivity of the Pacific sector of the Southern Ocean seems to be iron-limited, while the Atlantic sector does not. Exactly where the iron is coming from in the Atlantic sector is a mystery to be investigated by <a href="//ceoas.oregonstate.edu/directory/yvette-spitz">Yvette Spitz<\/a> and <a href="//ceoas.oregonstate.edu/directory/ricardo-matano">Ricardo Matano<\/a>. This work will contribute to our understanding of the effects of iron fertilization on primary productivity in potentially the strongest carbon sink area of the Southern Ocean.');
+  		infowindowX.open(map,marker20);
+      });
+
+  	const title21 = "Northern Gulf of Mexico (21)";
+      const marker21 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(28.594399706937097, -90.25148066044497),
+          map: map,
+          title: title21
+      });
+      google.maps.event.addListener(marker21, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title21 + "</span><br />" + 'Lots of CEOAS folks spent part of the summer of 2022 in the northern Gulf of Mexico studying the small-scale physical processes that control the ocean’s near-surface water temperatures. The project, called “SUNRISE” (Submesoscales Under Near-Resonant Inertial Shear Experiment), is a large collaborative effort funded by NSF and NERC. <a href="//ceoas.oregonstate.edu/directory/r-kipp-shearman">Kipp Shearman<\/a>, <a href="//ceoas.oregonstate.edu/directory/jonathan-nash">Jonathan Nash<\/a>, and many others participated.');		
+  		infowindowX.open(map,marker21);
+      });
+
+  	const title22 = "New Zealand - Marta Torres (22)";
+      const marker22 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-39.261702, -179.308789),
+          map: map,
+          title: title22
+      });
+      google.maps.event.addListener(marker22, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title22 + "</span><br />" + 'The Hikurangi Margin is a subduction zone off the coast of New Zealand where the Pacific Plate dives below the Australian Plate. All kinds of amazing geology and chemistry happens at subduction zones. <a href="//ceoas.oregonstate.edu/directory/marta-torres">Marta Torres<\/a> has taken sediment cores in the ocean near the margin to examine the volcanic ash in the sediments. She is particularly interested in methane chemistry at plate margins.');		
+  		infowindowX.open(map,marker22);
+      });
+
+  	const title23 = "Station ALOHA - Ricardo Letelier (23)"; 
+  	const marker23 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(22.75, -158.0),
+          map: map,
+          title: title23
+      });
+      google.maps.event.addListener(marker23, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title23 + "</span><br />" + 'Aloha from <a href="http://aco-ssds.soest.hawaii.edu/ALOHA/">station ALOHA<\/a>! <a href="//ceoas.oregonstate.edu/directory/ricardo-letelier">Ricardo Letelier<\/a> has been collecting data at this long-term oceanographic study site (ALOHA stands for A Long-term Oligotrophic Habitat Assessment) north of Hawaii to examine phytoplankton dynamics.');		
+  		infowindowX.open(map,marker23);
+      });
+
+  	const title24 = "Argentina - Maria Kavanaugh, James Watson and Michael Harte (24)";
+      const marker24 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-49.38741319529455, -63.60741373555267),
+          map: map,
+          title: title24
+      });
+      google.maps.event.addListener(marker24, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title24 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/maria-kavanaugh">Maria Kavanaugh<\/a>, <a href="//ceoas.oregonstate.edu/directory/james-watson">James Watson<\/a> and <a href="//ceoas.oregonstate.edu/directory/michael-harte">Michael Harte<\/a> have found a way to identify illegal fishing activities from half a world away. Using vessel tracking data, satellite data on areas of ocean productivity, and machine learning, they developed a method for predicting whether a distant-water fishing vessel is fishing within the Argentine exclusive economic zone (EEZ) on the Patagonian Shelf, one of the world’s most productive regions for fisheries.');		
+  		infowindowX.open(map,marker24);
+      });
+
+  	const title25 = "Waldport, Oregon coast - PacWave South (25)";
+      const marker25 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(44.42119797389977, -124.2006056511605),
+          map: map,
+          title: title25
+      });
+      google.maps.event.addListener(marker25, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title25 + "</span><br />" + 'About seven miles off Waldport, Oregon is <a href="https://pacwaveenergy.org/">PacWave<\/a>’s <a href="http://pacwaveenergy.org/south-test-site/">South Test Site<\/a>, now under construction. PacWave South is an in-development, state-of-the-art, pre-permitted, accredited, grid-connected wave energy test facility; developed in partnership with US Department of Energy, the State of Oregon and local stakeholders.');		
+  		infowindowX.open(map,marker25);
+      });
+
+  	const title26 = "Colombia - David Wrathall (26)";
+      const marker26 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-3.751520, -70.194189),
+          map: map,
+          title: title26
+      });
+      google.maps.event.addListener(marker26, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title26 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/david-wrathall">David Wrathall <\/a> and collaborators studied the effects of the peace accord in Colombia on deforestation. Their <a target="_blank" href="https://today.oregonstate.edu/news/peace-accord-colombia-has-increased-deforestation-biologically-diverse-rainforest">fascinating study<\/a>, using cutting-edge remote sensing techniques, determined that the accord did not focus on forest management, and as a result, significant swaths of the delicate Andes-Amazon region were converted from forested to agricultural land.');
+  		infowindowX.open(map,marker26);
+      });
+
+  	const title27 = "Olympic Coast National Marine Sanctuary - Melanie Fewings and Craig Risien (27)";
+      const marker27 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(47.8166, -125.5912),
+          map: map,
+          title: title27
+      });
+      google.maps.event.addListener(marker27, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title27 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/melanie-fewings">Melanie Fewings<\/a>, <a href="//ceoas.oregonstate.edu/directory/craig-risien">Craig Risien<\/a> and other CEOAS folks are leading a three-year effort to learn more about climate fluctuations in Olympic Coast National Marine Sanctuary using more than 20 years of oceanographic data.');		
+  		infowindowX.open(map,marker27);
+      });
+
+  	const title28 = "Willamette Valley - Kelsey Emard (28)";
+      const marker28 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(45.00862395054538, -123.12879613082359),
+          map: map,
+          title: title28
+      });
+      google.maps.event.addListener(marker28, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title28 + "</span><br />" + 'Geographer <a href="//ceoas.oregonstate.edu/directory/kelsey-emard">Kelsey Emard<\/a> is working with farmers in the Willamette Valley to determine how they use climate model projections, and conversely, how information they have gained from generations of working on the land can help inform climate models.');		
+  		infowindowX.open(map,marker28);
+      });
+  	
+  	const title29 = "Bolivia - Shan de Silva (29)";
+      const marker29 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-22.75, -67.466667),
+          map: map,
+          title: title29
+      });
+      google.maps.event.addListener(marker29, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title29 + "</span><br />" + 'The chemical composition of magma can reveal crucial information about a volcano&rsquo;s history, ultimately aiding in our understanding of how these systems work in an effort to be able to predict future eruptions. <a href="//ceoas.oregonstate.edu/directory/shanaka-de-silva">Shan de Silva<\/a> is part of a team analyzing chemical composition and heterogeneity of rock samples from the Cerro Guacha Caldera in the Altiplano–Puna Volcanic Complex of SW Bolivia in order to reconstruct the volcano’s eruption history.');		
+  		infowindowX.open(map,marker29);
+      });
+
+  	const title30 = "Southern Africa - David Noone (30)";
+      const marker30 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-25.928038461617124, 12.882488891355527),
+          map: map,
+          title: title30
+      });
+      google.maps.event.addListener(marker30, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title30 + "</span><br />" + 'In southern Africa, widespread agricultural fires produce substantial seasonal smoke plumes, which contain aerosol particles. As the smoke plumes are advected over the southeast Atlantic Ocean, the aerosols could interact with the clouds, changing the heat dynamics of the atmosphere, with major implications for weather and climate. <a href="//ceoas.oregonstate.edu/directory/david-noone">David Noone<\/a> is part of a team that has been studying the atmospheric effects of these aerosols.');		
+  		infowindowX.open(map,marker30);
+      });
+
+  	const title31 = "Moorea Coral Reef - Andrew Thurber (31)";
+      const marker31 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-17.53544870081495, -149.82867213468876),
+          map: map,
+          title: title31
+      });
+      google.maps.event.addListener(marker31, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title31 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/andrew-thurber">Andrew Thurber<\/a> has been working on the reefs of the Moorea Coral Reef Long Term Ecological Research site at the island of Moorea in French Polynesia. Among other goals, he and his team are looking at differences in the microbial community at sites in the island’s waters that are more or less impacted by human activities.');		
+  		infowindowX.open(map,marker31);
+      });
+
+  	const title32 = "Axial Seamount - Bill Chadwick (32)";
+      const marker32 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(45.95,-130.0),
+          map: map,
+          title: title32
+      });
+      google.maps.event.addListener(marker32, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title32 + "</span><br />" + '<a href="https://www.pmel.noaa.gov/eoi/staff/chadwick.html">Bill Chadwick<\/a> studies undersea volcanoes at plate boundaries to determine the circumstances of eruption. One of his long-term study sites – his most recent visit there was on a research cruise in August 2020 – is Axial Seamount, the most active submarine volcano in the NE Pacific. Chadwick’s studies may lead to a capability of predicting eruptions at this active margin.');		
+  		infowindowX.open(map,marker32);
+      });
+  	
+  	const title33 = "Humboldt Current, off Chile - Kim Bernard (33)";
+      const marker33 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-18.119746255243616, -75.8428975249571),
+          map: map,
+          title: title33
+      });
+      google.maps.event.addListener(marker33, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title33 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/kim-bernard">Kim Bernard<\/a> contributed to study that identified the main environmental drivers of krill abundance in the Humboldt Current ecosystem off northern Chile, including the effect of biomass of their main predator, Peruvian anchovy.');		
+  		infowindowX.open(map,marker33);
+      });
+  	
+  	const title34 = "Eastern Pacific - Ocean Mixing Group (34)";
+      const marker34 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(0, -110),
+          map: map,
+          title: title34
+      });
+      google.maps.event.addListener(marker34, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title34 + "</span><br />" + 'The <a href="http://mixing.coas.oregonstate.edu/">Ocean Mixing Group<\/a> measured turbulence and other water properties in the equatorial Pacific Cold Tongue along the equator in the eastern Pacific Ocean. The goal of this field project was to understand the day-night cycling of turbulence and the variability of mixing with respect to small changes in latitude. The dynamics of this region contribute to the set of climate processes known as the El Niño-Southern Oscillation (ENSO), which is a key factor in the variability of global weather conditions.');		
+  		infowindowX.open(map,marker34);
+      });
+
+  	const title35 = "Houma, LA - Regional Class Research Vessel (35)";
+      const marker35 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(29.543191, -90.712205),
+          map: map,
+          title: title35
+      });
+      google.maps.event.addListener(marker35, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title35 + "</span><br />" + 'We&lsquo;re building a ship! (Well, we&lsquo;re overseeing the design and construction of a ship -- three of them, actually.) CEOAS is leading the design and construction of three state-of-the-art <a href="//ceoas.oregonstate.edu/ships/rcrv/">regional-class research vessels<\/a> for the U.S. academic fleet. All three are now under construction by Gulf Island Shipyards in Houma, LA.');		
+  		infowindowX.open(map,marker35);
+      });
+
+  	const title36 = "North Atlantic Ocean - Rene Boiteau (36)";
+      const marker36 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(35.886879, -39.438496),
+          map: map,
+          title: title36
+      });
+      google.maps.event.addListener(marker36, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title36 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/rene-boiteau">Rene Boiteau<\/a> is studying how iron associated with dust blowing from the Sahara Desert is transformed into a usable nutrient supporting productivity of marine microorganisms in the North Atlantic.');
+  		infowindowX.open(map,marker36);
+      });	
+
+  	const title37 = "Bay of Bengal - Jonathan Nash and Emily Shroyer (37)";
+      const marker37 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(13.751528, 87.541372),
+          map: map,
+          title: title37
+      });
+      google.maps.event.addListener(marker37, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title37 + "</span><br />" + 'A tale of two seas: Upper-ocean turbulent heat fluxes in the Bay of Bengal and the Arctic Ocean drive regional monsoons and sea ice melt, respectively, so it is important to understand the mechanisms that drive this heat transport. <a href="//ceoas.oregonstate.edu/directory/jonathan-nash">Jonathan Nash<\/a> and <a href="//ceoas.oregonstate.edu/directory/emily-shroyer">Emily Shroyer<\/a> participated in a multi-author comparative study of small-scale structuring of vertical stratification in these two water bodies half a world apart, finding differences but also surprising similarities.');		
+  		infowindowX.open(map,marker37);
+      });
+
+  	const title38 = "Gulf of Mexico - Jim Moum (38)";	
+      const marker38 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(28.099168, -86.693659),
+          map: map,
+          title: title38
+      });
+      google.maps.event.addListener(marker38, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title38 + "</span><br />" + 'The <a href="https://mixing.ceoas.oregonstate.edu/">Ocean Mixing Group<\/a>, led by <a href="//ceoas.oregonstate.edu/directory/james-moum">Jim Moum<\/a>, measured turbulence and other physical water properties in the northern Gulf of Mexico as part of the Consortium for Oil Spill Exposure Pathways in Coastal River-Dominated Ecosystems (CONCORDE). The goal of this interdisciplinary project is to understand how rivers influence the transport, fate and toxicity of oil as it interacts with coastal waters and biology.');
+  		infowindowX.open(map,marker38);
+      });
+
+  	const title39 = "Gulf of Mexico - Rick Colwell (39)";	
+      const marker39 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(26.800040835020607, -91.61669130964039),
+          map: map,
+          title: title39
+      });
+      google.maps.event.addListener(marker39, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title39 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/frederick-colwell">Rick Colwell<\/a> is studying microbial communities associated with methane hydrate in the Gulf of Mexico. Methane hydrate is an ice-like solid composed of water and methane that forms at high pressure and low temperature. This difficult to reach and poorly understood substance has potentially wide-ranging effects on the planet’s environment, climate and energy resources.');		
+  		infowindowX.open(map,marker39);
+      });
+
+  	const title40 = "Chile - Anne Tréhu (40)";
+      const marker40 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-26.793907, -71.324539),
+          map: map,
+          title: title40
+      });
+      google.maps.event.addListener(marker40, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title40 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/anne-trehu">Anne Tréhu<\/a> works on a project with an awesome acronym: ChilePEPPER (Project Evaluating Prism Post-Earthquake Response). This project examined the accretionary prism, that pile of sediment that is scraped from a subducting tectonic plate as it dives under an adjacent plate, after a massive 2010 earthquake in Chile.');		
+  		infowindowX.open(map,marker40);
+      });
+
+  	const title41 = "Catalina Island - Jenn Fehrehbacher (41)";
+      const marker41 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(33.3883867,-118.9954892),
+          map: map,
+          title: title41
+      });
+      google.maps.event.addListener(marker41, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title41 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/jennifer-fehrenbacher">Jenn Fehrehbacher<\/a> studies the single-celled beasties called foraminifera in the waters off Catalina Island, southern California.');
+  		infowindowX.open(map,marker41);
+      });
+
+  	const title42 = "Poland - Andrew Meigs (42)";	
+      const marker42 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(49.230149, 19.6771157),
+          map: map,
+          title: title42
+      });
+      google.maps.event.addListener(marker42, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title42 + "</span><br />" + 'The High Tatra Mountains in southern Poland, part of the Carpathians, are a treasure trove of data that can reveal how mountains form when tectonic plates come together. <a href="//ceoas.oregonstate.edu/directory/andrew-meigs">Andrew Meigs<\/a> has been working with colleagues on a project to determine the tectonic history of this mountain range.');
+  		infowindowX.open(map,marker42);
+      });
+  	
+  	const title43 = "Newport Hydrographic Line (43)";		
+      const marker43 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(44.6212869,-124.049897),
+          map: map,
+          title: title43
+      });
+      google.maps.event.addListener(marker43, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title43 + "</span><br />" + 'The Newport Hydrographic Line is a series of standard oceanographic sampling stations offshore of Newport, Oregon, extending 200 miles into the ocean. Many CEOAS researchers conduct studies along the line, or use other data collected there, including <a href="//ceoas.oregonstate.edu/directory/jack-barth">Jack Barth<\/a>, <a href="https://ceoas.oregonstate.edu/directory/r-kipp-shearman">Kipp Shearman<\/a>, <a href="https://ceoas.oregonstate.edu/directory/jennifer-fehrenbacher">Jenn Fehrenbacher<\/a>, <a href="https://ceoas.oregonstate.edu/directory/robert-cowen">Bob Cowen<\/a>, <a href="https://ceoas.oregonstate.edu/directory/maria-kavanaugh">Maria Kavanaugh<\/a>, <a href="https://ceoas.oregonstate.edu/directory/clare-reimers">Clare Reimers<\/a> and many others.');
+  		infowindowX.open(map,marker43);
+      });
+  	
+  	const title44 = "Antarctica - Ed Brook and Christo Buizert (44)";	
+      const marker44 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-77.733332, 162.166657),
+          map: map,
+          title: title44
+      });
+      google.maps.event.addListener(marker44, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title44 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/edward-brook">Ed Brook<\/a> and <a href="//ceoas.oregonstate.edu/directory/christo-buizert">Christo Buizert<\/a> use ice cores taken from the Taylor Glacier in Antarctica to ask questions about past climates. Recently they have analyzed levels of atmospheric methane from the last deglaciation in air bubbles that have been trapped in pristine ice cores for thousands of years. Their studies have concluded that the last ice age transition to a warmer climate some 11,500 years ago did not include massive methane flux from marine sediments or the tundra. Instead, the likely source of rising levels of atmospheric methane was from tropical wetlands.');
+  		infowindowX.open(map,marker44);
+      });
+  	
+  	const title45 = "Ross Sea, Antarctica - Andrew Thurber (45)";		
+      const marker45 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-74.532149, -166.348132),
+          map: map,
+          title: title45
+      });
+      google.maps.event.addListener(marker45, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title45 + "</span><br />" + 'A methane seep is a location where methane gas escapes from an underground reservoir and into the ocean. Methane seeps have been found throughout the world’s oceans, but <a href="//ceoas.oregonstate.edu/directory/andrew-thurber">Andrew Thurber<\/a> discovered the first active seep in Antarctica, in the Ross Sea.');		
+  		infowindowX.open(map,marker45);
+      });
+
+  	const title46 = "Taupo Volcano, New Zealand - Adam Kent (46)";	
+      const marker46 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-38.741754, 175.891434),
+          map: map,
+          title: title46
+      });
+      google.maps.event.addListener(marker46, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title46 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/adam-kent">Adam Kent<\/a> and his “Tephra Team” of students and colleagues have been studying the Taupo Volcano system in New Zealand. They aim to better understand how silicic magma systems develop and evolve in the upper crust. Specifically, they are concerned with the thermal conditions of magma storage, the variables that control these thermal conditions, how magma composition does/does not vary across the system, and what that means for the source of the magma in the Taupo.');
+  		infowindowX.open(map,marker46);
+      });
+  	
+  	const title47 = "Lake Naskaupi, Labrador - Peter Clark (47)";		
+      const marker47 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(53.779845, -60.844712),
+          map: map,
+          title: title47
+      });
+      google.maps.event.addListener(marker47, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title47 + "</span><br />" + 'You can’t launch your canoe to go fishing in Labrador’s Lake Naskaupi. That’s because it doesn’t exist anymore. Several glacial lakes were formed by the last deglaciation of the massive ice sheet in the region, which drained into Ungava Bay and the nearby Labrador Sea. The subsequent drainage of these lakes was a critical climatic event, studied by teams of scientists, including <a href="//ceoas.oregonstate.edu/directory/peter-clark" target="_blank">Peter Clark<\/a>. By dating the rocks along the lake’s ancient shoreline, Clark and colleagues determined that Lake Naskaupi drained around 8,300 years ago.');		
+  		infowindowX.open(map,marker47);
+      });	
+  	
+  	const title48 = "Konza Prairie, Kansas - Pam Sullivan (48)";	
+      const marker48 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(39.107575, -96.609365),
+          map: map,
+          title: title48
+      });
+      google.maps.event.addListener(marker48, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title48 + "</span><br />" + 'CEOAS ecohydrologist <a href="//ceoas.oregonstate.edu/directory/pamela-sullivan">Pam Sullivan<\/a> conducted research in the Konza Prairie Long-Term Ecological Research site in Kansas, examining the impacts of the encroachment of woody plants on the chemistry of prairie streams.');
+  		infowindowX.open(map,marker48);
+      });
+  	
+  	const title49 = "The Blob - Melanie Fewings (49)";	
+      const marker49 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(42.002202, -125.016093),
+          map: map,
+          title: title49
+      });
+      google.maps.event.addListener(marker49, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title49 + "</span><br />" + 'In 2014, a mass of unusually warm water made its way to the northeastern Pacific, lingering until 2016. This warm water mass, which came to be known as the Blob, wreaked havoc in California Current food webs. <a href="//ceoas.oregonstate.edu/directory/melanie-fewings">Melanie Fewings<\/a> has been examining whether and how wind has influenced the spatial pattern of the Blob.');		
+  		infowindowX.open(map,marker49);
+      });
+
+  	const title50 = "South Georgia Island - Ricardo Matano (50)";	
+      const marker50 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-54.48163298260707, -37.23296337517249),
+          map: map,
+          title: title50
+      });
+      google.maps.event.addListener(marker50, 'click', function() {
+      infowindowX.setContent('<span class="fs-6 text-success">' + title50 + "</span><br />"  + 'In the Southern Ocean, phytoplankton growth is anomalously strong downstream of islands and seamounts, especially downstream of the rugged and remote island of South Georgia. <a target="_blank" href="//ceoas.oregonstate.edu/people/ricardo-matano">Ricardo Matano<\/a> and colleagues used a high-resolution ocean model to explain how ocean circulation supplies nutrients to the South Georgia bloom. <\/a>');
+  		infowindowX.open(map,marker50);
+      });
+
+  const title51 = "Azores Triple Junction - Anthony Koppers (51)";		
+      const marker51 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(38.66123233163305, -28.49992452946462),
+          map: map,
+          title: title51
+      });
+      google.maps.event.addListener(marker51, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title51 + "</span><br />" + 'The Azores Triple Junction is a spot in the ocean where three tectonic plates come together. An underwater plateau, the Azores Plateau, covers the junction, and is the site of continued volcanic activity. <a href="//ceoas.oregonstate.edu/directory/antonius-koppers">Anthony Koppers<\/a> and collaborators have used isotopic analyses of rock samples from the plateau to characterize volcanic and tectonic activity at the site.');
+  		infowindowX.open(map,marker51);
+      });
+  	
+  	const title52 = "Northeast Brazil - Gary Egbert (52)";	
+      const marker52 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-11.000000, -39.500000),
+          map: map,
+          title: title52
+      });
+      google.maps.event.addListener(marker52, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title52 + "</span><br />" + 'A magnetotelluric study (a method that measures electric and magnetic fields in the Earth’s surface) in northeast Brazil carried out by <a href="//ceoas.oregonstate.edu/directory/gary-egbert">Gary Egbert<\/a> and colleagues found that the tectonic structure observed there today is attributable to an ancient (2,000 million years ago!) collision between an oceanic and a continental tectonic plate.');		
+  		infowindowX.open(map,marker52);
+      });	
+
+  	const title53 = "Corvallis, Oregon - Ocean Observatories Initiative (53)";	
+      const marker53 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(44.52851682770683, -123.26826315719296),
+          map: map,
+          title: title53
+      });
+      google.maps.event.addListener(marker53, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title53 + "</span><br />" + 'Oregon State University has been <a href="https://today.oregonstate.edu/news/oregon-state-manage-cyberinfrastructure-ocean-observatories-initiative">given a contract<\/a> to provide all data management, storage and transmission functions for the federal Ocean Observatories Initiative, a massive ocean monitoring program funded by the National Science Foundation. Data from the more than 800 instruments at five observatories in the Atlantic and Pacific Oceans will be stored and managed at the OSU campus in Corvallis.');
+  		infowindowX.open(map,marker53);
+      });
+  	
+  	const title54 = "Palmer Station, Antarctica - Kim Bernard (54)";		
+      const marker54 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-64.77418042649298, -64.05381380674528),
+          map: map,
+          title: title54
+      });
+      google.maps.event.addListener(marker54, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title54 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/kim-bernard">Kim Bernard<\/a> and crews of her students and technicians have spent multiple austral winters at Palmer Station in Antarctica studying the ecology of Antarctic krill.');		
+  		infowindowX.open(map,marker54);
+      });	
+  	
+  	const title55 = "Gulf of Alaska - Alam Mix and Mo Walczak (55)";		
+      const marker55 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(56.99978883204402, -144.000085845334),
+          map: map,
+          title: title55
+      });
+      google.maps.event.addListener(marker55, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title55 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/alan-mix">Alan Mix<\/a>, <a href="//ceoas.oregonstate.edu/directory/maureen-walczak">Maureen Walczak<\/a> and collaborators have used multiple proxies to examine the 60,000-year history of low oxygen zones in the Gulf of Alaska.');
+  		infowindowX.open(map,marker55);
+      });
+
+  	const title56 = "South China Sea - Andrew Thurber and Rick Colwell (56)";
+      const marker56 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(15.503595, 114.404435),
+          map: map,
+          title: title56
+      });
+      google.maps.event.addListener(marker56, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title56 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/andrew-thurber">Andrew Thurber<\/a> and <a href="//ceoas.oregonstate.edu/directory/frederick-colwell">Rick Colwell<\/a> are part of a team working to characterize the microbial communities in the sediments of the South China Sea. They have found that bacterial communities there are dominated by poorly-understood taxa, and are structured more by the chemistry of the sediments than the physical characteristics of the sediments, a finding with implications for how organic matter is processed in this environment.');
+  		infowindowX.open(map,marker56);
+      });
+
+  	const title57 = "Helmand River - Aaron Wolf (57)";
+      const marker57 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(30.554210711828762, 63.52886536293355),
+          map: map,
+          title: title57
+      });
+      google.maps.event.addListener(marker57, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title57 + "</span><br />" + 'Trans-boundary water conflict expert <a href="//ceoas.oregonstate.edu/directory/aaron-wolf">Aaron Wolf<\/a> and an Afghani colleague have explored whether Islamic water management principles will be used in managing the Helmand River, which runs through Afghanistan and Iran, now that the Taliban have returned to power in Afghanistan.');
+  		infowindowX.open(map,marker57);
+      });
+  	
+  	const title58 = "Thwaites Glacier, Antarctica  - Erin Pettit (58)";	
+      const marker58 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-73.956114, -108.621740),
+          map: map,
+          title: title58
+      });
+      google.maps.event.addListener(marker58, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title58 + "</span><br />" + 'The U.S. National Science Foundation and U.K. Natural Environment Research Council have partnered to undertake an intense study of a place in Antarctica that appears to be a new candidate for ice shelf collapse: the Thwaites Glacier. <a href="//ceoas.oregonstate.edu/directory/erin-pettit">Erin Pettit<\/a> will serve as lead scientist on one of nine studies that comprise the International Thwaites Glacier Collaboration.');		
+  		infowindowX.open(map,marker58);
+      });
+
+  	const title59 = "Indian Ocean - Simon de Szoeke (59)";	
+      const marker59 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-32.121223, 81.620893),
+          map: map,
+          title: title59
+      });
+      google.maps.event.addListener(marker59, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title59 + "</span><br />" + 'Weather around much of the globe is driven by forces at work over the tropical ocean. <a href="//ceoas.oregonstate.edu/directory/simon-de-szoeke">Simon de Szoeke<\/a> goes to sea in the Indian Ocean to study the impact of cold pools &mdash; puddles of cold air that are a by-product of tropical atmospheric convection &mdash; on atmospheric heat budgets.');		
+  		infowindowX.open(map,marker59);
+      });
+
+  	const title60 = "Cascadia subduction zone - Cascadia CoPes Hub (60)";	
+      const marker60 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(44.05337779045013, -124.2537154994795),
+          map: map,
+          title: title60
+      });
+      google.maps.event.addListener(marker60, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title60 + "</span><br />" + 'Stretching from Cape Mendocino in California through the Salish Sea, the Cascadia subduction zone puts the region at risk from “The Really Big One” – a megaquake. Cascadia faces other risks, too, including tsunamis, coastal erosion and regional flooding, and climate change is amplifying many of these threats. The <a href="https://cascadiacopeshub.org/">Cascadia CoPes Hub<\/a>, led by <a href="//ceoas.oregonstate.edu/directory/peter-ruggiero">Peter Ruggiero<\/a> and others at CEOAS, brings together groups interested in coastal resilience to help coordinate research with and for Pacific Northwest coastal communities to increase community adaptive capacity.');		
+  		infowindowX.open(map,marker60);
+      });	
+
+  	const title61 = "Trans-Mexican Volcanic Belt - Dan Miggins (61)";	
+      const marker61 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(19.030412, -97.268069),
+          map: map,
+          title: title61
+      });
+      google.maps.event.addListener(marker61, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title61 + "</span><br />" + 'Mexico wears a sash of volcanoes across its middle, called the Trans-Mexican Volcanic Belt. <a href="//ceoas.oregonstate.edu/other-employees-and-staff#miggins">Dan Miggins<\/a> and colleagues have characterized the most recent (perhaps 25,000 years ago) eruption of Temascalcingo Volcano in the eastern part of the belt. Their data suggest a highly explosive eruption that lasted for about nine hours and generated a plume that reached 14 km above sea level.');
+  		infowindowX.open(map,marker61);
+      });
+
+  	const title62 = "Argentina - Ricardo Matano (62)";	
+  	    const marker62 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-46.075959, -66.623605),
+          map: map,
+          title: title62
+      });
+      google.maps.event.addListener(marker62, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title62 + "</span><br />" + 'Physical oceanographer <a href="//ceoas.oregonstate.edu/directory/ricardo-matano">Ricardo Matano<\/a> studies oceanic circulation on the Patagonian Shelf. Among his findings there: Summer circulation in the Gulf of San Jorge, Argentina is mainly driven by the interaction between tides and stratification while winter circulation is mainly driven by wind.');
+  		infowindowX.open(map,marker62);
+      });
+
+  	const title63 = "Beaufort Sea - Yvette Spitz and Byron Crump (63)";	
+      const marker63 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(70.132031, -143.623038),
+          map: map,
+          title: title63
+      });
+      google.maps.event.addListener(marker63, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title63 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/yvette-spitz">Yvette Spitz<\/a> and <a href="//ceoas.oregonstate.edu/directory/byron-crump">Byron Crump<\/a> are part of a team of scientists heading up research efforts at the new Beaufort Lagoons Long Term Ecological Research (LTER) site. These lagoons are a type of estuary, where freshwater from rivers and groundwater meets the Beaufort Sea. These productive ecosystems provide food, livelihoods and more to the communities on their shores. They are also changing, as ice seasons are shorter, permafrost is melting in places, and coastal erosion affects both the land and the water.');
+  		infowindowX.open(map,marker63);
+      });
+  	
+  	const title64 = "Antarctica - Ed Brook and Jenna Epifanio (64)";		
+      const marker64 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-85, 0),
+          map: map,
+          title: title64
+      });
+      google.maps.event.addListener(marker64, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title64 + "</span><br />" + 'The South Pole! <a href="//ceoas.oregonstate.edu/directory/edward-brook">Ed Brook<\/a>’s lab is always on the hunt for old ice - so old that he and his colleagues are only able to collect samples by drilling deeeeep into an ice sheet to get at that ice laid down tens or hundreds of thousands years ago - even millions of years ago! One of Ed’s students, Jenna Epifanio, was recently the first author on an important paper that examines the gas records contained in air bubbles in a 54,000-year-old ice core taken near the South Pole.');
+  		infowindowX.open(map,marker64);
+      });
+
+  	const title65 = "Gulf of Arauco, Chile - Ted Strub (65)";	
+      const marker65 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(-37.19882764742891, -73.5125850103858),
+          map: map,
+          title: title65
+      });
+      google.maps.event.addListener(marker65, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title65 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/ted-strub">Ted Strub<\/a> is part of team studying upwelling in the Gulf of Arauco, Chile.');
+  		infowindowX.open(map,marker65);
+      });
+
+  	const title66 = "Baja Peninsula - Dan Miggins (66)";	
+      const marker66 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(31.752111762420185, -116.13433571149243),
+          map: map,
+          title: title66
+      });
+      google.maps.event.addListener(marker66, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title66 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/other-employees-and-staff#miggins">Dan Miggins<\/a> has struck gold in the El Alamo gold district of Mexico’s Baja Peninsula! Well, he wasn’t the first to find it – this area has been mined for a long time. But he was part of a team working to better characterize the deposits, determining when and how they were formed.');
+  		infowindowX.open(map,marker66);
+      });
+
+  	const title67 = "Gulf of Tonkin - Kipp Shearman (67)";
+      const marker67 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(19.7507668613913, 107.74995706050348),
+          map: map,
+          title: title67
+      });
+      google.maps.event.addListener(marker67, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title67 + "</span><br />" + 'The Gulf of Tonkin is perhaps best known as the site of an incident that led to escalation of U.S. involvement in the Vietnam War. But it’s also an interesting place oceanographically. <a href="//ceoas.oregonstate.edu/directory/r-kipp-shearman">Kipp Shearman<\/a> has been collaborating with American and Vietnamese colleagues to study seasonal variability in the Gulf. Monsoon winds drive much of the seasonal variability there, along with freshwater inputs from the Red River.');
+  		infowindowX.open(map,marker67);
+      });	
+
+  	const title68 = "Challenger Deep - Dawn Wright (68)";
+      const marker68 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(11.37535011296072, 142.59192365629545),
+          map: map,
+          title: title68
+      });
+      google.maps.event.addListener(marker68, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title68 + "</span><br />" + 'Courtesy professor <a href="//ceoas.oregonstate.edu/dawn-j-wright">Dawn Wright<\/a>, also known as Deep-sea Dawn, recently became the first Black person to descend to the deepest point in the ocean, known as the Challenger Deep!');
+  		infowindowX.open(map,marker68);
+      });
+
+  	const title69 = "Kenya - Frank Sousa (69)";
+      const marker69 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(4.453373620072831, 36.86304748196505),
+          map: map,
+          title: title69
+      });
+      google.maps.event.addListener(marker69, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title69 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/francis-sousa">Frank Sousa<\/a> has been piecing together the geologic and tectonic history of the Turkana Depression in Kenya, part of the East African Rift System where a tectonic plate is in the process of splitting into two smaller plates, which are moving apart from each other.');
+  		infowindowX.open(map,marker69);
+      });
+  	
+  	const title70 = "Great Basin - Erica Fleishman (70)";
+      const marker70 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(38.9420550140203, -114.26510848379294),
+          map: map,
+          title: title70
+      });
+      google.maps.event.addListener(marker70, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title70 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/erica-fleishman">Erica Fleishman<\/a>, director of the Oregon Climate Change Research Institute, studies the biogeography of birds and ecological response to land-use and climate change in the forests of the Great Basin.');		
+  		infowindowX.open(map,marker70);
+      });
+
+  	const title71 = "Cape Lookout, NC - Peter Ruggiero (71)";
+      const marker71 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(34.60651121952708, -76.5365153356085),
+          map: map,
+          title: title71
+      });
+      google.maps.event.addListener(marker71, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title71 + "</span><br />" + 'What factors control the movements of sand dunes? <a href="//ceoas.oregonstate.edu/directory/peter-ruggiero">Peter Ruggiero<\/a> and colleagues ask that exact question using a mathematical model, with Cape Lookout National Seashore in North Carolina as their example site.');
+  		infowindowX.open(map,marker71);
+      });
+
+  	const title72 = "Spain - Alyssa Shiel (72)";
+      const marker72 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(42.112844238387645, -6.733326806746649),
+          map: map,
+          title: title72
+      });
+      google.maps.event.addListener(marker72, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title72 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/alyssa-shiel">Alyssa Shiel<\/a> looks for lead and other contaminants in many places, including Laguna Roya, a small, remote lake in Spain in the Parque Natural Lago de Sanabria. She and colleagues were able to construct a 3,000-year history of lead isotopes in the lake, a legacy of mining and metallurgical activities in the area.');
+  		infowindowX.open(map,marker72);
+      });
+  	
+  	const title73 = "Greenland - Alyssa Shiel (73)";
+      const marker73 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(75.63286138419726, -38.331100247444525),
+          map: map,
+          title: title73
+      });
+      google.maps.event.addListener(marker73, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title73 + "</span><br />" + 'Diamonds aren’t the only things that are forever – lead isotopes released into the environment by industrial activities like coal combustion are, too. <a href="//ceoas.oregonstate.edu/directory/alyssa-shiel">Alyssa Shiel<\/a> used an ice core taken from central Greenland to examine 250 years of humanity’s industrial activities by looking at lead concentrations in the core going back before the Industrial Revolution.');
+  		infowindowX.open(map,marker73);
+      });
+
+  	const title74 = "Ocean Observatories Initiative (OOI) Endurance Array (74)";
+      const marker74 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(44.6389, -124.3038),
+          map: map,
+          title: title74
+      });
+      google.maps.event.addListener(marker74, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title74 + "</span><br />" + 'The <a href="//oceanobservatories.org/array/coastal-endurance/">Ocean Observatories Initiative (OOI) Endurance Array<\/a> builds on the legacy of the nearby Newport Hydrographic Line to address coastal ocean processes and how they are affected by climate change.  <a href="//ceoas.oregonstate.edu/directory/edward-dever">Ed Dever<\/a>, <a href="//ceoas.oregonstate.edu/directory/jonathan-fram">Jon Fram<\/a> and their team operate the long term moorings, profilers, and gliders that make up the Endurance Array.  Its measurements extend from the coast to the continental slope and from central Oregon to central Washington.  <a href="//ceoas.oregonstate.edu/directory/antonius-koppers">Anthony Koppers<\/a> and <a href="//ceoas.oregonstate.edu/directory/craig-risien">Craig Risien<\/a> operate the OOI Data Center that makes available real time data from all of OOI to researchers, educators, and other users.');
+  		infowindowX.open(map,marker74);
+      });
+
+  	const title75 = "East Greenland - Lorenzo Ciannelli (75)";
+      const marker75 = new google.maps.marker.AdvancedMarkerElement({
+          position: new google.maps.LatLng(69.3018, -68.4629),
+          map: map,
+          title: title75
+      });
+      google.maps.event.addListener(marker75, 'click', function() {
+  		infowindowX.setContent('<span class="fs-6 text-success">' + title75 + "</span><br />" + '<a href="//ceoas.oregonstate.edu/directory/lorenzo-ciannelli">Lorenzo Ciannelli<\/a> is collaborating with colleagues on a project studying glacial fjord dynamics in East Greenland. His piece of the puzzle is to determine how marine-terminating glaciers influence larval fish and zooplankton assemblages in the fjord and surrounding shelf.');
+  		infowindowX.open(map,marker75);
+      });		
+      
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+    
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/3756\r\n/node/8086"
+contexts: {  }
+conditions_require_all: true

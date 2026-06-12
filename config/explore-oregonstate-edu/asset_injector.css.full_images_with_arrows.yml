@@ -1,0 +1,239 @@
+uuid: e75e06db-c134-4d14-886e-7feb09dbbb9f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: full_images_with_arrows
+label: 'Full images with arrows'
+code: |-
+  .resources-header{
+  }
+
+  .resources-item {
+    background-color: #d73F09;
+    height: 150px;
+    width: 200px;
+  }
+
+  .resources-image {
+  }
+  .diagonal-line {
+      width: 200px;
+      height: 2px;
+      background: black;
+      transform: rotate(45deg);
+      transform-origin: 0 0;
+  }
+  .main-header {
+  	font-size:7vw;
+  	padding:15px;
+  	font-family: "Stratum2Web", serif;
+      color: #ffffff;
+      text-shadow: 2px 2px 4px black;
+      font-weight:600;
+  }
+  .max-image-width {
+  	max-width:200px;
+  }
+
+  .preview {
+      display: block;
+  }
+  .full-text {
+      display: none;
+  }
+
+  .text-container {
+      display: inline;
+  }
+  .aa-group-title-block{
+  	    background-color: #00000050;
+  }
+
+  .aa-group-title{
+  	font-size: 4rem;
+    font-weight: 500;
+    padding-top: 125px;
+    text-shadow: 2px 2px #d73f09;
+  }
+
+  .aa-orange-bar-icons{
+  	width: 250px;
+  }
+
+  .aa-unit-blocks a{
+  	text-decoration: none;
+  }
+  .rotate-45-degrees{
+  	transform: rotate(-45deg);
+  	position: absolute;
+  	bottom:5%;
+  	right:5%;
+  	transition: filter 0.3s ease, color 0.3s ease;
+  }
+
+  .rotate-45-degrees:hover {
+    filter: brightness(1.3);
+    color: #d73f09;
+  }
+  .icon-header {
+  	font-size:24px;
+  }
+  .resources {
+  	padding:14%;
+  }
+  .position-relative {
+  	position:relative;
+  }
+  .arrow {
+      float: right;
+      margin-top: -40px;
+      width: 100%;
+      max-width: 475px;
+      padding-left: 20px;
+  }
+  @media (max-width: 768px) {
+      img.arrow {
+      display:none;
+    }
+  .icon-header {
+  	font-size:18px;
+  	text-align:center;
+    }
+    .recent-story-heading-mobile {
+      display:none;
+      text-align:center;
+    }
+    .margin-bottom-80 {
+  	margin-bottom:24px!important;
+  }
+  .padding-bottom-128{
+  	padding-bottom:0px!important;
+  }
+  .angled-bg-top-left {
+        margin-top: 16px!important;
+      margin-bottom: 24px!important;
+  }
+  .padding-top-128{
+  	padding-top:0!important;
+  }
+  }
+  @media (min-width: 769px) {
+    .recent-story-heading {
+      display:none;
+    }
+  }
+  .stretched-link {
+    inset: 0;
+    z-index: 2;
+    text-indent: -9999px;
+    overflow: hidden;
+  }
+  .aa-unit-block{
+  	position:relative!important;
+  }
+  .aa-unit-blocks:hover {
+    cursor: pointer;
+  }
+   
+  .aa-unit-blocks:hover .rotate-45-degrees{
+    filter: brightness(1.3);
+    color: #d73f09;
+  }
+   
+  .aa-unit-blocks a:active:not(.button,#osu-logo-wide,#osu-logo-crest) {
+  	background-color: transparent !important;
+  }
+  .height-25 {
+  	height:48px;
+  }
+  .angled-bg-top-left {
+    width: 100%;
+    height: 400px;
+    background-image: url('your-image.jpg');
+    background-size: cover;
+    background-position: center;
+        margin-top: -125px;
+      margin-bottom: -100px;
+    
+    /* Cut the top-left corner at an angle */
+    clip-path: polygon(100px 0, 100% 0, 100% 100%, 0 100%, 0 100px);
+  }
+  .angled-bg-bottom-right {
+    width: 100%;
+    height: 400px;
+    background-image: url('your-image.jpg');
+    background-size: cover;
+    background-position: center;
+    
+    /* Cut the bottom-right corner diagonally */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 100px), calc(100% - 100px) 100%, 0 100%);
+  }
+  .double-angle-cut {
+    clip-path: polygon(
+      15% 0,
+      100% 0,
+      100% 85%,
+      85% 100%,
+      0 100%,
+      0 15%
+    );
+  }
+  .margin-top-70 {
+      margin-top: -70px;
+  }
+  .border-radius-8 {
+  	border-radius:8px;
+  }
+  .margin-bottom-80 {
+  	margin-bottom:80px;
+  }
+  .padding-bottom-128{
+  	padding-bottom:128px;
+  }
+  .padding-top-128{
+  	padding-top:128px;
+  }
+  .five-column-container {
+    display: flex;
+  }
+
+  .five-column-container > * {
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* Optional: Make responsive on smaller screens */
+  @media (max-width: 768px) {
+    .five-column-container {
+      flex-wrap: wrap;
+    }
+    
+    .five-column-container > * {
+      flex: 0 0 100%;
+    }
+  }
+  .width-20 {
+  	width:20%!important;
+  }
+  /* Optional: Make responsive on smaller screens */
+  @media (max-width: 768px) {
+    .width-20 {
+  	width:100%!important;
+  }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/131\r\n/node/131/layout"
+contexts: {  }
+conditions_require_all: true

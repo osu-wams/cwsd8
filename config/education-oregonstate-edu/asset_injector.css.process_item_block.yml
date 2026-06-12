@@ -1,0 +1,47 @@
+uuid: ad383da7-7ae5-46b2-b6e3-553ee7404f7f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: process_item_block
+label: 'Process Item Block'
+code: |-
+  .process-item {
+  	/*max-width: 920px !important;*/
+  	margin: 0 auto !important;
+  }
+  .process-item--step-number {
+  	color: var(--co-ed--beaver--orange) !important;
+  	text-align: right !important;
+  	margin-right: 2rem;
+  	leading-trim: both !important;
+  	text-edge: cap !important;
+  	font-size: 64px !important;
+  	font-style: normal !important;
+  	font-weight: 700 !important;
+  	line-height: normal !important;
+  	text-transform: uppercase !important;
+  	position: relative !important;
+  	top: -32px !important;
+  }
+  @media only screen and (max-width: 768px) and (min-width: 0) {
+    .process-item--step-number {
+    	top: 0 !important;
+    	text-align: left !important;
+    }
+  }
+media: screen
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

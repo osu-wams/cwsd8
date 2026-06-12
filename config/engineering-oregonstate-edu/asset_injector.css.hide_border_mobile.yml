@@ -1,0 +1,30 @@
+uuid: 399eed08-b560-4078-bb97-20d3741beaeb
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: hide_border_mobile
+label: 'CS hide border mobile (border, body, container)'
+code: |-
+  /* On mobile screen size, remove right border */
+
+  @media (max-width: 605px) {
+  	body .bs-border-style-right-solid {
+      border-right-style: none !important;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/Academics/Degrees/computer-science\r\n/node/676"
+contexts: {  }
+conditions_require_all: true

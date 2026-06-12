@@ -1,0 +1,107 @@
+uuid: 8689986c-0e38-4c4e-97cf-988154072d80
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: before_and_after
+label: 'Website redesign page (Before and after, slider, mobile margin and padding)'
+code: |
+  /* ==========================================================================
+     Before/After Web Redesign Slider Layout
+     ========================================================================== */
+     
+     
+  /* Sets width of each page section */   
+
+  @media (min-width: 1400px) {
+  	.col-xxl-9 {
+  	    flex: 0 0 auto !important;
+  	    width: 1000px !important;
+  	}
+  }
+
+  /* Hide slider in mobile */
+
+  @media (max-width: 950px) {
+  	.mobile-hide-me {
+  		display: none;
+  	}
+  }
+
+  .before-and-after__main {
+  	width: 100%;
+  	max-width: max-content;
+  }
+
+  /* Prevent images from spilling out of container */
+
+  .before-and-after__wrapper {
+   position: relative;
+   user-select: none;
+   overflow: hidden;
+   width: 100%;
+  }
+
+  /* ==========================================================================
+     Before Screen
+     ========================================================================== */
+     
+
+  /* Configures the before side to the left */ 
+
+  .before-and-after__before {
+   position: absolute;
+   top: 0;
+   left: 0;
+   width: 50%;
+   height: 100%;
+   overflow: hidden;
+  }
+
+  .before-and-after__before img {
+  	max-width: unset !important;
+  }
+
+  /* ==========================================================================
+     After Screen
+     ========================================================================== */
+     
+     
+  .before-and-after__after {
+  	width: max-content;
+  }
+
+  .before-and-after__after img {
+  	max-width: unset !important;
+  }
+
+  /* ==========================================================================
+     Scroller Icon
+     ========================================================================== */
+     
+     
+  /* Sets position and size of scroller icon */
+
+  .before-and-after__scroller {
+   position: absolute;
+   top: calc(50% - 50px);
+   left: calc(50% - 50px);
+   width: 100px;
+   height: 100px;
+   cursor: pointer;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/32861\r\n/node/34386"
+contexts: {  }
+conditions_require_all: true

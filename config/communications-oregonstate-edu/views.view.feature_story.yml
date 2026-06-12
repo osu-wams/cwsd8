@@ -1,0 +1,746 @@
+uuid: eb62dd19-7ae3-469c-9e05-65d999119c8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_caption
+    - field.storage.node.field_feature_story_alt_url
+  module:
+    - contextual
+    - link
+    - node
+    - user
+id: feature_story
+label: 'Feature Story'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+          settings:
+            link_to_entity: false
+        field_caption:
+          id: field_caption
+          table: node__field_caption
+          field: field_caption
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: true
+            text: |
+              <h3 class='fs-title'>
+              {{ title }}
+              </h3>
+              <p class='fs-caption'>
+              {{ field_caption-value }}
+              </p>
+          element_label_colon: false
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 10
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+      cache:
+        type: time
+        results_lifespan: '3600'
+        results_lifespan_custom: '0'
+        output_lifespan: '3600'
+        output_lifespan_custom: '0'
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          plugin_id: date
+          order: DESC
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            feature_story: feature_story
+      style:
+        type: default
+        options:
+          row_class: views-row
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          distinct: true
+      relationships:
+        og_membership_rel:
+          id: og_membership_rel
+          table: node_field_data
+          field: og_membership_rel
+          relationship: none
+          group_type: group
+          admin_label: 'OG membership from node'
+          entity_type: node
+          plugin_id: standard
+          required: false
+          ui_name: ''
+          label: 'OG membership from node'
+      use_more: true
+      use_more_always: true
+      use_more_text: 'All Stories'
+      display_extenders: {  }
+      style_plugin: default
+      style_options:
+        row_class: views-row
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_caption'
+  block:
+    id: block
+    display_title: 'Unit Feature Story Rotating Header Block'
+    display_plugin: block
+    position: 3
+    display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+          settings:
+            link_to_entity: false
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          exclude: true
+          alter:
+            alter_text: true
+            text: '[path]'
+            make_link: true
+            path: '[path]'
+            absolute: true
+          absolute: true
+        field_feature_story_alt_url:
+          id: field_feature_story_alt_url
+          table: node__field_feature_story_alt_url
+          field: field_feature_story_alt_url
+          plugin_id: field
+          exclude: true
+          empty: '{{ path }}'
+          click_sort_column: url
+          type: link
+          settings: {  }
+        field_caption:
+          id: field_caption
+          table: node__field_caption
+          field: field_caption
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: true
+            text: |
+              <h3 class='fs-title'>
+              {{ title }}
+              </h3>
+              <p class='fs-caption'>
+              {{ field_caption-value }}
+              </p>
+          element_label_colon: false
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          plugin_id: entity_link_edit
+          label: 'Edit Feature Story'
+          exclude: true
+          text: 'Edit Feature Story'
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Add New Feature Story'
+          exclude: true
+          alter:
+            text: 'Add New Feature Story'
+            make_link: true
+            path: node/add/feature-story
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Edit View'
+          exclude: true
+          alter:
+            text: 'Edit View'
+            make_link: true
+            path: admin/structure/views/view/feature_story/edit/block
+        contextual_links:
+          id: contextual_links
+          table: views
+          field: contextual_links
+          plugin_id: contextual_links
+          label: ''
+          element_label_colon: false
+          fields:
+            edit_node: edit_node
+            nothing: nothing
+            nothing_1: nothing_1
+            field_picture: '0'
+            title: '0'
+            field_caption: '0'
+      pager:
+        type: some
+        options:
+          items_per_page: 5
+      arguments: {  }
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        pager: false
+        fields: false
+        arguments: false
+        hide_admin_links: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_caption'
+        - 'config:field.storage.node.field_feature_story_alt_url'
+  block_1:
+    id: block_1
+    display_title: 'Feature Story Sidebar Teaser Block'
+    display_plugin: block
+    position: 4
+    display_options:
+      title: 'Feature Stories'
+      fields:
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          exclude: true
+          alter:
+            alter_text: true
+            text: '[path]'
+        field_feature_story_alt_url:
+          id: field_feature_story_alt_url
+          table: node__field_feature_story_alt_url
+          field: field_feature_story_alt_url
+          plugin_id: field
+          exclude: true
+          empty: '{{ path }}'
+          click_sort_column: url
+          type: link
+          settings: {  }
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+        title_1:
+          id: title_1
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: 'Title Text'
+          exclude: true
+          settings:
+            link_to_entity: false
+        field_feature_story_alt_url_1:
+          id: field_feature_story_alt_url_1
+          table: node__field_feature_story_alt_url
+          field: field_feature_story_alt_url
+          plugin_id: field
+          label: 'Alternate URL Title'
+          exclude: true
+          alter:
+            alter_text: true
+            text: '{{ title_1 }}'
+            make_link: true
+            path: '{{ field_feature_story_alt_url_1-url }}'
+          empty: '{{ title }} '
+          click_sort_column: url
+          type: link
+          settings: {  }
+        field_caption:
+          id: field_caption
+          table: node__field_caption
+          field: field_caption
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: true
+            text: |-
+              <p class='fs-title'>
+              {{ field_feature_story_alt_url_1 }}
+              </p>
+              <p class='fs-caption'>
+              {{ field_caption-value }}
+              </p>
+          element_label_colon: false
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          plugin_id: entity_link_edit
+          label: 'Edit Feature Story'
+          exclude: true
+          text: 'Edit Feature Story'
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Add New Feature Story'
+          exclude: true
+          alter:
+            text: 'Add New Feature Story'
+            make_link: true
+            path: node/add/feature-story
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Edit View'
+          exclude: true
+          alter:
+            text: 'Edit View'
+            make_link: true
+            path: admin/structure/views/view/feature_story/edit/block_1
+        contextual_links:
+          id: contextual_links
+          table: views
+          field: contextual_links
+          plugin_id: contextual_links
+          label: ''
+          element_label_colon: false
+          fields:
+            edit_node: edit_node
+            nothing: nothing
+            nothing_1: nothing_1
+            path: '0'
+            field_feature_story_alt_url: '0'
+            field_picture: '0'
+            title: '0'
+            title_1: '0'
+            field_feature_story_alt_url_1: '0'
+            field_caption: '0'
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 10
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            feature_story: feature_story
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        use_ajax: false
+        pager: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        relationships: false
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        hide_admin_links: false
+      relationships:
+        og_membership_rel:
+          id: og_membership_rel
+          table: node_field_data
+          field: og_membership_rel
+          entity_type: node
+          plugin_id: standard
+      use_ajax: true
+      use_more: true
+      use_more_always: true
+      use_more_text: 'All Stories'
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_caption'
+        - 'config:field.storage.node.field_feature_story_alt_url'
+  block_3:
+    id: block_3
+    display_title: 'Sidebar Rotating Block'
+    display_plugin: block
+    position: 5
+    display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+          settings:
+            link_to_entity: false
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          exclude: true
+          alter:
+            alter_text: true
+            text: '[path]'
+            make_link: true
+            path: '[path]'
+            absolute: true
+          absolute: true
+        field_feature_story_alt_url:
+          id: field_feature_story_alt_url
+          table: node__field_feature_story_alt_url
+          field: field_feature_story_alt_url
+          plugin_id: field
+          exclude: true
+          empty: '{{ path }}'
+          click_sort_column: url
+          type: link
+          settings: {  }
+        title_1:
+          id: title_1
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: true
+            text: '<h4>{{ title_1 }}</h4>'
+          element_label_colon: false
+          settings:
+            link_to_entity: false
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          plugin_id: entity_link_edit
+          label: 'Edit Feature Story'
+          exclude: true
+          text: 'Edit Feature Story'
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Add New Feature Story'
+          exclude: true
+          alter:
+            text: 'Add New Feature Story'
+            make_link: true
+            path: node/add/feature-story
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Edit View'
+          exclude: true
+          alter:
+            text: 'Edit View'
+            make_link: true
+            path: admin/structure/views/view/feature_story/edit/block_3
+        contextual_links:
+          id: contextual_links
+          table: views
+          field: contextual_links
+          plugin_id: contextual_links
+          label: ''
+          element_label_colon: false
+          fields:
+            edit_node: edit_node
+            nothing: nothing
+            nothing_1: nothing_1
+            title: '0'
+            path: '0'
+            field_feature_story_alt_url: '0'
+            field_picture: '0'
+            title_1: '0'
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        fields: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_feature_story_alt_url'
+  page:
+    id: page
+    display_title: Page
+    display_plugin: page
+    position: 2
+    display_options:
+      title: 'Feature Story Archive'
+      fields:
+        path:
+          id: path
+          table: node
+          field: view_node
+          entity_type: node
+          plugin_id: entity_link
+          exclude: true
+          alter:
+            alter_text: true
+            text: '[path]'
+            make_link: true
+            path: '[path]'
+            absolute: true
+          absolute: true
+        field_feature_story_alt_url:
+          id: field_feature_story_alt_url
+          table: node__field_feature_story_alt_url
+          field: field_feature_story_alt_url
+          plugin_id: field
+          exclude: true
+          empty: '{{ path }}'
+          click_sort_column: url
+          type: link
+          settings: {  }
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+        title_1:
+          id: title_1
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: 'Title Text'
+          exclude: true
+          settings:
+            link_to_entity: false
+        field_feature_story_alt_url_1:
+          id: field_feature_story_alt_url_1
+          table: node__field_feature_story_alt_url
+          field: field_feature_story_alt_url
+          plugin_id: field
+          label: 'Alternate URL Title'
+          exclude: true
+          alter:
+            alter_text: true
+            text: '{{ title_1 }}'
+            make_link: true
+            path: '{{ field_feature_story_alt_url_1-url }}'
+          empty: '{{ title }} '
+          click_sort_column: url
+          type: link
+          settings: {  }
+        field_caption:
+          id: field_caption
+          table: node__field_caption
+          field: field_caption
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: true
+            text: |
+              <h3 class='fs-title'>
+              {{ field_feature_story_alt_url_1 }}
+              </h3>
+              <p class='fs-caption'>
+              {{ field_caption-value }}
+              </p>
+          element_label_colon: false
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          plugin_id: entity_link_edit
+          label: 'Edit Feature Story'
+          exclude: true
+          text: 'Edit Feature Story'
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Add New Feature Story'
+          exclude: true
+          alter:
+            text: 'Add New Feature Story'
+            make_link: true
+            path: node/add/feature-story
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Edit View'
+          exclude: true
+          alter:
+            text: 'Edit View'
+            make_link: true
+            path: admin/structure/views/view/feature_story/edit/page
+        contextual_links:
+          id: contextual_links
+          table: views
+          field: contextual_links
+          plugin_id: contextual_links
+          label: ''
+          element_label_colon: false
+          fields:
+            edit_node: edit_node
+            nothing: nothing
+            nothing_1: nothing_1
+            title: '0'
+            path: '0'
+            field_feature_story_alt_url: '0'
+            field_picture: '0'
+            field_caption: '0'
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            feature_story: feature_story
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        fields: false
+        arguments: false
+        filters: false
+        filter_groups: false
+        hide_admin_links: false
+      use_more_always: true
+      use_more_text: 'All Stories'
+      display_extenders: {  }
+      path: feature-story
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_caption'
+        - 'config:field.storage.node.field_feature_story_alt_url'

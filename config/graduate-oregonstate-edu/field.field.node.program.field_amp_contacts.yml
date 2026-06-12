@@ -1,0 +1,43 @@
+uuid: 9448c18a-f600-4d4a-bd50-90edb964c3a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_amp_contacts
+    - node.type.program
+    - paragraphs.paragraphs_type.amp_contacts
+  module:
+    - entity_reference_revisions
+id: node.program.field_amp_contacts
+field_name: field_amp_contacts
+entity_type: node
+bundle: program
+label: 'AMP contacts'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      amp_contacts: amp_contacts
+    negate: 0
+    target_bundles_drag_drop:
+      amp_contacts:
+        weight: 6
+        enabled: true
+      contacts:
+        weight: 7
+        enabled: false
+      deadlines:
+        weight: 8
+        enabled: false
+      osu_accordion_item:
+        weight: 9
+        enabled: false
+      osu_accordion_section:
+        weight: 10
+        enabled: false
+field_type: entity_reference_revisions

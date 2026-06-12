@@ -1,0 +1,65 @@
+uuid: 6394a467-4b5f-4a45-88dd-06371ff40528
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: home
+label: Homepage
+code: |-
+  /* Homepage heading styling for the banner */
+
+  .home-title{
+  	font-size: 5rem;
+  }
+
+  .small-home-title{
+  	font-weight:200;
+  }
+
+  @media (max-width: 992px) {
+    .home-header-wrapper {
+      width: 100% !important;;
+    }
+    
+    .mobile-h-400{
+    	min-height: 400px !important;
+    }
+  }
+
+  @media (max-width: 992px) {
+    .home-image-button-wrapper {
+      width: 50% !important;
+      margin-bottom: 1rem;
+    }
+    
+    .home-image-button-row{
+    	padding-bottom: 0 !important;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .home-image-button-wrapper {
+      width: 100% !important;
+    }
+  }
+
+  @media (max-width: 387px) {
+  	.home-title{
+  		font-size: 4rem !important;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/1581\r\n/node/1291\r\n<front>"
+contexts: {  }
+conditions_require_all: true

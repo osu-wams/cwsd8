@@ -1,0 +1,147 @@
+uuid: c1a4006e-4fa7-4f24-995b-13a77a2c883b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event.body
+    - field.field.node.event.feeds_item
+    - field.field.node.event.field_event_date
+    - field.field.node.event.field_event_topics
+    - field.field.node.event.field_link_to_event
+    - node.type.event
+  module:
+    - feeds_ex
+    - node
+label: Events
+id: events
+description: ''
+help: ''
+import_period: 259200
+import_period_per_feed: false
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: xml
+parser_configuration:
+  context:
+    value: /rss/channel/item
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+  use_tidy: false
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: event
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: 2592000
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  event_id:
+    label: 'Event Id'
+    machine_name: event_id
+    value: eventId
+    raw: false
+    inner: false
+    type: xml
+  event_date:
+    label: 'Event Date'
+    machine_name: event_date
+    value: eventDate
+    raw: false
+    inner: false
+    type: xml
+  event_title:
+    label: 'Event Title'
+    machine_name: event_title
+    value: title
+    raw: false
+    inner: false
+    type: xml
+  event_description:
+    label: 'Event Description'
+    machine_name: event_description
+    value: description
+    raw: false
+    inner: false
+    type: xml
+  event_link:
+    label: 'Event Link'
+    machine_name: event_link
+    value: link
+    raw: false
+    inner: false
+    type: xml
+  event_topics:
+    label: 'Event Topics'
+    machine_name: event_topics
+    value: eventTopics
+    raw: false
+    inner: false
+    type: xml
+  event_start_date_time:
+    label: 'Event Start Date Time'
+    machine_name: event_start_date_time
+    value: eventStartDateTime
+    raw: false
+    inner: false
+    type: xml
+mappings:
+  -
+    target: field_event_date
+    map:
+      value: event_start_date_time
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: title
+    map:
+      value: event_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: body
+    map:
+      value: event_description
+      summary: event_description
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_event_topics
+    map:
+      value: event_topics
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: feeds_item
+    map:
+      url: event_link
+      guid: event_id
+    settings: {  }
+    unique:
+      guid: 1
+  -
+    target: field_link_to_event
+    map:
+      uri: event_link
+      title: event_title
+    settings:
+      language: null

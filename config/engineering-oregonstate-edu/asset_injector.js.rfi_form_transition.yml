@@ -1,0 +1,52 @@
+uuid: 912c5a7e-8d76-40a2-aae7-e77089ebc6a7
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: rfi_form_transition
+label: 'RFI Form Transition'
+code: |
+  (function () {
+    document.addEventListener('DOMContentLoaded', function () {
+      const tabs = document.querySelectorAll('[data-bs-toggle="tab"]');
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('shown.bs.tab', function (event) {
+          console.log('Tab clicked:', tab.getAttribute('data-bs-target'));
+
+          document.querySelectorAll('.tab-pane').forEach(function (pane) {
+            pane.classList.remove('tab-animate');
+          });
+
+          const targetSelector = tab.getAttribute('data-bs-target');
+          const targetPane = document.querySelector(targetSelector);
+
+          if (targetPane) {
+            console.log('Animating:', targetSelector);
+        
+            setTimeout(() => {
+              targetPane.classList.add('tab-animate');
+            }, 10);
+          }
+        });
+      });
+    });
+  })();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/47741
+contexts: {  }
+conditions_require_all: true

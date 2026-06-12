@@ -1,0 +1,124 @@
+uuid: 9fa26c93-e914-4dd0-97ca-37b95176dbcb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.page.body
+    - field.field.node.page.field_audience
+    - field.field.node.page.field_meta_tags
+    - field.field.node.page.field_osu_meta_image
+    - field.field.node.page.field_osu_organizations
+    - field.field.node.page.layout_builder__layout
+    - node.type.page
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - metatag
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_builder_blank
+        layout_settings:
+          label: ''
+        components:
+          bcb67b9c-5e33-4b91-9fe4-7ed9e21ef1b2:
+            uuid: bcb67b9c-5e33-4b91-9fe4-7ed9e21ef1b2
+            region: null
+            configuration:
+              id: 'extra_field_block:node:page:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+      restricted_categories:
+        - 'Chaos Tools'
+        - Forms
+        - Help
+        - 'Purge UI'
+        - User
+        - core
+      blacklisted_blocks: {  }
+      whitelisted_blocks:
+        'Content fields':
+          - 'field_block:node:page:uid'
+          - 'field_block:node:page:created'
+          - 'field_block:node:page:body'
+          - 'field_block:node:page:field_meta_tags'
+          - 'field_block:node:page:title'
+    entity_view_mode_restriction_by_region:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+_core:
+  default_config_hash: WhRTEEIi9Onq-5jWYonOn1zezA6afAzVeoEZ3JJE-YI
+id: node.page.default
+targetEntityType: node
+bundle: page
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: null
+  field_audience:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 104
+    region: blb_region_col_1
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: blb_region_col_1
+  field_osu_organizations:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: blb_region_col_1
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+hidden:
+  entitygroupfield: true
+  field_osu_meta_image: true
+  layout_builder__layout: true
+  toc_js: true

@@ -1,0 +1,33 @@
+uuid: d4560df0-c227-4f8a-80b0-2d39030f7330
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: o
+label: OSU-Cascades
+code: |-
+  #osu-logo-wide img,
+  #osu-logo-wide {
+      background-image: url("https://osucascades.edu/themes/custom/madrone/assets/osucascades.svg") !important;
+      background-size: contain;
+      background-repeat: no-repeat;
+  }
+
+  #osu-logo-wide img {
+      visibility: hidden; /* Hide the original image if it’s an <img> */
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/641
+contexts: {  }
+conditions_require_all: true

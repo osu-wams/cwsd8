@@ -1,0 +1,217 @@
+uuid: a4a8c1a4-4734-457f-8e31-74531f21f447
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.story.body
+    - field.field.node.story.field_c_engr_associated_research
+    - field.field.node.story.field_c_engr_audience
+    - field.field.node.story.field_c_engr_discipline
+    - field.field.node.story.field_c_engr_related_research
+    - field.field.node.story.field_c_engr_story_author
+    - field.field.node.story.field_osu_organizations
+    - field.field.node.story.field_tags
+    - node.type.story
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      3baa1239-d2fd-4aad-9a72-9679ba1ed5b9:
+        separator: ', '
+        limit: null
+        uuid: 3baa1239-d2fd-4aad-9a72-9679ba1ed5b9
+        plugin: explode
+        source: tags
+        weight: 0
+        label: Explode
+      8f8987c3-c179-4fe0-a7b5-ee0a6d6fa680:
+        separator: ' | '
+        limit: null
+        uuid: 8f8987c3-c179-4fe0-a7b5-ee0a6d6fa680
+        plugin: explode
+        source: organizations
+        weight: 0
+        label: Explode
+      805d2d96-eb49-45f4-ba13-a88e4bf26867:
+        separator: ','
+        limit: null
+        uuid: 805d2d96-eb49-45f4-ba13-a88e4bf26867
+        plugin: explode
+        source: audience
+        weight: 0
+        label: Explode
+      088fd74a-26a0-4404-ab27-48d5f3ab64d0:
+        separator: ','
+        limit: null
+        uuid: 088fd74a-26a0-4404-ab27-48d5f3ab64d0
+        plugin: explode
+        source: research_related
+        weight: 0
+        label: Explode
+      e2ce6a30-fe07-48dd-b4dd-d01db736ae1a:
+        separator: ', '
+        limit: null
+        uuid: e2ce6a30-fe07-48dd-b4dd-d01db736ae1a
+        plugin: explode
+        source: profile_people_mentions
+        weight: 0
+        label: Explode
+label: Stories
+id: stories
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: story
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 46
+custom_sources:
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  author:
+    value: Author
+    label: Author
+    machine_name: author
+    type: csv
+  published_date:
+    value: 'Published Date'
+    label: 'Published Date'
+    machine_name: published_date
+    type: csv
+  body_field:
+    value: 'Body Field'
+    label: 'Body Field'
+    machine_name: body_field
+    type: csv
+  tags:
+    value: Tags
+    label: Tags
+    machine_name: tags
+    type: csv
+  organizations:
+    value: Organization
+    label: Organization
+    machine_name: organizations
+    type: csv
+  discipline:
+    value: Discipline
+    label: Discipline
+    machine_name: discipline
+    type: csv
+  audience:
+    value: Audience
+    label: Audience
+    machine_name: audience
+    type: csv
+  research_related:
+    value: 'Related Research'
+    label: 'Related Research'
+    machine_name: research_related
+    type: csv
+  profile_people_mentions:
+    value: Profile/People/Mentions
+    label: Profile/People/Mentions
+    machine_name: profile_people_mentions
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: ''
+    unique: {  }
+  -
+    target: field_c_engr_story_author
+    map:
+      value: author
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: created
+    map:
+      value: published_date
+    settings:
+      language: ''
+      timezone: America/Los_Angeles
+  -
+    target: body
+    map:
+      value: body_field
+      summary: ''
+    settings:
+      language: ''
+      format: plain_text
+  -
+    target: field_tags
+    map:
+      target_id: tags
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_osu_organizations
+    map:
+      target_id: organizations
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 0
+  -
+    target: field_c_engr_discipline
+    map:
+      target_id: discipline
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_c_engr_audience
+    map:
+      target_id: audience
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_c_engr_related_research
+    map:
+      target_id: research_related
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_c_engr_associated_research
+    map:
+      target_id: profile_people_mentions
+    settings:
+      language: ''
+      reference_by: title
+      feeds_item: guid
+      autocreate: 0

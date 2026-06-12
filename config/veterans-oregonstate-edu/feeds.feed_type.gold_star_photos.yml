@@ -1,0 +1,73 @@
+uuid: 447cbeab-64e0-4454-832b-0f5def255a21
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.image.field_media_image
+    - media.type.image
+  module:
+    - media
+label: 'Gold Star Photos'
+id: gold_star_photos
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:media'
+processor_configuration:
+  values:
+    bundle: image
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 6
+custom_sources:
+  image:
+    value: Image
+    label: Image
+    machine_name: image
+    type: csv
+  image_alt:
+    value: 'Image ALT'
+    label: 'Image ALT'
+    machine_name: image_alt
+    type: csv
+  image_name:
+    value: 'Image Name'
+    label: 'Image Name'
+    machine_name: image_name
+    type: csv
+mappings:
+  -
+    target: field_media_image
+    map:
+      target_id: image
+      alt: image_alt
+      title: image_name
+    settings:
+      language: ''
+      reference_by: fid
+      autocreate: 1
+      existing: '2'
+      autocreate_bundle: false
+  -
+    target: name
+    map:
+      value: image_name
+    settings:
+      language: null
+    unique: {  }

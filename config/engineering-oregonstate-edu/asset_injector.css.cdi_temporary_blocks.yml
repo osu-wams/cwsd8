@@ -1,0 +1,635 @@
+uuid: e8ab8a1e-1833-413b-86a7-31a0073fef67
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: cdi_temporary_blocks
+label: 'CDI page blocks (content block with image, image box shadow)'
+code: |+
+  /* ================================================
+     CDI page styling. image content block, image box shadows, etc.
+     ================================================ */
+
+
+  /* Styling for content block with image */
+
+  .block-inline-blockcontent-with-image {
+  	border-radius: 5px;
+  	border: 1px solid #F8F9FA;
+  	background: #FFF;
+  	box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  	width: 100%;
+  }
+
+  .block-inline-blockcontent-with-image .block__content {
+  	display: flex;
+  	flex-direction: column;
+  	height: 100%;
+  }
+
+  .field--name-field-content-with-image-content {
+  	font-size: 18px !important;
+  	padding-left: 30px;
+  	padding-right: 30px;
+  }
+
+  .field--name-field-content-with-image-title {
+  	font-family: "Open Sans" !important;
+  	font-size: 20px !important;
+  	font-style: normal !important;
+  	font-weight: 600 !important;
+  	line-height: normal;
+  	text-transform: capitalize;
+  	padding-top: 20px;
+  	padding-bottom: 10px;
+  	padding-left: 30px;
+  	padding-right: 30px;
+  }
+
+  .block-inline-blockcontent-with-image .field--name-field-media-image {
+  	text-align: center;
+  }
+
+  /* Single image horizontal */
+
+  @media (min-width: 300px) {
+  	.block--type-content-with-image.block--view-mode-image-left {
+  		margin-bottom: 30px;
+  	}
+  	.block--type-content-with-image.block--view-mode-image-left .field--name-field-content-with-image-title, .block--type-content-with-image.block--vi {
+  		color: #000;
+  	}
+  	.block--type-content-with-image.block--view-mode-image-left .block__content {
+  		gap: 0 !important;
+  		margin: 0 !important;
+  		padding: 0 !important;
+  	}
+  	.block--type-content-with-image.block--view-mode-image-left .field--name-field-content-with-image-image {
+  		margin: 0 !important;
+  	}
+  }
+
+  /* Styling for the icon link card block */
+
+  .block--type-icon-link-card-block {
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+    background-position: 95%;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    background-color: white;
+    border: 3px solid #d73f09;
+    border-radius: 5px;
+    padding: 25px;
+    padding-right: 90px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.12);
+    max-width: 550px;
+    margin-bottom: 1rem;
+    transition: background 0.4s ease-in;
+    position: relative;
+  }
+
+  .block--type-icon-link-card-block a:after {
+  	content: "";
+  	position: absolute;
+  	inset: 0;
+  }
+
+  .block--type-icon-link-card-block:hover,
+  .block--type-icon-link-card-block:focus {
+  	color: #fff;
+  	background-color: #d73f09;
+  	background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="33" viewBox="0 0 41 33" fill="none"><path d="M2 16.5H33.5" stroke="%23FFFFFF" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M24.5 30L38 16.5L24.5 3" stroke="%23FFFFFF" stroke-width="4" stroke-linecap="square"/></svg>') !important;
+    box-shadow: none;
+  	
+  }
+
+  .block--type-icon-link-card-block:hover a,
+  .block--type-icon-link-card-block:focus a {
+  	color: #fff;
+  }
+
+  .block-inline-blockicon-link-card-block {
+  	cursor: pointer;
+  }
+
+
+  .block--type-icon-link-card-block .field--name-field-link-card-block-title a {
+  		font-family: "Stratum2Web",serif;
+  		color: #212529;
+  		font-feature-settings: 'liga' off, 'clig' off;
+  		font-size: 24px;
+  		font-style: normal;
+  		font-weight: 900;
+  		line-height: 130%; /* 31.2px */
+  		letter-spacing: 1.2px;
+  		text-transform: uppercase;
+  }
+
+  .block--type-icon-link-card-block .field--name-field-link-card-block-title:hover a,
+  .block--type-icon-link-card-block .field--name-field-link-card-block-title:focus a,
+  .block--type-icon-link-card-block .field--name-field-link-card-block-title:active a {
+  		color: white !important;
+  		background: none !important;
+  }
+
+  .block--type-icon-link-card-block:active {
+  	background-color: #BE3706;
+  }
+
+  .block--type-icon-link-card-block .field--name-field-content-link a {
+  	  font-family: 'Open Sans';
+      font-size: 18px;
+      line-height: 27px;
+      text-decoration: none;
+  }
+
+  .block--type-icon-link-card-block .field--name-field-link-card-block-icon {
+  	text-align: center;
+  }
+
+  .block--type-icon-link-card-block .field--name-field-link-card-block-icon .fa-2x {
+  	font-size: 80px;
+  }
+
+  /* Might use this along with other logic if we can leverage tpl files 
+  @media screen and (min-width: 768px) {
+  	.block--type-icon-link-card-block .block__content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+  	}
+
+  	.block--type-icon-link-card-block .field--name-field-link-card-block-icon {
+      grid-row: 1 / 3;
+  	}
+
+  	.block--type-icon-link-card-block .field--name-field-link-card-block-icon + .field--name-field-link-card-block-title + .field--name-field-content-link, 
+  	.block--type-icon-link-card-block .field--name-field-link-card-block-icon + .field--name-field-link-card-block-title {
+      grid-column: 2;
+  	}
+  }
+  */
+
+  /* Black Icon Cards */
+
+  .block--type-icon-link-card-block.osu-bg-page-alt-2 {
+  	border: none;
+  	color: #fff;
+  	background-color: #000 !important; /** necessary because an !important is used in the theme to set it to the dark gray color **/
+  	background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="33" viewBox="0 0 41 33" fill="none"><path d="M2 16.5H33.5" stroke="%23FFFFFF" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M24.5 30L38 16.5L24.5 3" stroke="%23FFFFFF" stroke-width="4" stroke-linecap="square"/></svg>') !important;
+  }
+
+  .block--type-icon-link-card-block.osu-bg-page-alt-2 a{
+  	color: var(--Primary-Bucktooth-White, #FFF);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	font-family: "Stratum2Web";
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  }
+
+
+  .block--type-icon-link-card-block.osu-bg-page-alt-2:hover,
+  .block--type-icon-link-card-block.osu-bg-page-alt-2:focus {
+  	background-color: #d73f09 !important;
+  }
+
+  .block--type-icon-link-card-block.osu-bg-page-alt-2:active {
+  	background-color: #BE3706 !important;
+  }
+
+  .blue-bg {
+  	background: #003B5C !important;
+  }
+
+  .blue-bg h2 {
+  	color: #FFB500;
+  }
+  .blue-bg h4 {
+  	color: #FFB500 !important;
+  }
+  .blue-bg .block--type-icon-link-card-block {
+  	  border-color: #FFB500 !important;
+  		background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="33" viewBox="0 0 41 33" fill="none"><path d="M2 16.5H33.5" stroke="%23FFB500" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M24.5 30L38 16.5L24.5 3" stroke="%23FFB500" stroke-width="4" stroke-linecap="square"/></svg>') !important;
+  }
+
+  .blue-bg .block--type-icon-link-card-block:hover,
+  .blue-bg .block--type-icon-link-card-block:active {
+  	  border-color: transparent !important;
+  	  background-color: #FFB500 !important;
+  		background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="33" viewBox="0 0 41 33" fill="none"><path d="M2 16.5H33.5" stroke="%23000000" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M24.5 30L38 16.5L24.5 3" stroke="%23000000" stroke-width="4" stroke-linecap="square"/></svg>') !important;
+  }
+
+  .blue-bg .block--type-icon-link-card-block:hover a,
+  .blue-bg .block--type-icon-link-card-block:focus a,
+  .blue-bg .block--type-icon-link-card-block:active a {
+  	color: #000;
+  }
+
+  .blue-bg .bs-border-style-solid {
+  	  border-color: #FFB500 !important;
+  }
+
+  .block--type-icon-link-card-block.osu-bg-page-alt-2 .field--name-field-link-card-block-title a {
+  	color: #fff;
+  }
+
+  .gray-bg {
+  	background: #F8F9FA !important;
+  }
+
+  /* Content Cards */
+
+  .eng-content-card-view .row {
+   --bs-gutter-y: 1.5rem;
+  } 
+
+  .eng-content-card-view .col-12 > .views-field-nothing {
+  	height: 100%;
+  }
+
+  .eng-content-card-view .col-12 > .views-field-nothing > .field-content {
+  	height: 100%;
+  	display: flex;
+  }
+
+  .eng-content-card {
+  	border: 3px solid #d73f09;
+    border-radius: 5px;
+    padding: 50px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.12);
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    flex-grow: 1;
+  }
+
+  .eng-content-card header {
+  	font-family: "Stratum2Web", serif;
+  	color: #212529;
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  	margin-bottom: 24px;
+  }
+
+  .eng-content-card--body {
+  	line-height: 150%;
+  }
+
+  .eng-content-card--footer {
+  	margin-top: auto;
+  	padding-top: 15px;
+  }
+
+  .eng-content-card--social {
+  	margin-left: -10px;
+  } 
+
+  .eng-content-card--social .fa,
+  .eng-content-card--social .fa-brands,
+  .eng-content-card--social .fas,
+  .eng-content-card--social .fa-regular {
+  	color: #d73f09;
+  }
+
+  .eng-content-card--social a {
+  	padding: 10px;
+  	position: relative;
+  	z-index: 6;
+  }
+
+  .eng-content-card--arrow-link a {
+  	display: inline-block;
+  	text-decoration: none;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 30px;
+    color: #d73f09;
+    font-family: "Stratum2Web",serif;
+    text-transform: uppercase;
+    transition: 0.1s ease;
+  }
+
+  .eng-content-card--arrow-link a:hover {
+    padding-right: 45px;
+    transition: 0.1s ease;
+  }
+
+  .eng-content-card {
+  	position: relative;
+  }
+
+  .eng-content-card .orange-arrow-link {
+  	margin-right: 30px !important;
+  }
+  .eng-content-card .orange-arrow-link a::after {
+  	content: '';
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	right: 0;
+  	bottom: 0;
+  	z-index: 5;
+  }
+
+  .field--name-field-content-with-image-cta {
+  	padding-left: 30px;
+  	padding-right: 30px;
+  	padding-bottom: 40px;
+  	padding-top: 20px;
+  	display: inline-block;
+  	background-position: 100%;
+  }
+
+  .field--name-field-content-with-image-cta a{
+  	font-family: Stratum2Web;
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: normal;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	color: #D73F09 !important;
+  	text-decoration: none !important;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 25px;
+    margin-right: 10px;
+    margin-top: 18px;
+    transition: 0.2s ease;
+    border-bottom: none;
+  }
+
+  .field--name-field-content-with-image-cta a:hover {
+  	padding-right: 35px;
+  	margin-right: 0px;
+  	border-bottom: none;
+  }
+
+  /* Orange arrow active/focus state */
+  .field--name-field-content-with-image-cta  a:active,
+  .field--name-field-content-with-image-cta  a:focus {
+  	background-color: transparent !important;
+  	color: #BE3706 !important;
+  	padding-right: 35px !important;
+  	border-bottom: none !important;
+  }
+
+  iframe {
+  	aspect-ratio: 16 / 9;
+  	height: 100%;
+  	width: 100%;
+  }
+
+  .field--name-field-link-card-block-title a {
+  	border-bottom: none !important;
+  	text-decoration: none !important;
+  }
+
+  .story-card {
+  	margin-top: 32px !important;
+  	width: 100% !important;
+  }
+
+  .story-card-wide {
+    position: relative;
+  }
+
+  .story-card-wide a::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+
+  .blue-bg .block--type-icon-link-card-block:active {
+  	background-color: #D3832B !important;
+  }
+
+  .blue-bg .block--type-icon-link-card-block a,
+  .blue-bg .block--type-icon-link-card-block:hover a,
+  .blue-bg .block--type-icon-link-card-block:focus a,
+  .blue-bg .block--type-icon-link-card-block:active a {
+  	color: #212529 !important;
+  }
+
+
+  @media only screen and (max-width: 881px) and (min-width: 768px) {
+  	.story-card {
+  		height: 433px;
+  	}
+  }
+
+  @media only screen and (max-width: 799px) and (min-width: 768px) {
+  	.story-card {
+  		height: 433px;
+  	}
+  }
+
+  .social-media-icons .yellow {
+  	color: #FFB500 !important;
+  }
+
+  .social-media-icons .fa-2x {
+  	font-size: 32px !important;
+  	height: 58px !important;
+  	width: 58px !important;
+  }
+
+  .social-media-icons .yellow:hover {
+    color: #003B5C !important;
+    background-color: #FFB500 !important;
+  }
+
+  .social-media-icons .yellow:active {
+    color: #003B5C !important;
+    background-color: #D3832B !important;
+  }
+
+  main .social-media-icons a:active:not(.button):not(#osu-logo-wide):not(#osu-logo-crest),
+  main .social-media-icons a:focus:not(.button):not(#osu-logo-wide):not(#osu-logo-crest) {
+    background: transparent !important;
+  }
+
+  .social-media-icons {
+  	gap: 0 !important;
+  }
+
+  .edi-undergraduate-student img{
+  	width: 100% !important;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.story-card-wide.block--type-content-with-image.block--view-mode-image-left .block__content {
+  		gap: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      flex-direction: column !important;
+  	}
+  	
+  	.cdi-second-header h2 {
+  		font-size: 48px !important;
+      line-height: 120% !important;
+  	}
+  }
+
+  .bottom-banner {
+  	background-position: left 200px bottom 0px !important;
+  }
+
+  @media screen and (max-width: 768px) {
+  	.bottom-banner {
+  		background-size: cover !important;
+  		background-position: left -20em bottom 0px !important;
+  	}
+  	
+  	.block-column-reverse .osu-align-items-start{
+  		flex-direction: column-reverse !important;
+  	}
+  }
+  /* ADDED TO COE Brand Component Styles Injector*/
+  /** Drop Colors for Image **/
+  /** Box Shadow Guide:
+   * box-shadow: Left/Right Top/Bottom SPREAD Color; Positive numbers represent right and bottom; Negative ones left and top;
+  **/
+
+  /** Right Bottom **/ 
+  /*.img-bottom-right-yellow img {*/
+  /*	box-shadow: 15px 15px 0 #FFB500;*/
+  /*	margin-bottom: 25px;*/
+  /*	width: calc(100% - 15px);*/
+  /*}*/
+  /*.img-bottom-right-orange img {*/
+  /*	box-shadow: 15px 15px 0 #d73f09;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+  /*.img-bottom-right-seafoam img {*/
+  /*	box-shadow: 15px 15px 0 #B8DDE1;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+  /*.img-bottom-right-hop-bine img {*/
+  /*	box-shadow: 15px 15px 0 #AA9D2E;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+  /*.img-bottom-right-blue img {*/
+  /*	box-shadow: 15px 15px 0 #00859B;*/
+  /*	margin-bottom: 25px;*/
+  /*	width: calc(100% - 15px);*/
+  /*}*/
+  /*.img-bottom-right-pine-stand img {*/
+  /*	box-shadow: 15px 15px 0 #4A773C;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+  /*.img-bottom-right-solar-flare img {*/
+  /*	box-shadow: 15px 15px 0 #D3832B;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+  /*.img-bottom-right-rogue-wave img {*/
+  /*	box-shadow: 15px 15px 0 #0D5257;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+
+
+
+  /** Left Bottom **/
+  /*.img-bottom-left-yellow img {*/
+  /*	box-shadow: -15px 15px 0 #FFB500;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+  /*.img-bottom-left-orange img {*/
+  /*	box-shadow: -15px 15px 0 #d73f09;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+  /*.img-bottom-left-seafoam img {*/
+  /*	box-shadow: -15px 15px 0 #B8DDE1;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+  /*.img-bottom-left-hop-bine img {*/
+  /*  box-shadow: -15px 15px 0 #AA9D2E;*/
+  /*  margin-bottom: 25px;*/
+  /*  width: calc(100% - 15px);*/
+  /*  margin-left: 15px;*/
+  /*}*/
+  /*.img-bottom-left-blue img {*/
+  /*	box-shadow: -15px 15px 0 #00859B;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+
+  /*.img-bottom-left-stratosphere img {*/
+  /*	box-shadow: -15px 15px 0 #006A8E;*/
+  /*	margin-bottom: 25px;*/
+  /*}*/
+
+  /** Right Top **/
+  /*.img-top-right-green img {*/
+  /*	box-shadow: 15px -15px 0 #4A773C;*/
+  /*	margin-top: 25px;*/
+  /*}*/
+  /*.img-top-right-hop-bine img {*/
+  /*	box-shadow: 15px -15px 0 #AA9D2E;*/
+  /*	margin-top: 25px;*/
+  /*}*/
+
+  /** Left Top **/
+  /*.img-top-left-yellow img {*/
+  /*	box-shadow: -15px -15px 0 #FFB500;*/
+  /*	margin-top: 25px;*/
+  /*}*/
+  /*.img-top-left-orange img {*/
+  /*	box-shadow: -15px -15px 0 #d73f09;*/
+  /*	margin-top: 25px;*/
+  /*}*/
+
+  /*@media (width > 480px) {*/
+  /*	.img-top-right-orange img,*/
+  /*	.img-top-right-seafoam img,*/
+  /*	.img-top-right-hop-bine img*/
+  /*	.img-top-right-green img*/
+  /*	.img-bottom-left-yellow img*/
+  /*	.img-bottom-right-blue img */
+  /*	.img-top-left-orange img {*/
+  /*		margin: 20px;*/
+  /*	}*/
+  /*}*/
+
+  .localist-widget-hl .event-card .content p {
+  	font-family: 'Open sans', sans-serif !important;
+  }
+
+  /* Card Movement Classes */
+  @media (width > 767px) {
+  	.move-up-card {
+  		margin-top: -120px;
+  		z-index: 2;
+  	}
+  }
+
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/43181\r\n/node/43191\r\n/node/43226\r\n/node/43236\r\n<front>\r\n/node/43346\r\n/node/43251\r\n/node/43471\r\n/node/43451\r\n/node/43511\r\n/node/43551\r\n/node/43586\r\n/node/43581\r\n/node/43721\r\n/node/45811\r\n/node/45821"
+contexts: {  }
+conditions_require_all: true

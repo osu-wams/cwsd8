@@ -1,0 +1,29 @@
+uuid: bdb9a308-9a84-4115-b70d-25b97b2073b3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_image_type
+    - media.type.image
+    - taxonomy.vocabulary.image_type
+id: media.image.field_media_image_type
+field_name: field_media_image_type
+entity_type: media
+bundle: image
+label: 'Image Type'
+description: 'Used to group content by Taxonomy terms.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      image_type: image_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

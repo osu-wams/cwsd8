@@ -1,0 +1,95 @@
+uuid: 30fc832c-a86f-4a85-8a6a-852499df7f7e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: view_people
+label: 'People view grid (margins, layout)'
+code: |
+  /*=====================================================
+  Layout styling for boostrap grid on People views
+  =====================================================*/
+
+
+  /* General display overrides */
+
+  .d-flex, .osu-d-flex {
+    display: flex;
+  }
+
+  .views-exposed-form-engr-profile-directory-page{
+  	margin-top: 70px !important;
+  }
+
+  /* Center text */
+
+  /*.justify-content-center, .osu-nav-centered ul.nav-pills, .osu-justify-content-center {*/
+  /*  text-align: center;*/
+  /*}*/
+
+  /* Set the width of these view filters to 100% to occupy the full container width for screens smaller than 768px (tablets, smarthphones...)*/
+
+  @media (max-width: 768px) {
+    #views-exposed-form-engr-profile-directory-page .form-item,
+    #views-exposed-form-engr-profile-block-10 .form-item,
+    #views-exposed-form-engr-profile-block-9 .form-item,
+    #views-exposed-form-engr-profile-block-11 .form-item,
+    #views-exposed-form-engr-profile-block-12 .form-item {
+      width: 100%;
+    }
+  }
+
+  /* Set the width of these view filters to 48% to allow for multiple items side by side on screens greater than 769px (laptops, desktops...)*/
+
+  @media (min-width: 769px) {
+    #views-exposed-form-engr-profile-directory-page .form-item,
+    #views-exposed-form-engr-profile-block-10 .form-item,
+    #views-exposed-form-engr-profile-block-9 .form-item,
+    #views-exposed-form-engr-profile-block-11 .form-item,
+    #views-exposed-form-engr-profile-block-12 .form-item {
+      width: 48%;
+    }
+  }
+
+  /* Set fields width */
+
+  /*#views-exposed-form-engr-profile-directory-page .form-item.form-item-field-c-engr-discipline-target-id,*/
+  /*  #views-exposed-form-engr-profile-block-11 .form-item.form-item-field-c-engr-discipline-target-id {*/
+  /*  	width: 36%;*/
+  /*}*/
+
+  /* Set form item width */
+
+  #views-exposed-form-engr-profile-directory-page .form-item.form-item-items-per-page,
+  #views-exposed-form-engr-profile-block-11 .form-item.form-item-items-per-page{
+  	width: 15%;
+  }
+
+  /* Reduces the top and bottom margins from the view filters*/
+
+  .views-exposed-form .form--inline > div.form-actions {
+    margin-block-start: 0rem;
+  }
+
+
+  /* Removes top and bottom margin from link */
+
+  /*.my-3, a.button {*/
+  /*  margin-bottom: 0rem !important;*/
+  /*  margin-top: 0rem !important;*/
+  /*}*/
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/people\r\n/CCE/About/People\r\n/CBEE/About/People\r\n/EECS/About/People\r\n/MIME/About/People"
+contexts: {  }
+conditions_require_all: true

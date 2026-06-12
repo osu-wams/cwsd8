@@ -1,0 +1,31 @@
+uuid: 76c72e91-0b1e-4371-a483-0b8db7db5e0c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.main_sub_pages
+    - system.menu.audience-menu
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - madrone
+id: main_sub_pages_audience_menu
+theme: madrone
+region: sidebar
+weight: -5
+provider: null
+plugin: 'system_menu_block:audience-menu'
+settings:
+  id: 'system_menu_block:audience-menu'
+  label: 'Audience Menu'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: main_sub_pages

@@ -1,0 +1,108 @@
+uuid: 8c769503-cbae-4aa9-acbc-6e88accf6a81
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: image_text_two_column
+label: 'Image & Text Two Column'
+code: |-
+  /* H2 headers on the Academic Provost, OAFE, Undergraduate pages. The sections that have the image in one column and text in the other column */
+
+  .img-text-block-h2{
+    font-weight: 600;
+  }
+  .img-text-block-h3{
+    font-family: 'Stratum2web';
+    font-weight: 300;
+  }
+
+  @media (min-width: 1201px) {
+  	.img-text-block-h2{
+  	font-size: 3rem;
+  	}
+  }
+  @media (max-width: 1200px) {
+      .img-text-block-h2 {
+      font-size: 2.5rem;
+      }
+  }
+
+  /* Angles for clipped images */
+
+  .angled-bg-top-left {
+    width: 100%;
+    height: 400px;
+    background-image: url('your-image.jpg');
+    background-size: cover;
+    background-position: center;
+        margin-top: -125px;
+      margin-bottom: -100px;
+    
+    /* Cut the top-left corner at an angle */
+    clip-path: polygon(100px 0, 100% 0, 100% 100%, 0 100%, 0 100px);
+  }
+
+  .angled-bg-bottom-right {
+    width: 100%;
+    height: 400px;
+    background-image: url('your-image.jpg');
+    background-size: cover;
+    background-position: center;
+    
+    /* Cut the bottom-right corner diagonally */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 100px), calc(100% - 100px) 100%, 0 100%);
+  }
+
+  .margin-top-70 {
+      margin-top: -70px;
+  }
+
+  .border-radius-8 {
+  	border-radius:8px;
+  }
+
+  .margin-bottom-80 {
+  	margin-bottom:80px;
+  }
+
+  .padding-bottom-128{
+  	padding-bottom:128px;
+  }
+
+  .padding-top-128{
+  	padding-top:128px;
+  }
+
+  @media (max-width: 768px) {
+  	.margin-bottom-80 {
+  		margin-bottom:24px!important;
+  	}
+  	
+  	.padding-bottom-128{
+  		padding-bottom:0px!important;
+  	}
+  	
+  	.angled-bg-top-left {
+  	      margin-top: 16px!important;
+  	    margin-bottom: 24px!important;
+  	}
+  	
+  	.padding-top-128{
+  		padding-top:0!important;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/6\r\n/group/11\r\n/node/1656\r\n/node/1291\r\n/node/1581"
+contexts: {  }
+conditions_require_all: true

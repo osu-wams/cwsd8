@@ -1,0 +1,29 @@
+uuid: f61a4e2c-f9f9-4bd0-8465-5062bddb79bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_topic
+    - node.type.program
+    - taxonomy.vocabulary.topic
+id: node.program.field_topic
+field_name: field_topic
+entity_type: node
+bundle: program
+label: Topic
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topic: topic
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

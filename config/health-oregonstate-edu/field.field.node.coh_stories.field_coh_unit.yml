@@ -1,0 +1,29 @@
+uuid: 323e9527-69cd-4de5-b793-3da820e89a21
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_coh_unit
+    - node.type.coh_stories
+    - taxonomy.vocabulary.related_school_department_grou
+id: node.coh_stories.field_coh_unit
+field_name: field_coh_unit
+entity_type: node
+bundle: coh_stories
+label: 'CoH unit'
+description: 'What school, program, lab, group, etc should this content show up at? Contact your friendly neighbor Innovative Drupal Architect Solutions Manager if you need to add a new unit to available unit list. '
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      related_school_department_grou: related_school_department_grou
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

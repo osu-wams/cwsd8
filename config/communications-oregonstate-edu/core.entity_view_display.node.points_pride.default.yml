@@ -1,0 +1,68 @@
+uuid: 5f9e23a0-0c61-41a6-9d92-aec57093813f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.points_pride.body
+    - field.field.node.points_pride.field_college
+    - field.field.node.points_pride.field_core_prompt
+    - field.field.node.points_pride.field_proof_image
+    - field.field.node.points_pride.field_short_description
+    - field.field.node.points_pride.og_group_ref
+    - node.type.points_pride
+  module:
+    - image
+    - options
+    - text
+    - user
+id: node.points_pride.default
+targetEntityType: node
+bundle: points_pride
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_college:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_core_prompt:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_proof_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: 270-wide-scale
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_short_description: true
+  og_group_ref: true

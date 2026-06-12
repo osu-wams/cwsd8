@@ -1,0 +1,491 @@
+uuid: 8e8aea21-7551-4217-8306-7b4ad1a54a7c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: 7_regions_of_oregon
+label: '7 Regions of Oregon'
+code: |-
+  // ── Region data ──────────────────────────────────────────────────────────
+  const regionData = {
+      'Oregon_Coast': {
+          name: 'Oregon Coast',
+          color: '#b7dde2',
+          locations: [
+  						{ name: 'Blodgett Forest',                                 href: 'https://cf.forestry.oregonstate.edu/our-forests/blodgett' },
+  						{ name: 'Clatsop County Extension Center',                 href: 'https://extension.oregonstate.edu/clatsop' },
+  						{ name: 'Coastal Oregon Marine Exp Station',               href: 'https://marineresearch.oregonstate.edu/home/coastal-oregon-marine-experiment-station' },
+  						{ name: 'Coastal Oregon Marine Exp Station (Seafood Lab)', href: 'https://marineresearch.oregonstate.edu/' },
+  						{ name: 'Coos County Extension Center',                    href: 'https://extension.oregonstate.edu/coos' },
+  						{ name: 'Curry County Extension Center',                   href: 'https://extension.oregonstate.edu/curry' },
+  						{ name: 'Hatfield Marine Science Center',                  href: 'https://hmsc.oregonstate.edu/' },
+  						{ name: 'Lane County Extension Florence satellite office', href: 'https://extension.oregonstate.edu/node/238796' },
+  						{ name: 'Lincoln County Extension Center',                 href: 'https://extension.oregonstate.edu/lincoln' },
+  						{ name: 'Tillamook County Extension Center',               href: 'https://extension.oregonstate.edu/tillamook' },
+          ]
+      },
+      'Mt_Hood_and_Gorge': {
+          name: 'Mt. Hood & Columbia River Gorge',
+          color: '#09839b',
+          locations: [
+              { name: 'Mid-Columbia Ag Res & Ext Center',         href: 'https://agsci.oregonstate.edu/mcarec/mid-columbia-agricultural-research-and-extension-center' },
+              { name: 'Hood River County Extension Center',       href: 'https://extension.oregonstate.edu/hoodriver' },
+              { name: 'Wasco County Extension Center',            href: 'https://extension.oregonstate.edu/wasco' },
+          ]
+      },
+      'Portland_Region': {
+          name: 'Portland Region',
+          color: '#aa9c2e',
+          locations: [
+  						{ name: 'Clackamas County Extension Center',        href: 'https://extension.oregonstate.edu/clackamas' },
+  						{ name: 'Columbia County Extension Center',         href: 'https://extension.oregonstate.edu/columbia' },
+  						{ name: 'Food Innovation Center',                   href: 'https://fic.oregonstate.edu/' },
+  						{ name: 'Matteson Forest',                          href: 'https://cf.forestry.oregonstate.edu/our-forests/matteson' },
+  						{ name: 'Multnomah County Extension Center',        href: 'https://extension.oregonstate.edu/multnomah' },
+  						{ name: 'North Willamette Res & Ext Center',        href: 'https://agsci.oregonstate.edu/nwrec' },
+  						{ name: 'OSU Portland Center',                      href: 'https://portland.oregonstate.edu/' },
+  						{ name: "Ram's Dell Forest",                        href: 'https://cf.forestry.oregonstate.edu/our-forests/rams-dell' },
+  						{ name: 'Tualatin Mountain Forest',                 href: 'https://cf.forestry.oregonstate.edu/our-forests/tualatin' },
+  						{ name: 'Washington County Extension Center',       href: 'https://extension.oregonstate.edu/washington' },
+          ]
+      },
+      'Southern_Oregon': {
+          name: 'Southern Oregon',
+          color: '#0c3b5d',
+          locations: [
+  						{ name: 'Collins Demonstration Forest',                     href: 'https://cf.forestry.oregonstate.edu/our-forests/collins' },
+  						{ name: 'Douglas County Extension Center',                  href: 'https://extension.oregonstate.edu/douglas' },
+  						{ name: 'H.J. Andrews Exp Forest',                          href: 'https://andrewsforest.oregonstate.edu/' },
+  						{ name: 'Josephine County Extension Center',                href: 'https://extension.oregonstate.edu/josephine' },
+  						{ name: 'Klamath Basin Res & Ext Cntr',                     href: 'https://extension.oregonstate.edu/klamath' },
+  						{ name: 'Lake County Extension Center',                     href: 'https://extension.oregonstate.edu/lake' },
+  						{ name: 'Southern Oregon Research and Extension Center',    href: 'https://agsci.oregonstate.edu/sorec' },
+          ]
+      },
+      'Willamette_Valley': {
+          name: 'Willamette Valley',
+          color: '#de4826',
+          locations: [
+  						{ name: 'Benton County Extension Center',                                  href: 'https://extension.oregonstate.edu/benton' },
+  						{ name: 'Clackamas County – North Willamette Research & Extension Center', href: 'https://agsci.oregonstate.edu/nwrec' },
+  						{ name: 'Lane County Extension – Oakridge satellite office',               href: 'https://extension.oregonstate.edu/node/241411' },
+  						{ name: 'Lane County Extension Center',                                    href: 'https://extension.oregonstate.edu/lane' },
+  						{ name: 'Linn County Extension Center',                                    href: 'https://extension.oregonstate.edu/linn' },
+  						{ name: 'Marion County Extension Center',                                  href: 'https://extension.oregonstate.edu/marion' },
+  						{ name: 'McDonald, Dunn, Cameron & Marchel Forests',                       href: 'https://cf.forestry.oregonstate.edu/our-forests/mcdonald-and-dunn-forests' },
+  						{ name: 'Oregon State University',                                          href: 'https://oregonstate.edu' },
+  						{ name: 'Polk County Extension Center',                                    href: 'https://extension.oregonstate.edu/polk' },
+  						{ name: 'Yamhill County Extension Center',                                 href: 'https://extension.oregonstate.edu/yamhill' },
+          ]
+      },
+      'Central_Oregon': {
+          name: 'Central Oregon',
+          color: '#46773b',
+          locations: [
+  						{ name: 'Central Oregon Agricultural Research and Extension Center',    href: 'https://agsci.oregonstate.edu/coarec/central-oregon-agricultural-research-and-extension-center' },
+  						{ name: 'Confederated Tribes of Warm Springs Extension Center',         href: 'https://extension.oregonstate.edu/warmsprings' },
+  						{ name: 'Crook County Extension Center',                                href: 'https://extension.oregonstate.edu/crook' },
+  						{ name: 'Deschutes County Extension Center',                            href: 'https://extension.oregonstate.edu/deschutes' },
+  						{ name: 'Douglas County Extension Center',                              href: 'https://extension.oregonstate.edu/douglas' },
+  						{ name: 'OSU Cascades',                                                 href: 'https://osucascades.edu' },
+          ]
+      },
+      'Eastern_Oregon': {
+          name: 'Eastern Oregon',
+          color: '#d6832b',
+          locations: [
+  						{ name: 'Baker County Extension Center',                          href: 'https://extension.oregonstate.edu/baker' },
+  						{ name: 'Columbia Basin Ag Res Center',                           href: 'https://agsci.oregonstate.edu/cbarc' },
+  						{ name: 'Columbia Basin Ag Res Center(Moro Unit)',                href: 'https://agsci.oregonstate.edu/cbarc' },
+  						{ name: 'Eastern Oregon Ag Res Center (Burns Unit)',              href: 'https://agsci.oregonstate.edu/eoarc' },
+  						{ name: 'Eastern Oregon Ag Res Center (Union Unit)',              href: 'https://agsci.oregonstate.edu/eoarc' },
+  						{ name: 'Gilliam County Extension Center',                        href: 'https://extension.oregonstate.edu/gilliam' },
+  						{ name: 'Grant County Extension Center',                          href: 'https://extension.oregonstate.edu/grant' },
+  						{ name: 'Harney County Extension Center',                         href: 'https://extension.oregonstate.edu/harney' },
+  						{ name: 'Hermiston Ag Res & Ext Center',                          href: 'https://agsci.oregonstate.edu/harec/hermiston-agricultural-research-and-extension-center' },
+  						{ name: 'Malheur County Extension satellite office',              href: 'https://extension.oregonstate.edu/node/222151' },
+  						{ name: 'Malheur Exp Station',                                    href: 'https://agsci.oregonstate.edu/mes/malheur-experiment-station' },
+  						{ name: 'Malheur Extension Center',                               href: 'https://extension.oregonstate.edu/malheur' },
+  						{ name: 'Morrow County Extension Center',                         href: 'https://extension.oregonstate.edu/morrow' },
+  						{ name: 'Oberteuffer Forest',                                     href: 'https://cf.forestry.oregonstate.edu/our-forests/oberteuffer' },
+  						{ name: 'Sherman County Extension Center',                        href: 'https://extension.oregonstate.edu/sherman' },
+  						{ name: 'Umatilla County Extension – Hermiston satellite office', href: 'https://extension.oregonstate.edu/node/243811' },
+  						{ name: 'Umatilla County Extension – Milton-Freewater satellite', href: 'https://extension.oregonstate.edu/umatilla-mf' },
+  						{ name: 'Umatilla County Extension Center',                       href: 'https://extension.oregonstate.edu/umatilla' },
+  						{ name: 'Union County Extension Center',                          href: 'https://extension.oregonstate.edu/union' },
+  						{ name: 'Wallowa County Extension Center',                        href: 'https://extension.oregonstate.edu/wallowa' },
+  						{ name: 'Wheeler County Extension Center',                        href: 'https://extension.oregonstate.edu/wheeler' },
+          ]
+      }
+  };
+
+  // ── Point / location pin data ─────────────────────────────────────────────
+  const pointData = {
+  	
+  	    // Oregon Coast
+      'Clatsop_County_Extension_Center':                 { label: 'Location', name: 'Clatsop County Extension Center',                 href: 'https://extension.oregonstate.edu/clatsop' },
+      'Tillamook_County_Extension_Center':               { label: 'Location', name: 'Tillamook County Extension Center',               href: 'https://extension.oregonstate.edu/tillamook' },
+      'Lincoln_County_Extension_Center':                 { label: 'Location', name: 'Lincoln County Extension Center',                 href: 'https://extension.oregonstate.edu/lincoln' },
+      'Hatfield_Marine_Science_Center':                  { label: 'Location', name: 'Hatfield Marine Science Center',                  href: 'https://hmsc.oregonstate.edu/' },
+      'Coastal_Oregon_Marine_Exp_Station':               { label: 'Location', name: 'Coastal Oregon Marine Exp Station',               href: 'https://marineresearch.oregonstate.edu/home/coastal-oregon-marine-experiment-station' },
+      'Coastal_Oregon_Marine_Exp_Stn_Seafood_lab':       { label: 'Location', name: 'Coastal Oregon Marine Exp Station (Seafood Lab)', href: 'https://marineresearch.oregonstate.edu/' },
+      'Blodgett_Forest':                                 { label: 'Location', name: 'Blodgett Forest',                                 href: 'https://cf.forestry.oregonstate.edu/our-forests/blodgett' },
+      'Lane_County_Extension_Florence_satellite_office': { label: 'Location', name: 'Lane County Extension Florence satellite office', href: 'https://extension.oregonstate.edu/node/238796' },
+      'Coos_County_Extension_Center':                    { label: 'Location', name: 'Coos County Extension Center',                   href: 'https://extension.oregonstate.edu/coos' },
+      'Curry_County_Extension_Center':                   { label: 'Location', name: 'Curry County Extension Center',                  href: 'https://extension.oregonstate.edu/curry' },
+  	
+  	
+      // Willamette Valley
+      'Oregon_State_University':              { label: 'Location', name: 'Oregon State University',              href: 'https://oregonstate.edu' },
+      'McDonald_Dunn_Cameron_and_Marchel_Forests': { label: 'Location', name: 'McDonald, Dunn, Cameron & Marchel Forests', href: 'https://cf.forestry.oregonstate.edu/our-forests/mcdonald-and-dunn-forests' },
+      'Benton_County_Extension_Center':       { label: 'Location', name: 'Benton County Extension Center',       href: 'https://extension.oregonstate.edu/benton' },
+      'Clackamas_County_-_North_Willamette_Research_and_Extension_Center': { label: 'Location', name: 'Clackamas County – North Willamette Research & Extension Center', href: 'https://agsci.oregonstate.edu/nwrec' },
+      'Lane_County_Extension_Center':         { label: 'Location', name: 'Lane County Extension Center',         href: 'https://extension.oregonstate.edu/lane' },
+      'Lane_County_Extension_Oakridge_satellite_office': { label: 'Location', name: 'Lane County Extension – Oakridge satellite office', href: 'https://extension.oregonstate.edu/node/241411' },
+      'Linn_County_Extension_Center':         { label: 'Location', name: 'Linn County Extension Center',         href: 'https://extension.oregonstate.edu/linn' },
+      'Marion_County_Extension_Center':       { label: 'Location', name: 'Marion County Extension Center',       href: 'https://extension.oregonstate.edu/marion' },
+      'Polk_County_Extension_Center':         { label: 'Location', name: 'Polk County Extension Center',         href: 'https://extension.oregonstate.edu/polk' },
+      'Yamhill_County_Extension_Center':      { label: 'Location', name: 'Yamhill County Extension Center',      href: 'https://extension.oregonstate.edu/yamhill' },
+
+      // Central Oregon
+      'OSU_Cascades':                         { label: 'Location', name: 'OSU Cascades',                         href: 'https://osucascades.edu' },
+      'Central_Oregon_Agricultural_Research_and_Extension_Center': { label: 'Location', name: 'Central Oregon Ag Research & Extension Center', href: 'https://agsci.oregonstate.edu/coarec/central-oregon-agricultural-research-and-extension-center' },
+      'Confederated_Tribes_of_Warm_Springs_Extension_Center': { label: 'Location', name: 'Confederated Tribes of Warm Springs Extension Center', href: 'https://extension.oregonstate.edu/warmsprings' },
+      'Crook_County_Extension_Center':        { label: 'Location', name: 'Crook County Extension Center',        href: 'https://extension.oregonstate.edu/crook' },
+      'Deschutes_County_Extension_Center':    { label: 'Location', name: 'Deschutes County Extension Center',    href: 'https://extension.oregonstate.edu/deschutes' },
+
+      // Portland Region
+      'OSU_Portland_Center':                  { label: 'Location', name: 'OSU Portland Center',                  href: 'https://portland.oregonstate.edu/' },
+      'North_Willamette_Res_Ext_Cntr':        { label: 'Location', name: 'North Willamette Res & Ext Center',    href: 'https://agsci.oregonstate.edu/nwrec' },
+      'Tualatin_Mountain_Forest':             { label: 'Location', name: 'Tualatin Mountain Forest',              href: 'https://cf.forestry.oregonstate.edu/our-forests/tualatin' },
+      'Matteson_Forest':                      { label: 'Location', name: 'Matteson Forest',                      href: 'https://cf.forestry.oregonstate.edu/our-forests/matteson' },
+      'Ram_s_Dell_Forest':                    { label: 'Location', name: "Ram's Dell Forest",                    href: 'https://cf.forestry.oregonstate.edu/our-forests/rams-dell' },
+      'Food_Innovation_Center':               { label: 'Location', name: 'Food Innovation Center',               href: 'https://fic.oregonstate.edu/' },
+      'Multnomah_County_Extension_Center':    { label: 'Location', name: 'Multnomah County Extension Center',    href: 'https://extension.oregonstate.edu/multnomah' },
+      'Clackamas_County_Extension_Center':    { label: 'Location', name: 'Clackamas County Extension Center',    href: 'https://extension.oregonstate.edu/clackamas' },
+      'Columbia_County_Extension_Center':     { label: 'Location', name: 'Columbia County Extension Center',     href: 'https://extension.oregonstate.edu/columbia' },
+      'Washington_County_Extension_Center':   { label: 'Location', name: 'Washington County Extension Center',   href: 'https://extension.oregonstate.edu/washington' },
+
+      // Mt. Hood & Gorge
+      'Mid-Columbia_Ag_Res_Ext_Center':       { label: 'Location', name: 'Mid-Columbia Ag Res & Ext Center',     href: 'https://agsci.oregonstate.edu/mcarec/mid-columbia-agricultural-research-and-extension-center' },
+      'Columbia_Basin_Ag_Res_Center_Moro_Unit_': { label: 'Location', name: 'Columbia Basin Ag Res Center (Moro Unit)', href: 'https://agsci.oregonstate.edu/cbarc' },
+      'Hood_River_County_Extension_Center':   { label: 'Location', name: 'Hood River County Extension Center',   href: 'https://extension.oregonstate.edu/hoodriver' },
+      'Wasco_County_Extension_Center':        { label: 'Location', name: 'Wasco County Extension Center',        href: 'https://extension.oregonstate.edu/wasco' },
+
+      // Southern Oregon
+      'H.J._Andrews_Exp_Forest':              { label: 'Location', name: 'H.J. Andrews Exp Forest',              href: 'https://andrewsforest.oregonstate.edu/' },
+      'Collins_Demonstration_Forest':         { label: 'Location', name: 'Collins Demonstration Forest',         href: 'https://cf.forestry.oregonstate.edu/our-forests/collins' },
+      'Southern_Oregon_Research_and_Extension_Center': { label: 'Location', name: 'Southern Oregon Research and Extension Center', href: 'https://agsci.oregonstate.edu/sorec' },
+      'Klamath_Basin_Res_Ext_Cntr':           { label: 'Location', name: 'Klamath Basin Res & Ext Cntr',         href: 'https://extension.oregonstate.edu/klamath' },
+      'Douglas_County_Extension_Center':      { label: 'Location', name: 'Douglas County Extension Center',      href: 'https://extension.oregonstate.edu/douglas' },
+      'Josephine_County_Extension_Center':    { label: 'Location', name: 'Josephine County Extension Center',    href: 'https://extension.oregonstate.edu/josephine' },
+      'Lake_County_Extension_Center':         { label: 'Location', name: 'Lake County Extension Center',         href: 'https://extension.oregonstate.edu/lake' },
+
+      // Eastern Oregon
+      'Hermiston_Ag_Res_Ext_Center':          { label: 'Location', name: 'Hermiston Ag Res & Ext Center',        href: 'https://agsci.oregonstate.edu/harec/hermiston-agricultural-research-and-extension-center' },
+      'Columbia_Basin_Ag_Res_Center':         { label: 'Location', name: 'Columbia Basin Ag Res Center',         href: 'https://agsci.oregonstate.edu/cbarc' },
+      'Oberteuffer_Forest':                   { label: 'Location', name: 'Oberteuffer Forest',                   href: 'https://cf.forestry.oregonstate.edu/our-forests/oberteuffer' },
+      'Eastern_Oregon_Ag_Res_Center_Union_Unit_': { label: 'Location', name: 'Eastern Oregon Ag Res Center (Union Unit)', href: 'https://agsci.oregonstate.edu/eoarc' },
+      'Eastern_Oregon_Ag_Res_Center_Burns_Unit_': { label: 'Location', name: 'Eastern Oregon Ag Res Center (Burns Unit)', href: 'https://agsci.oregonstate.edu/eoarc' },
+      'Malheur_Exp_Station':                  { label: 'Location', name: 'Malheur Exp Station',                  href: 'https://agsci.oregonstate.edu/mes/malheur-experiment-station' },
+      'Harney_County_Extension_Center':       { label: 'Location', name: 'Harney County Extension Center',       href: 'https://extension.oregonstate.edu/harney' },
+      'Bakers_County_Extension_Center':       { label: 'Location', name: 'Baker County Extension Center',        href: 'https://extension.oregonstate.edu/baker' },
+      'Gilliam_County_Extension_Center':      { label: 'Location', name: 'Gilliam County Extension Center',      href: 'https://extension.oregonstate.edu/gilliam' },
+      'Grant_County_Extension_Center':        { label: 'Location', name: 'Grant County Extension Center',        href: 'https://extension.oregonstate.edu/grant' },
+      'Malheur_Extension_Center':             { label: 'Location', name: 'Malheur Extension Center',             href: 'https://extension.oregonstate.edu/malheur' },
+      'Malheur_County_Extension_satellite_office': { label: 'Location', name: 'Malheur County Extension satellite office', href: 'https://extension.oregonstate.edu/node/222151' },
+      'Morrow_County_Extension_Center':       { label: 'Location', name: 'Morrow County Extension Center',       href: 'https://extension.oregonstate.edu/morrow' },
+      'Sherman_County_Extension_Center':      { label: 'Location', name: 'Sherman County Extension Center',      href: 'https://extension.oregonstate.edu/sherman' },
+      'Umatilla_County_Extension_Center':     { label: 'Location', name: 'Umatilla County Extension Center',     href: 'https://extension.oregonstate.edu/umatilla' },
+      'Umatilla_County_Extension_Hermiston_satellite_office': { label: 'Location', name: 'Umatilla County Extension – Hermiston satellite office', href: 'https://extension.oregonstate.edu/node/243811' },
+      'Umatilla_County_Extension_Milton-Freewater_satellite_office': { label: 'Location', name: 'Umatilla County Extension – Milton-Freewater satellite', href: 'https://extension.oregonstate.edu/umatilla-mf' },
+      'Union_County_Extension_Center':        { label: 'Location', name: 'Union County Extension Center',        href: 'https://extension.oregonstate.edu/union' },
+      'Wallowa_County_Extension_Center':      { label: 'Location', name: 'Wallowa County Extension Center',      href: 'https://extension.oregonstate.edu/wallowa' },
+      'Wheeler_County_Extension_Center':      { label: 'Location', name: 'Wheeler County Extension Center',      href: 'https://extension.oregonstate.edu/wheeler' },
+  };
+
+  // ── ZIP Code → Region mapping (474 unique ZIPs) ───────────────────────────
+
+  const zipToRegion = {
+      // Eastern Oregon (84)
+      '97001': 'Eastern_Oregon', '97029': 'Eastern_Oregon', '97033': 'Eastern_Oregon', '97039': 'Eastern_Oregon', '97050': 'Eastern_Oregon', '97065': 'Eastern_Oregon', '97710': 'Eastern_Oregon', '97720': 'Eastern_Oregon',
+      '97721': 'Eastern_Oregon', '97722': 'Eastern_Oregon', '97732': 'Eastern_Oregon', '97736': 'Eastern_Oregon', '97738': 'Eastern_Oregon', '97750': 'Eastern_Oregon', '97758': 'Eastern_Oregon', '97801': 'Eastern_Oregon',
+      '97810': 'Eastern_Oregon', '97812': 'Eastern_Oregon', '97813': 'Eastern_Oregon', '97814': 'Eastern_Oregon', '97817': 'Eastern_Oregon', '97818': 'Eastern_Oregon', '97819': 'Eastern_Oregon', '97820': 'Eastern_Oregon',
+      '97823': 'Eastern_Oregon', '97824': 'Eastern_Oregon', '97825': 'Eastern_Oregon', '97826': 'Eastern_Oregon', '97827': 'Eastern_Oregon', '97828': 'Eastern_Oregon', '97830': 'Eastern_Oregon', '97833': 'Eastern_Oregon',
+      '97834': 'Eastern_Oregon', '97835': 'Eastern_Oregon', '97836': 'Eastern_Oregon', '97837': 'Eastern_Oregon', '97838': 'Eastern_Oregon', '97839': 'Eastern_Oregon', '97840': 'Eastern_Oregon', '97841': 'Eastern_Oregon',
+      '97842': 'Eastern_Oregon', '97843': 'Eastern_Oregon', '97844': 'Eastern_Oregon', '97845': 'Eastern_Oregon', '97846': 'Eastern_Oregon', '97848': 'Eastern_Oregon', '97850': 'Eastern_Oregon', '97856': 'Eastern_Oregon',
+      '97857': 'Eastern_Oregon', '97859': 'Eastern_Oregon', '97862': 'Eastern_Oregon', '97864': 'Eastern_Oregon', '97865': 'Eastern_Oregon', '97867': 'Eastern_Oregon', '97868': 'Eastern_Oregon', '97869': 'Eastern_Oregon',
+      '97870': 'Eastern_Oregon', '97873': 'Eastern_Oregon', '97874': 'Eastern_Oregon', '97875': 'Eastern_Oregon', '97876': 'Eastern_Oregon', '97877': 'Eastern_Oregon', '97880': 'Eastern_Oregon', '97882': 'Eastern_Oregon',
+      '97883': 'Eastern_Oregon', '97884': 'Eastern_Oregon', '97885': 'Eastern_Oregon', '97886': 'Eastern_Oregon', '97901': 'Eastern_Oregon', '97902': 'Eastern_Oregon', '97903': 'Eastern_Oregon', '97904': 'Eastern_Oregon',
+      '97905': 'Eastern_Oregon', '97906': 'Eastern_Oregon', '97907': 'Eastern_Oregon', '97908': 'Eastern_Oregon', '97909': 'Eastern_Oregon', '97910': 'Eastern_Oregon', '97911': 'Eastern_Oregon', '97913': 'Eastern_Oregon',
+      '97914': 'Eastern_Oregon', '97917': 'Eastern_Oregon', '97918': 'Eastern_Oregon', '97920': 'Eastern_Oregon',
+
+      // Willamette Valley (111)
+      '97002': 'Willamette_Valley', '97013': 'Willamette_Valley', '97017': 'Willamette_Valley', '97020': 'Willamette_Valley', '97022': 'Willamette_Valley', '97026': 'Willamette_Valley', '97032': 'Willamette_Valley', '97038': 'Willamette_Valley',
+      '97042': 'Willamette_Valley', '97071': 'Willamette_Valley', '97101': 'Willamette_Valley', '97111': 'Willamette_Valley', '97114': 'Willamette_Valley', '97115': 'Willamette_Valley', '97123': 'Willamette_Valley', '97127': 'Willamette_Valley',
+      '97128': 'Willamette_Valley', '97132': 'Willamette_Valley', '97137': 'Willamette_Valley', '97148': 'Willamette_Valley', '97301': 'Willamette_Valley', '97302': 'Willamette_Valley', '97303': 'Willamette_Valley', '97304': 'Willamette_Valley',
+      '97305': 'Willamette_Valley', '97306': 'Willamette_Valley', '97307': 'Willamette_Valley', '97308': 'Willamette_Valley', '97309': 'Willamette_Valley', '97310': 'Willamette_Valley', '97311': 'Willamette_Valley', '97312': 'Willamette_Valley',
+      '97314': 'Willamette_Valley', '97317': 'Willamette_Valley', '97321': 'Willamette_Valley', '97322': 'Willamette_Valley', '97324': 'Willamette_Valley', '97325': 'Willamette_Valley', '97327': 'Willamette_Valley', '97329': 'Willamette_Valley',
+      '97330': 'Willamette_Valley', '97331': 'Willamette_Valley', '97333': 'Willamette_Valley', '97335': 'Willamette_Valley', '97336': 'Willamette_Valley', '97338': 'Willamette_Valley', '97339': 'Willamette_Valley', '97342': 'Willamette_Valley',
+      '97344': 'Willamette_Valley', '97345': 'Willamette_Valley', '97346': 'Willamette_Valley', '97347': 'Willamette_Valley', '97348': 'Willamette_Valley', '97350': 'Willamette_Valley', '97351': 'Willamette_Valley', '97352': 'Willamette_Valley',
+      '97355': 'Willamette_Valley', '97358': 'Willamette_Valley', '97360': 'Willamette_Valley', '97361': 'Willamette_Valley', '97362': 'Willamette_Valley', '97370': 'Willamette_Valley', '97371': 'Willamette_Valley', '97373': 'Willamette_Valley',
+      '97374': 'Willamette_Valley', '97375': 'Willamette_Valley', '97377': 'Willamette_Valley', '97378': 'Willamette_Valley', '97381': 'Willamette_Valley', '97383': 'Willamette_Valley', '97384': 'Willamette_Valley', '97385': 'Willamette_Valley',
+      '97386': 'Willamette_Valley', '97389': 'Willamette_Valley', '97392': 'Willamette_Valley', '97396': 'Willamette_Valley', '97401': 'Willamette_Valley', '97402': 'Willamette_Valley', '97403': 'Willamette_Valley', '97404': 'Willamette_Valley',
+      '97405': 'Willamette_Valley', '97408': 'Willamette_Valley', '97409': 'Willamette_Valley', '97410': 'Willamette_Valley', '97412': 'Willamette_Valley', '97419': 'Willamette_Valley', '97424': 'Willamette_Valley', '97426': 'Willamette_Valley',
+      '97430': 'Willamette_Valley', '97431': 'Willamette_Valley', '97434': 'Willamette_Valley', '97437': 'Willamette_Valley', '97438': 'Willamette_Valley', '97440': 'Willamette_Valley', '97446': 'Willamette_Valley', '97448': 'Willamette_Valley',
+      '97451': 'Willamette_Valley', '97452': 'Willamette_Valley', '97454': 'Willamette_Valley', '97455': 'Willamette_Valley', '97456': 'Willamette_Valley', '97461': 'Willamette_Valley', '97463': 'Willamette_Valley', '97475': 'Willamette_Valley',
+      '97477': 'Willamette_Valley', '97478': 'Willamette_Valley', '97487': 'Willamette_Valley', '97488': 'Willamette_Valley', '97489': 'Willamette_Valley', '97490': 'Willamette_Valley', '97492': 'Willamette_Valley',
+
+      // Portland Region (100)
+      '97003': 'Portland_Region', '97005': 'Portland_Region', '97006': 'Portland_Region', '97007': 'Portland_Region', '97008': 'Portland_Region', '97015': 'Portland_Region', '97018': 'Portland_Region', '97024': 'Portland_Region',
+      '97027': 'Portland_Region', '97030': 'Portland_Region', '97034': 'Portland_Region', '97035': 'Portland_Region', '97036': 'Portland_Region', '97045': 'Portland_Region', '97048': 'Portland_Region', '97051': 'Portland_Region',
+      '97053': 'Portland_Region', '97054': 'Portland_Region', '97056': 'Portland_Region', '97060': 'Portland_Region', '97062': 'Portland_Region', '97064': 'Portland_Region', '97068': 'Portland_Region', '97070': 'Portland_Region',
+      '97075': 'Portland_Region', '97078': 'Portland_Region', '97079': 'Portland_Region', '97080': 'Portland_Region', '97086': 'Portland_Region', '97089': 'Portland_Region', '97106': 'Portland_Region', '97109': 'Portland_Region',
+      '97113': 'Portland_Region', '97116': 'Portland_Region', '97117': 'Portland_Region', '97119': 'Portland_Region', '97124': 'Portland_Region', '97125': 'Portland_Region', '97129': 'Portland_Region', '97133': 'Portland_Region',
+      '97140': 'Portland_Region', '97144': 'Portland_Region', '97201': 'Portland_Region', '97202': 'Portland_Region', '97203': 'Portland_Region', '97204': 'Portland_Region', '97205': 'Portland_Region', '97206': 'Portland_Region',
+      '97207': 'Portland_Region', '97208': 'Portland_Region', '97209': 'Portland_Region', '97210': 'Portland_Region', '97211': 'Portland_Region', '97212': 'Portland_Region', '97213': 'Portland_Region', '97214': 'Portland_Region',
+      '97215': 'Portland_Region', '97216': 'Portland_Region', '97217': 'Portland_Region', '97218': 'Portland_Region', '97219': 'Portland_Region', '97220': 'Portland_Region', '97221': 'Portland_Region', '97222': 'Portland_Region',
+      '97223': 'Portland_Region', '97224': 'Portland_Region', '97225': 'Portland_Region', '97227': 'Portland_Region', '97228': 'Portland_Region', '97229': 'Portland_Region', '97230': 'Portland_Region', '97231': 'Portland_Region',
+      '97232': 'Portland_Region', '97233': 'Portland_Region', '97236': 'Portland_Region', '97238': 'Portland_Region', '97239': 'Portland_Region', '97240': 'Portland_Region', '97242': 'Portland_Region', '97250': 'Portland_Region',
+      '97251': 'Portland_Region', '97252': 'Portland_Region', '97253': 'Portland_Region', '97254': 'Portland_Region', '97266': 'Portland_Region', '97267': 'Portland_Region', '97268': 'Portland_Region', '97269': 'Portland_Region',
+      '97280': 'Portland_Region', '97281': 'Portland_Region', '97282': 'Portland_Region', '97283': 'Portland_Region', '97286': 'Portland_Region', '97290': 'Portland_Region', '97291': 'Portland_Region', '97292': 'Portland_Region',
+      '97293': 'Portland_Region', '97294': 'Portland_Region', '97296': 'Portland_Region', '97298': 'Portland_Region',
+
+      // Mt. Hood & Columbia River Gorge (16)
+      '97004': 'Mt_Hood_and_Gorge', '97009': 'Mt_Hood_and_Gorge', '97010': 'Mt_Hood_and_Gorge', '97011': 'Mt_Hood_and_Gorge', '97014': 'Mt_Hood_and_Gorge', '97019': 'Mt_Hood_and_Gorge', '97023': 'Mt_Hood_and_Gorge', '97028': 'Mt_Hood_and_Gorge',
+      '97031': 'Mt_Hood_and_Gorge', '97040': 'Mt_Hood_and_Gorge', '97041': 'Mt_Hood_and_Gorge', '97044': 'Mt_Hood_and_Gorge', '97049': 'Mt_Hood_and_Gorge', '97055': 'Mt_Hood_and_Gorge', '97058': 'Mt_Hood_and_Gorge', '97067': 'Mt_Hood_and_Gorge',
+
+      // Oregon Coast (63)
+      '97016': 'Oregon_Coast', '97102': 'Oregon_Coast', '97103': 'Oregon_Coast', '97107': 'Oregon_Coast', '97108': 'Oregon_Coast', '97110': 'Oregon_Coast', '97112': 'Oregon_Coast', '97118': 'Oregon_Coast',
+      '97121': 'Oregon_Coast', '97122': 'Oregon_Coast', '97130': 'Oregon_Coast', '97131': 'Oregon_Coast', '97134': 'Oregon_Coast', '97135': 'Oregon_Coast', '97136': 'Oregon_Coast', '97138': 'Oregon_Coast',
+      '97141': 'Oregon_Coast', '97145': 'Oregon_Coast', '97146': 'Oregon_Coast', '97147': 'Oregon_Coast', '97149': 'Oregon_Coast', '97326': 'Oregon_Coast', '97341': 'Oregon_Coast', '97343': 'Oregon_Coast',
+      '97357': 'Oregon_Coast', '97364': 'Oregon_Coast', '97365': 'Oregon_Coast', '97366': 'Oregon_Coast', '97367': 'Oregon_Coast', '97368': 'Oregon_Coast', '97369': 'Oregon_Coast', '97376': 'Oregon_Coast',
+      '97380': 'Oregon_Coast', '97388': 'Oregon_Coast', '97390': 'Oregon_Coast', '97391': 'Oregon_Coast', '97394': 'Oregon_Coast', '97406': 'Oregon_Coast', '97407': 'Oregon_Coast', '97411': 'Oregon_Coast',
+      '97414': 'Oregon_Coast', '97415': 'Oregon_Coast', '97416': 'Oregon_Coast', '97420': 'Oregon_Coast', '97423': 'Oregon_Coast', '97439': 'Oregon_Coast', '97441': 'Oregon_Coast', '97444': 'Oregon_Coast',
+      '97449': 'Oregon_Coast', '97450': 'Oregon_Coast', '97453': 'Oregon_Coast', '97458': 'Oregon_Coast', '97459': 'Oregon_Coast', '97464': 'Oregon_Coast', '97465': 'Oregon_Coast', '97466': 'Oregon_Coast',
+      '97467': 'Oregon_Coast', '97473': 'Oregon_Coast', '97476': 'Oregon_Coast', '97480': 'Oregon_Coast', '97491': 'Oregon_Coast', '97493': 'Oregon_Coast', '97498': 'Oregon_Coast',
+
+      // Central Oregon (28)
+      '97021': 'Central_Oregon', '97037': 'Central_Oregon', '97057': 'Central_Oregon', '97063': 'Central_Oregon', '97413': 'Central_Oregon', '97641': 'Central_Oregon', '97701': 'Central_Oregon', '97702': 'Central_Oregon',
+      '97703': 'Central_Oregon', '97707': 'Central_Oregon', '97708': 'Central_Oregon', '97709': 'Central_Oregon', '97711': 'Central_Oregon', '97712': 'Central_Oregon', '97730': 'Central_Oregon', '97733': 'Central_Oregon',
+      '97734': 'Central_Oregon', '97735': 'Central_Oregon', '97737': 'Central_Oregon', '97741': 'Central_Oregon', '97751': 'Central_Oregon', '97752': 'Central_Oregon', '97753': 'Central_Oregon', '97754': 'Central_Oregon',
+      '97756': 'Central_Oregon', '97759': 'Central_Oregon', '97760': 'Central_Oregon', '97761': 'Central_Oregon',
+
+      // Southern Oregon (72)
+      '97417': 'Southern_Oregon', '97429': 'Southern_Oregon', '97432': 'Southern_Oregon', '97435': 'Southern_Oregon', '97436': 'Southern_Oregon', '97442': 'Southern_Oregon', '97443': 'Southern_Oregon', '97447': 'Southern_Oregon',
+      '97457': 'Southern_Oregon', '97462': 'Southern_Oregon', '97469': 'Southern_Oregon', '97470': 'Southern_Oregon', '97471': 'Southern_Oregon', '97479': 'Southern_Oregon', '97481': 'Southern_Oregon', '97484': 'Southern_Oregon',
+      '97486': 'Southern_Oregon', '97494': 'Southern_Oregon', '97495': 'Southern_Oregon', '97496': 'Southern_Oregon', '97497': 'Southern_Oregon', '97499': 'Southern_Oregon', '97501': 'Southern_Oregon', '97502': 'Southern_Oregon',
+      '97503': 'Southern_Oregon', '97504': 'Southern_Oregon', '97520': 'Southern_Oregon', '97522': 'Southern_Oregon', '97523': 'Southern_Oregon', '97524': 'Southern_Oregon', '97525': 'Southern_Oregon', '97526': 'Southern_Oregon',
+      '97527': 'Southern_Oregon', '97528': 'Southern_Oregon', '97530': 'Southern_Oregon', '97531': 'Southern_Oregon', '97532': 'Southern_Oregon', '97533': 'Southern_Oregon', '97534': 'Southern_Oregon', '97535': 'Southern_Oregon',
+      '97536': 'Southern_Oregon', '97537': 'Southern_Oregon', '97538': 'Southern_Oregon', '97539': 'Southern_Oregon', '97540': 'Southern_Oregon', '97541': 'Southern_Oregon', '97543': 'Southern_Oregon', '97544': 'Southern_Oregon',
+      '97601': 'Southern_Oregon', '97602': 'Southern_Oregon', '97603': 'Southern_Oregon', '97604': 'Southern_Oregon', '97620': 'Southern_Oregon', '97621': 'Southern_Oregon', '97622': 'Southern_Oregon', '97623': 'Southern_Oregon',
+      '97624': 'Southern_Oregon', '97625': 'Southern_Oregon', '97626': 'Southern_Oregon', '97627': 'Southern_Oregon', '97630': 'Southern_Oregon', '97632': 'Southern_Oregon', '97633': 'Southern_Oregon', '97634': 'Southern_Oregon',
+      '97635': 'Southern_Oregon', '97636': 'Southern_Oregon', '97637': 'Southern_Oregon', '97638': 'Southern_Oregon', '97639': 'Southern_Oregon', '97640': 'Southern_Oregon', '97731': 'Southern_Oregon', '97739': 'Southern_Oregon',
+  };
+
+  // ── Region modal (shared, injected once into document.body) ──────────────
+  (function ensureRegionModal() {
+      if (document.getElementById('regionPopupModal')) return;
+
+      const el = document.createElement('div');
+      el.id = 'regionPopupModal';
+      el.className = 'region-popup-overlay';
+      el.innerHTML = `
+          <div class="region-popup-dialog" role="dialog" aria-modal="true">
+              <div class="region-popup-colorbar" id="regionPopupColorBar"></div>
+              <button class="region-popup-close" aria-label="Close">&times;</button>
+              <p class="region-popup-label">Oregon Region</p>
+              <h2 class="region-popup-title" id="regionPopupTitle"></h2>
+              <ul class="region-popup-list" id="regionPopupList"></ul>
+          </div>
+      `;
+      document.body.appendChild(el);
+
+      function closeRegionModal() {
+          el.classList.remove('region-popup-visible');
+          document.body.style.overflow = '';
+          // deactivate any highlighted region
+          document.querySelectorAll('[data-map-active]').forEach(svg => {
+              const rid = svg.dataset.mapActive;
+              svg.querySelector('#' + CSS.escape(rid))?.classList.remove('active');
+              delete svg.dataset.mapActive;
+          });
+      }
+
+      el.addEventListener('click', e => { if (e.target === el) closeRegionModal(); });
+      el.querySelector('.region-popup-close').addEventListener('click', closeRegionModal);
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeRegionModal(); });
+
+      // Expose so initMapInstance can call it
+      window._openRegionPopup = function(id, svgContainer) {
+          const region = regionData[id];
+          if (!region) return;
+
+          // Track which SVG element is active so we can deactivate on close
+          svgContainer.dataset.mapActive = id;
+
+          document.getElementById('regionPopupColorBar').style.background = region.color;
+          document.getElementById('regionPopupTitle').textContent = region.name;
+          document.getElementById('regionPopupList').innerHTML = region.locations.map(loc =>
+              loc.href
+                  ? `<li><a href="${loc.href}" target="_blank">${loc.name}</a></li>`
+                  : `<li><span class="no-link">${loc.name}</span></li>`
+          ).join('');
+
+          el.classList.add('region-popup-visible');
+          document.body.style.overflow = 'hidden';
+      };
+
+      window._closeRegionModal = closeRegionModal;
+  })();
+
+  // ── Per-instance initializer (scoped to one tab pane) ────────────────────
+  function initMapInstance(container) {
+      const searchInput   = container.querySelector('#searchInput');
+      const searchResults = container.querySelector('#searchResults');
+
+      if (container.dataset.mapInit === 'true') return;
+      container.dataset.mapInit = 'true';
+
+      let activeRegionId = null;
+
+      // ── Select region ────────────────────────────────────────────────────
+      function selectRegion(id) {
+          // Toggle off if same region clicked again
+          if (activeRegionId === id) {
+              container.querySelector('#' + CSS.escape(id))?.classList.remove('active');
+              activeRegionId = null;
+              window._closeRegionModal?.();
+              return;
+          }
+          // Deactivate previous
+          if (activeRegionId) {
+              container.querySelector('#' + CSS.escape(activeRegionId))?.classList.remove('active');
+          }
+          activeRegionId = id;
+          container.querySelector('#' + CSS.escape(id))?.classList.add('active');
+          window._openRegionPopup?.(id, container);
+      }
+
+      // ── Wire region group clicks + hover tooltips ────────────────────────
+      Object.keys(regionData).forEach(id => {
+          const el = container.querySelector('#' + CSS.escape(id));
+          if (!el) return;
+          el.addEventListener('click', () => selectRegion(id));
+          el.addEventListener('mouseenter', () => showPinTooltip(el, regionData[id].name));
+          el.addEventListener('mouseleave', hidePinTooltip);
+      });
+
+      // ── Pin tooltip ──────────────────────────────────────────────────────
+      // Create a single reusable tooltip element
+      let pinTooltip = container.querySelector('.pin-tooltip');
+      if (!pinTooltip) {
+          pinTooltip = document.createElement('div');
+          pinTooltip.className = 'pin-tooltip';
+          // Append inside the SVG's parent so positioning is relative to the map wrapper
+          const svgWrapper = container.querySelector('.map-svg-wrapper') || container;
+          svgWrapper.style.position = 'relative';
+          svgWrapper.appendChild(pinTooltip);
+      }
+
+      function showPinTooltip(el, name) {
+          const svgWrapper = pinTooltip.parentElement;
+          const wrapperRect = svgWrapper.getBoundingClientRect();
+          const pinRect     = el.getBoundingClientRect();
+
+          // Centre of the pin, relative to the wrapper
+          const left = pinRect.left + pinRect.width  / 2 - wrapperRect.left;
+          const top  = pinRect.top                       - wrapperRect.top;
+
+          pinTooltip.textContent = name;
+          pinTooltip.style.left  = left + 'px';
+          pinTooltip.style.top   = top  + 'px';
+          pinTooltip.classList.add('visible');
+      }
+
+      function hidePinTooltip() {
+          pinTooltip.classList.remove('visible');
+      }
+
+      // ── Wire point / location clicks + hover ─────────────────────────────
+      Object.entries(pointData).forEach(([id, data]) => {
+          const el = container.querySelector('#' + CSS.escape(id));
+          if (!el) return;
+          el.classList.add('point-link');
+          el.addEventListener('click', e => {
+              e.stopPropagation();
+              if (data.href) window.open(data.href, '_blank');
+          });
+          el.addEventListener('mouseenter', () => showPinTooltip(el, data.name));
+          el.addEventListener('mouseleave', hidePinTooltip);
+      });
+
+      // ── Search (ZIP codes + region names) ────────────────────────────────
+      const searchIndex = [
+          ...Object.entries(regionData).map(([id, r]) => ({
+              type: 'region', label: r.name, regionId: id
+          })),
+          ...Object.entries(zipToRegion).map(([zip, regionId]) => ({
+              type: 'zip', label: zip, regionId
+          }))
+      ];
+
+      function showSearchResults(query) {
+          if (!query) { searchResults.classList.remove('visible'); return; }
+          const q = query.toLowerCase();
+          const matches = searchIndex.filter(item => item.label.toLowerCase().includes(q));
+          if (!matches.length) { searchResults.classList.remove('visible'); return; }
+          searchResults.innerHTML = matches.slice(0, 10).map(m => `
+              <div class="search-result-item" data-region-id="${m.regionId}">
+                  <div>${m.label}</div>
+                  <div class="item-type">${m.type === 'region' ? 'Region' : 'ZIP Code · ' + regionData[m.regionId].name}</div>
+              </div>
+          `).join('');
+          searchResults.classList.add('visible');
+      }
+
+      searchInput?.addEventListener('input', () => showSearchResults(searchInput.value.trim()));
+
+      searchResults?.addEventListener('click', e => {
+          const item = e.target.closest('.search-result-item');
+          if (!item) return;
+          searchInput.value = '';
+          searchResults.classList.remove('visible');
+          selectRegion(item.dataset.regionId);
+      });
+
+      document.addEventListener('click', e => {
+          if (!searchInput?.contains(e.target) && !searchResults?.contains(e.target)) {
+              searchResults?.classList.remove('visible');
+          }
+      });
+  }
+
+  // ── Bootstrap 5: init when a tab becomes visible ─────────────────────────
+  document.addEventListener('shown.bs.tab', function (e) {
+      const targetPane = document.querySelector(e.target.getAttribute('data-bs-target'));
+      if (targetPane) initMapInstance(targetPane);
+  });
+
+  // ── Init any already-visible tab panes on page load ──────────────────────
+  document.querySelectorAll('.tab-pane.active, .tab-pane.show').forEach(pane => {
+      initMapInstance(pane);
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/6\r\n"
+contexts: {  }
+conditions_require_all: true

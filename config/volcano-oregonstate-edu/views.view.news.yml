@@ -1,0 +1,541 @@
+uuid: 2a434d3b-2b95-4ec9-9941-6bb87f28bf8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.rss
+    - field.storage.node.body
+    - field.storage.node.field_external_url
+    - field.storage.node.field_file_upload
+    - field.storage.node.field_news_caption
+    - field.storage.node.field_news_thumbnail
+    - field.storage.node.field_publication_date
+    - field.storage.node.field_source
+    - image.style.thumbnail
+    - node.type.news
+  module:
+    - contextual
+    - datetime
+    - datetime_range
+    - file
+    - image
+    - link
+    - node
+    - text
+    - user
+id: news
+label: News
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: News
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          exclude: true
+          element_label_colon: false
+        field_publication_date:
+          id: field_publication_date
+          table: node__field_publication_date
+          field: field_publication_date
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '- <em>{{ field_publication_date }}</em>'
+          element_label_colon: false
+          hide_empty: true
+          settings:
+            format_type: short
+            fromto: both
+            multiple_number: ''
+            multiple_from: ''
+            multiple_to: ''
+            show_repeat_rule: show
+        field_news_thumbnail:
+          id: field_news_thumbnail
+          table: node__field_news_thumbnail
+          field: field_news_thumbnail
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: announcement_image
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image
+          settings:
+            image_link: ''
+            image_style: thumbnail
+            image_loading:
+              attribute: lazy
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_external_url:
+          id: field_external_url
+          table: node__field_external_url
+          field: field_external_url
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_source:
+          id: field_source
+          table: node__field_source
+          field: field_source
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: ' - <em>{{ field_source }}:</em>'
+          element_label_colon: false
+          hide_empty: true
+        field_news_caption:
+          id: field_news_caption
+          table: node__field_news_caption
+          field: field_news_caption
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            strip_tags: true
+          element_label_colon: false
+        body:
+          id: body
+          table: node__body
+          field: body
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_file_upload:
+          id: field_file_upload
+          table: node__field_file_upload
+          field: field_file_upload
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<div align="right">View/Download File</div>'
+            make_link: true
+            path: '{{ field_file_upload }}'
+            target: _blank
+          element_label_colon: false
+          hide_empty: true
+          click_sort_column: fid
+          type: file_url_plain
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "{{ title }} {{ field_publication_date }}<br>\r\n{{ body }}\r\n<hr/>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          ui_name: ''
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          plugin_id: entity_link_edit
+          label: 'Edit News'
+          exclude: true
+          text: 'Edit News'
+        nothing_2:
+          id: nothing_2
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Add News'
+          exclude: true
+          alter:
+            text: 'Add News'
+            make_link: true
+            path: node/add/news
+        nothing_3:
+          id: nothing_3
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Edit View'
+          exclude: true
+          alter:
+            text: 'Edit View'
+            make_link: true
+            path: admin/structure/views/view/news/edit/default
+        contextual_links:
+          id: contextual_links
+          table: views
+          field: contextual_links
+          plugin_id: contextual_links
+          label: ''
+          element_label_colon: false
+          fields:
+            edit_node: edit_node
+            nothing_2: nothing_2
+            nothing_3: nothing_3
+            field_news_thumbnail: '0'
+            title: '0'
+            field_external_url: '0'
+            views_conditional: '0'
+            field_file_upload: '0'
+            field_source: '0'
+            field_publication_date: '0'
+            field_news_caption: '0'
+            nothing_1: '0'
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 6
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+      access:
+        type: perm
+      cache:
+        type: time
+        results_lifespan: '3600'
+        results_lifespan_custom: '0'
+        output_lifespan: '3600'
+        output_lifespan_custom: '0'
+      sorts:
+        field_publication_date_value:
+          id: field_publication_date_value
+          table: node__field_publication_date
+          field: field_publication_date_value
+          plugin_id: datetime
+          order: DESC
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            news: news
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+      style:
+        type: default
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          distinct: true
+      use_ajax: true
+      use_more_always: false
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          content:
+            value: '<p align="right";><a href="news" >View All News</a></p>'
+            format: full_html
+      display_extenders: {  }
+      style_plugin: default
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_external_url'
+        - 'config:field.storage.node.field_file_upload'
+        - 'config:field.storage.node.field_news_caption'
+        - 'config:field.storage.node.field_news_thumbnail'
+        - 'config:field.storage.node.field_publication_date'
+        - 'config:field.storage.node.field_source'
+  block_1:
+    id: block_1
+    display_title: 'News Block'
+    display_plugin: block
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_external_url'
+        - 'config:field.storage.node.field_file_upload'
+        - 'config:field.storage.node.field_news_caption'
+        - 'config:field.storage.node.field_news_thumbnail'
+        - 'config:field.storage.node.field_publication_date'
+        - 'config:field.storage.node.field_source'
+  feed_1:
+    id: feed_1
+    display_title: Feed
+    display_plugin: feed
+    position: 3
+    display_options:
+      pager:
+        type: some
+      style:
+        type: rss
+      row:
+        type: node_rss
+        options:
+          view_mode: rss
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      path: news/rss.xml
+      style_plugin: rss
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_external_url'
+        - 'config:field.storage.node.field_file_upload'
+        - 'config:field.storage.node.field_news_caption'
+        - 'config:field.storage.node.field_news_thumbnail'
+        - 'config:field.storage.node.field_publication_date'
+        - 'config:field.storage.node.field_source'

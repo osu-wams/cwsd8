@@ -1,0 +1,38 @@
+uuid: fef25118-c31c-4706-a4a4-6e135b2019fd
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: videobg
+label: VideoBG
+code: |-
+  const video = document.getElementById('video');
+  const pauseButton = document.getElementById('pause-button');
+
+  pauseButton.addEventListener('click', () => {
+    if (video.paused) {
+      video.play();
+      pauseButton.textContent = 'Pause';
+    } else {
+      video.pause();
+      pauseButton.textContent = 'Play';
+    }
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/16851
+contexts: {  }
+conditions_require_all: true

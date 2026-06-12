@@ -1,0 +1,32 @@
+uuid: d5022d08-e99d-4eee-81bd-3c95869d8241
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alumni_school_or_group
+    - node.type.alumni
+id: node.alumni.field_alumni_school_or_group
+field_name: field_alumni_school_or_group
+entity_type: node
+bundle: alumni
+label: 'Alumni School or Group'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      group: group
+    sort:
+      field: title
+      direction: ASC
+    membership_type: og_membership_type_default
+    behaviors:
+      views-select-list:
+        status: 1
+      og_behavior:
+        status: true
+field_type: entity_reference

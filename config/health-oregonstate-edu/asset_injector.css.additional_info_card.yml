@@ -1,0 +1,62 @@
+uuid: cfb0c2a5-fe5e-4acc-9896-5becaa85c8e9
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: additional_info_card
+label: 'Additional info card'
+code: |-
+  .additional-info-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; 
+    gap: 3rem;
+  }
+
+  .additional-info-card-item {
+    display: flex;
+    flex-direction: column;
+    max-width: 352px;
+    padding: 0 1.25rem 1.25rem;
+    border-radius: 0.5em;
+    background-color: white;
+    text-align: center;
+  }
+
+  .additional-info-card-header > *:first-child {
+    margin-block: 0.25em 0;
+  }
+
+  .additional-info-card-header > *:last-child {
+  	margin-block: 0 0.25em;
+  }
+
+  .additional-info-card-body :last-child {
+    text-align: start;
+    margin-block: 0 0.5em;
+  }
+
+  .additional-info-card-body h4 {
+    padding-top: 0.5em;
+    border-top: 1px solid rgb(200, 200, 200);  
+  }
+
+  .contact-button-container {
+    margin-top: auto;
+    text-align: center;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

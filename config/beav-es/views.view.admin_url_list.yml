@@ -6,6 +6,7 @@ dependencies:
     - user.role.authenticated
     - user.role.dx_administrator
   module:
+    - better_exposed_filters
     - rest
     - serialization
     - shurly
@@ -1231,6 +1232,7 @@ display:
           field: source
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: shurly_short_url
           label: 'Short URL'
           exclude: false
@@ -1275,7 +1277,7 @@ display:
           hide_alter_empty: true
           text: ''
           longshort: '0'
-          link: 0
+          link: 1
           ui_name: ''
         destination:
           id: destination
@@ -1430,156 +1432,6 @@ display:
           hide_alter_empty: true
           text: ''
           ui_name: ''
-        link_delete:
-          id: link_delete
-          table: shurly
-          field: link_delete
-          relationship: none
-          group_type: group
-          label: 'Deactivate URL'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: null
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-            unwanted_characters: ''
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          ui_name: ''
-          text: ''
-        link_reactivate:
-          id: link_reactivate
-          table: shurly
-          field: link_reactivate
-          relationship: none
-          group_type: group
-          label: 'Reactivate URL'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: null
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-            unwanted_characters: ''
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          ui_name: ''
-          text: ''
-        link_truedelete:
-          id: link_truedelete
-          table: shurly
-          field: link_truedelete
-          relationship: none
-          group_type: group
-          label: 'True Delete'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: null
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-            unwanted_characters: ''
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          ui_name: ''
-          text: ''
       pager:
         type: mini
         options:
@@ -1599,6 +1451,72 @@ display:
             items_per_page_options_all_label: '- All -'
             offset: false
             offset_label: Offset
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: false
+              auto_submit_sort_only: false
+              autosubmit_breakpoint: ''
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            pager:
+              plugin_id: default
+              advanced:
+                is_secondary: false
+            filter:
+              source:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  open_by_default: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+              destination:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  open_by_default: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+              uid:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+                  placeholder_text: ''
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  open_by_default: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: ''
       filters:
         source:
           id: source
@@ -1783,6 +1701,7 @@ display:
       defaults:
         use_ajax: false
         pager: false
+        exposed_form: false
         fields: false
         filters: false
         filter_groups: false
@@ -2288,156 +2207,6 @@ display:
           type_custom_false: ''
           not: false
           ui_name: ''
-        link_delete:
-          id: link_delete
-          table: shurly
-          field: link_delete
-          relationship: none
-          group_type: group
-          label: 'Deactivate URL'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: null
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-            unwanted_characters: ''
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          ui_name: ''
-          text: ''
-        link_reactivate:
-          id: link_reactivate
-          table: shurly
-          field: link_reactivate
-          relationship: none
-          group_type: group
-          label: 'Reactivate URL'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: null
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-            unwanted_characters: ''
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          ui_name: ''
-          text: ''
-        link_truedelete:
-          id: link_truedelete
-          table: shurly
-          field: link_truedelete
-          relationship: none
-          group_type: group
-          label: 'True Delete'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: null
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-            unwanted_characters: ''
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          ui_name: ''
-          text: ''
       sorts:
         created:
           id: created
@@ -2497,26 +2266,42 @@ display:
           field: custom
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: boolean
           operator: '='
-          value: '1'
+          value: All
           group: 1
-          exposed: false
+          exposed: true
           expose:
             operator_id: ''
-            label: ''
+            label: Custom
             description: ''
             use_operator: false
-            operator: ''
-            identifier: ''
+            operator: custom_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: custom
             required: false
             remember: false
             multiple: false
             remember_roles:
               authenticated: authenticated
-            operator_label: ''
-            limit_operators: false
-            available_operators: {  }
+              anonymous: '0'
+              content_authors: '0'
+              manage_content: '0'
+              alert_author: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              administrator: '0'
+              earl: '0'
+              dx_administrator: '0'
           is_grouped: false
           group_info:
             label: ''
@@ -3102,6 +2887,7 @@ display:
       displays:
         page: page
         default: '0'
+      export_filesystem: private
       use_batch: no_batch
       segment_size: '500'
       return_path: ''

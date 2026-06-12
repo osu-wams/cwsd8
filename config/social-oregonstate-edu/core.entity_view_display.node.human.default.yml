@@ -1,0 +1,51 @@
+uuid: b3b5318e-b71a-4a0f-b477-aa150cf42de7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.human.field_photo
+    - field.field.node.human.field_q_a
+    - field.field.node.human.field_quote
+    - node.type.human
+  module:
+    - entity_reference_revisions
+    - image
+    - user
+id: node.human.default
+targetEntityType: node
+bundle: human
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_photo:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: 1000x650_scale_crop
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_q_a:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_quote: true

@@ -1,0 +1,60 @@
+uuid: e1aedb0d-76d8-4068-94e8-6f2ddde981d2
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: award_content_type_injector
+label: 'Award Content Type Injector'
+code: |-
+  /*
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  	--Award Content Type--
+  	
+  	Award content type styling. Created 4/8/2026.
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  */
+
+  /*-----------------------------------------------------------------
+  	Degree List Styling
+  	
+  	Render Degrees as list items despite being <div>s
+    ---------------------------------------------------------------*/
+
+  	
+  /* Orange bullet styling for field__item divs */
+  main .field--name-field-engr-osa-degrees .field__item {
+    display: block !important;
+    position: relative; 
+    padding-left: 16px;
+    list-style-type: none !important;
+  }
+  /* Adds bullet icon */
+  main .field--name-field-engr-osa-degrees .field__item::before {
+    color:#423e3c;
+    content:"\f054 ";
+    padding-right: 8px;
+    display:inline-block;
+    font-family:"Font Awesome 6 Free","Font Awesome 5 Free";
+    font-weight:900;
+    letter-spacing:normal;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      engr_oregon_stater_awards: engr_oregon_stater_awards
+contexts: {  }
+conditions_require_all: true

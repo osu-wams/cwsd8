@@ -1,0 +1,43 @@
+uuid: 543c0d99-04fc-4fc9-9b61-b6917a84d89e
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: remove_link_icons
+label: 'Remove Link Icons'
+code: |+
+  // Wait for the document to be fully loaded
+  document.addEventListener('DOMContentLoaded', function() {
+      // Find all elements with class .link-purpose
+      var Linkpurpose = document.querySelectorAll('.link-purpose');
+
+      // Loop through each link-purpose element
+      Linkpurpose.forEach(function(link) {
+          // Get all child span elements
+          var childSpans = link.querySelectorAll('span');
+
+          // Remove each child span element
+          childSpans.forEach(function(span) {
+              span.remove();
+          });
+      });
+  });
+
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/node/131\r\n/people/*"
+contexts: {  }
+conditions_require_all: true

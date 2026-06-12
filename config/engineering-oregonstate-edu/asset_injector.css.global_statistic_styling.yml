@@ -1,0 +1,146 @@
+uuid: 3b85b3ba-b339-45e8-9571-354cd27f49a8
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_statistic_styling
+label: 'GLOBAL statistic styling (background, fonts, margin, and padding)'
+code: |-
+  /* ==========================================================================
+     Statistics styling
+     ========================================================================== */
+     
+     
+  /* Background, margin, text alignment */
+
+  .coe-statistics .views-field-nothing {
+  	background: #ccc;
+  	padding: 15px;
+  	text-align: center;
+  }
+
+  .coe-statistics .views-field-nothing p {
+  	margin-bottom: 0;
+  }
+
+  .coe-statistics .views-field-nothing .fa-7x {
+  	font-size: 4em;
+  }
+
+  /* Typography for h4 (likely deprecated by the description typography) */
+
+  .coe-statistics .views-field-nothing h4 {
+  	font-family: "Open Sans", sans-serif !important;
+  	font-size: 1.25rem;
+  	font-weight: 400;
+  }
+
+  /* Typography for description */
+
+  .coe-statistics .coe-stat-description {
+  	color: var(--bs-heading-color);
+  	font-family: "Open Sans", sans-serif !important;
+  	font-size: 1.25rem;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 120%;
+  	text-transform: none;
+  }
+
+  /* Typography for graph */
+
+  .coe-statistics .display-1 {
+  	font-family: "Open Sans", sans-serif !important;
+  	font-size: 3em;
+  	font-weight: 300;
+  	padding: 0;
+  }
+
+  .coe-statistics .display-2 {
+  	color: var(--bs-heading-color);
+  	font-family: Stratum2Web;
+  	font-size: 36px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 120%;
+  	text-transform: none;
+  }
+
+  /* Small font for large numbers: Use class "coe-small-stat" on the number node as a class to add this styling */
+
+  .coe-statistics .coe-small-stat.display-1 {
+  	font-size: 3.5em;
+  	padding: 20px 0;
+  }
+
+  .coe-statistics .views-field-nothing,
+  .coe-statistics .field-content,
+  .coe-statistics .statistic-view-block {
+  	height: 100%;
+  }
+
+  .coe-statistics.col-12:nth-child(even) .views-field-nothing {
+  	background: #ddd;
+  	clip-path: polygon(calc(100% - 55px) 0,100% 65px,100% 100%,0 100%,0 0);
+  }
+
+  /* ==========================================================================
+     Media Screen styling
+     ========================================================================== */
+     
+     
+  /* Remove padding and change font size */
+
+  @media (min-width: 992px) and (max-width: 1399px) {
+  	.coe-statistics:first-child,
+  	.coe-statistics + .coe-statistics {
+  		padding-left: 0 !important;
+  	}
+  	.coe-statistics:last-child {
+  		padding-right: 0 !important;
+  	}
+  	.coe-statistics .display-1 {
+  		font-size: 3em
+  	}
+  	
+  	.coe-statistics .coe-small-stat.display-1 {
+  		font-size: 2em;
+  	}
+  }
+
+  /* ==========================================================================
+     Dark Background Styles
+     ========================================================================== */
+     
+     
+  .osu-bg-page-alt-2 .coe-statistics .views-field-nothing {
+  	background: #333;
+  }
+
+  .osu-bg-page-alt-2 .coe-statistics .views-field-nothing .primary { /* icon */
+  	color: #fff;	
+  }
+
+  .osu-bg-page-alt-2 .coe-statistics.col-12:nth-child(even) .views-field-nothing {
+  	background: #555;
+  }
+
+  .osu-bg-page-alt-2 .coe-statistics .display-1
+  .osu-bg-page-alt-2 .coe-statistics .display-2{
+    text-shadow: none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

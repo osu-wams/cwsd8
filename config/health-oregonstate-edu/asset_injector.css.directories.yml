@@ -1,0 +1,48 @@
+uuid: 717980e2-405f-4c58-973b-7c2cec9bd521
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: directories
+label: Directories
+code: |-
+  .card-hide-li ::marker {
+  	content: none !important;
+  }
+
+  .card-hide-li ul {
+  	padding-left: 0 !important;
+  }
+
+
+  /*
+
+  #views-exposed-form-profile-directory-page {
+  	flex-direction:column !important;
+  }
+  */
+
+
+
+  .form--inline {
+  flex-direction: column;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/directory*\r\n/public-health/faculty\r\n"
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,44 @@
+uuid: e633a640-976d-4436-8d7c-84966d159780
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: header
+label: Header
+code: |-
+  /* Why are we pushing the header in? Messes with mobile pages */
+  #madrone-header-container {
+  	padding-left: 3rem !important;
+  	padding-right: 3rem !important;
+  }
+  #madrone-primary-menu-container {
+  	border-bottom: 1px solid #e9e5e4 !important;
+  }
+  #madrone-primary-menu-container a {
+  	font-size: 1.125rem !important;
+  }
+  #madrone-breadcrumb-container li {
+  	font-size: 1rem !important;
+  }
+  #block-madrone-breadcrumbs {
+  	padding-left: 4rem !important;
+  	padding-right: 4rem !important;
+  }
+  .breadcrumb {
+  	margin: 0 !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

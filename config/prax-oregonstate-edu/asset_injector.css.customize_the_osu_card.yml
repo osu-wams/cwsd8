@@ -1,0 +1,53 @@
+uuid: 45c5d1c6-ab87-498c-bca1-ba81050390e3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: customize_the_osu_card
+label: 'Prax Simple Card - Customize the OSU Card'
+code: |+
+  .block--type-osu-card .osu-shadow {
+  	box-shadow:none!important;
+  }
+
+  .block--type-osu-card .osu-border-osu-bottom {
+  	border:none!important;
+  }
+
+  .block--type-osu-card img {
+  	border-radius:0!important;
+  	margin-bottom:1rem;
+  }
+
+  .block--type-osu-card strong {
+  	color:#003B5C;
+  }
+
+  .osu-media-card {
+  	background:none!important;
+  	box-shadow:none!important;
+  }
+
+  .block-field-blockblock-contentosu-cardbody {
+  	padding:0px!important;
+  }
+
+  .block--type-osu-card p {
+  	line-height:1.2;
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,194 @@
+uuid: c18bfca5-5cb4-4379-8869-ee685ffcc2c1
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: core_initiative_card
+label: core-initiative-card
+code: |
+  .custom-card-core {
+    width: 90%;
+    height: 550px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+    padding: 30px;
+
+  }
+
+
+  .custom-card-core-image {
+      width: 100%;
+      height: 300px;
+      overflow: hidden; /* Prevents content overflow */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .custom-card-core-image drupal-media img {
+      width: 100%;
+     height:300px;
+      object-fit: cover; /* Ensures proper image cropping */
+  }
+
+  h2{
+  	margin-bottom:0;
+  }
+
+
+  .custom-card-core-text {
+    
+    color: #555;
+    margin: 0 10px 30px 20px;
+    
+  }
+
+  .custom-card-core-button {
+    padding: 10px 20px;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top:40px;
+    margin-bottom:20px;
+  }
+
+  .custom-card-core-button:hover {
+    background-color: #d62839;
+  }
+
+  .btn.osu-btn-primary.color-active {
+    padding: 10px 20px;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  /* ========== Responsive Design ========== */
+
+  /* Large screens (max width 1200px) */
+  @media (max-width: 1200px) {
+    .custom-card-core {
+      width: 95%;
+      height: auto;
+      padding: 25px;
+    }
+    
+    .custom-card-core-image {
+      height: 280px;
+    }
+    
+    .custom-card-core-image drupal-media img {
+      height: 280px;
+    }
+  }
+
+  /* Tablets (max width 992px) */
+  @media (max-width: 992px) {
+    .custom-card-core {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+      padding: 20px;
+    }
+    
+    .custom-card-core-image {
+      height: 250px;
+    }
+    
+    .custom-card-core-image drupal-media img {
+      height: 250px;
+    }
+    
+    h2 {
+      font-size: 22px;
+    }
+  }
+
+  /* Mobile devices (max width 768px) */
+  @media (max-width: 768px) {
+    .custom-card-core {
+      padding: 15px;
+      text-align: center;
+    }
+
+    .custom-card-core-image {
+      height: 200px;
+    }
+
+    .custom-card-core-image drupal-media img {
+      height: 200px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    .custom-card-core-text {
+      margin: 10px 0;
+      font-size: 16px;
+    }
+
+    .custom-card-core-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+
+  /* Small mobile devices (max width 576px) */
+  @media (max-width: 576px) {
+    .custom-card-core {
+      padding: 10px;
+    }
+
+    .custom-card-core-image {
+      height: 180px;
+    }
+
+    .custom-card-core-image drupal-media img {
+      height: 180px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+
+    .custom-card-core-text {
+      font-size: 14px;
+    }
+
+    .custom-card-core-button {
+      font-size: 12px;
+      padding: 6px 14px;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    pages: /node/66/
+contexts: {  }
+conditions_require_all: true

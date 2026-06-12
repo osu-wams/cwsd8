@@ -1,0 +1,197 @@
+uuid: 379c49b6-600b-4db8-a7a2-2ceff4d70916
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_award_category
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_award_type
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_award_year
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_biography
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_department
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_first_name
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_graduation_year
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_image
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_last_name
+    - field.field.node.engr_oregon_stater_awards.field_engr_osa_nominating_dept
+    - node.type.engr_oregon_stater_awards
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      74da6abb-b236-4273-91ba-09b51d80a9d2:
+        default_value: 'Oregon Stater'
+        only_if_empty: true
+        uuid: 74da6abb-b236-4273-91ba-09b51d80a9d2
+        plugin: default_value
+        source: type
+        weight: 0
+        label: 'Set value or default value'
+label: Awards
+id: awards
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: engr_oregon_stater_awards
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 46
+custom_sources:
+  award_image:
+    value: 'Award Image'
+    label: 'Award Image'
+    machine_name: award_image
+    type: csv
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  award_year:
+    value: 'Award Year'
+    label: 'Award Year'
+    machine_name: award_year
+    type: csv
+  last_name:
+    value: 'Last Name'
+    label: 'Last Name'
+    machine_name: last_name
+    type: csv
+  first_name:
+    value: 'First Name'
+    label: 'First Name'
+    machine_name: first_name
+    type: csv
+  graduation_year:
+    value: 'Graduation Year'
+    label: 'Graduation Year'
+    machine_name: graduation_year
+    type: csv
+  award_category:
+    value: 'Award Category'
+    label: 'Award Category'
+    machine_name: award_category
+    type: csv
+  short_bio:
+    value: 'Short Bio'
+    label: 'Short Bio'
+    machine_name: short_bio
+    type: csv
+  department:
+    value: Department
+    label: Department
+    machine_name: department
+    type: csv
+  nominating_department:
+    value: 'Nominating Department'
+    label: 'Nominating Department'
+    machine_name: nominating_department
+    type: csv
+  award_type:
+    value: 'Award Type'
+    label: 'Award Type'
+    machine_name: award_type
+    type: blank
+  type:
+    value: Type
+    label: Type
+    machine_name: type
+    type: csv
+mappings:
+  -
+    target: field_engr_osa_image
+    map:
+      target_id: award_image
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_engr_osa_award_year
+    map:
+      value: award_year
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_engr_osa_last_name
+    map:
+      value: last_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_engr_osa_first_name
+    map:
+      value: first_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_engr_osa_graduation_year
+    map:
+      value: graduation_year
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_engr_osa_award_category
+    map:
+      target_id: award_category
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_engr_osa_biography
+    map:
+      value: short_bio
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_engr_osa_department
+    map:
+      value: department
+    settings:
+      language: null
+  -
+    target: field_engr_osa_nominating_dept
+    map:
+      value: nominating_department
+    settings:
+      language: null
+  -
+    target: field_engr_osa_award_type
+    map:
+      target_id: type
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false

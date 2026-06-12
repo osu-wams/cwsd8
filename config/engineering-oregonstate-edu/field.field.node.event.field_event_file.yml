@@ -1,0 +1,29 @@
+uuid: f3cf1d64-0258-4284-b8a6-5d62ca322404
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_event_file
+    - media.type.document
+    - node.type.event
+id: node.event.field_event_file
+field_name: field_event_file
+entity_type: node
+bundle: event
+label: 'Event PDF, Slides, or File'
+description: 'Add PDFs, slidedecks, powerpoints, or other files to this event.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      document: document
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

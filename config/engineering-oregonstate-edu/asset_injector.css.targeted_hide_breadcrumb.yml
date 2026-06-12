@@ -1,0 +1,28 @@
+uuid: 43e081f1-8014-4dc0-8114-ecb318f15c8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: targeted_hide_breadcrumb
+label: 'Give breadcrumb hidden (div)'
+code: |
+  /* Hides Breadcrumb (Exclusive to Give page) */
+
+  .madrone-breadcrumb .block-system-breadcrumb-block {
+  	display:none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/give\r\n/node/40661"
+contexts: {  }
+conditions_require_all: true

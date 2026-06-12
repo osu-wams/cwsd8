@@ -1,0 +1,84 @@
+uuid: 8fda0ea4-b23b-4eac-b8cd-85dcab997569
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: project_node
+label: 'Spring Creek Project Node'
+code: |
+  #block-madrone-page-title {
+  	    position: absolute;
+      top: 400px;
+      left: 50px;
+      z-index:5;
+  }
+
+  #block-madrone-page-title .block__content {
+    background: rgba(0,0,0,.8);
+    padding: 20px;	
+  }
+  #block-madrone-page-title h1 {
+  	font-size: 26px!important;
+      color: #fff;
+      margin: 0;
+  }
+
+
+
+
+
+  .node--type-individual-projects .field--name-field-hero-photo img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+  }
+
+
+
+  .node--type-individual-projects .block-field-blocknodeindividual-projectsbody, .node--type-individual-projects .field--name-field-more-information, .node--type-individual-projects .block-field-blocknodeindividual-projectsfield-media, .node--type-individual-projects .block-field-blocknodeindividual-projectsfield-third-content-section, .node--type-individual-projects .block-field-blocknodeindividual-projectsfield-more-project-media {
+  	max-width:1320px;
+  	margin:20px auto;
+  	padding:0 20px;
+  }
+
+
+  .node--type-individual-projects .block-field-blocknodeindividual-projectsfield-media .field--name-field-media {
+  	display:flex;
+  	flex-wrap:wrap;
+  }
+
+  .node--type-individual-projects .block-field-blocknodeindividual-projectsfield-media .field--name-field-media .field__item {
+  flex: 0 1 25%;
+      padding: 5px;
+  }
+
+
+
+
+  .node--type-individual-projects .block-field-blocknodeindividual-projectsfield-more-project-media .field--name-field-more-project-media {
+  	display:flex;
+  	flex-wrap:wrap;
+  }
+
+  .node--type-individual-projects .block-field-blocknodeindividual-projectsfield-more-project-media .field--name-field-more-project-media .field__item {
+  flex: 0 1 25%;
+      padding: 5px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      individual_projects: individual_projects
+contexts: {  }
+conditions_require_all: true

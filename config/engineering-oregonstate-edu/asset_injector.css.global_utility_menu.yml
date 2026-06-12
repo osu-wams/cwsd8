@@ -1,0 +1,207 @@
+uuid: c4feec12-1981-4a08-abc5-35a286cde941
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_utility_menu
+label: 'GLOBAL utility menu (menu margin, padding, fonts, and resolution with custom media queries)'
+code: |
+  /* ==========================================================================
+     Sets the utility menu in the right spot of nav menu
+     ========================================================================== */
+     
+     
+  /* Change utility menu margin, fonts and resolution*/
+
+  #block-globalsecondarymenu
+  {
+    width: initial !important;
+    font-size: 12px;
+    float: right !important;
+    position: relative;
+    top:-70px;
+    left: -26em;
+  }
+
+  /* Menu link font size */
+
+  #block-globalsecondarymenu a {
+  font-size: 12px;
+  }
+
+  /* ==========================================================================
+     Media Screen Stylings
+     ========================================================================== */
+     
+     
+  /* Secondary menu Media queries */
+
+  @media (max-width: 1450px) {
+    #block-globalsecondarymenu {
+    width: initial !important;
+    float: right !important;
+    top: 0;
+    left: 0;
+    }
+    #block-globalsecondarymenu a {
+      font-size: 12px;
+    }
+  }
+
+  @media (max-width: 990px) {
+  #block-globalsecondarymenu {
+    width: initial !important;
+  }
+  #block-globalsecondarymenu a {
+      font-size: 12px;
+    }
+  }
+
+  /* Main menu custom resolutions */
+
+  #block-madrone-main-menu
+  {
+    width:initial !important; 
+  }
+  .block-superfish{
+    width:initial !important;   
+  }
+
+  @media (max-width: 910px) {
+    .main-group-school-menu {
+      line-height:2.4;
+    }
+    .main-group-school-menu a,
+    #block-madrone-main-menu a,
+    #block-globalsecondarymenu a {
+      font-size: 12px;
+    }
+  }
+
+  /* Secondary menu Media queries for max-wdith 809px */
+
+  @media (max-width: 809px) {
+    #block-globalsecondarymenu #superfish-global-secondary-menu-accordion,
+    #block-globalsecondarymenu #superfish-global-secondary-menu-accordion ul.sf-menu li.sf-depth-1 > ul {
+    	background: #fff;
+    	z-index: 99;
+    }
+    #block-globalsecondarymenu #superfish-global-secondary-menu-accordion {
+    	position: absolute;
+    	width: 400px;
+    	right: 0;
+    	top: 5px;
+    }
+    #block-globalsecondarymenu a {
+    	padding: .5rem 1rem !important;
+    }
+    
+    #block-globalsecondarymenu #superfish-global-secondary-menu-toggle {
+    	margin-left: 0;
+    }
+    
+    /** Force expanding of superfish children. In this case the Units **/
+    #superfish-global-secondary-menu-accordion .menuparent + .sf-hidden {
+      background: #fff !important;
+      clip: auto !important;
+      height: auto !important;
+      width: inherit !important;
+    }
+    .madrone-primary-menu > .block-superfish ul.sf-menu li.sf-depth-1.menuparent > a::after {
+    	display: none;
+    }
+  }
+
+  /* Menu behavior for smallest screen size */
+
+  @media (max-width: 480px) {
+    #block-globalsecondarymenu ul.sf-menu.sf-horizontal li a.sf-depth-1 {
+      padding: 1rem .5rem;
+    }
+    
+    .madrone-primary-menu > .block-superfish .sf-accordion-toggle > a{
+      font-size: 12px;
+      font-weight: normal;
+    }
+    .madrone-primary-menu > .block-superfish .sf-accordion-toggle > a::before {
+      letter-spacing: .2rem;
+      font-size: 18px;
+    }
+    #block-globalsecondarymenu #superfish-global-secondary-menu-accordion {
+      width: 100vw;
+    }
+    
+    /** Hide close menu **/
+    .madrone-mobile-menu-close {
+    	position: absolute;
+    	right: 1000px;
+    }
+
+  }
+
+  /* ==========================================================================
+     Superfish Media Screen Stylings
+     ========================================================================== */
+     
+     
+  /* Superfish menu media queries for min-width 810px */
+
+  @media (min-width: 810px) {
+  	
+  	#superfish-global-secondary-menu li.sf-depth-1.menuparent > ul {
+  		top: 3.8rem;
+  	}
+  	#superfish-global-secondary-menu .sf-depth-2 > a {
+  		padding: .4rem 1rem !important;
+  	}
+  	
+  	/** Avoid first paint render SF menu **/
+  	#superfish-global-secondary-menu .menuparent > ul {
+  		opacity: 0;
+  	}
+  	#superfish-global-secondary-menu .menuparent.sfHover > ul {
+  		opacity: 1;
+  	}
+  	
+  }
+
+  /* Superfish menu media queries for min-width 1451px */
+
+  @media (min-width: 1451px) {
+  	 #superfish-global-secondary-menu {
+  		background: #e9e5e4;
+  		border-radius: 10px;
+  	}
+  	#superfish-global-secondary-menu li.sf-depth-1:first-child > a {
+  		border-radius: 10px 0 0 10px;
+  	}
+  		#superfish-global-secondary-menu li.sf-depth-1:last-child > a {
+  		border-radius: 0 10px 10px 0;
+  	}
+  	#superfish-global-secondary-menu .sf-depth-1 > a {
+  		padding: .5rem 1rem !important;
+
+  	}
+  	#superfish-global-secondary-menu .sf-depth-1 > a:focus {
+  		 box-shadow: 0 0 0 1px #000
+  	}
+  	
+  	#superfish-global-secondary-menu li.sf-depth-1.menuparent > ul {
+  		top: 2.7rem;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

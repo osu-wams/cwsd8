@@ -1,0 +1,45 @@
+uuid: 4f2c6d3e-a760-4308-993b-2f0e6fdd497a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: vertically_integrated_projects_test_page
+label: 'VIP cards (shadows, padding)'
+code: |-
+  /*===========================================
+  Styling for bootstrap cards on VIP page
+  ===========================================*/
+
+
+  /* Adds shadow to Bootstrap Cards */
+
+  .osu-shadow{
+  	box-shadow: 0 2px 9px hsla(0,0%,0%,0.25) !important;
+  }
+
+  /* Overrides p-5 padding */
+
+  .p-5 {
+      padding: 1.5rem !important;
+  }
+
+  /* Link font size override */
+
+  .bigger-font.block__content a {
+  	font-size: 19px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/41636
+contexts: {  }
+conditions_require_all: true

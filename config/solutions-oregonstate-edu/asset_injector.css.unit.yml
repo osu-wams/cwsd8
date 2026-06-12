@@ -1,0 +1,43 @@
+uuid: 39a64c36-d30d-4b49-9c3e-e346c3cc218e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: unit
+label: 'Unit Blocks'
+code: |
+  .image-zoom {
+    transition: transform .2s; /* Animation */
+  }
+  .unit-block:hover .image-zoom {
+  	transform: scale(1.3); /* (130% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
+  .link-stretched{
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    z-index: 2;
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none !important;
+    position: absolute;
+  }
+  .unit-block{
+    position:relative;
+  }
+
+  .unit-block a{
+    text-decoration: none;
+  }
+
+  .unit-block a:active:not(.button,#osu-logo-wide,#osu-logo-crest) {
+    background-color: #21252900!important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

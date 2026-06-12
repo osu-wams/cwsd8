@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.story.field_osu_story_caption
     - field.field.node.story.field_osu_story_cover_image
     - field.field.node.story.field_osu_story_external_url
+    - field.field.node.story.field_osu_story_realtime_seo
     - field.field.node.story.field_tags
     - field.field.node.story.layout_builder__layout
     - node.type.story
@@ -371,6 +372,16 @@ third_party_settings:
                     class: null
                   min_height:
                     class: 0
+          8d672620-1b09-47d1-a613-7587287b92a3:
+            uuid: 8d672620-1b09-47d1-a613-7587287b92a3
+            region: blb_region_col_1
+            configuration:
+              id: 'extra_field_block:node:story:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: -7
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_1'
@@ -383,7 +394,7 @@ third_party_settings:
               background:
                 background_type: color
               background_color:
-                class: osu-bg-page-alt-1
+                class: _none
               background_media:
                 image:
                   media_id: null
@@ -395,7 +406,7 @@ third_party_settings:
                   background_attachment: not_fixed
                   background_size: cover
               text_color:
-                class: null
+                class: _none
               padding:
                 class: p-2
               padding_left:
@@ -465,6 +476,8 @@ third_party_settings:
                 class: null
               min_height:
                 class: 0
+              box_shadow:
+                class: null
           container_wrapper_bg_color_class: ''
           container_wrapper_bg_media: null
           container: container
@@ -475,11 +488,13 @@ third_party_settings:
           regions_attributes:
             blb_region_col_1: null
           breakpoints:
+            extra_wide_desktop: blb_col_12
             desktop: blb_col_12
             tablet: blb_col_12
             mobile: blb_col_12
           layout_regions_classes:
             blb_region_col_1:
+              - col-xxl-12
               - col-lg-12
               - col-md-12
               - col-12
@@ -958,6 +973,11 @@ content:
     third_party_settings: {  }
     weight: 101
     region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: blb_region_col_1
   field_meta_tags:
     type: metatag_empty_formatter
     label: above
@@ -1000,7 +1020,9 @@ content:
     weight: 100
     region: content
 hidden:
+  entitygroupfield: true
   field_osu_organizations: true
   field_osu_story_caption: true
+  field_osu_story_realtime_seo: true
   layout_builder__layout: true
   toc_js: true

@@ -1,0 +1,36 @@
+uuid: 8cdc2c17-7643-4913-9964-540b95aa0e71
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: innovators
+label: Innovators
+code: |
+  drupal-media {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  drupal-media img {
+      width: 300px;
+      height: 300px ;
+      object-fit: cover ;
+      display: block;
+      margin: 0 auto;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/21/
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,75 @@
+uuid: f43ee8bc-34bc-425f-8f90-01146b23fe74
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: chatbot_styles
+label: 'Chatbot styles'
+code: |-
+  .chat-widget {
+      bottom: 12px;
+      position: fixed;
+      right: 12px;
+      z-index: 1000;
+  }
+  .chat-button {
+      background-color: #d73f09;
+      border: 2px solid transparent;
+      border-radius: 50%;
+      box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.25);
+      color: #fff;
+      font-size: 2rem;
+      height: 65px;
+      transition: background-color 0.2s ease-in, border .3s ease-in;
+      width: 65px;
+  }
+  .chat-button:focus {
+      outline: 2px solid #fff;
+      outline-offset: 2px;
+      /* Ensures high contrast focus */
+    }
+    .chat-button:hover,
+    .chat-button:focus-visible {
+        background-color: #212529;
+        border: 2px solid #d73f09;
+    /* Darker shade for hover/focus */
+  }
+  .chat-container {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      bottom: 72px;
+      box-shadow:  0px 2px 3px rgba(0, 0, 0, 0.25);
+      height: 400px;
+      inset-inline-start: unset;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      /*transition: display 1s ease-in;*/
+      /*transition-behavior: allow-discrete;*/
+      width: 300px;
+
+      /*@starting-style {*/
+      /*    display: none;*/
+      /*}*/
+  }
+  .chat-container iframe {
+      border: none;
+      height: 100%;
+      width: 100%;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

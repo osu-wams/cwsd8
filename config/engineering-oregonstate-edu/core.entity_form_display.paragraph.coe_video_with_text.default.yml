@@ -1,0 +1,56 @@
+uuid: 8d7a0cd1-0f03-4605-970c-78538bba6cb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.coe_video_with_text.field_coe_video_text_body
+    - field.field.paragraph.coe_video_with_text.field_coe_video_text_header
+    - field.field.paragraph.coe_video_with_text.field_coe_video_text_link
+    - field.field.paragraph.coe_video_with_text.field_coe_video_text_video
+    - paragraphs.paragraphs_type.coe_video_with_text
+  module:
+    - link
+    - media_library
+    - text
+id: paragraph.coe_video_with_text.default
+targetEntityType: paragraph
+bundle: coe_video_with_text
+mode: default
+content:
+  field_coe_video_text_body:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_coe_video_text_header:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_coe_video_text_link:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_coe_video_text_video:
+    type: media_library_widget
+    weight: 0
+    region: content
+    settings:
+      media_types:
+        - remote_video
+        - kaltura
+        - local_video
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

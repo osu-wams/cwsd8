@@ -1,0 +1,47 @@
+uuid: 196aa137-4dd8-49d6-af47-250d58dcdef5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.lab.body
+    - field.field.node.lab.field_agency_affiliation
+    - field.field.node.lab.field_graduate_students
+    - field.field.node.lab.field_lab_link
+    - field.field.node.lab.field_lab_preview_media
+    - field.field.node.lab.field_lab_staff
+    - field.field.node.lab.field_principal_investigators
+    - field.field.node.lab.field_research_areas
+    - field.field.node.lab.layout_builder__layout
+    - node.type.lab
+  module:
+    - text
+    - user
+id: node.lab.teaser
+targetEntityType: node
+bundle: lab
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_agency_affiliation: true
+  field_graduate_students: true
+  field_lab_link: true
+  field_lab_preview_media: true
+  field_lab_staff: true
+  field_principal_investigators: true
+  field_research_areas: true
+  layout_builder__layout: true

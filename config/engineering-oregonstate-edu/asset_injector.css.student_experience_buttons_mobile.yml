@@ -1,0 +1,36 @@
+uuid: aee18814-3159-472f-a8b8-acd223ae13f3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: student_experience_buttons_mobile
+label: 'Student Experience mobile (button, title)'
+code: |-
+  /* Adds margin to top of button on mobile screens */
+
+  @media (max-width: 600px) {
+  	.btn.osu-btn-primary {
+  		margin-top: 12px !important;
+  	}
+  }
+
+  /* Image title font size override */
+
+  .field--name-field-content-with-image-title  {
+  	font-size: 40px !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/33931\r\n/academics/student-experience\r\n/node/2676"
+contexts: {  }
+conditions_require_all: true

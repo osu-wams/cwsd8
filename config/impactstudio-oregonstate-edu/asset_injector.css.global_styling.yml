@@ -1,0 +1,53 @@
+uuid: d9909d50-edc1-4bc9-9085-141124cfab16
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_styling
+label: 'Global styling'
+code: |+
+  .hr-style-1, .hr {
+    border: 0;
+    height: 5px;
+    background-color: black;
+    margin: 15px auto;
+    width: 80%; /* Use percentage for responsiveness */
+    max-width: 800px; /* Restricts the maximum width */
+  }
+
+  /* Adjust for smaller screens */
+  @media (max-width: 600px) {
+    .hr {
+      height: 3px; /* Reduce thickness */
+      width: 60%; /* Shrink width */
+    }
+
+    .heading-main{
+  		font-size:36px;
+  	}
+  	.heading-sub{
+  		font-size:30px;
+  	}
+  	.popup{
+  	 width: 70%!important;
+  	}
+  	
+
+  	
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /about-us
+contexts: {  }
+conditions_require_all: true

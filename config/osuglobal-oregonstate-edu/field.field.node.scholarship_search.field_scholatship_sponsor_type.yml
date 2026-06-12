@@ -1,0 +1,30 @@
+uuid: e5bbff96-14e1-43df-b7c3-25d5f9741bad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_scholatship_sponsor_type
+    - node.type.scholarship_search
+    - taxonomy.vocabulary.scholarship_sponsor_type
+id: node.scholarship_search.field_scholatship_sponsor_type
+field_name: field_scholatship_sponsor_type
+entity_type: node
+bundle: scholarship_search
+label: 'Scholarship Sponsor Type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      scholarship_sponsor_type: scholarship_sponsor_type
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

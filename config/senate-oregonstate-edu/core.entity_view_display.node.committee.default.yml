@@ -18,10 +18,99 @@ dependencies:
     - field.field.node.committee.field_committee_vision
     - node.type.committee
   module:
+    - field_group
     - file
+    - layout_builder
     - link
     - text
     - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_committee_information:
+      children:
+        - group_members
+        - group_standing_rules
+        - group_resource_materials
+      label: 'Committee Information'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        direction: horizontal
+        width_breakpoint: 640
+    group_members:
+      children:
+        - body
+      label: Members
+      parent_name: group_committee_information
+      region: content
+      weight: 16
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+    group_standing_rules:
+      children:
+        - field_committee_standing_rules
+        - field_committee_guidelines
+      label: 'Standing Rules'
+      parent_name: group_committee_information
+      region: content
+      weight: 17
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+    group_vision_mission_goals_and_v:
+      children:
+        - field_committee_vision
+        - field_committee_mission
+        - field_committee_goals
+        - field_committee_values
+      label: 'Vision, Mission, Goals, and Values'
+      parent_name: ''
+      region: hidden
+      weight: 7
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+    group_resource_materials:
+      children:
+        - field_committee_external_links
+        - field_committee_documents
+      label: 'Resource Materials'
+      parent_name: group_committee_information
+      region: content
+      weight: 19
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
 id: node.committee.default
 targetEntityType: node
 bundle: committee
@@ -32,7 +121,12 @@ content:
     label: hidden
     settings: {  }
     third_party_settings: {  }
-    weight: 0
+    weight: 1
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
     region: content
   field_committee_documents:
     type: file_default
@@ -40,7 +134,7 @@ content:
     settings:
       use_description_as_link_text: true
     third_party_settings: {  }
-    weight: 9
+    weight: 7
     region: content
   field_committee_external_links:
     type: link
@@ -52,58 +146,34 @@ content:
       rel: ''
       target: ''
     third_party_settings: {  }
-    weight: 8
-    region: content
-  field_committee_goals:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 5
+    weight: 6
     region: content
   field_committee_guidelines:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 2
-    region: content
-  field_committee_mission:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 4
+    weight: 3
     region: content
   field_committee_standing_rules:
     type: text_default
     label: above
     settings: {  }
     third_party_settings: {  }
-    weight: 1
-    region: content
-  field_committee_values:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 6
-    region: content
-  field_committee_vision:
-    type: text_default
-    label: above
-    settings: {  }
-    third_party_settings: {  }
-    weight: 3
+    weight: 2
     region: content
   links:
     settings: {  }
     third_party_settings: {  }
-    weight: 100
+    weight: 1
     region: content
 hidden:
   entitygroupfield: true
   field_committee_ad_hoc: true
   field_committee_ad_hoc_status: true
   field_committee_category: true
+  field_committee_goals: true
   field_committee_membership: true
+  field_committee_mission: true
+  field_committee_values: true
+  field_committee_vision: true

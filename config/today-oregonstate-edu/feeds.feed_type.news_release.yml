@@ -1,0 +1,89 @@
+uuid: 1761ccb8-b041-4441-8c77-2f1968da9d2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.new_release.feeds_item
+    - node.type.new_release
+  module:
+    - node
+label: 'News Release'
+id: news_release
+description: ''
+help: ''
+import_period: 3600
+import_period_per_feed: false
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 60
+parser: syndication
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: new_release
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  news_release_date:
+    label: 'News Release Date'
+    machine_name: news_release_date
+    value: pubDate
+    raw: false
+    inner: false
+    type: xml
+  news_release_url:
+    label: 'News Release url'
+    machine_name: news_release_url
+    value: link
+    raw: false
+    inner: false
+    type: xml
+  news_release_photo:
+    label: 'News Release photo'
+    machine_name: news_release_photo
+    value: enclosure/@url
+    raw: false
+    inner: false
+    type: xml
+  news_release_title:
+    label: 'News Release title'
+    machine_name: news_release_title
+    value: title
+    raw: false
+    inner: false
+    type: xml
+  '':
+    value: ''
+    label: ''
+    machine_name: ''
+    type: blank
+  news_release_id:
+    label: 'News Release Id'
+    machine_name: news_release_id
+    value: guid
+    raw: false
+    inner: false
+    type: xml
+mappings:
+  -
+    target: feeds_item
+    map:
+      url: url
+      guid: guid
+    settings: {  }
+    unique: {  }

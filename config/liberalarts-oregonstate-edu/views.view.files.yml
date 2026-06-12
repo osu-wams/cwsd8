@@ -1,4 +1,4 @@
-uuid: 20b49405-c290-476c-aa60-1c42c8430b52
+uuid: 15898e19-1315-43f0-9526-75e770749e38
 langcode: en
 status: true
 dependencies:
@@ -6,7 +6,7 @@ dependencies:
     - file
     - user
 _core:
-  default_config_hash: NYJWABHsIFg-cU-Qya8fiMuQSM4rirBEfPFqkgRtsKA
+  default_config_hash: ja1IXL3-eSj1lJFQKxyY6-b0yfBsQzvngMbe0J2F22w
 id: files
 label: Files
 module: file
@@ -23,6 +23,59 @@ display:
     display_options:
       title: Files
       fields:
+        file_bulk_form:
+          id: file_bulk_form
+          table: file_managed
+          field: file_bulk_form
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: file
+          plugin_id: bulk_form
+          label: 'Bulk update'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          action_title: Action
+          include_exclude: exclude
+          selected_actions: {  }
         fid:
           id: fid
           table: file_managed
@@ -463,7 +516,7 @@ display:
           decimal: .
           separator: ','
           format_plural: true
-          format_plural_string: !!binary QGNvdW50IHBsYWNlA0Bjb3VudCBwbGFjZXM=
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
           prefix: ''
           suffix: ''
         operations:
@@ -561,7 +614,23 @@ display:
           plugin_id: text_custom
           empty: true
           content: 'No files available.'
-      sorts: {  }
+      sorts:
+        created:
+          id: created
+          table: file_managed
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: file
+          entity_field: created
+          plugin_id: date
+          order: ASC
+          expose:
+            label: Created
+            field_identifier: created
+          exposed: true
+          granularity: second
       arguments: {  }
       filters:
         filename:
@@ -791,16 +860,28 @@ display:
           required: true
       group_by: true
       show_admin_links: true
-      header: {  }
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: 'Displaying @start - @end of @total'
       footer: {  }
       display_extenders: {  }
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - user.permissions
       tags: {  }
   page_1:
@@ -809,9 +890,27 @@ display:
     display_plugin: page
     position: 1
     display_options:
+      sorts:
+        created:
+          id: created
+          table: file_managed
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: file
+          entity_field: created
+          plugin_id: date
+          order: ASC
+          expose:
+            label: Created
+            field_identifier: created
+          exposed: true
+          granularity: minute
       defaults:
         pager: true
         relationships: false
+        sorts: false
       relationships:
         fid:
           id: fid
@@ -822,7 +921,10 @@ display:
           admin_label: 'File usage'
           required: false
       display_description: ''
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       path: admin/content/files
       menu:
         type: tab
@@ -832,12 +934,14 @@ display:
         menu_name: admin
         context: ''
     cache_metadata:
-      max-age: -1
+      max-age: 0
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - user.permissions
       tags: {  }
   page_2:
@@ -1195,5 +1299,7 @@ display:
         - 'languages:language_interface'
         - url
         - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
         - user.permissions
       tags: {  }

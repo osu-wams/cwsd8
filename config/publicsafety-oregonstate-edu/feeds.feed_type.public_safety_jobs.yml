@@ -1,0 +1,192 @@
+uuid: 650f4345-3b74-4559-8a1f-c73dd33264f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_jobs.body
+    - field.field.node.osu_jobs.field_osu_job_appointment_type
+    - field.field.node.osu_jobs.field_osu_job_classification_tit
+    - field.field.node.osu_jobs.field_osu_job_closing
+    - field.field.node.osu_jobs.field_osu_job_full_consideration
+    - field.field.node.osu_jobs.field_osu_job_link
+    - field.field.node.osu_jobs.field_osu_job_title
+    - node.type.osu_jobs
+  module:
+    - feeds_ex
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      7c7d748a-89be-4784-9c93-028aa57e1e43:
+        find_replace:
+          - "&lt;|<\r"
+          - '&gt;|>'
+        separator: '|'
+        case_sensitive: false
+        word_boundaries: false
+        whole: false
+        uuid: 7c7d748a-89be-4784-9c93-028aa57e1e43
+        plugin: find_replace_multiline
+        source: job_description
+        weight: 0
+        label: 'Find replace (multiline)'
+label: 'Public Safety Jobs'
+id: public_safety_jobs
+description: 'Import Job postings from jobs.oregonstate.edu atom feed'
+help: ''
+import_period: 86400
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: querypathxml
+parser_configuration:
+  context:
+    value: entry
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+  use_tidy: false
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: osu_jobs
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  '':
+    value: ''
+    label: ''
+    machine_name: ''
+    type: blank
+  job_link:
+    label: 'Job Link'
+    machine_name: job_link
+    value: link
+    attribute: href
+    raw: false
+    inner: false
+    type: querypathxml
+  job_posting_title:
+    label: 'Job Posting Title'
+    machine_name: job_posting_title
+    value: title
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  classification_title:
+    label: 'Classification Title'
+    machine_name: classification_title
+    value: classification_title
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  appointment_type:
+    label: 'Appointment Type'
+    machine_name: appointment_type
+    value: appointment_type
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  closing_date:
+    label: 'Closing Date'
+    machine_name: closing_date
+    value: closing_date
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  full_consideration:
+    label: 'Full Consideration'
+    machine_name: full_consideration
+    value: full_consideration
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  job_description:
+    label: 'Job Description'
+    machine_name: job_description
+    value: content
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+mappings:
+  -
+    target: title
+    map:
+      value: job_link
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_osu_job_title
+    map:
+      value: job_posting_title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_osu_job_classification_tit
+    map:
+      value: classification_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_osu_job_link
+    map:
+      uri: job_link
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_osu_job_appointment_type
+    map:
+      value: appointment_type
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_osu_job_closing
+    map:
+      value: closing_date
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_osu_job_full_consideration
+    map:
+      value: full_consideration
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: body
+    map:
+      value: job_description
+      summary: ''
+    settings:
+      language: ''
+      format: full_html

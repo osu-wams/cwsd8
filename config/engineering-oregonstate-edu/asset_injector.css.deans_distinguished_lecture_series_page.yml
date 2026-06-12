@@ -1,0 +1,695 @@
+uuid: 5a31e7cb-7ed1-4d61-96cd-5b8958bd823f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: deans_distinguished_lecture_series_page
+label: 'Deans distinguished lecture series page (NEEDS TO BE SPLIT UP)'
+code: |
+  .p-v3 {
+  	color: #212529;
+
+  	/* Body Small */
+  	font-family: "Open Sans";
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 300;
+  	line-height: 130%; /* 18.2px */
+  }
+
+  .osu-border-width-top-5{
+  	border-width: 10px !important;
+  }
+
+
+  /*H1 Styling*/
+
+  h1{
+  	color: #FFF;
+
+  	/* H1 */
+  	font-family: Stratum2web;
+  	font-size: 96px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 96%; /* 92.16px */
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 56px !important;
+
+    }
+  }
+
+
+  @media only screen and (max-width: 600px) {
+    h2 {
+      font-size: 44px !important;
+    }
+  }
+
+  /*H2 Styling*/
+  h2{
+  	font-family: Stratum2web;
+  	font-size: 64px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 83.2px */
+  	color: #000;
+  }
+
+
+  @media only screen and (max-width: 991px) {
+    h2 {
+      font-size: 48px !important;
+      line-height: 120% !important;
+    }
+  }
+
+
+
+  /*H3 Styling*/
+  h3{
+  	color: #212529;
+
+  	/* H3 */
+  	font-family: Stratum2web;
+  	font-size: 36px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 46.8px */
+  }
+
+  /*H4 Styling*/
+  h4{
+  	color: #212529 !important;
+
+  	/* H4 */
+  	font-family: "Open Sans";
+  	font-size: 22px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 130%; /* 28.6px */
+  	letter-spacing: 1.1px;
+  	text-transform: uppercase;
+  }
+
+  /*H5 styling*/
+  h5{
+  	color: #212529 !important;
+
+  	/* H5 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 130%; /* 26px */
+  	text-transform: uppercase;
+  }
+
+  /*Link Text with arrow (Not a button)*/
+  .RSVP-Link{
+  	text-transform: uppercase;
+  	color: #d73f09 !important;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+  	background-position: 100%;
+  	background-repeat: no-repeat;
+  	background-size: 17px;
+  	padding-right: 27px;
+  	font-family: Stratum2Web;
+  	text-decoration: none;
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 500 !important;  
+  	transition: 0.1s ease;
+  	border-bottom: none;
+  }
+
+  .RSVP-Link-small{
+  	color: #D73F09;
+
+  /* Text Link/Small */
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: normal;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+  	background-position: 100%;
+  	background-repeat: no-repeat;
+  	background-size: 17px;
+  	padding-right: 27px;
+  	font-family: Stratum2Web;
+  	text-decoration: none;  
+  	transition: 0.1s ease;
+  }
+
+  .Yellow-arrow-link{
+  	color: #D73F09;
+
+  /* Text Link/Small */
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: normal;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="33" viewBox="0 0 41 33" fill="none"><path d="M2 16.5H33.5" stroke="%23FFB500" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M24.5 30L38 16.5L24.5 3" stroke="%23FFB500" stroke-width="4" stroke-linecap="square"/></svg>') !important;
+  	background-position: 100%;
+  	background-repeat: no-repeat;
+  	background-size: 17px;
+  	padding-right: 27px;
+  	font-family: Stratum2Web;
+  	text-decoration: none;  
+  	transition: 0.1s ease;
+  }
+
+  .RSVP-Link:is(:hover, :focus, :active),
+  .RSVP-Link-small:is(:hover, :focus, :active),
+  .Yellow-arrow-link:is(:hover, :focus, :active) {
+  	padding-right: 40px;
+  	transition: 0.1s ease;
+  	border-bottom: none;
+  }
+
+  /*.linkpurpose-default-svg{*/
+  /*	visibility: hidden !important;*/
+  /*}*/
+
+  /** RSVP link in dark background **/
+  .osu-bg-page-alt-2 .RSVP-Link {
+    color: #fff !important;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="33" viewBox="0 0 41 33" fill="none"><path d="M2 16.5H33.5" stroke="%23FFFFFF" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M24.5 30L38 16.5L24.5 3" stroke="%23FFFFFF" stroke-width="4" stroke-linecap="square"/></svg>') !important;
+  }
+
+  .osu-bg-page-alt-2 .RSVP-Link.yellow-arrow {
+  	background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="33" viewBox="0 0 41 33" fill="none"><path d="M2 16.5H33.5" stroke="%23FFB500" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M24.5 30L38 16.5L24.5 3" stroke="%23FFB500" stroke-width="4" stroke-linecap="square"/></svg>') !important;
+  	color: #FFB500 !important;
+  }
+
+  .blue-bg .RSVP-Link {
+    color: #FFB500 !important;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="33" viewBox="0 0 41 33" fill="none"><path d="M2 16.5H33.5" stroke="%23FFB500" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M24.5 30L38 16.5L24.5 3" stroke="%23FFB500" stroke-width="4" stroke-linecap="square"/></svg>') !important;
+  }
+
+  /*Code of the yellow button*/
+  .osu-btn-luminance {
+      border-radius: 0;  
+      width: 100%;       
+  }
+
+
+
+
+
+  /*Code for Button on the RSVP box on the right*/
+  .osu-btn-orange-2{
+  	background: #D73F09;
+    color: #FFF;
+    border-color: white !important;
+    width: 100%;
+    font-weight: 600 !important;
+    letter-spacing: 1.6px;
+    height: 60px;
+    border-radius: 0;
+
+  }
+
+  .osu-btn-orange-2:hover{
+  	font-weight: 600px !important;
+  	background: black;
+  	color: white;
+  	letter-spacing: 1.6px;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .orange-box {
+      margin-top: 30px !important;
+
+    }
+  }
+
+
+  @media only screen and (min-width: 605px) {
+    .orange-box {
+      margin-left: 25% !important;
+
+    }
+  }
+
+  .placeholder-image{
+  	width: 580px !important;
+  }
+
+  hr{
+  	border-top: 3px solid #000000 !important;
+  }
+
+
+  /*Card grey border*/
+  .grey-border{
+  	border-radius: 5px;
+  	border: 1px solid;
+  	border-color: #E9ECEF !important; 
+  	background: #FFF;
+  	box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.08);
+  }
+
+
+  /*Align Youtube iframe to the right*/
+  .video-wrapper iframe{
+  	text-align: right;
+  	
+  }
+
+  .EDI-story-title{
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: normal;
+  	text-transform: capitalize;
+  }
+
+  .Readmore-link{
+  	display: inline-block;
+  	text-decoration: none;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 40px;
+    color: #d73f09;
+    font-family: "Stratum2Web",serif;
+    text-transform: uppercase;
+  }
+
+
+  .EDI-card img{
+  	
+  	height: 300px !important;
+  	
+  }
+
+  .EDI-card{
+  	height: 700px !important;
+  }
+
+  .EDI-card-tex{
+  	padding: 10px !important;
+  }
+
+
+  .card-title{
+  	padding-top: 10px !important;
+  }
+
+
+  .card-body{
+  	padding: 15px !important;
+  }
+
+
+
+  @media only screen and (max-width: 605px) {
+    .block--type-icon-link-card-block {
+      padding-top: 15px !important;
+    }
+  }
+
+
+  .mobile-text-padding{
+  	padding-right: 48px !important;
+  }
+
+  @media only screen and (max-width: 605px) {
+    .mobile-text-padding {
+      padding-right: 0 !important;
+    }
+  }
+
+  @media only screen and (max-width: 605px) {
+    .mobile-icon-padding {
+      padding-top: 0 !important;
+    }
+  }
+
+  @media only screen and (max-width: 605px) {
+    #iframe {
+      padding-top: 48px !important;
+    }
+  }
+
+  .media-oembed-content {
+  	width: 100%;
+  }
+
+  @media only screen and (max-width: 605px) {
+    .mobile-img-padding {
+      padding-left: 5% !important;
+    }
+  }
+
+  @media only screen and (max-width: 605px) {
+    .mobile-top-padding {
+      padding-top: 25px !important;
+    }
+  }
+
+  .event-card-height{
+  	height: 600px !important;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .event-card-height {
+      height: 650px !important;
+    }
+  }
+
+  @media only screen and (max-width: 576px) {
+  .hero-image{
+  	height: 250px;
+  }
+  }
+
+  .past-event-card{
+  	position: relative;
+  }
+
+  .blue-background{
+  	background-color: #003B5C !important;
+  }
+
+  li::marker {
+    color: #D73F09 !important;
+  }
+
+  @media only screen and (max-width: 500px) {
+  .mobile-background-image{
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2024-06/hero_bg_mobile.svg) !important; 
+  }
+  }
+
+  /*==============================================
+  								DDL SECTION
+  ================================================*/
+  .layout-content {
+  	background-color: #FFF !important;
+  }
+
+  .container-fluid:has(.madrone-breadcrumb) { 
+    background-color: #FFF !important;
+  }
+
+  /* Hide Unpublished Background*/
+  article.node--unpublished {
+  	background-color: #FFF;
+  }
+
+  /* Background Color Seafoam */
+  .background-color-seafoam {
+      background: rgba(184, 221, 225, 0.3);
+  }
+
+  /* Background Color Seafoam Lighter Opacity */
+  .background-color-seafoam-20 {
+      background-image: url(https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/2024-12/ddl_pastlectures_desktop.svg);
+  }
+
+  /* Header 2 Styling */
+  h2.header-text {
+      color: var(--Primary-Beaver-Orange, #D73F09);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: 'Stratum2Web';
+      font-size: 64px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 130%;
+  }
+
+  /* Header 3 Styling Orange */
+  h3.header-text-orange {
+  	  color: #D73F09;
+      font-family: Stratum2Web;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 130%;
+      margin-top: -2px;
+      margin-bottom: 15px;
+  }
+
+  /* Bold Text styling for year */
+  strong.bold-text-year {
+      color: var(--Primary-Paddletail-Black, #000);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: "Open Sans";
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 130%;
+  }
+
+  /* Bold Thin styling for name underneath */
+  strong.bold-thin-name {
+      color: var(--Primary-Paddletail-Black, #000);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: "Open Sans";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 130%;
+  }
+
+  /* Researcher description lighter font weight */
+  p.researcher {
+      color: var(--Primary-Paddletail-Black, #000);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: "Open Sans";
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 130%;
+  }
+
+  /* Explore Event Libraries Button*/
+  a.explore-event-libraries {
+  		/*TEXT STYLING INSIDE OF BUTTON*/
+  		color: var(--Primary-Paddletail-Black, #000);
+      text-align: center;
+      font-family: "Open Sans";
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      
+  		padding-top: 10px;
+      padding-bottom: 10px;
+      margin-top: 15px;
+
+  		/*BUTTON STYLING*/
+      border-radius: 0px;
+      border: 2px solid var(--Primary-Paddletail-Black, #000);
+      background: var(--Primary-Bucktooth-White, #FFF);
+  }
+
+  a.explore-event-libraries:hover {
+  	color: var(--bs-btn-hover-color);
+    background-color: #000000;
+    border-color: #000000;
+  }
+
+  /*Plus Pattern Background*/
+  .plus-pattern-background{
+      position: absolute;
+      transform: scale(0.94);
+      margin-right: 129px;
+      margin-left: -253px;
+      margin-top: -298px;
+  }
+
+  h6.past-lectures-title {
+      margin-bottom: 10px;
+  }
+
+  @media screen and (max-width: 767px) {
+  	.img-padding-mobile {
+  		margin-top: 50px;
+  	}
+  	
+  	/*Mobile Pattern, so that the pattern stretches to the bottom of the screen*/ 
+  	.background-color-seafoam-20 {
+  		background-image: url(https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/2024-12/ddl_pastlectures_mobile.svg);
+  	}
+  }
+
+  /*==============================================
+  								Past Clean Water Events Section
+  ================================================*/
+  .arrow-link {
+  		font-family: Stratum2Web;
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #D73F09;
+      display: inline-block;
+      text-decoration: none !important;
+      background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+      background-position: 100%;
+      background-repeat: no-repeat;
+      background-size: 20px;
+      padding-right: 25px;
+      transition: 0.2s ease;
+      border-bottom: none;
+  }
+
+  .arrow-link:hover {
+  	padding-right: 40px;
+  	transition: 0.1s ease;
+  }
+
+  .arrow-link:active {
+  	background-color: transparent !important;
+  }
+
+  /*==============================================
+  	Equity, Diversity, & Inclusion STORY CARD Typography
+  ================================================*/
+
+  .new-story-title{
+  	color:  #000;
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600 !important;
+  	line-height: normal;
+  	padding: 30px !important;
+  }
+
+  .new-story-title{
+  	display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    overflow: hidden !important;
+  	
+  }
+
+  .story-body{
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: normal;
+  	padding: 0 30px 30px 30px !important;
+  	margin-bottom: 45px;
+
+  }
+
+  /* Read more link */
+  .read-more-link a {
+  	font-family: Stratum2Web;
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: normal;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	color: #D73F09;
+  	text-decoration: none !important;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 25px;
+    margin-right: 10px;
+    margin-top: 18px;
+    transition: 0.2s ease;
+    border-bottom: none;
+  }
+
+  .read-more-link {
+  	position: absolute;
+  	left: 30px;
+  	bottom: 40px;
+  }
+
+  /* Orange Arrow Links Hover State */
+  .read-more-link a:hover {
+  	padding-right: 35px;
+  	margin-right: 0px;
+  	border-bottom: none;
+  }
+
+  /* Orange Arrow Links Active State */
+  .read-more-link a:focus,
+  .read-more-link a:active {
+  	background-color: transparent !important;
+  	color: #BE3706 !important;
+  	padding-right: 35px !important;
+  	border-bottom: none !important;
+  }
+
+  .yellow-link{
+  	color: #FFB500;
+  	text-decoration: underline;
+  	text-decoration-color: #FFB500 !important;
+  	text-decoration-thickness: 1.5px !important;
+  	background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .yellow-link:hover,
+  .yellow-link:active{
+  	color: #FFB500 !important;
+  	text-decoration: underline !important;
+  	text-decoration-color:#FFB500 !important;
+  	text-decoration-thickness: 3px !important;
+  	background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .orange-link{
+  	color: #D73F09 !important;
+  	text-decoration: underline;
+  	text-decoration-color:#D73F09 !important;
+  	text-decoration-thickness: 1.5px !important;
+  	background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .orange-link:hover,
+  .orange-link:active{
+  	color: #D73F09 !important;
+  	text-decoration: underline !important;
+  	text-decoration-color:#D73F09 !important;
+  	text-decoration-thickness: 3px !important;
+  	background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .new-story-card-img img {
+      width: 417px;
+      border-radius: 5px 5px 0 0 !important;
+      height: 250px;
+      object-fit: cover;
+  }
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47156\r\n/node/43176\r\n/node/43221 \r\n/node/43226\r\n/node/43236\r\n/node/43346\r\n/node/43451\r\n/node/43251\r\n/node/43236\r\n/node/43551\r\n/node/43586\r\n/node/45021\r\n/node/45051\r\n/node/45051\r\n/node/45106\r\n/node/46836\r\n/node/46846\r\n/node/38806\r\n/node/47726\r\n/node/43471"
+contexts: {  }
+conditions_require_all: true

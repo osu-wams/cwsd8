@@ -1,0 +1,111 @@
+uuid: d49f97c8-9fd2-4585-b01b-6719f341cfcd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: zbr_order_form
+label: 'ZBR Order Form'
+code: |-
+  * {
+    box-sizing: border-box;
+  }
+  .column-group{
+  float:left;
+  }
+  .column{
+    float: left;
+    border-radius: 25px;
+    border: 8px solid black;
+    padding: 20px; 
+    width: 200px;
+    /*height: 150px;*/
+  }
+  .column p{
+  text-align:center;
+  font-size: 90%;
+  }
+  .numbering{
+      font-size:1.2em;
+      font-weight:bold;
+  }
+  /* Create two equal columns that floats next to each other */
+  @media(min-width:1100px){
+      .zebrafish-order{
+      height:25em;
+  }
+  div.img-container{
+      min-height:115px;
+  }
+  .column-group{
+  width:2%;
+  height:100%;
+  }
+  .column {
+    width: 16%;
+    padding: 3%;
+    /*height:30em;*/
+    height:100%;
+    margin-right:2px;
+    margin-left:8px;
+    /*height: 300px; /* Should be removed. Only for demonstration */
+  }
+  i.fa-arrow-circle-o-right{
+  line-height:23em;
+  vertical-align:middle;
+  }
+  i.fa-arrow-circle-o-down{
+  	display:none;
+      }
+  }
+  @media(max-width:1099px){
+  .zebrafish-order{
+  height:2000px;
+  }
+  .column {
+    width: 100%;
+    padding: 10px;
+    min-height:18em;
+    margin-bottom:10px;
+    /*height: 300px; /* Should be removed. Only for demonstration */
+  }
+  .column-group{
+  padding-left:48%;
+  padding-bottom: 8px;
+  }
+  div.img-container img{
+      margin-right: auto;
+      margin-left: auto;
+      display: block;
+  }
+  p{
+  max-width:50%;
+  margin-right: auto;
+  margin-left: auto;
+  }
+
+  i.fa-arrow-circle-o-right{
+  	display:none;
+      }
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/811
+contexts: {  }
+conditions_require_all: true

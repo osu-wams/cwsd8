@@ -1,0 +1,42 @@
+uuid: 0f45fd05-f7d6-4dba-86e4-db78634d289d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: rsvp_block_formatting
+label: 'RSVP Block Formatting'
+code: |
+  document.addEventListener('DOMContentLoaded', function(){
+    const block = document.querySelector('.block--type-rsvp-block');
+    if (!block) return;
+    
+    const anchor = block.querySelector('a');
+    if (!anchor) return; 
+    
+    const href = anchor.getAttribute('href');
+    
+    anchor.className = 'btn osu-btn-primary rsvp-button';
+    
+    if (!href || href.trim() === '') {
+      anchor.classList.add('rsvp-button--disabled');
+      anchor.removeAttribute('href');     
+    }
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/45161
+contexts: {  }
+conditions_require_all: true

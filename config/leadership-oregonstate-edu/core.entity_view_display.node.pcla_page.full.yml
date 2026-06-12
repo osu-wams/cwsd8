@@ -1,0 +1,79 @@
+uuid: e803222d-112c-45e8-ab98-5e2ce172166f
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.pcla_page.body
+    - field.field.node.pcla_page.field_language
+    - field.field.node.pcla_page.layout_builder__layout
+    - node.type.pcla_page
+  module:
+    - layout_builder
+    - layout_discovery
+    - options
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          21ed2171-560f-445b-966e-8a182d277434:
+            uuid: 21ed2171-560f-445b-966e-8a182d277434
+            region: content
+            configuration:
+              id: 'extra_field_block:node:pcla_page:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          4f90d814-172d-4d6d-b7ba-21a5e296a115:
+            uuid: 4f90d814-172d-4d6d-b7ba-21a5e296a115
+            region: content
+            configuration:
+              id: 'field_block:node:pcla_page:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+id: node.pcla_page.full
+targetEntityType: node
+bundle: pcla_page
+mode: full
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_language:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  layout_builder__layout: true

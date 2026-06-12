@@ -1,0 +1,23 @@
+uuid: 405ee266-bf97-4d1b-b036-d2cf768e1ffb
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.job
+  module:
+    - node
+id: jobs_url
+label: 'Jobs URL'
+type: 'canonical_entities:node'
+pattern: '/postdocs/open-positions/[node:nid]-[node:title]'
+selection_criteria:
+  0e380e7b-0f47-4af4-a139-23ea57ab55ee:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      job: job
+selection_logic: and
+weight: -5
+relationships: {  }

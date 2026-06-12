@@ -1,0 +1,29 @@
+uuid: 7acb5b8d-53c1-4546-9202-e8eaca29f47f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_campus
+    - node.type.program
+    - taxonomy.vocabulary.osu_campuses
+id: node.program.field_program_campus
+field_name: field_program_campus
+entity_type: node
+bundle: program
+label: Campus
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      osu_campuses: osu_campuses
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: colleges
+field_type: entity_reference

@@ -1,0 +1,142 @@
+uuid: 675c64c0-b6e2-4f51-b0db-3456f3014a54
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: academics_sidebars_and_tabs_osu_details_tab_dropdowns
+label: 'Academics Sidebars and Tabs (osu details tab, dropdowns)'
+code: |-
+  const breadcrumb = document.querySelector("nav > .breadcrumb"); // Get breadcrumb container
+  const pages = window.location.pathname.split("/"); // Parse URL path at seperater
+  pages.forEach((page, ind) => { // Iterate over URL paths
+  	const nthFromLast = pages.length - ind;
+  	if (page === "accreditation") { // If page URL is accreditation, set nth-child text in breadcrumb to accreditation
+  		if (nthFromLast > 1) {
+  			const textElement = breadcrumb.querySelector(`:nth-last-child(${nthFromLast})`);
+  			textElement.firstElementChild.textContent = "Accreditation";
+  		} else {
+  			breadcrumb.lastElementChild.textContent = "Accreditation";
+  		}
+  	}
+  	else if (page === "undergraduate") { // If page URL is undergraduate, set nth-child text in breadcrumb to undergraduate
+  		if (nthFromLast > 1) {
+  			const textElement = breadcrumb.querySelector(`:nth-last-child(${nthFromLast})`);
+  			textElement.firstElementChild.textContent = "Undergraduate";
+  		} else {
+  			breadcrumb.lastElementChild.textContent = "Undergraduate";
+  		}
+  	}
+  	else if (page === "graduate") { // If page URL is graduate, set nth-child text in breadcrumb to graduate
+  		if (nthFromLast > 1) {
+  			const textElement = breadcrumb.querySelector(`:nth-last-child(${nthFromLast})`);
+  			textElement.firstElementChild.textContent = "Graduate";
+  		} else {
+  			breadcrumb.lastElementChild.textContent = "Graduate";
+  		}
+  	}
+  });
+
+  const degree = document.querySelector(".degree-mobile-toggle");
+  const nextSteps = document.querySelector(".nextSteps-mobile-toggle");
+  const helpfulLinks = document.querySelector(".helpfulLinks-mobile-toggle");
+  const getInTouch = document.querySelector(".getInTouch-mobile-toggle");
+  const engagement = document.querySelector(".engagement-mobile-toggle");
+  const relatedPrograms = document.querySelector(".relatedPrograms-mobile-toggle");
+
+  const mobileToggle = (obj, classname) => {
+    obj.classList.toggle("active");
+    
+    const content = document.getElementsByClassName(classname);
+    Array.from(content).forEach((e) => {
+      if (e.style.maxHeight) {
+        e.style.maxHeight = null;
+      } else {
+        e.style.maxHeight = e.scrollHeight + "px";
+      }
+    });
+    const handleResize = () => {
+  	  Array.from(content).forEach((e) => {
+        if (e.style.maxHeight) {
+  	      e.style.maxHeight = e.scrollHeight + "px";
+  	    } else {
+  	      e.style.maxHeight = null;
+  	    }
+  	  });
+    }
+    window.addEventListener("resize", handleResize);
+  }
+
+  const defaultOpen = (classname) => {
+    const content = document.getElementsByClassName(classname);
+     Array.from(content).forEach((e) => {
+      e.style.maxHeight = e.scrollHeight + "px";
+    });
+  }
+
+  if (degree && degree.classList.contains('active')) {
+  	defaultOpen('program-details-hidden-content');
+  }
+  if (nextSteps && nextSteps.classList.contains('active')) {
+  	defaultOpen('nextSteps-hidden-content');
+  }
+  if (helpfulLinks && helpfulLinks.classList.contains('active')) {
+  	defaultOpen('helpfulLinks-hidden-content');
+  }
+  degree && degree.addEventListener("click", function () {mobileToggle(this, 'program-details-hidden-content')});
+  nextSteps && nextSteps.addEventListener("click", function () {mobileToggle(this, 'nextSteps-hidden-content')});
+  helpfulLinks && helpfulLinks.addEventListener("click", function () {mobileToggle(this, 'helpfulLinks-hidden-content')});
+  getInTouch && getInTouch.addEventListener("click", function () {mobileToggle(this, 'getInTouch-hidden-content')});
+  engagement && engagement.addEventListener("click", function () {mobileToggle(this, 'engagement-hidden-content')});
+  relatedPrograms && relatedPrograms.addEventListener("click", function () {mobileToggle(this, 'relatedPrograms-hidden-content')});
+
+  window.addEventListener("resize", function() {
+  	const tabWrapper = document.querySelector(".tab-wrapper-paragraph__tabs");
+  	const tabContent = document.querySelector(".tab-wrapper-paragraph__tab-content--active");
+    if (tabWrapper && tabContent) {
+  		const allTabHeight = Array.from(document.getElementsByClassName("tab-wrapper-paragraph__tab"))
+            .reduce((accumulator, tab) => {
+            		const style = window.getComputedStyle(tab)
+            		return Math.ceil(tab.offsetHeight + parseInt(style.marginTop) + parseInt(style.marginBottom)) + accumulator;
+            	}, 0);
+  		tabContent.style.maxHeight = tabContent.scrollHeight + "px";
+  	  if (window.innerWidth > 768) {
+  	    const targetTabContentHeight = tabContent.scrollHeight;
+  	    // Check to ensure
+  	    // that the new height is not smaller than the total tab height.
+  	    if (allTabHeight > targetTabContentHeight) {
+  	      tabWrapper.style.height = allTabHeight + "px";
+  	    } else {
+  	      tabWrapper.style.height = tabContent.scrollHeight + "px";
+  	    }
+  	  } else {
+  	  	tabWrapper.style.height = null;
+  	  }
+    }
+  });
+  window.addEventListener("load", function() {
+  	const tabWrapper = document.querySelector(".tab-wrapper-paragraph__tabs");
+  	const tabContent = document.querySelector(".tab-wrapper-paragraph__tab-content--active");
+  	const activeTabHeight = document.querySelector(".tab-wrapper-paragraph__tab-content--active .tab-paragraph").offsetHeight + 20;
+    if (tabWrapper && tabContent) {
+    	if(tabWrapper.offsetHeight < activeTabHeight) { tabWrapper.style.height = activeTabHeight + "px"; }
+  		tabContent.style.maxHeight = activeTabHeight + "px";
+    }
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/academics/programs/*\r\n/discipline/*\r\n/test/academics-0\r\n/node/36"
+contexts: {  }
+conditions_require_all: true

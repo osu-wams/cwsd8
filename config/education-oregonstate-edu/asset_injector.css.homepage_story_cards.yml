@@ -1,0 +1,40 @@
+uuid: b866271d-3015-4e6f-a708-3fd60d6bae45
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: homepage_story_cards
+label: 'Homepage - Story Cards'
+code: |-
+  .story-cards .story__link::before {
+  	content: '';
+  	inset: 0;
+  	position: absolute;
+  }
+
+  .story-cards .more-link {
+  	text-align: center;
+  	margin-top: 2rem;
+  }
+
+  .story-cards .more-link a {
+      background-color: var(--bs-primary);
+      color: var(--bs-secondary);
+      border-radius: 1.5rem;
+      padding: 0.25rem 1.5rem;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

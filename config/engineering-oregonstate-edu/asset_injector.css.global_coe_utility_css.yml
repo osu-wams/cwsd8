@@ -1,0 +1,50 @@
+uuid: 13c4c14d-c952-4c0e-9fa0-f7ab1c6cb472
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_coe_utility_css
+label: 'Global COE Utility CSS text shadow, responsive table, mobile video'
+code: |+
+  /* ================================================
+  Mobile styling for iframes and blockquotes. Also controls responsive tables
+  =================================================== */
+
+  /** Accessible text shadow **/
+  .coe-text-shadow {
+  	text-shadow: 4px 3px 2px black;
+  }
+
+  /** Responsive table **/
+  .coe-responsive-table-wrapper {
+  	overflow-x: auto
+  }
+
+  @media (max-width: 540px) {
+  	blockquote {
+  		padding: 1rem;
+  	}
+  	
+  	/** Make iframe (aka youtube/kaltura videos) work well in mobile **/
+  	iframe {
+  		min-height: 200px;
+  	  height: auto;
+  	  max-width: 100%;
+    }
+  }
+
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

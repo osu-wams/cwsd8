@@ -1,0 +1,29 @@
+uuid: c72d385a-fa50-454f-8b9a-f8077812da78
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lesson_materials_media
+    - media.type.document
+    - node.type.curriculum
+id: node.curriculum.field_lesson_materials_media
+field_name: field_lesson_materials_media
+entity_type: node
+bundle: curriculum
+label: 'Lesson Materials Media'
+description: '<strong>Use this field going forward to upload lesson materials. You can upload either new files or access the media library. The other field called "Lesson Materials" is only kept for editing existing content. </strong>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      document: document
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

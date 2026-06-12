@@ -1,0 +1,61 @@
+uuid: 742fe926-8299-425d-b631-f2efae195ebf
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: background_overlay_bioengineering
+label: 'Background overlay bioengineering (background image overlays)'
+code: |
+  /* =========================================================================================================
+  Background image gradient overlays
+   ========================================================================================================= */
+
+
+  /*Node 39206 (Graduate Program Page) */
+  .photo-overlay-test {
+  	background-image: linear-gradient(rgb(119 116 139 / 90%),rgb(255 122 0 / 85%)),url(/sites/engineering.oregonstate.edu/files/2022-07/bioengineering-looking-at-tablet.jpg) !important;
+  	background-size: cover;
+  	background-position: center;
+  }
+
+  /*Node 39206 (Degree Page) */
+  .photo-overlay-test-2 {
+  	background-image: linear-gradient(rgb(55 34 26 / 80%),rgb(215 64 8 / 90%)),url(/sites/engineering.oregonstate.edu/files/2022-12/cbee-health-and-biotechnology.jpeg) !important;
+  	background-size: cover;
+  	background-position: center;
+  }
+
+  /*Node 39206 (Graduate Program Page) */
+  .photo-overlay-test-3 {
+  	background-image: linear-gradient(rgb(119 116 139 / 90%),rgb(255 122 0 / 85%)),url(/sites/engineering.oregonstate.edu/files/2022-07/bioengineering-showing-demonstration.jpg) !important;
+  	background-size: cover;
+  	background-position: center;
+  }
+
+  /*.osu-align-items-center.osu-min-h-500.layout.row.no-gutters.layout-builder__layout {*/
+  /*	background-image: linear-gradient(rgb(119 116 139 / 95%),rgb(255 122 0 / 80%)),url(/sites/engineering.oregonstate.edu/files/2022-07/bioengineering-looking-at-tablet.jpg) !important;*/
+  /*	background-size: cover;*/
+  /*	background-position: center;*/
+  /*}*/
+
+  .coe-top-gradient-50 {
+  	background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%);
+  	background-size: cover;
+  	background-position: center;
+  	
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/41801\r\n/node/41796\r\n/node/41781"
+contexts: {  }
+conditions_require_all: true

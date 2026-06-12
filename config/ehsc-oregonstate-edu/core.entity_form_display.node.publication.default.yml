@@ -1,0 +1,238 @@
+uuid: fbed6e0c-479c-4384-8d0d-082f0c5d1ae5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.publication.feeds_item
+    - field.field.node.publication.field_pub_abstract
+    - field.field.node.publication.field_pub_authors
+    - field.field.node.publication.field_pub_date_published
+    - field.field.node.publication.field_pub_doi
+    - field.field.node.publication.field_pub_funding_source
+    - field.field.node.publication.field_pub_in_press
+    - field.field.node.publication.field_pub_issn
+    - field.field.node.publication.field_pub_issue
+    - field.field.node.publication.field_pub_journal
+    - field.field.node.publication.field_pub_keywords
+    - field.field.node.publication.field_pub_pages
+    - field.field.node.publication.field_pub_pmcid
+    - field.field.node.publication.field_pub_pmid
+    - field.field.node.publication.field_pub_type
+    - field.field.node.publication.field_pub_volume
+    - field.field.node.publication.field_pub_year
+    - node.type.publication
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - datetime
+    - path
+    - text
+id: node.publication.default
+targetEntityType: node
+bundle: publication
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_pub_abstract:
+    type: text_textarea
+    weight: 139
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_authors:
+    type: entity_reference_autocomplete
+    weight: 140
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_date_published:
+    type: datetime_default
+    weight: 129
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_pub_doi:
+    type: string_textfield
+    weight: 133
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_funding_source:
+    type: entity_reference_autocomplete
+    weight: 141
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_in_press:
+    type: options_select
+    weight: 130
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_pub_issn:
+    type: string_textfield
+    weight: 136
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_issue:
+    type: string_textfield
+    weight: 135
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_journal:
+    type: string_textfield
+    weight: 126
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_keywords:
+    type: entity_reference_autocomplete
+    weight: 137
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_pages:
+    type: string_textfield
+    weight: 128
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_pmcid:
+    type: string_textfield
+    weight: 131
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_pmid:
+    type: string_textfield
+    weight: 132
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_type:
+    type: options_select
+    weight: 134
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_pub_volume:
+    type: string_textfield
+    weight: 127
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_pub_year:
+    type: number
+    weight: 138
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  feeds_item: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

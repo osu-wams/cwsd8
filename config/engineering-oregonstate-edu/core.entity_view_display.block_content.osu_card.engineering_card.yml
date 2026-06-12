@@ -1,0 +1,130 @@
+uuid: f2d2098d-a90c-4ec5-b508-b7dc126004c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.osu_card
+    - core.entity_view_mode.block_content.engineering_card
+    - field.field.block_content.osu_card.body
+    - field.field.block_content.osu_card.field_osu_card_image
+    - field.field.block_content.osu_card.field_osu_card_link
+  module:
+    - layout_builder
+    - layout_discovery
+    - link
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          2417860f-7324-4391-b957-f99ffd228ee0:
+            uuid: 2417860f-7324-4391-b957-f99ffd228ee0
+            region: content
+            configuration:
+              id: 'field_block:block_content:osu_card:field_osu_card_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: navigation_300_x_400_
+                  link: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          a1c5e80e-2aef-4244-8bf2-54a7f477c452:
+            uuid: a1c5e80e-2aef-4244-8bf2-54a7f477c452
+            region: content
+            configuration:
+              id: 'field_block:block_content:osu_card:field_osu_card_link'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: ''
+                  target: ''
+                third_party_settings: {  }
+            weight: 1
+            additional:
+              component_attributes:
+                block_attributes:
+                  id: ''
+                  class: ''
+                  style: ''
+                  data: ''
+                block_title_attributes:
+                  id: ''
+                  class: ''
+                  style: ''
+                  data: ''
+                block_content_attributes:
+                  id: ''
+                  class: h4
+                  style: ''
+                  data: ''
+          9899133a-7206-439e-9718-42f0458dca78:
+            uuid: 9899133a-7206-439e-9718-42f0458dca78
+            region: content
+            configuration:
+              id: 'field_block:block_content:osu_card:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+_core:
+  default_config_hash: tAhnVLXbIpnH8-mxqD4g9GiiMAYGs7_3H8Zy6aYJoq4
+id: block_content.osu_card.engineering_card
+targetEntityType: block_content
+bundle: osu_card
+mode: engineering_card
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_osu_card_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: navigation_300_x_400_
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_osu_card_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

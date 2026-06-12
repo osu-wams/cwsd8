@@ -1,0 +1,189 @@
+uuid: e0912550-fa78-4354-a1fc-9df390bfc18c
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.external_faculty_member.grad_water_faculty
+    - field.field.external_faculty_member.grad_water_faculty.field_gw_faculty_advisor
+    - field.field.external_faculty_member.grad_water_faculty.field_gw_faculty_committees
+    - field.field.external_faculty_member.grad_water_faculty.field_gw_faculty_department
+    - field.field.external_faculty_member.grad_water_faculty.field_gw_faculty_first_name
+    - field.field.external_faculty_member.grad_water_faculty.field_gw_faculty_last_name
+    - field.field.external_faculty_member.grad_water_faculty.field_gw_faculty_link_profile
+    - field.field.external_faculty_member.grad_water_faculty.field_gw_faculty_photo_url
+    - field.field.external_faculty_member.grad_water_faculty.field_gw_faculty_position
+  module:
+    - eck
+    - feeds_tamper
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      76c2c278-0603-4754-a8bb-b387543ee25f:
+        separator: ','
+        limit: null
+        uuid: 76c2c278-0603-4754-a8bb-b387543ee25f
+        plugin: explode
+        source: field_gw_faculty_committees
+        weight: 0
+        label: Explode
+      c0b7e739-0fa2-4ca1-8858-883e300649e5:
+        separator: ','
+        limit: null
+        uuid: c0b7e739-0fa2-4ca1-8858-883e300649e5
+        plugin: explode
+        source: field_gw_faculty_advisor
+        weight: 0
+        label: Explode
+label: 'Water resource faculty import'
+id: water_resource_faculty_import
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:external_faculty_member'
+processor_configuration:
+  values:
+    type: grad_water_faculty
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 31181
+custom_sources:
+  field_gw_faculty_first_name:
+    value: field_gw_faculty_first_name
+    label: field_gw_faculty_first_name
+    machine_name: field_gw_faculty_first_name
+    type: csv
+  field_gw_faculty_last_name:
+    value: field_gw_faculty_last_name
+    label: field_gw_faculty_last_name
+    machine_name: field_gw_faculty_last_name
+    type: csv
+  field_gw_faculty_position:
+    value: field_gw_faculty_position
+    label: field_gw_faculty_position
+    machine_name: field_gw_faculty_position
+    type: csv
+  field_gw_faculty_email:
+    value: field_gw_faculty_email
+    label: field_gw_faculty_email
+    machine_name: field_gw_faculty_email
+    type: csv
+  field_gw_faculty_department:
+    value: field_gw_faculty_department
+    label: field_gw_faculty_department
+    machine_name: field_gw_faculty_department
+    type: csv
+  field_gw_faculty_photo_url:
+    value: field_gw_faculty_photo_url
+    label: field_gw_faculty_photo_url
+    machine_name: field_gw_faculty_photo_url
+    type: csv
+  field_gw_faculty_link_profile:
+    value: field_gw_faculty_link_profile
+    label: field_gw_faculty_link_profile
+    machine_name: field_gw_faculty_link_profile
+    type: csv
+  field_gw_faculty_org:
+    value: field_gw_faculty_org
+    label: field_gw_faculty_org
+    machine_name: field_gw_faculty_org
+    type: csv
+  field_gw_faculty_research_areas:
+    value: field_gw_faculty_research_areas
+    label: field_gw_faculty_research_areas
+    machine_name: field_gw_faculty_research_areas
+    type: csv
+  field_gw_faculty_committees:
+    value: field_gw_faculty_committees
+    label: field_gw_faculty_committees
+    machine_name: field_gw_faculty_committees
+    type: csv
+  field_gw_faculty_advisor:
+    value: field_gw_faculty_advisor
+    label: field_gw_faculty_advisor
+    machine_name: field_gw_faculty_advisor
+    type: csv
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: csv
+mappings:
+  -
+    target: field_gw_faculty_first_name
+    map:
+      value: field_gw_faculty_first_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gw_faculty_last_name
+    map:
+      value: field_gw_faculty_last_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gw_faculty_position
+    map:
+      value: field_gw_faculty_position
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gw_faculty_department
+    map:
+      value: field_gw_faculty_department
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gw_faculty_photo_url
+    map:
+      value: field_gw_faculty_photo_url
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gw_faculty_link_profile
+    map:
+      uri: field_gw_faculty_link_profile
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_gw_faculty_committees
+    map:
+      value: field_gw_faculty_committees
+    settings:
+      language: null
+  -
+    target: field_gw_faculty_advisor
+    map:
+      value: field_gw_faculty_advisor
+    settings:
+      language: null
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }

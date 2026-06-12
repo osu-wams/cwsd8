@@ -1,0 +1,58 @@
+uuid: 5cec248b-931a-4556-85c5-9eb38f2a63fc
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: pagination_label_remove_page
+label: 'Pagination Label (Remove "Page")'
+code: |-
+  const pageNumber = document.querySelector(".Event-video-library-filters .pager__item.disabled .page-link");
+
+  pageNumber && (pageNumber.textContent = pageNumber.textContent.replace("Page ", ""));
+
+
+  const storiespageNumber = document.querySelector(".related-stories .pager__item.disabled .page-link");
+
+  storiespageNumber && (storiespageNumber.textContent = storiespageNumber.textContent.replace("Page ", ""));
+
+  // Drupal uses ajax to dynamically load content in pages. So, instead of loading JS on every page, it just 
+  // loads JSQ on initial loading. Which is why I am hooking into Drupal's AJAX System to update text everytime
+  // when Drupal is reloading the Sub pages.
+  // AI Seminars Page only.
+  (function ($, Drupal) {
+      // Function to replace pagination text
+      function replacePaginationText(context) {
+          const pageSpans = (context || document).querySelectorAll('.pager__items span.page-link');
+          pageSpans.forEach(span => {
+              if (span.textContent.includes('Page ')) {
+                  span.textContent = span.textContent.replace('Page ', '');
+              }
+          });
+      }
+      // Run immediately on script load (before Drupal behaviors)
+      replacePaginationText();
+      // Also register as Drupal behavior for AJAX updates
+      Drupal.behaviors.customPagination = {
+          attach: function (context, settings) {
+              replacePaginationText(context);
+          }
+      };
+  })(jQuery, Drupal);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/46831\r\n/node/47611\r\n/node/52391\r\n/node/53291\r\n/node/32766\r\n/node/32771\r\n/node/32786\r\n/node/32781\r\n/node/32776\r\n/all-stories\r\n/node/1256"
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,41 @@
+uuid: 0b2c962b-d9d2-4ca8-8760-a4e240b6bdbb
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: site_menu_cta
+label: 'Site Menu CTA'
+code: |-
+  #superfish-main > li:last-child {
+  	box-sizing: border-box;
+  	margin-left:auto !important;
+  }
+
+  #superfish-main > li:last-child a {
+  	color: #fff;
+  	background: #d73f09;
+    border-radius: 100px;
+    padding: 0.5em 1.8em;
+    margin: 0.5em;
+  }
+
+  #superfish-main > li:last-child a:hover, #superfish-main > li:last-child a:focus {
+  	background: #000;
+  	outline: 2px solid #d73f09;
+  	outline-offset: -2px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

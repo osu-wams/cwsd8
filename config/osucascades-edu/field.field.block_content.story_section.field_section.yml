@@ -1,0 +1,34 @@
+uuid: eac51ada-75ad-47c5-9b89-2bd2d4748411
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.story_section
+    - field.storage.block_content.field_section
+    - paragraphs.paragraphs_type.osu_accordion_item
+  module:
+    - entity_reference_revisions
+id: block_content.story_section.field_section
+field_name: field_section
+entity_type: block_content
+bundle: story_section
+label: Section
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      osu_accordion_item: osu_accordion_item
+    negate: 0
+    target_bundles_drag_drop:
+      osu_accordion_item:
+        weight: 3
+        enabled: true
+      osu_accordion_section:
+        weight: 4
+        enabled: false
+field_type: entity_reference_revisions

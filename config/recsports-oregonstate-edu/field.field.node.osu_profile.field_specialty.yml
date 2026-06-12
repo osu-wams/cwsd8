@@ -1,0 +1,29 @@
+uuid: dfad8226-2c4d-4d25-b555-77447a42f943
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_specialty
+    - node.type.osu_profile
+    - taxonomy.vocabulary.specialties
+id: node.osu_profile.field_specialty
+field_name: field_specialty
+entity_type: node
+bundle: osu_profile
+label: Specialty
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      specialties: specialties
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

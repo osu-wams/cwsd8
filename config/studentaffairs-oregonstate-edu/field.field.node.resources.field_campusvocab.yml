@@ -1,0 +1,29 @@
+uuid: c0543332-a9fa-4b1f-9912-c83604d94446
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_campusvocab
+    - node.type.resources
+    - taxonomy.vocabulary.campus_
+id: node.resources.field_campusvocab
+field_name: field_campusvocab
+entity_type: node
+bundle: resources
+label: 'Campus Location'
+description: "This is an additional campus taxonomy term that will not have icons, but it will be searchable.\r\n\r\n *Reminder: When selecting Multi Campus, select all Corvallis, Hatfield, and Cascades as well. (Don't change the icon for the campus location —multiple selections here is not necessary!)."
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      campus_: campus_
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

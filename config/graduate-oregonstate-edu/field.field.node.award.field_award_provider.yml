@@ -1,0 +1,29 @@
+uuid: 4d101fd9-98a3-43b1-844d-24ea84d25034
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_award_provider
+    - node.type.award
+    - taxonomy.vocabulary.award_providers
+id: node.award.field_award_provider
+field_name: field_award_provider
+entity_type: node
+bundle: award
+label: 'Award Provider'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      award_providers: award_providers
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,30 @@
+uuid: 65ebf451-88a5-4309-9932-6285fbe0ce3d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_expertise
+    - node.type.expert
+    - taxonomy.vocabulary.expertise
+id: node.expert.field_expertise
+field_name: field_expertise
+entity_type: node
+bundle: expert
+label: Expertise
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      expertise: expertise
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

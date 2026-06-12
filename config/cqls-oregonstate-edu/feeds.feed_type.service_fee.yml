@@ -1,0 +1,183 @@
+uuid: 4355ee56-0a70-4d23-a67b-bb3dd2edfc2e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.cqls_service_fee.field_cqls_category
+    - field.field.node.cqls_service_fee.field_cqls_description
+    - field.field.node.cqls_service_fee.field_cqls_external_fee_txt
+    - field.field.node.cqls_service_fee.field_cqls_internal_fee_txt
+    - field.field.node.cqls_service_fee.field_cqls_service
+    - field.field.node.cqls_service_fee.field_cqls_service_type
+    - field.field.node.cqls_service_fee.field_cqls_uom
+    - field.field.node.cqls_service_fee.field_external_non_profit_fee
+    - node.type.cqls_service_fee
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      328f33c9-d861-4a02-b1f5-9068293f847f:
+        separator: '|'
+        limit: null
+        uuid: 328f33c9-d861-4a02-b1f5-9068293f847f
+        plugin: explode
+        source: service_type
+        weight: 0
+        label: Explode
+label: 'Service Fee'
+id: service_fee
+description: ''
+help: 'This importer will Update existing fees and will remove any fee that is not in the source that was previously imported.'
+import_period: -1
+import_period_per_feed: false
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: cqls_service_fee
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _delete
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  control:
+    value: Control
+    label: Control
+    machine_name: control
+    type: csv
+  service:
+    value: Service
+    label: Service
+    machine_name: service
+    type: csv
+  '':
+    value: ''
+    label: ''
+    machine_name: ''
+    type: csv
+  service_type:
+    value: 'Service Type'
+    label: 'Service Type'
+    machine_name: service_type
+    type: csv
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  fee_description:
+    value: 'Fee Description'
+    label: 'Fee Description'
+    machine_name: fee_description
+    type: csv
+  internal_fee:
+    value: 'Internal Fee'
+    label: 'Internal Fee'
+    machine_name: internal_fee
+    type: csv
+  per_item:
+    value: 'Per Item'
+    label: 'Per Item'
+    machine_name: per_item
+    type: csv
+  item:
+    value: Item
+    label: Item
+    machine_name: item
+    type: csv
+  external_for_profit_fee:
+    value: 'External For-Profit Fee'
+    label: 'External For-Profit Fee'
+    machine_name: external_for_profit_fee
+    type: csv
+  external_non_profit_fee:
+    value: 'External Non-Profit Fee'
+    label: 'External Non-Profit Fee'
+    machine_name: external_non_profit_fee
+    type: csv
+mappings:
+  -
+    target: field_cqls_category
+    map:
+      target_id: service
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: service_fee_categories
+  -
+    target: field_cqls_service_type
+    map:
+      target_id: service_type
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: cqls_service_type_taxonomy
+  -
+    target: field_cqls_service
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_cqls_description
+    map:
+      value: fee_description
+    settings:
+      language: null
+  -
+    target: field_cqls_internal_fee_txt
+    map:
+      value: internal_fee
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_cqls_external_fee_txt
+    map:
+      value: external_for_profit_fee
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_cqls_uom
+    map:
+      value: per_item
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: title
+    map:
+      value: control
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_external_non_profit_fee
+    map:
+      value: external_non_profit_fee
+    settings:
+      language: null
+    unique: {  }

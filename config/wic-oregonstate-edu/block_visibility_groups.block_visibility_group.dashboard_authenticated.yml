@@ -1,0 +1,25 @@
+uuid: f334938b-fdfd-4f44-95c3-4f8596147a5d
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - user
+id: dashboard_authenticated
+label: dashboard-authenticated
+logic: and
+conditions:
+  5b037d24-8b72-453d-8b97-d36ed65288d7:
+    id: request_path
+    negate: false
+    uuid: 5b037d24-8b72-453d-8b97-d36ed65288d7
+    pages: /admin/dashboard
+  29a41ad3-2ea0-4e97-9ff9-b0211d7cf7bb:
+    id: user_role
+    negate: false
+    uuid: 29a41ad3-2ea0-4e97-9ff9-b0211d7cf7bb
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated
+allow_other_conditions: null

@@ -1,0 +1,142 @@
+uuid: 12f678f7-879e-4c99-a4ce-16ed362591eb
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: background_overlay
+label: 'Background overlay (colors and gradients)'
+code: |
+  /* =========================================================================================================
+  2024 Background Colors
+  ========================================================================================================= */
+
+  /*Seafoam Background with Plus pattern*/
+  .background-color-seafoam-plus {
+      background-image: url(https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/2024-12/ddl_pastlectures_desktop.svg);
+  }
+
+  /*Seafoam Background*/
+  .background-color-seafoam {
+      background: rgba(184, 221, 225, 0.3);
+  }
+
+  .background-color-seafoam-circuit{
+  	background: rgba(184, 221, 225, 0.2);
+    background-image: url(https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/2025-02/Graphic_Pattern_Circuit_Board.svg);
+  }
+
+  .background-color-stratosphere {
+  	background: rgba(0, 106, 142, 1);
+  	background-image: url(https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/2025-04/deansbackground.png);
+  }
+
+  /*Moondust 20% opacity*/
+  .background-color-moondust-light{
+  	background: #F4F8FA;
+  }
+
+
+  /* =========================================================================================================
+  background color overlays and gradients: Only on test pages. (OLD)
+  ========================================================================================================= */
+
+
+  .coe-black-overlay {
+  	background-image: radial-gradient(circle, rgba(0,0,0,0.50) 100%, rgba(0,0,0,0.75) 100%);
+  	background-size: cover;
+  	background-position: center;
+  }
+
+  .coe-top-gradient-50 {
+  	background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%);
+  	/*background-size: cover;*/
+  	/*background-position: center;*/
+  }
+
+  .coe-top-gradient-20 {
+  	background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 95%);
+  	background-size: cover;
+  	background-position: center;
+  }
+
+  .coe-top-gradient-10 {
+  	background-image: linear-gradient(to top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 110%);
+  	background-size: cover;
+  	background-position: center;
+  }
+
+  .coe-bottom-gradient-50 {
+  	/*Blake's Old Linear Gradient*/
+  	/*background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 85%);*/
+  	/*Lucy's Linear Gradient CSS*/
+  	background-image: linear-gradient(180deg, rgba(196, 196, 196, 0) 58%, #000 86.5%);
+  	background-size: cover;
+  	background-position: center;
+  }
+
+  .coe-bottom-gradient-20 {
+  	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 95%);
+  	background-size: cover;
+  	background-position: center;
+  }
+
+  .coe-bottom-gradient-10 {
+  	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 110%);
+  	background-size: cover;
+  	background-position: center;
+  }
+
+  /*source: https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient*/
+  .photo-linear-gradient-overlay {
+  	background-color: hsla(0, 100%, 30%, 0.2) !important;
+  	/*background: linear-gradient(#e66465, #9198e5) !important;*/
+  	/*opacity: 60%;*/
+  	/*background-image: -webkit-radial-gradient(top right,ellipse cover,rgba(255,255,255,0) 70%,rgba(0,0,0,0.6) 90%) !important;*/
+  	/*background-image: linear-gradient(to right, rgba(255,0,0,0), rgba(255,0,0,1)) !important;*/
+  	/*box-shadow: inset 0 0 0 1000px rgba(0,0,0,.7);*/
+  	/*box-shadow: inset 0 0 0 1000px #d73f0996;*/
+  }
+
+  .photo-overlay-shadow {
+  	box-shadow: inset 0 0 0 1000px rgba(0,0,0,.7);
+  }
+
+  .Sustainable-Greatness-Hero{
+  	/*background-image: url(/sites/engineering.oregonstate.edu/files/2024-09/hero_image.png);*/
+  	background: linear-gradient(90deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.24) 60.12%, rgba(0, 0, 0, 0.00) 100%), url(/sites/engineering.oregonstate.edu/files/2024-09/hero_image.png);
+  	background-size: cover;
+  	background-position: center;
+  }
+
+  /* HIDE Gradient on Mobile */
+  @media screen and (max-width: 767px){
+  	.coe-bottom-gradient-50 {
+  		background-image: none;
+  		background-size: cover;
+  		background-position: center;
+  	}
+  }
+
+  /*Adjust Gradient on Tablet screen*/
+  @media screen and (max-width: 991px) and (min-width: 768px) {
+  	.coe-bottom-gradient-50 {
+      background-image: linear-gradient(185deg, rgba(196, 196, 196, 0) 58%, #000 86.5%);
+      background-size: cover;
+      background-position-y: -200px;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47176\r\n/node/40996\r\n/node/41036\r\n/node/41046\r\n/node/41281\r\n/node/42966\r\n/node/45811\r\n/node/46596\r\n/node/47911\r\n/node/52201"
+contexts: {  }
+conditions_require_all: true

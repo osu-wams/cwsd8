@@ -1,0 +1,79 @@
+uuid: ad144028-ad28-4e83-a0f0-6dfc15e03005
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: scroll_to_top
+label: 'Scroll to top'
+code: |-
+  document.addEventListener('DOMContentLoaded', () => {
+      // Select DOM elements using optional chaining
+      const btnScrollToTop = document.querySelector("#back-to-top-btn");
+      const targetDiv = document.querySelector("#top");
+
+      // Constants
+      const SCROLL_THRESHOLD = 500;
+
+      // Show/hide scroll-to-top button based on scroll position
+      function toggleScrollButton() {
+          btnScrollToTop?.classList.toggle("displayBtn", window.scrollY > SCROLL_THRESHOLD);
+      }
+
+      // Scroll to top function
+      function scrollToTop() {
+          if (targetDiv) {
+              window.scrollTo({
+                  top: targetDiv.offsetTop,
+                  left: 0,
+                  behavior: 'smooth'
+              });
+          } else {
+              console.warn("Target div not found. Unable to scroll.");
+          }
+      }
+
+      // Simplified throttle function
+      function throttle(func, limit) {
+          let lastCall = 0;
+          return function (...args) {
+              const now = Date.now();
+              if (now - lastCall >= limit) {
+                  lastCall = now;
+                  func.apply(this, args);
+              }
+          };
+      }
+
+      // Event listeners - passive option for scroll
+      window.addEventListener("scroll", throttle(toggleScrollButton, 100), { passive: true });
+
+      btnScrollToTop?.addEventListener("click", scrollToTop);
+
+
+      // Check if elements exist and log warnings if not (after DOMContentLoaded)
+      if (!btnScrollToTop) {
+          console.warn("Scroll-to-top button not found in the DOM.");
+      }
+      if (!targetDiv) {
+          console.warn("Target div not found in the DOM.");
+      }
+
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

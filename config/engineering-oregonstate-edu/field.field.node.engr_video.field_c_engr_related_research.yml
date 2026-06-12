@@ -1,0 +1,29 @@
+uuid: 81970053-6814-4739-a358-b76635f1987e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_c_engr_related_research
+    - node.type.engr_video
+    - taxonomy.vocabulary.research_interests
+id: node.engr_video.field_c_engr_related_research
+field_name: field_c_engr_related_research
+entity_type: node
+bundle: engr_video
+label: 'Related Research'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      research_interests: research_interests
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,88 @@
+uuid: b99a7e61-7fbc-4a1a-ad1a-83e63b7f3029
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.new_release.body
+    - field.field.node.new_release.feeds_item
+    - field.field.node.new_release.field_new_release_feed
+    - field.field.node.new_release.field_news_release_date
+    - field.field.node.new_release.field_news_release_link
+    - field.field.node.new_release.field_news_release_photo
+    - field.field.node.new_release.field_news_release_title
+    - node.type.new_release
+  module:
+    - datetime
+    - link
+    - text
+    - user
+id: node.new_release.default
+targetEntityType: node
+bundle: new_release
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_new_release_feed:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_news_release_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_news_release_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_news_release_photo:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_news_release_title:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true

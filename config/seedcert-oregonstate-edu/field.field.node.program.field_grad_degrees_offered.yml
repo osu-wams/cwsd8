@@ -1,0 +1,29 @@
+uuid: 5ecd8960-6d3e-4954-8baf-9e3e827807de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_grad_degrees_offered
+    - node.type.program
+    - taxonomy.vocabulary.majors_graduate
+id: node.program.field_grad_degrees_offered
+field_name: field_grad_degrees_offered
+entity_type: node
+bundle: program
+label: 'Graduate Degree(s) Offered'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      majors_graduate: majors_graduate
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

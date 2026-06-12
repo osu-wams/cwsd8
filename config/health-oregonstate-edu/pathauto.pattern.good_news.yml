@@ -1,0 +1,23 @@
+uuid: 974850c6-a05a-45d6-a60e-5ba6e811309e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.good_news
+  module:
+    - node
+id: good_news
+label: 'Good News'
+type: 'canonical_entities:node'
+pattern: '/good-news/[node:field_good_news_date:date:html_month]/[node:title]'
+selection_criteria:
+  e2b776a0-2b10-46cc-b576-fd99269f9eae:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      good_news: good_news
+selection_logic: and
+weight: -3
+relationships: {  }

@@ -1,0 +1,60 @@
+uuid: 01a4b740-54c4-448d-bae5-fb982cbe3df4
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: composit
+label: composit
+code: |2-
+    h1 {display: none;}
+    .breadcrumb  {display: none!important;}
+    .menu--group-menu  {display: none!important;}
+    .field--name-field-book-price {font-weight: lighter;}
+    .field--name-field-isbn-and-details p {font-weight: lighter; margin-bottom:0px;}
+    .field--name-body p {font-weight: lighter;}
+    
+    .field--name-field-purchase-link a:link, .field--name-field-purchase-link a:visited {
+    background-color: #e9e5e4;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 15px;
+  }
+  .field--name-field-purchase-link a:hover, .field--name-field-purchase-link a:active {
+    background-color: #bebebe;}
+    
+   .field-content > a {text-decoration: none!important; }
+
+  @media only screen and (min-width: 700px) {
+    div._none.block.block-layout-builder.block-field-blocknodecomposit-bookfield-image-2 > div > div > article > div,   
+    div._none.block.block-layout-builder.block-field-blocknodecomposit-bookfield-image-3 > div > div > article > div,
+    div._none.block.block-layout-builder.block-field-blocknodecomposit-bookfield-image-4 > div > div > article > div,
+    div._none.block.block-layout-builder.block-field-blocknodecomposit-bookfield-image-5 > div > div > article > div,
+    div._none.block.block-layout-builder.block-field-blocknodecomposit-bookfield-image-6 > div > div > article > div,
+    div._none.block.block-layout-builder.block-field-blocknodecomposit-bookfield-image-7 > div > div > article > div,
+    div._none.block.block-layout-builder.block-field-blocknodecomposit-bookfield-image-8 > div > div > article > div,
+    div._none.block.block-layout-builder.block-field-blocknodecomposit-bookfield-image-9 > div > div > article > div,
+    div._none.block.block-layout-builder.block-field-blocknodecomposit-bookfield-image-10 > div > div > article > div,
+    .block-field-blocknodecomposit-bookfield-isbn-and-details
+     {padding: 1em 2em;}
+
+  .block-field-blocknodecomposit-bookfield-book-cover-image {padding: 0em 2em 1em 2em;}
+
+  }
+    
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/composit-book/*\r\n/composit-book\r\n/composit/*"
+contexts: {  }
+conditions_require_all: true

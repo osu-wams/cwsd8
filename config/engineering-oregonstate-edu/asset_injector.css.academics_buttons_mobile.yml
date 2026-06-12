@@ -1,0 +1,34 @@
+uuid: dc3449da-636b-4e54-a65a-47d4e232d9e1
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: academics_buttons_mobile
+label: 'Academics buttons mobile (mobile button media query)'
+code: |-
+  /*Adjusts margin top on mobile screens for buttons that are side by side on this page*/
+
+  @media (max-width: 600px) {
+  	.btn.osu-btn-primary {
+  		margin-top: 15px !important;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/academics\r\n/node/36"
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

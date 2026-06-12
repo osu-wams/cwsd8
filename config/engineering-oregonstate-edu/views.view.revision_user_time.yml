@@ -1,0 +1,858 @@
+uuid: b8c15e20-f8c2-411d-8a87-07ac30d74c89
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_osu_organizations
+    - taxonomy.vocabulary.osu_organization
+    - user.role.administrator
+    - user.role.architect
+    - user.role.content_authors
+    - user.role.dx_administrator
+    - user.role.group_content_author
+    - user.role.group_content_plus
+    - user.role.manage_asset_injector
+    - user.role.manage_blocks
+    - user.role.manage_content
+    - user.role.manage_layout_templates
+    - user.role.manage_menus
+    - user.role.manage_site_configuration
+    - user.role.manage_taxonomy
+    - user.role.manage_users
+    - user.role.manage_webforms
+    - user.role.sub_architect
+  module:
+    - group
+    - node
+    - taxonomy
+    - user
+    - views_bootstrap
+id: revision_user_time
+label: 'Revision User/Time'
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Revision User/Time'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: Title
+          exclude: false
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        revision_timestamp:
+          id: revision_timestamp
+          table: node_revision
+          field: revision_timestamp
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: revision_timestamp
+          plugin_id: field
+          label: 'Revision create time'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: timestamp
+          settings:
+            date_format: medium
+            custom_date_format: ''
+            timezone: ''
+            tooltip:
+              date_format: long
+              custom_date_format: ''
+            time_diff:
+              enabled: false
+              future_format: '@interval hence'
+              past_format: '@interval ago'
+              granularity: 2
+              refresh: 60
+              description: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        revision_uid:
+          id: revision_uid
+          table: node_revision
+          field: revision_uid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: revision_uid
+          plugin_id: field
+          label: 'Revision user'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_osu_organizations:
+          id: field_osu_organizations
+          table: node__field_osu_organizations
+          field: field_osu_organizations
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Organizations
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      pager:
+        type: mini
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 50
+          total_pages: null
+          id: 0
+          tags:
+            next: ››
+            previous: ‹‹
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: role
+        options:
+          role:
+            content_authors: content_authors
+            group_content_author: group_content_author
+            group_content_plus: group_content_plus
+            manage_content: manage_content
+            manage_asset_injector: manage_asset_injector
+            manage_blocks: manage_blocks
+            manage_layout_templates: manage_layout_templates
+            manage_menus: manage_menus
+            manage_taxonomy: manage_taxonomy
+            manage_users: manage_users
+            manage_webforms: manage_webforms
+            sub_architect: sub_architect
+            dx_administrator: dx_administrator
+            manage_site_configuration: manage_site_configuration
+            architect: architect
+            administrator: administrator
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        revision_timestamp:
+          id: revision_timestamp
+          table: node_revision
+          field: revision_timestamp
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: revision_timestamp
+          plugin_id: date
+          order: DESC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+          granularity: second
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        revision_uid:
+          id: revision_uid
+          table: node_revision
+          field: revision_uid
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: revision_uid
+          plugin_id: user_name
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: revision_uid_op
+            label: 'Revision user'
+            description: ''
+            use_operator: false
+            operator: revision_uid_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: revision_uid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              group_content_plus: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              sub_architect: '0'
+              dx_administrator: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              administrator: '0'
+              alert_author: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_osu_organizations_target_id:
+          id: field_osu_organizations_target_id
+          table: node__field_osu_organizations
+          field: field_osu_organizations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_osu_organizations_target_id_op
+            label: 'Organizations (field_osu_organizations)'
+            description: null
+            use_operator: false
+            operator: field_osu_organizations_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_osu_organizations_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: Organizations
+            description: ''
+            identifier: field_osu_organizations_target_id
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: BEE
+                operator: or
+                value:
+                  346: '346'
+              2:
+                title: CBEE
+                operator: or
+                value:
+                  141: '141'
+              3:
+                title: CORIS
+                operator: or
+                value:
+                  4826: '4826'
+              4:
+                title: CCE
+                operator: or
+                value:
+                  146: '146'
+              5:
+                title: COE
+                operator: or
+                value:
+                  161: '161'
+              6:
+                title: EECS
+                operator: or
+                value:
+                  151: '151'
+              7:
+                title: MIME
+                operator: or
+                value:
+                  156: '156'
+              8:
+                title: NSE
+                operator: or
+                value:
+                  136: '136'
+          reduce_duplicates: false
+          vid: osu_organization
+          type: select
+          hierarchy: true
+          limit: true
+          error_message: true
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: 'Content type'
+            description: null
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'Content type'
+            description: ''
+            identifier: type
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Basic page'
+                operator: in
+                value:
+                  page: page
+                  all: '0'
+                  accreditation: '0'
+                  engr_oregon_stater_awards: '0'
+                  content_card: '0'
+                  degree_programs: '0'
+                  edi: '0'
+                  event: '0'
+                  facilities: '0'
+                  featured_events: '0'
+                  graduate_program: '0'
+                  job: '0'
+                  engr_podcast: '0'
+                  osu_profile: '0'
+                  projects: '0'
+                  2024_senior_projects: '0'
+                  coe_simple_column: '0'
+                  osu_simple_tabs: '0'
+                  engr_statistic: '0'
+                  story: '0'
+                  test_program: '0'
+                  testimonials: '0'
+                  undergraduate_program: '0'
+                  engr_video: '0'
+                  webform: '0'
+              2:
+                title: Discipline
+                operator: in
+                value:
+                  degree_programs: degree_programs
+                  all: '0'
+                  accreditation: '0'
+                  engr_oregon_stater_awards: '0'
+                  page: '0'
+                  content_card: '0'
+                  edi: '0'
+                  event: '0'
+                  facilities: '0'
+                  featured_events: '0'
+                  graduate_program: '0'
+                  job: '0'
+                  engr_podcast: '0'
+                  osu_profile: '0'
+                  projects: '0'
+                  2024_senior_projects: '0'
+                  coe_simple_column: '0'
+                  osu_simple_tabs: '0'
+                  engr_statistic: '0'
+                  story: '0'
+                  test_program: '0'
+                  testimonials: '0'
+                  undergraduate_program: '0'
+                  engr_video: '0'
+                  webform: '0'
+              3:
+                title: 'Grad Program'
+                operator: in
+                value:
+                  graduate_program: graduate_program
+                  all: '0'
+                  accreditation: '0'
+                  engr_oregon_stater_awards: '0'
+                  page: '0'
+                  content_card: '0'
+                  degree_programs: '0'
+                  edi: '0'
+                  event: '0'
+                  facilities: '0'
+                  featured_events: '0'
+                  job: '0'
+                  engr_podcast: '0'
+                  osu_profile: '0'
+                  projects: '0'
+                  2024_senior_projects: '0'
+                  coe_simple_column: '0'
+                  osu_simple_tabs: '0'
+                  engr_statistic: '0'
+                  story: '0'
+                  test_program: '0'
+                  testimonials: '0'
+                  undergraduate_program: '0'
+                  engr_video: '0'
+                  webform: '0'
+              4:
+                title: 'Undergrad program'
+                operator: in
+                value:
+                  undergraduate_program: undergraduate_program
+                  all: '0'
+                  accreditation: '0'
+                  engr_oregon_stater_awards: '0'
+                  page: '0'
+                  content_card: '0'
+                  degree_programs: '0'
+                  edi: '0'
+                  event: '0'
+                  facilities: '0'
+                  featured_events: '0'
+                  graduate_program: '0'
+                  job: '0'
+                  engr_podcast: '0'
+                  osu_profile: '0'
+                  projects: '0'
+                  2024_senior_projects: '0'
+                  coe_simple_column: '0'
+                  osu_simple_tabs: '0'
+                  engr_statistic: '0'
+                  story: '0'
+                  test_program: '0'
+                  testimonials: '0'
+                  engr_video: '0'
+                  webform: '0'
+              5:
+                title: Event
+                operator: in
+                value:
+                  event: event
+                  all: '0'
+                  accreditation: '0'
+                  engr_oregon_stater_awards: '0'
+                  page: '0'
+                  content_card: '0'
+                  degree_programs: '0'
+                  edi: '0'
+                  facilities: '0'
+                  featured_events: '0'
+                  graduate_program: '0'
+                  job: '0'
+                  engr_podcast: '0'
+                  osu_profile: '0'
+                  projects: '0'
+                  2024_senior_projects: '0'
+                  coe_simple_column: '0'
+                  osu_simple_tabs: '0'
+                  engr_statistic: '0'
+                  story: '0'
+                  test_program: '0'
+                  testimonials: '0'
+                  undergraduate_program: '0'
+                  engr_video: '0'
+                  webform: '0'
+              6:
+                title: Story
+                operator: in
+                value:
+                  story: story
+                  all: '0'
+                  accreditation: '0'
+                  engr_oregon_stater_awards: '0'
+                  page: '0'
+                  content_card: '0'
+                  degree_programs: '0'
+                  edi: '0'
+                  event: '0'
+                  facilities: '0'
+                  featured_events: '0'
+                  graduate_program: '0'
+                  job: '0'
+                  engr_podcast: '0'
+                  osu_profile: '0'
+                  projects: '0'
+                  2024_senior_projects: '0'
+                  coe_simple_column: '0'
+                  osu_simple_tabs: '0'
+                  engr_statistic: '0'
+                  test_program: '0'
+                  testimonials: '0'
+                  undergraduate_program: '0'
+                  engr_video: '0'
+                  webform: '0'
+              7:
+                title: profile
+                operator: in
+                value:
+                  osu_profile: osu_profile
+                  all: '0'
+                  accreditation: '0'
+                  engr_oregon_stater_awards: '0'
+                  page: '0'
+                  content_card: '0'
+                  degree_programs: '0'
+                  edi: '0'
+                  event: '0'
+                  facilities: '0'
+                  featured_events: '0'
+                  graduate_program: '0'
+                  job: '0'
+                  engr_podcast: '0'
+                  projects: '0'
+                  2024_senior_projects: '0'
+                  coe_simple_column: '0'
+                  osu_simple_tabs: '0'
+                  engr_statistic: '0'
+                  story: '0'
+                  test_program: '0'
+                  testimonials: '0'
+                  undergraduate_program: '0'
+                  engr_video: '0'
+                  webform: '0'
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: views_bootstrap_table
+      row:
+        type: fields
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships:
+        group_content:
+          id: group_content
+          table: node_field_data
+          field: group_content
+          relationship: none
+          group_type: group
+          admin_label: 'Content group relationship'
+          entity_type: node
+          plugin_id: group_content_to_entity_reverse
+          required: false
+          group_content_plugins:
+            'group_node:2024_senior_projects': '0'
+            'group_node:accreditation': '0'
+            'group_node:coe_simple_column': '0'
+            'group_node:content_card': '0'
+            'group_node:degree_programs': '0'
+            'group_node:edi': '0'
+            'group_node:engr_oregon_stater_awards': '0'
+            'group_node:engr_podcast': '0'
+            'group_node:engr_statistic': '0'
+            'group_node:engr_video': '0'
+            'group_node:event': '0'
+            'group_node:facilities': '0'
+            'group_node:featured_events': '0'
+            'group_node:graduate_program': '0'
+            'group_node:job': '0'
+            'group_node:osu_profile': '0'
+            'group_node:osu_simple_tabs': '0'
+            'group_node:page': '0'
+            'group_node:projects': '0'
+            'group_node:story': '0'
+            'group_node:testimonials': '0'
+            'group_node:test_program': '0'
+            'group_node:undergraduate_program': '0'
+            'group_node:webform': '0'
+      css_class: container
+      header: {  }
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.roles
+      tags:
+        - 'config:field.storage.node.field_osu_organizations'
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 1
+    display_options:
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        ajax_history: {  }
+      path: revision-user-time
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.roles
+      tags:
+        - 'config:field.storage.node.field_osu_organizations'

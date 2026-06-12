@@ -1,0 +1,40 @@
+uuid: 41e850f8-20d1-4b22-899f-0d5f50abc532
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: equal_5_columns_menu_layout
+label: 'Equal 5 Columns Menu Layout'
+code: |
+  .equal-5col-row {
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
+  }
+
+  .equal-5col-row .equal-5col {
+    flex: 1 1 0%;
+    max-width: 20%;
+    text-align: center;
+  }
+
+  @media (max-width: 768px) {
+    .equal-5col-row {
+      flex-direction: column;
+    }
+
+    .equal-5col-row .equal-5col {
+      max-width: 100%;
+      width: 100%;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

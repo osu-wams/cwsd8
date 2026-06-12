@@ -1,0 +1,39 @@
+uuid: 05cf32f4-c600-4410-bc79-c726753a0f6e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: continuing_education
+label: 'Continuing Education'
+code: |
+  /*.node--type-continuing-education.node--view-mode-teaser .field--name-field-program-cost,
+  .node--type-continuing-education.node--view-mode-teaser .field--name-field-next-start-date,
+  .node--type-continuing-education.node--view-mode-teaser .field--name-field-completion-time,
+  .node--type-continuing-education.node--view-mode-teaser .field--name-field-graduate-credits {
+  	display: grid !important;
+  	grid-template-columns: 50% 50% !important;
+  	gap: 0.75rem 1rem
+  }*/
+  .node--type-continuing-education.node--view-mode-teaser .block__content .field > .field__label + .field__item {
+  	font-weight: normal !important;
+  	line-height: 1.2rem;
+  }
+  .node--type-continuing-education.node--view-mode-teaser .field__label.fw-bold {
+  	font-weight: 700 !important;
+  	line-height: 1.2rem;
+  }
+media: screen
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,104 @@
+uuid: b5c00f98-942f-4e1a-b1ef-20a58bb9d9d6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.salary_ranges.field_competency_level
+    - field.field.taxonomy_term.salary_ranges.field_control
+    - field.field.taxonomy_term.salary_ranges.field_high
+    - field.field.taxonomy_term.salary_ranges.field_low
+    - taxonomy.vocabulary.salary_ranges
+  module:
+    - taxonomy
+label: 'Classified Staff Ranges'
+id: classified_staff_ranges
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:taxonomy_term'
+processor_configuration:
+  values:
+    vid: salary_ranges
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: false
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  salary_ranges:
+    value: 'Salary Ranges'
+    label: 'Salary Ranges'
+    machine_name: salary_ranges
+    type: csv
+  competency_level:
+    value: 'Competency Level'
+    label: 'Competency Level'
+    machine_name: competency_level
+    type: csv
+  low:
+    value: Low
+    label: Low
+    machine_name: low
+    type: csv
+  control:
+    value: Control
+    label: Control
+    machine_name: control
+    type: csv
+  high:
+    value: High
+    label: High
+    machine_name: high
+    type: csv
+mappings:
+  -
+    target: name
+    map:
+      value: salary_ranges
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_competency_level
+    map:
+      value: competency_level
+    settings:
+      language: null
+  -
+    target: field_low
+    map:
+      value: low
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_control
+    map:
+      value: control
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_high
+    map:
+      value: high
+    settings:
+      language: null
+    unique: {  }

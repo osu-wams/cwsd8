@@ -1,0 +1,52 @@
+uuid: 53501bf7-3de6-403d-836e-fe7466bedff4
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: el_scholarship_pages
+label: 'EL Scholarship pages'
+code: |-
+  .img-fluid {
+    width: 400px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),0 2px 2px hsl(0deg 0% 0% / 0.075),0 4px 4px hsl(0deg 0% 0% / 0.075),0 8px 8px hsl(0deg 0% 0% / 0.075),0 16px 16px hsl(0deg 0% 0% / 0.075);
+  }
+
+  .field--name-field-major-s {
+  margin-top:20px;
+  font-family: "Open Sans",sans-serif;
+    font-size: 2rem;
+    color: #d73f09;
+  }
+
+  .field--name-field-experience {
+  margin-bottom:12px;
+  font-family: "Open Sans",sans-serif;
+  font-style: italic;
+    font-size: 1.5rem;
+    color: #d73f09;
+  }
+
+  .field--name-field-link-emergence {margin-top:20px;}
+
+
+  @media (min-width: 768px) {
+  .node__content {
+      margin: 0px 25%;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/el-scholarship-recipient/*'
+contexts: {  }
+conditions_require_all: true

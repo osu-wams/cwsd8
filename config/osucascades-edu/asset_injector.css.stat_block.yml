@@ -1,0 +1,54 @@
+uuid: a5aa9a32-5dfc-4cb6-82d8-924ebf38d98b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: stat_block
+label: Stat-block
+code: |-
+  .flex-container-homepage-stat {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: left;
+  }
+
+  .flex-item-stat-card {
+    padding: 20px;
+    flex: 33%;
+  }
+      
+  .boarder-width-left {
+     border-left: solid #d73f09 2px;
+      padding-left: 20px;
+      } 
+
+  .zoom-stat-card {
+    transition: transform .2s; /* Animation */
+    margin: 0 auto;
+  }
+
+  .zoom-stat-card:hover {
+    transform: scale(1.1);
+  }
+      
+  /* Responsive layout - makes a one column-layout instead of a two-column layout */
+  @media (max-width: 1200px) {
+    .flex-item-stat-card {
+      flex: 100%;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

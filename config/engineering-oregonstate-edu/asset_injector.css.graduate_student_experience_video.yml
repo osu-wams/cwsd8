@@ -1,0 +1,37 @@
+uuid: d7147156-f812-44fe-9a5e-326fc0576eb1
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: graduate_student_experience_video
+label: 'Graduate Student Experience (video)'
+code: |-
+  @media only screen and (min-width: 768px) and (max-width: 1199px) {
+
+  	.grad-exp-videos .field--name-field-media-oembed-video .field__item {
+  	  position: relative;
+  	  padding-bottom: 56.25%;
+  	}
+  	
+  	/* Adjust the iframe so it's rendered in the outer-width and outer-height of it's parent */
+  	.grad-exp-videos iframe {
+  	  position: absolute;
+  	  height: 100%;
+  	}
+  	
+  }
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47811\r\n/node/5006"
+contexts: {  }
+conditions_require_all: true

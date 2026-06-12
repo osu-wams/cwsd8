@@ -1,0 +1,133 @@
+uuid: df962c63-cf72-4a67-8df8-db6bea6286c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.academic_program
+    - node.type.announcement
+    - node.type.aspire_resource_library_item
+    - node.type.coh_course
+    - node.type.coh_stories
+    - node.type.early_care_and_education_profile
+    - node.type.early_learning_research
+    - node.type.faq
+    - node.type.frequently_asked_question
+    - node.type.good_news
+    - node.type.grad_spotlight_profile
+    - node.type.health_hero
+    - node.type.healthy_discoveries_profile
+    - node.type.internship_spotlight
+    - node.type.lab_news
+    - node.type.mfc_recipe
+    - node.type.news_card
+    - node.type.newsletter
+    - node.type.osu_profile
+    - node.type.pac_class
+    - node.type.page
+    - node.type.phgsa_profile
+    - node.type.program
+    - node.type.publications
+    - node.type.research_ppl
+    - node.type.seminar_video_page
+    - node.type.story
+    - node.type.webform
+  module:
+    - content_moderation
+_core:
+  default_config_hash: HPoRRe_c6GmY-m_PDDrOhIDq7qUs9nScS0zEkrctSkw
+id: editorial
+label: Editorial
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: Archived
+      weight: 5
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: -5
+      published: false
+      default_revision: false
+    preserve:
+      label: Preserved
+      weight: 6
+      published: true
+      default_revision: true
+    published:
+      label: Published
+      weight: 0
+      published: true
+      default_revision: true
+  transitions:
+    archive:
+      label: Archive
+      from:
+        - published
+      to: archived
+      weight: 2
+    archived_draft:
+      label: 'Restore to Draft'
+      from:
+        - archived
+      to: draft
+      weight: 3
+    archived_published:
+      label: Restore
+      from:
+        - archived
+      to: published
+      weight: 4
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: 0
+    preserve:
+      label: Preserve
+      from:
+        - archived
+        - published
+      to: preserve
+      weight: 5
+    publish:
+      label: Publish
+      from:
+        - draft
+        - published
+      to: published
+      weight: 1
+  entity_types:
+    node:
+      - academic_program
+      - announcement
+      - aspire_resource_library_item
+      - coh_course
+      - coh_stories
+      - early_care_and_education_profile
+      - early_learning_research
+      - faq
+      - frequently_asked_question
+      - good_news
+      - grad_spotlight_profile
+      - health_hero
+      - healthy_discoveries_profile
+      - internship_spotlight
+      - lab_news
+      - mfc_recipe
+      - news_card
+      - newsletter
+      - osu_profile
+      - pac_class
+      - page
+      - phgsa_profile
+      - program
+      - publications
+      - research_ppl
+      - seminar_video_page
+      - story
+      - webform
+  default_moderation_state: draft

@@ -1,0 +1,69 @@
+uuid: e9500533-77ea-4e7f-8f49-6a49e54aeb6b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.coe_quote_with_image.field_coe_quote_attribution_desc
+    - field.field.paragraph.coe_quote_with_image.field_coe_quote_attribution_name
+    - field.field.paragraph.coe_quote_with_image.field_coe_quote_image
+    - field.field.paragraph.coe_quote_with_image.field_coe_quote_quotation
+    - paragraphs.paragraphs_type.coe_quote_with_image
+  module:
+    - field_group
+    - text
+third_party_settings:
+  field_group:
+    group_quote_and_name:
+      children:
+        - field_coe_quote_quotation
+        - field_coe_quote_attribution_name
+        - field_coe_quote_attribution_desc
+      label: ''
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: fieldset
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        description: ''
+id: paragraph.coe_quote_with_image.default
+targetEntityType: paragraph
+bundle: coe_quote_with_image
+mode: default
+content:
+  field_coe_quote_attribution_desc:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_coe_quote_attribution_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_coe_quote_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_coe_quote_quotation:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

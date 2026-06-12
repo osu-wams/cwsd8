@@ -1,0 +1,410 @@
+uuid: b71887d2-a743-4064-ad56-40c6c55d5f49
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: grad_rfi_css
+label: 'Request information form (form, button, and input)'
+code: |-
+  /* ==========================================================================
+     Request Information page typography
+     ========================================================================== */
+     
+     
+  /* Title and text customization */
+
+  .pageTitle {
+      background-color: #000;
+      color: #fff;
+      margin: 0px;
+      padding: 5px 20px;
+      font-weight: 500;
+      font-size: 26px;
+      line-height: 39px;
+  }
+
+  .formTitle {
+      display: block;
+      font-size: 30px;
+      margin: 20px;
+      font-weight: 500;
+      line-height: 33px;
+  }
+
+  .instructions {
+      border: 1px solid rgb(204, 204, 204);
+      font-size: 18px;
+      color: #252525;
+      padding: 24px 20px;
+  }
+
+  /* Feedback message styling */
+
+  #feedback {
+      border-radius: 4px;
+      background-color: #f55142;
+      color: #fff;
+      display: none;
+      padding: 8px;
+  }
+
+  #feedbackMsg {
+      margin-left: 20px;
+  }
+
+  /* ==========================================================================
+     Thank you Display Styling
+     ========================================================================== */
+     
+     
+  /* Thank you display customization, margin, padding, and backgrounds */
+
+  #thankyouDisplay {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 2;
+      vertical-align: middle;
+      text-align: center;
+      border-radius: 4px;
+      background-color: rgb(215, 63, 9, .95);
+      color: #fff;
+      display: none;
+      padding: 8px;
+  }
+
+  /* Typography for p */
+
+  #thankyouDisplay p {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      font-size: 32px;
+      font-weight: bold;
+  }
+
+  /* ==========================================================================
+     Confirmation Styling
+     ========================================================================== */
+     
+     
+  /* Modal customization and default no display */
+
+  #confirmModalContainer {
+      display: none;
+      position: fixed;
+      background-color: rgba(215, 63, 9, .85);
+      color: #000;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: 100;
+  }
+
+  #confirmModal {
+      position: relative;
+      width: 75%;
+      height: auto;
+      -webkit-transform: translate(0%, 25%);
+      transform: translate(0%, 25%);
+      margin: auto;
+      padding: 20px;
+      border-radius: 6px;
+      background-color: rgb(255, 255, 255);
+      -webkit-box-shadow: 2px 2px 26px 1px rgba(0, 0, 0, 1);
+      box-shadow: 2px 2px 26px 1px rgba(0, 0, 0, 1);
+  }
+
+  #confirmModal h1 {
+      text-align: center;
+  }
+
+  #confirmModal h2 {
+      text-decoration: underline;
+  }
+
+  .modalBtnContainer {
+      display: inline-block;
+      width: 100%;
+  }
+
+  /* ==========================================================================
+     Form Styling
+     ========================================================================== */
+     
+     
+  /* Form field confirm customization */
+
+  #requiredFieldsConfirm,
+  #optionalFieldsConfirm {
+      width: 100%;
+      margin: 10px 10px 10px 30px;
+      
+  }
+
+  /* Form margin, padding, and colors */
+
+  form {
+      width: 90%;
+      margin: auto;
+      display: block;
+      padding: 8px;
+      
+  }
+
+  /* Input labels styling */
+
+  .formLabel {
+      width: 80%;
+      display: inline-block;
+      margin: 8px 8px 0px 0px;
+      font-weight: bold;
+      
+  }
+
+  .required {
+      color: red;
+      font-weight: bolder;
+      font-size: 18px;
+      
+  }
+
+  /* Form field customization */
+
+  #formFieldContainer {
+      width: 100%;
+      display: inline-block;
+  }
+
+  .defaultField,
+  .additionalField,
+  .invalidField {
+      border: 1px solid rgb(204, 204, 204);
+      border-radius: 2px;
+      width: 100%;
+      display: inline-block;
+      margin: 8px 8px 8px 0px;
+      height: 34px;
+      line-height: 24px;
+  }
+
+  /* Customize shadow/color for focus property */
+
+  .additionalField:focus {
+      border-color: rgb(52, 92, 235);
+      -webkit-box-shadow: 2px 1px 10px rgba(52, 92, 235, .5);
+      box-shadow: 2px 1px 10px rgba(52, 92, 235, .5);
+  }
+
+  /* Customize shadow/color for focus property */
+
+  .defaultField:focus {
+      border-color: rgb(52, 92, 235);
+      -webkit-box-shadow: 2px 1px 10px rgba(52, 92, 235, .5);
+      box-shadow: 2px 1px 10px rgba(52, 92, 235, .5);
+      
+  }
+
+  .invalidField {
+      border-color: rgb(220, 68, 5);
+      -webkit-box-shadow: 2px 1px 10px rgba(235, 52, 52, .5);
+      box-shadow: 2px 1px 10px rgba(235, 52, 52, .5);
+  }
+
+  /* Form button customization */
+
+  .formBtn {
+      border-radius: 4px;
+      border: 1px solid rgb(215, 63, 9);
+      padding: 15px;
+      display: inline-block;
+      background-color: rgb(215, 63, 9);
+      color: #fff;
+      font-size: 1.5rem;
+      line-height: 2rem;
+      float: left;
+      margin: 10px;
+  }
+
+  .formBtn:hover {
+      border: 1px solid #000;
+      background-color: rgb(215, 63, 9);
+      -webkit-box-shadow: 2px 2px 6px 1px rgba(222, 98, 36, 1);
+      box-shadow: 2px 2px 6px 1px rgba(222, 98, 36, 1);
+  }
+
+  .formBtnContainer {
+      width: 60%;
+  }
+
+  .formFieldFeedback {
+      display: block;
+  }
+
+  /* Form input fields display, width, align */
+
+  .form-search input,
+  .form-inline input,
+  .form-horizontal input,
+  .form-search textarea,
+  .form-inline textarea,
+  .form-horizontal textarea,
+  .form-search select,
+  .form-inline select,
+  .form-horizontal select,
+  .form-search .help-inline,
+  .form-inline .help-inline,
+  .form-horizontal .help-inline,
+  .form-search .uneditable-input,
+  .form-inline .uneditable-input,
+  .form-horizontal .uneditable-input,
+  .form-search .input-prepend,
+  .form-inline .input-prepend,
+  .form-horizontal .input-prepend,
+  .form-search .input-append,
+  .form-inline .input-append,
+  .form-horizontal .input-append {
+   display:inline-block;
+   *display:inline;
+   *zoom:1;
+   margin-bottom:0;
+   vertical-align:middle;
+   width: 95%;
+  }
+
+  /* Loading icon positioning and sizing */
+
+  #loader {
+      display: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      z-index: 1;
+      width: 150px;
+      height: 150px;
+      margin: -75px 0 0 -75px;
+      border: 16px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 16px solid #3498db;
+      width: 120px;
+      height: 120px;
+      -webkit-animation: spin 2s linear infinite;
+      animation: spin 2s linear infinite;
+  }
+
+  /* Safari */
+
+  @-webkit-keyframes spin {
+      0% {
+          -webkit-transform: rotate(0deg);
+      }
+      100% {
+          -webkit-transform: rotate(360deg);
+      }
+  }
+
+  @keyframes spin {
+      0% {
+          -webkit-transform: rotate(0deg);
+          transform: rotate(0deg);
+      }
+      100% {
+          -webkit-transform: rotate(360deg);
+          transform: rotate(360deg);
+      }
+  }
+
+  /* ==========================================================================
+     Media screens styling
+     ========================================================================== */
+     
+     
+  /* Form fields customization for max screen size 1000px */
+
+  @media only screen and (max-width: 1000px) {
+      #confirmModalContainer {
+          position: fixed;
+          overflow: hidden;
+      }
+      #confirmModal {
+          border-radius: 0px;
+          height: 100%;
+          width: 100%;
+          position: fixed;
+          top: 0;
+          left: 0;
+          text-align: center;
+          margin: 0;
+          padding: 0;
+          -webkit-transform: translate(0%, 0%);
+          transform: translate(0%, 0%);
+          overflow-x: hidden;
+      }
+      #requiredFieldsConfirm,
+      #optionalFieldsConfirm {
+          width: 100%;
+          margin: 0;
+      }
+      .formBtnContainer,
+      .modalBtnContainer {
+          text-align: center;
+          width: 100%;
+      }
+      .formBtn {
+          float: none;
+      }
+  }
+
+  /* Form fields customization for min screen size 768px */
+
+  @media (min-width: 768px) {
+  	.form-search input,
+  	.form-inline input,
+  	.form-horizontal input,
+  	.form-search textarea,
+  	.form-inline textarea,
+  	.form-horizontal textarea,
+  	.form-search select,
+  	.form-inline select,
+  	.form-horizontal select,
+  	.form-search .help-inline,
+  	.form-inline .help-inline,
+  	.form-horizontal .help-inline,
+  	.form-search .uneditable-input,
+  	.form-inline .uneditable-input,
+  	.form-horizontal .uneditable-input,
+  	.form-search .input-prepend,
+  	.form-inline .input-prepend,
+  	.form-horizontal .input-prepend,
+  	.form-search .input-append,
+  	.form-inline .input-append,
+  	.form-horizontal .input-append {
+  		 display:inline-block;
+  		 *display:inline;
+  		 *zoom:1;
+  		 margin-bottom:0;
+  		 vertical-align:middle;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/32896
+contexts: {  }
+conditions_require_all: true

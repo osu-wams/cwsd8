@@ -1,0 +1,39 @@
+uuid: 540e394a-98fe-4ddc-8ed4-8df239d4d3e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.dam_creative_hp.body
+    - field.field.node.dam_creative_hp.field_dam_creative_service_text
+    - field.field.node.dam_creative_hp.field_service_hover_video
+    - field.field.node.dam_creative_hp.field_service_importance
+    - field.field.node.dam_creative_hp.field_service_link
+    - node.type.dam_creative_hp
+  module:
+    - text
+    - user
+id: node.dam_creative_hp.teaser
+targetEntityType: node
+bundle: dam_creative_hp
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_dam_creative_service_text: true
+  field_service_hover_video: true
+  field_service_importance: true
+  field_service_link: true

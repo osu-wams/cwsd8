@@ -1,0 +1,29 @@
+uuid: 7af65d05-4230-45cd-a883-aac4e348b67b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: links_in_map_infowindows
+label: 'Links in map infowindows'
+code: |
+  /* force links in map InfoWindows to show up before clicking */
+  a { 
+  	text-decoration:underline !important; 
+  	color:#DC4405;
+  	font-weight:800;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/3756\r\n/node/8086"
+contexts: {  }
+conditions_require_all: true

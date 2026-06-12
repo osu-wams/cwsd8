@@ -1,0 +1,33 @@
+uuid: 92d3763c-d1a2-42ff-86bc-1d7b92aa907d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_accordions
+label: 'Accordions styling tools and services page (header and content padding)'
+code: |-
+  /*
+  Accordian padding on the tools and services page
+  */
+
+  .accordion-section-header {
+  	padding-bottom: .5rem;
+  }
+  .accordion {
+  	padding-bottom: 1.5rem;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/tools-services\r\n/node/131"
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,67 @@
+uuid: 94c39b1f-7489-469b-befe-d2f10e27c941
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: prax_hover_card
+label: 'PRAX Hover Card'
+code: |-
+  .block--type-prax-hover-card {
+    position:relative;
+    padding: 0px!important;
+  }
+
+
+  .field--name-field-card-image img {
+  	width:100%;
+  }
+
+  .block--type-prax-hover-card .field--name-body {
+  	color:#fff;
+  padding:20px;
+  position: absolute;
+      bottom: 0;
+      left: 0;
+      z-index: 5;
+  }
+
+  .block--type-prax-hover-card .field--name-body strong {
+      font-weight: 900;
+      font-size: 22px;
+  }
+
+  .block--type-prax-hover-card .field--name-field-card-link {
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+  }
+
+  .block--type-prax-hover-card .field--name-field-card-link a {
+      background: rgba(0,0,0,.4);
+       display: block;
+      height: 100%;
+      color:transparent;
+      text-decoration:none!important;
+  }
+
+  .block--type-prax-hover-card .field--name-field-card-link a:hover {
+    background: rgba(0,59,92,.6);
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,143 @@
+uuid: 9c2b2e9a-c17c-4064-bf5f-1b7bdd5f4ac5
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: number_counter
+label: number-counter
+code: |-
+  /*(function ($, Drupal) {
+
+  	var a = 0;
+  	$(window).scroll(function() {
+
+  		if ($('#counter').length) {
+  		  var oTop = $('#counter').offset().top - window.innerHeight;
+  		  if (a == 0 && $(window).scrollTop() > oTop) {
+  		    $('.counter-value').each(function() {
+  		      var $this = $(this),
+  		        countTo = $this.attr('data-count');
+  		        duration = $this.attr('data-duration');
+  		      $({
+  		        countNum: $this.text()
+  		      }).animate({
+  		          countNum: countTo
+  		        },
+
+  		        {
+
+  		          duration: parseInt(duration),
+  		          easing: 'swing',
+  		          step: function() {
+  		            $this.text(Math.floor(this.countNum));
+  		          },
+  		          complete: function() {
+  		            $this.text(this.countNum);
+  		          }
+
+  		        });
+  		    });
+  		    a = 1;
+  		  }
+  		}
+  	});
+
+
+  })(jQuery, Drupal);*/
+
+  (function () {
+    function easeOutCubic(t) {
+      return 1 - Math.pow(1 - t, 3);
+    }
+
+    function formatNumber(value, decimals, separator) {
+      const fixed = value.toFixed(decimals);
+      if (!separator) return fixed;
+      const parts = fixed.split(".");
+      parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, separator);
+      return parts.join(".");
+    }
+
+    function inferDecimals(str) {
+      const dot = str.indexOf(".");
+      return dot === -1 ? 0 : str.length - dot - 1;
+    }
+
+    function animateCountUp(el) {
+      const rawText = el.textContent.trim();
+      const target = parseFloat(rawText.replace(/[^0-9.\-]/g, ""));
+      if (isNaN(target)) return;
+
+      const duration  = parseInt(el.dataset.duration  ?? 1500, 10);
+      const start     = parseFloat(el.dataset.start   ?? 0);
+      const delay     = parseInt(el.dataset.delay     ?? 0, 10);
+      const separator = el.dataset.separator !== undefined ? el.dataset.separator : ",";
+      const decimals  = parseInt(el.dataset.decimals  ?? inferDecimals(rawText), 10);
+      const prefix    = el.dataset.prefix  ?? "";
+      const suffix    = el.dataset.suffix  ?? "";
+      const easing    = (el.dataset.easing ?? "true") !== "false";
+
+      el.textContent = prefix + formatNumber(start, decimals, separator) + suffix;
+
+      let startTime = null;
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easing ? easeOutCubic(progress) : progress;
+        const current = start + (target - start) * easedProgress;
+        el.textContent = prefix + formatNumber(current, decimals, separator) + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+
+      if (delay > 0) {
+        setTimeout(() => requestAnimationFrame(step), delay);
+      } else {
+        requestAnimationFrame(step);
+      }
+    }
+
+    function init() {
+      const elements = document.querySelectorAll(".countup");
+
+      if ("IntersectionObserver" in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              animateCountUp(entry.target);
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+
+        elements.forEach((el) => observer.observe(el));
+      } else {
+        elements.forEach(animateCountUp);
+      }
+    }
+
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", init);
+    } else {
+      init();
+    }
+  })();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/6\r\n/regions-oregon/portland-region"
+contexts: {  }
+conditions_require_all: true

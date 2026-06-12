@@ -1,0 +1,31 @@
+uuid: 7ecb5f0c-2d5f-46c4-acd2-0a7f6bb18f51
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.basic
+    - field.storage.block_content.field_video
+    - media.type.local_video
+    - media.type.remote_video
+id: block_content.basic.field_video
+field_name: field_video
+entity_type: block_content
+bundle: basic
+label: video
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      local_video: local_video
+      remote_video: remote_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: local_video
+field_type: entity_reference

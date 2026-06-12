@@ -1,0 +1,93 @@
+uuid: 8c3124e5-78e5-4a18-9dc6-22c8920d68dd
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - user
+id: knowledge_base
+label: 'Knowledge Base'
+module: views
+description: ''
+tag: default
+base_table: taxonomy_term_field_data
+base_field: tid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'Knowledge Base'
+      fields:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          plugin_id: term_name
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          link_to_taxonomy: 1
+      pager:
+        type: full
+        options:
+          pagination_heading_level: h4
+          items_per_page: 10
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+        perm: 'access content'
+      cache:
+        type: none
+      sorts: {  }
+      filters: {  }
+      style:
+        type: default
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      style_plugin: default
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - user.permissions
+      tags: {  }
+  page:
+    id: page
+    display_title: Page
+    display_plugin: page
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      path: knowledge-base
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - user.permissions
+      tags: {  }

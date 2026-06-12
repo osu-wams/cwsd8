@@ -1,0 +1,63 @@
+uuid: 6a4603fe-7655-4244-a50b-359e097e32e5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.dsi_profile.field_featured_image
+    - field.field.node.dsi_profile.field_link
+    - field.field.node.dsi_profile.field_person_name
+    - field.field.node.dsi_profile.field_person_title_affiliation
+    - node.type.dsi_profile
+  module:
+    - link
+    - text
+    - user
+id: node.dsi_profile.default
+targetEntityType: node
+bundle: dsi_profile
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_featured_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_person_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_person_title_affiliation:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  entitygroupfield: true
+  links: true

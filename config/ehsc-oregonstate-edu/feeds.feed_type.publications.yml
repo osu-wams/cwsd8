@@ -1,0 +1,298 @@
+uuid: 0a2c84ff-c047-48f4-88d2-bbe379304a91
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.publication.field_pub_abstract
+    - field.field.node.publication.field_pub_authors
+    - field.field.node.publication.field_pub_date_published
+    - field.field.node.publication.field_pub_doi
+    - field.field.node.publication.field_pub_funding_source
+    - field.field.node.publication.field_pub_in_press
+    - field.field.node.publication.field_pub_issn
+    - field.field.node.publication.field_pub_issue
+    - field.field.node.publication.field_pub_journal
+    - field.field.node.publication.field_pub_keywords
+    - field.field.node.publication.field_pub_pages
+    - field.field.node.publication.field_pub_pmcid
+    - field.field.node.publication.field_pub_pmid
+    - field.field.node.publication.field_pub_type
+    - field.field.node.publication.field_pub_volume
+    - field.field.node.publication.field_pub_year
+    - node.type.publication
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      d062cd31-8ed0-4fba-9138-5ba8e2c60299:
+        separator: ','
+        limit: null
+        uuid: d062cd31-8ed0-4fba-9138-5ba8e2c60299
+        plugin: explode
+        source: field_pub_authors
+        weight: 0
+        label: Explode
+      ea845168-02ee-45b7-b501-9715d9981c0b:
+        separator: ;
+        limit: null
+        uuid: ea845168-02ee-45b7-b501-9715d9981c0b
+        plugin: explode
+        source: field_pub_keywords
+        weight: 0
+        label: Explode
+label: Publications
+id: publications
+description: ''
+help: ''
+import_period: -1
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: publication
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: 'entity:unpublish_action:node'
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: csv
+  abstract:
+    value: field_pub_abstract
+    label: field_pub_abstract
+    machine_name: abstract
+    type: csv
+  field_pub_authors:
+    value: field_pub_authors
+    label: field_pub_authors
+    machine_name: field_pub_authors
+    type: csv
+  field_pub_date_published:
+    value: field_pub_date_published
+    label: field_pub_date_published
+    machine_name: field_pub_date_published
+    type: csv
+  field_pub_doi:
+    value: field_pub_doi
+    label: field_pub_doi
+    machine_name: field_pub_doi
+    type: csv
+  field_pub_in_press:
+    value: field_pub_in_press
+    label: field_pub_in_press
+    machine_name: field_pub_in_press
+    type: csv
+  field_pub_issn:
+    value: field_pub_issn
+    label: field_pub_issn
+    machine_name: field_pub_issn
+    type: csv
+  field_pub_issue:
+    value: field_pub_issue
+    label: field_pub_issue
+    machine_name: field_pub_issue
+    type: csv
+  field_pub_journal:
+    value: field_pub_journal
+    label: field_pub_journal
+    machine_name: field_pub_journal
+    type: csv
+  field_pub_keywords:
+    value: field_pub_keywords
+    label: field_pub_keywords
+    machine_name: field_pub_keywords
+    type: csv
+  field_pub_pages:
+    value: field_pub_pages
+    label: field_pub_pages
+    machine_name: field_pub_pages
+    type: csv
+  field_pub_type:
+    value: field_pub_type
+    label: field_pub_type
+    machine_name: field_pub_type
+    type: csv
+  field_pub_year:
+    value: field_pub_year
+    label: field_pub_year
+    machine_name: field_pub_year
+    type: csv
+  field_pub_pmcid:
+    value: field_pub_pmcid
+    label: field_pub_pmcid
+    machine_name: field_pub_pmcid
+    type: csv
+  field_pub_pmid:
+    value: field_pub_pmid
+    label: field_pub_pmid
+    machine_name: field_pub_pmid
+    type: csv
+  field_pub_volume:
+    value: field_pub_volume
+    label: field_pub_volume
+    machine_name: field_pub_volume
+    type: csv
+  field_pub_abstract:
+    value: field_pub_abstract
+    label: field_pub_abstract
+    machine_name: field_pub_abstract
+    type: csv
+  field_pub_funding_source:
+    value: field_pub_funding_source
+    label: field_pub_funding_source
+    machine_name: field_pub_funding_source
+    type: csv
+  field_pub_date:
+    value: field_pub_date
+    label: field_pub_date
+    machine_name: field_pub_date
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_pub_abstract
+    map:
+      value: field_pub_abstract
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_pub_authors
+    map:
+      target_id: field_pub_authors
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: publication_authors
+  -
+    target: field_pub_date_published
+    map:
+      value: field_pub_date_published
+    settings:
+      language: ''
+      timezone: UTC
+  -
+    target: field_pub_doi
+    map:
+      value: field_pub_doi
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_in_press
+    map:
+      value: field_pub_in_press
+    settings:
+      language: null
+  -
+    target: field_pub_issn
+    map:
+      value: field_pub_issn
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_issue
+    map:
+      value: field_pub_issue
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_journal
+    map:
+      value: field_pub_journal
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_keywords
+    map:
+      target_id: field_pub_keywords
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: research_keywords
+  -
+    target: field_pub_pages
+    map:
+      value: field_pub_pages
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_type
+    map:
+      value: field_pub_type
+    settings:
+      language: null
+  -
+    target: field_pub_year
+    map:
+      value: field_pub_year
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_pmcid
+    map:
+      value: field_pub_pmcid
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_pmid
+    map:
+      value: field_pub_pmid
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_volume
+    map:
+      value: field_pub_volume
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_funding_source
+    map:
+      target_id: field_pub_funding_source
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: funding_sources

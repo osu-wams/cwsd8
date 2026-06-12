@@ -1,0 +1,29 @@
+uuid: cd67c685-58bb-4817-a5b1-b33afd3d1894
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_advising_pages
+label: 'COE advising cards (hide phone number)'
+code: |-
+  /* Styling to hide advisor's phone numbers */
+
+
+  .advising-phone{
+  	display:none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/5176\r\n/node/5176\r\n/node/5361"
+contexts: {  }
+conditions_require_all: true

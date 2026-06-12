@@ -1,0 +1,96 @@
+uuid: aed27c7e-32fd-4b86-bb96-856377ee8e6f
+langcode: en
+status: true
+dependencies:
+  module:
+    - feeds_tamper
+    - redirect
+third_party_settings:
+  feeds_tamper:
+    tampers: {  }
+label: 'Redirect User Missing'
+id: redirect_user_missing
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:redirect'
+processor_configuration:
+  values:
+    type: redirect
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: false
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  destination:
+    value: destination
+    label: destination
+    machine_name: destination
+    type: csv
+  source:
+    value: source
+    label: source
+    machine_name: source
+    type: csv
+  default_user_id:
+    value: 'Default User ID'
+    label: 'Default User ID'
+    machine_name: default_user_id
+    type: blank
+  status_code:
+    value: 'Status Code'
+    label: 'Status Code'
+    machine_name: status_code
+    type: csv
+  language:
+    value: language
+    label: language
+    machine_name: language
+    type: csv
+mappings:
+  -
+    target: redirect_redirect
+    map:
+      uri: destination
+      title: ''
+    settings: {  }
+  -
+    target: redirect_source
+    map:
+      path: source
+      query: ''
+    settings: {  }
+  -
+    target: uid
+    map:
+      target_id: default_user_id
+    settings:
+      reference_by: uid
+      autocreate: 0
+      autocreate_bundle: false
+  -
+    target: status_code
+    map:
+      value: status_code
+    settings: {  }
+    unique: {  }
+  -
+    target: language
+    map:
+      value: language
+    settings: {  }

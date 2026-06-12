@@ -1,0 +1,38 @@
+uuid: ce053fe1-a7d7-4986-bf7c-120c692adca7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.osu_tab_wrapper.field_osu_paragraph_item
+    - field.field.paragraph.osu_tab_wrapper.field_osu_tab_wrapper_title
+    - paragraphs.paragraphs_type.osu_tab_wrapper
+  module:
+    - entity_reference_revisions
+    - text_field_formatter
+id: paragraph.osu_tab_wrapper.default
+targetEntityType: paragraph
+bundle: osu_tab_wrapper
+mode: default
+content:
+  field_osu_paragraph_item:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_osu_tab_wrapper_title:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h3
+      wrap_class: ''
+      wrap_attributes: id|tab-wrapper-title
+      override_link_label: ''
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

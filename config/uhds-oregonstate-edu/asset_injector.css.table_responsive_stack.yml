@@ -1,0 +1,66 @@
+uuid: a45b3a02-c512-4291-8a9f-df7bc4477213
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: table_responsive_stack
+label: 'table responsive stack'
+code: |+
+  .table-responsive-stack tr {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -moz-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -moz-box-direction: normal;
+        -ms-flex-direction: row;
+        -webkit-flex-direction: row;
+            flex-direction: row;
+  }
+
+
+  .table-responsive-stack td,
+  .table-responsive-stack th {
+     display:block;
+  /*      
+     flex-grow | flex-shrink | flex-basis   */
+     -ms-flex: 1 1 auto;
+     -webkit-flex: 1 1 auto;
+      flex: 1 1 auto;
+  }
+
+  .table-responsive-stack .table-responsive-stack-thead {
+     font-weight: bold;
+  }
+
+  @media screen and (max-width: 768px) {
+     .table-responsive-stack tr {
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -moz-box-direction: normal;
+            -ms-flex-direction: column;
+            -webkit-flex-direction: column;
+                flex-direction: column;
+        border-bottom: 3px solid #ccc;
+        display:block;
+        
+     }
+     /*  IE9 FIX   */
+     .table-responsive-stack td {
+        float: left;
+        width:100%;
+     }
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

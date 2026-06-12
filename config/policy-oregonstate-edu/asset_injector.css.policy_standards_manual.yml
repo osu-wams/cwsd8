@@ -1,0 +1,33 @@
+uuid: cab7ca03-3196-4ea3-8383-c85954d6d038
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: policy_standards_manual
+label: 'Policy Standards Manual'
+code: |
+  #views-field-policy-or-standard-table-column {
+    min-width:170px;
+  }
+
+  #views-field-policy-category-table-column {
+    min-width:330px;
+  }
+  .views-page-policy-standards-manual {
+  	margin: 0 3.5em;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /policy-standards-manual
+contexts: {  }
+conditions_require_all: true

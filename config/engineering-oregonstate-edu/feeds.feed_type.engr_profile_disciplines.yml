@@ -1,0 +1,91 @@
+uuid: 53838532-5bd4-4313-b217-576f66612979
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.osu_profile.title
+    - field.field.node.osu_profile.field_c_engr_discipline
+    - node.type.osu_profile
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      877a2614-6169-444a-ab8d-4f649410cc10:
+        separator: ' | '
+        limit: null
+        uuid: 877a2614-6169-444a-ab8d-4f649410cc10
+        plugin: explode
+        source: disciplines
+        weight: 0
+        label: Explode
+label: 'ENGR Profile Disciplines'
+id: engr_profile_disciplines
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: osu_profile
+  langcode: en
+  insert_new: 0
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 46
+custom_sources:
+  id:
+    value: ID
+    label: ID
+    machine_name: id
+    type: csv
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  disciplines:
+    value: Disciplines
+    label: Disciplines
+    machine_name: disciplines
+    type: csv
+mappings:
+  -
+    target: nid
+    map:
+      value: id
+    settings: {  }
+    unique:
+      value: 1
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_c_engr_discipline
+    map:
+      target_id: disciplines
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: disciplines

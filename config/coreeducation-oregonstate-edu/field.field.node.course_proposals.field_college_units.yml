@@ -1,0 +1,29 @@
+uuid: 2f557503-3185-4ab0-93b9-04fa0729b1d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_college_units
+    - node.type.course_proposals
+    - taxonomy.vocabulary.colleges
+id: node.course_proposals.field_college_units
+field_name: field_college_units
+entity_type: node
+bundle: course_proposals
+label: College/Units
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      colleges: colleges
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,50 @@
+uuid: 1e281822-874e-43bb-8a42-8abf06dd049c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: back_to_top
+label: 'back to top'
+code: |-
+  #back-to-top-btn {
+  	opacity: 0;
+  	z-index: 1000;
+  	position: fixed;
+  	right: 10px;
+  	bottom: 30px;
+  	width: 60px;
+  	height: 60px;
+  	border: none;
+  	border-radius: 50%;
+  	background: #00859b;
+  	box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+  	color: #fff;
+  	outline: none;
+  	pointer-events: none;
+  	pointer: pointer;
+  	transition: 150ms ease-in-out;
+  }
+
+  #back-to-top-btn:hover {
+  	background: #007E94;
+  }
+
+  #back-to-top-btn.displayBtn {
+  	opacity: 1 !important;
+  	pointer-events: auto;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

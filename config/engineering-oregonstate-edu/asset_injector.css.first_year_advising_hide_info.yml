@@ -1,0 +1,30 @@
+uuid: 1dadb35d-6a5f-4977-9650-36a090dda60d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: first_year_advising_hide_info
+label: 'First year advising (hide link on profile card)'
+code: |+
+  /* Hiding the advising information block on the first year adiving page profile cards */
+
+  .advising-info a{
+  	display: none;
+  	
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/5361
+contexts: {  }
+conditions_require_all: true

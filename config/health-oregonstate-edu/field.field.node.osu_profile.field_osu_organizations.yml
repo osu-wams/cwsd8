@@ -1,0 +1,33 @@
+uuid: 5228996d-5651-4676-a0df-8286e8bf85cf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_osu_organizations
+    - node.type.osu_profile
+    - taxonomy.vocabulary.osu_organization
+    - taxonomy.vocabulary.related_school_department_grou
+_core:
+  default_config_hash: nNJlUltoIMhqrxZ9l8IGU0ToFd1pIPaJbCU86ywwNOk
+id: node.osu_profile.field_osu_organizations
+field_name: field_osu_organizations
+entity_type: node
+bundle: osu_profile
+label: Affiliations
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      osu_organization: osu_organization
+      related_school_department_grou: related_school_department_grou
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: osu_organization
+field_type: entity_reference

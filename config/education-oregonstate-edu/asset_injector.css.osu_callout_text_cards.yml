@@ -1,0 +1,68 @@
+uuid: d11adfaa-c39b-4efd-a8aa-5438e167ba1d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: osu_callout_text_cards
+label: 'OSU Callout Text Cards'
+code: |-
+  .osu-callout-cards--4 {
+  	display: grid !important;
+  	grid-template-columns: repeat(4, 1fr);
+  }
+  .osu-callout-cards--4 > div:nth-child(1 of .block-layout-builder) {
+  	grid-column: -1 / 1;
+  }
+  .osu-callout-cards--4 > div.block-layout-builder:not(:first-child) >.block__content {
+  	height: 100% !important;
+  }
+  .osu-callout-cards--4 > div.block-layout-builder:not(:first-child) >.block__content > div > div {
+  	border-right: thin solid var(--bs-primary);
+  	height: 100% !important;
+  }
+  .osu-callout-cards--4 > div.block-layout-builder:last-child >.block__content > div > div {
+  	border-right: none;
+  }
+
+  /* Medium Screens */
+  @media only screen and (max-width: 991px) and (min-width: 767px) {
+  	.osu-callout-cards--4 {
+  		grid-template-columns: repeat(2, 1fr) !important;
+  	}
+  	.osu-callout-cards--4 > div.block-layout-builder:nth-child(3) >.block__content > div > div {
+  		border-right: none !important;
+  	}
+  	.osu-callout-cards--4 > div.block-layout-builder:first-child >.block__content > div > div {
+  		border-right: thin solid var(--bs-primary); !important;
+  	}
+  }
+
+  /* Small Screens */
+  @media only screen and (max-width: 767px) and (min-width: 0) {
+  	.osu-callout-cards--4 {
+  		display: block !important;
+  	}
+  	.osu-callout-cards--4 > div.block-layout-builder:not(:first-child) >.block__content > div > div {
+  		border-right: none !important;
+  		border-bottom: thin solid var(--bs-primary) !important;
+  	}
+  	.osu-callout-cards--4 > div.block-layout-builder:last-child >.block__content > div > div {
+  		border-bottom: none !important;
+  	}
+
+  }
+media: screen
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

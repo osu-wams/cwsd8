@@ -1,0 +1,43 @@
+uuid: 9432e972-b8d5-4161-acac-df9be0a4a1d8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.cases.body
+    - field.field.node.cases.field_attitudes
+    - field.field.node.cases.field_cultural_competency
+    - field.field.node.cases.field_institutional_context
+    - field.field.node.cases.field_key_take_aways
+    - field.field.node.cases.field_knowledge
+    - field.field.node.cases.field_skills
+    - node.type.cases
+  module:
+    - text
+    - user
+id: node.cases.teaser
+targetEntityType: node
+bundle: cases
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_attitudes: true
+  field_cultural_competency: true
+  field_institutional_context: true
+  field_key_take_aways: true
+  field_knowledge: true
+  field_skills: true

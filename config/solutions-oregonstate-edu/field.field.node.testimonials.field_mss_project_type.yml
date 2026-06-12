@@ -1,0 +1,29 @@
+uuid: 8a05277e-ef13-479d-b071-5f2e2e531feb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_mss_project_type
+    - node.type.testimonials
+    - taxonomy.vocabulary.projects
+id: node.testimonials.field_mss_project_type
+field_name: field_mss_project_type
+entity_type: node
+bundle: testimonials
+label: 'Project Type'
+description: 'What area of the site will this review live on? Ex: Web Design, Animation, Graphic Design, etc..'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      projects: projects
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

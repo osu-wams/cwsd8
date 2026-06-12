@@ -5,6 +5,7 @@ dependencies:
   config:
     - system.menu.menu-governance
   module:
+    - block_visibility_groups
     - system
   theme:
     - madrone
@@ -16,8 +17,8 @@ provider: null
 plugin: 'system_menu_block:menu-governance'
 settings:
   id: 'system_menu_block:menu-governance'
-  label: ''
-  label_display: '0'
+  label: Governance
+  label_display: visible
   provider: system
   level: 1
   depth: 0
@@ -26,8 +27,8 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: |-
-      /governance
-      /announcements-and-speeches
-      /bylaws
-      /landing-test
+    pages: "/governance\r\n/announcements-and-speeches\r\n/bylaws\r\n/landing-test"
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

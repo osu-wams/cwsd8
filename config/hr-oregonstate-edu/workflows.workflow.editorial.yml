@@ -1,0 +1,119 @@
+uuid: f6d0e65f-fa8c-4d42-905d-0d2e76051678
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type._position_profile
+    - node.type.announcement
+    - node.type.classification_specification
+    - node.type.classified_classification_specif
+    - node.type.documents
+    - node.type.faq
+    - node.type.featured_link
+    - node.type.feed_department
+    - node.type.feed_positions
+    - node.type.highlight
+    - node.type.image_album
+    - node.type.oeshtxt_help_text
+    - node.type.open_postdoctoral_scholar_positi
+    - node.type.osu_profile
+    - node.type.page
+    - node.type.page_banner
+    - node.type.position_profile_file
+    - node.type.pp_manual
+    - node.type.story
+    - node.type.webform
+    - node.type.workshop
+  module:
+    - content_moderation
+_core:
+  default_config_hash: HPoRRe_c6GmY-m_PDDrOhIDq7qUs9nScS0zEkrctSkw
+id: editorial
+label: Editorial
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: Archived
+      weight: 5
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: -5
+      published: false
+      default_revision: false
+    preserve:
+      label: Preserved
+      weight: 6
+      published: true
+      default_revision: true
+    published:
+      label: Published
+      weight: 0
+      published: true
+      default_revision: true
+  transitions:
+    archive:
+      label: Archive
+      from:
+        - published
+      to: archived
+      weight: 2
+    archived_draft:
+      label: 'Restore to Draft'
+      from:
+        - archived
+      to: draft
+      weight: 3
+    archived_published:
+      label: Restore
+      from:
+        - archived
+      to: published
+      weight: 4
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: 0
+    preserve:
+      label: Preserve
+      from:
+        - archived
+        - published
+      to: preserve
+      weight: 5
+    publish:
+      label: Publish
+      from:
+        - draft
+        - published
+      to: published
+      weight: 1
+  entity_types:
+    node:
+      - _position_profile
+      - announcement
+      - classification_specification
+      - classified_classification_specif
+      - documents
+      - faq
+      - featured_link
+      - feed_department
+      - feed_positions
+      - highlight
+      - image_album
+      - oeshtxt_help_text
+      - open_postdoctoral_scholar_positi
+      - osu_profile
+      - page
+      - page_banner
+      - position_profile_file
+      - pp_manual
+      - story
+      - webform
+      - workshop
+  default_moderation_state: draft

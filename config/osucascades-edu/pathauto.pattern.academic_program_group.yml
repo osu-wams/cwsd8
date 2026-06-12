@@ -1,0 +1,23 @@
+uuid: 1efc590a-bc21-4924-986e-82df4cad511f
+langcode: en
+status: true
+dependencies:
+  config:
+    - group.type.academic_programs
+  module:
+    - group
+id: academic_program_group
+label: 'Academic Program Group'
+type: 'canonical_entities:group'
+pattern: '/academics/[group:title]'
+selection_criteria:
+  8c84c749-57aa-47dd-ab37-1a93887124db:
+    id: 'entity_bundle:group'
+    negate: false
+    context_mapping:
+      group: group
+    bundles:
+      academic_programs: academic_programs
+selection_logic: and
+weight: -4
+relationships: {  }

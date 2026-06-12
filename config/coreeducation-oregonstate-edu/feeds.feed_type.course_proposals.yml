@@ -1,0 +1,177 @@
+uuid: fe64abb0-1208-4e2e-b423-ed298b4f00ae
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.course_proposals.title
+    - field.field.node.course_proposals.field_college_units
+    - field.field.node.course_proposals.field_course_number
+    - field.field.node.course_proposals.field_course_proposal_category
+    - field.field.node.course_proposals.field_credits
+    - field.field.node.course_proposals.field_date_approved
+    - field.field.node.course_proposals.field_date_submitted
+    - field.field.node.course_proposals.field_location_modality
+    - node.type.course_proposals
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      eff82436-740c-47ed-8dda-aacdcbf5f49b:
+        separator: ','
+        limit: null
+        uuid: eff82436-740c-47ed-8dda-aacdcbf5f49b
+        plugin: explode
+        source: location_modality
+        weight: 0
+        label: Explode
+      5870144c-19a3-46d3-b2c7-81a5030550e0:
+        operation: strtolower
+        uuid: 5870144c-19a3-46d3-b2c7-81a5030550e0
+        plugin: convert_case
+        source: location_modality
+        weight: 1
+        label: 'Convert case'
+      6a55b106-4527-4b05-93e7-0decc1fb70c8:
+        find: /\s/
+        replace: _
+        limit: null
+        uuid: 6a55b106-4527-4b05-93e7-0decc1fb70c8
+        plugin: find_replace_regex
+        source: location_modality
+        weight: 2
+        label: 'Find replace REGEX'
+label: 'Course Proposals'
+id: course_proposals
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: course_proposals
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  course_name:
+    value: 'Course Name'
+    label: 'Course Name'
+    machine_name: course_name
+    type: csv
+  course_number:
+    value: 'Course Number'
+    label: 'Course Number'
+    machine_name: course_number
+    type: csv
+  credits:
+    value: Credits
+    label: Credits
+    machine_name: credits
+    type: csv
+  location_modality:
+    value: Location/Modality
+    label: Location/Modality
+    machine_name: location_modality
+    type: csv
+  category:
+    value: Category
+    label: Category
+    machine_name: category
+    type: csv
+  date_submitted_to_cim:
+    value: 'Date Submitted to CIM'
+    label: 'Date Submitted to CIM'
+    machine_name: date_submitted_to_cim
+    type: csv
+  date_approved_in_cim:
+    value: 'Date Approved in CIM'
+    label: 'Date Approved in CIM'
+    machine_name: date_approved_in_cim
+    type: csv
+  unit:
+    value: Unit
+    label: Unit
+    machine_name: unit
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: course_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_course_number
+    map:
+      value: course_number
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_credits
+    map:
+      value: credits
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_course_proposal_category
+    map:
+      target_id: category
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: course_proposal_category
+      feeds_item: false
+  -
+    target: field_date_submitted
+    map:
+      value: date_submitted_to_cim
+    settings:
+      language: ''
+      timezone: UTC
+  -
+    target: field_date_approved
+    map:
+      value: date_approved_in_cim
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_college_units
+    map:
+      target_id: unit
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: colleges
+      feeds_item: false
+  -
+    target: field_location_modality
+    map:
+      value: location_modality
+    settings:
+      language: null

@@ -1,0 +1,29 @@
+uuid: 4eb52bbf-c079-4370-945d-366dda1aa9d4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_ap_college
+    - group.type.academic_programs
+    - taxonomy.vocabulary.osu_college
+id: group.academic_programs.field_ap_college
+field_name: field_ap_college
+entity_type: group
+bundle: academic_programs
+label: College
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      osu_college: osu_college
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

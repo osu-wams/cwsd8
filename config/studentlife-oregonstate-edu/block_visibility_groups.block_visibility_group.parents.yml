@@ -1,0 +1,31 @@
+uuid: e908a3e4-334a-43d2-85a8-f58413d01fa8
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: parents
+label: parents
+logic: and
+conditions:
+  ae544546-a0a6-405e-9f3a-01d6c348b3b2:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: ae544546-a0a6-405e-9f3a-01d6c348b3b2
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page
+      webform: webform
+  7d2e07f6-ba13-487d-a2dc-a60b95be1a8b:
+    id: request_path
+    negate: false
+    uuid: 7d2e07f6-ba13-487d-a2dc-a60b95be1a8b
+    pages: '/parents/*'
+  b1dfd10a-e009-49a5-a8c1-e150c0e9c22a:
+    id: request_path
+    negate: true
+    uuid: b1dfd10a-e009-49a5-a8c1-e150c0e9c22a
+    pages: "/main\r\n/main/*"
+allow_other_conditions: null

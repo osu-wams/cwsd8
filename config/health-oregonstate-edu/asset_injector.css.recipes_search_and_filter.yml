@@ -1,0 +1,58 @@
+uuid: 3cb4daf0-e2cf-4fd9-9381-16e84390e01b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: recipes_search_and_filter
+label: recipes
+code: |-
+  form#views-exposed-form-mfc-recipe-directory-block-1 > div {
+  	display: flex !important;
+  	flex-wrap: wrap !important;
+  }
+
+
+  form#views-exposed-form-mfc-recipe-directory-block-1 > div > :first-child {
+  	width: 100% !important;
+  	margin-bottom: 1em;
+  }
+
+  form#views-exposed-form-mfc-recipe-directory-block-1 > div > :first-child > :nth-child(2) {
+  	text-align: center;
+  }
+
+
+  form#views-exposed-form-mfc-recipe-directory-block-1 > div > :nth-child(3) {
+  	margin-left: 1em !important;
+  }
+
+
+  form#views-exposed-form-mfc-recipe-directory-block-1 > div > :nth-child(2) label,
+  form#views-exposed-form-mfc-recipe-directory-block-1 > div > :nth-child(3) label {
+  	margin-left: 0.25em !important;
+  }
+
+  form#views-exposed-form-mfc-recipe-directory-block-1 > div > :nth-child(4) {
+  	margin-top: 0;
+  	margin-left: auto;
+  }
+   
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/moore-center/recipes\r\n/moore-center/resources/recipes"
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

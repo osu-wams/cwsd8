@@ -19,6 +19,7 @@ dependencies:
     - field.field.node.osu_profile.field_profile_primary_title
     - field.field.node.osu_profile.field_profile_pronouns
     - field.field.node.osu_profile.field_profile_research_career_in
+    - field.field.node.osu_profile.field_rank
     - node.type.osu_profile
   module:
     - address
@@ -1049,6 +1050,16 @@ third_party_settings:
                     class: null
                   min_height:
                     class: 0
+          1bc05b15-ec4c-43a4-b856-00af5568b5ae:
+            uuid: 1bc05b15-ec4c-43a4-b856-00af5568b5ae
+            region: blb_region_col_1
+            configuration:
+              id: 'extra_field_block:node:osu_profile:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 1
+            additional: {  }
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_1'
@@ -1407,6 +1418,11 @@ targetEntityType: node
 bundle: osu_profile
 mode: default
 content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: blb_region_col_1
   field_osu_organizations:
     type: entity_reference_label
     label: above
@@ -1516,6 +1532,14 @@ content:
     settings: {  }
     third_party_settings: {  }
     weight: 114
+    region: blb_region_col_1
+  field_rank:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 116
     region: blb_region_col_1
   links:
     settings: {  }

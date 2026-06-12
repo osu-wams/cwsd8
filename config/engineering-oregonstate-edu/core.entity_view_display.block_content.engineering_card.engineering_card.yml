@@ -1,0 +1,51 @@
+uuid: 4c0128ff-a9f8-4268-98db-4d6831100ae5
+langcode: en
+status: false
+dependencies:
+  config:
+    - block_content.type.engineering_card
+    - core.entity_view_mode.block_content.engineering_card
+    - field.field.block_content.engineering_card.body
+    - field.field.block_content.engineering_card.field_osu_card_image
+    - field.field.block_content.engineering_card.field_osu_card_link
+  module:
+    - layout_builder
+    - link
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: block_content.engineering_card.engineering_card
+targetEntityType: block_content
+bundle: engineering_card
+mode: engineering_card
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_osu_card_image:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_osu_card_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

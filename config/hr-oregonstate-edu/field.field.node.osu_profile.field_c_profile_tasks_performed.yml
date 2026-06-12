@@ -1,0 +1,29 @@
+uuid: 5926605e-e129-4b66-861d-f718f11232de
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_c_profile_tasks_performed
+    - node.type.osu_profile
+    - taxonomy.vocabulary.responsibilities
+id: node.osu_profile.field_c_profile_tasks_performed
+field_name: field_c_profile_tasks_performed
+entity_type: node
+bundle: osu_profile
+label: 'Tasks Performed'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      responsibilities: responsibilities
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

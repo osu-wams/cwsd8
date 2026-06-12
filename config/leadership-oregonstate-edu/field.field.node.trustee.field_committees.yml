@@ -1,0 +1,29 @@
+uuid: 1eacd403-57e8-4238-8d62-48a05ad2ac73
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_committees
+    - node.type.trustee
+    - taxonomy.vocabulary.board_of_trustees
+id: node.trustee.field_committees
+field_name: field_committees
+entity_type: node
+bundle: trustee
+label: Affiliation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      board_of_trustees: board_of_trustees
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,32 @@
+uuid: c94f644f-8fa2-49e4-8d32-f7dbebd9c076
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_campus
+    - node.type.resource
+    - taxonomy.vocabulary.osu_campuses
+id: node.resource.field_resource_campus
+field_name: field_resource_campus
+entity_type: node
+bundle: resource
+label: Campus
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_id: '71'
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      osu_campuses: osu_campuses
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

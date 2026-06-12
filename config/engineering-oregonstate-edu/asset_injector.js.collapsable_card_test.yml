@@ -1,0 +1,81 @@
+uuid: 655fe1c6-4349-4d5d-9d7e-325b40506b4d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: collapsable_card_test
+label: 'Collapsable Cards'
+code: |-
+  document.addEventListener('DOMContentLoaded', function () {
+    const labels = document.querySelectorAll('.collapsible-card .card-label');
+    labels.forEach(function(label) {
+      label.addEventListener('click', function () {
+        const card = this.closest('.collapsible-card');
+        card.classList.toggle('collapsed');
+        // const intro = card.querySelector('.card-intro');
+        // const body = card.querySelector('.card-body');
+        // if (card.classList.contains('collapsed')) {
+        // 	intro.style.height = "calc(100% - 80px)";
+        // } else {
+        // 	intro.style.height = `calc(100% - ${body.scrollHeight + 80}px)`;
+        // }
+      });
+    });
+    if (window.screen.width >= 992) {
+  		let largestCard = [];
+  	  const cards = document.querySelectorAll('.collapsible-card');
+  	  cards.forEach((card, ind) => {
+  	  	const intro = card.querySelector('.card-intro');
+  	  	if (ind % 2 === 0) {
+  	  		largestCard.push(intro.scrollHeight);
+  	  	} else {
+  	  		largestCard[Math.floor(ind / 2)] = largestCard[Math.floor(ind / 2)] > intro.scrollHeight ? largestCard[Math.floor(ind / 2)] : intro.scrollHeight;
+  	  	}
+  	  })
+  	  cards.forEach((card, ind) => {
+  	  	const intro = card.querySelector('.card-intro');
+  	  	intro.style.height = `${largestCard[Math.floor(ind / 2)]}px`;
+  	  });
+    }
+  });
+
+  // document.addEventListener('DOMContentLoaded', () => {
+  //   // find every card…
+  //   document.querySelectorAll('.collapsible-card').forEach(card => {
+  //     // …then look inside it for the label handle
+  //     const label = card.querySelector('.card-label');
+  //     if (!label) return;
+
+  //     // IMPORTANT: wrap your toggle call in a function
+  //     label.addEventListener('click', () => {
+  //       card.classList.toggle('active');
+  //     });
+  //   });
+  // });
+
+  // document.addEventListener('DOMContentLoaded', function () {
+  //   document.querySelectorAll('.block-inline-blockcoe-project-overview-card .field--name-field-project-overview-collapse').forEach(function(label) {
+  //     label.addEventListener('click', function () {
+  //       const card_block_type = this.closest('.block-inline-blockcoe-project-overview-card');
+  //       card.classList.toggle('collapsed');
+  //     });
+  //   });
+  // });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/test/project-cards-view-test\r\n/node/47876\r\n/group/86\r\n/node/53901"
+contexts: {  }
+conditions_require_all: true

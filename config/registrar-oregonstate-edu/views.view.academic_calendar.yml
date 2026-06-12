@@ -12,6 +12,7 @@ dependencies:
     - taxonomy.vocabulary.academic_calendar_category
     - taxonomy.vocabulary.academic_calendar_term
     - taxonomy.vocabulary.academic_calendar_term_session
+    - user.role.authenticated
   module:
     - better_exposed_filters
     - contextual_range_filter
@@ -458,6 +459,8 @@ display:
           bef:
             general:
               autosubmit: false
+              auto_submit_sort_only: false
+              autosubmit_breakpoint: ''
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
               autosubmit_textfield_minimum_length: 3
@@ -472,45 +475,61 @@ display:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   rewrite:
                     filter_rewrite_values: ''
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
+                  open_by_default: false
                   is_secondary: false
                   hide_label: false
+                  field_classes: ''
               field_academic_calendar_term_target_id:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   rewrite:
                     filter_rewrite_values: ''
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
+                  open_by_default: false
                   is_secondary: false
                   hide_label: false
+                  field_classes: ''
               field_academic_calendar_term_ses_target_id:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   rewrite:
                     filter_rewrite_values: ''
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
+                  open_by_default: false
                   is_secondary: false
                   hide_label: false
+                  field_classes: ''
               field_academic_date_range_value_1:
                 plugin_id: default
                 advanced:
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   rewrite:
                     filter_rewrite_values: ''
                     filter_rewrite_values_key: false
                   collapsible: false
                   collapsible_disable_automatic_open: false
+                  open_by_default: false
                   is_secondary: false
                   hide_label: false
+                  field_classes: ''
       access:
         type: perm
         options:
@@ -1323,6 +1342,11 @@ display:
         type: none
         options:
           offset: 0
+      access:
+        type: role
+        options:
+          role:
+            authenticated: authenticated
       style:
         type: date_ical
         options:
@@ -1352,6 +1376,7 @@ display:
           rrule: ''
           rrule_field: ''
       defaults:
+        access: false
         title: false
         fields: false
         filters: true
@@ -1374,7 +1399,7 @@ display:
         - 'languages:language_content'
         - 'languages:language_interface'
         - url
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.calendar_event.field_academic_calendar_category'
         - 'config:field.storage.calendar_event.field_academic_date_range'
@@ -1723,6 +1748,11 @@ display:
           expose_sort_order: true
           sort_asc_label: Asc
           sort_desc_label: Desc
+      access:
+        type: role
+        options:
+          role:
+            authenticated: authenticated
       filters:
         status:
           id: status
@@ -1831,7 +1861,7 @@ display:
         options:
           date_field: field_academic_date_range
           end_field: ''
-          summary_field: title
+          summary_field: ''
           description_field: field_body
           location_field: ''
           categories_field: field_academic_calendar_category
@@ -1844,7 +1874,9 @@ display:
           geo_field: ''
           rrule: ''
           rrule_field: ''
+          rrule_raw_field: ''
       defaults:
+        access: false
         title: false
         exposed_form: false
         fields: false
@@ -1867,7 +1899,7 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - user.permissions
+        - user.roles
       tags:
         - 'config:field.storage.calendar_event.field_academic_calendar_category'
         - 'config:field.storage.calendar_event.field_academic_date_range'
@@ -2202,12 +2234,28 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items:
-              2:
+              1:
                 title: 2025-2026
                 operator: between
                 value:
-                  min: '2025-07-01'
-                  max: '2026-06-30'
+                  min: '2025-06-16'
+                  max: '2026-06-17'
+                  value: ''
+                  type: date
+              2:
+                title: 2026-2027
+                operator: between
+                value:
+                  min: '2026-06-15'
+                  max: '2027-06-16'
+                  value: ''
+                  type: date
+              3:
+                title: 2027-2028
+                operator: between
+                value:
+                  min: '2027-06-14'
+                  max: '2028-06-14'
                   value: ''
                   type: date
       filter_groups:

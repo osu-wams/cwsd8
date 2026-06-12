@@ -1,0 +1,40 @@
+uuid: 1871e8d4-29e0-4e52-8c1f-2bb8979068ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.profile_teaching.field_course_id
+    - field.field.paragraph.profile_teaching.field_course_name
+    - paragraphs.paragraphs_type.profile_teaching
+  module:
+    - text_field_formatter
+id: paragraph.profile_teaching.default
+targetEntityType: paragraph
+bundle: profile_teaching
+mode: default
+content:
+  field_course_id:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: div
+      wrap_class: body-small
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_course_name:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h4
+      wrap_class: h6
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

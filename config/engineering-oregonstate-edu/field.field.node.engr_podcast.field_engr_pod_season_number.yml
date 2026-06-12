@@ -1,0 +1,29 @@
+uuid: ff7c4625-a6f8-4252-9836-0ac6ddf6d22e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_engr_pod_season_number
+    - node.type.engr_podcast
+    - taxonomy.vocabulary.engr_podcast_season
+id: node.engr_podcast.field_engr_pod_season_number
+field_name: field_engr_pod_season_number
+entity_type: node
+bundle: engr_podcast
+label: 'Season number'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      engr_podcast_season: engr_podcast_season
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,29 @@
+uuid: 25d5acbc-eb0f-4b96-a5e2-ff44a2e070b0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_c_faq_pages
+    - node.type.c_faqs
+    - taxonomy.vocabulary.faq_pages
+id: node.c_faqs.field_c_faq_pages
+field_name: field_c_faq_pages
+entity_type: node
+bundle: c_faqs
+label: Pages
+description: 'The <em>Tags</em> selected will be used to filter results in views blocks placed.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      faq_pages: faq_pages
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: faq_pages
+field_type: entity_reference

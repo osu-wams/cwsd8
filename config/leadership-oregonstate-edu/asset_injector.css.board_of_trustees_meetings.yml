@@ -1,0 +1,30 @@
+uuid: e87cf52c-1d40-4897-aa11-c83ea76bdc7e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: board_of_trustees_meetings
+label: 'Board of Trustees Meetings'
+code: |-
+  .field--name-field-bot-meeting-recording-link a::before {
+    display: inline-block;
+    content: "\f03d";
+    font-family: "Font Awesome 6 Free";
+    margin-right: 6px;
+    font-weight:900;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/meetings/*'
+contexts: {  }
+conditions_require_all: true

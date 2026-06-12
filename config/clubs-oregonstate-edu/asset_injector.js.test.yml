@@ -1,0 +1,42 @@
+uuid: 3315f3f7-e286-4853-9218-ae4bc1b37176
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: test
+label: test
+code: |
+  (function() {
+    // Make sure jQuery is available globally as $ for external scripts
+    window.$ = window.jQuery;
+    
+    // If .ready() is missing, polyfill it
+    if (jQuery.fn && typeof jQuery.fn.ready !== 'function') {
+      jQuery.fn.ready = function(fn) {
+        jQuery(document).on('DOMContentLoaded', fn);
+        return this;
+      };
+    }
+  })();
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /recognized-student-organizations-osu/find-clubs
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

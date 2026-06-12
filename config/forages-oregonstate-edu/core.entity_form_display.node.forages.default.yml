@@ -1,0 +1,951 @@
+uuid: 11826036-7367-441b-a0e5-52cfeafc260a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.forages.body
+    - field.field.node.forages.field_2_plant_hardiness_zone
+    - field.field.node.forages.field_all_factors_combined
+    - field.field.node.forages.field_annual_precipitation
+    - field.field.node.forages.field_banner_picture
+    - field.field.node.forages.field_books_chapters
+    - field.field.node.forages.field_climate_factors
+    - field.field.node.forages.field_cultivar_examples
+    - field.field.node.forages.field_establishment
+    - field.field.node.forages.field_establishment_and_manageme
+    - field.field.node.forages.field_extension_fact_sheets_circ
+    - field.field.node.forages.field_flooding_tolerance
+    - field.field.node.forages.field_heat_zone
+    - field.field.node.forages.field_id_anti_quality_factors
+    - field.field.node.forages.field_id_authority
+    - field.field.node.forages.field_id_climate_tolerances
+    - field.field.node.forages.field_id_cultivars
+    - field.field.node.forages.field_id_family
+    - field.field.node.forages.field_id_genus
+    - field.field.node.forages.field_id_group
+    - field.field.node.forages.field_id_growth_habit
+    - field.field.node.forages.field_id_growth_season
+    - field.field.node.forages.field_id_identification_charact
+    - field.field.node.forages.field_id_life_cycle
+    - field.field.node.forages.field_id_links
+    - field.field.node.forages.field_id_picture
+    - field.field.node.forages.field_id_production_profile
+    - field.field.node.forages.field_id_publications
+    - field.field.node.forages.field_id_quality_factors
+    - field.field.node.forages.field_id_soil_tolerances
+    - field.field.node.forages.field_id_species
+    - field.field.node.forages.field_id_symbol
+    - field.field.node.forages.field_id_tribe
+    - field.field.node.forages.field_id_type
+    - field.field.node.forages.field_id_uses
+    - field.field.node.forages.field_image_gallery_text
+    - field.field.node.forages.field_inflorescence
+    - field.field.node.forages.field_journal_articles
+    - field.field.node.forages.field_leaves
+    - field.field.node.forages.field_management
+    - field.field.node.forages.field_management_level
+    - field.field.node.forages.field_management_level_text
+    - field.field.node.forages.field_nrcs_plant_guides_fact_she
+    - field.field.node.forages.field_organizations
+    - field.field.node.forages.field_phenological_development_a
+    - field.field.node.forages.field_phenological_graph
+    - field.field.node.forages.field_quantitative_tolerances
+    - field.field.node.forages.field_roots
+    - field.field.node.forages.field_seeds
+    - field.field.node.forages.field_soil_drainage
+    - field.field.node.forages.field_soil_factors
+    - field.field.node.forages.field_soil_ph
+    - field.field.node.forages.field_soil_salinity
+    - field.field.node.forages.field_species_selection_characte
+    - field.field.node.forages.field_stems
+    - field.field.node.forages.field_stipules
+    - field.field.node.forages.field_storage_other_uses
+    - field.field.node.forages.field_suitability_maps_
+    - field.field.node.forages.field_vendors
+    - field.field.node.forages.field_yield_graph
+    - image.style.thumbnail
+    - node.type.forages
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - entitygroupfield
+    - field_group
+    - focal_point
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_forage_information:
+      children:
+        - group_general_information
+        - group_identification_characteris
+        - group_growth_habitat_and_stand_l
+        - group_species_selection_characte
+        - group_climate_and_soil_suitabili
+        - group_suitability_maps
+        - group_yield_potential_and_produc
+        - group_phenological_development_a
+        - group_cultivars
+        - group_establishment_and_manageme
+        - group_management_level_required
+        - group_quality_and_antiquality_ch
+        - group_storage_other_uses
+        - group_image_gallery
+        - group_resources
+      label: '<span class="fa-solid fa-leaf">&nbsp;</span> Forage Information'
+      region: content
+      parent_name: ''
+      weight: 2
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        direction: vertical
+        width_breakpoint: 640
+    group_general_information:
+      children:
+        - field_id_symbol
+        - field_id_genus
+        - field_id_species
+        - field_id_authority
+        - field_id_group
+        - field_id_family
+        - field_id_tribe
+        - field_id_type
+        - field_id_picture
+        - field_banner_picture
+        - field_id_growth_season
+        - body
+        - field_id_uses
+      label: '<span class="fa-solid fa-circle-info">&nbsp;</span> General Information'
+      region: content
+      parent_name: group_forage_information
+      weight: 7
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_identification_characteris:
+      children:
+        - field_id_identification_charact
+        - field_inflorescence
+        - field_leaves
+        - field_stipules
+        - field_stems
+        - field_roots
+        - field_seeds
+      label: ' <i class="fa-solid fa-binoculars"></i> Identification Characteristics'
+      region: content
+      parent_name: group_forage_information
+      weight: 8
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_growth_habitat_and_stand_l:
+      children:
+        - field_id_growth_habit
+        - field_id_life_cycle
+      label: '<span class="fa-solid fa-mountain-sun">&nbsp;</span>Growth Habitat and Stand Life'
+      region: content
+      parent_name: group_forage_information
+      weight: 9
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_climate_and_soil_suitabili:
+      children:
+        - field_id_climate_tolerances
+        - field_id_soil_tolerances
+        - field_quantitative_tolerances
+      label: '<span class="fa-solid fa-earth-americas"></span> Suitability Zones'
+      region: content
+      parent_name: group_forage_information
+      weight: 11
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_species_selection_characte:
+      children:
+        - field_species_selection_characte
+        - field_annual_precipitation
+        - field_2_plant_hardiness_zone
+        - field_heat_zone
+        - field_soil_ph
+        - field_soil_drainage
+        - field_flooding_tolerance
+        - field_soil_salinity
+      label: '<span class="fa-solid fa-ruler"></span> Species Selection Characteristics'
+      region: content
+      parent_name: group_forage_information
+      weight: 10
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_suitability_maps:
+      children:
+        - field_suitability_maps_
+        - field_climate_factors
+        - field_soil_factors
+        - field_all_factors_combined
+      label: '<span class="fa-solid fa-map">&nbsp;</span> Suitability Maps'
+      region: content
+      parent_name: group_forage_information
+      weight: 12
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_yield_potential_and_produc:
+      children:
+        - field_id_production_profile
+        - field_yield_graph
+      label: '<span class="fa-solid fa-chart-line"></span> Yield Potential and Production Profile'
+      region: content
+      parent_name: group_forage_information
+      weight: 13
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_phenological_development_a:
+      children:
+        - field_phenological_development_a
+        - field_phenological_graph
+      label: '<span class="fa-solid fa-seedling"></span> Phenological Development and Bloom Time'
+      region: content
+      parent_name: group_forage_information
+      weight: 14
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_cultivars:
+      children:
+        - field_id_cultivars
+        - field_cultivar_examples
+      label: '<span class="fa-solid fa-microscope"></span> Cultivars'
+      region: content
+      parent_name: group_forage_information
+      weight: 15
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_establishment_and_manageme:
+      children:
+        - field_establishment_and_manageme
+        - field_establishment
+        - field_management
+      label: '<span class="fa-solid fa-clipboard-user"></span> Establishment and Management'
+      region: content
+      parent_name: group_forage_information
+      weight: 16
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_management_level_required:
+      children:
+        - field_management_level
+        - field_management_level_text
+      label: '<span class="fa-solid fa-asterisk"></span> Management Level Required'
+      region: content
+      parent_name: group_forage_information
+      weight: 17
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_quality_and_antiquality_ch:
+      children:
+        - field_id_quality_factors
+        - field_id_anti_quality_factors
+      label: '<span class="fa-solid fa-list-check"></span> Quality and Antiquality Characteristics'
+      region: content
+      parent_name: group_forage_information
+      weight: 18
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_storage_other_uses:
+      children:
+        - field_storage_other_uses
+      label: '<span class="fa-solid fa-box-archive"></span> Storage / Other Uses'
+      region: content
+      parent_name: group_forage_information
+      weight: 19
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_image_gallery:
+      children:
+        - field_image_gallery_text
+      label: '<span class="fa-solid fa-images"></span> Image Gallery'
+      region: content
+      parent_name: group_forage_information
+      weight: 20
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_resources:
+      children:
+        - field_id_publications
+        - field_id_links
+        - field_books_chapters
+        - field_journal_articles
+        - field_extension_fact_sheets_circ
+        - field_nrcs_plant_guides_fact_she
+        - field_organizations
+        - field_vendors
+      label: '<span class="fa-solid fa-folder-open"></span> Resources'
+      region: content
+      parent_name: group_forage_information
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.forages.default
+targetEntityType: node
+bundle: forages
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 16
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  entitygroupfield:
+    type: entitygroupfield_select_widget
+    weight: 1
+    region: content
+    settings:
+      help_text: ''
+      label: 'Group name'
+      multiple: true
+      required: false
+    third_party_settings: {  }
+  field_2_plant_hardiness_zone:
+    type: options_buttons
+    weight: 41
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_all_factors_combined:
+    type: image_focal_point
+    weight: 30
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  field_annual_precipitation:
+    type: options_select
+    weight: 40
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_banner_picture:
+    type: image_focal_point
+    weight: 14
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  field_books_chapters:
+    type: text_textarea
+    weight: 42
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_climate_factors:
+    type: image_focal_point
+    weight: 26
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  field_cultivar_examples:
+    type: text_textarea
+    weight: 32
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_establishment:
+    type: text_textarea
+    weight: 62
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_establishment_and_manageme:
+    type: text_textarea
+    weight: 20
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_extension_fact_sheets_circ:
+    type: text_textarea
+    weight: 44
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_flooding_tolerance:
+    type: options_select
+    weight: 45
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_heat_zone:
+    type: options_select
+    weight: 42
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_id_anti_quality_factors:
+    type: text_textarea
+    weight: 41
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_authority:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_climate_tolerances:
+    type: text_textarea
+    weight: 22
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_cultivars:
+    type: text_textarea
+    weight: 31
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_family:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_genus:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_group:
+    type: options_select
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_id_growth_habit:
+    type: text_textarea
+    weight: 17
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_growth_season:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_id_identification_charact:
+    type: text_textarea
+    weight: 18
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_life_cycle:
+    type: options_select
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_id_links:
+    type: text_textarea
+    weight: 41
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_picture:
+    type: image_focal_point
+    weight: 13
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  field_id_production_profile:
+    type: text_textarea
+    weight: 34
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_publications:
+    type: text_textarea
+    weight: 40
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_quality_factors:
+    type: text_textarea
+    weight: 40
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_soil_tolerances:
+    type: text_textarea
+    weight: 24
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_species:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_symbol:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_tribe:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_id_type:
+    type: options_select
+    weight: 12
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_id_uses:
+    type: options_select
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image_gallery_text:
+    type: text_textarea
+    weight: 64
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_inflorescence:
+    type: text_textarea
+    weight: 51
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_journal_articles:
+    type: text_textarea
+    weight: 43
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_leaves:
+    type: text_textarea
+    weight: 52
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_management:
+    type: text_textarea
+    weight: 63
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_management_level:
+    type: options_select
+    weight: 48
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_management_level_text:
+    type: text_textarea
+    weight: 49
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_nrcs_plant_guides_fact_she:
+    type: text_textarea
+    weight: 45
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_organizations:
+    type: text_textarea
+    weight: 46
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_phenological_development_a:
+    type: text_textarea
+    weight: 60
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_phenological_graph:
+    type: image_focal_point
+    weight: 61
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  field_quantitative_tolerances:
+    type: text_textarea
+    weight: 25
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_roots:
+    type: text_textarea
+    weight: 55
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_seeds:
+    type: text_textarea
+    weight: 56
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_soil_drainage:
+    type: options_select
+    weight: 44
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_soil_factors:
+    type: image_focal_point
+    weight: 29
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  field_soil_ph:
+    type: options_select
+    weight: 43
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_soil_salinity:
+    type: options_select
+    weight: 46
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_species_selection_characte:
+    type: text_textarea
+    weight: 39
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_stems:
+    type: string_textarea
+    weight: 54
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_stipules:
+    type: text_textarea
+    weight: 53
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_storage_other_uses:
+    type: text_textarea
+    weight: 50
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_suitability_maps_:
+    type: text_textarea
+    weight: 25
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_vendors:
+    type: text_textarea
+    weight: 47
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_yield_graph:
+    type: image_focal_point
+    weight: 35
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 9
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 6
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

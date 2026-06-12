@@ -1,0 +1,179 @@
+uuid: e825c1ed-fb26-48c5-98c9-50b4431d91d8
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: stat
+label: 'Stat Bar'
+code: |-
+  /* ===============================
+     SHARED BASE STYLES
+  ================================ */
+  .bar-container,
+  .grad-bar-container {
+    width: 550px;
+    max-width: 100%;
+    margin: 2rem 0;
+    position: relative;
+  }
+
+  .bar-track,
+  .grad-bar-track {
+    background: #d9d9d9;
+    height: clamp(36px, 5vw, 45px);
+    border-radius: 50px;
+    overflow: visible;
+    position: relative;
+  }
+
+  .bar-fill,
+  .grad-bar-fill {
+    --val: 0; /* fill percentage (0–100) */
+    width: 0%;
+    height: 100%;
+    border-radius: 50px;
+    position: relative;
+    animation: fill 1.5s ease forwards;
+  }
+
+  @keyframes fill {
+    from { width: 0%; }
+    to { width: calc(var(--val) * 1%); }
+  }
+
+  /* Shared bubble design */
+  .stat-bubble,
+  .grad-bubble {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: calc(clamp(50px, 8vw, 70px) * -0.5);
+    width: clamp(50px, 8vw, 70px);
+    height: clamp(50px, 8vw, 70px);
+    background: #fff;
+    border: clamp(8px, 1.8vw, 20px) solid currentColor;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: clamp(0.9rem, 2.3vw, 1.5rem);
+    color: #fff;
+    font-family: 'Stratum2Web', serif;
+    white-space: nowrap;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+  }
+
+  /* Shared label inside the bar */
+  .bar-label,
+  .grad-bar-label {
+    position: absolute;
+    left: clamp(10px, 3vw, 20px);
+    right: clamp(80px, 11vw, 120px);
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: clamp(0.75rem, 2vw, 1.25rem);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    color: #fff;
+    z-index: 1;
+    font-family: 'Stratum2Web', serif;
+    font-weight: 600;
+    line-height: 1.2;
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  /* Prevent clipping on ultra-small screens */
+  @media (max-width: 380px) {
+    .bar-track,
+    .grad-bar-track {
+      overflow: hidden;
+    }
+
+    .stat-bubble,
+    .grad-bubble {
+      right: calc(clamp(45px, 8vw, 55px) * -0.3);
+      transform: translate(20%, -50%);
+    }
+
+    .bar-label,
+    .grad-bar-label {
+      right: clamp(60px, 9vw, 80px);
+      font-size: clamp(0.65rem, 1.8vw, 0.85rem);
+    }
+  }
+
+  /* ===============================
+     EMPLOYMENT BARS (ORANGE + NAVY)
+  ================================ */
+  .stat-1 .bar-fill {
+    background-color: #D73F09; /* OSU orange */
+  }
+  .stat-1 .stat-bubble {
+    color: #fff;
+    background-color: #D73F09;
+    border-color: #D73F09;
+  }
+
+  .stat-2 .bar-fill {
+    background-color: #003B5C; /* OSU navy */
+  }
+  .stat-2 .stat-bubble {
+    color: #fff;
+    background-color: #003B5C;
+    border-color: #003B5C;
+  }
+
+  /* ===============================
+     GRADUATION / SALARY BARS
+  ================================ */
+  .grad-stat-1 .grad-bar-fill {
+    background-color: #f36c21; /* Bright OSU orange */
+  }
+  .grad-stat-1 .grad-bubble {
+    color: #f36c21;
+    background-color: #fff;
+    border-color: #f36c21;
+  }
+
+  .grad-stat-2 .grad-bar-fill {
+    background-color: #D3832B; /* Golden tone */
+  }
+  .grad-stat-2 .grad-bubble {
+    color: #D3832B;
+    background-color: #fff;
+    border-color: #D3832B;
+  }
+
+  /* ===============================
+     TABLET SIZING TWEAKS
+  ================================ */
+  @media (max-width: 991px) and (min-width: 767px) {
+  	.bar-label, .grad-bar-label{
+  		font-size: 1rem;
+  	}
+  }
+
+  @media (max-width: 1200px) and (min-width: 992px) {
+  	.bar-label, .grad-bar-label{
+  		font-size: 1.1rem;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/248091\r\n/node/248091/layout"
+contexts: {  }
+conditions_require_all: true

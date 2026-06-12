@@ -1,0 +1,60 @@
+uuid: 854c0bb9-8b79-43ac-ad5a-522468e3890b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.sitewide
+  module:
+    - block_visibility_groups
+    - system
+id: hero_text_shadows
+label: 'Hero Text Shadows'
+code: |-
+  /* TOP LINE */
+  #leadtext {
+      font-family: 'Stratum2Web',sans-serif;
+      color: #ffffff;
+      background-color: transparent;
+      font-size: 2.5rem;
+      line-height: 0.9;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 20px #000000;
+      margin: auto;
+      margin: 0 0 0px;
+  }
+  /* BOTTOM LINE */
+  #toptext {
+      font-family: 'Stratum2Web',sans-serif;
+      color: #ffffff;
+      background-color: transparent;
+      font-size: 5.0rem;
+      line-height: 0.9;
+      text-transform: uppercase;
+      text-shadow: 1px 1px 35px #000000;
+      margin: auto 1.5rem;
+      margin: 0 0 0px;
+  }
+
+   
+
+  /* SHiFT FOR MOBILE */
+  @media screen and (max-width: 800px) {
+  #leadtext {
+      font-size: 1.5rem;
+  }
+  #toptext {
+      font-size: 3.0rem;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: sitewide
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

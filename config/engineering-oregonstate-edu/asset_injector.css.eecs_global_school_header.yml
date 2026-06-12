@@ -1,0 +1,59 @@
+uuid: 50928698-3dd2-4329-894a-2aa734da8659
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: eecs_global_school_header
+label: 'EECS all pages style changes (reduce header font, accent bar, button styling)'
+code: |-
+  /* ================================================
+     EECS group changes. Headers, buttons and accent bar.
+     ================================================ */
+
+  /* Page header resizing */
+
+  .block-system-branding-block a {
+      font-size: 1.3rem;
+  }
+
+  /*  Global Button Styling */
+  .btn.osu-btn-primary {
+      border-radius: 0px;
+      background-color: transparent;
+      color: black;
+      border-color: black;
+  }
+
+  .white-border-hover:hover {
+    border-color: white !important;
+  }
+
+  .btn.osu-btn-primary:hover {
+      background-color: #FFB500 !important;
+      border-color: #FFB500 !important;
+  }
+
+  /*EECS group pages accent bar color*/
+
+  .school-accent-bar {
+    height: 3px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background-color: #FFB500;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/16\r\n/group/16/*\r\n/EECS/*\r\n/EECS"
+contexts: {  }
+conditions_require_all: true

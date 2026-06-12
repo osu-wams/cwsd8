@@ -1,0 +1,29 @@
+uuid: e92b6a7b-ef10-4dd3-9043-dac263e5a6ad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gp_discipline_term
+    - node.type.graduate_program
+    - taxonomy.vocabulary.disciplines
+id: node.graduate_program.field_gp_discipline_term
+field_name: field_gp_discipline_term
+entity_type: node
+bundle: graduate_program
+label: 'Discipline Term'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      disciplines: disciplines
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

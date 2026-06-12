@@ -1,0 +1,100 @@
+uuid: 53a24b33-bc10-4e15-b86e-c72b7433d9a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.coe_accordion
+    - field.field.block_content.coe_accordion.field_coe_acc_typography
+    - field.field.block_content.coe_accordion.field_coe_accordion_columns
+    - field.field.block_content.coe_accordion.field_coe_accordion_sections
+  module:
+    - entity_reference_revisions
+    - layout_builder
+    - options
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          80690a4b-126b-4361-b584-5dbfcd9a8c97:
+            uuid: 80690a4b-126b-4361-b584-5dbfcd9a8c97
+            region: content
+            configuration:
+              id: 'field_block:block_content:coe_accordion:field_coe_accordion_sections'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                  link: ''
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          4ba2c0cc-7cfb-442a-a42f-f883e0a21f84:
+            uuid: 4ba2c0cc-7cfb-442a-a42f-f883e0a21f84
+            region: content
+            configuration:
+              id: 'field_block:block_content:coe_accordion:field_coe_accordion_columns'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          ec7e68f9-9c30-4c89-877b-cd400e5714a0:
+            uuid: ec7e68f9-9c30-4c89-877b-cd400e5714a0
+            region: content
+            configuration:
+              id: 'field_block:block_content:coe_accordion:field_coe_acc_typography'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+id: block_content.coe_accordion.default
+targetEntityType: block_content
+bundle: coe_accordion
+mode: default
+content:
+  field_coe_acc_typography:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_coe_accordion_columns:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_coe_accordion_sections:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

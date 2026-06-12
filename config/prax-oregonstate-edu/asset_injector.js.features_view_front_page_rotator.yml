@@ -1,0 +1,42 @@
+uuid: e3e17e9d-61b9-4604-a491-0b2c9b26f039
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: features_view_front_page_rotator
+label: 'Features View - Front Page Rotator'
+code: |-
+  jQuery(document).ready(function () {
+      jQuery('.item').first().addClass('active');
+      setInterval(function () {
+          let active = jQuery('.item.active');
+          active.removeClass('active');
+          if (active.next('.item').length === 0) {
+              active.parent('div').find('.item:first').addClass('active');
+          } else {
+              active.next('.item').addClass('active');
+          }
+      }, 7000);
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'
+contexts: {  }
+conditions_require_all: true

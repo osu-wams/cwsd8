@@ -2,6 +2,8 @@ uuid: d9014755-16cb-4dcc-a294-2916c84ea066
 langcode: en
 status: true
 dependencies:
+  config:
+    - node.type.story
   module:
     - node
 _core:
@@ -9,12 +11,11 @@ _core:
 id: story_content_type
 label: 'Story Content Type'
 type: 'canonical_entities:node'
-pattern: 'all-stories/[node:title]'
+pattern: '/all-stories/[node:title]'
 selection_criteria:
   afb559bd-1182-425e-be07-56e09cf23ab1:
     id: 'entity_bundle:node'
     negate: false
-    uuid: afb559bd-1182-425e-be07-56e09cf23ab1
     context_mapping:
       node: node
     bundles:

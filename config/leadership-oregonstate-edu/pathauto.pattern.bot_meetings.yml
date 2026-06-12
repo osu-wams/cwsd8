@@ -1,0 +1,23 @@
+uuid: 2d2b675e-9e48-47f9-b333-60ec451db8a6
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.meeting
+  module:
+    - node
+id: bot_meetings
+label: 'BoT Meetings'
+type: 'canonical_entities:node'
+pattern: '/meetings/[node:title]'
+selection_criteria:
+  9fd7d88e-456d-49d3-8411-1eb1c89bdcc5:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      meeting: meeting
+selection_logic: and
+weight: -5
+relationships: {  }

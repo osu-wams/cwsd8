@@ -1,0 +1,42 @@
+uuid: fbc520a0-fae3-49ce-82ba-1d4c476c4f18
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: websites_hover
+label: 'Websites hover'
+code: |2-
+    // Select all video containers
+      const containers = document.querySelectorAll('.video-container');
+
+      // Add hover event listeners to each container
+      containers.forEach(container => {
+        const video = container.querySelector('.hover-video');
+
+        container.addEventListener('mouseenter', () => {
+          video.play();
+        });
+
+        container.addEventListener('mouseleave', () => {
+          video.pause();
+          video.currentTime = 0; // Reset video to start
+        });
+      });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/506\r\n/node/506/layout\r\n/node/951\r\n/node/951/layout\r\n/node/916\r\n/node/916/layout\r\n/node/1726"
+contexts: {  }
+conditions_require_all: true

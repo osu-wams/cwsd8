@@ -1,0 +1,127 @@
+uuid: b5233b13-c76c-4b41-a48e-2e13627d6cbf
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: news_feed
+label: 'News Feed'
+code: |-
+  async function loadOSUNewsLayout() {
+              try {
+                  const proxy = 'https://corsproxy.io/?';
+                  const feedUrl = 'https://news.oregonstate.edu/releases/feed';
+                  const res = await fetch(proxy + encodeURIComponent(feedUrl));
+                  if (!res.ok) throw new Error('RSS fetch failed');
+
+                  const text = await res.text();
+                  const parser = new DOMParser();
+                  const xml = parser.parseFromString(text, 'application/xml');
+                  const items = xml.querySelectorAll('item');
+
+                  if (items.length < 1) throw new Error('No news items');
+
+                  const container = document.getElementById('news-container');
+                  container.innerHTML = '';
+
+                  // Left column – featured (most recent)
+                  const featured = items[0];
+                  const fTitle = featured.querySelector('title')?.textContent || 'No title';
+                  const fLink  = featured.querySelector('link')?.textContent || '#';
+                  const fDate  = formatDate(featured.querySelector('pubDate')?.textContent || '');
+                  const fImg   = featured.querySelector('enclosure')?.getAttribute('url') || '';
+
+                  const leftCol = document.createElement('a');
+                  leftCol.href = fLink;
+                  leftCol.target = '_blank';
+                  leftCol.className = 'featured-column';
+                  leftCol.innerHTML = `
+                      <div class="featured-card news-card">
+                          <div class="image-container">
+                              ${fImg ? `<img src="${fImg}" alt="${fTitle}" class="news-image" loading="lazy">` 
+                                    : `<div class="no-image">Featured story</div>`}
+                          </div>
+                          <div class="card-content">
+                              <div class="card-date">${fDate}</div>
+                              <div class="featured-title">${fTitle}</div>
+                          </div>
+                      </div>
+                  `;
+                  container.appendChild(leftCol);
+
+                  // Middle column – stories 2 & 3
+                  const midCol = document.createElement('div');
+                  midCol.className = 'stack-column';
+
+                  // Right column – stories 4 & 5
+                  const rightCol = document.createElement('div');
+                  rightCol.className = 'stack-column';
+
+                  for (let i = 1; i < Math.min(5, items.length); i++) {
+                      const item = items[i];
+                      const title = item.querySelector('title')?.textContent || '';
+                      const link  = item.querySelector('link')?.textContent || '#';
+                      const date  = formatDate(item.querySelector('pubDate')?.textContent || '');
+                      const img   = item.querySelector('enclosure')?.getAttribute('url') || '';
+
+                      const card = document.createElement('a');
+                      card.href = link;
+                      card.target = '_blank';
+                      card.className = 'news-card';
+                      card.innerHTML = `
+                          <div class="image-container">
+                              ${img ? `<img src="${img}" alt="${title}" class="news-image" loading="lazy">` 
+                                   : `<div class="no-image">Story image</div>`}
+                          </div>
+                          <div class="card-content">
+                              <div class="card-date">${date}</div>
+                              <div class="news-title">${title}</div>
+                          </div>
+                      `;
+
+                      if (i === 1 || i === 2) {
+                          midCol.appendChild(card);
+                      } else {
+                          rightCol.appendChild(card);
+                      }
+                  }
+
+                  container.appendChild(midCol);
+                  container.appendChild(rightCol);
+
+              } catch (err) {
+                  console.error(err);
+                  document.getElementById('news-container').innerHTML = 
+                      '<p class="error-message">Unable to load news right now. Please try again later.</p>';
+              }
+          }
+
+          function formatDate(pubDateStr) {
+              if (!pubDateStr) return '';
+              const d = new Date(pubDateStr);
+              if (isNaN(d)) return pubDateStr;
+              return d.toLocaleDateString('en-US', {
+                  month: 'long',
+                  day: 'numeric',
+                  year: 'numeric'
+              });
+          }
+
+          loadOSUNewsLayout();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/4021\r\n<front>"
+contexts: {  }
+conditions_require_all: true

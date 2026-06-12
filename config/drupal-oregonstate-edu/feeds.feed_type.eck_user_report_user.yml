@@ -1,0 +1,81 @@
+uuid: bf1913f3-1913-4d47-9e70-40711093b900
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.data.user.title
+    - eck.eck_type.data.user
+    - field.field.data.user.field_data_user_cas_username
+    - field.field.data.user.field_data_user_email
+  module:
+    - eck
+label: 'eck User Report -- User'
+id: eck_user_report_user
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:data'
+processor_configuration:
+  values:
+    type: user
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 6
+custom_sources:
+  username:
+    value: Username
+    label: Username
+    machine_name: username
+    type: csv
+  cas:
+    value: CAS
+    label: CAS
+    machine_name: cas
+    type: csv
+  email:
+    value: Email
+    label: Email
+    machine_name: email
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: username
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_data_user_cas_username
+    map:
+      value: cas
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_data_user_email
+    map:
+      value: email
+    settings:
+      language: null
+      defuse: false
+    unique: {  }

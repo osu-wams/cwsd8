@@ -22,7 +22,9 @@ dependencies:
     - field.field.node.academic_calendar.field_withdraw_from_term
     - field.field.node.academic_calendar.field_withdraw_no_refund
     - node.type.academic_calendar
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - path
     - text
 id: node.academic_calendar.default
@@ -182,6 +184,20 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
   path:
     type: path
     weight: 30
@@ -234,3 +250,7 @@ content:
     third_party_settings: {  }
 hidden:
   entitygroupfield: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

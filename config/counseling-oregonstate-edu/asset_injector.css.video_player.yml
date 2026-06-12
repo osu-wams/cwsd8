@@ -1,0 +1,27 @@
+uuid: 7bf8ed91-6c60-4276-9e85-885dec723103
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: video_player
+label: 'Video Player'
+code: |-
+  drupal-media,
+  drupal-media video,
+  .media-oembed-content,
+  video {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

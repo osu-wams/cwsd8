@@ -1,0 +1,75 @@
+uuid: f3a4245d-1e47-402d-bd5d-b918757d4f2d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.image.field_media_image
+    - media.type.image
+  module:
+    - media
+label: '25-Year Club Image Files'
+id: 25_year_club_image_files
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:media'
+processor_configuration:
+  values:
+    bundle: image
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  image_path:
+    value: 'Image Path'
+    label: 'Image Path'
+    machine_name: image_path
+    type: csv
+  alt_text:
+    value: 'Alt Text'
+    label: 'Alt Text'
+    machine_name: alt_text
+    type: csv
+  image_name:
+    value: 'Image Name'
+    label: 'Image Name'
+    machine_name: image_name
+    type: csv
+mappings:
+  -
+    target: field_media_image
+    map:
+      target_id: image_path
+      alt: alt_text
+      title: image_name
+    settings:
+      language: ''
+      reference_by: fid
+      autocreate: 0
+      existing: '2'
+      autocreate_bundle: false
+  -
+    target: name
+    map:
+      value: image_name
+    settings:
+      language: null
+    unique: {  }

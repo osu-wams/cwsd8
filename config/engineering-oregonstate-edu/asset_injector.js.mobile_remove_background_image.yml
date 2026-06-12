@@ -1,0 +1,37 @@
+uuid: 66783d0f-b91d-4fd6-9516-4e98b1c91956
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: mobile_remove_background_image
+label: 'Mobile remove background image'
+code: |-
+  // Wait for the document to be fully loaded
+  document.addEventListener('DOMContentLoaded', function() {
+  	if (window.matchMedia("(max-width: 605px)").matches) {
+      // Find all elements with class .m-no-background
+      var containers = document.querySelectorAll('.m-no-background');
+
+      containers.forEach(function(c) {
+      	c.style.removeProperty("background-image");
+      });
+  	}
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/43471
+contexts: {  }
+conditions_require_all: true

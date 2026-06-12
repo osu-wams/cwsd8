@@ -1,0 +1,39 @@
+uuid: 9e9a6f6d-b715-4714-9ea4-fb3db44662d0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.osg_announcements.body
+    - field.field.node.osg_announcements.field_expire
+    - field.field.node.osg_announcements.field_osg_expiration_date
+    - field.field.node.osg_announcements.field_osg_publish_date
+    - field.field.node.osg_announcements.field_type_osg_announcement
+    - node.type.osg_announcements
+  module:
+    - text
+    - user
+id: node.osg_announcements.teaser
+targetEntityType: node
+bundle: osg_announcements
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_expire: true
+  field_osg_expiration_date: true
+  field_osg_publish_date: true
+  field_type_osg_announcement: true

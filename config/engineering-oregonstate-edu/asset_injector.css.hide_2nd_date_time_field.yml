@@ -1,0 +1,23 @@
+uuid: b11a9342-8664-42bb-9ff9-b7e5b96d6bd9
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: hide_2nd_date_time_field
+label: 'Event cards hide end time (date time)'
+code: |
+  /*Rule to hide the end time on event cards*/
+
+  time:nth-child(even) {
+    display: none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

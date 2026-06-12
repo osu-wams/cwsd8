@@ -1,0 +1,31 @@
+uuid: 0b8c5284-6c7d-4288-aba1-cd70c57a2472
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.admitted_students
+    - system.menu.menu-admitted-students
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - madrone
+id: admittedstudentresources
+theme: madrone
+region: sidebar
+weight: -27
+provider: null
+plugin: 'system_menu_block:menu-admitted-students'
+settings:
+  id: 'system_menu_block:menu-admitted-students'
+  label: 'Admitted Student Resources'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: admitted_students

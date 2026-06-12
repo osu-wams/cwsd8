@@ -1,0 +1,30 @@
+uuid: 8d99e0b2-b597-4465-be2f-8c79821c8d62
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_categories
+    - node.type.course
+    - taxonomy.vocabulary.graduate_student_success
+id: node.course.field_course_categories
+field_name: field_course_categories
+entity_type: node
+bundle: course
+label: Categories
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      graduate_student_success: graduate_student_success
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

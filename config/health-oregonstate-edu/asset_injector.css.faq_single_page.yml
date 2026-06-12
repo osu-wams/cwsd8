@@ -1,0 +1,97 @@
+uuid: 8872d147-dddc-4ccd-a52e-a19189ea4322
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: faq_single_page
+label: 'FAQ Single Page'
+code: |
+  .node-type-frequently-asked-question .title {
+   text-align: center;
+  }
+
+  .body {
+  background-color: rgb(247, 245, 245);
+  }
+
+  .node-type-frequently-asked-question .field-name-field-answer {
+  padding: 0.5em;
+  max-width: 1400px;
+  }
+
+  .node-type-frequently-asked-question .field-name-field-question {
+      font-weight: 900;
+      font-size: 20px;
+      margin: 20px 0;
+      line-height: 1.2;
+  }
+
+
+  .node-type-frequently-asked-question .date-display-single {
+   color: #0000008a;
+   margin-top: 2rem;
+   font-size:.9rem;
+  }
+
+
+  .node-type-frequently-asked-question .field-name-field-last-modified {
+   color: #0000008a;
+   margin-top: 2rem;
+   font-size:.9rem;
+  }
+
+  .node-type-frequently-asked-question .field-name-field-audience {
+   color: #0000008a;
+   margin-top: 2rem;
+   font-size:.9rem;
+  }
+
+
+  .node-type-frequently-asked-question .field .field-name-field-last-modified .field-type-datetime {
+  text-align: center;
+  margin: 0 auto;
+  }
+
+  .field-label-inline .field-label,
+  .field-label-inline .field-items {
+   float:none;
+   text-align: center;
+  }
+
+  /*  full faq boxes */
+  .grid-faq-buttons {
+    display: -ms-grid;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+    grid-gap: 20px;
+    justify-content: center;
+  }
+
+  .grid-faq-buttons div {
+    content-visibility: auto;
+    padding: 0.5em;
+  }
+
+  .grid-faq-2-col {
+      grid-auto-flow: column;
+      max-width: 1200px;
+      margin: 0px auto;
+      gap: 32px;
+      grid-template-columns: 1fr 1fr;
+      display: grid;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

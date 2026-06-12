@@ -1,0 +1,33 @@
+uuid: ccc3907d-77df-45ae-bf9c-db7f28789b8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.region_events.body
+    - field.field.node.region_events.feeds_item
+    - node.type.region_events
+  module:
+    - text
+    - user
+id: node.region_events.teaser
+targetEntityType: node
+bundle: region_events
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true

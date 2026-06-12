@@ -1,0 +1,29 @@
+uuid: 2b92cbe1-dccf-431f-99af-632811241a50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_engr_faci_organization
+    - node.type.facilities
+    - taxonomy.vocabulary.osu_organization
+id: node.facilities.field_engr_faci_organization
+field_name: field_engr_faci_organization
+entity_type: node
+bundle: facilities
+label: Organizations
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      osu_organization: osu_organization
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

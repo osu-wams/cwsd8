@@ -1,0 +1,44 @@
+uuid: 2226cf1d-529c-4917-b160-ef3c7e71a578
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.image_album.field_album_description
+    - field.field.node.image_album.field_image_album_media
+    - node.type.image_album
+  module:
+    - text
+    - user
+id: node.image_album.default
+targetEntityType: node
+bundle: image_album
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_album_description:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_image_album_media:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: colorbox_album
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden:
+  entitygroupfield: true

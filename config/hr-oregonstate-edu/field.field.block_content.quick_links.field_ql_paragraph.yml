@@ -1,0 +1,37 @@
+uuid: 3d846b7d-dfa1-4424-9571-1f9d293d6d8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.quick_links
+    - field.storage.block_content.field_ql_paragraph
+    - paragraphs.paragraphs_type.quick_link
+  module:
+    - entity_reference_revisions
+id: block_content.quick_links.field_ql_paragraph
+field_name: field_ql_paragraph
+entity_type: block_content
+bundle: quick_links
+label: 'Quick Links'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      quick_link: quick_link
+    negate: 0
+    target_bundles_drag_drop:
+      osu_accordion_item:
+        weight: 4
+        enabled: false
+      osu_accordion_section:
+        weight: 5
+        enabled: false
+      quick_link:
+        weight: 6
+        enabled: true
+field_type: entity_reference_revisions

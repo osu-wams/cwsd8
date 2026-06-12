@@ -1,0 +1,53 @@
+uuid: 3c93441e-a093-4ab0-a4e2-c8b4ed5ad559
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: event_cards
+label: 'Event cards (on all events pages, horizontal events cards)'
+code: |
+  /*  ================================================
+  Event cards. Applied on all pages with the event cards
+   ================================================ */
+
+  /* Gets card to be horizontal with image to the left */
+
+  .card {
+    flex-direction: row;
+  }
+
+  .card img{
+  	min-width: 210px;
+  	max-width: 210px;
+  	height: 210px;
+  	padding: 7px;
+  	float: left;
+  	object-fit: cover;
+  	
+  }
+
+  .event-card-body{
+  	padding: 30px;
+  }
+
+  @media screen and (max-width: 605px) {
+    .card img{
+    	display: none;
+    
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/38776\r\n/node/38821\r\n/node/38806\r\n/node/38871\r\n/node/39086\r\n/node/39486\r\n/node/40476\r\n/node/41806\r\n/node/41811\r\n/node/39486\r\n/node/42236\r\n/node/4461\r\n/node/41671\r\n/node/41676\r\n/node/34306\r\n/node/3426\r\n/node/38506\r\n/node/411\r\n/node/4416\r\n/node/46176\r\n/node/52391\r\n/node/411\r\n/node/411/latest\r\n"
+contexts: {  }
+conditions_require_all: true

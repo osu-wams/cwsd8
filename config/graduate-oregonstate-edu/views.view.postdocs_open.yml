@@ -1,0 +1,187 @@
+uuid: d9d4f668-a8c3-4b73-8c8d-eccc52fbd1d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - node.type.job
+  module:
+    - node
+    - user
+id: postdocs_open
+label: 'Postdocs open'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'Open Postdoctoral Scholar Positions'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+      pager:
+        type: none
+        options:
+          items_per_page: 0
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+        perm: 'access content'
+      cache:
+        type: none
+      sorts:
+        sticky:
+          id: sticky
+          table: node_field_data
+          field: sticky
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: DESC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          plugin_id: date
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            job: job
+      style:
+        type: default
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          row_class_special: 0
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+          links: 0
+          comments: 0
+      query:
+        type: views_query
+        options: {  }
+      css_class: 'container pb-6'
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: ''
+          empty: false
+          ui_name: ''
+          content:
+            value: '<p>&nbsp;</p>'
+            format: full_html
+          tokenize: 0
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: ''
+          empty: false
+          ui_name: ''
+          content:
+            value: |-
+              <p>&nbsp;</p>
+              <hr>
+              <p>This page lists Postdoctoral Scholar positions. To find <a href="/postdocs/appointment-and-recruitment">Research Associate (Postdoc)</a> positions visit the OSU Jobs website. These positions are listed as:</p>
+              <ul><li><span style="text-decoration: underline;">Position Type:</span> Unclassified Faculty</li>
+              	<li><span style="text-decoration: underline;">Appointment Type:</span> Academic Teaching/Research Faculty</li>
+              </ul>
+              <p>This link will automatically filter the jobs lists based on these options: <a href="https://jobs.oregonstate.edu/postings/search?1970=1&amp;commit=Search&amp;page=1&amp;query_organizational_tier_3_id=any&amp;query_position_type_id=3&amp;utf8=%E2%9C%93">View jobs list.</a></p>
+              <p>If you do not see an opening in your area of interest, try contacting specific faculty members directly and inquire about the possibility of training with them. To find faculty, visit the websites of <a href="https://oregonstate.edu/academics">Academic Colleges</a> and <a href="https://research.oregonstate.edu/research-centers-and-institutes-osu-0">Research Centers and Institutes</a>, and look through the list of faculty.</p>
+            format: full_html
+          tokenize: 0
+      display_extenders: {  }
+      style_plugin: default
+      style_options:
+        row_class: ''
+        default_row_class: 1
+        row_class_special: 0
+        uses_fields: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page:
+    id: page
+    display_title: Page
+    display_plugin: page
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: postdocs/open-positions
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

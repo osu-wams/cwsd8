@@ -1,0 +1,29 @@
+uuid: 08b385fb-7fe0-4e80-8300-f020b3cdd877
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_resource_difficulty_level
+    - node.type.resource_page
+    - taxonomy.vocabulary.resource_difficulty_level
+id: node.resource_page.field_resource_difficulty_level
+field_name: field_resource_difficulty_level
+entity_type: node
+bundle: resource_page
+label: 'Difficulty level'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      resource_difficulty_level: resource_difficulty_level
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

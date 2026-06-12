@@ -1,0 +1,30 @@
+uuid: 78f0f122-53b8-45af-9a3e-19d0608eba26
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: landing_page_cfsl
+label: landing-page-cfsl
+logic: and
+conditions:
+  9726a17f-0d68-49aa-a1e2-eb6ec7e454ff:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 9726a17f-0d68-49aa-a1e2-eb6ec7e454ff
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page
+  16ae6db6-bbc4-48f1-9049-63ed481086fa:
+    id: request_path
+    negate: false
+    uuid: 16ae6db6-bbc4-48f1-9049-63ed481086fa
+    pages: /cfsl
+  f9cd1713-8ec2-4635-9389-e3a554d6bcc8:
+    id: request_path
+    negate: true
+    uuid: f9cd1713-8ec2-4635-9389-e3a554d6bcc8
+    pages: "/main\r\n/main/*\r\n/group/*"
+allow_other_conditions: null

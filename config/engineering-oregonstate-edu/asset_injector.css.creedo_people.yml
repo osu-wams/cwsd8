@@ -1,0 +1,168 @@
+uuid: 892aca46-38ff-4ba1-94bd-a14aca2d47b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: creedo_people
+label: 'CREEdo People & Proposal Page'
+code: |+
+  .creedo-people{
+  	border-radius: 5px;
+    background: var(--Primary-Bucktooth-White, #FFF);
+    box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+    transition: .3s;
+    height: 100%;
+    position: relative;
+  }
+
+  .creedo-people > div {
+  	height: 100%;
+  }
+
+  .creedo-people > div > a::before{
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+  }
+
+  .creedo-people h6 a{
+  	color: #000 !important;
+  	font-family: "Open Sans" !important;
+  	font-size: 20px !important;
+  	font-style: normal !important;
+  	font-weight: 600 !important;
+  	line-height: 130% !important;
+  	border-bottom: none;
+  }
+
+  .creedo-people h6 a:hover{
+  	border-bottom: none;
+  }
+
+  p.creedo-title {
+    margin-bottom: 30px;
+  }
+
+  .creedo-people .phone,
+  .creedo-people .email {
+  	font-family: "Open Sans";
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 130%;
+  	
+  	/*makes link still clickable, if whole card is clickable for another link*/
+  	position: relative;
+    z-index: 1;
+  }
+
+  .creedo-people .phone {
+  	margin-bottom: 20px !important;
+  }
+  .creedo-people .email a {
+  	font-size: 14px !important;
+  	text-transform: lowercase !important;
+  }
+
+  .creedo-title{
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 160%; /* 28.8px */
+  }
+
+  .row .row-spacing > * {
+  	padding-left: 0px;
+  	padding-right: 20px;
+  }
+
+  @media only screen and (max-width: 767px) {
+  	.row .row-spacing > * {
+  		padding-right: 0;
+  	}
+  }
+
+  /*Adds Spacing Below cards*/
+  .col-12:has(> div > .creedo-people) {
+      margin-bottom: 15px;
+      /*padding: 0 10px;*/
+  }
+
+  .creedo-people img {
+      width: 100%;
+      border-radius: 5px 5px 0px 0px;
+  }
+
+
+  .label{
+  	color: var(--Secondary-High-Tide, #00859B);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  	margin-bottom: 8px !important;
+  }
+
+  /*******************************************
+
+  						 Header Profile (near top of page)
+  						 
+  ********************************************/
+
+  .background-container {
+      background-image: url(/sites/engineering.oregonstate.edu/files/2025-06/directorfeature_bg_desktop.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+  }
+
+  /*******************************************
+
+  							Proposal Page
+
+  ********************************************/
+
+  li.nested-item-color {
+  	padding-left: 26px !important;
+  }
+
+  /* Change nested list item to black */ 
+  li.nested-item-color::before {
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="black" stroke-width="3.5" stroke-linecap="square"/></svg>') no-repeat center center !important
+  }
+
+
+  /*******************************************
+
+  						 Group Pages
+
+  *******************************************/
+  /* Lower Parent Group Title font size */
+  a.site-name__group-link.text-decoration-none.osu-text-osuorange.fw-bolder {
+      font-size: 18px;
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47886\r\n/node/47881"
+contexts: {  }
+conditions_require_all: true

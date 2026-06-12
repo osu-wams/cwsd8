@@ -1,0 +1,61 @@
+uuid: 84ba77d0-f4dd-4738-ac91-1edcb4b8a727
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: orange_card_hover
+label: orange-card-hover
+code: |
+  .orange-card-hover {
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  .block-inline-blockorange- {
+      padding-bottom: 1rem !important;
+  }
+
+  .block-inline-blockorange- > .block__content,
+  .block-inline-blockorange-,
+  .orange-card-hover {
+    height: 100%;
+  }
+
+  .orange-card-hover:hover {
+    background-color: #d73f09 !important;
+    color: #fff;
+  }
+
+  .block-inline-blockorange- i {
+    font-size: 4rem;
+  }
+
+  .block-inline-blockorange- a {
+    text-decoration: none;
+  }
+
+  .block-inline-blockorange- a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .block-inline-blockorange- a:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/*'
+contexts: {  }
+conditions_require_all: true

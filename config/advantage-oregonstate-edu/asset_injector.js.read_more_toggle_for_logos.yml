@@ -1,0 +1,98 @@
+uuid: 837357f6-6976-4137-981b-b462c254ac06
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: read_more_toggle_for_logos
+label: 'Accelerator Spotlight Modal'
+code: |
+  /*
+  This script handles the functionality of revealing additional logos when the "Read more" link is clicked.
+  It targets the read more link and toggles the display of the logo section above it.
+
+
+  document.addEventListener("DOMContentLoaded", function() {
+      var readMoreLink = document.querySelector('.read-more-link');
+      var logoContainers = document.querySelectorAll('.logo-container');
+
+      readMoreLink.addEventListener('click', function() {
+          logoContainers.forEach(function(logoContainer) {
+              logoContainer.classList.toggle('hidden'); // Toggle the 'hidden' class for logo containers
+          });
+          // Toggle the text of the read more link
+          if (readMoreLink.textContent === "Read more") {
+              readMoreLink.textContent = "Read less";
+          } else {
+              readMoreLink.textContent = "Read more";
+          }
+      });
+  });
+  */
+
+
+  /* Accelerator Spotlight Modal Functions
+   * -------------------------------------
+   * This script supports the popup modal interactions on spotlight cards
+   * used in the OSU Advantage Accelerator website.
+   *
+   * Features:
+   * - Opens modals by ID with keyboard focus
+   * - Traps tab focus inside modal
+   * - Closes modal on ESC or click outside
+   * - Improves accessibility with role and focus management
+   */
+    function openModal(id) {
+      const modal = document.getElementById(id);
+      modal.style.display = 'flex';
+      const content = modal.querySelector('.spotlight-modal-content');
+      content.focus();
+      document.addEventListener('keydown', trapTabKey);
+      document.addEventListener('keydown', closeOnEsc);
+    }
+
+    function closeModal(modal) {
+      modal.style.display = 'none';
+      document.removeEventListener('keydown', trapTabKey);
+      document.removeEventListener('keydown', closeOnEsc);
+    }
+
+    function closeOnEsc(e) {
+      if (e.key === 'Escape') {
+        const modals = document.querySelectorAll('.spotlight-modal');
+        modals.forEach(m => m.style.display = 'none');
+      }
+    }
+
+    function trapTabKey(e) {
+      const modal = document.querySelector('.spotlight-modal[style*="display: flex"]');
+      if (!modal) return;
+      const focusable = modal.querySelectorAll('a, button, textarea, input, select, [tabindex]:not([tabindex="-1"])');
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.key === 'Tab') {
+        if (e.shiftKey) {
+          if (document.activeElement === first) {
+            e.preventDefault();
+            last.focus();
+          }
+        } else {
+          if (document.activeElement === last) {
+            e.preventDefault();
+            first.focus();
+          }
+        }
+      }
+    }
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

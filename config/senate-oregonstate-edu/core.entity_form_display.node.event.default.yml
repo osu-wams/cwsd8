@@ -15,8 +15,11 @@ dependencies:
     - field.field.node.event.field_start_date
     - field.field.node.event.field_subject
     - node.type.event
+    - workflows.workflow.editorial
   module:
-    - datetime
+    - content_moderation
+    - datetime_range
+    - entitygroupfield
     - file
     - path
     - text
@@ -27,7 +30,7 @@ mode: default
 content:
   body:
     type: text_textarea_with_summary
-    weight: 6
+    weight: 9
     region: content
     settings:
       rows: 9
@@ -37,56 +40,56 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
+  entitygroupfield:
+    type: entitygroupfield_select_widget
+    weight: 1
+    region: content
+    settings:
+      help_text: ''
+      label: 'Group name'
+      multiple: true
+      required: false
+    third_party_settings: {  }
   field_agenda:
     type: text_textarea
-    weight: 7
+    weight: 10
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
-  field_attendance:
-    type: entity_reference_autocomplete_tags
-    weight: 11
-    region: content
-    settings:
-      match_operator: CONTAINS
-      match_limit: 10
-      size: 60
-      placeholder: ''
-    third_party_settings: {  }
   field_calendar:
     type: options_select
-    weight: 5
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
   field_committee:
     type: options_select
-    weight: 1
+    weight: 2
     region: content
     settings: {  }
     third_party_settings: {  }
   field_event_documents:
     type: file_generic
-    weight: 10
+    weight: 13
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   field_event_type:
     type: options_select
-    weight: 4
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
   field_location:
     type: string_textfield
-    weight: 3
+    weight: 5
     region: content
     settings:
       size: 60
@@ -94,56 +97,73 @@ content:
     third_party_settings: {  }
   field_minutes:
     type: text_textarea
-    weight: 8
+    weight: 11
     region: content
     settings:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
   field_start_date:
-    type: datetime_default
-    weight: 2
+    type: daterange_datelist
+    weight: 3
     region: content
-    settings: {  }
+    settings:
+      increment: 15
+      date_order: YMD
+      time_type: '24'
     third_party_settings: {  }
   field_subject:
     type: string_textfield
-    weight: 2
+    weight: 4
     region: content
     settings:
       size: 120
       placeholder: ''
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 15
+    weight: 14
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 120
+    weight: 18
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 16
+    weight: 15
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: -5
+    weight: 0
     region: content
     settings:
       size: 60
@@ -151,7 +171,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 7
     region: content
     settings:
       match_operator: CONTAINS
@@ -160,9 +180,13 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  entitygroupfield: true
+  field_attendance: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

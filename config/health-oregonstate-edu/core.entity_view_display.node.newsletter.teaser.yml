@@ -1,0 +1,44 @@
+uuid: d2f31584-0e7b-4c94-b289-d66f9076bac0
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.newsletter.body
+    - field.field.node.newsletter.field_excerpt
+    - field.field.node.newsletter.field_meta_tags
+    - field.field.node.newsletter.field_opengraph_description
+    - field.field.node.newsletter.field_opengraph_title
+    - field.field.node.newsletter.field_osu_meta_image
+    - field.field.node.newsletter.layout_builder__layout
+    - node.type.newsletter
+  module:
+    - text
+    - user
+id: node.newsletter.teaser
+targetEntityType: node
+bundle: newsletter
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_excerpt: true
+  field_meta_tags: true
+  field_opengraph_description: true
+  field_opengraph_title: true
+  field_osu_meta_image: true
+  layout_builder__layout: true
+  toc_js: true

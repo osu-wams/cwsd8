@@ -1,0 +1,845 @@
+uuid: 5d2ec2ad-1af3-4f81-a131-4095d111c61c
+langcode: en
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 56
+template: false
+archive: false
+id: new_office_copier_request_form
+title: 'New Office Copier Request Form'
+description: ''
+categories: {  }
+elements: |-
+  department:
+    '#type': textfield
+    '#title': Department
+    '#placeholder': 'Department Name'
+    '#required': true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  name:
+    '#type': textfield
+    '#title': Name
+    '#placeholder': 'Copier Contact Name'
+    '#required': true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  phone:
+    '#type': textfield
+    '#title': Phone
+    '#placeholder': 'Contact Phone Number'
+    '#required': true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  email:
+    '#type': textfield
+    '#title': Email
+    '#placeholder': 'Contact Email Address'
+    '#required': true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  interested_in:
+    '#type': checkboxes
+    '#title': 'Interested In'
+    '#description': '<p><em>Please select the option or options that you are interested in.&nbsp;</em></p>'
+    '#title_display': before
+    '#description_display': before
+    '#help_display': title_after
+    '#options':
+      1: 'Request a Meeting'
+      2: 'Copier Usage Summary Report. This is a summary of your copier use for the past 12 months, with a recommendation of a replacement. '
+      3: 'New/Replacement Copier Order Form'
+    '#options_description_display': help
+    '#required': true
+  request_in_person_meeting:
+    '#type': textfield
+    '#title': 'Request in person meeting'
+    '#description': '<p><em>Indicate your location or meet at Research Way and desired day/time.</em></p>'
+    '#states':
+      visible:
+        ':input[name="interested_in[1]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  request_phone_call_or_teams_contact:
+    '#type': textfield
+    '#title': 'Request Phone Call or Teams contact'
+    '#description': '<p><em>Indicate phone or Teams, and day/time that works best.</em></p>'
+    '#states':
+      visible:
+        ':input[name="interested_in[1]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  model:
+    '#type': textfield
+    '#title': Model
+    '#states':
+      visible:
+        ':input[name="interested_in[2]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location:
+    '#type': textfield
+    '#title': Location
+    '#states':
+      visible:
+        ':input[name="interested_in[2]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  budget_authority:
+    '#type': textfield
+    '#title': 'Budget Authority'
+    '#description': '<p><em>The budget authority is the person with the authority to approve charges to the departments index code. This field is not required unless placing an order.</em></p>'
+    '#states':
+      visible:
+        ':input[name="interested_in[3]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  index_and_activity_code:
+    '#type': textfield
+    '#title': 'Index and Activity Code'
+    '#description': '<p><em>Enter the Index Code for monthly billing and the activity code if necessary</em></p>'
+    '#states':
+      visible:
+        ':input[name="interested_in[3]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  what_type_of_copier:
+    '#type': checkboxes
+    '#title': 'What Type of Copier?'
+    '#description': '<p><em>Select both options if interested in Black and White and Color copiers</em></p>'
+    '#description_display': after
+    '#options':
+      'Black and White': 'Black and White'
+      Color: Color
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="interested_in[3]"]':
+          checked: true
+  processed_text:
+    '#type': processed_text
+    '#states':
+      visible:
+        - ':input[name="what_type_of_copier[Black and White]"]':
+            checked: true
+        - or
+        - ':input[name="what_type_of_copier[Color]"]':
+            checked: true
+    '#text': |
+      <p>When making a selection of the model or models that you are interested in, please indicate the quantity desired. When a quantity of one or more is selected, five location fields will become available. Please put the location of where you would like to have the printer installed.</p>
+
+      <p>After inputting the location, some models will present&nbsp;an option to choose to have four paper feed drawers, each with 550 sheets. The other option is to have two drawers with 550 sheets each combined with a single drawer that can hold up to 2000 sheets.&nbsp;</p>
+    '#format': full_html
+  black_and_white_header:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Black and White]"]':
+          checked: true
+    '#text': |
+      <h2>BLACK AND WHITE&nbsp;MODELS</h2>
+    '#format': full_html
+  im_430fb_quantity:
+    '#type': select
+    '#title': 'IM 430Fb - Quantity'
+    '#description': '<p><em>$31 per month (networked) or $46 per month (non-networked) Includes 500 copies per month. Additional copies are .0205 per copy</em></p>'
+    '#description_display': after
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Black and White]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_2:
+    '#type': textfield
+    '#title': Location
+    '#placeholder': 'Building and Room. Address if off campus.'
+    '#states':
+      visible:
+        - ':input[name="im_430fb_quantity"]':
+            value: '1'
+        - or
+        - ':input[name="im_430fb_quantity"]':
+            value: '2'
+        - or
+        - ':input[name="im_430fb_quantity"]':
+            value: '3'
+        - or
+        - ':input[name="im_430fb_quantity"]':
+            value: '4'
+        - or
+        - ':input[name="im_430fb_quantity"]':
+            value: '5'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  im_2500_quantity:
+    '#type': select
+    '#title': 'IM 2500 - Quantity'
+    '#description': '<p><em>$65 per month (networked) or $80 per month (non-networked) Includes 1,000 copies per month. Additional copies are .0205 per copy</em></p>'
+    '#description_display': after
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Black and White]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_3:
+    '#type': textfield
+    '#title': Location
+    '#placeholder': 'Building and Room. Address if off campus.'
+    '#states':
+      visible:
+        - ':input[name="im_2500_quantity"]':
+            value: '1'
+        - or
+        - ':input[name="im_2500_quantity"]':
+            value: '2'
+        - or
+        - ':input[name="im_2500_quantity"]':
+            value: '3'
+        - or
+        - ':input[name="im_2500_quantity"]':
+            value: '4'
+        - or
+        - ':input[name="im_2500_quantity"]':
+            value: '5'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  im_5000_quantity:
+    '#type': select
+    '#title': 'IM 5000 - Quantity'
+    '#description': '<p><em>$110 per month (networked) or $125 per month (non-networked) Includes 1,000 copies per month. Additional copies are .0205 per copy</em></p>'
+    '#description_display': after
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Black and White]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_4:
+    '#type': textfield
+    '#title': Location
+    '#placeholder': 'Building and Room. Address if off campus.'
+    '#states':
+      visible:
+        - ':input[name="im_5000_quantity"]':
+            value: '1'
+        - or
+        - ':input[name="im_5000_quantity"]':
+            value: '2'
+        - or
+        - ':input[name="im_5000_quantity"]':
+            value: '3'
+        - or
+        - ':input[name="im_5000_quantity"]':
+            value: '4'
+        - or
+        - ':input[name="im_5000_quantity"]':
+            value: '5'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  im_6000_quantity:
+    '#type': select
+    '#title': 'IM 6000 - Quantity'
+    '#description': '<p><em>$149 per month (networked) or $164 per month (non-networked) Includes 1,500 copies per month. Additional copies are .0205 per copy</em></p>'
+    '#description_display': after
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Black and White]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_5:
+    '#type': textfield
+    '#title': Location
+    '#description_display': after
+    '#placeholder': 'Building and Room. Address if off campus.'
+    '#states':
+      visible:
+        - ':input[name="im_6000_quantity"]':
+            value: '1'
+        - or
+        - ':input[name="im_6000_quantity"]':
+            value: '2'
+        - or
+        - ':input[name="im_6000_quantity"]':
+            value: '3'
+        - or
+        - ':input[name="im_6000_quantity"]':
+            value: '4'
+        - or
+        - ':input[name="im_6000_quantity"]':
+            value: '5'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  im_7000_quantity:
+    '#type': select
+    '#title': 'IM 7000 - Quantity'
+    '#description': '<p><em>$197 per month (networked) or $212 per month (non-networked) Includes 1,500 copies per month. Additional copies are .0205 per copy</em></p>'
+    '#description_display': after
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Black and White]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_6:
+    '#type': textfield
+    '#title': Location
+    '#placeholder': 'Building and Room. Address if off campus.'
+    '#states':
+      visible:
+        - ':input[name="im_7000_quantity"]':
+            value: '1'
+        - or
+        - ':input[name="im_7000_quantity"]':
+            value: '2'
+        - or
+        - ':input[name="im_7000_quantity"]':
+            value: '3'
+        - or
+        - ':input[name="im_7000_quantity"]':
+            value: '4'
+        - or
+        - ':input[name="im_7000_quantity"]':
+            value: '5'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  color_header:
+    '#type': processed_text
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Color]"]':
+          checked: true
+    '#text': |
+      <h2>COLOR MODELS</h2>
+    '#format': full_html
+  imc_300f_quantity:
+    '#type': select
+    '#title': 'IMC 300F - Quantity'
+    '#description': '<p><em>$46 per month (networked) or $61 per month (non-networked) Includes 500 black and white copies per month. Additional B/W copies are .0205 per copy Color copies are charged at .123 per copy</em></p>'
+    '#description_display': after
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Color]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_7:
+    '#type': textfield
+    '#title': Location
+    '#placeholder': 'Building and Room. Address if off campus.'
+    '#states':
+      visible:
+        - ':input[name="imc_300f_quantity"]':
+            value: '1'
+        - or
+        - ':input[name="imc_300f_quantity"]':
+            value: '2'
+        - or
+        - ':input[name="imc_300f_quantity"]':
+            value: '3'
+        - or
+        - ':input[name="imc_300f_quantity"]':
+            value: '4'
+        - or
+        - ':input[name="imc_300f_quantity"]':
+            value: '5'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  imc_2510_quantity:
+    '#type': select
+    '#title': 'IMC 2510 - Quantity'
+    '#description': '<p><em>$92 per month (networked) or $107 per month (non-networked) Includes 1000 black and white copies per month. Additional B/W copies are .0205 per copy Color copies are charged at .123 per copy</em></p>'
+    '#description_display': after
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Color]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_8:
+    '#type': textfield
+    '#title': Location
+    '#placeholder': 'Building and Room. Address if off campus.'
+    '#states':
+      visible:
+        - ':input[name="imc_2510_quantity"]':
+            value: '1'
+        - or
+        - ':input[name="imc_2510_quantity"]':
+            value: '2'
+        - or
+        - ':input[name="imc_2510_quantity"]':
+            value: '3'
+        - or
+        - ':input[name="imc_2510_quantity"]':
+            value: '4'
+        - or
+        - ':input[name="imc_2510_quantity"]':
+            value: '5'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  imc_3510_quantity:
+    '#type': select
+    '#title': 'IMC 3510 - Quantity'
+    '#description': '<p><em>$133 per month (networked) or $148 per month (non-networked) Includes 1000 black and white copies per month. Additional B/W copies are .0205 per copy Color copies are charged at .123 per copy</em></p>'
+    '#description_display': after
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Color]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_9:
+    '#type': textfield
+    '#title': Location
+    '#placeholder': 'Building and Room. Address if off campus.'
+    '#states':
+      visible:
+        - ':input[name="imc_3510_quantity"]':
+            value: '1'
+        - or
+        - ':input[name="imc_3510_quantity"]':
+            value: '2'
+        - or
+        - ':input[name="imc_3510_quantity"]':
+            value: '3'
+        - or
+        - ':input[name="imc_3510_quantity"]':
+            value: '4'
+        - or
+        - ':input[name="imc_3510_quantity"]':
+            value: '5'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  imc_4510_quantity:
+    '#type': select
+    '#title': 'IMC 4510 - Quantity'
+    '#description': '<p><em>$139 per month (networked) or $154 per month (non-networked) Includes 1500 black and white copies per month. Additional B/W copies are .0205 per copy Color copies are charged at .123 per copy</em></p>'
+    '#description_display': after
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Color]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_10:
+    '#type': textfield
+    '#title': Location
+    '#placeholder': 'Building and Room. Address if off campus.'
+    '#states':
+      visible:
+        - ':input[name="imc_4510_quantity"]':
+            value: '1'
+        - or
+        - ':input[name="imc_4510_quantity"]':
+            value: '2'
+        - or
+        - ':input[name="imc_4510_quantity"]':
+            value: '3'
+        - or
+        - ':input[name="imc_4510_quantity"]':
+            value: '4'
+        - or
+        - ':input[name="imc_4510_quantity"]':
+            value: '5'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  imc_6010_quantity:
+    '#type': select
+    '#title': 'IMC 6010 - Quantity'
+    '#description': '<p><em>$175 per month (networked) or $190 per month (non-networked) Includes 1500 black and white copies per month. Additional B/W copies are .0205 per copy Color copies are charged at .123 per copy</em></p>'
+    '#description_display': after
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#states':
+      visible:
+        ':input[name="what_type_of_copier[Color]"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_11:
+    '#type': textfield
+    '#title': Location
+    '#placeholder': 'Building and Room. Address if off campus.'
+    '#states':
+      visible:
+        - ':input[name="imc_6010_quantity"]':
+            value: '1'
+        - or
+        - ':input[name="imc_6010_quantity"]':
+            value: '2'
+        - or
+        - ':input[name="imc_6010_quantity"]':
+            value: '3'
+        - or
+        - ':input[name="imc_6010_quantity"]':
+            value: '4'
+        - or
+        - ':input[name="imc_6010_quantity"]':
+            value: '5'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  is_the_copier_replacing_another_copier:
+    '#type': radios
+    '#title': 'Is the copier replacing another copier?'
+    '#options': yes_no
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="interested_in[3]"]':
+          checked: true
+  equipment_id_number:
+    '#type': textfield
+    '#title': 'Equipment ID Number'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  equipment_id_number_2:
+    '#type': textfield
+    '#title': 'Equipment ID Number'
+    '#states':
+      visible:
+        ':input[name="is_the_copier_replacing_another_copier"]':
+          value: 'Yes'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  model_2:
+    '#type': textfield
+    '#title': Model
+    '#states':
+      visible:
+        ':input[name="is_the_copier_replacing_another_copier"]':
+          value: 'Yes'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  location_if_different:
+    '#type': textfield
+    '#title': 'Location (if different)'
+    '#states':
+      visible:
+        ':input[name="is_the_copier_replacing_another_copier"]':
+          value: 'Yes'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  comments:
+    '#type': textarea
+    '#title': 'Comments '
+    '#placeholder': 'This area is for you to place accessory orders, ask questions and/or make a comment. '
+    '#autocomplete': 'off'
+    '#label_attributes':
+      style: 'font-size: calc(1.275rem + 0.3vw);'
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit__attributes':
+      style: 'margin-top:10px !important;'
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email:
+    id: email
+    handler_id: email
+    label: Email
+    notes: ''
+    status: true
+    conditions: {  }
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: office.copier@oregonstate.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+variants: {  }

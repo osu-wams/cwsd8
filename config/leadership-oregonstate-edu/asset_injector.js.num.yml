@@ -1,0 +1,86 @@
+uuid: a2f1d929-dca4-43c4-918c-2f933c617356
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: num
+label: 'number counter'
+code: |-
+  (function ($, Drupal) {
+    function isInViewport(element) {
+      var rect = element[0].getBoundingClientRect();
+      return (
+        rect.top >= 0 &&
+        rect.top <= (window.innerHeight || document.documentElement.clientHeight)
+      );
+    }
+
+    function animateCounter($element) {
+      var countTo = parseFloat($element.attr('data-count'));
+      var countStr = $element.attr('data-count');
+      var duration = parseInt($element.attr('data-duration'));
+      var decimalPlaces = (countStr.includes('.') && countStr.split('.')[1])
+        ? countStr.split('.')[1].length
+        : 0;
+
+      $({
+        countNum: parseFloat($element.text())
+      }).animate({
+        countNum: countTo
+      }, {
+        duration: duration,
+        easing: 'swing',
+        step: function() {
+          $element.text(this.countNum.toLocaleString('en-US', {
+            minimumFractionDigits: decimalPlaces,
+            maximumFractionDigits: decimalPlaces
+          }));
+        },
+        complete: function() {
+          $element.text(this.countNum.toLocaleString('en-US', {
+            minimumFractionDigits: decimalPlaces,
+            maximumFractionDigits: decimalPlaces
+          }));
+          $element.addClass('counted'); // Mark as counted
+        }
+      });
+    }
+
+    $(window).on('scroll', function() {
+      $('.counter-value').each(function() {
+        var $this = $(this);
+        // Only animate if not yet counted and in viewport
+        if (!$this.hasClass('counted') && isInViewport($this)) {
+          animateCounter($this);
+        }
+      });
+    });
+
+    // Trigger on page load in case elements are already in view
+    $(document).ready(function() {
+      $('.counter-value').each(function() {
+        var $this = $(this);
+        if (!$this.hasClass('counted') && isInViewport($this)) {
+          animateCounter($this);
+        }
+      });
+    });
+  })(jQuery, Drupal);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/16851\r\n/node/16846\r\n/node/17711\r\n/node/18026"
+contexts: {  }
+conditions_require_all: true

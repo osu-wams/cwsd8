@@ -1,0 +1,38 @@
+uuid: 2b9c5004-d0c8-4d7b-b469-07288cbd5d8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_good_news_image
+    - node.type.good_news
+  module:
+    - image
+id: node.good_news.field_good_news_image
+field_name: field_good_news_image
+entity_type: node
+bundle: good_news
+label: 'Good news image'
+description: 'Image will be cropped to 600px by 255px. Which can sometimes work by chance.... but it would be best if you cropped the image to those dimensions on your own before uploading.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg webp svg'
+  max_filesize: '1 MB'
+  max_resolution: ''
+  min_resolution: 600x255
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

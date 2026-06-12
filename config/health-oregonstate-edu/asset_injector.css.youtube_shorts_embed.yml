@@ -1,0 +1,38 @@
+uuid: 4b3e5e42-f94a-4a22-be67-de830a54bd8a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: youtube_shorts_embed
+label: 'youtube shorts embed'
+code: |
+  .youtube-shorts-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 177.77%; /* 9:16 aspect ratio for vertical shorts */
+    height: 0;
+    overflow: hidden;
+  }
+
+  .youtube-shorts-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,280 @@
+uuid: b41ee562-6792-4aad-8b5e-37259cca6954
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.sitewide
+  module:
+    - block_visibility_groups
+    - system
+id: global_css_modifications
+label: 'Global CSS modifications'
+code: |+
+  /* New About Us styles VRB 11.7.24 */
+
+
+  .featured-content {
+  	height: 100%;
+  	padding: 1.5rem;
+  	margin: 1.5rem;
+  	min-height:200px;
+  }
+
+  .featured-content > h3 > a {
+  	color: white;
+  	font-weight: bold;
+  	text-decoration-color: white;
+  }
+
+  /* display this row with flex and use wrap (= respect columns' widths) */
+
+  .row-flex {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  /* Backgrounds and styling*/
+
+  .color-1 {
+    background: #f7f5f5;
+    color: #423e3c;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 3px hsla(0,0%,0%,0.25) !important;
+  }
+
+  .color-2 {
+    background: #003b5c;
+    color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 3px hsla(0,0%,0%,0.25) !important;
+  }
+
+  .color-3 {
+    background: #8e9089;
+    color: #fff;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 3px hsla(0,0%,0%,0.25) !important;
+  }
+
+  /*
+  body {
+    padding: 20px 0;
+  }
+  */
+
+  .content h3 {
+    margin-top: 0px;
+    font-weight: 300;
+
+  }
+
+
+  /* Alert styling/remove left border on Bootstrap alerts DAC 5.13.2024 */
+  .alert {border-left:0 !important;
+  background-color:#ffb500;
+  border: 0;
+  border-radius: 0;
+  }
+
+  /* adds style guide colors to bootstrap sections VRB 5.1.24*/
+  .osu-bg-rogue-wave {background-color: #0d5257 !important;}
+  .osu-bg-star-canvas {background-color: #003b5c !important;}
+  .osu-bg-stratosphere {background-color: #006a8e !important;}
+  .osu-bg-high-desert {background-color: #7a6855 !important;}
+
+  /* Accordion styling DAC 1.2.2024 */
+
+  .accordion {
+  	--bs-accordion-border-color:black;
+  	--bs-accordion-border-width:1px;
+  	--bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  --bs-accordion-btn-icon-width: 2rem;
+  --bs-accordion-btn-bg:var(bg-neutral-100);
+
+
+  }
+
+
+  .accordion-button:hover {
+      color: var(--bs-accordion-active-color);
+      background-color: var(--bs-accordion-active-bg);
+      box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+  	
+  }
+
+  /* Make H3s Stratum DAC 11.2.2023 */
+  h3 {        font-family: 'Stratum2Web',sans-serif;
+          font-weight: 600;}
+          
+  /* Top Main Menu DAC 11.3.2023 */
+  ul.sf-menu.sf-style-black
+  {
+    margin-bottom:0;
+  }
+
+  #superfish-main
+  {
+  	text-transform: uppercase;
+  	font-weight: bold;
+  	/* letter-spacing: 0.1em; */
+  }
+
+  .madrone-primary-menu > .block-superfish ul.sf-menu li.sf-depth-1.menuparent > a::after, .madrone-primary-menu > .block-superfish ul.sf-menu li.sf-depth-1.menuparent > span::after {
+  color:white;
+  }
+  /* End Top Main Menu */
+
+  /* Style 5 to use Stratum  DAC 11.6.2023 */
+
+  .display-5 {
+  	font-family: 'Stratum2Web',sans-serif;
+  	font-size: 2.5rem;
+  	font-weight: 600;
+  }
+
+  /* Style 4 to use Stratum  VRB 1.29.2024 */
+
+  .fs-4 {
+  	font-family: 'Stratum2Web',sans-serif;
+  	text-transform: uppercase;
+  	font-size: 2.5rem;
+  	font-weight: 600;
+  }
+
+
+
+          
+  /* Middle Content Menu Bar DAC 11.3.2023 */        
+  .admissions_menu_bar {
+  	  text-transform: uppercase;
+      font-weight: bold;
+      letter-spacing: 0.1em;
+      
+  	
+  }
+
+  /* Hero Text Styles DAC 11.3.2023 */
+      /* TOP LINE */
+      #leadtext {
+          font-family: 'Stratum2Web',sans-serif !important;
+          font-weight: 600;
+          color: #ffffff;
+          background-color: transparent;
+          font-size: 2.5rem;
+          line-height: 0.9;
+          text-transform: uppercase;
+          text-shadow: 1px 1px 20px #000000;
+          margin: auto;
+          margin: 0 0 0px;
+          margin-bottom: 15px;
+      }
+      /* BOTTOM LINE */
+      #toptext {
+          font-family: 'Stratum2Web',sans-serif;
+          font-weight: 600;
+          color: #ffffff;
+          background-color: transparent;
+          font-size: 6.0rem;
+          line-height: 0.9;
+          text-transform: uppercase;
+          text-shadow: 1px 1px 35px #000000;
+          margin: auto 1.5rem;
+          margin: 0 0 0px;
+      }
+
+      .leadtext {
+          font-family: 'Stratum2Web',sans-serif !important;
+          font-weight: 600;
+          color: #ffffff;
+          background-color: transparent;
+          font-size: 2.5rem;
+          line-height: 0.9;
+          text-transform: uppercase;
+          text-shadow: 1px 1px 20px #000000;
+          margin: auto;
+          margin: 0 0 0px;
+      }
+      /* BOTTOM LINE */
+      .toptext {
+          font-family: 'Stratum2Web',sans-serif;
+          font-weight: 600;
+          color: #ffffff;
+          background-color: transparent;
+          font-size: 6.0rem;
+          line-height: 0.9;
+          text-transform: uppercase;
+          text-shadow: 1px 1px 35px #000000;
+          margin: auto 1.5rem;
+          margin: 0 0 0px;
+      }
+
+      
+      /* SHiFT FOR MOBILE */
+      @media screen and (max-width: 800px) {
+      #leadtext {
+          font-size: 2.0rem;
+      }
+      #toptext {
+          font-size: 2.7rem;
+      }
+      .leadtext {
+          font-size: 2.0rem;
+      }
+      .toptext {
+          font-size: 2.7rem;
+      }    
+      
+      }
+      
+  /* End Hero Text Styles */
+
+
+  @media (min-width: 1200px)
+  spnh2, .spnh2 {
+      font-size: 28px;
+  }
+
+  spnh2, .spnh2 {
+      font-family: "Stratum2Web",serif;
+      font-size: 28px;
+      font-weight: 600;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      line-height: 1.2;
+
+  }
+
+
+  @media (min-width: 1200px)
+  spnh5, .spnh5 {
+      font-size: 20px;
+  }
+  spnh5, .spnh5 {
+      color: hsl(0,0,1);
+      font-size: 20px;
+      font-family: "Open Sans",sans-serif;
+      font-weight: 600;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      line-height: 1.2;
+  }
+
+  .p-3 {
+      padding: 2rem !important;
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: sitewide
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,33 @@
+uuid: b66a40f5-3978-4aed-b34f-8ceafd766b79
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.academic_program_options.body
+    - field.field.node.academic_program_options.field_program
+    - node.type.academic_program_options
+  module:
+    - text
+    - user
+id: node.academic_program_options.teaser
+targetEntityType: node
+bundle: academic_program_options
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_program: true

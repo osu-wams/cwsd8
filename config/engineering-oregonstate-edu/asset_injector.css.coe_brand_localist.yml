@@ -1,0 +1,251 @@
+uuid: b340b137-f319-4128-9e02-0b80c0f480ac
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_brand_localist
+label: 'COE Brand Localist Event '
+code: |-
+  .localist-event-card {
+    width:  calc(33.34% - 14px);
+    height: auto;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08) !important;
+    background-color: #FFF;
+    border: 1px solid var(--Useful-Lightest-Grey, #F8F9FA);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .localist-event-card:hover {
+    background-color: #F9FCFD;
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .localist-event-card:active {
+    background-color: #F1F8F9;
+  }
+
+  @media screen and (max-width: 991px) {
+    .localist-event-card {
+      width: calc(50% - 10px);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .localist-event-card {
+      width: 100%;
+    }
+  }
+
+  .card-img-container {
+    height: 230px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .card-img-top {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    min-width: 100%;
+    min-height: 100%;
+    object-fit: cover;
+  }
+
+  .orange-bar {
+    height: 10px;
+    width: 100%;
+    background-color: #D73F09; /* OSU orange */
+    display: block;
+  }
+
+  .event-date-header {
+  color: #000;
+
+  /* Main/Label */
+  font-family: "Open Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%; /* 19.2px */
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  padding-top: 30px;
+  }
+
+  .card-title {
+    color: #D73F09;
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%; 
+    margin-top: 20px;
+  }
+
+  .card-description {
+    color: #000;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    margin-top: 8px;
+  }
+  .event-footer {
+  color: #000;
+
+  /* Main/Label */
+  font-family: "Open Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 160%; /* 19.2px */
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  }
+
+  .event-footer i {
+      font-size: 16px;
+      width: 20px;
+      vertical-align: text-top;
+  }
+
+  .card-body {
+    padding: 0 32px 32px 32px !important; /* Top Right Bottom Left */
+  }
+
+
+  /* Reset default <dl>, <dt>, <dd> spacing */
+  .osu-event-specs,
+  .osu-event-specs dt,
+  .osu-event-specs dd {
+    margin: 0;
+    padding: 0;
+  }
+
+  .osu-event-specs {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 0.5rem 0.5rem;
+  }
+
+  /* Icon containers */
+  .osu-event-specs dt {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;  
+    height: 20px;
+  }
+
+  /* Text beside icons */
+  .osu-event-specs dd {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Location icon */
+  .osu-event-specs dd.osu-event-location::before {
+    content: "";
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    margin-right: 6px;
+    background: url("/sites/engineering.oregonstate.edu/files/2025-05/Location%20icon.svg") no-repeat center;
+    background-size: contain;
+    margin-left: -31px;
+  }
+
+   /*Clock icon override */
+  .osu-event-specs dt .osu-clock {
+    background: url("/sites/engineering.oregonstate.edu/files/2025-09/time%20icon-3.svg") no-repeat center !important;
+    background-size: contain !important;
+    border: none !important;
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 6px !important;
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+
+  /*.osu-event-specs:has(.osu-event-date time:empty) .osu-clock {*/
+  /*  display: none !important;*/
+  /*}*/
+
+
+  .osu-localist-widget-hl .osu-cover {
+  	border-bottom: none !important;
+  }
+
+
+   /*Remove default clock hands */
+  .osu-localist-widget-hl .osu-clock::before,
+  .osu-localist-widget-hl .osu-clock::after {
+    content: none !important;
+    display: none !important;
+  }
+
+  .osu-localist-widget-hl .osu-pin,
+  .osu-localist-widget-hl .osu-pin::before,
+  .osu-localist-widget-hl .osu-pin::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+    border: none !important;
+  }
+
+  .osu-event-location p {
+    margin-top: 1px !important;
+    margin-left: 5px !important;
+  }
+
+  a:active {
+     background-color: transparent !important; 
+  }
+
+  .osu-localist-widget-hl { width: 100%; }
+
+  .osu-localist-widget-hl .osu-event-list .event {
+  	flex: 0 0 calc(33% - 13px);
+  }
+
+  @media screen and (max-width: 1199px) {
+  	/*.osu-localist-widget-hl { width: 50%; }*/
+  	/*.osu-localist-widget-hl:has(> ol > li:nth-child(2)) { width: 100%; }*/
+  	.osu-localist-widget-hl .osu-event-list .event {
+  		flex: 0 0 calc(50% - 10px);
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	.osu-localist-widget-hl .osu-event-list .event {
+  		flex: 0 0 100%;
+  	}
+  }
+
+  .osu-localist-widget-hl .osu-event-list {
+  	/*justify-content: space-between;*/
+  	width: 100%;
+  	max-width: none;
+  	margin: 0 0;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47896\r\n/group/16\r\n/group/11\r\n/node/14341\r\n/group/21\r\n/node/2286\r\n/group/6\r\n/node/38806\r\n/node/39086\r\n/group/1\r\n/node/49801\r\n/node/52391\r\n/node/52841\r\n/node/411/latest\r\n/node/411\r\n/node/34306\r\n/node/5161"
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,101 @@
+uuid: 54b9317a-55fb-4a44-b2f3-26778702d3a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.program_offerings.field_application_deadline
+    - field.field.node.program_offerings.field_future_program_cycle
+    - field.field.node.program_offerings.field_future_program_year
+    - field.field.node.program_offerings.field_program_end_date
+    - field.field.node.program_offerings.field_program_info_link
+    - field.field.node.program_offerings.field_program_photo
+    - field.field.node.program_offerings.field_program_start_date
+    - node.type.program_offerings
+  module:
+    - datetime
+    - image
+    - link
+    - user
+id: node.program_offerings.default
+targetEntityType: node
+bundle: program_offerings
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_application_deadline:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_future_program_cycle:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_future_program_year:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_program_end_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_program_info_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_program_photo:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_program_start_date:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

@@ -1,0 +1,26 @@
+uuid: 4cfd24a1-3fe5-4f3f-85a0-513d7e2f7f52
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: striped_views_unformatted_list
+label: 'Striped Views  Unformatted list'
+code: |-
+  .osu-striped .views-row:nth-child(2n+1) {
+  	background-color: var(--bs-secondary);
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

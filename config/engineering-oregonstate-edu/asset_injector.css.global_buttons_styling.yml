@@ -1,0 +1,52 @@
+uuid: 6a71fc9c-451d-4da8-a0d2-772ccf22f632
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_buttons_styling
+label: 'GLOBAL button styling, form buttons, etc. (submit button)'
+code: |
+  /* ================================================
+  Global button styling and form buttons
+  =================================================== */
+
+  /*  Global Button Styling */
+
+  .btn.osu-btn-primary {
+      border-radius: 0px;
+      background-color: transparent;
+      color: black;
+      border-color: black;
+  }
+
+  .btn.osu-btn-primary:hover {
+      /*border-color: #d73f09;*/
+      border-color:transparent;
+      background-color:#d73f09;
+      color:black;
+  }
+
+  /** Form submit buttons */
+
+  .form-actions [type=submit] {
+  	border-radius: 0;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/*/*/layout/*\r\n/*/*/layout\r\n<front>\r\n/node/31\r\n/node/36\r\n/node/41\r\n/node/46\r\n/node/4411\r\n/node/32576\r\n/node/39596"
+contexts: {  }
+conditions_require_all: true

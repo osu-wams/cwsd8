@@ -1,0 +1,92 @@
+uuid: 237976bb-cdfc-441d-aa31-4e07a0884092
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: sitewide_utilities
+label: 'Sitewide Utilities'
+code: |+
+  /*
+    ATAMI Hero Image Overlap
+    - Desktop only overlap
+    - Tablet & mobile: stacked, no overlap
+    - No size fighting, no floating image
+  */
+
+  /* ===== DESKTOP ONLY ===== */
+  @media (min-width: 1200px) {
+    .image-overlap-hero {
+      position: relative;
+      margin-top: -180px;      /* overlap into hero */
+      transform: translateX(32px);
+      z-index: 5;
+    }
+
+    .image-overlap-hero img {
+      width: 100%;             /* fill its column */
+      height: auto;
+      filter: drop-shadow(-6px -10px 20px rgba(0,0,0,0.4));
+    }
+  }
+
+  /* ===== TABLET + MOBILE ===== */
+  @media (max-width: 1199px) {
+    .image-overlap-hero {
+      position: static;
+      margin-top: 32px;        /* breathing room below text */
+      transform: none;
+    }
+
+    .image-overlap-hero img {
+      width: 100%;
+      max-width: 100%;
+      height: auto;
+      filter: none;            /* no shadow when stacked */
+    }
+  }
+
+
+
+
+
+  .hero-text-shadow {
+  	text-shadow: 2px 4px 3px rgba(0,0,0,0.5) !important;
+  }
+
+  /* Style the active parent item of a sidebar menu */
+  .nav-pills .nav-item.active > .nav-link {
+    color: #fff;
+    background-color: #212529 !important;
+  }
+  /* Hover effect for parent items of a sidebar menu */
+  .nav-pills .nav-item.active > .nav-link:hover {
+    background-color: white !important;
+  }
+
+  /* Style the active child items of a sidebar menu */
+  .nav-item.active .nav-link {
+  color: black;
+  background-color: #e9e5e4 ;
+  }
+  /* The active child items of a sidebar menu (without changing parent styling) */
+  .menu--level-2 .nav-item.active > .nav-link {
+    color: black !important;
+    background-color: #d1c9c7 !important; /* Change background color for active child items */
+  }
+
+  /* Add space above the publication date header for Faculty and Student View displays. This needs to be added to the Row class in the View */
+  .publication-date-margin + h3 {
+  	    margin-top: 40px;
+  }
+  /* End of space */
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

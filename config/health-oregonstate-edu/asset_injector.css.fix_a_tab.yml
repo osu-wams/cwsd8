@@ -1,0 +1,30 @@
+uuid: 0fc6fd1d-9d88-482f-b72b-c3d5e47bf856
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: fix_a_tab
+label: 'fix a tab'
+code: |-
+  .nav .tab-link {
+    text-transform: none !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/theme-test/kin-career\r\n/hdfs/careers"
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

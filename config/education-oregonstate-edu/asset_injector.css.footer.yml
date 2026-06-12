@@ -1,0 +1,125 @@
+uuid: e6af65a9-69f9-422e-b7b3-cdcd9b78278d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: footer
+label: Footer
+code: |+
+  .region-footer {
+  	padding: 3rem !important;
+  }
+  .region-footer .block--google-translate {
+  	text-align: right;
+  	align-self: center !important;
+  	order: 5 !important;
+  }
+  .madrone-footer {
+  	display: flex;
+  	flex-direction: column;
+  	align-items: center;
+  	gap: 3rem;
+  	max-width: 1400px;
+  	margin: 0 auto;
+  }
+  .footer--copyright,
+  .footer--contact {
+  	text-align: center;
+  }
+  .madrone-copyright {
+  	display: none !important;
+  }
+  .footer-grid-area--col-1 {
+  	grid-area: col-1;
+  }
+  .footer-grid-area--col-2 {
+  	grid-area: col-2;
+  }
+  .footer-grid-area--col-3 {
+  	grid-area: col-3;
+  }
+  .footer-grid-row-start-1 {
+  	grid-row-start: 1;
+  }
+  .footer-grid-row-start-2 {
+  	grid-row-start: 2;
+  	grid-row-end: 2;
+  }
+  .footer--contact-header {
+  	font-size: 1.778rem !important;;
+  }
+  .footer--contact a {
+  	text-decoration: none !important;
+  }
+  .footer--social-media-btn {
+  	font-size: 1.25rem !important;
+  }
+  .footer--links {
+  	align-self: start;
+  	position: relative;
+  	top: 100px;
+  }
+  .footer--links-container {
+  	display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    gap: 24px;
+  }
+  .footer--links a {
+  	text-decoration: none !important;
+  } 
+  .footer--links-btn {
+  	display: flex;
+  	padding: 8px 24px;
+  	border-radius: 3px;
+  	min-width: 160px;
+  	justify-content: center;
+  	align-self: stretch;
+  }
+
+  /*Large screens*/
+  @media only screen and (min-width: 1200px){
+  	.madrone-footer {
+  		display: grid;
+  		grid-template-columns: repeat(3, 1fr);
+  		grid-template-areas:
+  			"col-1 col-2 col-3";
+  		gap: 1rem;
+  		align-items: start !important;
+  	}
+  	.footer--copyright,
+  	.footer--contact {
+  		text-align: left;
+  	}
+  	.region-footer .block--google-translate {
+  		align-self: start !important;
+  		order: 5 !important;
+  	}
+  }
+
+  @media only screen and (max-width: 1200px) and (min-width: 0) {
+  	.footer--links-container {
+  		justify-content: center;	
+  	}
+  	.footer--links {
+  		align-self: start;
+  		position: relative;
+  		top: 0;
+  	}	
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

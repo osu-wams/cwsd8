@@ -1,0 +1,72 @@
+uuid: f3a4c760-ebbb-48d3-a631-64ea17b9ac2b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: directory_view
+label: 'Directory view'
+code: |-
+  .directory-inner-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+  }
+
+  .profile-image {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+  }
+
+  /* Main profile image */
+  .profile-image > a > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      z-index: 1;
+  }
+
+  /* Hover image positioned absolutely on top */
+  .hover-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      clip-path: circle(0% at 50% 50%);
+      transition: clip-path 0.8s ease-in-out;
+  }
+
+  .hover-image img {
+      width: 100%;
+      object-fit: cover;
+      display: block;
+  }
+
+  /* On hover, reveal the hover image */
+  .ripple-reveal:hover .hover-image {
+      clip-path: circle(150% at 50% 50%);
+  }
+
+  /* Ensure hover image is not hidden by default */
+  .hover-image-hidden {
+      display: block !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/directory/*\r\n/directory\r\n/dam-creative/meet-team"
+contexts: {  }
+conditions_require_all: true

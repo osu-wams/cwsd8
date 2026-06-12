@@ -1,0 +1,29 @@
+uuid: a59d01bf-3062-4b15-a03d-4f484de6a8bf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_alt_language_versions
+    - node.type.publications
+id: node.publications.field_alt_language_versions
+field_name: field_alt_language_versions
+entity_type: node
+bundle: publications
+label: 'Other language version(s)'
+description: 'If this publication is available in another language (e.g. a Spanish translation of an English publication or vice versa), select the other publication here. Start typing title of the translated publication and click on it when it appears to select it.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      publications: publications
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

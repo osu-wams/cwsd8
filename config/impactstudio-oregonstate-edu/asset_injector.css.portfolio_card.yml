@@ -1,0 +1,189 @@
+uuid: 13b8b13a-194c-4ae1-94fe-0c60fcbf79fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: portfolio_card
+label: 'Portfolio Card'
+code: |
+  .custom-card {
+    width: 450px;
+    height: 550px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    font-family: 'Arial', sans-serif;
+    padding: 20px;
+    margin: 30px;
+  }
+
+  /* Image Container */
+  .custom-card-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Ensures image fits properly */
+  .custom-card-image drupal-media img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  h2 {
+    margin-bottom: 0;
+  }
+
+  /* Card Text */
+  .custom-card-text {
+    color: #555;
+    margin: 0 10px 30px 20px;
+  }
+
+  /* Button */
+  .custom-card-button {
+    padding: 10px 20px;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+
+  .custom-card-button:hover {
+    background-color: #d62839;
+  }
+
+  /* Primary Button */
+  .btn.osu-btn-primary.color-active {
+    padding: 10px 20px;
+    background-color: #e63946;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-top: 50px;
+    margin-bottom: 20px;
+  }
+
+  /* =================== Responsive Design =================== */
+
+  /* Large screens (max width 1200px) */
+  @media (max-width: 1200px) {
+    .custom-card {
+      width: 400px;
+      height: 520px;
+    }
+  }
+
+  /* Tablets (max width 992px) */
+  @media (max-width: 992px) {
+    .custom-card {
+      width: 350px;
+      height: auto;
+      padding: 15px;
+      margin: 20px;
+    }
+
+    .custom-card-image {
+      height: 180px;
+    }
+
+    .custom-card-image drupal-media img {
+      height: 180px;
+    }
+
+    h2 {
+      font-size: 22px;
+    }
+  }
+
+  /* Mobile devices (max width 768px) */
+  @media (max-width: 768px) {
+    .custom-card {
+      width: 100%;
+      height: auto;
+      padding: 15px;
+      text-align: center;
+      margin: 15px;
+    }
+
+    .custom-card-image {
+      height: 160px;
+    }
+
+    .custom-card-image drupal-media img {
+      height: 160px;
+    }
+
+    h2 {
+      font-size: 20px;
+    }
+
+    .custom-card-text {
+      font-size: 16px;
+      margin: 10px 0;
+    }
+
+    .custom-card-button {
+      font-size: 14px;
+      padding: 8px 16px;
+    }
+  }
+
+  /* Small mobile devices (max width 576px) */
+  @media (max-width: 576px) {
+    .custom-card {
+      padding: 10px;
+    }
+
+    .custom-card-image {
+      height: 140px;
+    }
+
+    .custom-card-image drupal-media img {
+      height: 140px;
+    }
+
+    h2 {
+      font-size: 18px;
+    }
+
+    .custom-card-text {
+      font-size: 14px;
+    }
+
+    .custom-card-button {
+      font-size: 12px;
+      padding: 6px 14px;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/node/46/\r\n"
+contexts: {  }
+conditions_require_all: true

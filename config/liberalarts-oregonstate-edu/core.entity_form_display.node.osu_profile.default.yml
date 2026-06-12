@@ -1,0 +1,675 @@
+uuid: 4a3a37d3-9d4e-43f1-a39d-d4774eee1907
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_profile.field_academic_interests
+    - field.field.node.osu_profile.field_affiliated_school
+    - field.field.node.osu_profile.field_career_interests
+    - field.field.node.osu_profile.field_career_links
+    - field.field.node.osu_profile.field_collaboration_interests
+    - field.field.node.osu_profile.field_courses_taught
+    - field.field.node.osu_profile.field_directory_filters
+    - field.field.node.osu_profile.field_eportfolio
+    - field.field.node.osu_profile.field_honors_and_awards
+    - field.field.node.osu_profile.field_linkedin_profile
+    - field.field.node.osu_profile.field_majors
+    - field.field.node.osu_profile.field_office_hours
+    - field.field.node.osu_profile.field_osu_faculty_additional_inf
+    - field.field.node.osu_profile.field_osu_faculty_affiliations
+    - field.field.node.osu_profile.field_osu_faculty_education
+    - field.field.node.osu_profile.field_osu_faculty_employment
+    - field.field.node.osu_profile.field_osu_faculty_presentations
+    - field.field.node.osu_profile.field_osu_faculty_service
+    - field.field.node.osu_profile.field_osu_organizations
+    - field.field.node.osu_profile.field_personal_interests
+    - field.field.node.osu_profile.field_personal_links
+    - field.field.node.osu_profile.field_personal_website
+    - field.field.node.osu_profile.field_profile_address
+    - field.field.node.osu_profile.field_profile_biography
+    - field.field.node.osu_profile.field_profile_credentials
+    - field.field.node.osu_profile.field_profile_curriculum_vitae
+    - field.field.node.osu_profile.field_profile_email
+    - field.field.node.osu_profile.field_profile_first_name
+    - field.field.node.osu_profile.field_profile_image
+    - field.field.node.osu_profile.field_profile_last_name
+    - field.field.node.osu_profile.field_profile_middle_name
+    - field.field.node.osu_profile.field_profile_office_phone
+    - field.field.node.osu_profile.field_profile_primary_title
+    - field.field.node.osu_profile.field_profile_pronouns
+    - field.field.node.osu_profile.field_public_policy_faculty_role
+    - field.field.node.osu_profile.field_research_methods
+    - field.field.node.osu_profile.field_school_leadership_list
+    - field.field.node.osu_profile.field_spp_concentration
+    - field.field.node.osu_profile.field_spp_program
+    - field.field.node.osu_profile.field_subject_matter_expertise
+    - field.field.node.osu_profile.field_swlf_faculty_areas
+    - field.field.node.osu_profile.field_topics
+    - field.field.node.osu_profile.field_web_support
+    - field.field.node.osu_profile.field_zip_sorting_code
+    - image.style.x_large
+    - node.type.osu_profile
+    - workflows.workflow.editorial
+  module:
+    - address
+    - content_moderation
+    - field_group
+    - focal_point
+    - link
+    - media_library
+    - media_library_edit
+    - path
+    - telephone
+    - text
+third_party_settings:
+  field_group:
+    group_personal_information:
+      children:
+        - field_profile_first_name
+        - field_profile_last_name
+        - field_profile_middle_name
+        - field_profile_pronouns
+        - field_affiliated_school
+        - field_profile_primary_title
+        - field_profile_image
+      label: 'Personal Information'
+      region: content
+      parent_name: ''
+      weight: 8
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
+    group_contact_information:
+      children:
+        - field_profile_email
+        - field_profile_office_phone
+        - field_profile_address
+      label: 'Contact Information'
+      region: content
+      parent_name: ''
+      weight: 9
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
+    group_profile_career_info:
+      children:
+        - field_profile_curriculum_vitae
+        - field_profile_credentials
+      label: 'Career Information'
+      region: content
+      parent_name: ''
+      weight: 11
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: true
+        description: ''
+        required_fields: true
+    group_osu_faculty_migration_fiel:
+      children:
+        - field_office_hours
+        - field_career_links
+        - field_career_interests
+        - field_osu_faculty_education
+        - field_osu_faculty_employment
+        - field_osu_faculty_service
+        - field_osu_faculty_presentations
+        - field_osu_faculty_affiliations
+        - field_honors_and_awards
+        - field_courses_taught
+        - field_osu_faculty_additional_inf
+      label: 'OSU Faculty Information'
+      region: content
+      parent_name: ''
+      weight: 12
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_osu_employee_migration_fie:
+      children:
+        - field_web_support
+        - field_school_leadership_list
+      label: 'OSU Employee Filters'
+      region: content
+      parent_name: ''
+      weight: 15
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_osu_person_migration_field:
+      children:
+        - field_personal_links
+        - field_personal_interests
+      label: 'OSU Person Information'
+      region: content
+      parent_name: ''
+      weight: 13
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_osu_student_migration_fiel:
+      children:
+        - field_majors
+        - field_academic_interests
+        - field_eportfolio
+        - field_linkedin_profile
+        - field_personal_website
+      label: 'OSU Student Information'
+      region: content
+      parent_name: ''
+      weight: 14
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_spp_filters:
+      children:
+        - field_spp_program
+        - field_public_policy_faculty_role
+        - field_spp_concentration
+      label: 'SPP Filters'
+      region: content
+      parent_name: ''
+      weight: 17
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: false
+    group_main_directory_filters:
+      children:
+        - field_directory_filters
+      label: 'Main Directory Filters'
+      region: content
+      parent_name: ''
+      weight: 19
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        open: false
+        description: ''
+        required_fields: true
+    group_swlf_filters:
+      children:
+        - field_swlf_faculty_areas
+      label: 'SWLF Filters'
+      region: content
+      parent_name: ''
+      weight: 18
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: false
+    group_researchers_and_media_expe:
+      children:
+        - field_topics
+        - field_subject_matter_expertise
+        - field_research_methods
+        - field_collaboration_interests
+      label: 'Researchers and Media Experts'
+      region: content
+      parent_name: ''
+      weight: 21
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+_core:
+  default_config_hash: qzGKCQFt-mphIPrQSSwRikg3pshtxEw5RRkfq7ImJJ4
+id: node.osu_profile.default
+targetEntityType: node
+bundle: osu_profile
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_academic_interests:
+    type: text_textarea
+    weight: 18
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_affiliated_school:
+    type: options_select
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_career_interests:
+    type: text_textarea
+    weight: 26
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_career_links:
+    type: link_default
+    weight: 25
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_collaboration_interests:
+    type: options_select
+    weight: 48
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_courses_taught:
+    type: text_textarea
+    weight: 33
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_directory_filters:
+    type: options_buttons
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_eportfolio:
+    type: link_default
+    weight: 19
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_honors_and_awards:
+    type: text_textarea
+    weight: 32
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_linkedin_profile:
+    type: link_default
+    weight: 20
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_majors:
+    type: string_textfield
+    weight: 17
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_office_hours:
+    type: string_textfield
+    weight: 24
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_osu_faculty_additional_inf:
+    type: text_textarea
+    weight: 34
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_osu_faculty_affiliations:
+    type: text_textarea
+    weight: 31
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_osu_faculty_education:
+    type: text_textarea
+    weight: 27
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_osu_faculty_employment:
+    type: text_textarea
+    weight: 28
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_osu_faculty_presentations:
+    type: text_textarea
+    weight: 30
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_osu_faculty_service:
+    type: text_textarea
+    weight: 29
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_osu_organizations:
+    type: entity_reference_autocomplete
+    weight: 16
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_personal_interests:
+    type: text_textarea
+    weight: 17
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_personal_links:
+    type: link_default
+    weight: 16
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_personal_website:
+    type: link_default
+    weight: 21
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_profile_address:
+    type: address_default
+    weight: 12
+    region: content
+    settings:
+      wrapper_type: fieldset
+    third_party_settings: {  }
+  field_profile_biography:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_credentials:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_curriculum_vitae:
+    type: media_library_widget
+    weight: 13
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings:
+      media_library_edit:
+        show_edit: true
+        edit_form_mode: default
+  field_profile_email:
+    type: email_default
+    weight: 10
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_profile_first_name:
+    type: string_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_image:
+    type: image_focal_point
+    weight: 15
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: x_large
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  field_profile_last_name:
+    type: string_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_middle_name:
+    type: string_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_office_phone:
+    type: telephone_default
+    weight: 11
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_primary_title:
+    type: string_textfield
+    weight: 14
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_profile_pronouns:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_public_policy_faculty_role:
+    type: options_select
+    weight: 42
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_research_methods:
+    type: options_select
+    weight: 47
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_school_leadership_list:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_spp_concentration:
+    type: options_select
+    weight: 43
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_spp_program:
+    type: options_select
+    weight: 40
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_subject_matter_expertise:
+    type: text_textarea
+    weight: 46
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_swlf_faculty_areas:
+    type: options_select
+    weight: 44
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_topics:
+    type: options_select
+    weight: 45
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_web_support:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 20
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  field_zip_sorting_code: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

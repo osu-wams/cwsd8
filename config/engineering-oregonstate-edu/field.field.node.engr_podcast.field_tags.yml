@@ -1,0 +1,29 @@
+uuid: e43227a1-d5da-4390-8c33-e84a2ca57cf6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tags
+    - node.type.engr_podcast
+    - taxonomy.vocabulary.tags
+id: node.engr_podcast.field_tags
+field_name: field_tags
+entity_type: node
+bundle: engr_podcast
+label: Tags
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tags: tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

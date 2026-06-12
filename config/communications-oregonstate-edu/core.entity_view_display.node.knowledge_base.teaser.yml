@@ -1,0 +1,39 @@
+uuid: fabbf122-b955-4ff8-aa17-7c08818f1a7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.knowledge_base.body
+    - field.field.node.knowledge_base.field_file
+    - field.field.node.knowledge_base.field_topic_focus
+    - field.field.node.knowledge_base.image
+    - field.field.node.knowledge_base.og_group_ref
+    - node.type.knowledge_base
+  module:
+    - text
+    - user
+id: node.knowledge_base.teaser
+targetEntityType: node
+bundle: knowledge_base
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_file: true
+  field_topic_focus: true
+  image: true
+  og_group_ref: true

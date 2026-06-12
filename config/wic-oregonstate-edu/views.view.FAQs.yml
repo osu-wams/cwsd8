@@ -1,0 +1,436 @@
+uuid: ca480fa9-e960-4210-bdad-a2462c43effa
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.node.field_type
+    - node.type.faq
+  module:
+    - better_exposed_filters
+    - contextual
+    - node
+    - options
+    - taxonomy
+    - text
+    - user
+    - views_bootstrap
+id: FAQs
+label: 'FAQ Clone'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: '<none>'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+        body:
+          id: body
+          table: node__body
+          field: body
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          plugin_id: entity_link_edit
+          label: ''
+          exclude: true
+          element_label_colon: false
+          text: 'Edit FAQ'
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: ''
+          exclude: true
+          alter:
+            text: 'Add New FAQ'
+            make_link: true
+            path: node/add/faq
+          element_label_colon: false
+        contextual_links:
+          id: contextual_links
+          table: views
+          field: contextual_links
+          plugin_id: contextual_links
+          label: ''
+          fields:
+            edit_node: edit_node
+            nothing: nothing
+          check_access: 0
+        field_type:
+          id: field_type
+          table: node__field_type
+          field: field_type
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 25
+          id: 0
+          quantity: 9
+          pagination_heading_level: h4
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Filter
+          text_input_required: '<p>Select a User Level and/or enter a Keyword to see results. Your filter terms will be automatically submitted.</p>'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: true
+              autosubmit_hide: null
+              input_required: true
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              secondary_collapse_override: '0'
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_breakpoint: ''
+              auto_submit_sort_only: false
+            filter:
+              tid:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+                select_all_none: false
+              combine:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+      access:
+        type: perm
+      cache:
+        type: none
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          empty: true
+          content:
+            value: '<p>We currently do not have any FAQ for this topic.</p>'
+            format: basic_html
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: standard
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+        field_type_value:
+          id: field_type_value
+          table: node__field_type
+          field: field_type_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value:
+            faculty: faculty
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+      style:
+        type: views_bootstrap_accordion
+        options:
+          grouping: {  }
+          panel_title_field: title
+          flush: false
+          behavior: closed
+          sections:
+            first: 0
+            middle: 0
+            last: 0
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      relationships:
+        term_node_tid:
+          id: term_node_tid
+          table: node_field_data
+          field: term_node_tid
+          entity_type: node
+          plugin_id: node_term_data
+          vids: {  }
+      use_ajax: true
+      use_more_always: false
+      display_extenders: {  }
+      style_plugin: views_accordion
+      style_options:
+        grouping:
+          -
+            field: title
+            rendered: 1
+            rendered_strip: 0
+        use-grouping-header: 1
+        collapsible: 1
+        row-start-open: none
+        autoheight: 0
+        navigation: 1
+        clearstyle: 1
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_type'
+  block_1:
+    id: block_1
+    display_title: 'Faculty FAQs'
+    display_plugin: block
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_type'
+  block_2:
+    id: block_2
+    display_title: 'Student FAQs'
+    display_plugin: block
+    position: 3
+    display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+        field_type_value:
+          id: field_type_value
+          table: node__field_type
+          field: field_type_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value:
+            student: student
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_type'

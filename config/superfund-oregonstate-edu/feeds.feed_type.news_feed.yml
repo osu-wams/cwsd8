@@ -1,0 +1,96 @@
+uuid: 6e1c7b6e-4769-492f-8e0e-a8a5bd78460d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.news_story.field_news_source
+    - field.field.node.news_story.field_osu_story_external_url
+    - field.field.node.news_story.field_pub_date_published
+    - node.type.news_story
+  module:
+    - node
+label: 'News Feed'
+id: news_feed
+description: 'A feed setup to import from a remote csv into news stories'
+help: ''
+import_period: 259200
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: news_story
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  article_title:
+    value: article_title
+    label: article_title
+    machine_name: article_title
+    type: csv
+  article_link:
+    value: article_link
+    label: article_link
+    machine_name: article_link
+    type: csv
+  date_published:
+    value: date_published
+    label: date_published
+    machine_name: date_published
+    type: csv
+  agency:
+    value: agency
+    label: agency
+    machine_name: agency
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: article_title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_osu_story_external_url
+    map:
+      uri: article_link
+      title: article_title
+    settings:
+      language: ''
+  -
+    target: field_pub_date_published
+    map:
+      value: date_published
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_news_source
+    map:
+      value: agency
+    settings:
+      language: null
+    unique:
+      value: 1

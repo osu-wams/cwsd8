@@ -1,0 +1,40 @@
+uuid: d692963c-91f8-4305-bc1d-80cf62d2bb49
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_options
+    - node.type.program
+    - paragraphs.paragraphs_type.program_options
+  module:
+    - entity_reference_revisions
+id: node.program.field_program_options
+field_name: field_program_options
+entity_type: node
+bundle: program
+label: 'Program Options'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      program_options: program_options
+    negate: 0
+    target_bundles_drag_drop:
+      osu_accordion_item:
+        weight: 5
+        enabled: false
+      osu_accordion_section:
+        weight: 6
+        enabled: false
+      program_concentrations:
+        weight: 7
+        enabled: false
+      program_options:
+        weight: 8
+        enabled: true
+field_type: entity_reference_revisions

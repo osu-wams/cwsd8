@@ -1,0 +1,70 @@
+uuid: 36c2bcc3-ec92-4276-8419-cc6f959b0c9c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: quick_links_background_color
+label: 'Quick Links Background Color'
+code: |-
+  .field--name-field-ql-paragraph {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    & .field__item:first-child {
+      grid-column: 1 / -1;
+    }
+    .field__item .paragraph--type--quick-link {
+      border-radius: 2rem;
+      color: var(--quick-link-color, --bs-body-color);
+      padding: .5rem;
+      position: relative;
+      transition: 400ms background-color ease, 400ms color ease;
+      &.osu-bg-osuorange {
+        --quick-link-color: #fff;
+      }
+      &.osu-bg-page-alt-2 {
+        --quick-link-color: #fff;
+      }
+      &.osu-bg-crater {
+        --quick-link-color: #fff;
+      }
+      & a {
+        color: var(--quick-link-color, --bs-body-color);
+        text-decoration: none;
+        &::before {
+          content: "";
+          inset: 0;
+          position: absolute;
+        }
+      }
+      &:hover {
+        background-color: #212529 !important;
+        color: #fff;
+        & a {
+          color: #fff;
+        }
+      }
+    }
+  }
+  @media screen and (min-width: 768px) {
+    .field--name-field-ql-paragraph {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

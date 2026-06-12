@@ -1,0 +1,107 @@
+uuid: 925d155c-a053-4b8e-9bf6-53a25b11b62c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.accreditation
+    - node.type.dam_creative_hp
+    - node.type.feature_story
+    - node.type.instagram
+    - node.type.lasells_spaces_images
+    - node.type.leading_research
+    - node.type.osu_profile
+    - node.type.osu_simple_tabs
+    - node.type.page
+    - node.type.partners
+    - node.type.photo_gallery
+    - node.type.projects
+    - node.type.story
+    - node.type.testimonials
+    - node.type.webform
+  module:
+    - content_moderation
+_core:
+  default_config_hash: HPoRRe_c6GmY-m_PDDrOhIDq7qUs9nScS0zEkrctSkw
+id: editorial
+label: Editorial
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: Archived
+      weight: 5
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: -5
+      published: false
+      default_revision: false
+    preserve:
+      label: Preserved
+      weight: 6
+      published: true
+      default_revision: true
+    published:
+      label: Published
+      weight: 0
+      published: true
+      default_revision: true
+  transitions:
+    archive:
+      label: Archive
+      from:
+        - published
+      to: archived
+      weight: 2
+    archived_draft:
+      label: 'Restore to Draft'
+      from:
+        - archived
+      to: draft
+      weight: 3
+    archived_published:
+      label: Restore
+      from:
+        - archived
+      to: published
+      weight: 4
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: 0
+    preserve:
+      label: Preserve
+      from:
+        - archived
+        - published
+      to: preserve
+      weight: 5
+    publish:
+      label: Publish
+      from:
+        - draft
+        - published
+      to: published
+      weight: 1
+  entity_types:
+    node:
+      - accreditation
+      - dam_creative_hp
+      - feature_story
+      - instagram
+      - lasells_spaces_images
+      - leading_research
+      - osu_profile
+      - osu_simple_tabs
+      - page
+      - partners
+      - photo_gallery
+      - projects
+      - story
+      - testimonials
+      - webform
+  default_moderation_state: draft

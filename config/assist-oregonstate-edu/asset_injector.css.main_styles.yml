@@ -1,0 +1,76 @@
+uuid: 5e0971b8-3ca9-4a34-a762-97bbb8ad7c66
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: main_styles
+label: 'Main styles'
+code: |-
+  /*.hp_header {
+    height: 100vh;
+  }*/
+  .hp_header_text
+  {
+  	font-size:65px;
+  }
+
+  .profile-row {
+  	display:flex;
+  	gap: 2rem;
+  	flex-wrap: wrap;
+  	justify-content: center;
+  }
+
+  @media (max-width: 1399px) {
+      .profile-card {
+          padding-bottom: 4rem;
+      }
+  }
+
+  @media (min-width: 1152px) {
+      .hp_header_text {
+          font-size: 65px;
+          line-height: 65px;
+      }
+  }
+  @media (min-width: 1024px) {
+      .hp_header_text {
+          font-size: 56px;
+          line-height: 56px;
+          margin-bottom: 38px;
+      }
+  }
+  .black-line{
+    position: relative;
+    margin-top: 2.5rem;
+  }
+  .black-line::before {
+    content: '';
+    width: 50px;
+    height: 4px;
+    position: absolute;
+    background-color: black;
+    top: -1rem;
+  }
+  .orange-line{
+    position: relative;
+    margin-top: 2.5rem;
+  }
+  .orange-line::before {
+    content: '';
+    width: 50px;
+    height: 4px;
+    position: absolute;
+    background-color: #d73f09;
+    top: -1rem;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

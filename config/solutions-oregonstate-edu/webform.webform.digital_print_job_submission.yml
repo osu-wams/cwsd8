@@ -1,0 +1,958 @@
+uuid: 6076c7bb-d044-4808-a9ee-d5c219a565ee
+langcode: en
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 56
+template: false
+archive: false
+id: digital_print_job_submission
+title: 'Digital Print Job Submission'
+description: ''
+categories: {  }
+elements: |-
+  name:
+    '#type': webform_name
+    '#title': Name
+    '#required': true
+    '#title__access': false
+    '#first__title': 'First Name'
+    '#first__title_display': before
+    '#first__required': true
+    '#middle__access': false
+    '#last__title': 'Last Name'
+    '#last__title_display': before
+    '#last__required': true
+    '#suffix__access': false
+    '#degree__access': false
+  flexbox:
+    '#type': webform_flexbox
+    email:
+      '#type': email
+      '#title': Email
+      '#title_display': inline
+      '#required': true
+      '#default_value': '[current-user:mail]'
+    phone_number:
+      '#type': tel
+      '#title': 'Phone Number'
+      '#title_display': inline
+      '#required': true
+  flexbox_01:
+    '#type': webform_flexbox
+    project_name:
+      '#type': textfield
+      '#title': 'Project Name'
+    department:
+      '#type': textfield
+      '#title': Department
+  payment_methods:
+    '#type': radios
+    '#title': 'Payment Method'
+    '#options':
+      'OSU Department': 'OSU Department'
+      'Non-OSU Business': 'Non-OSU Business'
+      'Personal / cash sale': 'Personal / cash sale'
+    '#options_display': three_columns
+    '#required': true
+  index_activity_code:
+    '#type': textfield
+    '#title': 'Index / Activity Code'
+    '#title_display': invisible
+    '#placeholder': 'Index / Activity Code'
+    '#required': true
+    '#states':
+      visible-slide:
+        ':input[name="payment_methods"]':
+          value: 'OSU Department'
+  account_number:
+    '#type': textfield
+    '#title': 'Account Number'
+    '#title_display': invisible
+    '#placeholder': 'Account Number'
+    '#states':
+      visible-slide:
+        ':input[name="payment_methods"]':
+          value: 'Non-OSU Business'
+  markup:
+    '#type': webform_markup
+    '#states':
+      visible-slide:
+        ':input[name="payment_methods"]':
+          value: 'Personal / cash sale'
+    '#markup': |-
+      <fieldset>
+      <p>Payment is required prior to delivery, pickup, or mailing for personal transactions.</p>
+      </fieldset>
+  estimate_or_previous_job:
+    '#type': textfield
+    '#title': 'Estimate or Previous Job #'
+  flexbox_02:
+    '#type': webform_flexbox
+    date_required:
+      '#type': date
+      '#title': 'Date Required'
+      '#description': '<p class="red"><em>Projects with less than 48-hour turnaround may incur additional charges and are available for pick up only.</em></p>'
+      '#description_display': after
+      '#default_value': '+1 week'
+      '#date_date_min': '-2years'
+      '#date_date_max': +2years
+    time_preferred:
+      '#type': checkboxes
+      '#title': 'Time Preferred '
+      '#options':
+        1: am
+        2: pm
+      '#options_display': side_by_side
+  48_hour_pickup:
+    '#type': webform_markup
+    '#states':
+      visible:
+        ':input[name="date_required"]':
+          value:
+            less_equal: '[current-date:custom: +2 days]'
+    '#markup': '<p>Projects with less than 48-hour turnaround may incur additional charges and are available for pick up only.</p>'
+  flexbox_03:
+    '#type': webform_flexbox
+    proof_method:
+      '#type': select
+      '#title': 'Proof Method'
+      '#options':
+        1: 'No proof necessary '
+        2: 'Proof via campus mail'
+        3: 'Proof at Research Way'
+        4: 'Proof to Sales Rep'
+      '#required': true
+    of_copies:
+      '#type': textfield
+      '#title': '# of Copies'
+      '#required': true
+    of_originals:
+      '#type': textfield
+      '#title': '# of Originals'
+  flexbox_04:
+    '#type': webform_flexbox
+    page_options:
+      '#type': checkboxes
+      '#title': 'Page Options'
+      '#options':
+        1: 1-Sided
+        2: 2-Sided
+      '#options_display': side_by_side
+    print_type:
+      '#type': checkboxes
+      '#title': 'Print Type'
+      '#options':
+        1: 'Black & White'
+        2: Color
+      '#options_display': side_by_side
+    finished_size:
+      '#type': webform_checkboxes_other
+      '#title': 'Finished Size'
+      '#options':
+        1: '8.5 x 11 (Letter)'
+        2: '8.5 x 14 (Legal)'
+        3: '11 x 17 (Tabloid)'
+      '#options_display': side_by_side
+      '#other__placeholder': 'Other Size'
+  paper_weight:
+    '#type': select
+    '#title': 'Paper Weight'
+    '#options':
+      1: 'No Preference (Most appropriate paper will be used)'
+      2: '20# Text'
+      3: '24# Text'
+      4: '32# Text'
+      5: '60# Text'
+      6: '70# Text'
+      7: '80# Text'
+      8: '100# Text'
+      9: '65# Cover'
+      10: '80# Cover'
+      11: '90# Cover'
+      12: '100# Cover'
+      13: '110# Cover'
+      14: '8 pt. C1S'
+      15: '10 pt. C1S'
+      16: '12 pt. C1S'
+      17: '14 pt. C1S'
+      18: Other
+    '#default_value': '1'
+  paper_color_100_text:
+    '#type': select
+    '#title': 'Paper Color (100# Text)'
+    '#options':
+      'White(coated stock)': 'White(coated stock)'
+      'Cougar White(uncoated stock)': 'Cougar White(uncoated stock)'
+      'Solar White Classic Crest(uncoated stock)': 'Solar White Classic Crest(uncoated stock)'
+      Other: Other
+    '#empty_option': 'please choose paper for me'
+    '#empty_value': 'please choose paper for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '8'
+  paper_color_100_cover:
+    '#type': select
+    '#title': 'Paper Color (100# Cover)'
+    '#options':
+      'White (coated stock)': 'White (coated stock)'
+      'Solar White Classic Crest (uncoated stock)': 'Solar White Classic Crest (uncoated stock)'
+      'Cougar White (uncoated stock)': 'Cougar White (uncoated stock)'
+      Ivory: Ivory
+      'Cougar Natural (uncoated stock)': 'Cougar Natural (uncoated stock)'
+      Other: Other
+    '#empty_option': 'please choose paper for me'
+    '#empty_value': 'please choose paper for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '12'
+  paper_color_20_text:
+    '#type': select
+    '#title': 'Paper Color (20# Text)'
+    '#options':
+      White: White
+      Buff: Buff
+      Ivory: Ivory
+      Tan: Tan
+      Pink: Pink
+      Salmon: Salmon
+      Canary: Canary
+      Gold: Gold
+      Green: Green
+      Blue: Blue
+      Orchid: Orchid
+      Gray: Gray
+      Other: Other
+    '#empty_option': 'choose for me'
+    '#empty_value': 'choose for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '2'
+  paper_color_24_text:
+    '#type': select
+    '#title': 'Paper Color (24# Text)'
+    '#options':
+      'White(no watermark)': 'White(no watermark)'
+      'White(with watermark)': 'White(with watermark)'
+      'Natural Classic Crest': 'Natural Classic Crest'
+      'Cream Neutech': 'Cream Neutech'
+      Other: Other
+    '#empty_option': 'Please choose paper for me'
+    '#empty_value': 'Please choose paper for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '3'
+  paper_color_32_text:
+    '#type': select
+    '#title': 'Paper Color (32# Text)'
+    '#options':
+      White: White
+      Other: Other
+    '#empty_option': 'Please choose paper for me'
+    '#empty_value': 'Please choose paper for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '4'
+  paper_color_60_text:
+    '#type': select
+    '#title': 'Paper Color (60# Text)'
+    '#options':
+      White: White
+      'ReEntry Red': 'ReEntry Red'
+      'Pulsar Pink': 'Pulsar Pink'
+      'Orbit Orange': 'Orbit Orange'
+      'Solar Yellow': 'Solar Yellow'
+      'Galaxy Gold': 'Galaxy Gold'
+      'Terra Green': 'Terra Green'
+      'Gamma Green': 'Gamma Green'
+      'Lunar Blue': 'Lunar Blue'
+      Other: Other
+    '#empty_option': 'please choose paper for me'
+    '#empty_value': 'please choose paper for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '5'
+  paper_color_65_cover:
+    '#type': select
+    '#title': 'Paper Color (65# Cover)'
+    '#options':
+      White: White
+      Ivory: Ivory
+      Canary: Canary
+      Green: Green
+      Blue: Blue
+      Orchid: Orchid
+      Gray: Gray
+      Peach: Peach
+      'Pulsar Pink': 'Pulsar Pink'
+      'Mars Magenta': 'Mars Magenta'
+      'Orbit Orange': 'Orbit Orange'
+      'Solar Yellow': 'Solar Yellow'
+      'Galaxy Gold': 'Galaxy Gold'
+      'Terra Green': 'Terra Green'
+      'Gamma Green': 'Gamma Green'
+      'Lunar Blue': 'Lunar Blue'
+      'Neptune Blue': 'Neptune Blue'
+      'ReEntry Red': 'ReEntry Red'
+      Other: Other
+    '#empty_option': 'please choose paper for me'
+    '#empty_value': 'please choose paper for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '9'
+  paper_color_70_text:
+    '#type': select
+    '#title': 'Paper Color (70# Text)'
+    '#options':
+      White: White
+      Ivory: Ivory
+      Tan: Tan
+      Gray: Gray
+      Blue: Blue
+      Green: Green
+      Pink: Pink
+      Canary: Canary
+      Peach: Peach
+      'Rose Royal Fiber': 'Rose Royal Fiber'
+      'Balsa Royal Fiber': 'Balsa Royal Fiber'
+      'Moss Royal Fiber': 'Moss Royal Fiber'
+      'Thyme Royal Fiber': 'Thyme Royal Fiber'
+      'Periwinkle Royal Fiber': 'Periwinkle Royal Fiber'
+      'Ice Blue Royal Fiber': 'Ice Blue Royal Fiber'
+      'Cream Royal Fiber': 'Cream Royal Fiber'
+      'Gray Royal Fiber': 'Gray Royal Fiber'
+      Other: Other
+    '#empty_option': 'please choose paper for me'
+    '#empty_value': 'please choose paper for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '6'
+  paper_color_80_cover:
+    '#type': select
+    '#title': 'Paper Color (80# Cover)'
+    '#options':
+      'White(coated stock)': 'White(coated stock)'
+      'White Gloss Elite(coated stock)': 'White Gloss Elite(coated stock)'
+      'Cougar White(uncoated stock)': 'Cougar White(uncoated stock)'
+      'Brilliant White': 'Brilliant White'
+      'Brilliant White Linen': 'Brilliant White Linen'
+      'Solar White Classic Crest': 'Solar White Classic Crest'
+      'Natural Classic Crest': 'Natural Classic Crest'
+      Black: Black
+      'Royal Linen Gray(thesis cover stock)': 'Royal Linen Gray(thesis cover stock)'
+      'Cream Royal Fiber': 'Cream Royal Fiber'
+      'Thyme Royal Fiber': 'Thyme Royal Fiber'
+      'Balsa Royal Fiber': 'Balsa Royal Fiber'
+      'Rose Royal Fiber': 'Rose Royal Fiber'
+      'Moss Royal Fiber': 'Moss Royal Fiber'
+      'Periwinkle Royal Fiber': 'Periwinkle Royal Fiber'
+      'Ice Blue Royal Fiber': 'Ice Blue Royal Fiber'
+      'Gray Royal Fiber': 'Gray Royal Fiber'
+      Other: Other
+    '#empty_option': 'please choose paper for me'
+    '#empty_value': 'please choose paper for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '10'
+  paper_color_80_text:
+    '#type': select
+    '#title': 'Paper Color (80# Text)'
+    '#options':
+      'White(coated stock)': 'White(coated stock)'
+      'Cougar White(uncoated stock)': 'Cougar White(uncoated stock)'
+      'Solar White Classic Crest(uncoated stock)': 'Solar White Classic Crest(uncoated stock)'
+      'Cougar Natural(uncoated stock)': 'Cougar Natural(uncoated stock)'
+      'Natural Classic Crest(uncoated stock)': 'Natural Classic Crest(uncoated stock)'
+      Other: Other
+    '#empty_option': 'please choose paper for me'
+    '#empty_value': 'please choose paper for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '7'
+  paper_color_90_cover:
+    '#type': select
+    '#title': 'Paper Color (90# Cover)'
+    '#options':
+      White: White
+      Ivory: Ivory
+      Salmon: Salmon
+      Blue: Blue
+      Gray: Gray
+      Other: Other
+    '#empty_option': 'please choose paper for me'
+    '#empty_value': 'please choose paper for me'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '11'
+  other:
+    '#type': textfield
+    '#title': Other
+    '#placeholder': 'Paper Type / Color'
+    '#states':
+      visible:
+        ':input[name="paper_weight"]':
+          value: '18'
+  flexbox_06:
+    '#type': webform_flexbox
+    mailing:
+      '#type': checkbox
+      '#title': USPS
+      '#states':
+        checked:
+          ':input[name="does_this_mailing_require_an_envelope"]':
+            '': ''
+    finishing:
+      '#type': checkbox
+      '#title': Finishing
+    stapling:
+      '#type': checkbox
+      '#title': Stapling
+    binding:
+      '#type': checkbox
+      '#title': Binding
+    folding:
+      '#type': checkbox
+      '#title': Folding
+    packaging:
+      '#type': checkbox
+      '#title': Packaging
+  does_this_mailing_require_an_envelope:
+    '#type': radios
+    '#title': 'Does this mailing require an envelope?'
+    '#options':
+      'Yes': 'Yes'
+      'No': 'No'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="mailing"]':
+          checked: true
+  number_of_inserts:
+    '#type': select
+    '#title': 'Number of Inserts'
+    '#options':
+      1: '1'
+      2: '2'
+      3: '3'
+      4: '4'
+      5: '5'
+      6: '6'
+    '#empty_option': '0'
+    '#empty_value': '0'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="mailing"]':
+          checked: true
+  size_of_envelope:
+    '#type': textfield
+    '#title': 'Size of Envelope'
+    '#states':
+      visible:
+        ':input[name="does_this_mailing_require_an_envelope"]':
+          value: 'Yes'
+  order_of_inserts:
+    '#type': textfield
+    '#title': 'Order of Inserts'
+    '#placeholder': 'Please describe the inserts and assembly order'
+    '#states':
+      visible:
+        ':input[name="number_of_inserts"]':
+          value:
+            greater: '1'
+  are_envelopes_customer_supplied:
+    '#type': radios
+    '#title': 'Are envelopes customer-supplied?'
+    '#options': yes_no
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="mailing"]':
+          checked: true
+  are_the_envelopes_windowed:
+    '#type': radios
+    '#title': 'Are the envelopes windowed?'
+    '#options': yes_no
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="are_envelopes_customer_supplied"]':
+          value: 'Yes'
+  mailing_date_requested:
+    '#type': date
+    '#title': 'Mailing Date Requested'
+    '#description': '<p>Depending on mailing quantity, please allow 3-5 business days after proof approval for printing and mailing combination orders.</p>'
+    '#description_display': after
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="mailing"]':
+          checked: true
+    '#date_date_min': '-2 years'
+    '#date_date_max': '+2 years'
+  mail_before_this_date_if_possible:
+    '#type': radios
+    '#title': 'Mail before this date if possible?'
+    '#options': yes_no
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="mailing"]':
+          checked: true
+  method_of_mailing:
+    '#type': select
+    '#title': 'Delivery Speed'
+    '#options':
+      'Most Cost-Effective (Nonprofit Standard)': 'Most Cost-Effective (Nonprofit Standard)'
+      'First-Class (Faster Delivery)': 'First-Class (Faster Delivery)'
+      'Not Sure — Please Advise': 'Not Sure — Please Advise'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="mailing"]':
+          checked: true
+  does_this_order_include_extras:
+    '#type': radios
+    '#title': 'Does this order include extras?'
+    '#options': yes_no
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="mailing"]':
+          checked: true
+  postage:
+    '#type': radios
+    '#title': 'Postage Method'
+    '#options':
+      'University Permit (best for larger mailings)': 'University Permit (best for larger mailings)'
+      'First-Class Metered Postage': 'First-Class Metered Postage'
+      'Apply First-Class Stamps': 'Apply First-Class Stamps'
+      'Apply Postcard Stamps (4" x 6" max)': 'Apply Postcard Stamps (4" x 6" max)'
+    '#states':
+      visible:
+        ':input[name="mailing"]':
+          checked: true
+  shuttle_routes:
+    '#type': webform_markup
+    '#states':
+      visible:
+        ':input[name="method_of_mailing"]':
+          value: Campus/Shuttle
+    '#markup': '<p><a href="https://printmail.oregonstate.edu/sites/printmail.oregonstate.edu/files/shuttleroutes_1.xls">Click here</a>&nbsp;for a list of Shuttle Routes</p>'
+  additional_mailing_instructions:
+    '#type': textarea
+    '#title': 'Additional Mailing Instructions'
+    '#states':
+      visible:
+        ':input[name="mailing"]':
+          checked: true
+    '#label_attributes':
+      style: 'font-weight:bold;'
+  address_to_send_extras:
+    '#type': textarea
+    '#title': 'Address to Send Extras'
+    '#required': true
+    '#states':
+      visible:
+        ':input[name="does_this_order_include_extras"]':
+          value: 'Yes'
+    '#label_attributes':
+      style: 'font-weight:bold;'
+  finishing_options:
+    '#type': checkboxes
+    '#title': 'Finishing Options'
+    '#title_display': invisible
+    '#options':
+      Collate: Collate
+      'Front Cover': 'Front Cover'
+      'Back Cover': 'Back Cover'
+      Carbonless: Carbonless
+      '3 Hole Drill': '3 Hole Drill'
+      Slipsheets: Slipsheets
+      Laminate: Laminate
+      Perf/Score: Perf/Score
+      'Page Numbering': 'Page Numbering'
+      'Round Cornering': 'Round Cornering'
+    '#states':
+      visible:
+        ':input[name="finishing"]':
+          checked: true
+  stapling_options:
+    '#type': webform_radios_other
+    '#title': 'Stapling Options'
+    '#title_display': invisible
+    '#options':
+      'Staple Top Left': 'Staple Top Left'
+      'Staple Two Left': 'Staple Two Left'
+      'Saddle Staple': 'Saddle Staple'
+    '#other__option_label': Other
+    '#other__placeholder': 'Describe Staple Position'
+    '#states':
+      visible:
+        ':input[name="stapling"]':
+          checked: true
+  binding_options:
+    '#type': checkboxes
+    '#title': 'Binding Options'
+    '#title_display': invisible
+    '#options':
+      'Tape Binding': 'Tape Binding'
+      'Coil Binding': 'Coil Binding'
+      Padding: Padding
+    '#states':
+      visible:
+        ':input[name="binding"]':
+          checked: true
+  folding_options:
+    '#type': webform_checkboxes_other
+    '#title': 'Folding Options'
+    '#title_display': invisible
+    '#options':
+      'Half Fold': 'Half Fold'
+      'Letter Fold': 'Letter Fold'
+      'Double Parallel': 'Double Parallel'
+      'Right Angle Half Fold': 'Right Angle Half Fold'
+      'Right Angle Third Fold': 'Right Angle Third Fold'
+      'Z Fold': 'Z Fold'
+    '#other__option_label': 'Specialty Fold'
+    '#other__placeholder': 'Describe Specialty Fold'
+    '#states':
+      visible:
+        ':input[name="folding"]':
+          checked: true
+  packaging_options:
+    '#type': checkboxes
+    '#title': 'Packaging Options'
+    '#title_display': invisible
+    '#options':
+      'Shrink Wrap': 'Shrink Wrap'
+      'Shrink Wrap with Back': 'Shrink Wrap with Back'
+      'Security Packaging (required for exams)': 'Security Packaging (required for exams)'
+    '#states':
+      visible:
+        ':input[name="packaging"]':
+          checked: true
+  delivery_options:
+    '#type': select
+    '#title': 'Delivery Options'
+    '#description': '<p><em>Projects with less than 48-hour turnaround may incur additional charges and are available for pick up only.</em></p>'
+    '#description_display': after
+    '#options':
+      'Pick Up at 4700 SW Research Way': 'Pick Up at 4700 SW Research Way'
+      'Ship via Fedex/UPS (Additional charges will apply)': 'Ship via Fedex/UPS (Additional charges will apply)'
+      'Mail out to provided list': 'Mail out to provided list'
+      'Local Delivery': 'Local Delivery'
+      'Campus Mail': 'Campus Mail'
+      'Campus Parcel': 'Campus Parcel'
+    '#states':
+      visible:
+        ':input[name="mailing"]':
+          unchecked: true
+  flexbox_08:
+    '#type': webform_flexbox
+    delivery_address:
+      '#type': textarea
+      '#title': 'Delivery Address'
+    special_instructions:
+      '#type': textarea
+      '#title': 'Special Instructions '
+  file_upload:
+    '#type': managed_file
+    '#title': 'File Upload '
+    '#file_extensions': 'pdf xls xlsx bz2 gz tar zip'
+  flexbox_07:
+    '#type': webform_flexbox
+    file_upload1:
+      '#type': managed_file
+      '#title': 'File Upload'
+      '#file_help': none
+    file_upload2:
+      '#type': managed_file
+      '#title': 'File Upload'
+      '#file_help': none
+    file_upload3:
+      '#type': managed_file
+      '#title': 'File Upload'
+      '#file_help': none
+    file_upload4:
+      '#type': managed_file
+      '#title': 'File Upload'
+      '#file_help': none
+css: ".webform-submission-digital-print-job-submission-form {\r\n  font-size: 16px;\r\n}\r\n\r\n.form-item-name-first,\r\n.form-item-name-last,\r\n.js-form-type-email,\r\n.js-form-type-tel,\r\n.js-form-type-textfield,\r\n.js-form-type-select {\r\n  display: flex;\r\n  align-items: center;\r\n  gap: 0.75rem;\r\n  margin-bottom: 0.75rem;\r\n}\r\n\r\n.form-item-delivery-options {\r\n  display: block;\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.form-item-name-first .form-label,\r\n.form-item-name-last .form-label,\r\n.js-form-type-email .form-label,\r\n.js-form-type-tel .form-label,\r\n.js-form-type-textfield .form-label,\r\n.js-form-type-select .form-label {\r\n  margin-bottom: 0;\r\n  text-align: right;\r\n  padding-right: 0.75rem;\r\n}\r\n\r\n.form-item-delivery-options .form-label {\r\n  flex: initial;\r\n  text-align: left;\r\n  padding-right: 0;\r\n  margin-bottom: 0.5rem;\r\n}\r\n\r\n.form-item-name-first input,\r\n.form-item-name-last input,\r\n.js-form-type-email input,\r\n.js-form-type-tel input,\r\n.js-form-type-textfield input,\r\n.js-form-type-select select {\r\n  flex: 1;\r\n  margin-top: 0 !important;\r\n  margin-bottom: 0 !important;\r\n}\r\n\r\n#edit-email,\r\n#edit-phone-number {\r\n  width: 100%;\r\n}\r\n\r\n.input--textfield,\r\n.input--tel,\r\n.input--email,\r\n.form-select,\r\n.form-date {\r\n  height: 32px;\r\n  padding: 4px 8px;\r\n  margin-top: 0;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.form-control {\r\n  font-size: 16px;\r\n}\r\n\r\n.js-form-type-textfield .description,\r\n.js-form-type-select .description {\r\n  margin-left: 196px;\r\n  margin-top: 0.25rem;\r\n  margin-bottom: 0.5rem;\r\n}\r\n\r\n.form-item-delivery-options .description {\r\n  margin-left: 0 !important;\r\n  margin-top: 0.25rem;\r\n}\r\n\r\n.description {\r\n  margin-top: 0.25rem !important;\r\n  margin-bottom: 0.5rem !important;\r\n  font-size: 14px;\r\n}\r\n\r\n.red {\r\n  color: #FF0000;\r\n}\r\n\r\nfieldset {\r\n  margin-bottom: 1rem;\r\n}\r\n\r\n.webform-flexbox {\r\n  margin-bottom: 0.75rem;\r\n}\r\n\r\n.js-form-wrapper {\r\n  margin-bottom: 0.75rem;\r\n}\r\n\r\n.fieldset-legend{\r\nfont-size: 16px;\r\n}\r\nlegend{\r\nmargin-bottom: 0 !important;\r\nfont-size: 16px !important;\r\nfont-weight: bold !important;\r\n}\r\n\r\n.form-select{\r\n    padding-top: 0 !important;\r\n    padding-bottom: 0 !important;\r\n    font-size: 16px;\r\n    }\r\n.form-file\r\n{\r\n    height: 32px;\r\n    padding-top: 0;\r\n}\r\n\r\n.form-item-name-first .form-label,\r\n.form-item-name-last .form-label,\r\n.js-form-type-email .form-label,\r\n.js-form-type-tel .form-label,\r\n.js-form-type-textfield .form-label,\r\n.js-form-type-select .form-label,\r\n.form-item-special-instructions .form-label,\r\n.form-item-delivery-address .form-label,\r\n.js-form-type-managed-file .form-label,\r\n.form-item-date-required .form-label{\r\nfont-weight: bold !important;\r\n}"
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers:
+  email_1:
+    id: email
+    handler_id: email_1
+    label: 'Digital Email'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="mailing"]':
+          unchecked: true
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: digital.printing@oregonstate.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: '[webform_submission:values:name:value]'
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+  email:
+    id: email
+    handler_id: email
+    label: 'Mail Email'
+    notes: ''
+    status: true
+    conditions:
+      enabled:
+        ':input[name="mailing"]':
+          checked: true
+    weight: 0
+    settings:
+      states:
+        - completed
+      to_mail: copy.services@oregonstate.edu
+      to_options: {  }
+      bcc_mail: ''
+      bcc_options: {  }
+      cc_mail: ''
+      cc_options: {  }
+      from_mail: _default
+      from_options: {  }
+      from_name: _default
+      reply_to: ''
+      return_path: ''
+      sender_mail: ''
+      sender_name: ''
+      subject: _default
+      body: _default
+      excluded_elements: {  }
+      ignore_access: false
+      exclude_empty: true
+      exclude_empty_checkbox: false
+      exclude_attachments: false
+      html: true
+      attachments: false
+      twig: false
+      theme_name: ''
+      parameters: {  }
+      debug: false
+variants: {  }

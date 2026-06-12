@@ -1,0 +1,89 @@
+uuid: c2c8b4f4-c7e1-4a14-9345-9fc95cce8f36
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.contextual_view
+    - field.field.node.pcla_page.body
+    - field.field.node.pcla_page.field_language
+    - field.field.node.pcla_page.layout_builder__layout
+    - node.type.pcla_page
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - options
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          9c6fd52c-aabf-4a80-8fcd-c8ef8921079d:
+            uuid: 9c6fd52c-aabf-4a80-8fcd-c8ef8921079d
+            region: content
+            configuration:
+              id: 'extra_field_block:node:pcla_page:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          c0c3bf25-fa59-4af2-b3ed-1d524ef2ca48:
+            uuid: c0c3bf25-fa59-4af2-b3ed-1d524ef2ca48
+            region: content
+            configuration:
+              id: 'field_block:node:pcla_page:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: node.pcla_page.contextual_view
+targetEntityType: node
+bundle: pcla_page
+mode: contextual_view
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_language:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  layout_builder__layout: true

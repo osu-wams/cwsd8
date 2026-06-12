@@ -1,0 +1,30 @@
+uuid: 8a2d0860-78e8-48f1-bb8b-b887ea72fcc0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_newsvolcano
+    - node.type.news
+    - node.type.volcano
+id: node.news.field_newsvolcano
+field_name: field_newsvolcano
+entity_type: node
+bundle: news
+label: Volcano
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      volcano: volcano
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

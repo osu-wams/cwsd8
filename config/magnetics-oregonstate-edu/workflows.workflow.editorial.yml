@@ -3,8 +3,17 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.announcement
+    - node.type.faq
+    - node.type.highlight
+    - node.type.osu_profile
+    - node.type.osu_simple_tabs
     - node.type.page
+    - node.type.presentation
+    - node.type.program
+    - node.type.publications
     - node.type.story
+    - node.type.webform
   module:
     - content_moderation
 _core:
@@ -24,6 +33,11 @@ type_settings:
       weight: -5
       published: false
       default_revision: false
+    preserve:
+      label: Preserved
+      weight: 6
+      published: true
+      default_revision: true
     published:
       label: Published
       weight: 0
@@ -55,6 +69,13 @@ type_settings:
         - published
       to: draft
       weight: 0
+    preserve:
+      label: Preserve
+      from:
+        - archived
+        - published
+      to: preserve
+      weight: 5
     publish:
       label: Publish
       from:
@@ -64,6 +85,15 @@ type_settings:
       weight: 1
   entity_types:
     node:
+      - announcement
+      - faq
+      - highlight
+      - osu_profile
+      - osu_simple_tabs
       - page
+      - presentation
+      - program
+      - publications
       - story
+      - webform
   default_moderation_state: draft

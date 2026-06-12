@@ -1,0 +1,29 @@
+uuid: 4fde990b-05a6-4c78-a42f-23230a4a3eeb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accessibility_options
+    - node.type.residence_hall
+    - taxonomy.vocabulary.residence_halls_accessibility_op
+id: node.residence_hall.field_accessibility_options
+field_name: field_accessibility_options
+entity_type: node
+bundle: residence_hall
+label: 'Accessibility Options'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      residence_halls_accessibility_op: residence_halls_accessibility_op
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: residence_halls_accessibility_op
+field_type: entity_reference

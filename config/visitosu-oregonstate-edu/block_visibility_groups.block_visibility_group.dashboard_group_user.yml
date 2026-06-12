@@ -1,0 +1,23 @@
+uuid: 970888a6-24a7-428f-8e2c-8253af1fef3f
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - user
+id: dashboard_group_user
+label: dashboard-group-user
+logic: and
+conditions:
+  -
+    id: request_path
+    negate: false
+    pages: /admin/dashboard
+  -
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated
+allow_other_conditions: null

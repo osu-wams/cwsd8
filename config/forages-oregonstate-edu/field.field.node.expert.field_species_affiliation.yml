@@ -1,0 +1,30 @@
+uuid: 187f0675-949f-4885-bcfa-0507e393117d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_species_affiliation
+    - node.type.expert
+    - node.type.forages
+id: node.expert.field_species_affiliation
+field_name: field_species_affiliation
+entity_type: node
+bundle: expert
+label: 'Species Expertise'
+description: 'Select all of the species that you have expertise working with.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      forages: forages
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

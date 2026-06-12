@@ -1,0 +1,33 @@
+uuid: 556eb448-ba76-4bc7-80d1-a4a88b2b560d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_state
+    - node.type.job
+    - taxonomy.vocabulary.state
+  content:
+    - 'taxonomy_term:state:75df172e-ba84-41e7-967c-c7d93a09984d'
+id: node.job.field_state
+field_name: field_state
+entity_type: node
+bundle: job
+label: State
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 75df172e-ba84-41e7-967c-c7d93a09984d
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      state: state
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,212 @@
+uuid: a6f0c576-088c-4a7a-9694-c4eaf67e106f
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+id: carousel
+label: Carousel
+code: |-
+  .carousel-container {
+      position: relative;
+      max-width: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #d73f09;
+      color: white;
+      min-height: 400px;
+      height: 100%; /* Ensure it takes full height of its parent if needed */
+  }
+
+  .carousel-slide-container {
+      display: flex;
+      width: 100%;
+      transition: transform 0.5s ease-in-out; /* Smooth transform transition */
+  }
+
+  .carousel-slide {
+      flex: 0 0 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-wrap: nowrap; /* Prevent wrapping to keep image and text side by side */
+      align-items: stretch; /* Stretch items to fill height */
+      height: 100%; /* Ensure slide takes full height of container */
+      visibility: hidden; /* Hide inactive slides */
+  }
+
+  .carousel-slide.active {
+      visibility: visible; /* Show active slide */
+  }
+
+  .carousel-slide [data-entity-type="media"][data-align="left"] {
+      width: 30%; /* Set width to 30% of the slide */
+      height: 100%; /* Full height of the slide */
+      margin: 0; /* Remove margins to ensure flush alignment */
+      overflow: hidden; /* Hide any overflow from the image */
+      float: none; /* Remove float to use flexbox */
+      display: flex; /* Use flex to center image if needed */
+      align-items: center; /* Center image vertically if object-fit allows */
+  }
+
+  .carousel-slide [data-entity-type="media"]:not([data-align="left"]) {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      margin: 0 0 1rem 0;
+      clear: both;
+  }
+
+  .carousel-slide [data-entity-type="media"] img {
+      width: 100%; /* Fill the container width */
+      height: 100%; /* Fill the container height */
+      object-fit: cover; /* Cover the area without stretching */
+      object-position: center; /* Center the image */
+      display: block; /* Ensure image behaves as a block element */
+  }
+
+  .slide-text {
+      flex: 1; /* Take remaining width */
+      padding: 3% 3% 0 3%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column; /* Stack text content vertically */
+  }
+
+  .edge-quote {
+      position: relative;
+      width: 100%;
+      padding: 0 2.5rem;
+      box-sizing: border-box;
+      flex-grow: 1; /* Allow it to grow within slide-text */
+  }
+
+  .edge-quote-content {
+      width: 100%;
+      padding: 10% 10% 0 10%;
+      box-sizing: border-box;
+  }
+
+  .carousel-nav {
+      position: absolute;
+      top: 30%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+  }
+
+  .carousel-slide:not(.active) .carousel-nav {
+      display: none;
+  }
+
+  .carousel-prev, .carousel-next {
+      background: #d73f09;
+      border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      position: absolute;
+  }
+
+  .carousel-prev {
+      left: 0;
+  }
+
+  .carousel-next {
+      right: 0;
+  }
+
+  .carousel-dots {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 1rem;
+      gap: 0.5rem;
+      position: relative;
+      z-index: 10;
+  }
+
+  .carousel-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #423e3c;
+      border: none;
+      cursor: pointer;
+  }
+
+  .carousel-dot.active {
+      background: white;
+  }
+
+  .carousel-pause {
+      margin-left: 1rem;
+      background: #d73f09;
+      color: white;
+      border: 0;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      transition: background 0.2s ease, transform 0.2s ease;
+      display: inline-block;
+  }
+
+  .carousel-pause:hover {
+      background: rgba(255, 255, 255, 0.5);
+      transform: scale(1.1);
+  }
+
+  /* Simplified animations */
+  @keyframes slideInFromRight {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+  }
+
+  @keyframes slideInFromLeft {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(0); }
+  }
+
+  /* Mobile: <576px */
+  @media (max-width: 575px) {
+      .carousel-slide {
+          flex-wrap: wrap; /* Allow wrapping for mobile */
+      }
+      .carousel-slide [data-entity-type="media"][data-align="left"] {
+          width: 100%; /* Full width for mobile */
+          height: auto; /* Auto height to maintain aspect ratio */
+          margin: 0 0 1rem 0; /* Restore original margin */
+      }
+      .carousel-slide [data-entity-type="media"] img {
+          width: 100%;
+          height: auto; /* Auto height to prevent stretching */
+          object-fit: contain; /* Use contain to show full image */
+      }
+      .slide-text {
+          padding: 10px;
+          width: 100%; /* Full width for mobile */
+      }
+  }
+
+  /* Desktop and Tablet: >=576px */
+  @media (min-width: 576px) {
+      .carousel-slide [data-entity-type="media"][data-align="left"] {
+          width: 30%; /* Reinforce 30% width */
+          height: 100%; /* Full height */
+      }
+      .slide-text {
+          flex: 1;
+          min-width: 200px;
+          padding: 3% 3% 0 3%;
+      }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

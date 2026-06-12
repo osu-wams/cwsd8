@@ -1,0 +1,66 @@
+uuid: 5a5b6aaa-f665-43ff-9aca-ebf92ff5a8e2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.image.field_media_image
+    - media.type.image
+  module:
+    - media
+label: 'Award Images'
+id: award_images
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:media'
+processor_configuration:
+  values:
+    bundle: image
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 46
+custom_sources:
+  award_image:
+    value: 'Award Image'
+    label: 'Award Image'
+    machine_name: award_image
+    type: csv
+  path:
+    value: Path
+    label: Path
+    machine_name: path
+    type: csv
+mappings:
+  -
+    target: field_media_image
+    map:
+      target_id: path
+      alt: ''
+      title: award_image
+    settings:
+      language: ''
+      reference_by: filename
+      existing: '2'
+      autocreate: 0
+  -
+    target: name
+    map:
+      value: award_image
+    settings:
+      language: null
+    unique: {  }

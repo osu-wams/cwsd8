@@ -1,0 +1,136 @@
+uuid: 80e4e1bc-863c-41d2-bbc1-ad2d73ecc487
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: utility_classes
+label: 'Utility classes'
+code: |-
+  /*MAX WIDTHS*/
+  .max-width-100 {
+      max-width: 100px;
+  }
+
+  .max-width-200 {
+      max-width: 200px;
+  }
+
+  .max-width-300 {
+      max-width: 300px;
+  }
+
+  .max-width-400 {
+      max-width: 400px;
+  }
+
+  .max-width-500 {
+      max-width: 500px;
+  }
+
+  .max-width-600 {
+      max-width: 600px;
+  }
+
+  .max-width-700 {
+      max-width: 700px;
+  }
+
+  .max-width-800 {
+      max-width: 800px;
+  }
+
+  .max-width-80 {
+      max-width: 80%;
+  }
+
+  .max-width-90 {
+      max-width: 90%;
+  }
+
+  .fit-content {
+  	max-width: fit-content;
+  }
+
+
+  /*GRID COLUMN FULL WIDTH*/
+  .grid-full-width {
+      grid-column: -1/1;
+  }
+
+  .social-media-icons a {
+      font-size: 1.65rem;
+      margin-right: 1rem;
+      transition: all 0.4s ease;
+  }
+
+  .social-media-icons a:hover,
+  .social-media-icons a:focus,
+  .social-media-icons a:active {
+      color: #d73f09 !important;
+  }
+
+  .social-media-icons a:last-child {
+      margin-right: 0;
+  }
+
+  .osu-text-shadow {
+      text-shadow: 0.5px 0.5px #232323;
+  }
+
+  h1.outlined-heading {
+      font-size: 2.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 0 #d73f09,
+          -2px 2px 0 #d73f09,
+          -2px -2px 0 #d73f09,
+          2px -2px 0 #d73f09;
+  }
+
+
+  /*2 COLUMNS at extra large sizes*/
+  @media (min-width: 1200px) {
+      .xl-grid-two-columns {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1rem;
+      }
+  }
+
+  /*3 FR at large sizes*/
+  @media (min-width:992px) {
+      .three-fr-lg {
+          grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      h1.outlined-heading {
+          font-size: 4.5rem;
+      }
+  }
+
+  @media (min-width:768px) {
+      .three-fr-md {
+          grid-template-columns: 1fr 1fr 1fr;
+      }
+  }
+
+  /* Make all the blocks in a section be the same height as the tallest block */
+  .osu-align-items-stretch,
+  .osu-align-items-stretch > div,
+  .osu-align-items-stretch > div > div {
+        min-height: 100%;
+      }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

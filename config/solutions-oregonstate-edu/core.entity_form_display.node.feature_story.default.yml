@@ -1,0 +1,104 @@
+uuid: 4da51ed0-2a70-4c58-89c6-901ae1450a38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.feature_story.body
+    - field.field.node.feature_story.field_alternate_url
+    - field.field.node.feature_story.field_caption
+    - field.field.node.feature_story.field_front_page
+    - field.field.node.feature_story.field_group_content_visibility
+    - field.field.node.feature_story.field_picture
+    - node.type.feature_story
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - link
+    - media_library
+    - text
+id: node.feature_story.default
+targetEntityType: node
+bundle: feature_story
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 6
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_alternate_url:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_caption:
+    type: text_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_front_page:
+    type: boolean_checkbox
+    weight: 2
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_group_content_visibility:
+    type: options_select
+    weight: 1
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_picture:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  entitygroupfield: true
+  path: true
+  promote: true
+  publish_on: true
+  publish_state: true
+  status: true
+  sticky: true
+  uid: true
+  unpublish_on: true
+  unpublish_state: true
+  url_redirects: true

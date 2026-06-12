@@ -1,0 +1,270 @@
+uuid: 0121414e-b004-4db8-af55-d7b1ebd3d0a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.country_requirements.body
+    - field.field.node.country_requirements.field_country_3yeardegree
+    - field.field.node.country_requirements.field_country_4yeardegree
+    - field.field.node.country_requirements.field_country_alt_degree_1
+    - field.field.node.country_requirements.field_country_bologna
+    - field.field.node.country_requirements.field_country_english_reqs
+    - field.field.node.country_requirements.field_country_gpa_1
+    - field.field.node.country_requirements.field_country_grading_scales
+    - field.field.node.country_requirements.field_country_prof_statement
+    - field.field.node.country_requirements.field_country_req_docs
+    - field.field.node.country_requirements.field_subject_to_change_revised
+    - node.type.country_requirements
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - field_group
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_requirements:
+      children:
+        - group_academic_credentials
+        - group_minimum_grades
+        - group_english_proficiency
+        - group_documents
+      label: Requirements
+      region: content
+      parent_name: ''
+      weight: 4
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        direction: vertical
+        width_breakpoint: 640
+    group_academic_credentials:
+      children:
+        - field_country_bologna
+        - field_country_3yeardegree
+        - field_country_alt_degree_1
+        - field_country_prof_statement
+      label: 'Academic Credentials'
+      region: content
+      parent_name: group_requirements
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_minimum_grades:
+      children:
+        - field_country_gpa_1
+        - field_country_grading_scales
+        - field_country_subject_to_change
+        - field_subject_to_change_revised
+      label: 'Minimum Grades'
+      region: content
+      parent_name: group_requirements
+      weight: 22
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_english_proficiency:
+      children:
+        - field_country_english_reqs
+      label: 'English Proficiency'
+      region: content
+      parent_name: group_requirements
+      weight: 23
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_documents:
+      children:
+        - field_country_req_docs
+      label: Documents
+      region: content
+      parent_name: group_requirements
+      weight: 24
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.country_requirements.default
+targetEntityType: node
+bundle: country_requirements
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 1
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_country_3yeardegree:
+    type: options_buttons
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_country_4yeardegree:
+    type: options_buttons
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_country_alt_degree_1:
+    type: string_textfield
+    weight: 7
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_country_bologna:
+    type: options_buttons
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_country_english_reqs:
+    type: options_buttons
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_country_gpa_1:
+    type: string_textfield
+    weight: 12
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_country_grading_scales:
+    type: options_buttons
+    weight: 13
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_country_prof_statement:
+    type: options_buttons
+    weight: 8
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_country_req_docs:
+    type: text_textarea
+    weight: 11
+    region: content
+    settings:
+      rows: 3
+      placeholder: ''
+    third_party_settings: {  }
+  field_subject_to_change_revised:
+    type: options_select
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 17
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 13
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 19
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 18
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

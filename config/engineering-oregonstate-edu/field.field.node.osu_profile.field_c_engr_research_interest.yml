@@ -1,0 +1,37 @@
+uuid: 95250ad0-3f67-40f7-a67d-65a817221439
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_c_engr_research_interest
+    - node.type.osu_profile
+    - paragraphs.paragraphs_type.profile_research_description
+  module:
+    - entity_reference_revisions
+id: node.osu_profile.field_c_engr_research_interest
+field_name: field_c_engr_research_interest
+entity_type: node
+bundle: osu_profile
+label: 'Research Interests'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      profile_research_description: profile_research_description
+    negate: 0
+    target_bundles_drag_drop:
+      osu_accordion_item:
+        weight: 4
+        enabled: false
+      osu_accordion_section:
+        weight: 5
+        enabled: false
+      profile_research_description:
+        weight: 6
+        enabled: true
+field_type: entity_reference_revisions

@@ -1,0 +1,29 @@
+uuid: a21fd7d2-0c03-42c1-9d3e-cffeb0ee2c9d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_up_discipline_term
+    - node.type.undergraduate_program
+    - taxonomy.vocabulary.disciplines
+id: node.undergraduate_program.field_up_discipline_term
+field_name: field_up_discipline_term
+entity_type: node
+bundle: undergraduate_program
+label: 'Discipline Term'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      disciplines: disciplines
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

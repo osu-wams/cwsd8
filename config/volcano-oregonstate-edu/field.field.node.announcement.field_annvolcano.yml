@@ -1,0 +1,30 @@
+uuid: 3ae41668-81ff-46a1-898b-6175278c8745
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_annvolcano
+    - node.type.announcement
+    - node.type.volcano
+id: node.announcement.field_annvolcano
+field_name: field_annvolcano
+entity_type: node
+bundle: announcement
+label: Volcano
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      volcano: volcano
+    sort:
+      field: title
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

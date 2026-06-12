@@ -1,0 +1,88 @@
+uuid: 75fb57d6-4463-41b1-98ab-060dc771013b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: accordion_youtube_videos
+label: 'Grad Showcase Page 2025 Styling'
+code: |
+  @media screen and (min-width: 767px) and (max-width: 1199px){
+  	.image-spacing{
+  		width: 50%;
+  	}
+  }
+
+  .field--name-field-people-subsection{
+  	padding-top:30px;
+    color: #00859B;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+
+  }
+
+  .field--name-field-people-description{
+  	padding-top:10px;
+  	width:90%;
+  }
+
+  /*
+  .field--name-body {
+  	padding-top:30px;
+  	position:absolute!important;
+  	bottom:30px!important;
+  }
+
+  */
+
+  .field--name-field-people-title {
+  	width:80%;
+  }
+
+   .block-inline-blockpeople-card a::before {    
+   	content: "";    
+   	position: absolute;    
+   	top: 0px;    
+   	right: 0px;    
+   	bottom: 0px;    
+   	left: 0px; 
+   	
+  }  
+
+  @media (max-width: 991px) {
+   div:has(.block-inline-blockpeople-cards) {
+  	margin-bottom: 32px !important;
+  }
+  }
+
+  .block-inline-blockpeople-cards .block__content {
+  	height: 100% !important;
+  	display: flex;
+  	flex-direction: column;
+  }
+
+
+  .block-inline-blockpeople-cards .block__content .field--name-body {
+  	display: flex;
+  	flex-direction: column;
+  	flex: 1;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47176\r\n/node/48026\r\n"
+contexts: {  }
+conditions_require_all: true

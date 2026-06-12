@@ -1,0 +1,40 @@
+uuid: 885eea0b-fa05-46d7-9b26-d55e4d83bb19
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: alumni_corner
+label: 'Alumni Corner'
+code: |
+  @font-face{
+  font-family:'Stratum2WebBold';src:url(/sites/all/themes/doug_fir/css/variants/pine/fonts/Stratum2WebBold.woff2) format('woff2'),url(/sites/all/themes/doug_fir/css/variants/pine/fonts/Stratum2WebBold.woff) format('woff');
+  }
+  p.alumni-corner {
+      padding: 4px;
+      color: #fff;
+      margin: 5px;
+    font-family: "Stratum2WebBold";
+    font-size: 136px;
+    line-height: 140px;
+  text-transform: uppercase;
+  }
+   @media only screen and (max-width: 650px) {
+  p.alumni-corner {
+  font-size: 48px;
+  line-height: 52px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/DOSA/alumni-corner\r\n/DOSA/engage-us\r\n/DOSA"
+contexts: {  }
+conditions_require_all: true

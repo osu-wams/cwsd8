@@ -1,0 +1,29 @@
+uuid: b6794dae-fd11-4779-be51-987f6fb26d93
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program
+    - node.type.academic_program_options
+    - taxonomy.vocabulary.osu_organization
+id: node.academic_program_options.field_program
+field_name: field_program
+entity_type: node
+bundle: academic_program_options
+label: Program
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      osu_organization: osu_organization
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

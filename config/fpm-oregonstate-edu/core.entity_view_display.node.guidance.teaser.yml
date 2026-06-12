@@ -1,0 +1,41 @@
+uuid: 56d144d4-5043-48dd-bd20-feb33cc94bfa
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.guidance.body
+    - field.field.node.guidance.field_category
+    - field.field.node.guidance.field_last_updated
+    - field.field.node.guidance.field_link_to_content
+    - field.field.node.guidance.field_print_guidance_pdf_
+    - field.field.node.guidance.field_type
+    - node.type.guidance
+  module:
+    - text
+    - user
+id: node.guidance.teaser
+targetEntityType: node
+bundle: guidance
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_category: true
+  field_last_updated: true
+  field_link_to_content: true
+  field_print_guidance_pdf_: true
+  field_type: true

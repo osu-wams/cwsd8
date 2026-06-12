@@ -1,0 +1,68 @@
+uuid: b8d90452-f8db-4d8e-a1c9-285b89f93caf
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.course_card
+    - field.field.node.course.body
+    - field.field.node.course.field_course_campus
+    - field.field.node.course.field_course_catalog_link
+    - field.field.node.course.field_course_categories
+    - field.field.node.course.field_course_credits
+    - field.field.node.course.field_course_number
+    - field.field.node.course.field_course_title
+    - field.field.node.course.field_course_video
+    - field.field.node.course.field_course_video_thumbnail
+    - node.type.course
+  module:
+    - text
+    - user
+id: node.course.course_card
+targetEntityType: node
+bundle: course
+mode: course_card
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_course_campus:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_course_categories:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_course_credits:
+    type: number_integer
+    label: above
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_course_catalog_link: true
+  field_course_number: true
+  field_course_title: true
+  field_course_video: true
+  field_course_video_thumbnail: true

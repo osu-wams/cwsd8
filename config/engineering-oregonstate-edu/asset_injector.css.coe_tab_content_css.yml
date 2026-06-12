@@ -1,0 +1,182 @@
+uuid: 16e41d78-c4e7-41f8-aaf9-5eeda1f58a7c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: coe_tab_content_css
+label: 'COE Tab Content CSS (tab wrapper)'
+code: |-
+  /* Paragraph Tabs: Tab Styles */
+  .tab-wrapper-paragraph {
+  	h2 {
+  		padding-bottom: 8px;
+  		border-bottom: 6px solid #000;
+  		margin-bottom: 20px;
+  	}
+    .tab-wrapper-paragraph__tab-link {
+  		font-size: 20px;
+  		font-weight: 600;
+  		line-height: 130%; /* 26px */
+       &:focus, &:hover, &:active {
+       	color: #000 !important;
+       	box-shadow: none !important;
+       	background: #EFF4F8 !important;
+       }
+     }
+  	.tab-wrapper-paragraph__tab-link--active {
+  		outline: none !important;
+  		background: #EFF4F8 !important;
+  		color: #000 !important;
+  	}
+  	.tab-wrapper-paragraph__tab-content {
+  		overflow: hidden !important;
+  	}
+  	.field--name-field-osu-tab-title {
+  		color: #000;
+  		font-family: Stratum2Web;
+  		font-size: 24px;
+  		font-style: normal;
+  		font-weight: 900;
+  		line-height: 130%; 
+  		letter-spacing: 1.2px;
+  		text-transform: uppercase;
+  	}
+  	
+  	/** Tab Courses **/
+  	.field--name-field-osu-tab-courses {
+  		margin: 50px 0 0;
+  	}
+  	.paragraph--type--osu-tab-courses-option {
+  		margin-bottom: 16px;
+  		.field--name-field-osu-tab-courses-name {
+  			color: #000;
+  			font-size: 20px;
+  			font-weight: 600;
+  			line-height: 130%;
+  		}
+  		.field--name-field-osu-tab-courses-year,
+  		.field--name-field-osu-tab-courses-number {
+  			display: inline-block;
+  			font-size: 14px;
+  			font-style: normal;
+  			font-weight: 300;
+  			line-height: 130%;
+  		}
+  		/* Only have seperator if there is a reccommended year */
+  		.field--name-field-osu-tab-courses-year:not(:empty) + .field--name-field-osu-tab-courses-number::before {
+    		content: "|";
+    		margin-right: 12px;
+    		margin-left: 6px;
+  		}
+  	}
+  }
+
+  /** Tab Body Content Area **/
+
+  /* arrow link styles under CSS injector: degree_programs_content_type_pages */
+  .paragraph--type--osu-tab-wrapper .field--name-field-osu-paragraph-link a {
+  	margin-top:20px;
+  }
+  /**.tab-wrapper-paragraph .tab-paragraph .field--name-field-osu-paragraph-link a {
+  	font-family: "Stratum2Web";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: normal;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	color: #D73F09;
+  	display: inline-block;
+  	text-decoration: none !important;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 25px;
+    margin-top: 18px;
+  }**/
+
+
+  @media only screen and (min-width: 769px) {
+  	.tab-wrapper-paragraph {
+      .tab-wrapper-paragraph__tab-link {
+      	width: 260px !important;
+      }
+    	.tab-wrapper-paragraph__tab-content {
+    		left: 280px !important;
+    	}
+    	/** Sets 2 columns for desktop Tab Courses **/
+  		.field--name-field-osu-tab-courses.field__items {
+  			display: grid;
+  			grid-column-gap: 50px;
+  			grid-template-columns: repeat(2, 1fr);
+  		}
+  	}
+  }
+
+  @media only screen and (min-width: 992px) {
+  	.tab-wrapper-paragraph {
+  		h2 {
+  			margin-bottom: 30px;
+  		}
+      .tab-wrapper-paragraph__tab-link {
+      	width: 360px !important;
+      }
+    	.tab-wrapper-paragraph__tab-content {
+    		left: 380px !important;
+    	}
+    	.field--name-field-osu-tab-courses.field__items {
+  			display: grid;
+  			grid-column-gap: 75px;
+  			grid-template-columns: repeat(2, 1fr);
+  		}
+  	}
+  }
+
+  @media screen and (max-width: 768px) {
+  		.tab-wrapper-paragraph {
+  		h2 {
+  			/*margin-left: 12px;*/
+  			/*margin-right: 12px;*/
+  		}
+  }
+  }
+
+
+  @media only screen and (max-width: 768px) {
+  	.tab-wrapper-paragraph {
+  		/*width: 100vw; /* next 2 lines hack for full width breaking container element */
+  		/*margin-left: -12px;*/
+  		span.fa-chevron-down {
+  			padding: 8px;
+  			border-radius: 50%;
+  			background: #C6DAE7;
+  		}
+  		
+  		.tab-wrapper-paragraph__tab-link {
+  			border: none !important;
+  		}
+  		
+  		.tab-wrapper-paragraph__tab {
+  			border: none !important;
+  			.tab-wrapper-paragraph__tab-link {
+  				border-top:2px solid #EFF4F8 !important;
+  		  }
+  			&:last-child {
+  				.tab-wrapper-paragraph__tab-link {
+  					border-bottom: 2px solid #EFF4F8 !important;
+  				}
+  			}
+  		}
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

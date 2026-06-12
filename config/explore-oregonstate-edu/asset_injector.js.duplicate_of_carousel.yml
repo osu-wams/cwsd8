@@ -1,0 +1,106 @@
+uuid: 461f30f0-3a3a-4246-8e89-42c7264b9c29
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: duplicate_of_carousel
+label: Carousel
+code: |-
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  const dotsContainer = document.querySelector('.carousel-dots');
+  const carouselContainer = document.querySelector('.carousel-container');
+  let slideIndex = 0;
+  let autoplayInterval;
+
+  const createDots = () => {
+    for (let i = 0; i < slides.length; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('carousel-dot');
+      dot.addEventListener('click', () => {
+        slideIndex = i;
+        showSlide();
+        stopAutoplay();
+        startAutoplay(); // Restart autoplay after interaction
+      });
+      dotsContainer.appendChild(dot);
+    }
+  };
+
+  const showSlide = () => {
+    // Hide all slides
+    slides.forEach((slide) => {
+      slide.classList.remove('active');
+    });
+    
+    // Show current slide
+    slides[slideIndex].classList.add('active');
+    
+    // Update dots
+    const dots = document.querySelectorAll('.carousel-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.remove('active');
+      if (index === slideIndex) {
+        dot.classList.add('active');
+      }
+    });
+  };
+
+  const nextSlide = () => {
+    slideIndex = (slideIndex + 1) % slides.length;
+    showSlide();
+  };
+
+  const prevSlide = () => {
+    slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+    showSlide();
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay(); // Clear any existing interval
+    autoplayInterval = setInterval(nextSlide, 5000);
+  };
+
+  const stopAutoplay = () => {
+    clearInterval(autoplayInterval);
+  };
+
+  nextBtn.addEventListener('click', () => {
+    nextSlide();
+    stopAutoplay();
+    startAutoplay(); // Restart autoplay after interaction
+  });
+
+  prevBtn.addEventListener('click', () => {
+    prevSlide();
+    stopAutoplay();
+    startAutoplay(); // Restart autoplay after interaction
+  });
+
+  // Pause autoplay on hover
+  carouselContainer.addEventListener('mouseenter', stopAutoplay);
+  carouselContainer.addEventListener('mouseleave', startAutoplay);
+
+  // Initialize
+  createDots();
+  showSlide();
+  startAutoplay();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/16\r\n/node/11"
+contexts: {  }
+conditions_require_all: true

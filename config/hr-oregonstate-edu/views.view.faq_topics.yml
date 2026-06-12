@@ -1,0 +1,1066 @@
+uuid: f6132c9d-f921-41a2-b148-102e403f210a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.node.field_resource_links
+    - field.storage.node.field_training_topics
+    - node.type.faq
+    - system.menu.menu-about-us
+    - taxonomy.vocabulary.training_topics
+  content:
+    - 'taxonomy_term:training_topics:120aa384-86e8-488e-a960-0d7c1afc78d1'
+    - 'taxonomy_term:training_topics:14d63aab-d6e3-428d-a74e-82dc203d58af'
+    - 'taxonomy_term:training_topics:184aebcd-3283-49e2-b43f-4f5fbdea415c'
+    - 'taxonomy_term:training_topics:310bd658-a818-497f-8153-6dfa155ea14b'
+    - 'taxonomy_term:training_topics:43e71409-77c8-4b19-8857-807a0d84d3e2'
+    - 'taxonomy_term:training_topics:50de06ba-afd3-42ea-8203-7be8bb7e2c03'
+    - 'taxonomy_term:training_topics:5fbaf23b-387d-4a7e-bef1-997d694e7bd2'
+    - 'taxonomy_term:training_topics:e4b598ea-76c1-480c-a9ef-b20204d639a1'
+    - 'taxonomy_term:training_topics:eaa8ec46-0c45-4a36-aa83-28d01fcaa2d3'
+  module:
+    - link
+    - node
+    - taxonomy
+    - text
+    - user
+id: faq_topics
+label: 'FAQ Topics'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'FAQ Topics'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          settings:
+            link_to_entity: 1
+          ui_name: ''
+        field_training_topics:
+          id: field_training_topics
+          table: node__field_training_topics
+          field: field_training_topics
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: tid
+          type: entity_reference_label
+          settings:
+            target_type: taxonomy_term
+          group_column: tid
+          group_columns: {  }
+          group_rows: false
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+      pager:
+        type: full
+        options:
+          offset: 0
+          items_per_page: 20
+          total_pages: null
+          id: 0
+          tags:
+            next: 'next ›'
+            previous: '‹ previous'
+            first: '« first'
+            last: 'last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 20, 40, 60'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+          pagination_heading_level: h4
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+      cache:
+        type: tag
+        options: {  }
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: true
+          content:
+            value: "No FAQ's"
+            format: full_html
+          tokenize: false
+      sorts:
+        field_training_topics_tid:
+          id: field_training_topics_tid
+          table: node__field_training_topics
+          field: field_training_topics_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: field_training_topics_tid
+          exposed: false
+          ui_name: ''
+          field_name: field_training_topics
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: title
+          exposed: false
+          ui_name: ''
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_training_topics_tid:
+          id: field_training_topics_tid
+          table: node__field_training_topics
+          field: field_training_topics_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            label: 'Training Topics (field_training_topics)'
+            description: null
+            use_operator: false
+            operator: field_training_topics_tid_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_training_topics_tid
+            required: false
+            remember: false
+            multiple: false
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: training_topics
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+          ui_name: ''
+          field_name: field_training_topics
+      style:
+        type: default
+        options:
+          grouping:
+            -
+              field: field_training_topics
+              rendered: true
+              rendered_strip: false
+          row_class: ''
+          default_row_class: true
+          row_class_special: 1
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      css_class: container
+      display_extenders: {  }
+      style_plugin: default
+      style_options:
+        grouping:
+          -
+            field: field_training_topics
+            rendered: 1
+            rendered_strip: 0
+        row_class: ''
+        default_row_class: 1
+        row_class_special: 1
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_training_topics'
+  block_1:
+    id: block_1
+    display_title: 'Professional Development FAQ Block'
+    display_plugin: block
+    position: 3
+    display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_training_topics_tid:
+          id: field_training_topics_tid
+          table: node__field_training_topics
+          field: field_training_topics_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            218: 218
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_training_topics_tid_op
+            label: 'Training Topics'
+            description: ''
+            use_operator: false
+            operator: in
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_training_topics_tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: training_topics
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+          ui_name: ''
+          field_name: field_training_topics
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_training_topics'
+  block_2:
+    id: block_2
+    display_title: 'FLSA FAQ Block'
+    display_plugin: block
+    position: 5
+    display_options:
+      title: FAQs
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          settings:
+            link_to_entity: 1
+          ui_name: ''
+        field_training_topics:
+          id: field_training_topics
+          table: node__field_training_topics
+          field: field_training_topics
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: tid
+          type: entity_reference_label
+          settings:
+            target_type: taxonomy_term
+          group_column: tid
+          group_columns: {  }
+          group_rows: false
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+        body:
+          id: body
+          table: node__body
+          field: body
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+        field_resource_links:
+          id: field_resource_links
+          table: node__field_resource_links
+          field: field_resource_links
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Resource Link(s)'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: url
+          type: link
+          settings: {  }
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_training_topics_tid:
+          id: field_training_topics_tid
+          table: node__field_training_topics
+          field: field_training_topics_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            226: 226
+          group: 1
+          exposed: false
+          expose:
+            operator_id: field_training_topics_tid_op
+            label: 'Training Topics'
+            description: ''
+            use_operator: false
+            operator: in
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_training_topics_tid
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: training_topics
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+          ui_name: ''
+          field_name: field_training_topics
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          grouping:
+            -
+              field: field_training_topics
+              rendered: true
+              rendered_strip: false
+          row_class: ''
+          default_row_class: true
+          row_class_special: 1
+          use-grouping-header: 0
+          row-start-open: none
+          collapsible: 1
+          animated: slide
+          autoheight: 0
+          event: click
+          fillspace: 0
+          navigation: 0
+          clearstyle: 0
+          disableifone: 0
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        style: false
+        row: false
+        fields: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders: {  }
+      style_plugin: views_accordion
+      style_options:
+        grouping:
+          -
+            field: field_training_topics
+            rendered: 1
+            rendered_strip: 0
+        row_class: ''
+        default_row_class: 1
+        row_class_special: 1
+        use-grouping-header: 0
+        row-start-open: none
+        collapsible: 1
+        animated: slide
+        autoheight: 0
+        event: click
+        fillspace: 0
+        navigation: 0
+        clearstyle: 0
+        disableifone: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_resource_links'
+        - 'config:field.storage.node.field_training_topics'
+  page:
+    id: page
+    display_title: Page
+    display_plugin: page
+    position: 2
+    display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_training_topics_tid:
+          id: field_training_topics_tid
+          table: node__field_training_topics
+          field: field_training_topics_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            176: 176
+            177: 177
+            185: 185
+            189: 189
+            192: 192
+            218: 218
+            197: 197
+            198: 198
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_training_topics_tid_op
+            label: 'Available FAQ Topics'
+            description: ''
+            use_operator: false
+            operator: in
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_training_topics_tid
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+            reduce: true
+            operator_label: ''
+            limit_operators: 0
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: true
+          vid: training_topics
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+          ui_name: ''
+          optgroups: 0
+          field_name: field_training_topics
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        filters: false
+        filter_groups: false
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: faq-topics
+      menu:
+        type: normal
+        title: 'FAQ Topics'
+        menu_name: menu-about-us
+        name: menu-about-us
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_training_topics'
+  page_1:
+    id: page_1
+    display_title: 'Topic from URL'
+    display_plugin: page
+    position: 4
+    display_options:
+      arguments:
+        field_training_topics_tid:
+          id: field_training_topics_tid
+          table: node__field_training_topics
+          field: field_training_topics_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: entity_target_id
+          default_action: default
+          exception:
+            value: all
+            title_enable: false
+            title: All
+          title_enable: true
+          title: "%1 FAQ's"
+          default_argument_type: node
+          default_argument_options:
+            default: {  }
+          summary_options:
+            base_path: ''
+            count: true
+            override: false
+            items_per_page: 25
+          summary:
+            sort_order: asc
+            number_of_records: 0
+            format: default_summary
+          specify_validation: true
+          validate:
+            type: 'entity:taxonomy_term'
+            fail: empty
+          validate_options:
+            vocabularies:
+              training_topics: training_topics
+            type: convert
+            transform: '1'
+          break_phrase: false
+          not: false
+          ui_name: ''
+          breadcrumb_enable: 0
+          breadcrumb: ''
+          field_name: field_training_topics
+          target_entity_type_id: taxonomy_term
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        arguments: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders: {  }
+      path: 'faq/topics/*'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_training_topics'

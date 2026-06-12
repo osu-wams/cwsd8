@@ -1,0 +1,186 @@
+uuid: 72bd8fee-e85f-4d69-b26d-d693bd0f5871
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.mfc_recipe.body
+    - field.field.node.mfc_recipe.field_json_ld_schema
+    - field.field.node.mfc_recipe.field_meta_tags
+    - field.field.node.mfc_recipe.field_osu_meta_image
+    - field.field.node.mfc_recipe.field_recipe_image
+    - field.field.node.mfc_recipe.field_recipe_main_ingredient
+    - field.field.node.mfc_recipe.field_recipe_meal_type
+    - field.field.node.mfc_recipe.field_recipe_media_image
+    - field.field.node.mfc_recipe.field_recipe_serving_size
+    - field.field.node.mfc_recipe.field_recipe_special_diet
+    - field.field.node.mfc_recipe.field_tags
+    - field.field.node.mfc_recipe.layout_builder__layout
+    - node.type.mfc_recipe
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - metatag
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          16c7c723-1035-4b66-9fac-dac88c7aecb0:
+            uuid: 16c7c723-1035-4b66-9fac-dac88c7aecb0
+            region: content
+            configuration:
+              id: 'extra_field_block:node:mfc_recipe:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 1
+            additional: {  }
+          40defe37-4fe6-457f-9a9b-4b721eeb3d61:
+            uuid: 40defe37-4fe6-457f-9a9b-4b721eeb3d61
+            region: content
+            configuration:
+              id: 'field_block:node:mfc_recipe:field_meta_tags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: metatag_empty_formatter
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          1e8a554c-98f3-4313-b441-da58b1ac369e:
+            uuid: 1e8a554c-98f3-4313-b441-da58b1ac369e
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:mfc_recipe:field_osu_meta_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          bfebdf89-8189-49b8-9f75-fcc9c06c26ef:
+            uuid: bfebdf89-8189-49b8-9f75-fcc9c06c26ef
+            region: content
+            configuration:
+              id: 'field_block:node:mfc_recipe:field_json_ld_schema'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          d7c1e4ce-01ba-47b8-be9e-086480d6a4d9:
+            uuid: d7c1e4ce-01ba-47b8-be9e-086480d6a4d9
+            region: content
+            configuration:
+              id: 'extra_field_block:node:mfc_recipe:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 4
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+id: node.mfc_recipe.default
+targetEntityType: node
+bundle: mfc_recipe
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_json_ld_schema:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 112
+    region: content
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_osu_meta_image:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 111
+    region: blb_region_col_1
+  field_recipe_media_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_tags:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  entitygroupfield: true
+  field_recipe_image: true
+  field_recipe_main_ingredient: true
+  field_recipe_meal_type: true
+  field_recipe_serving_size: true
+  field_recipe_special_diet: true
+  layout_builder__layout: true

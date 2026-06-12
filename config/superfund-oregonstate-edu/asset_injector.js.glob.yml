@@ -1,0 +1,28 @@
+uuid: 67ddbabb-b004-4b89-8621-2f2bd1f96699
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: glob
+label: 'Global JS'
+code: |-
+
+  //Remove any ampty H3s
+  document.querySelectorAll('h3').forEach(h3 => {
+    if (!h3.innerText.trim()) {
+      h3.remove();
+    }
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,88 @@
+uuid: 47fe8c08-5745-4a61-839b-5c77509b52fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.simple_card
+    - field.field.block_content.simple_card.field_osu_card_image
+    - field.field.block_content.simple_card.field_osu_card_link
+  module:
+    - layout_builder
+    - linkit
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          28aee764-6d6e-4858-9eef-5a8e8c5c22fd:
+            uuid: 28aee764-6d6e-4858-9eef-5a8e8c5c22fd
+            region: content
+            configuration:
+              id: 'field_block:block_content:simple_card:field_osu_card_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: 800x450
+                  link: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          b12cd4dd-9d75-40bc-856a-0aa53a70bf5e:
+            uuid: b12cd4dd-9d75-40bc-856a-0aa53a70bf5e
+            region: content
+            configuration:
+              id: 'field_block:block_content:simple_card:field_osu_card_link'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: linkit
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: '0'
+                  target: '0'
+                  linkit_profile: default
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+id: block_content.simple_card.default
+targetEntityType: block_content
+bundle: simple_card
+mode: default
+content:
+  field_osu_card_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: 800x450
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_osu_card_link:
+    type: linkit
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+      linkit_profile: default
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

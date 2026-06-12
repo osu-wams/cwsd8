@@ -1,0 +1,101 @@
+uuid: 3ea5ab16-ce17-4aa6-bc7a-aba6c16151d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: image_gallery
+label: 'Image gallery'
+code: |-
+  const gallery = document.getElementById('gallery');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const closeBtn = document.getElementById('lightbox-close');
+      const prevBtn = document.getElementById('lightbox-prev');
+      const nextBtn = document.getElementById('lightbox-next');
+      
+      // Randomize gallery items on page load
+      const galleryItems = Array.from(document.querySelectorAll('.gallery-item'));
+      const shuffled = galleryItems.sort(() => Math.random() - 0.5);
+      
+      // Clear gallery and re-append in random order
+      gallery.innerHTML = '';
+      shuffled.forEach((item, index) => {
+        item.setAttribute('data-index', index);
+        gallery.appendChild(item);
+      });
+      
+      let currentIndex = 0;
+      const totalImages = galleryItems.length;
+
+      function openLightbox(index) {
+        currentIndex = index;
+        const img = galleryItems[index].querySelector('img');
+        lightboxImg.src = img.src;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      function showNext() {
+        lightboxImg.classList.add('fade');
+        setTimeout(() => {
+          currentIndex = (currentIndex + 1) % totalImages;
+          const img = galleryItems[currentIndex].querySelector('img');
+          lightboxImg.src = img.src;
+          lightboxImg.classList.remove('fade');
+        }, 200);
+      }
+
+      function showPrev() {
+        lightboxImg.classList.add('fade');
+        setTimeout(() => {
+          currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+          const img = galleryItems[currentIndex].querySelector('img');
+          lightboxImg.src = img.src;
+          lightboxImg.classList.remove('fade');
+        }, 200);
+      }
+
+      galleryItems.forEach((item, index) => {
+        item.addEventListener('click', () => openLightbox(index));
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      nextBtn.addEventListener('click', showNext);
+      prevBtn.addEventListener('click', showPrev);
+
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) {
+          closeLightbox();
+        }
+      });
+
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'ArrowLeft') showPrev();
+      });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/1481
+contexts: {  }
+conditions_require_all: true

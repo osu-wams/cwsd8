@@ -1,0 +1,43 @@
+uuid: 9b20475c-56ac-4a8d-b358-afe2ed3ebe82
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.findings.body
+    - field.field.node.findings.field_finding1_explanation
+    - field.field.node.findings.field_finding1_overview
+    - field.field.node.findings.field_finding2_explanation
+    - field.field.node.findings.field_finding2_overview
+    - field.field.node.findings.field_finding3_explanation
+    - field.field.node.findings.field_finding3_overview
+    - node.type.findings
+  module:
+    - text
+    - user
+id: node.findings.teaser
+targetEntityType: node
+bundle: findings
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_finding1_explanation: true
+  field_finding1_overview: true
+  field_finding2_explanation: true
+  field_finding2_overview: true
+  field_finding3_explanation: true
+  field_finding3_overview: true

@@ -1,0 +1,31 @@
+uuid: 20be6a78-03cc-4d9d-aa7e-6abaeb8d92e2
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: hsrc
+label: hsrc
+logic: and
+conditions:
+  99db3e78-26f4-4189-a028-10b1a6ae6299:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 99db3e78-26f4-4189-a028-10b1a6ae6299
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page
+      webform: webform
+  2bcc4531-04b7-4f03-ab0b-e7d8755a0700:
+    id: request_path
+    negate: false
+    uuid: 2bcc4531-04b7-4f03-ab0b-e7d8755a0700
+    pages: "/hsrc/*\r\n/email/node/385/field_group_email"
+  7a655a8c-f967-4c60-a9e7-fc8d5f0707de:
+    id: request_path
+    negate: true
+    uuid: 7a655a8c-f967-4c60-a9e7-fc8d5f0707de
+    pages: "/main\r\n/main/*"
+allow_other_conditions: null

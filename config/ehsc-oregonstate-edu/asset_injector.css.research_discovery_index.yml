@@ -1,0 +1,137 @@
+uuid: 270f445b-1410-4806-81bb-b1874e382acd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: research_discovery_index
+label: 'Research Discovery Index'
+code: |-
+  :root{
+    --bg:#f7f7f8; --fg:#1f2937; --muted:#6b7280;
+    --card:#fff; --border:rgba(0,0,0,.14); --shadow:0 2px 8px rgba(0,0,0,.06);
+    --radius:12px;
+  }
+
+  /* page chrome */
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--fg);
+    font:16px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+  .wrap{max-width:1100px;margin:0 auto;padding:24px}
+  .page-header{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .page-header h2{margin:0}
+  .actions{display:flex;gap:10px;align-items:center}
+  .actions input[type="search"]{min-width:220px;padding:10px 12px;border:1px solid var(--border);border-radius:8px;background:#fff}
+  button#clear-search, button#toggle-view{
+    padding:10px 14px;border-radius:8px;border:1px solid var(--border);
+    background:#fff;box-shadow:var(--shadow);cursor:pointer
+  }
+  .muted{color:var(--muted);font-size:.95rem}
+
+  /* base table look */
+  table{width:100%;border-collapse:collapse;background:var(--card);
+    border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}
+  th,td{padding:10px 12px;vertical-align:top;border-bottom:1px solid #eee}
+  thead th{background:#fafafa;text-align:left;font-weight:600}
+  tbody tr:last-child td{border-bottom:0}
+
+  /* ===== Cards view ===== */
+  #directory.cards thead{display:none}
+
+  /* Use flex wrapping instead of floats for nice rows */
+  #directory.cards tbody{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    padding:12px;
+  }
+  #directory.cards tbody tr{
+    display:block;                 /* card */
+    position:relative;
+    flex:1 1 420px;                /* card width */
+    max-width:438px;
+    /*border:1px solid var(--border);*/
+    border-radius:10px;
+    box-shadow:var(--shadow);
+    background:#fff;
+    overflow:hidden;
+
+    /* COLLAPSED state */
+    max-height:500px;
+    padding-bottom:46px;           /* room for the button */
+  }
+
+  /* Gradient fade when collapsed */
+  #directory.cards tbody tr::before{
+    content:"";
+    position:absolute;
+    left:0; right:0;
+    bottom:46px;
+    height:80px;
+    background:linear-gradient(to bottom, rgba(255,255,255,0), #fff);
+    pointer-events:none;
+    transition:opacity .2s ease;
+  }
+
+  /* Expanded state */
+  #directory.cards tbody tr.expanded{
+    max-height:none;
+    padding-bottom:52px;
+  }
+  #directory.cards tbody tr.expanded::before{ opacity:0 }
+
+  /* Stack cells */
+  #directory.cards tbody td{display:block;border-bottom:1px solid #eee;padding:8px 12px}
+  #directory.cards tbody td:last-child{border-bottom:0}
+
+  /* Per-line labels from headers (JS sets data-label) */
+  #directory.cards td::before{
+    content:attr(data-label);
+    display:block;
+    font-weight:600;
+    color:var(--muted);
+    margin-bottom:2px;
+  }
+  /* Don’t label the first column (Name block) */
+  #directory.cards td:first-child::before{ content:none }
+
+  /* The per-card toggle button */
+  #directory.cards .card-toggle{
+    position:absolute;
+    left:50%;
+    transform: translateX(-50%) translateY(17%);
+    bottom:8px;
+    padding:6px 10px;
+    border:1px dashed var(--border);
+    border-radius:8px;
+    background:#fff;
+    font-size:.9rem;
+    cursor:pointer;
+    width:100%;
+    height:3.2rem;
+  }
+
+  /* Responsive touch */
+  @media (max-width:520px){
+    #directory.cards tbody tr{ flex:1 1 100% }
+  }
+
+
+  #directory:not(.cards) .card-toggle {
+    display: none !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /resources/research-discovery-index
+contexts: {  }
+conditions_require_all: true

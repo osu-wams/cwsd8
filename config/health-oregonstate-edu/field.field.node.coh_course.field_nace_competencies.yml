@@ -1,0 +1,29 @@
+uuid: 4fb99887-0c0d-4fa0-82f7-5c13e6297c60
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_nace_competencies
+    - node.type.coh_course
+    - taxonomy.vocabulary.nace_competencies
+id: node.coh_course.field_nace_competencies
+field_name: field_nace_competencies
+entity_type: node
+bundle: coh_course
+label: 'NACE competencies'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      nace_competencies: nace_competencies
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

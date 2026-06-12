@@ -1,0 +1,28 @@
+uuid: ef2998c2-70f3-4402-92e7-e73839ed9993
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: all_coris_pages_style_changes
+label: 'All CORIS pages (branding block size)'
+code: |-
+  /* Styling for smaller OSU logo on Coris pages */
+
+  .block-system-branding-block a {
+      font-size: 1.1rem !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/research/CoRIS/*\r\n/research/CoRIS\r\n/group/51\r\n/group/51/*"
+contexts: {  }
+conditions_require_all: true

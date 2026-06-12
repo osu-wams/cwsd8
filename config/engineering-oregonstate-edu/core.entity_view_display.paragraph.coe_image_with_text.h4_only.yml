@@ -1,0 +1,100 @@
+uuid: cfa1b603-f512-4d45-ab8b-f03c61b23807
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.h4_only
+    - field.field.paragraph.coe_image_with_text.field_coe_2_col_img_txt_body
+    - field.field.paragraph.coe_image_with_text.field_coe_2_col_img_txt_headline
+    - field.field.paragraph.coe_image_with_text.field_coe_2_col_img_txt_image
+    - field.field.paragraph.coe_image_with_text.field_coe_2_col_img_txt_label
+    - field.field.paragraph.coe_image_with_text.field_coe_2_col_img_txt_link
+    - paragraphs.paragraphs_type.coe_image_with_text
+  module:
+    - field_group
+    - layout_builder
+    - link
+    - text
+    - text_field_formatter
+third_party_settings:
+  field_group:
+    group_container:
+      children:
+        - field_coe_2_col_img_txt_label
+        - field_coe_2_col_img_txt_headline
+        - field_coe_2_col_img_txt_body
+        - field_coe_2_col_img_txt_link
+      label: Container
+      parent_name: ''
+      region: content
+      weight: 4
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.coe_image_with_text.h4_only
+targetEntityType: paragraph
+bundle: coe_image_with_text
+mode: h4_only
+content:
+  field_coe_2_col_img_txt_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_coe_2_col_img_txt_headline:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h4
+      wrap_class: ''
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_coe_2_col_img_txt_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_coe_2_col_img_txt_label:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_coe_2_col_img_txt_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+hidden: {  }

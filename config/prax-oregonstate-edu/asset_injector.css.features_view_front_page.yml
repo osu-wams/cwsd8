@@ -1,0 +1,147 @@
+uuid: 2b02fa84-303c-449a-a2e6-b1cce1fcc523
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: features_view_front_page
+label: 'Features View - Front Page'
+code: |-
+  #block-views-block-features-block-2 {
+    min-height: 700px;
+    position: relative;
+  }
+
+  .praxheader {
+    display: none;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+  }
+
+  .item.active {
+    display: block;
+  }
+
+  #superfish-main {
+    background: #fff;
+  }
+
+  #superfish-main li a {
+    color: #232323;
+  }
+
+  #superfish-main .sfHover a {
+    background: #232323;
+    color: #fff !important;
+  }
+
+  .views-field-field-hero-image img {
+    height: 700px;
+    object-fit: cover;
+    width: 100%;
+  }
+
+  #block-views-block-features-block-2 .views-field-nothing {
+    background: rgba(0, 0, 0, .8);
+    bottom: 50px;
+    color: #fff;
+    padding: 20px 30px;
+    position: absolute;
+    right: 50px;
+    width: 500px;
+  }
+
+  #block-views-block-features-block-2 .views-field-nothing p {
+    line-height: 1.2 !important;
+    margin: 8px 0;
+  }
+
+  .feature-description {
+    padding-bottom: 60px;
+  }
+
+  .feature-title {
+    font-size: 30px;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .feature-details {
+    background: #fff;
+    bottom: -10px;
+    color: #003b56;
+    display: flex;
+    font-weight: 900;
+    left: 12px;
+    padding: 7px;
+    position: absolute;
+    right: -50px;
+  }
+
+  .feature-date {
+    color: #003b5c;
+    padding: 0 20px;
+    text-align: center;
+  }
+
+  .feature-link {
+    color: #d73f09;
+    padding: 0 20px;
+    text-decoration: none;
+  }
+
+  .feature-link a {
+    color: #d73f09;
+    text-decoration: none;
+  }
+
+  .feature-link a:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px) {
+    #block-views-block-features-block-2 .views-field-nothing {
+      background: #232323;
+      bottom: 0;
+      color: #fff;
+      left: 0;
+      padding: 20px 30px;
+      position: absolute;
+      right: 0;
+      width: 100%;
+    }
+
+    .feature-details {
+      background: #fff;
+      bottom: 10px;
+      color: #003b56;
+      display: flex;
+      font-weight: 900;
+      left: 10px;
+      padding: 7px;
+      position: absolute;
+      right: 10px;
+    }
+
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'
+contexts: {  }
+conditions_require_all: true

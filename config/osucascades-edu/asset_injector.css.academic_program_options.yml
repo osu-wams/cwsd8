@@ -1,0 +1,178 @@
+uuid: 437b1b60-a74b-46af-a6c6-75f6326c46b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: academic_program_options
+label: 'Academic Program Options'
+code: |-
+  /* Tab container with background transition */
+  .tab-container {
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* Makes background fixed */
+      transition: background-image 0.5s ease-in-out;
+      position: relative;
+  }
+
+
+  /* Ensure content stays above the overlay */
+  .tab-container > * {
+      position: relative;
+      z-index: 1;
+  }
+
+  /* Wrapper for tabs with max-width */
+  .tabs-wrapper {
+      max-width: 1295px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;    
+  }
+
+  /* Existing tab styles */
+  .tabs {
+      display: flex;
+      border-bottom: 2px solid #d73f09;
+      margin-left: 66px;
+      position: relative;
+  }
+
+  .tabs::before {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: -48px;
+      width: 48px;
+      height: 2px;
+      background: #d73f09;
+  }
+
+  .tab {
+      padding: 7px 20px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-size: 16px;
+      transition: all 0.3s;
+  }
+
+  .tab:hover {
+      box-shadow: inset 0 2px 0 0 #d73f09, inset 2px 0 0 0 #d73f09, inset -2px 0 0 0 #d73f09;
+  }
+
+  .tab.active {
+      background: #d73f09;
+      border-bottom: 3px solid #d73f09;
+      margin-bottom: -2px;
+      color: #fff;
+  }
+
+  .tab-content {
+      display: none;
+      padding: 30px;
+      animation: fadeIn 0.3s;
+      margin-left: 18px;
+      background: white;
+      border-left: 2px solid #d73f09;
+      border-right: 2px solid #d73f09;
+      border-bottom: 2px solid #d73f09;
+      box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.25) !important;
+  }
+
+
+  .tab-content img{
+      margin-left: 1rem;
+  }
+
+  .tab-content.active {
+      display: block;
+  }
+
+  /* Fade in animation */
+  @keyframes fadeIn {
+      from {
+          opacity: 0;
+      }
+      to {
+          opacity: 1;
+      }
+  }
+
+  .options-mobile{
+  	display: none;
+  }
+
+  @media (max-width: 768px) {
+    .large-header-text {
+  		font-size:2.5rem;
+  	}
+  	
+  	.options-dsktop-tablet{
+  		display: none!important;
+  	}
+  	
+  	.options-mobile{
+  		display: block !important;
+  	}
+  	
+  	.tab-content{
+  		margin-left: 0;
+  	}
+  	
+  	.tabs{
+  		flex-direction: column;
+  		margin-left: 0;
+  	}
+  	
+  	.tabs button {
+  		border-bottom: 1px solid #00000012;
+  		background: white;
+  	}
+  	
+  	.tabs::before{
+  		content: none;
+  	}
+  }
+
+  @media (max-width: 991px){
+  	.tab-content article{
+  		float: none !important;
+  		margin-inline-start: 0 !important;
+  	}
+  	
+  	.tab-content img{
+  		width: 100% !important;
+  		margin-bottom: 2rem;
+  		margin-left: 0;
+  	}
+  	
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .large-header-text {
+  		font-size:3.5rem;
+  	}
+  }
+
+  @media (min-width: 1025px) {
+   .large-header-text {
+  		font-size:4.5rem;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/2141951\r\n/group/245796"
+contexts: {  }
+conditions_require_all: true

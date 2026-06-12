@@ -1,0 +1,151 @@
+uuid: 4e445281-06a1-444d-ab44-409552986c3f
+langcode: en
+status: true
+dependencies:
+  config:
+    - user.role.administrator
+    - user.role.architect
+  module:
+    - node
+    - user
+id: osu_groups_admin
+label: 'OSU Groups Admin'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'Group Management'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            word_boundary: false
+            ellipsis: false
+      pager:
+        type: full
+        options:
+          pagination_heading_level: h4
+          items_per_page: 200
+      exposed_form:
+        type: basic
+      access:
+        type: role
+        options:
+          role:
+            administrator: administrator
+            architect: architect
+            manager: manager
+      cache:
+        type: none
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          empty: true
+          content:
+            value: '<p>You are not a global manager or architect.</p>'
+            format: full_html
+      sorts:
+        title_1:
+          id: title_1
+          table: node_field_data
+          field: title
+          relationship: field_parent_unit_nid
+          plugin_id: standard
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: standard
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            group: group
+      style:
+        type: default
+        options:
+          grouping:
+            -
+              field: field_parent_unit
+              rendered: true
+              rendered_strip: false
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      relationships: {  }
+      use_more_always: false
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          content:
+            value: '<p>This block is only seen by global managers, and architects, who have access to all groups in the event assistance is needed by group members.</p>'
+            format: full_html
+      display_extenders: {  }
+      style_plugin: default
+      style_options:
+        grouping:
+          -
+            field: field_parent_unit
+            rendered: 1
+            rendered_strip: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.roles
+      tags: {  }
+  block:
+    id: block
+    display_title: 'OSU Group Admin Block'
+    display_plugin: block
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      block_description: 'Group Management'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.roles
+      tags: {  }

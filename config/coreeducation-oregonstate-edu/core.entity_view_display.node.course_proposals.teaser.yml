@@ -1,0 +1,51 @@
+uuid: 907be458-d3f4-4eec-8b7e-0416eedce867
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.course_proposals.body
+    - field.field.node.course_proposals.feeds_item
+    - field.field.node.course_proposals.field_college_units
+    - field.field.node.course_proposals.field_course_number
+    - field.field.node.course_proposals.field_course_proposal_category
+    - field.field.node.course_proposals.field_course_proposal_group
+    - field.field.node.course_proposals.field_credits
+    - field.field.node.course_proposals.field_date_approved
+    - field.field.node.course_proposals.field_date_submitted
+    - field.field.node.course_proposals.field_location_modality
+    - field.field.node.course_proposals.field_statement_of_intent_status
+    - node.type.course_proposals
+  module:
+    - text
+    - user
+id: node.course_proposals.teaser
+targetEntityType: node
+bundle: course_proposals
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true
+  field_college_units: true
+  field_course_number: true
+  field_course_proposal_category: true
+  field_course_proposal_group: true
+  field_credits: true
+  field_date_approved: true
+  field_date_submitted: true
+  field_location_modality: true
+  field_statement_of_intent_status: true

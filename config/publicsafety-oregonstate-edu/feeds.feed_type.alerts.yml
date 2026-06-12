@@ -1,0 +1,75 @@
+uuid: 674c017c-bfb4-43b2-9a94-fdbb9923471f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.alert.body
+    - field.field.node.alert.field_publication_date
+    - node.type.alert
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers: {  }
+label: Alerts
+id: alerts
+description: ''
+help: ''
+import_period: 3600
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: syndication
+parser_configuration: {  }
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: alert
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources: {  }
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: body
+    map:
+      value: description
+      summary: ''
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_publication_date
+    map:
+      value: timestamp
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: nid
+    map:
+      value: guid
+    settings: {  }
+    unique:
+      value: 1

@@ -1,0 +1,86 @@
+uuid: 9d32d6cb-72c5-4b02-aa83-0bd2eeddd875
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: pilot_projects_workflow
+label: 'Pilot Projects Workflow'
+code: |-
+  figure{
+      max-width:400px;
+      max-height:375px;
+      border-radius:4px;
+      
+      position:relative;
+      padding:48px 10px 10px;
+  }
+
+
+  figure:before {
+      content: attr(data-title);
+      position: absolute;
+      top: 0px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      color:white;
+      /*text-indent: 10px;*/
+      text-align: center;
+      font-weight: bold;
+      
+      
+  }
+  figure:after {
+      content: attr(data-footer);
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      line-height: 40px;
+      font-size:50px;
+
+      /*text-indent: 10px;*/
+      text-align: center;
+      font-weight: 900;
+      
+      
+  }
+  .orange{
+    border:2px solid #D3832B;
+    
+  }
+
+  figure.orange::before{
+    background-color:#D73F09;
+  }
+
+  .green{
+    border:2px solid #C4D6A4;
+  }
+  figure.green::before{
+    background-color:#4A773C;
+  }
+
+  .blue{
+    border:2px solid #003B5C;
+  }
+  figure.blue::before{
+    background-color:#00859B;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /pilot
+contexts: {  }
+conditions_require_all: true

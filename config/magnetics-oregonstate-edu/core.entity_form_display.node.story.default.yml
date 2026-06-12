@@ -9,6 +9,7 @@ dependencies:
     - field.field.node.story.field_osu_story_caption
     - field.field.node.story.field_osu_story_cover_image
     - field.field.node.story.field_osu_story_external_url
+    - field.field.node.story.field_osu_story_realtime_seo
     - field.field.node.story.field_tags
     - field.field.node.story.layout_builder__layout
     - node.type.story
@@ -22,6 +23,7 @@ dependencies:
     - scheduler
     - scheduler_content_moderation_integration
     - text
+    - yoast_seo
 _core:
   default_config_hash: k0EgoDgBnLFQDiRPGS10SdU78i9ZCZoyazIRV28xNV4
 id: node.story.default
@@ -86,6 +88,16 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_osu_story_realtime_seo:
+    type: yoast_seo_widget
+    weight: 26
+    region: content
+    settings:
+      edit_title: true
+      edit_description: true
+      render_theme: madrone
+      render_view_mode: default
+    third_party_settings: {  }
   field_tags:
     type: entity_reference_autocomplete
     weight: 11
@@ -101,6 +113,14 @@ content:
     weight: 100
     region: content
     settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
     third_party_settings: {  }
   path:
     type: path

@@ -1,0 +1,29 @@
+uuid: f7e781f1-38d1-4d0a-9451-aa65c125a314
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_picture
+    - media.type.image
+    - node.type.feature_story
+id: node.feature_story.field_picture
+field_name: field_picture
+entity_type: node
+bundle: feature_story
+label: Picture
+description: 'Depending on your theme setting your image could display as wide as 1200 pixels.  You should scale your images accordingly before upload.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,194 @@
+uuid: c002f63a-710a-4142-9f46-f590dd2e96e2
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: 404_lightbulb
+label: '404 Lightbulb'
+code: |-
+  const off = document.querySelector(".bulb-off img");
+  const faded = document.querySelector(".bulb-faded img");
+  const on = document.querySelector(".bulb-on img");
+
+  function setLevels({ offA = 1, fadedA = 0, onA = 0 }) {
+  	off.style.opacity = offA;
+  	faded.style.opacity = fadedA;
+  	on.style.opacity = onA;
+  }
+
+  class BulbController {
+  	constructor() {
+  		this.paused = false;
+  		this.running = false;
+  		this.introPlayed = false;
+  	}
+
+  	async wait(ms) {
+  		let elapsed = 0;
+  		let last = performance.now();
+
+  		while (elapsed < ms) {
+  			if (!this.running) return false;
+
+  			if (this.paused) {
+  				await new Promise(r => requestAnimationFrame(r));
+  				last = performance.now();
+  				continue;
+  			}
+
+  			await new Promise(r => requestAnimationFrame(r));
+
+  			const now = performance.now();
+  			elapsed += now - last;
+  			last = now;
+  		}
+
+  		return true;
+  	}
+
+  	async tweenTo(target, durationMs) {
+  		const start = {
+  			offA: parseFloat(getComputedStyle(off).opacity) || 0,
+  			fadedA: parseFloat(getComputedStyle(faded).opacity) || 0,
+  			onA: parseFloat(getComputedStyle(on).opacity) || 0,
+  		};
+
+  		let elapsed = 0;
+  		let last = performance.now();
+
+  		while (elapsed < durationMs) {
+  			if (!this.running) return false;
+
+  			if (this.paused) {
+  				await new Promise(r => requestAnimationFrame(r));
+  				last = performance.now();
+  				continue;
+  			}
+
+  			await new Promise(r => requestAnimationFrame(r));
+
+  			const now = performance.now();
+  			elapsed += now - last;
+  			last = now;
+
+  			const t = Math.min(1, elapsed / durationMs);
+
+  			setLevels({
+  				offA: start.offA + (target.offA - start.offA) * t,
+  				fadedA: start.fadedA + (target.fadedA - start.fadedA) * t,
+  				onA: start.onA + (target.onA - start.onA) * t,
+  			});
+  		}
+
+  		return true;
+  	}
+
+  	async flickerThenFail() {
+  		// Start bulb off
+  		setLevels({ offA: 1, fadedA: 0, onA: 0 });
+  		await this.wait(500);
+
+  		// FIRST: bright bulb surge that fades
+  		await this.tweenTo({ offA: 1, fadedA: 0.2, onA: 0.85 }, 1000);
+  		await this.tweenTo({ offA: 1, fadedA: 0.0, onA: 0.0 }, 1200);
+
+  		// SECOND: only faded bulb "pulses" ! (don't flash too fast for photosensitive users - ask Lucy) !
+  		const softSeq = [
+  			[{ fadedA: 0.35 }, 1200],
+  			[{ fadedA: 0.0 }, 900],
+  			[{ fadedA: 0.50 }, 1400],
+  			[{ fadedA: 0.08 }, 1000],
+  			[{ fadedA: 0.42 }, 1500],
+  			[{ fadedA: 0.0 }, 1100],
+  			[{ fadedA: 0.28 }, 1300],
+  		];
+
+  		for (const [target, ms] of softSeq) {
+  			await this.tweenTo({ offA: 1, onA: 0, ...target }, ms);
+  		}
+
+  		// Settles on bulb off
+  		await this.tweenTo({ offA: 1, fadedA: 0.0, onA: 0.0 }, 1800);
+  	}
+
+  	async occasionalBlips() {
+  		while (this.running) {
+  			const delay = 8000 + Math.random() * 8000;
+  			await this.wait(delay);
+
+  			// Only faded layer
+  			await this.tweenTo({ offA: 1, fadedA: 0.28, onA: 0.0 }, 1800);
+  			await this.tweenTo({ offA: 1, fadedA: 0.08, onA: 0.0 }, 1400);
+  			await this.tweenTo({ offA: 1, fadedA: 0.0, onA: 0.0 }, 1200);
+  		}
+  	}
+
+  	async start() {
+  		if (this.running) return;
+  		this.running = true;
+
+  		if (!this.introPlayed) {
+  			this.introPlayed = true;
+  			await this.flickerThenFail();
+  		}
+
+  		this.occasionalBlips();
+  	}
+
+  	pause() {
+  		this.paused = true;
+  	}
+
+  	play() {
+  		this.paused = false;
+  	}
+  }
+
+  // Start - only if reduced motion isn't preferred (WCAG Accessibility)
+  const bulb = new BulbController();
+  window.matchMedia("(prefers-reduced-motion: reduce)").matches ? bulb.pause() : bulb.start();
+
+  // Button Controls
+  const button = document.querySelector(".bulb-wrap button");
+
+  const pauseSVG = '<svg width="18" height="18" viewBox="0 0 13 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M0 18V0h4v18zM13 0v18H9V0z" fill="currentColor"/></svg>';
+  const playSVG = '<svg width="16" height="16" viewBox="-2 0 13 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M13 8 0 16V0z" fill="currentColor"/></svg>';
+
+  function updateButton() {
+  	if (!button) return;
+
+  	// Switch between play/pause icons
+  	button.innerHTML = bulb.paused ? playSVG : pauseSVG;
+
+  	// Set aria-label
+  	button.setAttribute("aria-label", bulb.paused ? "Play Animation" : "Pause Animation");
+  }
+
+  if (button) {
+  	// Toggle play/pause on click
+  	button.addEventListener("click", () => {
+  		bulb.paused ? bulb.play() : bulb.pause();
+  		updateButton();
+  	})
+
+  	updateButton();
+  }
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  response_status:
+    id: response_status
+    negate: false
+    status_codes:
+      - 404
+contexts: {  }
+conditions_require_all: true

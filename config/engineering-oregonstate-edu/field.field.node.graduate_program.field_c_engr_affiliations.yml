@@ -1,0 +1,29 @@
+uuid: 76785ef2-a224-448e-ac51-b2a7ccfecff5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_c_engr_affiliations
+    - node.type.graduate_program
+    - taxonomy.vocabulary.affiliations
+id: node.graduate_program.field_c_engr_affiliations
+field_name: field_c_engr_affiliations
+entity_type: node
+bundle: graduate_program
+label: Affiliations
+description: 'This will help determine what statistics show in a respective page/block/view'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      affiliations: affiliations
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

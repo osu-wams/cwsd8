@@ -1,0 +1,61 @@
+uuid: 10e3f935-8f97-4a0b-99a6-c0cbc9e6bf72
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: summit
+label: summit
+code: |-
+  /*function toggleText() {
+              const preview = document.querySelector('.preview');
+              const fullText = document.querySelector('.full-text');
+              const isPreviewVisible = window.getComputedStyle(preview).display !== 'none';
+              if (isPreviewVisible) {
+                  preview.style.display = 'none';
+                  fullText.style.display = 'block';
+              } else {
+                  preview.style.display = 'block';
+                  fullText.style.display = 'none';
+              }
+          }
+          
+          
+         */
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.read-more');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.closest('#content');
+        const preview = content.querySelector('.preview');
+        const fullText = content.querySelector('.full-text');
+        const isPreviewVisible = window.getComputedStyle(preview).display !== 'none';
+
+        if (isPreviewVisible) {
+          preview.style.display = 'none';
+          fullText.style.display = 'block';
+        } else {
+          preview.style.display = 'block';
+          fullText.style.display = 'none';
+        }
+      });
+    });
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/17116\r\n/node/17116/layout\r\n/node/17021"
+contexts: {  }
+conditions_require_all: true

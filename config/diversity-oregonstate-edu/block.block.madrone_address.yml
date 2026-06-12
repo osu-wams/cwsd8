@@ -1,0 +1,33 @@
+uuid: d1a4fc15-8e72-4d37-955a-64694fa5ebcd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - ctools_block
+  theme:
+    - madrone
+id: madrone_address
+theme: madrone
+region: footer
+weight: 0
+provider: null
+plugin: 'entity_field:node:field_profile_address'
+settings:
+  id: 'entity_field:node:field_profile_address'
+  label: Address
+  label_display: visible
+  provider: ctools_block
+  context_mapping:
+    entity: '@node.node_route_context:node'
+  formatter:
+    type: address_default
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

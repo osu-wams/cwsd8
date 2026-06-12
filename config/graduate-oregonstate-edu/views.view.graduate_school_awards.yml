@@ -1,0 +1,2575 @@
+uuid: 131b65d0-e6bc-475a-b995-c6d41e67c0ac
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.body
+    - field.storage.node.field_award_amount_other
+    - field.storage.node.field_award_date_notes
+    - field.storage.node.field_award_determined_date
+    - field.storage.node.field_award_determined_notes
+    - field.storage.node.field_award_eligibility
+    - field.storage.node.field_award_fellowship_details
+    - field.storage.node.field_award_has_recipients
+    - field.storage.node.field_award_id
+    - field.storage.node.field_award_nomination_dates
+    - field.storage.node.field_award_number_fellowships
+    - field.storage.node.field_award_number_notes
+    - field.storage.node.field_award_number_other
+    - field.storage.node.field_award_number_prefix
+    - field.storage.node.field_award_number_scholarships
+    - field.storage.node.field_award_scholarship_details
+    - node.type.award
+    - taxonomy.vocabulary.award_providers
+  content:
+    - 'taxonomy_term:award_providers:3730502b-70aa-472d-bd17-dfdfee59aa07'
+  module:
+    - contextual
+    - datetime
+    - datetime_range
+    - file
+    - node
+    - options
+    - taxonomy
+    - text
+    - user
+id: graduate_school_awards
+label: 'Graduate School Awards'
+module: views
+description: 'A listing of awards managed by the Graduate School'
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'Graduate Student Awards'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_type: h4
+        field_award_eligibility:
+          id: field_award_eligibility
+          table: node__field_award_eligibility
+          field: field_award_eligibility
+          plugin_id: field
+        field_award_fellowship_details:
+          id: field_award_fellowship_details
+          table: node__field_award_fellowship_details
+          field: field_award_fellowship_details
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<strong>Fellowship:</strong> {{ field_award_fellowship_details }}'
+          element_label_colon: false
+        field_award_scholarship_details:
+          id: field_award_scholarship_details
+          table: node__field_award_scholarship_details
+          field: field_award_scholarship_details
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<strong>Scholarship:</strong> {{ field_award_scholarship_details }}'
+          element_label_colon: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Award Amount'
+          alter:
+            text: '{{ field_award_fellowship_details }}<br>{{ field_award_scholarship_details }}'
+        field_award_number_fellowships:
+          id: field_award_number_fellowships
+          table: node__field_award_number_fellowships
+          field: field_award_number_fellowships
+          plugin_id: field
+        field_award_number_scholarships:
+          id: field_award_number_scholarships
+          table: node__field_award_number_scholarships
+          field: field_award_number_scholarships
+          plugin_id: field
+          settings:
+            thousand_separator: ' '
+            prefix_suffix: 1
+        field_award_number_other:
+          id: field_award_number_other
+          table: node__field_award_number_other
+          field: field_award_number_other
+          plugin_id: field
+          settings:
+            thousand_separator: ' '
+            prefix_suffix: 1
+        field_award_number_notes:
+          id: field_award_number_notes
+          table: node__field_award_number_notes
+          field: field_award_number_notes
+          plugin_id: field
+        field_award_nomination_dates:
+          id: field_award_nomination_dates
+          table: node__field_award_nomination_dates
+          field: field_award_nomination_dates
+          plugin_id: field
+          settings:
+            format_type: osu_calendar_date
+            fromto: both
+            multiple_number: ''
+            multiple_from: ''
+            multiple_to: ''
+            show_repeat_rule: show
+        field_award_date_notes:
+          id: field_award_date_notes
+          table: node__field_award_date_notes
+          field: field_award_date_notes
+          plugin_id: field
+        field_award_determined_date:
+          id: field_award_determined_date
+          table: node__field_award_determined_date
+          field: field_award_determined_date
+          plugin_id: field
+          settings:
+            format_type: osu_calendar_date
+            fromto: both
+            multiple_number: ''
+            multiple_from: ''
+            multiple_to: ''
+            show_repeat_rule: show
+        field_award_determined_notes:
+          id: field_award_determined_notes
+          table: node__field_award_determined_notes
+          field: field_award_determined_notes
+          plugin_id: field
+      pager:
+        type: none
+        options:
+          offset: 0
+      exposed_form:
+        type: basic
+      access:
+        type: none
+      cache:
+        type: none
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+      filters:
+        status_extra:
+          id: status_extra
+          table: node_field_data
+          field: status_extra
+          plugin_id: node_status
+          operator: or
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            award: award
+          group: 1
+      style:
+        type: table
+        options:
+          columns:
+            title: title
+            field_award_eligibility: title
+            field_award_fellowship_details: field_award_fellowship_details
+            field_award_scholarship_details: field_award_scholarship_details
+            nothing: nothing
+            field_award_number_prefix: field_award_number_prefix
+            field_award_number_fellowships: field_award_number_prefix
+            field_award_number_scholarships: field_award_number_prefix
+            field_award_number_other: field_award_number_prefix
+            field_award_number_notes: field_award_number_prefix
+            field_award_nomination_dates: field_award_nomination_dates
+            field_award_date_notes: field_award_nomination_dates
+            field_award_determined_date: field_award_determined_date
+            field_award_determined_notes: field_award_determined_date
+          default: title
+          info:
+            title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_award_eligibility:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_award_fellowship_details:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_award_scholarship_details:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            nothing:
+              align: ''
+              separator: ''
+              empty_column: false
+            field_award_number_prefix:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ' '
+              empty_column: false
+            field_award_number_fellowships:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_award_number_scholarships:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_award_number_other:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_award_number_notes:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_award_nomination_dates:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ' '
+              empty_column: false
+            field_award_date_notes:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_award_determined_date:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ' '
+              empty_column: false
+            field_award_determined_notes:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+      query:
+        type: views_query
+        options: {  }
+      use_more_always: false
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Graduate School Awards'
+          empty: false
+          tokenize: 0
+          content:
+            value: "<h2>Graduate Student Awards</h2>\r\n<p>The following scholarship and fellowship programs are administered by the Office of Graduate Education.</p>"
+            format: full_html
+      footer:
+        area:
+          id: area
+          table: views
+          field: area
+      display_extenders: {  }
+      style_plugin: table
+      style_options:
+        columns:
+          title: title
+          field_award_eligibility: title
+          field_award_fellowship_details: field_award_fellowship_details
+          field_award_scholarship_details: field_award_scholarship_details
+          nothing: nothing
+          field_award_number_prefix: field_award_number_prefix
+          field_award_number_fellowships: field_award_number_prefix
+          field_award_number_scholarships: field_award_number_prefix
+          field_award_number_other: field_award_number_prefix
+          field_award_number_notes: field_award_number_prefix
+          field_award_nomination_dates: field_award_nomination_dates
+          field_award_date_notes: field_award_nomination_dates
+          field_award_determined_date: field_award_determined_date
+          field_award_determined_notes: field_award_determined_date
+        default: title
+        info:
+          title:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_eligibility:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_fellowship_details:
+            sortable: 1
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_scholarship_details:
+            sortable: 1
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          nothing:
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_number_prefix:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ' '
+            empty_column: 0
+          field_award_number_fellowships:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_number_scholarships:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_number_other:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_number_notes:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_nomination_dates:
+            sortable: 1
+            default_sort_order: asc
+            align: ''
+            separator: ' '
+            empty_column: 0
+          field_award_date_notes:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_determined_date:
+            sortable: 1
+            default_sort_order: asc
+            align: ''
+            separator: ' '
+            empty_column: 0
+          field_award_determined_notes:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+      tags:
+        - 'config:field.storage.node.field_award_date_notes'
+        - 'config:field.storage.node.field_award_determined_date'
+        - 'config:field.storage.node.field_award_determined_notes'
+        - 'config:field.storage.node.field_award_eligibility'
+        - 'config:field.storage.node.field_award_fellowship_details'
+        - 'config:field.storage.node.field_award_nomination_dates'
+        - 'config:field.storage.node.field_award_number_fellowships'
+        - 'config:field.storage.node.field_award_number_notes'
+        - 'config:field.storage.node.field_award_number_other'
+        - 'config:field.storage.node.field_award_number_scholarships'
+        - 'config:field.storage.node.field_award_scholarship_details'
+  block_1:
+    id: block_1
+    display_title: Block
+    display_plugin: block
+    position: 4
+    display_options:
+      title: 'Open and Upcoming <br/><a href="/finance/awards">Graduate School Awards</a>'
+      fields:
+        field_award_nomination_dates:
+          id: field_award_nomination_dates
+          table: node__field_award_nomination_dates
+          field: field_award_nomination_dates
+          plugin_id: field
+          label: 'Apply '
+          exclude: true
+          element_type: span
+          element_label_type: span
+          element_label_colon: false
+          element_wrapper_type: h6
+          element_wrapper_class: muted
+          element_default_classes: false
+          settings:
+            format_type: osu_calendar_date
+            fromto: both
+            multiple_number: ''
+            multiple_from: ''
+            multiple_to: ''
+            show_repeat_rule: show
+        field_award_date_notes:
+          id: field_award_date_notes
+          table: node__field_award_date_notes
+          field: field_award_date_notes
+          plugin_id: field
+          label: ''
+          exclude: true
+          element_label_colon: false
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: true
+            text: '{{ title }} <br/><small class="muted">Open {{ field_award_nomination_dates }}</small><br/><small>{{ field_award_date_notes }}</small>'
+            make_link: true
+            word_boundary: false
+            ellipsis: false
+          element_type: h4
+          element_label_colon: false
+      access:
+        type: perm
+      filters:
+        status_extra:
+          id: status_extra
+          table: node_field_data
+          field: status_extra
+          plugin_id: node_status
+          operator: or
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            award: award
+          group: 1
+        field_award_nomination_dates_value2:
+          id: field_award_nomination_dates_value2
+          table: node__field_award_nomination_dates
+          field: field_award_nomination_dates_value2
+          operator: '>='
+          default_date: now
+      style:
+        type: default
+        options:
+          row_class: leaf
+          default_row_class: false
+          row_class_special: false
+          class: menu
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        access: false
+        title: false
+        style: false
+        row: false
+        fields: false
+        filters: false
+        filter_groups: false
+      display_extenders: {  }
+      block_description: 'Graduate School Awards Block'
+      style_plugin: list
+      style_options:
+        row_class: leaf
+        default_row_class: false
+        row_class_special: false
+        class: menu
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_award_date_notes'
+        - 'config:field.storage.node.field_award_nomination_dates'
+  block_2:
+    id: block_2
+    display_title: 'Block (for form overview)'
+    display_plugin: block
+    position: 4
+    display_options:
+      title: '<br/><a href="/finance/awards">Graduate Student Awards</a>'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '{{ title }}'
+            make_link: true
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: h4
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      access:
+        type: none
+        options: {  }
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            award: award
+          group: 1
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+        field_by_nomination_only_value:
+          id: field_by_nomination_only_value
+          table: node__field_by_nomination_only
+          field: field_by_nomination_only_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: leaf
+          default_row_class: false
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        access: false
+        title: false
+        style: false
+        row: false
+        fields: false
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      block_description: 'Graduate Student Awards Block'
+      allow:
+        items_per_page: false
+        offset: '0'
+        pager: '0'
+        hide_fields: '0'
+        sort_fields: '0'
+        arguments: '0'
+        configure_filters: '0'
+        disable_filters: '0'
+        configure_sorts: '0'
+      style_plugin: list
+      style_options:
+        row_class: leaf
+        default_row_class: false
+        row_class_special: false
+        class: menu
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+      tags: {  }
+  page:
+    id: page
+    display_title: 'Listing Page'
+    display_plugin: page
+    position: 2
+    display_options:
+      title: 'Graduate School Awards'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: '<hr/>{{ title }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: p
+          element_class: bold
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          settings:
+            link_to_entity: 1
+          ui_name: ''
+        body:
+          id: body
+          table: node__body
+          field: body
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<div class="font-size-90">{{ body }}</div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: '<a><b><i><strong><em><sup><sub>'
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_summary_or_trimmed
+          settings:
+            trim_length: 200
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_award_eligibility:
+          id: field_award_eligibility
+          table: node__field_award_eligibility
+          field: field_award_eligibility
+          plugin_id: field
+          label: ''
+          exclude: true
+          element_type: div
+          element_class: clearfix
+          element_label_colon: false
+        field_award_id:
+          id: field_award_id
+          table: node__field_award_id
+          field: field_award_id
+          plugin_id: field
+          label: ''
+          exclude: true
+          element_label_colon: false
+          type: string
+          settings:
+            max_length: 60
+            case_sensitive: false
+            is_ascii: false
+        view:
+          id: view
+          table: views
+          field: view
+          label: 'Previous Recipients'
+          exclude: true
+          element_label_type: h4
+          element_wrapper_type: div
+          element_wrapper_class: span6
+          view: award_recipients
+          display: recipients_page_links
+          arguments: '[%field_award_id]'
+        field_award_fellowship_details:
+          id: field_award_fellowship_details
+          table: node__field_award_fellowship_details
+          field: field_award_fellowship_details
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<strong>Fellowship:</strong> {{ field_award_fellowship_details }}'
+          element_label_colon: false
+        field_award_scholarship_details:
+          id: field_award_scholarship_details
+          table: node__field_award_scholarship_details
+          field: field_award_scholarship_details
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<strong>Scholarship:</strong> {{ field_award_scholarship_details }}'
+          element_label_colon: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: 'Award Amount'
+          exclude: true
+          alter:
+            text: '{{ field_award_fellowship_details }}<br>{{ field_award_scholarship_details }}'
+        field_award_number_fellowships:
+          id: field_award_number_fellowships
+          table: node__field_award_number_fellowships
+          field: field_award_number_fellowships
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '{{ field_award_number_fellowships }}<br/>'
+          element_label_colon: false
+          hide_empty: true
+          empty_zero: true
+          settings:
+            thousand_separator: ' '
+            prefix_suffix: 1
+        field_award_number_scholarships:
+          id: field_award_number_scholarships
+          table: node__field_award_number_scholarships
+          field: field_award_number_scholarships
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '{{ field_award_number_scholarships }}<br/>'
+          element_label_colon: false
+          hide_empty: true
+          empty_zero: true
+          settings:
+            thousand_separator: ' '
+            prefix_suffix: 1
+        field_award_number_other:
+          id: field_award_number_other
+          table: node__field_award_number_other
+          field: field_award_number_other
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '{{ field_award_number_other }}<br/>'
+          element_label_colon: false
+          hide_empty: true
+          settings:
+            thousand_separator: ' '
+            prefix_suffix: 1
+        field_award_number_notes:
+          id: field_award_number_notes
+          table: node__field_award_number_notes
+          field: field_award_number_notes
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<small>{{ field_award_number_notes }}</small>'
+          element_label_colon: false
+          hide_empty: true
+        field_award_number_prefix:
+          id: field_award_number_prefix
+          table: node__field_award_number_prefix
+          field: field_award_number_prefix
+          plugin_id: field
+          label: 'Number Of Awards Made'
+          exclude: true
+          alter:
+            alter_text: true
+            text: |-
+              <p class="indent1">{{ field_award_number_prefix }} 
+              {{ field_award_number_fellowships }} 
+              {{ field_award_number_scholarships }} 
+              {{ field_award_number_other }} 
+              {{ field_award_number_notes }}</p>
+          element_label_type: h5
+          element_wrapper_type: div
+          element_wrapper_class: span5
+        field_award_date_notes:
+          id: field_award_date_notes
+          table: node__field_award_date_notes
+          field: field_award_date_notes
+          plugin_id: field
+          label: ''
+          exclude: true
+          element_label_colon: false
+          hide_empty: true
+        field_award_nomination_dates:
+          id: field_award_nomination_dates
+          table: node__field_award_nomination_dates
+          field: field_award_nomination_dates
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '&nbsp;<span class="dark fa-calendar-alt far fa-1x"></span>&nbsp;{{ field_award_nomination_dates }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: p
+          element_class: font-size-90
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            datetime_type: date
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_award_determined_notes:
+          id: field_award_determined_notes
+          table: node__field_award_determined_notes
+          field: field_award_determined_notes
+          plugin_id: field
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<br/><small>{{ field_award_determined_notes }}</small>'
+          hide_empty: true
+        field_award_determined_date:
+          id: field_award_determined_date
+          table: node__field_award_determined_date
+          field: field_award_determined_date
+          plugin_id: field
+          label: 'Awards Determined'
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<p>Awards Determined: <br/>{{ field_award_determined_date }} {{ field_award_determined_notes }}</p>'
+          element_label_type: h5
+          element_wrapper_type: div
+          element_wrapper_class: span5
+          hide_empty: true
+          settings:
+            format_type: osu_calendar_date
+            fromto: both
+            multiple_number: ''
+            multiple_from: ''
+            multiple_to: ''
+            show_repeat_rule: show
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          plugin_id: custom
+          label: ''
+          exclude: true
+          alter:
+            text: |
+              <p>{{ body }}</p>
+              <h5>Number of Awards Made:</h5>
+              {{ field_award_number_prefix }}
+              <h5>Application Open:</h5>
+              {{ field_award_nomination_dates }}
+              <h5>Awards Determined:</h5>
+              {{ field_award_determined_date }}
+          element_label_colon: false
+          element_default_classes: false
+          ui_name: 'Render Award Details'
+        field_award_has_recipients:
+          id: field_award_has_recipients
+          table: node__field_award_has_recipients
+          field: field_award_has_recipients
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: |
+              <p>{{ body }}</p>
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: '0'
+          element_class: ''
+          element_label_type: '0'
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: '0'
+          element_wrapper_class: ''
+          element_default_classes: false
+          empty: |-
+            <div class="span8">
+            <p>{{ body }}</p>
+            </div>
+            <div class="span3">
+            {{ field_award_nomination_dates }}
+            {{ field_award_determined_date }}
+            </div>
+          hide_empty: false
+          empty_zero: true
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: list_key
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: 'Render Body and Recipients Link'
+          delta_random: false
+        edit_node:
+          id: edit_node
+          table: node
+          field: edit_node
+          plugin_id: entity_link_edit
+          label: ''
+          exclude: true
+          element_label_colon: false
+          text: 'Edit this Award'
+        field_award_has_recipients_1:
+          id: field_award_has_recipients_1
+          table: node__field_award_has_recipients
+          field: field_award_has_recipients
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: 'Add Recipient'
+            make_link: true
+            path: node/add/award-recipient
+          element_label_colon: false
+          hide_empty: true
+          empty_zero: true
+          type: boolean
+          settings:
+            format: list_key
+          ui_name: 'Add Recipient Link'
+        contextual_links:
+          id: contextual_links
+          table: views
+          field: contextual_links
+          plugin_id: contextual_links
+          label: ''
+          element_label_colon: false
+          fields:
+            edit_node: edit_node
+            field_award_has_recipients_1: field_award_has_recipients_1
+            title: '0'
+            body: '0'
+            field_award_eligibility: '0'
+            field_award_id: '0'
+            view: '0'
+            field_award_fellowship_details: '0'
+            field_award_scholarship_details: '0'
+            nothing: '0'
+            field_award_number_fellowships: '0'
+            field_award_number_scholarships: '0'
+            field_award_number_other: '0'
+            field_award_number_notes: '0'
+            field_award_number_prefix: '0'
+            field_award_date_notes: '0'
+            field_award_nomination_dates: '0'
+            field_award_determined_notes: '0'
+            field_award_determined_date: '0'
+            nothing_1: '0'
+            field_award_has_recipients: '0'
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Filter
+          reset_button: true
+          reset_button_label: Clear
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          autosubmit: 0
+          autosubmit_hide: 1
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: ''
+          empty: true
+          ui_name: ''
+          content:
+            value: 'Please try your selection again.'
+            format: full_html
+          tokenize: 0
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            award: award
+          group: 1
+        field_award_provider_tid:
+          id: field_award_provider_tid
+          table: node__field_award_provider
+          field: field_award_provider_target_id
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            84: 84
+          group: 1
+          vid: award_providers
+          type: select
+          field_name: field_award_provider
+        field_award_type_value:
+          id: field_award_type_value
+          table: node__field_award_type
+          field: field_award_type_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_award_type_value_op
+            label: Type
+            description: ''
+            use_operator: false
+            operator: field_award_type_value_op
+            identifier: field_award_type_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+            limit_operators: 0
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+        field_award_process_value:
+          id: field_award_process_value
+          table: node__field_award_process
+          field: field_award_process_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_award_process_value_op
+            label: Process
+            description: ''
+            use_operator: false
+            operator: field_award_process_value_op
+            identifier: field_award_process_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+            limit_operators: 0
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+        field_award_eligibility_select_value:
+          id: field_award_eligibility_select_value
+          table: node__field_award_eligibility_select
+          field: field_award_eligibility_select_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_award_eligibility_select_value_op
+            label: Eligibility
+            description: ''
+            use_operator: false
+            operator: field_award_eligibility_select_value_op
+            identifier: field_award_eligibility_select_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+            limit_operators: 0
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+        field_award_requirements_value:
+          id: field_award_requirements_value
+          table: node__field_award_requirements
+          field: field_award_requirements_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_award_requirements_value_op
+            label: Requirements
+            description: ''
+            use_operator: false
+            operator: field_award_requirements_value_op
+            identifier: field_award_requirements_value
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+            limit_operators: 0
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: 'flexitem-spacing-roomy flexitem-width-40'
+          default_row_class: true
+          row_class_special: 1
+          type: ul
+          wrapper_class: ''
+          class: 'flex-container-grid flex-start'
+      row:
+        type: fields
+        options:
+          default_field_elements: false
+          hide_empty: true
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        empty: false
+        title: false
+        exposed_form: false
+        style: false
+        row: false
+        fields: false
+        filters: false
+        filter_groups: false
+        header: false
+        footer: false
+        exposed_form_options: false
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: ''
+          empty: false
+          ui_name: ''
+          content:
+            value: |-
+              <p>The following scholarship and fellowship programs are administered by the Graduate School. In most cases, nominations must be submitted by academic unit administration. Students may review this list for eligibility and then contact their major professor or academic unit for consideration.</p>
+              <p>Please note, Graduate School awards are typically not a student’s primary funding source. In addition to Graduate School specific awards, students seeking funding for their degree should engage in conversations with their program directors and/or faculty about potential funding opportunities in their program.</p>
+            format: full_html
+          tokenize: 0
+      footer: {  }
+      display_extenders: {  }
+      path: awards/cards
+      menu:
+        title: 'Graduate School Awards'
+        weight: 0
+        menu_name: main
+        context: '0'
+        name: main
+        context_only_inline: 0
+      style_plugin: list
+      style_options:
+        grouping: {  }
+        row_class: 'flexitem-spacing-roomy flexitem-width-40'
+        default_row_class: 1
+        row_class_special: 1
+        type: ul
+        wrapper_class: ''
+        class: 'flex-container-grid flex-start'
+      exposed_form_options: null
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+      tags:
+        - 'config:field.storage.node.body'
+        - 'config:field.storage.node.field_award_date_notes'
+        - 'config:field.storage.node.field_award_determined_date'
+        - 'config:field.storage.node.field_award_determined_notes'
+        - 'config:field.storage.node.field_award_eligibility'
+        - 'config:field.storage.node.field_award_fellowship_details'
+        - 'config:field.storage.node.field_award_has_recipients'
+        - 'config:field.storage.node.field_award_id'
+        - 'config:field.storage.node.field_award_nomination_dates'
+        - 'config:field.storage.node.field_award_number_fellowships'
+        - 'config:field.storage.node.field_award_number_notes'
+        - 'config:field.storage.node.field_award_number_other'
+        - 'config:field.storage.node.field_award_number_prefix'
+        - 'config:field.storage.node.field_award_number_scholarships'
+        - 'config:field.storage.node.field_award_scholarship_details'
+  page_1:
+    id: page_1
+    display_title: 'Matrix Page'
+    display_plugin: page
+    position: 3
+    display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Title
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: h4
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_award_eligibility:
+          id: field_award_eligibility
+          table: node__field_award_eligibility
+          field: field_award_eligibility
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Eligibility Criteria'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: basic_string
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_award_fellowship_details:
+          id: field_award_fellowship_details
+          table: node__field_award_fellowship_details
+          field: field_award_fellowship_details
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '{{ field_award_fellowship_details }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_award_scholarship_details:
+          id: field_award_scholarship_details
+          table: node__field_award_scholarship_details
+          field: field_award_scholarship_details
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '{{ field_award_scholarship_details }}'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_award_amount_other:
+          id: field_award_amount_other
+          table: node__field_award_amount_other
+          field: field_award_amount_other
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: 'Award Amount'
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: 'Award Amount'
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<p>{{ field_award_fellowship_details }}{{ field_award_scholarship_details }}{{ field_award_amount_other }}</p>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: true
+          empty_zero: false
+          hide_alter_empty: false
+          ui_name: ''
+        field_award_nomination_dates:
+          id: field_award_nomination_dates
+          table: node__field_award_nomination_dates
+          field: field_award_nomination_dates
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Deadline
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<p>{{ field_award_nomination_dates }}</p>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: daterange_default
+          settings:
+            timezone_override: ''
+            format_type: medium
+            from_to: both
+            separator: '-'
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+        field_award_date_notes:
+          id: field_award_date_notes
+          table: node__field_award_date_notes
+          field: field_award_date_notes
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Notes on Opening or Deadline Dates'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+            unwanted_characters: ''
+          element_type: p
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: file_filemime
+          settings:
+            link_to_entity: 0
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          autosubmit: 0
+          autosubmit_hide: 1
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: ''
+          empty: true
+          ui_name: ''
+          content:
+            value: 'No results. Please adjust your selection. '
+            format: full_html
+          tokenize: 0
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            award: award
+          group: 1
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          group_type: group
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            operator_label: ''
+            limit_operators: false
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+        field_award_type_value:
+          id: field_award_type_value
+          table: node__field_award_type
+          field: field_award_type_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_award_type_value_op
+            label: Type
+            description: ''
+            use_operator: false
+            operator: field_award_type_value_op
+            identifier: type
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+            limit_operators: 0
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+        field_award_process_value:
+          id: field_award_process_value
+          table: node__field_award_process
+          field: field_award_process_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_award_process_value_op
+            label: Process
+            description: ''
+            use_operator: false
+            operator: field_award_process_value_op
+            identifier: process
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+            limit_operators: 0
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+        field_award_eligibility_select_value:
+          id: field_award_eligibility_select_value
+          table: node__field_award_eligibility_select
+          field: field_award_eligibility_select_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_award_eligibility_select_value_op
+            label: Eligibility
+            description: ''
+            use_operator: false
+            operator: field_award_eligibility_select_value_op
+            identifier: Eligibility
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+            limit_operators: 0
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+        field_award_requirements_value:
+          id: field_award_requirements_value
+          table: node__field_award_requirements
+          field: field_award_requirements_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_award_requirements_value_op
+            label: Requirements
+            description: ''
+            use_operator: false
+            operator: field_award_requirements_value_op
+            identifier: Requirements
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+            limit_operators: 0
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: program-list
+          default_row_class: false
+          columns:
+            title: title
+            field_award_eligibility: title
+            field_award_fellowship_details: field_award_fellowship_details
+            field_award_scholarship_details: field_award_scholarship_details
+            field_award_amount_other: field_award_amount_other
+            nothing: nothing
+            field_award_nomination_dates: field_award_nomination_dates
+            field_award_date_notes: field_award_nomination_dates
+          default: '-1'
+          info:
+            title:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: '<br />'
+              empty_column: false
+              responsive: ''
+            field_award_eligibility:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_award_fellowship_details:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_award_scholarship_details:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_award_amount_other:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            nothing:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_award_nomination_dates:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ' '
+              empty_column: false
+              responsive: ''
+            field_award_date_notes:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+          override: false
+          sticky: false
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+      row:
+        type: fields
+        options: {  }
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        empty: false
+        css_class: false
+        exposed_form: false
+        style: false
+        row: false
+        fields: false
+        filters: false
+        filter_groups: false
+        header: false
+        exposed_form_options: false
+      css_class: 'max-width-1000 container pb-6'
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: 'Graduate School Awards'
+          empty: false
+          tokenize: 0
+          content:
+            value: "<p>The following scholarship and fellowship programs are administered by the Office of Graduate Education. In most cases, nominations must be submitted by academic unit administration. Students may review this list for eligibility and then contact their major professor or academic unit for consideration.</p>\r\n<p>Please note, Graduate Student awards are typically not a student’s primary funding source. In addition to Office of Graduate Education specific awards, students seeking funding for their degree should engage in conversations with their program directors and/or faculty about potential funding opportunities in their program.</p>"
+            format: full_html
+          ui_name: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: awards
+      exposed_form_options: null
+      style_plugin: table
+      style_options:
+        grouping: {  }
+        row_class: ''
+        default_row_class: 0
+        row_class_special: 0
+        override: 0
+        sticky: 0
+        caption: ''
+        summary: ''
+        class: ''
+        columns:
+          title: title
+          field_award_eligibility: title
+          field_award_fellowship_details: field_award_fellowship_details
+          field_award_scholarship_details: field_award_scholarship_details
+          nothing: nothing
+          field_award_nomination_dates: field_award_nomination_dates
+          field_award_date_notes: field_award_nomination_dates
+        info:
+          title:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_eligibility:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_fellowship_details:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_scholarship_details:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          nothing:
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_award_nomination_dates:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ' '
+            empty_column: 0
+          field_award_date_notes:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+        default: '-1'
+        empty_table: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - 'user.node_grants:view'
+      tags:
+        - 'config:field.storage.node.field_award_amount_other'
+        - 'config:field.storage.node.field_award_date_notes'
+        - 'config:field.storage.node.field_award_eligibility'
+        - 'config:field.storage.node.field_award_fellowship_details'
+        - 'config:field.storage.node.field_award_nomination_dates'
+        - 'config:field.storage.node.field_award_scholarship_details'

@@ -1,0 +1,92 @@
+uuid: ea833a6b-d928-4180-9e47-31e916881530
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: semiconductor_faculty
+label: 'Semiconductor Faculty'
+code: |-
+  .semiconductor-faculty-img img{
+  	border-radius:50%;
+  	height: 100px;
+  	width:100px;
+  }
+
+  .faculty-card h2{
+  	font-size: 1.8rem;
+  	font-weight: 800;
+  	color: #d73f09;
+  	margin-bottom: 0;
+  	margin-top:1rem;
+  }
+  .semiconductor-faculty-img .field__item
+  {
+  	height: 100px;
+  	width:100px;
+  }
+
+  .link-stretched{
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    z-index: 2;
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none !important;
+    position: absolute;
+  }
+
+  .faculty-card{
+  	position:relative;
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 1rem;
+  }
+
+  a:active:not(.button,#osu-logo-wide,#osu-logo-crest){
+  	background-color: #21252900;
+  	color: hsl(0, 0%, 100%);
+  }
+
+  .faculty-card:hover .semiconductor-faculty-img img{
+  	filter:brightness(50%);
+  }
+
+  .faculty-card:hover .read-bio{
+  	display:block !important;
+  	color: #fff;
+  	font-family:'Stratum2Web', serif;
+  	font-weight:500;
+  	height:100px;
+  	width:100px;
+  	border-radius:50%;
+  	position:absolute;
+  	text-align:center;
+  	top: -10px;
+  	font-size: 2rem;
+  }
+  .faculty-card:hover .read-bio p{
+    position: absolute;
+    top: 35px;
+    width: 100%;
+  }
+
+  .faculty-card:hover .semiconductor-faculty-img{
+  	position:relative;
+  }
+
+  .white-text{
+  	color:white;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/11
+contexts: {  }
+conditions_require_all: true

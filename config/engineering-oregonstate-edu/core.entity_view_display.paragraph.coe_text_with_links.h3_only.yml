@@ -1,0 +1,56 @@
+uuid: 01baea7d-97f6-4ddd-94bc-62ae0cda4703
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.paragraph.h3_only
+    - field.field.paragraph.coe_text_with_links.field_coe_text_w_link_link
+    - field.field.paragraph.coe_text_with_links.field_coe_text_w_link_text
+    - field.field.paragraph.coe_text_with_links.field_coe_text_with_link
+    - paragraphs.paragraphs_type.coe_text_with_links
+  module:
+    - layout_builder
+    - link
+    - text
+    - text_field_formatter
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: paragraph.coe_text_with_links.h3_only
+targetEntityType: paragraph
+bundle: coe_text_with_links
+mode: h3_only
+content:
+  field_coe_text_w_link_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_coe_text_w_link_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_coe_text_with_link:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h3
+      wrap_class: ''
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

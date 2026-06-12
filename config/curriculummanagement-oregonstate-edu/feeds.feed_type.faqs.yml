@@ -1,0 +1,95 @@
+uuid: e1dccbea-18c9-4712-b104-6f36b9946cd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.c_faqs.title
+    - field.field.node.c_faqs.body
+    - field.field.node.c_faqs.field_c_faq_category
+    - field.field.node.c_faqs.field_c_faq_pages
+    - node.type.c_faqs
+  module:
+    - node
+label: FAQs
+id: faqs
+description: 'Used to import FAQs from CSV'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: c_faqs
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  question:
+    value: Question
+    label: Question
+    machine_name: question
+    type: csv
+  category:
+    value: Category
+    label: Category
+    machine_name: category
+    type: csv
+  answer:
+    value: Answer
+    label: Answer
+    machine_name: answer
+    type: csv
+  pages:
+    value: Pages
+    label: Pages
+    machine_name: pages
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: question
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_c_faq_category
+    map:
+      target_id: category
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: category
+  -
+    target: body
+    map:
+      value: answer
+      summary: ''
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_c_faq_pages
+    map:
+      target_id: pages
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: faq_pages

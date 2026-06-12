@@ -1,0 +1,476 @@
+uuid: 6f23fe60-2862-4fb9-ac06-b91ef94a4a49
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: homepage_example
+label: 'Homepage Example'
+code: |-
+  .osu-border-grey-bottom{
+  	border-bottom-color:#d0d0d0;
+  }
+  .flex{
+  	display: flex;
+  }
+
+  .relative{
+  	position: relative;
+  }
+
+  .absolute{
+  	position: absolute;
+  }
+
+  .space-between{
+  	justify-content: space-between;
+  }
+
+  .no-link-underline{
+  	text-decoration: none;
+  }
+
+  .lh-1-3{
+  	line-height: 1.3;
+  }
+
+  .fs-8{
+  	font-size: 0.7rem !important;
+  }
+
+  .fw700{
+  	font-weight: 700;
+  }
+
+  .fw800{
+  	font-weight: 800;
+  }
+
+  .orange-bt{
+  	border-top: 2px solid #d73f09;
+  }
+
+  .orange-br{
+  	border-right: 2px solid #d73f09;
+  }
+
+  .orange-bb{
+  	border-bottom: 2px solid #d73f09;
+  }
+
+  .orange-bl{
+  	border-left: 2px solid #d73f09;
+  }
+
+  .no-overflow{
+  	overflow: hidden;
+  }
+
+  .desktop{
+  	display: block;
+  }
+
+  .tablet-mobile{
+  	display: none;
+  }
+
+
+  @media (max-width: 991px){
+  	.desktop{
+  		display: none !important;
+  	}
+  	
+  	.tablet-mobile{
+  		display: block !important;
+  	}
+  }
+
+
+  @media(max-width: 991px){
+  	.homepage-resize{
+  	  padding-left: 0px !important;
+  	  padding-right: 0px !important;
+  	}
+  }
+
+  /* -- */
+
+  .featured-hero{
+  	position: relative;
+  	height: 650px;
+  }
+
+  .featured-hero::after{
+  	content: "";
+  	width: 100%;
+  	height: 100%;
+  	position: absolute;
+  	background: #0000008a;
+  	top: 0;
+  	z-index: 2;
+  	bottom: 0;
+  }
+
+  .featured-body{
+  	position: absolute;
+  	z-index: 3;
+  	color: white;
+  	top: 0;
+  	width: 80%;
+  	left: 0;
+  	display: flex;
+  	flex-wrap: wrap;
+  	align-content: center;
+  	height: 100%;
+  	bottom: 0;
+  	text-align: center;
+  	right: 0;
+  	justify-self: center;
+  	justify-content: center;
+  }
+
+  /*.featured-stretchedlink, .all-stretchedlink {
+  	display: none;
+  }*/
+
+  /*.osufeatured-stories:hover .featured-stretchedlink, .osuall-stories:hover .all-stretchedlink {
+  	display: block;
+  	position: absolute;
+  	height: 100%;
+  	width: 100%;
+  	top: 0;
+  	z-index: 3;
+  }*/
+
+  .featured-stretchedlink, .all-stretchedlink {
+      position: absolute;
+      inset: 0;    
+      z-index: 3;
+  }
+
+  .featured-hero, .all-featured-hero{
+  	width: 100%;
+  	overflow: hidden;
+  	margin-bottom: 14px;
+  	position: relative;
+  }
+
+  .featured-hero img{
+  	width: 100%;
+  	height: 650px;
+  	object-fit: cover;
+  	display: block;
+  	transition: transform 0.5s;
+  	float: right;
+  }
+
+  .all-featured-hero img{
+  	width: 100%;
+  	height: 100%;
+  	object-fit: cover;
+  	display: block;
+  	transition: transform 0.5s;
+  }
+
+  .osufeatured-stories:hover .featured-hero img, .osuall-stories .story-card:hover .all-featured-hero img{
+  	transform: scale(1.07);
+  }
+
+  @media (max-width: 1154px){
+  	.featured-hero img, .featured-hero::after, .featured-hero{
+  		height: 600px;
+  	}
+  	
+  	.featured-body h3{
+  		font-size: 2rem !important;
+  	}
+  }
+
+  @media (max-width: 768px){
+  	.featured-body{
+  		width: 100%;
+  	}
+  	
+  	.featured-body .teaser{
+  		display: none;
+  	}
+  	
+  	.featured-hero img, .featured-hero::after, .featured-hero {
+  		height: 400px;
+  	}
+  }
+
+  /* All Releases */
+
+  .osuall-stories hr{
+  	margin-block: 1rem !important;
+  }
+  .osuall-stories .story-card .all-featured-hero img{
+  	filter: saturate(0.7);
+  }
+
+  .osuall-stories .all-featured-hero::after{
+    content: '';
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    mix-blend-mode: multiply;
+    transition: opacity 0.3s;
+  }
+
+  .osuall-stories .story-card:hover .all-featured-hero::after{
+  	opacity: 0.4;	
+  }
+
+  .osuall-stories .story-card .views-field{	
+  	transition: box-shadow 0.3s;
+  }
+
+  .osuall-stories .story-card:hover .views-field{
+  	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1) !important;	
+  }
+
+  .osuall-stories .story-card:hover img{
+  	filter: saturate(1);
+  }
+
+  .osuall-stories .story-card:hover h3{
+  	color: #d73f09 !important;
+  }
+
+  .osuall-stories .story-card:hover .views-field .allstories-readmore{
+  	text-decoration: underline;
+  }
+
+  .all-pusheddown{
+  	position: absolute;
+  	bottom: 10px;
+  	width: 85%;
+  }
+
+  .full-tags {
+  	position: absolute;
+  	top: 5px;
+  	right: 5px;
+  	background: #ffffffdb;
+  	text-align: center;
+  	width: fit-content;
+  	padding-left: 5px;
+  	padding-right: 5px;
+  	border-radius: 5px;
+  	font-size: 12px;
+  	font-weight: bold;
+  }
+
+  /* In Other News */
+
+  .bs-border-style-bottom-solid{
+  	border-bottom-style: solid;
+  }
+
+  .in-other-news a{
+  	text-decoration: none;
+  }
+
+  .in-other-news a:hover{
+  	color: #d73f09;
+  }
+
+
+  /* Community news */
+
+  .community-news img{
+  	width: 100%;
+  	height: 100%;
+  	object-fit: cover;
+  	display: block;
+  	filter: saturate(0.7);
+  	transition: transform 0.5s, filter 0.3s;
+  }
+
+  .community-news .image-outer{
+  	width: 100%;
+  	aspect-ratio: 3 / 2;
+  	overflow: hidden;
+  	margin-bottom: 14px;
+  	position: relative;
+  }
+
+  @media (max-width: 991px){
+  .community-news .image-outer{
+  	aspect-ratio: 4 / 2!important;
+  	margin-bottom: 0 !important;
+  }
+  }
+
+  .community-news:hover h3{
+  	color: #d73f09 !important;
+  }
+
+  .community-news:hover img{
+  	transform: scale(1.07);
+  	filter: saturate(1);
+  }
+
+  .community-news img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: #d73f09;
+    opacity: 0;
+    mix-blend-mode: multiply;
+    transition: opacity 0.3s;
+  }
+
+  .community-news {
+      display: block;
+      position: relative;
+  }
+  .osufeatured-stories.carousel-dark .carousel-control-next, .osuall-stories.carousel-dark .carousel-control-next{
+  	right: -4rem !important;
+  }
+
+  .osufeatured-stories.carousel-dark .carousel-control-prev, .osuall-stories.carousel-dark .carousel-control-prev{
+  	left: -4rem !important;
+  }
+
+  /* Archive */
+  .osuall-stories.py-5.container h2{
+  	font-family: "Open Sans", sans-serif;
+  }
+
+  .osuall-stories.py-5.container{
+  	display: grid;
+  	grid-template-columns: repeat(3, 1fr);
+  	grid-template-rows: auto;
+  }
+
+  @media (min-width: 1200px){
+  	.osuall-stories.py-5.container .views-row--4{
+  		grid-column: 1 / 3;
+  		grid-row: 3 / 3;
+  	}
+  	
+  	.osuall-stories.py-5.container .views-row--4 .views-field{
+  		background: #000 !important;
+  	}
+  	
+  	.osuall-stories.py-5.container .views-row--4 .views-field .featured-archive-body{
+  		position: absolute;
+  		bottom: 2rem;
+  		color: white !important;
+  		z-index: 3;
+  		padding-right: 1.5rem !important;
+  		padding-left: 1.5rem !important;
+  	}
+  	
+  	.osuall-stories.py-5.container .views-row--4 .views-field::after{	
+  		content: "";
+  		position:absolute;
+  		top: 0;
+  		height: 100%;
+  		width: 100%;
+  		z-index:2;
+  		background: linear-gradient(180deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 80%);
+  	}
+  	
+  	.osuall-stories.py-5.container .views-row--4 .views-field h2{
+  		color: white !important;
+  		font-family: 'Stratum2Web';
+  		font-size: 2rem !important;
+  	}
+  }
+
+  .osuall-stories.py-5.container nav.pager{
+  	grid-column: 1 / 4;
+  	grid-row: 5 / 5;
+  }
+
+  @media (max-width: 1199px) {
+    .osuall-stories.py-5.container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .osuall-stories.py-5.container nav.pager {
+      grid-column: 1 / 3;
+      grid-row: auto;
+    }
+  }
+
+  @media (max-width: 991px) {
+    .osuall-stories.py-5.container {
+      display: block;
+    }
+  }
+
+  .osuall-stories.py-5.container .views-exposed-form {
+      grid-column: 1 / -1;
+  }
+
+  .research-news-block{
+  	position:relative;
+  }
+
+  .research-news-block::after{
+  	content: "";
+  	position: absolute;
+  	height: 100%;
+  	width: 100%;
+  	top: 0;
+  	border: 2px solid #d73f09;
+  	left: -100px;
+  	z-index: -1;
+  }
+
+  .in-the-news-header{
+  	position:relative;
+  }
+
+  .in-the-news-header::after{
+  	content: "";
+  	position: absolute;
+  	height: 2px;
+  	background: #d73f09;
+  	width: 90%;
+  	left: 35%;
+  	bottom: -0.5rem;
+  	z-index: 2;
+  }
+
+  .osu-experts-header{
+  	position:relative;
+  }
+
+  .osu-experts-header::after{
+  	content: "";
+  	position: absolute;
+  	width: 95%;
+  	height: 2px;
+  	background: #d73f09;
+  	bottom: -0.5rem;
+  	right: 30%;
+  	z-index: 2;
+  }
+
+  .osufeatured-stories2 .featured-body{
+    left: 2rem !important;
+    align-content: end !important;
+    bottom: 0 !important;
+    text-align: left !important;
+    justify-self: left !important;
+    justify-content: left !important;
+    padding-bottom: 2rem !important;
+  }
+
+  .osufeatured-stories2 .featured-hero::after{
+  	background: linear-gradient(2deg,rgba(0, 0, 0, 0.81) 31%, rgba(54, 54, 54, 0) 100%) !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

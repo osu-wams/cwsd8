@@ -1,0 +1,640 @@
+uuid: 57c36afe-cfa1-4f2d-87a5-8fea8ec20576
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.storage.node.body
+    - node.type.faq
+  module:
+    - node
+    - text
+    - user
+id: faq
+label: FAQ
+module: views
+description: 'FAQ listings'
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: FAQ
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+      pager:
+        type: full
+        options:
+          items_per_page: 10
+          pagination_heading_level: h4
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+      cache:
+        type: none
+      sorts:
+        sticky:
+          id: sticky
+          table: node_field_data
+          field: sticky
+          plugin_id: standard
+          order: DESC
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          plugin_id: date
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 0
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            faq: faq
+      style:
+        type: default
+      row:
+        type: 'entity:node'
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+      use_more: true
+      use_more_always: true
+      use_more_text: 'View all FAQs'
+      display_extenders: {  }
+      style_plugin: default
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  attachment_1:
+    id: attachment_1
+    display_title: 'Attachment - Questions Top'
+    display_plugin: attachment
+    position: 6
+    display_options:
+      enabled: false
+      fields:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            external: false
+            replace_spaces: false
+            trim_whitespace: false
+            nl2br: false
+            word_boundary: true
+            ellipsis: true
+            strip_tags: false
+            trim: false
+            html: false
+          element_label_colon: false
+          element_default_classes: true
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          settings:
+            link_to_entity: 0
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: true
+            path: 'faq-questions-top#n{{ nid }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            trim_whitespace: false
+            nl2br: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          element_label_colon: false
+          element_default_classes: true
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          settings:
+            link_to_entity: 0
+      pager:
+        type: none
+        options:
+          offset: 0
+      style:
+        type: default
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        use_more: false
+        link_display: false
+        style: false
+        row: false
+        fields: false
+      use_more_always: true
+      use_more_text: 'View all FAQs'
+      link_display: page_1
+      display_extenders: {  }
+      displays:
+        page_1: page_1
+        default: '0'
+        page: '0'
+        block: '0'
+        block_1: '0'
+      inherit_exposed_filters: true
+      style_plugin: list
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  faq_random:
+    id: faq_random
+    display_title: 'Block - Random FAQs'
+    display_plugin: block
+    position: 3
+    display_options:
+      title: 'Random FAQs'
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 5
+      sorts:
+        random:
+          id: random
+          table: views
+          field: random
+          plugin_id: random
+      style:
+        type: default
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        pager: false
+        use_more: false
+        style: false
+        row: false
+        sorts: false
+      use_more: true
+      use_more_always: true
+      use_more_text: 'View all FAQs'
+      display_extenders: {  }
+      block_description: 'Random FAQs'
+      style_plugin: list
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  faq_recent:
+    id: faq_recent
+    display_title: 'Block - Recent FAQs'
+    display_plugin: block
+    position: 2
+    display_options:
+      title: 'Recent FAQs'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+        body:
+          id: body
+          table: node__body
+          field: body
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 5
+      style:
+        type: default
+        options:
+          title_field: title
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        title: false
+        pager: false
+        use_more: false
+        style: false
+        row: false
+        fields: false
+      use_more: true
+      use_more_always: true
+      use_more_text: 'View all FAQs'
+      display_extenders: {  }
+      block_description: 'Recent FAQs'
+      style_plugin: views_bootstrap_accordion_plugin_style
+      style_options:
+        title_field: title
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+  page:
+    id: page
+    display_title: 'Page - Questions Inline'
+    display_plugin: page
+    position: 4
+    display_options:
+      enabled: false
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      path: faq-questions-inline
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page_1:
+    id: page_1
+    display_title: 'Page - Questions Top'
+    display_plugin: page
+    position: 5
+    display_options:
+      enabled: false
+      fields:
+        nid:
+          id: nid
+          table: node_field_data
+          field: nid
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            external: false
+            replace_spaces: false
+            trim_whitespace: false
+            nl2br: false
+            word_boundary: true
+            ellipsis: true
+            strip_tags: false
+            trim: false
+            html: false
+          element_label_colon: false
+          element_default_classes: true
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          settings:
+            link_to_entity: 0
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: true
+            text: '<h3><a id="n{{ nid }}">{{ title }}</a></h3>'
+            make_link: false
+            absolute: false
+            external: false
+            replace_spaces: false
+            trim_whitespace: false
+            nl2br: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          element_label_colon: false
+          element_default_classes: true
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          settings:
+            link_to_entity: 0
+        body:
+          id: body
+          table: node__body
+          field: body
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            external: false
+            replace_spaces: false
+            trim_whitespace: false
+            nl2br: false
+            word_boundary: true
+            ellipsis: true
+            strip_tags: false
+            trim: false
+            html: false
+          element_label_colon: false
+          element_default_classes: true
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+          field_api_classes: false
+      pager:
+        type: none
+        options:
+          offset: 0
+      style:
+        type: default
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        pager: false
+        style: false
+        row: false
+        fields: false
+      display_extenders: {  }
+      path: faq-questions-top
+      style_plugin: default
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.body'
+  page_2:
+    id: page_2
+    display_title: 'Page - New Page'
+    display_plugin: page
+    position: 7
+    display_options:
+      enabled: false
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+      style:
+        type: default
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        style: false
+        row: false
+        fields: false
+      display_extenders: {  }
+      path: faq-new-page
+      style_plugin: list
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page_3:
+    id: page_3
+    display_title: 'Page - Categories Inline - New Page'
+    display_plugin: page
+    position: 8
+    display_options:
+      enabled: false
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+      style:
+        type: default
+        options:
+          grouping: field_category
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          hide_empty: false
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        style: false
+        row: false
+        fields: false
+      display_extenders: {  }
+      path: faq-categories-inline-new-page
+      style_plugin: list
+      style_options:
+        grouping: field_category
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

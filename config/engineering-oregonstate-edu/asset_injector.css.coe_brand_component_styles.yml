@@ -1,0 +1,1890 @@
+uuid: 9b714656-e590-445e-99c3-2636e09635d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_brand_component_styles
+label: 'COE Brand Component Styles'
+code: |-
+  /*
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  	--COE Brand Component Styles--
+  	
+  	Global component styling. Created 4/3/2025.
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  */
+
+  /*================================================================================================================================================================
+  	SECTION: Light Blue Color Box with Text (Originally known as "Campus Messaging" block)
+  	
+  	PURPOSE: Light blue background behind text
+  	soci
+  	INSTRUCTIONS:
+  		1. Put "campus-messaging" as a class on the block
+  		2. The block should have an h5 headline, a body section, and a link, wrapped in a <p> tag, and that <p> tag should have a "black-arrow-link" class
+  	==============================================================================================================================================================*/
+  	
+  .campus-messaging .block__content {
+    background: rgba(198, 218, 231, 0.2);
+    padding: 50px;
+  }
+
+  .campus-messaging h5 {
+  	margin-bottom: 10px;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: 3 Icon Features Section (Originally known as "Rankings" block)
+  	
+  	PURPOSE: A section containing 3 horizontally arranged items with icons.
+  	
+  	INSTRUCTIONS:
+  		1  Apply the class "icon-features" to a div that wraps all the icon items.
+      2. Each icon item should be wrapped in a div and consist of a image, a title, and a description.
+  	==============================================================================================================================================================*/
+
+  /* Flex container for icons */
+  .icon-features {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 20px;
+    text-align: center;
+    
+    flex-wrap: wrap;
+  }
+
+  /* Each icon item should be a vertical layout */
+  .icon-features > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 30px 0px 30px;
+    
+    flex: 1 1 30%; /* flex-grow, flex-shrink, flex-basis */
+  }
+
+  @media (max-width: 991px) {
+    .icon-features > div {
+      flex: 1 1 47%;
+      max-width: 47%;
+    }
+  }
+
+  /* Mobile: 1 per row */
+  @media (max-width: 767px) {
+    .icon-features > div {
+      flex: 1 1 100%;
+      max-width: 100%;
+    }
+  }
+
+  /* Subtext typography */
+  .icon-features-text {
+  	font-family: Stratum2Web;
+  	font-size: 24px;
+  	font-weight: 900;
+  	line-height: 130%;
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  }
+
+  .icons-features-subtext {
+  	font-size: 12px;
+  	font-style: italic;
+  	font-weight: 300;
+  	line-height: 130%; 
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Video with Text Layout and background pattern
+  	
+  	PURPOSE: Styling for video with descriptive text
+  	
+  	INSTRUCTIONS:
+      1. Create a section and add "video-text" to the container wrapper classes.
+      2. Add three blocks: 
+         - First block: pattern image
+         - Second block: video
+         - Third block: text
+      3. Add "video-text-subtext" to the text block’s attributes.
+  	==============================================================================================================================================================*/
+
+  /* Hides extra space from background image div */
+  .video-text .block:first-of-type {
+  	height: 0px;
+  } 
+
+  /* Utilizing an old CSS2 trick to responsively size the frame (padding-bottom percent is calculated based on width) 
+     Video is 2/3 of width and centered                                                                               */
+  .video-text .field--name-field-media-oembed-video .field__item {
+    position: relative;
+    width: 66%;
+    margin: 0 auto;
+    height: 0;
+    padding-bottom: 37.25%;
+  }
+
+  /* Adjust the iframe so it's rendered in the outer-width and outer-height of it's parent */
+  .video-text iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Text hangs from right of video */
+  @media screen and (min-width: 992px) {
+  	.video-text-subtext {
+  		width: 66%;
+      margin: auto;
+      padding-left: 15%;
+  	}
+  }
+
+  /* Full size on tablet/mobile */
+  @media screen and (max-width: 991px) {
+  	.video-text .field--name-field-media-oembed-video .field__item {
+  	    width: 100%;
+  	    padding-bottom: 56.3%;
+  	}
+  }
+
+
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+  	.video-text-subtext {
+  		width: 75%;
+      margin: 0 0 0 auto;
+      padding-left: 0%;
+    }
+  }
+  /***************************************
+  	Background Image Layout
+  	*************************************/
+  	
+  /* Position background image behind video */
+  .video-text img {
+  	object-position: 0% 0%;
+  	margin-bottom: -50%;
+  	min-width: 100%;
+  	width: 100%;
+  }
+
+  /* Large Tablet Sizing */
+  @media screen and (max-width: 1199px) {
+  	.video-text img {
+  		object-fit: contain;
+  		min-width: 100vw;
+  		width: 100vw;
+  		margin-left: calc(-1* calc(calc(100vw - 100%) / 2));
+  	}
+  }
+
+  /* Hide background on mobile/tablet */
+  @media (max-width: 991px) {
+  	.video-text img {
+  		display: none;
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Centered align column override
+  	
+  	PURPOSE: Override column to start align for tablet screensize.
+  	
+  	INSTRUCTIONS:
+      1. Add "center-align-override" to the row attributes/classes.
+  	==============================================================================================================================================================*/
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    .center-align-override.osu-align-items-center {
+      align-items: start !important;
+    }
+  }
+
+  /************************************************************************
+
+  	SECTION: Signature Event Cards 
+  	
+  	PURPOSE: Created as a block type and can be reused easily for other pages
+  	
+  	INSTRUCTIONS:
+  		1. Insert "Signature Event Card" Block into Section
+      2. Ideally used in Column Setups
+  ************************************************************************/
+
+  .coe-nav-card-container {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: space-between;
+  }
+
+  .coe-nav-card {
+  	width: calc(50% - 10px);
+  }
+
+  .block-inline-blockcoe-nav-card,
+  .coe-nav-card {
+      border-radius: 5px;
+      background: #FFF;
+      box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+      transition: .3s;
+      position: relative;
+      padding-bottom: 50px;
+  }
+
+  .block-inline-blockcoe-nav-card {
+  	height: 100%;
+  }
+
+  /* Targets block__content Div*/
+  .block-inline-blockcoe-nav-card > div {
+  	height: 100%;
+  }
+
+  /*.block-inline-blockpeople-card > div {*/
+  /*	height: 100%;*/
+  /*}*/
+
+  @media screen and (max-width: 767px) {
+  	.block-inline-blockcoe-nav-card,
+  	.block-inline-blockpeople-card,
+  	.coe-nav-card {
+  		height: auto;
+  	}
+  	.coe-nav-card {
+  		width: 100%;
+  		margin-bottom: 20px;
+  	}
+  }
+
+  /* Nav Card Hover Effect */
+  .block-inline-blockcoe-nav-card:hover,
+  .coe-nav-card:hover,
+  .people-card-container:hover,
+  .creedo-people:hover{
+  	  background: #F9FCFD !important;
+      transition: .3s;
+      box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  /* Nav Card Image */ 
+  .field--name-field-coe-nav-card-image img,
+  .field--name-field-people-card-photo img,
+  .coe-nav-card img {
+      border-radius: 5px 5px 0 0;
+      object-fit: cover;
+  }
+
+  .field--name-field-people-card-photo img {
+  	width: 100%;
+  }
+
+  .field--name-field-coe-nav-card-image img {
+  	height: 350px;
+  }
+
+  .coe-nav-card img {
+  	height: 250px;
+  }
+
+  .field--name-field-coe-nav-card-image img {
+  	border-bottom: solid 6px #D73F09;
+  }
+
+  /* Nav Card Body */
+  .field--name-field-coe-nav-card-body,
+  .people-card-body,
+  .coe-nav-card-body {
+  		padding: 30px 30px 50px;
+  }
+
+  /* Text Container Wrapped in a Div */
+  .nav-card-text-container,
+  .coe-nav-card-text-container {
+  	display: flex;
+  	flex-direction: column;
+  	justify-content: space-between;
+  }
+
+  .nav-card-text-container {
+  	height: calc(100% - 350px);
+  }
+
+  .coe-nav-card-text-container {
+  	height: calc(100% - 250px);
+  }
+
+  .coe-nav-card .orange-arrow-link {
+  	padding-left: 30px;
+  }
+
+  .coe-nav-card .orange-arrow-link a::before {
+  	content: "";
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	bottom: 0;
+  	right: 0;
+  }
+
+  /************************************************************************
+
+  Nav Card Link Arrow Link
+
+  ************************************************************************/
+
+  /*This makes the whole card clickable*/
+
+  .field--name-field-coe-nav-card-link a::before {
+  	  content: "";
+  	  position: absolute;
+  	  top: 0px;
+  	  right: 0px;
+  	  bottom: 0px;
+  	  left: 0px;
+  }
+
+
+  .field--name-field-coe-nav-card-link a {
+  	  font-family: Stratum2Web;
+  		font-size: 20px;
+  		font-style: normal;
+  		font-weight: 500;
+  		line-height: normal;
+  		letter-spacing: 1px;
+  		text-transform: uppercase;
+  		color: #D73F09;
+  		text-decoration: none !important;
+  		background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+  	  background-position: 100%;
+  	  background-repeat: no-repeat;
+  	  background-size: 20px;
+  	  padding-right: 25px;
+  	  padding-left: 30px;
+  	  margin-right: 10px;
+  	  margin-top: 18px;
+  	  transition: 0.2s ease;
+  	  border-bottom: none;
+  }
+
+
+  .field--name-field-coe-nav-card-link a:hover {
+  	padding-right: 35px;
+  	margin-right: 0px;
+  	border-bottom: none;
+  }
+
+   /*Orange Arrow Links Active State */
+
+  .field--name-field-coe-nav-card-link a:focus,
+  .field--name-field-coe-nav-card-link a:active {
+  	background-color: transparent !important;
+  	color: #BE3706 !important;
+  	padding-right: 35px !important;
+  	border-bottom: none !important;
+  }
+
+
+
+  /* Testing Grad Cards */
+
+
+  /*This makes the whole card clickable*/
+  .field--name-field-people-link  a::before {
+  	  content: "";
+  	  position: absolute;
+  	  top: 0px;
+  	  right: 0px;
+  	  bottom: 0px;
+  	  left: 0px;
+  }
+
+  .field--name-field-people-link  a{
+  	  font-family: Stratum2Web;
+  		font-size: 20px;
+  		font-style: normal;
+  		font-weight: 500;
+  		line-height: normal;
+  		letter-spacing: 1px;
+  		text-transform: uppercase;
+  		color: #D73F09;
+  		text-decoration: none !important;
+  		background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+  	  background-position: 100%;
+  	  background-repeat: no-repeat;
+  	  background-size: 20px;
+  	  /*padding-right: 25px;*/
+  	  /*padding-left: 30px;*/
+  	  /*margin-right: 10px;*/
+  	  /*margin-top: 18px;*/
+  	  transition: 0.2s ease;
+  	  border-bottom: none;
+  }
+
+  .field--name-field-people-link  a::hover{
+  	padding-right: 35px;
+  	margin-right: 0px;
+  	border-bottom: none;
+  }
+
+   /*Orange Arrow Links Active State */
+   .field--name-field-people-link a:focus,
+   .field--name-field-people-link a:active{
+  	background-color: transparent !important;
+  	color: #BE3706 !important;
+  	padding-right: 35px !important;
+  	border-bottom: none !important;
+  }
+
+
+
+
+  /**/
+
+
+
+  /** Drop Colors for Image **/
+  /** Box Shadow Guide:
+   * box-shadow: Left/Right Top/Bottom SPREAD Color; Positive numbers represent right and bottom; Negative ones left and top;
+  **/
+
+  /************************************************************************
+
+  	SECTION: Image Box Shadow Color
+  	
+  	PURPOSE: Applies a box shadow color to images
+  	
+  	INSTRUCTIONS:
+  		1. Insert class name (ex. img-bottom-left-hop-bine) into block 
+  		2. Configure > Manage Attributes > Block content attributes
+  ************************************************************************/
+
+  /** Right Bottom **/
+  .img-bottom-right-yellow .field__item img {
+  	box-shadow: 15px 15px 0 #FFB500;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+  .img-bottom-right-orange .field__item img {
+  	box-shadow: 15px 15px 0 #d73f09;
+  	margin-bottom: 25px;
+  }
+  .img-bottom-right-seafoam .field__item img {
+  	box-shadow: 15px 15px 0 #B8DDE1;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+  .img-bottom-right-hop-bine .field__item img {
+  	box-shadow: 15px 15px 0 #AA9D2E;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+  .img-bottom-right-blue .field__item img {
+  	box-shadow: 15px 15px 0 #00859B;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+  .img-bottom-right-pine-stand .field__item img {
+  	box-shadow: 15px 15px 0 #4A773C;
+  	margin-bottom: 25px;
+  }
+  .img-bottom-right-solar-flare .field__item img {
+  	box-shadow: 15px 15px 0 #D3832B;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+  .img-bottom-right-rogue-wave .field__item img {
+  	box-shadow: 15px 15px 0 #0D5257;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+
+
+
+  /** Left Bottom **/
+  .img-bottom-left-yellow .field__item img {
+  	box-shadow: -15px 15px 0 #FFB500;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  	margin-left: 15px;
+  }
+  .img-bottom-left-orange .field__item img {
+  	box-shadow: -15px 15px 0 #d73f09;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  	margin-left: 15px;
+  }
+  .img-bottom-left-seafoam .field__item img {
+  	box-shadow: -15px 15px 0 #B8DDE1;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  	margin-left: 15px;
+  }
+  .img-bottom-left-hop-bine .field__item img {
+    box-shadow: -15px 15px 0 #AA9D2E;
+    margin-bottom: 25px;
+    width: calc(100% - 15px);
+    margin-left: 15px;
+  }
+  .img-bottom-left-blue .field__item img {
+  	box-shadow: -15px 15px 0 #00859B;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  	margin-left: 15px;
+  }
+
+  .img-bottom-left-solar-flare .field__item img {
+  	box-shadow: -15px 15px 0 #D3832B;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  	margin-left: 15px;
+  }
+
+  .img-bottom-left-stratosphere .field__item img {
+  	box-shadow: -15px 15px 0 #006A8E;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  	margin-left: 15px;
+  }
+
+  .img-bottom-left-rogue-wave .field__item img {
+  	box-shadow: -15px 15px 0 #0D5257;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  	margin-left: 15px;
+  }
+
+
+  /** Right Top **/
+  .img-top-right-green .field__item img {
+  	box-shadow: 15px -15px 0 #4A773C;
+  	margin-top: 25px;
+  }
+  .img-top-right-hop-bine .field__item img {
+  	box-shadow: 15px -15px 0 #AA9D2E;
+  	margin-top: 25px;
+  }
+
+  /** Left Top **/
+  .img-top-left-yellow .field__item img {
+  	box-shadow: -15px -15px 0 #FFB500;
+  	margin-top: 25px;
+  }
+  .img-top-left-orange .field__item img {
+  	box-shadow: -15px -15px 0 #d73f09;
+  	margin-top: 25px;
+  }
+
+  /*@media (width > 480px) {*/
+  /*	.img-top-right-orange img,*/
+  /*	.img-top-right-seafoam img,*/
+  /*	.img-top-right-hop-bine img*/
+  /*	.img-top-right-green img*/
+  /*	.img-bottom-left-yellow img*/
+  /*	.img-bottom-right-blue img */
+  /*	.img-top-left-orange img {*/
+  /*		margin: 20px;*/
+  /*	}*/
+  /*}*/
+
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Background Colors
+  	
+  	Background color options
+  	----------------------------------------------------------------------------*/
+
+  .coe-bg-moondust {
+  	background-color: #F4F8FA !important;
+  }
+
+  .coe-bg-star-canvas {
+  	background-color: #003B5C !important;
+  }
+
+  .coe-bg-dark {
+  	background-color: #212529 !important;
+  }
+
+  .coe-bg-seafoam-30 {
+  	background-color: #EAF5F6 !important;
+  }
+
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Social Media Icons
+  	
+  	Styling for social media icons
+  	----------------------------------------------------------------------------*/
+  	
+  .social-media-icons a,
+  .social-media-icons a:hover {
+  	border-bottom: none;
+  }
+
+  /** Social Media icons **/
+  main .social-media-icons a:active,
+  main .social-media-icons a:focus {
+  	background: white !important;
+  	border: none !important;
+  }
+
+  /* Spread social media icons across container */
+  .social-media-icons {
+  	display: flex;
+  	gap: 40px;
+  }
+
+  /* Set icon button appearence */
+  .social-media-icons .fa-2x{
+  	background-color: transparent;
+      border-radius: 50%;
+      width: 44px;  /* Set a fixed width */
+      height: 44px; /* Set equal height */
+      display: flex; /* Use flexbox for centering */
+      align-items: center; /* Center vertically */
+      justify-content: center; /* Center horizontally */
+      transition: all 0.5s ease;
+      margin-left: -10px;
+  }
+
+  /* Circular orange background on hover */
+  .social-media-icons .fa-2x:hover,
+  .social-media-icons .fa-2x:focus {
+      background-color: #d73f09;
+  	color: white;
+  }
+
+  /* Maintain hover style through active state */
+  .social-media-icons .fa-2x:active {
+  	background-color: #d73f09;
+  	color: white;
+  }
+
+  /* Larger icon size on desktop */
+  @media screen and (min-width: 1200px) {
+  	.social-media-icons .fa-2x {
+  		font-size: 24px;
+  	}
+  }
+
+  /************************************************************************
+
+  	SECTION: Instagram Video Embed
+  	
+  	PURPOSE: Sets width for embed 
+  	
+  	INSTRUCTIONS:
+  		1. Wrap instagram videos in their own div
+  		2. Wrap those divs in another div with the class "instagram-embed-reels"
+  ************************************************************************/
+
+  .instagram-embed-reels {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: space-between;
+  }
+
+  .instagram-embed-reels > div {
+  	width: calc(50% - 10px);
+  }
+
+  @media screen and (max-width: 991px) {
+  	.instagram-embed-reels > div {
+  		width: 100%;
+  	}
+  }
+
+  .card-grid{
+  	display: flex;
+    flex-wrap: wrap;
+    
+  }
+
+  .people-card-container{
+  	/*width: 97% !important;*/
+  	height: 100%;
+  	flex-shrink: 0;
+  	border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.08);
+    /*border: 1px solid var(--Useful-Light-Grey, #ECEDEE);*/
+    position: relative;
+    transition: .2s ease;
+    padding-bottom: 50px;
+  }
+
+  .col-12:has(> div > .people-card-container) { 
+  	height: auto; 
+  	margin-bottom: 30px;
+  	padding: 0 10px;
+  	/*margin-left: -10px;*/
+  	/*margin-right: -10px;*/
+  }
+
+  div:has(> .people-card-container), .people-card-container { 
+  	height: 100%; 
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Hero Section Hide Background Image
+  	
+  	PURPOSE: Hide the hero section background image when hero photo is present.
+  	==============================================================================================================================================================*/
+  main:has( .field--name-field-sc-hero-image) .sc-hero-image-background {
+  	display: none;
+  }
+
+
+  /*================================================================================================================================================================
+  	SECTION: TOC Module Block Styling
+  	
+  	PURPOSE: Style the Toc.js module block
+  	==============================================================================================================================================================*/
+  	
+  .h2.toc-title {
+  	color: #000;
+  	
+  	/* H3 */
+  	font-family: Stratum2Web;
+  	font-size: 36px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 46.8px */
+  	margin-bottom: 24px;
+  }
+
+  ul > .toc-h3, ul > .toc-h2 {
+  	margin: 0 !important;
+  }
+
+  .toc-js ul {
+  	margin-bottom: 0;
+  }
+
+  .toc-js ul > li {
+  	padding: 0 !important;
+  	border: none !important;
+  }
+
+  .toc-js ul > li a {
+  	padding-top: 24px;
+  	padding-bottom: 24px;
+  	border: none !important;
+  	color: #000 !important;
+  	
+  	/* H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  	transition: 0.3s;
+  }
+
+  .toc-js ul > li a:hover, .toc-js ul > li a:active {
+  	background: rgba(198,218,231,0.3) !important;
+  }
+
+  .toc-js ul > .toc-active a {
+  	padding-left: 24px;
+  }
+
+  main span[id^="toc"] + h2, main span[id^="toc"] + h3 {
+  	border-bottom: none;
+  }
+
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .toc-js.sticky.is-sticked {
+      position: relative !important;
+    }
+  }
+
+  @media screen and (max-width: 1199px) {
+  	.toc-js {
+  		margin-bottom: 50px;
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Video Block Styling
+  	
+  	PURPOSE: Style the Video block (paragraph type)
+  	==============================================================================================================================================================*/
+  	
+  .paragraph--type--coe-par-video .field--name-field-media-oembed-video .field__item {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* The height of the item will now be 56.25% of the width. */
+  }
+
+  .paragraph--type--coe-par-video iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+  	
+  	
+  /*================================================================================================================================================================
+  	SECTION: Simple Column Related Resources cards
+  	
+  	PURPOSE: Style the cards for Related Resources
+  	==============================================================================================================================================================*/
+  	
+  .simple-column-cards{
+  	border-radius: 5px;
+  	border: 1px solid var(--Useful-Light-Grey, #F8F9FA);
+  	background: var(--Primary-Bucktooth-White, #FFF);
+  	box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  	transition: 0.2s;
+  	position: relative;
+  }
+
+  .simple-column-cards:hover{
+  	border-radius: 5px;
+  	border: 1px solid var(--Useful-Grey-Shades-Lightest-Grey, #F8F9FA);
+  	background: var(--useful-seafoam-shades-seafoam-8, #F9FCFD);
+  	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+  .simple-column-cards:active{
+  	border-radius: 5px;
+  	border: 1px solid var(--useful-seafoam-shades-seafoam-20, #F1F8F9);
+  	background: var(--useful-seafoam-shades-seafoam-20, #F1F8F9);
+  }
+
+  .card-body {
+    position: relative;
+    background-image: url('/sites/engineering.oregonstate.edu/files/2025-07/72e8d638766a0ae28dcb239edda79a0ae4b85070.png');
+    background-image: url('/sites/engineering.oregonstate.edu/files/2025-07/pattern.svg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain;
+  	padding: 30px;
+    z-index: 0;
+  }
+
+  .card-text{
+  	padding-top: 15px;
+  }
+
+  .simple-column-cards .orange-arrow-link{
+  	padding-top: 35px;
+  }
+
+  .simple-column-cards .orange-arrow-link a::before {
+  	content: "";
+  	position: absolute;
+  	inset: 0;
+  }
+
+  .related-resources h2 {
+  	color: #d73f09;
+  	margin-bottom: 55px;
+  }
+
+  .related-resources .more-link {
+  	border: none;
+  	width: 100%;
+  	padding: 0;
+  	text-align: left;
+  }
+
+  .related-resources:has(#views-bootstrap-related-resources-simple-columns-filtered-block-1 > :nth-child(2)) .more-link {
+  	text-align: center;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.related-resources .more-link {
+  		text-align: center;
+  	}
+  }
+
+  .related-resources .more-link a {
+  	border: 2px solid black;
+  	padding: 16px 36px;
+  	transition: 0.3s;
+  }
+
+  .related-resources .more-link a:hover, .related-resources .more-link a:active, .related-resources .more-link a:focus {
+  	color: #FFF;
+  	background-color: black;
+  }
+
+  .related-resources {
+  	display: none;
+  }
+
+  .related-resources:has(#views-bootstrap-related-resources-simple-columns-filtered-block-1 > :first-child) {
+  	display: block;
+  }
+
+
+  /*================================================================================================================================================================
+  	SECTION: COE Image Card
+  	
+  	PURPOSE: Global card styling option for cards with an image.
+  	
+  	INSTRUCTIONS: Use following HTML format
+  	
+  	<div class="coe-image-card">
+  		<div class="coe-image-card-image">
+  			<a href="{link}">{image}</a>
+  		</div>
+  		<div class="coe-image-card-body">
+  			<h5 class="coe-image-card-title">
+  				<a href="{link}">{title}</a>
+  			</h5>
+  		</div>
+  	</div>
+  	
+  	Parent "Section" container should be 1-column, and Column 1 should get the "coe-image-card-grid" class on it.
+  	
+  	Blocks with the above HTML block should get the "col-12 col-md-6 col-xl-4" classes in their attributes.
+  	
+  	See "https://engineering.oregonstate.edu/alumni-partners/alumni-magazine/alumni-magazine-archive" for example (this page uses slightly different classnames).
+  	==============================================================================================================================================================*/
+
+  .coe-image-card {
+  	width: 97% !important;
+  	height: auto !important;
+  	flex-shrink: 0;
+  	border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.08);
+    border: 1px solid var(--Useful-Light-Grey, #ECEDEE);
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .coe-image-card:hover {
+  	background: #F9FCFD !important;
+  	transition: .3s;
+  	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .coe-image-card-image img {
+    width: 100% !important;
+    height: auto !important;
+    object-fit: cover;
+    display: block;
+  }
+
+  .coe-image-card-title{
+    margin: 30px;
+    font-size: 20px !important;
+    font-weight: 600;
+    color: #000;
+    font-family: "Open Sans";
+    text-decoration: none !important;
+    text-align: left;
+  }
+
+  .coe-image-card-title a{
+  	color:black;
+  	text-decoration: none !important;
+  }
+
+  .coe-image-card-grid {
+  	display: flex;
+    flex-wrap: wrap;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Impact Report Stylings
+  	
+  	PURPOSE: Components originally built for the 2025 Impact Report, to be reused anywhere.
+  	==============================================================================================================================================================*/
+
+  .full-width-hero {
+      background-size: cover;
+      background-position: center;
+  }
+
+  .powering-progress-hero {
+      background-image: linear-gradient(90deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.24) 60.12%, rgba(0, 0, 0, 0.00) 100%), url(/sites/engineering.oregonstate.edu/files/2025-08/ImpactReport-2025-hero.jpg);
+  }
+
+  .move-up-card {
+  	border-radius: 5px;
+  	border: 1px solid #ECEDEE;
+  	background: #FFF;
+  	box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  @media screen and (min-width: 992px) {
+  	.move-up-card {
+  		margin-top: -50px !important;
+  		z-index: 2;
+  	}
+  }
+
+  .seafoam-img-bg, .moondust-img-bg, .hop-bine-img-bg, .high-tide-img-bg {
+  	margin: 15px 0 0 15px;
+  }
+
+  .seafoam-img-bg img, .moondust-img-bg img, .hop-bine-img-bg img, .high-tide-img-bg img {
+  	margin: -15px 15px 15px -15px;
+  }
+
+  .seafoam-img-bg-mirror, .moondust-img-bg-mirror, .hop-bine-img-bg-mirror, .high-tide-img-bg-mirror {
+  	margin: 15px 15px 0 0;
+  }
+
+  .seafoam-img-bg-mirror img, .moondust-img-bg-mirror img, .hop-bine-img-bg-mirror img, .high-tide-img-bg-mirror img {
+  	margin: -15px -15px 15px 15px;
+  }
+
+  .seafoam-img-bg, .seafoam-img-bg-mirror {
+  	background: var(--Secondary-Seafoam, #B8DDE1);
+  }
+
+  .moondust-img-bg, .moondust-img-bg-mirror {
+  	background: var(--Secondary-Moondust, #C6DAE7);
+  }
+
+  .hop-bine-img-bg, .hop-bine-img-bg-mirror {
+  	background: var(--Secondary-Hop-Bine, #AA9D2E);
+  }
+
+  .high-tide-img-bg, .high-tide-img-bg-mirror {
+  	background: var(--Secondary-High-Tide, #00859B);
+  }
+
+  .story-card-container {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: space-between;
+  }
+
+  .story-card, .simple-card {
+  	width: calc(33% - 13px);
+  	margin-top: 50px;
+  	position: relative;
+  	border-radius: 5px;
+  	border: 1px solid var(--Useful-Light-Grey, #ECEDEE);
+  	background: var(--Primary-Bucktooth-White, #FFF);
+  	box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .story-card.lg-story-card {
+  	width: calc(50% - 10px);
+  }
+
+  .story-card:hover,
+  .simple-card:hover {
+    border: 1px solid #F8F9FA !important;
+    background-color: #F9FCFD !important;
+    transition: .3s !important;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .story-card-image img {
+  	width: 100%;
+  	height: 250px;
+  	object-fit: cover;
+  	border-top-right-radius: 5px;
+  	border-top-left-radius: 5px;
+  }
+
+  .story-card-text {
+  	padding: 30px;
+  	display: flex;
+  	flex-direction: column;
+  	height: calc(100% - 250px);
+  }
+
+  .simple-card {
+  	padding: 30px;
+  	height: auto;
+  	display: flex;
+  	flex-direction: column;
+  }
+
+  .story-card-title,
+  .simple-card-title {
+  	font-size: 20px;
+  	font-weight: 600;
+  }
+
+  .story-card .orange-arrow-link,
+  .simple-card .orange-arrow-link {
+  	flex-grow: 1;
+  	display: flex;
+  	flex-direction: column-reverse;
+  }
+
+  .story-card .orange-arrow-link a,
+  .simple-card .orange-arrow-link a {
+  	width: max-content;
+  }
+
+  .story-card .orange-arrow-link a::before,
+  .simple-card .orange-arrow-link a::before {
+  	content: "";
+  	position: absolute;
+  	inset: 0;
+  }
+
+  .story-card .orange-arrow-link a:hover,
+  .simple-card .orange-arrow-link a:hover {
+  	cursor: pointer;
+  }
+
+  .col-12:has(> div > span > .coe-ambassador-card) {
+  	width: calc(33% - 13px);
+  }
+
+  .grid:has(> div > div > span > .coe-ambassador-card) {
+  	column-gap: 20px;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.story-card, .story-card.lg-story-card, .simple-card, .col-12:has(> div > span > .coe-ambassador-card) {
+  		width: 100%;
+  	}
+  }
+
+  .coe-ambassador-text {
+  	padding: 30px;
+  }
+
+  .coe-ambassador-card {
+  	border-radius: 5px;
+  	border: 1px solid var(--Useful-Light-Grey, #F8F9FA);
+  	background: var(--Primary-Bucktooth-White, #FFF);
+  	box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.08);
+  	height: 100%;
+  	position: relative;
+  	display: flex;
+  	flex-direction: column;
+  	transition: 0.3s;
+  }
+
+  .coe-ambassador-card:has( .coe-ambassador-bio a:hover) {
+  	background: var(--useful-seafoam-shades-seafoam-8, #F9FCFD);
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .coe-ambassador-card img {
+  	border-top-left-radius: 5px;
+  	border-top-right-radius: 5px;
+  	width: 100%;
+  }
+
+  .views-field:has(> .field-content > .coe-ambassador-card) {
+  	height: 100%;
+  }
+
+  .coe-ambassador-pronouns,
+  .coe-ambassador-major,
+  .coe-ambassador-home-town {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: "Open Sans";
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 130%; /* 18.2px */
+  }
+
+  .coe-ambassador-pronouns,
+  .coe-ambassador-home-town {
+  	margin-bottom: 30px;
+  }
+
+  .coe-ambassador-label {
+  	color: var(--Secondary-High-Tide, #00859B);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  	margin-bottom: 10px;
+  	margin-top: 20px;
+  }
+
+  .coe-ambassador-text {
+  	display: flex;
+  	flex-direction: column;
+  	justify-content: space-between;
+  	flex-grow: 1;
+  	gap: 12px;
+  }
+
+  .coe-ambassador-bio a::before {
+  	content: "";
+  	position: absolute;
+  	top: 0;
+  	left: 0;
+  	right: 0;
+  	bottom: 90px;
+  }
+
+
+  /**********************
+  AI Seminars Page
+  ***********************/
+
+  /*light blue background*/
+  .background-moondust > .container{
+  	background: #F4F8FA;
+  	border-left: 12px solid white;
+  	border-right: 12px solid white;
+  }
+
+  /*navy blue background*/
+  .background-navy > .container > .layout{
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2025-08/bg.png); 
+  	background-position: center; 
+  	background-repeat: no-repeat; 
+  	background-size: cover;
+  	border-left: 12px solid white;
+  	border-right: 12px solid white;
+  }
+
+
+  /*
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  	--COE Brand Simple Columns Styling--
+  	
+  	Styling for Simple Columns content type specifically. Created 7/2/2025.
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  */
+
+  @media screen and (min-width: 768px) {
+  	.paragraph--type--coe-article-module-body ul {
+  		width: 67%;
+  	}
+  }
+
+  @media screen and (max-width: 1199px) {
+      .toc-js {
+           margin-bottom: 0 !important; 
+      }
+  }
+
+  .field--name-field-sc-hero-button a {
+  	width: max-content;
+  }
+
+  .paragraph--type--coe-article-module-body h2 {
+  	margin-top: 120px;
+  	margin-bottom: 30px;
+  }
+
+  .paragraph--type--coe-article-module-body ul {
+  	margin-top: 30px;
+  	margin-bottom: 30px;
+  }
+
+  .paragraph--type--coe-article-module-body h3 {
+  	margin-top: 50px;
+  }
+
+  .paragraph--type--coe-article-module-body h4 {
+  	margin-top: 30px;
+  }
+
+  .paragraph--type--coe-article-module-body h5,
+  .paragraph--type--coe-article-module-body .h5 {
+  	color: #D73F09;
+  	margin-top: 30px;
+  }
+
+  .paragraph--type--coe-article-module-body figcaption,
+  .paragraph--type--coe-article-module-body figcaption a {
+  	/* Main/Notes */
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: italic;
+  	font-weight: 300;
+  	line-height: 130%; /* 15.6px */
+  }
+
+  .paragraph--type--coe-article-module-body figcaption {
+  	color: #000;
+  }
+
+  .paragraph--type--coe-article-module-body figcaption a {
+  	color: #D73F09;
+  	text-decoration: none;
+  	transition: 0.3s;
+  	border-bottom: none;
+  }
+
+  .paragraph--type--coe-article-module-body figcaption a:hover {
+  	text-decoration: underline !important;
+  	border-bottom: none;
+  }
+
+  .paragraph--type--coe-modular-article > .field ul > li:last-child {
+  	padding-bottom: 0 !important;
+  }
+
+  .paragraph--type--coe-modular-article img {
+  	margin-top: 50px;
+  }
+
+  .paragraph--type--coe-modular-article .paragraph--type--coe-par-video img {
+  	margin-top: 0;
+  }
+
+  .block-toc-js:has( .toc-js nav li) {
+  	margin-top: 120px;
+  }
+
+  .block-toc-js .toc-active a {
+  	padding-right: 24px;
+  }
+  /*******************************************
+   Quote Block
+   ********************************************/
+
+  .paragraph--type--coe-quote .field--name-field-coe-quote-style {
+  	display: none;
+  }
+
+  .paragraph--type--coe-quote {
+  	margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 70px;
+  }
+
+  .orange-video-quote {
+  	padding: 70px;
+  	display: flex;
+  	justify-content: space-between;
+  	align-items: center;
+  	flex-wrap: wrap;
+  	position: relative;
+  }
+
+  .orange-video-quote::before {
+    content: url("/sites/engineering.oregonstate.edu/files/2025-02/quote_icon.svg");
+    position: absolute;
+    top: -24px;
+    right: 30px;
+  }
+
+  .orange-video-quote-text {
+  	width: calc(33% - 15px);
+  }
+
+  .orange-video-quote-video {
+  	width: calc(67% - 15px);
+  }
+
+  .orange-video-quote {
+  	border: 3px solid #D73F09;
+  	background-color: #FFF;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.orange-video-quote-text, .orange-video-quote-video {
+  		width: 100%;
+  	}
+  	.orange-video-quote-text {
+  		margin-bottom: 50px;
+  	}
+  	.orange-video-quote {
+  		padding: 50px 20px;
+  	}
+  	.orange-video-quote::before {
+  		content: url("/sites/engineering.oregonstate.edu/files/2025-09/mobile-quote.svg");
+  		top: -18px;
+  	}
+  }
+
+  .paragraph--type--coe-quote:has( .blue-primary-yellow-secondary) {
+  	border: 2px solid #003B5C;
+  	background-color: #003B5C;
+  }
+
+  .paragraph--type--coe-quote:has( .white-primary-orange-secondary) {
+  	border: 2px solid #D73F09;
+  	background-color: #FFF;
+  }
+
+  /* Quotation typography */
+
+  .paragraph--type--coe-quote:has(.blue-primary-yellow-secondary) .field--name-field-coe-quote-quotation,
+  .paragraph--type--coe-quote:has(.white-primary-orange-secondary) .field--name-field-coe-quote-quotation,
+  .orange-video-quote .orange-video-quote-quotation {
+    font-style: italic;
+    font-weight: 600;
+    line-height: 150%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .paragraph--type--coe-quote:has(.blue-primary-yellow-secondary) .field--name-field-coe-quote-quotation {
+    color: #FFF;
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .paragraph--type--coe-quote:has(.white-primary-orange-secondary) .field--name-field-coe-quote-quotation,
+  .orange-video-quote .orange-video-quote-quotation {
+    color: #000;
+    font-size: 32px;
+    margin-bottom: 30px;  
+  }
+
+  /* Insert Quotation Icon */
+
+  .paragraph--type--coe-quote:has( .white-primary-orange-secondary) .field--name-field-coe-quote-quotation::before {
+    text-align: right;
+    content: url("/sites/engineering.oregonstate.edu/files/2025-02/quote_icon.svg");
+    margin-top: -95px;
+  }
+
+  .paragraph--type--coe-quote:has( .blue-primary-yellow-secondary) .field--name-field-coe-quote-quotation::before {
+    text-align: right;
+    content: url("/sites/engineering.oregonstate.edu/files/2024-11/quote-icon.svg");
+    margin-top: -95px;
+  }
+
+  /* Quotation Author Name typography */
+
+  .paragraph--type--coe-quote:has(.blue-primary-yellow-secondary) .field--name-field-coe-quote-attribution-name,
+  .paragraph--type--coe-quote:has(.white-primary-orange-secondary) .field--name-field-coe-quote-attribution-name,
+  .orange-video-quote .orange-video-quote-author {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    display: inline;
+  }
+
+  .paragraph--type--coe-quote:has(.blue-primary-yellow-secondary) .field--name-field-coe-quote-attribution-name {
+    color: #FFB500;
+  }
+
+  .paragraph--type--coe-quote:has(.white-primary-orange-secondary) .field--name-field-coe-quote-attribution-name,
+  .orange-video-quote .orange-video-quote-author {
+    color: #D73F09;
+  }
+
+  /* Quotation description styling */
+
+  .paragraph--type--coe-quote:has( .blue-primary-yellow-secondary) .field--name-field-coe-quote-attribution-desc {
+    color: #FFF;
+  }
+
+  .paragraph--type--coe-quote:has( .blue-primary-yellow-secondary) .field--name-field-coe-quote-attribution-desc p,
+  .paragraph--type--coe-quote:has( .blue-primary-yellow-secondary) .field--name-field-coe-quote-attribution-desc,
+  .paragraph--type--coe-quote:has( .white-primary-orange-secondary) .field--name-field-coe-quote-attribution-desc p,
+  .paragraph--type--coe-quote:has( .white-primary-orange-secondary) .field--name-field-coe-quote-attribution-desc {
+      display: inline;
+  } 
+
+  .paragraph--type--coe-quote:has( .blue-primary-yellow-secondary) .field--name-field-coe-quote-attribution-name::after,
+  .paragraph--type--coe-quote:has( .white-primary-orange-secondary) .field--name-field-coe-quote-attribution-name::after {
+      content: ', ';
+  }
+
+  @media screen and (max-width: 767px) {
+    .paragraph--type--coe-quote:has( .blue-primary-yellow-secondary),
+    .paragraph--type--coe-quote:has( .white-primary-orange-secondary) {
+        padding: 0px 30px 50px 30px;
+    }
+    .paragraph--type--coe-quote:has( .blue-primary-yellow-secondary) .field--name-field-coe-quote-quotation,
+    .paragraph--type--coe-quote:has( .white-primary-orange-secondary) .field--name-field-coe-quote-quotation {
+        gap: 0;
+        font-size: 24px;
+    }
+    .paragraph--type--coe-quote:has( .blue-primary-yellow-secondary) .field--name-field-coe-quote-quotation::before,
+    .paragraph--type--coe-quote:has( .white-primary-orange-secondary) .field--name-field-coe-quote-quotation::before {
+        margin-top: -40px;
+        margin-right: -50px;
+        transform: scale(0.83);
+    }
+    
+   
+  }
+
+  /******************************************
+  Quote Block (Not a paragraph type)
+  *******************************************/
+  .quote-container-white {
+      padding: 72px 70px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+      background-color: #FFF;
+      color: white;
+      border-style: solid;
+      border-color: #00859B;
+      border-width: 3px;
+      
+  }
+
+  .quote-container-yellow {
+      padding: 72px 70px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+      background-color: #FFB500;
+      color: #000;
+  }
+
+  @media screen and (max-width: 767px) {
+  	.quote-container .quote-container-navy .quote-container-yellow {
+  		padding: 50px 30px;
+  	}
+  }
+  /* Quote Typography */
+  .quote-basic-page {
+      font-family: "Open Sans";
+      font-size: 36px;
+      font-style: italic;
+      font-weight: 600;
+      line-height: 130%;
+      color: #000;
+  }
+
+  /* Quote Attribution */
+  .quote-credit-basic-page {
+  	margin-top: 40px;
+  	color: #000;
+  }
+
+  .quote-credit-basic-page > div {
+  	display: inline;
+  }
+
+  .quote-author-basic-page {
+  	font-weight: 700;
+  	letter-spacing: 0.9px;
+  	text-transform: uppercase;
+  	color: #00859B
+  }
+
+  /* Quote Icon Positioning */
+  svg.quote-icon-basic-page {
+      position: absolute;
+      top: -22px;
+      right: 30px;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.quote-basic-page {
+  		font-size: 24px;
+  	}
+  	.quote-container-white {
+      padding: 30px 20px;
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	svg.quote-icon-basic-page {
+  		transform: scale(0.6);
+  		top: -28px;
+  		right: 0px;
+  	}
+  }
+
+  /*******************************************
+  Orange divider line
+  ********************************************/
+  .divider-line-orange{
+  	width: 75px;
+  	height: 6px;
+  	flex-shrink: 0;
+  	background: var(--Primary-Beaver-Orange, #D73F09);
+  }
+
+  /*******************************************
+  Numbers Block
+  ********************************************/
+
+  /* ==============================================
+  Academic Numbers block styling for discipline pages
+  ================================================= */
+
+  /* ==============================================
+  Stats & Numbers block styling
+  ================================================= */
+
+  /* CSS Variables for consistent styling */
+  :root {
+    --primary-color: #D73F09;
+    --text-color: #000;
+    --heading-font: "Stratum2web";
+    --body-font: "Open Sans";
+    --standard-spacing: 16px;
+    --large-spacing: 64px;
+    --block-width: 228px;
+  }
+
+  /* Hide when not populated */
+  .paragraph--type--coe-stats-and-numbers:not(:has(.field--name-field-sc-numbers)) {
+      display: none;
+  }
+
+  /* Font Styling for Header */
+  .field--name-field-coe-numbers-header {
+    font-family: var(--heading-font);
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 130%;
+    color: var(--primary-color);
+    text-align: center;
+  }
+
+  /* Center the paragraph body */
+  /* Container for the body text - this centers the inline-block child */
+  .paragraph--type--coe-stats-and-numbers {
+    text-align: center;
+  }
+
+  .field--name-field-coe-numbers-body {
+    font-family: var(--body-font);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%;
+    text-align: center;
+    margin-top: var(--standard-spacing);
+    display: inline-block;
+    width: 66%;
+    /* Alternative approach if inline-block doesn't work well */
+    /* display: block;
+    margin-left: auto;
+    margin-right: auto; */
+  }
+
+  /* Numbers blocks container styling */
+  .field--name-field-sc-numbers {
+    margin-top: var(--large-spacing);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  /* Number block width adjustment */
+  .paragraph--type--coe-numbers-block ._none .container .row .col-12 {
+    width: var(--block-width);
+  }
+
+  /* Number font styling */
+  .field--name-field-coe-number .field__item {
+    font-family: var(--heading-font);
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 130%;
+    text-align: center;
+    color: var(--text-color);
+  }
+
+  /* Hide the number label */
+  .field--name-field-coe-number .field__label {
+    display: none;
+  }
+
+  /* Number divider alignment */
+  .field--name-field-coe-divider .field--name-field-media-image {
+    text-align: center;
+  }
+
+  /* Label font styling */
+  .field--name-field-coe-label {
+    font-family: var(--heading-font);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 130%;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--text-color);
+    max-width: 80%;
+    margin: 0 auto;
+    padding-top: var(--standard-spacing);
+  }
+
+  .field--name-field-coe-label h4 {
+    font-family: var(--heading-font);
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 130%;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+
+  /* Dimension updates for Mobile screen */
+  @media only screen and (max-width: 767px) {
+    /* Width readjustment for Body paragraph on mobile */
+    .field--name-field-coe-numbers-body {
+      width: 100%;
+    }
+
+    /* Numbers blocks container update for mobile */
+    .field--name-field-sc-numbers {
+      margin-top: var(--standard-spacing);
+      display: block;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    /* Number block number margin update */
+    .field--name-field-coe-number .field__item {
+      margin-top: var(--large-spacing);
+    }
+
+    /* Number block width adjustment for mobile */
+    .paragraph--type--coe-numbers-block ._none .container .row .col-12 {
+      width: 100%;
+    }
+  }
+
+  /*******************************************
+   Footer
+   ********************************************/
+   
+  .article-footer, .discover-page-footer {
+    background-image: url('/sites/engineering.oregonstate.edu/files/2025-05/section%20bg.svg');
+    background-color: var(--Secondary-Star-Canvas, #003B5C);
+    background-size: cover;
+    padding: 100px 0; 
+  }
+
+  .article-footer .layout__region:has(> .block-field-blockparagraphcoe-article-conclusionfield-coe-conclusion-link), .discover-page-footer .button-container {
+  	background-color: var(--Secondary-Star-Canvas, #003B5C);
+  }
+
+  .article-footer:not(:has(.paragraph--type--coe-article-conclusion)) {
+      visibility: hidden;
+      padding: 0;
+  }
+
+  .article-footer:not(:has(.paragraph--type--coe-article-conclusion)) > div {
+  	display: none;
+  }
+
+  .paragraph--type--coe-article-conclusion > div:first-child {
+  	margin-bottom: 20px;
+  }
+
+  .paragraph--type--coe-article-conclusion > div:nth-child(2) {
+  	margin-bottom: 100px;
+  }
+
+  .field--name-field-coe-conclusion-add-link {
+  	margin-top: 16px;
+  }
+
+  @media screen and (min-width: 768px) {
+  	.paragraph--type--coe-article-conclusion > div:nth-child(2) > div > div {
+  		width: calc(50% - 10px);
+  	}
+  	.paragraph--type--coe-article-conclusion > div:nth-child(2) > div {
+  		display: flex;
+  		justify-content: space-between;
+  	}
+  }
+
+  .node--type-coe-simple-column .paragraph--type--coe-modular-article {
+  	margin-top: 120px;
+  }
+
+
+  .more-link{
+  	border: 2px solid var(--Primary-Paddletail-Black, #000);
+  	background: var(--Primary-Bucktooth-White, #FFF);
+  	width: 320px;
+  	height: 60px;
+  	flex-shrink: 0;
+  	padding-left: 33px;
+  	padding-top: 15px;
+  }
+
+  .more-link a{
+  	color: var(--Primary-Paddletail-Black, #000);
+  	text-align: center;
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: normal;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	display: inline-block;
+  }
+
+  /*.osu-localist-widget-hl { width: 33%; }*/
+  /*.osu-localist-widget-hl:has(> ol > li:nth-child(2)) { width: 67%; }*/
+  /*.osu-localist-widget-hl:has(> ol > li:nth-child(3)) { width: 100%; }*/
+
+  /*.osu-localist-widget-hl .osu-event-list .event {*/
+  /*	width: calc(33% - 13px);*/
+  /*}*/
+
+  /*@media screen and (max-width: 1199px) {*/
+  	/*.osu-localist-widget-hl { width: 50%; }*/
+  	/*.osu-localist-widget-hl:has(> ol > li:nth-child(2)) { width: 100%; }*/
+  /*	.osu-localist-widget-hl .osu-event-list .event {*/
+  /*		width: calc(50% - 10px);*/
+  /*	}*/
+  /*}*/
+
+  /*@media screen and (max-width: 767px) {*/
+  	/*.osu-localist-widget-hl { width: 100%; }*/
+  /*	.osu-localist-widget-hl .osu-event-list .event {*/
+  /*		width: 100%;*/
+  /*	}*/
+  /*}*/
+
+  /*.osu-localist-widget-hl .osu-event-list {*/
+  /*	justify-content: space-between;*/
+  /*}*/
+
+  .osu-event-card a.osu-cover:hover,
+  .osu-event-card a.osu-cover:focus,
+  .osu-event-card a.osu-cover:active
+  {
+    border-bottom: none !important;
+    text-decoration: none !important;
+  }
+
+  .osu-event-card a.osu-cover {
+  	transition: 0s;
+  }
+
+  .osu-event-list{
+  	margin-left: 0px !important;
+  }
+
+  #views-bootstrap-events-block-view-test-block-6 > .g-3{
+  	padding-left: 0px !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47741\r\n/node/47726\r\n/node/47811\r\n/group/26\r\n/node/47911\r\n/node/5006\r\n/node/48026\r\n/node/47176\r\n/node/48156\r\n/node/34301\r\n/node/47886\r\n/academics/discover-engineering\r\n/academics/discover-engineering/*\r\n/node/52196\r\n/node/52201\r\n/node/52226\r\n/node/52391\r\n/all-stories/*\r\n/node/52441\r\n/node/52576\r\n/node/411/latest\r\n/test/home-test\r\n/node/52856\r\n/node/52851\r\n/node/411\r\n/node/51991/latest\r\n/node/43266\r\n/node/53236\r\n/node/43471\r\n/node/43346\r\n/node/43251\r\n/node/4536/latest\r\n/node/4531/latest\r\n/research/wave-lab/*\r\n/research/wave-lab\r\n/node/53451\r\n/node/53476\r\n/node/5161\r\n/node/53511\r\n/node/53516\r\n/node/53521\r\n/node/53526\r\n/node/53531\r\n/node/53536\r\n/node/53541\r\n/node/53566\r\n/node/53576\r\n/node/53581\r\n/node/53691\r\n/node/53696\r\n/node/53736\r\n/node/53741\r\n/node/53756\r\n/node/53761\r\n/node/1\r\n/node/39871\r\n/node/42346\r\n/node/42611\r\n/node/54141\r\n/node/54146\r\n/node/54176\r\n/node/54221\r\n/node/54236\r\n/node/45161/latest\r\n/node/45161\r\n/node/54306\r\n/node/54686\r\n/node/3541/latest"
+contexts: {  }
+conditions_require_all: true

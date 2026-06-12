@@ -1,0 +1,29 @@
+uuid: 5350cab2-b757-49aa-ab45-30e4a38dc804
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_staff_grad_school_role
+    - node.type.osu_profile
+    - taxonomy.vocabulary.grad_school_roles
+id: node.osu_profile.field_staff_grad_school_role
+field_name: field_staff_grad_school_role
+entity_type: node
+bundle: osu_profile
+label: 'Grad Education Role'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      grad_school_roles: grad_school_roles
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

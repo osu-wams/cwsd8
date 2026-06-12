@@ -1,0 +1,85 @@
+uuid: 4e075f02-10f5-4144-acdf-d895493bd90c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: back_to_top_2026
+label: 'back to top 2026'
+code: |-
+  /* Position: Fixed bottom right */
+  .osu-back-to-top {
+    position: fixed;
+    bottom: 2rem; /* Using rem is better for text zooming */
+    right: 2rem;
+    z-index: 999; /* Ensure it sits above footer elements */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Passes WCAG 2.5.5 Target Size (Enhanced) */
+    height: 50px;
+    background-color: #D73F09; /* OSU Beaver Orange */
+    color: #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease, background-color 0.2s;
+    cursor: pointer;
+    text-decoration: none;
+    border: 2px solid transparent; /* Prepare for high contrast mode */
+  }
+
+  /* Hover state */
+  .osu-back-to-top:hover {
+    background-color: #000000; /* OSU Black */
+    color: #ffffff;
+    text-decoration: none;
+    border-color: #D73F09;
+  }
+
+  /* Focus State (WCAG 2.4.7 Focus Visible) 
+     Uses a double border (white gap + blue ring) to ensure visibility 
+     regardless of the footer background color.
+  */
+  .osu-back-to-top:focus {
+    outline: 3px solid #003B5C; /* Dark Blue for contrast */
+    outline-offset: 3px;
+    background-color: #000000;
+  }
+
+  /* Show button class */
+  .osu-back-to-top.is-visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Icon sizing */
+  .osu-back-to-top svg {
+    width: 24px;
+    height: 24px;
+    fill: currentColor;
+  }
+
+  /* Reduced Motion (WCAG 2.3.3)
+     Disable transitions for users who prefer reduced motion.
+  */
+  @media (prefers-reduced-motion: reduce) {
+    .osu-back-to-top {
+      transition: none;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

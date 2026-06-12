@@ -1,0 +1,76 @@
+uuid: 8067e3b6-14a6-483e-971a-e81e315f7855
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: t
+label: Tabs
+code: |
+  /* this does the same effect for the osu homepage tabs*/
+  .nav.tab-container {
+  	border-bottom: 2px solid #d73f09;
+  	gap: 0.25rem;
+  }
+
+  .nav .tab-link {
+  	text-transform: capitalize;
+  	border: 2px solid transparent;
+  	background: #fff !important;
+  	padding: 0.5em 1em;
+  }
+
+  .nav .tab-link:hover {
+  	border-top: 2px solid #d73f09;
+    border-left: 2px solid #d73f09;
+    border-right: 2px solid #d73f09;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .nav .tab-link.active {
+    border-top: 2px solid #d73f09;
+    border-left: 2px solid #d73f09;
+    border-right: 2px solid #d73f09;
+    border-bottom: 4px solid transparent;
+    border-radius: 5px 5px 0 0;
+  	margin-bottom: -2px !important;
+  }
+
+  /* this does a background orange*/
+  .nav.bg-tab-container {
+  	border-bottom: 2px solid #d73f09;
+  	gap: 0.25rem;
+  }
+
+  .nav .bg-tab-link {
+  	text-transform: capitalize;
+  	border: none;
+  	border-radius: 5px 5px 0 0;
+  	background: none;
+  	padding: 0.5em 1em;
+  	transition: ease-in 150ms;
+  }
+
+  .nav .bg-tab-link:hover {
+  	background: #212529;
+  	color: #fff;
+  }
+
+  .nav .bg-tab-link.active {
+  	background: #d73f09;
+  	color: #fff;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

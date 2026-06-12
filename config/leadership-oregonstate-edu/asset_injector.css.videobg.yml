@@ -1,0 +1,58 @@
+uuid: 6e385a47-8a4b-4a48-a3e3-c7bef819072e
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: videobg
+label: VideoBG
+code: |-
+  .video-background {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    padding-top:25%;
+  }
+
+  .video-background video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;  /* Places video behind content */
+  }
+  #pause-button {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+    @media (max-width: 768px) { 
+    	#pause-button {
+    bottom: 0px;
+    right: 5px;
+      padding: 0 5px;
+      font-size: 11px;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/16846/layout\r\n/node/16846\r\n/node/16851/layout\r\n/node/16851"
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,98 @@
+uuid: f9324092-e3a3-49f9-b34a-a89a9b11f01e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_jobs.body
+    - field.field.node.osu_jobs.feeds_item
+    - field.field.node.osu_jobs.field_osu_job_appointment_type
+    - field.field.node.osu_jobs.field_osu_job_classification_tit
+    - field.field.node.osu_jobs.field_osu_job_closing
+    - field.field.node.osu_jobs.field_osu_job_full_consideration
+    - field.field.node.osu_jobs.field_osu_job_link
+    - field.field.node.osu_jobs.field_osu_job_title
+    - node.type.osu_jobs
+  module:
+    - datetime
+    - link
+    - text
+    - user
+id: node.osu_jobs.default
+targetEntityType: node
+bundle: osu_jobs
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_osu_job_appointment_type:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_osu_job_classification_tit:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_osu_job_closing:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_osu_job_full_consideration:
+    type: datetime_default
+    label: inline
+    settings:
+      timezone_override: ''
+      format_type: html_date
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_osu_job_link:
+    type: link
+    label: inline
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_osu_job_title:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true

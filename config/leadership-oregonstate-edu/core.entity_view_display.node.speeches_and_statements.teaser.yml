@@ -1,0 +1,39 @@
+uuid: 0fe2410e-0de9-407d-a28a-8d5d4dd3615c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.speeches_and_statements.body
+    - field.field.node.speeches_and_statements.field_date_statement
+    - field.field.node.speeches_and_statements.field_president
+    - field.field.node.speeches_and_statements.field_provost
+    - field.field.node.speeches_and_statements.field_tags_statements
+    - node.type.speeches_and_statements
+  module:
+    - text
+    - user
+id: node.speeches_and_statements.teaser
+targetEntityType: node
+bundle: speeches_and_statements
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_date_statement: true
+  field_president: true
+  field_provost: true
+  field_tags_statements: true

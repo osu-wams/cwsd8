@@ -1,0 +1,29 @@
+uuid: 59525c73-08b7-4a26-838c-12fc633d54c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_engr_stat_tags
+    - node.type.engr_statistic
+    - taxonomy.vocabulary.affiliations
+id: node.engr_statistic.field_engr_stat_tags
+field_name: field_engr_stat_tags
+entity_type: node
+bundle: engr_statistic
+label: Tags
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      affiliations: affiliations
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,66 @@
+uuid: 6b323500-b070-4c82-ba9a-3446b4175383
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: accordian
+label: accordion
+code: |-
+  /* =============================================================================
+     Orange Accordion Theme Component
+     ========================================================================== */
+
+  .accordion-item-orange {
+    /* Theme colors */
+    --accordion-bg: #fff;
+    --accordion-text-color: #000;
+    --accordion-button-bg: #f5f5f5;
+    --accordion-button-active-bg: #d73f09;
+    --accordion-button-active-color: #fff;
+  }
+
+  /* Accordion item background */
+  .accordion-item-orange .accordion-item {
+    background: var(--accordion-bg);
+    color: var(--accordion-text-color);
+  }
+
+  /* Accordion button default state */
+  .accordion-item-orange .accordion-button {
+    background: var(--accordion-button-bg);
+    color: var(--accordion-text-color);
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  /* Accordion button hover state */
+  .accordion-item-orange .accordion-button:hover {
+    background: #e8e8e8;
+  }
+
+  /* Accordion button expanded/active state */
+  .accordion-item-orange .accordion-button:not(.collapsed) {
+    background: var(--accordion-button-active-bg);
+    color: var(--accordion-button-active-color);
+  }
+
+  /* Accessibility: Focus state */
+  .accordion-item-orange .accordion-button:focus {
+    outline: 2px solid var(--accordion-button-active-bg);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 4px rgba(215, 63, 9, 0.2);
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

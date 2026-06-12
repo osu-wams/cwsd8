@@ -1,0 +1,39 @@
+uuid: 8e8227ae-e365-4a6f-91b9-cdcba21707f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.announcement.body
+    - field.field.node.announcement.field_announcement_image
+    - field.field.node.announcement.field_does_not_expire
+    - field.field.node.announcement.field_expiration_date
+    - field.field.node.announcement.field_publish_date
+    - node.type.announcement
+  module:
+    - text
+    - user
+id: node.announcement.teaser
+targetEntityType: node
+bundle: announcement
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_announcement_image: true
+  field_does_not_expire: true
+  field_expiration_date: true
+  field_publish_date: true

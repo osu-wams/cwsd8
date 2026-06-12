@@ -1,0 +1,175 @@
+uuid: 08d87f6b-1bba-4518-9410-377c68c58d12
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.announcement
+  module:
+    - node
+id: announcement_rss
+label: announcement_rss
+module: views
+description: 'rss feed of announcements'
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Defaults
+    display_plugin: default
+    position: 1
+    display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            alt: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            strip_tags: false
+            trim: false
+            html: false
+            help: ''
+          empty: 'no title'
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+      pager:
+        type: none
+        options:
+          offset: 0
+      access:
+        type: none
+      cache:
+        type: none
+      sorts: {  }
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          plugin_id: bundle
+          operator: in
+          value:
+            announcement: announcement
+          group: 0
+          exposed: false
+          expose:
+            label: ''
+            operator: ''
+          override:
+            button: Override
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          relationship: none
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 0
+          exposed: false
+          expose:
+            label: ''
+            operator: ''
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      query:
+        type: views_query
+        options:
+          distinct: true
+      defaults:
+        access: false
+        cache: false
+        fields: false
+        sorts: false
+        filters: false
+        filter_groups: false
+        access_options: false
+        cache_options: false
+      display_extenders: {  }
+      items_per_page: null
+      offset: null
+      use_pager: null
+      access_options: null
+      cache_options: null
+      distinct: null
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+      tags: {  }
+  feed_1:
+    id: feed_1
+    display_title: Feed
+    display_plugin: feed
+    position: 2
+    display_options:
+      enabled: false
+      pager:
+        type: none
+        options:
+          offset: 0
+      style:
+        type: rss
+        options:
+          description: ''
+          mission_description: false
+      row:
+        type: node_rss
+        options: {  }
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      path: announcement/rss.xml
+      sitename_title: false
+      displays: {  }
+      items_per_page: null
+      offset: null
+      use_pager: null
+      style_plugin: rss
+      style_options:
+        mission_description: false
+        description: ''
+      menu:
+        type: none
+        title: ''
+        description: ''
+        weight: 0
+        name: tools
+        menu_name: tools
+      tab_options:
+        type: none
+        title: ''
+        description: ''
+        weight: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+      tags: {  }

@@ -1,0 +1,203 @@
+uuid: 928b3e8c-94f7-47c0-9c00-8fca4929a2d4
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: new_home
+label: 'New homepage'
+code: |-
+  @media (min-width: 778px) {
+      .mobileHP {
+          display: none;
+      }
+          .showreal-text-dark {
+  		text-transform: uppercase;
+      font-size: 13vw;
+      font-weight: 700;
+      color: #2d2e32;
+      margin-bottom:-135px;
+      }
+      .carousel {
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1000px;
+      height:390px;
+  }
+  }
+
+  @media (max-width: 777px) {
+      .desktopHP {
+          display: none;
+      }
+          .showreal-text-dark {
+  		text-transform: uppercase;
+      font-size: 13vw;
+      font-weight: 700;
+      color: #2d2e32;
+      margin-bottom:-70px;
+      }
+      .carousel {
+      position: relative;
+      margin: 0 auto;
+      width: 100%;
+      max-width: 1000px;
+      height:220px;
+  }
+  }
+  @media (min-width: 1001px) {
+      .testimonial-view .carousel .carousel-indicators {
+      bottom: -50px;
+  	}
+  }
+  @media (max-width: 1000px) {
+      .testimonial-view .carousel .carousel-indicators {
+      bottom: -130px;
+  	}
+  }
+  .showreal-text {
+  		text-transform: uppercase;
+      font-size: 13vw;
+      font-weight: 700;
+      color: #e1e1e1;
+      margin-bottom:-104px;
+      }
+
+  .showreal-text-vertical {
+      text-transform: uppercase;
+      font-size: 218px;
+      font-weight: 700;
+      color: #e1e1e1;
+      text-orientation: mixed;
+      position: absolute;
+      left: 0;
+      top: 0;
+      writing-mode: vertical-lr;
+      z-index: -1;
+      margin: 0 0 0 -65px;
+      padding: 0;
+  }
+  .parent-showreal-container {
+    position: relative;
+    min-height:525px;
+  }
+   .bottom-div {
+    position: sticky;
+    bottom: 0;
+  }
+  .video-container1 {
+              position: relative;
+              width: 100%;
+              max-width: 470px;
+              background: #000;
+              float:right;
+          }
+
+          .video-wrapper1 {
+              position: relative;
+              padding-bottom: 56.25%; /* 16:9 aspect ratio */
+              height: 0;
+              overflow: hidden;
+          }
+
+          .video-wrapper1 iframe {
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              border: none;
+          }
+
+          .custom-play-button1 {
+              position: absolute;
+              bottom: 0;
+              left: 0;
+              width: 72px;
+              height: 72px;
+              transform: translate(-50%, 50%);
+              z-index: 10;
+              cursor: pointer;
+              transition: transform 0.2s ease;
+          }
+
+          .custom-play-button1:hover {
+              transform: translate(-50%, 50%) scale(1.1);
+          }
+
+          .custom-play-button1 img {
+              width: 100%;
+              height: 100%;
+              display: block;
+          }
+
+  .carousel-caption {
+      position: relative;
+      right: 15%;
+      bottom: 1.25rem;
+      left: 0;
+      padding-top: 1.25rem;
+      padding-bottom: 1.25rem;
+      color: var(--bs-carousel-caption-color);
+      text-align: left;
+  }
+  .carousel h3 {
+  	font-size:18px;
+  	font-weight:700;
+  }
+  .carousel h3 a {
+  	text-decoration:none;
+  }
+  .carousel p {
+  	color:#4b4b4b;
+  	font-size:19px;
+  	line-height:1;
+  }
+  .carousel .carousel-indicators {
+      background-color: transparent;
+  }
+  :root, [data-bs-theme=light] {
+      --bs-carousel-indicator-active-bg: #000;
+  }
+  .team-carousel img, svg {
+      vertical-align: unset;
+  }
+
+  .slanted-div {
+    position: relative;
+    width: 100%;
+    height: auto;
+    isolation: isolate; /* creates new stacking context */
+  }
+
+  .slanted-div::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #212529;
+    clip-path: polygon(
+      0 0,           /* top left */
+      100% 0,        /* top right */
+      80% 100%,      /* bottom right (20% inward) */
+      0 100%         /* bottom left */
+    );
+    z-index: -1;     /* puts background behind content */
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/1726\r\n/group/11"
+contexts: {  }
+conditions_require_all: true

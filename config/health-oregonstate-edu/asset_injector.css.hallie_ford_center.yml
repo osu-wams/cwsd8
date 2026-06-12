@@ -1,0 +1,30 @@
+uuid: 9ce3db29-eb87-41f3-a882-9bb332a8669c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: hallie_ford_center
+label: 'Hallie Ford Center'
+code: |-
+  .hfc-bg-page-default {
+  	background-color: hsl(42.6,100%,50%) !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/hallie-ford*'
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,110 @@
+uuid: 92d9170f-47e7-4988-a8d2-c5e8cd8a7711
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.pac_class.body
+    - field.field.node.pac_class.field_json_ld_schema
+    - field.field.node.pac_class.field_learning_modality
+    - field.field.node.pac_class.field_meta_tags
+    - field.field.node.pac_class.field_opengraph_image
+    - field.field.node.pac_class.field_osu_meta_image
+    - field.field.node.pac_class.field_pac_class_catalog_link
+    - field.field.node.pac_class.field_pac_class_instructors
+    - field.field.node.pac_class.field_pac_class_name
+    - field.field.node.pac_class.field_pac_class_number
+    - field.field.node.pac_class.field_pac_class_syllabus
+    - field.field.node.pac_class.field_pac_class_terms_offered
+    - field.field.node.pac_class.field_pac_class_video
+    - field.field.node.pac_class.field_pac_course_category
+    - node.type.pac_class
+  module:
+    - file
+    - link
+    - options
+    - user
+id: node.pac_class.teaser
+targetEntityType: node
+bundle: pac_class
+mode: teaser
+content:
+  field_pac_class_catalog_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_pac_class_instructors:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_pac_class_name:
+    type: string
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_pac_class_number:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_pac_class_syllabus:
+    type: file_default
+    label: hidden
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_pac_class_terms_offered:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_pac_class_video:
+    type: file_video
+    label: hidden
+    settings:
+      controls: true
+      autoplay: false
+      loop: false
+      multiple_file_display_type: tags
+      muted: false
+      width: null
+      height: null
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  entitygroupfield: true
+  field_json_ld_schema: true
+  field_learning_modality: true
+  field_meta_tags: true
+  field_opengraph_image: true
+  field_osu_meta_image: true
+  field_pac_course_category: true

@@ -1,0 +1,86 @@
+uuid: 914cd45a-5f3f-42fc-9ebc-21008951b03b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: exhibition_node_page
+label: 'Exhibition Node Page'
+code: |-
+  article.node--type-exhibitions.node--promoted.node--view-mode-full {
+  	padding:0!important;
+  	max-width:100%!important;
+  }
+
+
+  #block-madrone-page-title {
+  	  position: absolute;
+      top: 400px;
+      left: 50px;
+      z-index:5;
+  }
+
+  #block-madrone-page-title .block__content {
+    background: rgba(0,0,0,.8);
+    padding: 20px;	
+  }
+
+  #block-madrone-page-title h1 {
+  	font-size: 26px!important;
+    color: #fff;
+    margin: 0;
+  }
+
+  .field--name-field-exhibition-hero .field--name-field-media-image img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+  }
+
+  .field--name-field-exhibition-media {
+  	display:flex;
+  	flex-wrap:wrap;
+  }
+
+  .field--name-field-exhibition-media .field__item {
+    flex: 0 1 25%;
+    padding: 5px;
+  }
+
+  .field--name-field-exhibition-media-2 {
+  	display:flex;
+  	flex-wrap:wrap;
+  }
+
+  .field--name-field-exhibition-media-2 .field__item {
+    flex: 0 1 25%;
+    padding: 5px;
+  }
+
+
+  .node--type-exhibitions .field--name-body, .field--name-field-exhibition-media, .field--name-field-more-information, .field--name-field-exhibition-media-2, .field--name-field-third-content-section {
+  	max-width:1080px;
+  	margin:20px auto;
+  }
+
+  .node--type-exhibitions .field--name-body {
+  	margin-top:40px;
+  }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      exhibitions: exhibitions
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,77 @@
+uuid: aa51a7e3-aa5c-4090-a7a6-e8da1c3dd3b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: linktree
+label: linktree
+code: |
+  /*
+  * Prefixed by https://autoprefixer.github.io
+  * PostCSS: v8.4.14,
+  * Autoprefixer: v10.4.7
+  * Browsers: last 1 version
+  */
+
+
+  h1,
+  #mobile-icon-menu,
+  #footer,
+  #search-link,
+  #main-menu,
+  #page-title {
+      display: none !important;
+  }
+
+  #osu-top-hat img {
+      margin: 10px auto !important;
+      display: block;
+  }
+
+
+  a.linktree {
+      background: #d73f09;
+      display: block;
+      text-align: center;
+      padding: 10px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 5px;
+      max-width: 400px;
+      margin: 0 auto;
+      z-index: 900;
+      position: relative;
+  }
+
+  a.linktree:hover {
+      background: #464646;
+  }
+
+  a.linktree:focus {
+      outline: 5px auto -webkit-focus-ring-color;
+      outline-offset: -2px;
+  }
+
+  a.linktree:active {
+      color: #fff;
+      background: #000;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: /linktree
+contexts: {  }
+conditions_require_all: true

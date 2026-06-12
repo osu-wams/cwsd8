@@ -1,0 +1,270 @@
+uuid: 99c2cf1c-d178-400f-b9ae-f63d4e4c5a16
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: new_benefits_calculator
+label: 'New Benefits Calculator'
+code: |
+  (function($){ 
+
+  $(document).ready(function(){
+
+  var ags = '';
+  var months = 9;
+  var tos = 0;
+  var firsttime = true;
+
+  //hide the calculator initially
+  $('#calculator').hide();
+
+  //the show_hide_calc button shows/hides the calculator
+  var hidden = 0;
+  $(document).on('click','#show_hide_calc',function(){
+  if(hidden == 0){
+  hidden = 1;
+  $('#calculator').show('slow');
+  }
+  else{
+  hidden = 0;
+  $('#calculator').hide('slow');
+  }
+  });
+
+  //hide the 12-month and SEIU information initially
+  $('.only12mos').hide();
+  <!-- $('#questionthree').hide(); -->
+  $('#questionfour').hide();
+  $('.isSEIU').hide();
+
+  $(document).on('click','#calc',function(){ 
+  	var hpw = $("#hoursperweek").val();
+  var hpr = $("#hourlypayrate").val();
+  $("#annualgrosssalary").val(hpw*hpr*52);
+  console.log($("annualgrosssalary").val)
+  if(hpw < 20){
+  	alert("You will receive no benefits.")
+  };
+  var agv = $('#annualgrosssalary').val();
+  var agstr = agv.toString().split(',').join('');
+  ags = parseFloat(agstr);
+  if(!firsttime){
+  recalculate(ags, months, tos);
+  }
+  });
+
+
+
+  //this gathers the text in the annual gross salary box
+  $('#annualgrosssalary').keyup(function(){
+  var agv = $('#annualgrosssalary').val();
+  var agstr = agv.toString().split(',').join('');
+  ags = parseFloat(agstr);
+  if(!firsttime){
+  recalculate(ags, months, tos);
+  }
+
+  });
+
+
+  //this gets the selection from the months dropdown
+  $('#multiple').change(function(){
+  months = $('#multiple').val();
+  if (firsttime){
+  	$('#questionthree').show('slow');
+  }
+  else{
+  recalculate(ags, months, tos);
+  }
+
+  var agv = $('#annualgrosssalary').val();
+  var agstr = agv.toString().split(',').join('');
+  ags = parseFloat(agstr);
+  if(!firsttime){
+  recalculate(ags, months, tos);
+  }
+  });
+
+  //this gets the selection from the SEIU rep dropdown
+  $('#SEIUrep').change(function(){
+  if ($('#SEIUrep').val() == "Yes") {
+  	$('#questionfour').show('slow');
+  	if(firsttime == false) {
+  		tos = $('#SEIUtos').val();
+  		recalculate(ags,months,tos);
+  	}
+  }
+  else{
+  $('#questionfour').hide('slow');
+  tos = 0;
+  firsttime = false;
+  recalculate(ags, months, tos);
+  }
+  });
+
+  //this gets the selection from the SEIU tos dropdown
+  $('#SEIUtos').change(function(){
+  	tos = $('#SEIUtos').val();
+  	firsttime = false;
+  	recalculate(ags,months,tos);
+  });
+
+  });
+
+
+
+  function recalculate(salary, mos, tos){
+
+  if(salary > 0 && mos != ''){
+
+     //this group of variables determines how the various benefits are calculated
+
+     var mdvl = 18180.00;
+     var ret = (salary*0.06);
+     var retORP = salary * 0.08;
+     var retORPa = salary * 0.12;
+     var eap = 11.40;
+     var sick = ((salary*8)/173.33);
+     var reqcontribs = (salary*(6.2 + 1.45 + .22 + .6 + .2)*.01);
+     var holidays = 0;
+     var vacation = 0;
+
+     $('#meddentvislife').text('$' + commaResults(mdvl));
+     $('#retirement').text('$' + commaResults(ret));
+     $('#retirementORP').text('$' + commaResults(retORP) + " ($" + commaResults(retORPa) + ")");
+     $('#sick').text('$' + commaResults(sick));
+     $('#EAP').text('$' + commaResults(eap));
+
+     //This block of if/else calculates vacation pay
+     //If tos!=0, then this is an SEIU rep employee
+     if (tos != 0){
+  		//Hide non SEUI
+  		$('.only12mos').hide('slow');
+  		//SEIU rep do not get a choice between PERS and ORP retirement
+  		document.getElementById("PERSret").setAttribute("rowspan", "1");
+  		$('.SEIUret').hide('fast');
+  		//Show SEIU personal leave and vaction
+  		$('.isSEIU').show('slow');
+  		//Calculate Vacation based on TOS
+  		if (tos == "0-5"){
+  			vacation = salary * 8 / (173.33);
+  			document.getElementById("VacationHours").innerHTML = "You accrue 8 paid hours per month for vacation time.";
+  		}
+  		else if (tos == "5-10"){
+  			vacation = salary * 10 / (173.33);
+  			document.getElementById("VacationHours").innerHTML = "You accrue 10 paid hours per month for vacation time.";
+  		}
+  		else if (tos == "10-15"){
+  			vacation = salary * 12 / (173.33);
+  			document.getElementById("VacationHours").innerHTML = "You accrue 12 paid hours per month for vacation time.";
+  		}
+  		else if (tos == "15-20"){
+  			vacation = salary * 14 / (173.33);
+  			document.getElementById("VacationHours").innerHTML = "You accrue 14 paid hours per month for vacation time.";
+  		}
+  		else if (tos == "20-25"){
+  			vacation = salary * 16 / (173.33);
+  			document.getElementById("VacationHours").innerHTML = "You accrue 16 paid hours per month for vacation time.";
+  		}
+  		else if (tos == "25+"){
+  			vacation = salary * 18 / (173.33);
+  			document.getElementById("VacationHours").innerHTML = "You accrue 18 paid hours per month for vacation time.";
+  		}
+  		else{}
+  		$('#vacation2').text('$' + commaResults(vacation));
+  	}
+  	else{ //Calculate vacation based on 9 or 12 months
+  		//Hide SEIU information
+  		$('.isSEIU').hide('slow');
+  		//Show retirement PERS/ORP choice if not SEIU rep
+  		$('.SEIUret').show('slow');
+  		document.getElementById("PERSret").setAttribute("rowspan", "2");
+  	   //if this is a 12 month employee, show holidays an vaction, then calculate them
+  	   if(mos == 12){
+  		  $('.only12mos').show('slow');
+  		  vacation = salary * 15 / (173.33);
+  		  $('#vacation').text('$' + commaResults(vacation));
+  	   }
+  	   else{
+  		  $('.only12mos').hide('slow');
+  		  vacation = 0;
+  	   }
+  	}
+  	
+  	//Calculate Holiday pay based on 9 or 12 months
+         //both formulas includes special day
+  	if(mos == 12){
+  		holidays = salary * 8 * 11 / (12 * 173.33);
+  		if (tos != 0){
+  			holidays += salary * 24 / (12 * 173.33);
+  		}
+  		$('#holidays').text('$' + commaResults(holidays));
+  	}
+  	else{
+  		holidays = salary * 8 * 8 / (9 * 173.33);
+  		if (tos != 0){
+  			holidays += salary * 24 / (9 * 173.33);
+  		}
+  		$('#holidays').text('$' + commaResults(holidays));
+  	}
+  	
+
+     //calculate totals
+     var tbd = mdvl;
+     var totalannual = parseFloat(tbd) + parseFloat(salary);
+     $('#tbd').text('$' + commaResults(tbd));
+     $('#tbdpercent').text(commaResults(100*tbd/salary) + '%');
+     $('#totalannual').text('$' + commaResults(totalannual));
+
+  }
+
+  }
+
+
+  //this function determines where to place commas in the resulting numbers, and reduces the number input to 2 decimal places
+
+  function commaResults(num){
+     var count = 0;
+     var beforeperiod = '';
+     var afterperiod = '';
+     var decimalsdone = false;
+     var numstr = num.toFixed(2).toString();
+     for(var i = numstr.length-1; i >= 0; i--){
+        if(decimalsdone){
+           beforeperiod = numstr.charAt(i) + beforeperiod;
+           count += 1;
+           if(count > 2 && i > 0){
+              beforeperiod = ',' + beforeperiod;
+              count = 0;
+           }
+        }
+        else
+        {
+           afterperiod = numstr.charAt(i) + afterperiod;
+           if (numstr.charAt(i) == '.'){
+              decimalsdone = !decimalsdone;
+           }
+        }
+
+     }
+     numstr = beforeperiod + afterperiod;
+     return numstr;
+  }})(jQuery);
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/25711\r\n/node/7144"
+contexts: {  }
+conditions_require_all: true

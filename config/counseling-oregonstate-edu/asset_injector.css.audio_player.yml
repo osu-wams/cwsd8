@@ -1,0 +1,30 @@
+uuid: 91d165d9-4244-4673-8a28-6b26356145d3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: audio_player
+label: audio_player
+code: |-
+  audio,
+  .media audio,
+  .mejs-container {
+    max-width: 100% !important;
+  }
+
+  .media,
+  .media-oembed-content,
+  .field--type-file {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

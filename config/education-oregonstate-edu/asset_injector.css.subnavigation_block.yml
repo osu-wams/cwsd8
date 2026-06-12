@@ -1,0 +1,67 @@
+uuid: cc0eb79f-6b3f-435c-88a4-348e3379941e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: subnavigation_block
+label: 'Subnavigation Block'
+code: |-
+  .block--type-subnav {
+  	margin-bottom: 3rem !important;
+  }
+  .block--type-subnav .field__items {
+  	display: flex !important;
+  	flex-wrap: wrap;
+  	gap: 1rem 3rem !important;
+  }
+  .block--type-subnav .field__item {
+  	padding-right: 2rem !important;
+  	border-right: 1px solid var(--secondary---co-ed--solar--flare) !important;
+  }
+  .block--type-subnav .field__item a {
+  	font-size: 1.25rem !important;
+  	text-decoration: none !important;
+  }
+  .block--type-subnav .field__item a:after {
+  	content: "" !important;
+  	display: inline-block !important;
+  	width: 16px !important;
+  	height: 16px !important;
+  	margin-left: 1rem !important;
+    position: relative !important;
+    top: 1px !important;
+    background-image: url(/sites/education.oregonstate.edu/files/2023-09/secondary-cta-arrow-solar.png) !important;
+    background-repeat: no-repeat !important;
+    background-size: 16px 16px;
+  }
+  @media only screen and (max-width: 992px) {
+  	.block--type-subnav .field__items {
+  		justify-content: center;
+  	}	
+  }
+  @media only screen and (max-width: 768px) and (min-width: 0) {
+    .block--type-subnav .field__items {
+    	flex-direction: column !important;
+    	flex-wrap: nowrap !important;
+    	border-right: 1px solid var(--secondary---co-ed--solar--flare) !important;
+    }
+    .block--type-subnav .field__item {
+    	border: none !important;
+    	width: 100% !important;
+    }
+  }
+media: screen
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

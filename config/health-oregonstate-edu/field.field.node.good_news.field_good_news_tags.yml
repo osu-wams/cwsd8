@@ -1,0 +1,29 @@
+uuid: daef7f80-25ab-4b7c-9132-c06cff50f233
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_good_news_tags
+    - node.type.good_news
+    - taxonomy.vocabulary.good_news
+id: node.good_news.field_good_news_tags
+field_name: field_good_news_tags
+entity_type: node
+bundle: good_news
+label: 'Good news tags'
+description: "Tags are a content types' best friend"
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      good_news: good_news
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

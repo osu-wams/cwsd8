@@ -1,0 +1,147 @@
+uuid: 228a3e95-330c-4e19-ac0e-e2fbe9976cf4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.early_care_and_education_profile.body
+    - field.field.node.early_care_and_education_profile.field_early_care_profile_type
+    - field.field.node.early_care_and_education_profile.field_meta_tags
+    - field.field.node.early_care_and_education_profile.field_opengraph_description
+    - field.field.node.early_care_and_education_profile.field_opengraph_title
+    - field.field.node.early_care_and_education_profile.field_osu_meta_image
+    - field.field.node.early_care_and_education_profile.layout_builder__layout
+    - node.type.early_care_and_education_profile
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - metatag
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          6beee5a4-229f-4494-980d-3c35fd60bc57:
+            uuid: 6beee5a4-229f-4494-980d-3c35fd60bc57
+            region: content
+            configuration:
+              id: 'field_block:node:early_care_and_education_profile:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          d32b842b-c7f5-4505-982a-032d05f40802:
+            uuid: d32b842b-c7f5-4505-982a-032d05f40802
+            region: content
+            configuration:
+              id: 'extra_field_block:node:early_care_and_education_profile:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 1
+            additional: {  }
+          671eac86-b89c-412f-8c3f-d4d8bc261fbb:
+            uuid: 671eac86-b89c-412f-8c3f-d4d8bc261fbb
+            region: content
+            configuration:
+              id: 'field_block:node:early_care_and_education_profile:field_meta_tags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: metatag_empty_formatter
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          291125f7-6e0e-462d-b327-204ecd6f15d5:
+            uuid: 291125f7-6e0e-462d-b327-204ecd6f15d5
+            region: content
+            configuration:
+              id: 'extra_field_block:node:early_care_and_education_profile:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 3
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: node.early_care_and_education_profile.default
+targetEntityType: node
+bundle: early_care_and_education_profile
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_opengraph_description:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 114
+    region: content
+  field_opengraph_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_osu_meta_image:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_early_care_profile_type: true
+  layout_builder__layout: true

@@ -1,0 +1,209 @@
+uuid: b4b731d9-4b4b-40a4-9b24-e48420be600c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: our_approach_tools
+label: our-approach-tools
+code: |+
+  /* Base styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+  }
+
+  .approach-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .approach-title {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 30px;
+  }
+
+  .constant {
+    margin-bottom: 20px;
+  }
+
+  .dynamic-buttons {
+    margin-top: 20px;
+  }
+
+  .approach-item {
+    text-align: center;
+  }
+
+  .approach-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .approach-button {
+    width: 250px;
+    height: 300px;
+    border: none;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+
+  .approach-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .approach-media {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 20px;
+  }
+
+  .approach-navigation {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 30px;
+  }
+
+  .tab-button {
+    padding: 10px 20px;
+    border: none;
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 20px;
+    transition: background-color 0.3s;
+  }
+
+  .tab-button:hover {
+    background-color: #d74009;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 20px; /* Adds spacing between grid items */
+    justify-content: center;
+    margin-left:8rem;
+    
+  }
+
+  /* Default card styling */
+  .card {
+    grid-column: span 6;
+    width: 400px;
+    height: 400px;
+    margin: 15px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    border-radius: 10px;
+    box-shadow: 2px 4px 3px #888c;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  /* Hover Effect */
+  .card:hover {
+    transform: scale(1.05);
+  }
+
+  /* Overlay Effect */
+  .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(97, 97, 97, 0.4);
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: 0.5s ease;
+    color: white;
+  }
+
+  /* Expanded Card */
+  .card.expanded .overlay {
+    height: auto;
+    background-color: rgba(201, 42, 12, 0.6);
+    display: flex;
+    align-items: center;
+  }
+
+  /* Image Styling */
+  .card img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    min-height: 100%;
+    min-width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Card Title */
+  .card-title {
+    width: 70%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding: 10px 5px;
+    background-color: rgba(78, 78, 78, 0.56);
+    font-family: 'Stratum2Web', sans-serif;
+    font-size: 1.6rem;
+    line-height: 1.4rem;
+    text-align: center;
+    font-weight: 500;
+    color: #fff;
+    border-radius: var(--rounding);
+    transition: 0.5s ease;
+  }
+
+  .card:hover .card-title {
+    background-color: rgba(201, 42, 12, 0.6);
+  }
+
+  .expanded .card-title {
+    top: 5%;
+    transform: translateX(-50%);
+  }
+
+  /* Card Description */
+  .card-desc {
+    padding: 10px;
+    margin: 0 !important;
+    text-align: center;
+  }
+
+  /* Background Color */
+  .blue-bgcolor {
+    background-color: #003b5c;
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/16
+contexts: {  }
+conditions_require_all: true

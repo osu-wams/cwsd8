@@ -1,0 +1,41 @@
+uuid: 05140cdc-81c8-4f6b-b656-9ee6239662d5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.borrowable_items.body
+    - field.field.node.borrowable_items.field_borrowable_image
+    - field.field.node.borrowable_items.field_item_image
+    - field.field.node.borrowable_items.field_item_type
+    - field.field.node.borrowable_items.field_quantity
+    - field.field.node.borrowable_items.og_group_ref
+    - node.type.borrowable_items
+  module:
+    - text
+    - user
+id: node.borrowable_items.teaser
+targetEntityType: node
+bundle: borrowable_items
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_borrowable_image: true
+  field_item_image: true
+  field_item_type: true
+  field_quantity: true
+  og_group_ref: true

@@ -1,0 +1,82 @@
+uuid: 9b8eda06-38f1-481a-acf9-4acbcf4f36af
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: coe_brand_responsive_layout
+label: 'COE Brand Responsive Layout'
+code: |-
+  const getGroupSize = () => {
+    const width = window.innerWidth;
+
+    if (width <= 767) return 1;
+    if (width <= 991) return 2;
+    return 3;
+  }
+
+  const alignHeights = (selector) => {
+    const elements = Array.from(document.querySelectorAll(selector));
+    const groupSize = getGroupSize();
+
+    // Reset all heights first
+    elements.forEach(el => el.style.height = 'auto');
+
+    // If groupSize is 1, no need to align
+    if (groupSize === 1) return;
+
+    for (let i = 0; i < elements.length; i += groupSize) {
+      const group = elements.slice(i, i + groupSize);
+
+      const maxHeight = Math.max(
+        ...group.map(el => el.offsetHeight)
+      );
+
+      group.forEach(el => {
+        el.style.height = `${maxHeight}px`;
+      });
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+    alignHeights('.bottom-align-title');
+  });
+  window.addEventListener('resize', () => {
+    alignHeights('.bottom-align-title');
+  });
+
+
+  /* Accordion adjustment for row alignment */
+  function setAccordionGridRows() {
+      document.querySelectorAll('.field--name-field-coe-accordion-sections').forEach(container => {
+          if (window.innerWidth <= 1199) return;
+
+          const items = container.querySelectorAll(':scope > .field__item');
+          items.forEach((item, i) => {
+              const titleRow = (Math.floor(i / 2) * 2) + 1;
+              const bodyRow = titleRow + 1;
+              const titleBlock = item.querySelector('.block-field-blockparagraphcoe-accordion-contentfield-coe-acc-section-titl');
+              const bodyBlock = item.querySelector('.block-field-blockparagraphcoe-accordion-contentfield-coe-accordion-section-body');
+              if (titleBlock) titleBlock.style.gridRow = titleRow;
+              if (bodyBlock) bodyBlock.style.gridRow = bodyRow;
+          });
+      });
+  }
+
+  document.addEventListener('DOMContentLoaded', () => {
+      setAccordionGridRows();
+  });
+
+  window.addEventListener('resize', setAccordionGridRows);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

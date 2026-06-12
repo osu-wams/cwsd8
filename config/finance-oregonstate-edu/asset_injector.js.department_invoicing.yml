@@ -1,0 +1,39 @@
+uuid: b0dd918e-3ccf-4747-8aa1-f5a20a0621b4
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: department_invoicing
+label: 'Department Invoicing'
+code: |
+  <form action="https://secure.touchnet.net/C20159_upay/web/index.jsp" id="uPayForm" method="POST" name="uPayForm" onsubmit="DoSubmit();">
+  	<p>
+  		&nbsp;</p>
+  	<label for="BILL_NAME">Name: </label><input id="BILL_NAME" name="BILL_NAME" required="" type="Text" /> <label for="BILL_EMAIL_ADDRESS">Enter Email: </label><input id="BILL_EMAIL_ADDRESS" name="BILL_EMAIL_ADDRESS" required="" type="email" /> <label for="uPay">Billing Department: </label> <select id="uPay" required=""><option disabled="disabled" selected="selected" value="">--Select--</option><option value="KBRS">Billings & Receivables Services</option><option value="K774">MPW Geomatics Workshop Series</option><option value="K399">Biological &amp; Ecological Engineering</option><option value="K391">Chemistry/ChemStores</option><option value="K434">Chemistry/Machine Shop</option><option value="KPET">Pet Day</option><option value="K435">Chemistry/X-Ray Shop</option><option value="K393">Pharmacy</option><option value="K431">Plant Clinic</option><option value="K394">Public Health and Human Sciences</option><option value="K392">Vet Med</option> </select> <label for="INVOICE_NO">Invoice #: </label><input id="INVOICE_NO" name="INVOICE_NO" required="" type="Text" /> <label for="CUSTOMER_ID">Customer ID: </label><input id="CUSTOMER_ID" name="CUSTOMER_ID" type="Text" /> <label for="AMT">Enter Total Due ($): </label><input id="AMT" name="AMT" required="" step="0.01" type="Number" /> <input class="button" name="Submit" style="background:#c34500; color:#fff; border:none; padding:10px; border-radius:4px; margin-top:8px; margin-right:10px" type="Submit" value="Go to Payment" /> <input name="UPAY_SITE_ID" type="Hidden" value="357" /> <input id="CREDIT_ACCT_CODE" name="CREDIT_ACCT_CODE" type="Hidden" /><br />
+  	<input id="EXT_TRANS_ID" name="EXT_TRANS_ID" type="Hidden" /> <input id="EXT_TRANS_ID_LABEL" name="EXT_TRANS_ID_LABEL" type="Hidden" value="Confirmation Number" /><br />
+  	<script>
+  function DoSubmit() {
+    document.getElementById("EXT_TRANS_ID").value = document.getElementById("uPay").value + " | " + document.getElementById("INVOICE_NO").value + " | " + document.getElementById("CUSTOMER_ID").value;
+    document.getElementById("CREDIT_ACCT_CODE").value = document.getElementById("uPay").value 
+    document.getElementById("uPayForm").submit();
+    return true;
+    }
+  </script></p>
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /department-invoicing
+contexts: {  }
+conditions_require_all: true

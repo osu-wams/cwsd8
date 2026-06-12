@@ -1,0 +1,114 @@
+uuid: 2ba18e0c-dc31-4950-9ee3-28e8b0094730
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: nse_school_page
+label: 'School page buttons and title (button, a, h1, main-display-text)'
+code: |-
+  /*=========================================
+  Button Styling for School Landing Pages
+  =========================================*/
+
+
+  /* Typography and display styling for home page buttons */
+  .home-buttons {
+  	display: flex;
+  	flex-direction: row;
+  	gap: 0 2%;
+  	width: 100%;
+  }
+
+  .home-buttons p {
+  	margin: 0;
+  	flex: 1;
+  }
+
+  .home-buttons a {
+  	display: block;
+  	width: 100%;
+    padding: 1em 2em;
+    font-size: 1.25rem;
+    text-align: center;
+    border-radius: 0px;
+    border: 2px transparent solid;
+  }
+
+  /* Hover effect for home page button */
+  .home-buttons a:hover {
+      background-color: transparent !important;
+      color: white !important;
+      border: 2px white solid !important;
+  }
+
+  /* Typography and display styling for home page button variation */
+  .home-buttons-orange a {
+  	background-color: #d73f09 !important;
+  	color: white !important;
+  	border: 2px #d73f09 solid !important;
+  }
+
+  /* Mobile screen size home page button section adjustments */
+  @media (max-width: 768px) {
+  	.home-buttons.home-buttons-responsive {
+  		flex-direction: column;
+  		row-gap: 16px;
+  	}
+  	
+  	.home-buttons a {
+  		font-size: 1rem;
+  	}
+  }
+
+  /*===================================
+  Page Title Styling
+  ===================================*/
+
+  /* Remove some h1 overrides from theming */
+  h1:not(.site-name__group-link__heading), .h1 {
+      text-transform: none;
+      color: white; 
+      text-shadow: 3px 3px 8px black;
+  }
+
+  .main-display-text {
+  	text-shadow: 4px 3px 2px black;
+  }
+
+  .main-display-text h2,
+  .main-display-text .h2 {
+  	font-family: "Open Sans", sans-serif;
+  	font-weight: 400;
+  	line-height: 1.8;
+  	margin-bottom: 16px;
+  }
+
+  @media (max-width: 768px) {
+  	.main-display-text h2,
+  	.main-display-text .h2 {
+  		font-size: 1.5rem !important;
+  	}
+  	.main-display-text .fs-5,
+  	.main-display-text .fs-4{
+  		font-size: 1rem !important;
+  	}
+  }
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/1\r\n/group/21\r\n/group/6\r\n/group/11\r\n/group/16\r\n/node/14311\r\n/node/14311/latest"
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

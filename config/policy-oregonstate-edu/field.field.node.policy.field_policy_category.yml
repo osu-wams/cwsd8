@@ -1,0 +1,29 @@
+uuid: 9c36fce2-e87c-4751-9b41-5632485163b6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_policy_category
+    - node.type.policy
+    - taxonomy.vocabulary.policy_categories
+id: node.policy.field_policy_category
+field_name: field_policy_category
+entity_type: node
+bundle: policy
+label: Category
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      policy_categories: policy_categories
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

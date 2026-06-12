@@ -1,0 +1,30 @@
+uuid: 7e9d9d30-d12e-4f34-898e-3a3d5ac1f99d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: negative_space_img
+label: 'Razing Reser story (container, negative space)'
+code: |-
+  /* Adds negative space above video container to shift content onto element that is above it */
+
+  .negative-space{
+  	position: relative;
+  	top: -75px;
+  	float: left;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/41536\r\n/node/41351"
+contexts: {  }
+conditions_require_all: true

@@ -3,7 +3,6 @@ langcode: en
 status: true
 dependencies:
   config:
-    - system.menu.main
     - user.role.authenticated
   module:
     - better_exposed_filters
@@ -226,6 +225,8 @@ display:
               secondary_open: false
               reset_button_always_show: false
               secondary_collapse_override: '0'
+              autosubmit_breakpoint: ''
+              auto_submit_sort_only: false
             filter:
               source:
                 plugin_id: default
@@ -235,6 +236,10 @@ display:
                   collapsible_disable_automatic_open: false
                   is_secondary: false
                   hide_label: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
       access:
         type: role
         options:
@@ -257,36 +262,7 @@ display:
             value: '<p class="lead">You don''t have any short URLs yet!</p>'
             format: full_html
           tokenize: 0
-      sorts:
-        count:
-          id: count
-          table: shurly
-          field: count
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: user
-          plugin_id: standard
-          order: DESC
-          expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
-        created:
-          id: created
-          table: shurly
-          field: created
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: user
-          plugin_id: date
-          order: ASC
-          expose:
-            label: ''
-            field_identifier: ''
-          exposed: false
-          granularity: month
+      sorts: {  }
       arguments: {  }
       filters:
         active:
@@ -1091,16 +1067,7 @@ display:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-      path: dashboard/list-custom
-      menu:
-        type: normal
-        title: 'Custom Short URLS'
-        description: ''
-        weight: 0
-        expanded: false
-        menu_name: main
-        parent: ''
-        context: '0'
+      path: url-clicks
     cache_metadata:
       max-age: -1
       contexts:

@@ -1,0 +1,117 @@
+uuid: 77dc0012-0bbe-4c49-b814-1007a92edc64
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.infographic_collection.field_description
+    - field.field.paragraph.infographic_collection.field_external_pdf_path
+    - field.field.paragraph.infographic_collection.field_infographic_thumbnail
+    - field.field.paragraph.infographic_collection.field_keywords
+    - field.field.paragraph.infographic_collection.field_language
+    - field.field.paragraph.infographic_collection.field_pdf_file
+    - field.field.paragraph.infographic_collection.field_search_name
+    - field.field.paragraph.infographic_collection.field_title
+    - paragraphs.paragraphs_type.infographic_collection
+  module:
+    - field_group
+    - file
+    - image
+    - options
+third_party_settings:
+  field_group:
+    group_infographic_item:
+      children:
+        - field_title
+        - field_search_name
+        - field_infographic_thumbnail
+        - field_keywords
+        - field_external_pdf_path
+        - field_pdf_file
+        - field_description
+        - field_language
+      label: 'Infographic Item'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: infographic-item
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: paragraph.infographic_collection.default
+targetEntityType: paragraph
+bundle: infographic_collection
+mode: default
+content:
+  field_description:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_external_pdf_path:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_infographic_thumbnail:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_keywords:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_language:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_pdf_file:
+    type: file_default
+    label: above
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_search_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_title:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

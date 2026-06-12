@@ -1,0 +1,91 @@
+uuid: cf9f56b7-9f01-47af-ac8b-a54635bf4abb
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: stephanie_eckles_reset_additions
+label: "Stephanie Eckles' reset additions"
+code: |
+  /* based on https://moderncss.dev/modern-css-for-dynamic-component-based-architecture/ */
+
+
+
+  /* Baseline for default links */
+  a:not([class]) {
+    /* Relatively sized thickness and offset */
+    text-decoration-thickness: max(0.08em, 2px);
+    text-underline-offset: 0.17em;
+  }
+
+
+  :focus-visible {
+    --outline-size: max(2px, 0.17em);
+
+    outline: var(--outline-width, var(--outline-size)) var(--outline-style, solid)
+      var(--outline-color, currentColor);
+    outline-offset: var(--outline-offset, var(--outline-size));
+  }
+
+
+  /* Scroll margin allowance above anchor links */
+  :target {
+    scroll-padding-block-start: 2rem;
+  }
+
+
+  /* Scroll margin allowance below focused elements 
+    to ensure they are clearly in view */
+  :focus {
+    scroll-padding-block-end: 8vh;
+  }
+
+
+
+
+  /***
+   🟣 SmolCSS Snippet Styles
+   */
+
+
+  /* For "real-world" usage, you do not need to scope
+  these custom properties */
+  .smol-focus-styles :is(a, button, input, textarea, summary) {
+    /* Using max() ensures at least a value of 2px, 
+    while allowing the possibility of scaling 
+    relative to the component */
+    --outline-size: max(2px, 0.08em);
+    --outline-style: solid;
+    --outline-color: currentColor;
+  }
+
+  /* Base :focus styles for fallback purposes */
+  .smol-focus-styles :is(a, button, input, textarea, summary):focus {
+    outline: var(--outline-size) var(--outline-style) var(--outline-color);
+    outline-offset: var(--outline-offset, var(--outline-size));
+  }
+
+  /* Final :focus-visible styles */
+  .smol-focus-styles :is(a, button, input, textarea):focus-visible {
+    outline: var(--outline-size) var(--outline-style) var(--outline-color);
+    outline-offset: var(--outline-offset, var(--outline-size));
+  }
+
+  /* Remove base :focus styles when :focus-visible is available */
+  .smol-focus-styles :is(a, button, input, textarea):focus:not(:focus-visible) {
+    outline: none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,53 @@
+uuid: e236b253-9ec0-4db8-ade4-d41b056dc171
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: services_view
+label: 'Services Catalog View'
+code: |-
+  #views-exposed-form-service-catalog-page-1 {
+  	grid-column: -1/1;
+  }
+
+  .grid-gap-2rem {
+      display: grid;
+      gap: 2rem;
+  }
+
+  .service-card {
+      display: grid;
+      grid-template-columns: 0.3fr 1fr;
+      column-gap: 1rem;
+
+      .views-field-body {
+          grid-column-start: 2;
+      }
+  }
+
+  @media (min-width: 766px) {
+      .grid-cards-xl-three-column  {
+          grid-template-columns: 1fr 1fr;
+      }
+  }
+
+  @media (min-width: 1200px) {
+      .grid-cards-xl-three-column  {
+          grid-template-columns: repeat(3, 1fr);
+      }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /service-catalog
+contexts: {  }
+conditions_require_all: true

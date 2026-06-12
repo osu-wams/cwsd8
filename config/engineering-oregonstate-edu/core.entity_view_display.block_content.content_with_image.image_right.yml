@@ -1,0 +1,104 @@
+uuid: 81c2924c-e699-4da1-b739-ab778250a6db
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.content_with_image
+    - core.entity_view_mode.block_content.image_right
+    - field.field.block_content.content_with_image.field_content_with_image_content
+    - field.field.block_content.content_with_image.field_content_with_image_cta
+    - field.field.block_content.content_with_image.field_content_with_image_image
+    - field.field.block_content.content_with_image.field_content_with_image_title
+  module:
+    - field_group
+    - layout_builder
+    - linkit
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_right_column:
+      children:
+        - field_content_with_image_image
+      label: 'Right Column'
+      parent_name: ''
+      region: content
+      weight: 4
+      format_type: html_element
+      format_settings:
+        classes: content-with-image-image-right-right-column
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_left_column:
+      children:
+        - field_content_with_image_title
+        - field_content_with_image_content
+        - field_content_with_image_cta
+      label: 'Left Column'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: content-with-image-image-right-left-column
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: block_content.content_with_image.image_right
+targetEntityType: block_content
+bundle: content_with_image
+mode: image_right
+content:
+  field_content_with_image_content:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_content_with_image_cta:
+    type: linkit
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+      linkit_profile: default
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_content_with_image_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: true
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_content_with_image_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,32 @@
+uuid: 7f35f7af-8667-422a-9c46-fb808c9a1b87
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: our_approach
+label: 'our approach'
+code: |-
+  function showDynamicButton(id) {
+    document.querySelectorAll('.dynamic').forEach(button => {
+      button.style.display = 'none';
+    });
+    document.getElementById(id).style.display = 'block';
+  }
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/16
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,395 @@
+uuid: ecc09488-905e-4b88-82bd-f3cf1d4bc8a0
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: newsletter
+label: Newsletter
+code: |-
+  /* Heading between grey lines */
+
+  	.newletter-header-separator{
+  		text-transform: uppercase;
+  		text-align: center;
+  	}
+  	
+  	.newletter-header-separator h3, .newletter-header-separator .field {
+  	  display: flex;
+  	  text-align: center;
+  	  align-items: center;
+  	  justify-content: center;
+  	  gap: 1rem; /* space between text and lines */
+  	  text-align: center;
+  	  font-size: 3rem;
+  	  font-family: 'Stratum2Web';
+  	  font-weight: bold;
+  	  text-transform: uppercase;
+  	  font-weight: 600;
+  	  color: #252525;
+  	  margin: 1.5rem 0;
+  	}
+  	
+  	.newletter-header-separator h3::before,
+  	.newletter-header-separator h3::after,
+  	.newletter-header-separator .field::before,
+  	.newletter-header-separator .field::after{
+  	  content: "";
+  	  flex: 1; /* lines flex to fill available space */
+  	  height: 2px;
+  	  background-color: #d3d3d3;
+  	}
+  	
+  	.newletter-header-separator h3::before,
+  	.newletter-header-separator .field::before{
+  		margin-left:5%;
+  	}
+  	
+  	.newletter-header-separator h3::after,
+  	.newletter-header-separator .field::after{
+  		margin-right:5%;
+  	}
+
+
+
+  /* Large image at the top of the newsletter */
+
+  	.provost-image-size img{
+  	  height: auto;
+  	  width: 100%;
+  	  margin:auto;
+  	  object-fit: cover;
+  	  padding-bottom: 10px;
+  	}
+  	
+  	@media (max-width: 570px){
+  		.provost-image-size img {
+  		  width: 100%;
+  		  object-fit: cover;
+  		  object-position: top;
+  		}
+  	}
+  	
+  	
+
+  /* Highlights */
+
+  	/* Container holding the highlights */
+
+  		.highlights-container{
+  			flex-wrap: wrap;
+  			justify-content:space-around;
+  			gap: 20px;
+  		}
+  		
+  		.highlights-container .node__content{
+  			border: 1px solid #eaeaea;	
+  		  border-radius: 15px;
+  		  transition: 0.3s !important;
+  		  position: relative;
+  		}
+  		
+  		/* Layout of items within the highlight container */
+  	
+  			.highlights-container .field__items{
+  				display:flex;
+  				flex-wrap: wrap;
+  				justify-content:space-around;
+  				gap: 20px;
+  			}
+  		
+  			.highlights-container article, .highlights-container .field__item{
+  				flex-basis:45%;
+  			}
+  			
+  	/* Highlight animation on hover */
+  	
+  		.highlights-container .node__content:hover{
+  		  margin-top: -7px;
+  		}
+  	
+  	/* Read more button appear on hover */
+  	
+  		.highlights-container .node__content:hover .highlights-read-more-button{
+  			display: block !important;
+  			position: absolute;
+  			top: 175px;
+  			width: 100%;
+  			text-align: center;
+  		}
+  	
+  	/* Image darken on hover */
+  	
+  		.highlights-container .node__content:hover .teaser-highlights-image img, .link-to-article:hover .teaser-highlights-image img{
+  			filter: brightness(50%);
+  		}
+  		
+  	/* Orange border below highlight image */
+  	
+  		.highlights-container .block-field-blocknodenewsletter-highlightsfield-featured-image-or-video{
+  			border-bottom: 4px solid #d73f09;	
+  		}
+
+  	/* Padding on highlight content items */
+  	
+  		.highlights-container .block-field-blocknodenewsletter-highlightsbody, 
+  		.highlights-container .block-field-blocknodenewsletter-highlightsfield-link-to-article,
+  		.highlights-container .block-field-blocknodenewsletter-highlightsfield-highlight-header,
+  		.highlights-container .block-field-blocknodenewsletter-highlightstitle
+  		{
+  			padding-left:1rem;
+  			padding-right: 1rem;
+  		}
+  	
+  	/* Padding on highlight content items */
+  	
+  		.highlights-container .block-field-blocknodenewsletter-highlightsfield-link-to-article, .link-to-article{
+  			padding-bottom:1rem;
+  		}
+  		
+  	/* Hide header of highlight on newspaper */
+  	
+  		.node--type-newsletter-highlights.node--view-mode-teaser h2{
+  			display: none;
+  		}
+  	
+  	/* Highlight image on newsletter page */
+  	
+  		.teaser-highlights-image img{
+  		  width: 100%;
+  		  height: 400px;
+  		  object-fit: cover;
+  		  object-position: top;
+  		  border-radius: 15px 15px 0 0;
+  		}
+  		
+  	/* Highlight image on highlight page */
+  	
+  		.full-hightlights-image{
+  		  float: left;
+  		  padding-right: 30px;
+  		}
+  	
+  	/* Alt header stying for teaser on newsletter page */
+  	
+  		.field--name-field-highlight-header, .highlights-container .block-field-blocknodenewsletter-highlightstitle{
+  			text-align: center;
+  		  font-size: 1.8rem;
+  		  font-family: 'Stratum2Web';
+  		  font-weight: bold;
+  		  text-transform: uppercase;
+  		}
+  		
+  		.highlights-container .block-field-blocknodenewsletter-highlightstitle a{
+  			color: #d73f09 !important;
+  		  text-decoration: none !important;
+  		  text-align: center;
+  		  font-size: 1.8rem;
+  		  font-family: 'Stratum2Web';
+  		  font-weight: bold;
+  		  text-transform: uppercase;
+  		}
+
+
+
+  /* Back container on highlight page */
+
+  	.back-container{
+  		position:relative;
+  	}
+  	
+  	.back-container:hover .back-text{
+  		text-decoration:underline;
+  		text-decoration-color: #d73f09;
+  	}
+
+  	/* USER BEWARE: This style affects both the Back container and the Highlights Container. Adjust with caution. */
+  		.highlights-container .block-field-blocknodenewsletter-highlightsfield-link-to-article a, .back-container .block-field-blocknodenewsletter-highlightsfield-newsletter a, .link-to-article a{
+  			inset: 0;
+  		  z-index: 2;
+  		  text-indent: -9999px;
+  		  overflow: hidden;
+  		  text-decoration: none !important;
+  		  position: absolute;
+  		}
+
+
+
+  /* Top Heading Section */
+
+  	/* Academic Matters Title */
+  	
+  		.newsletter-name h2{
+  		  font-size: 4rem;
+  		  font-family: 'Stratum2Web';
+  		  font-weight: bold;
+  		  color: #d73f09;
+  		  margin-bottom: 0;
+  		}
+  	
+  	/* Motto */
+  	
+  		.newsletter-name h3{
+  			color:#212529 !important;
+  			font-size: 1.25rem !important;
+  		}
+
+  	/* Issue and Volume Styling */
+  	
+  		.block-field-blocknodenewsletterfield-volume, .block-field-blocknodenewsletterfield-issue{
+  			display: inline-block;
+  			font-weight:bold;
+  		}
+  		
+  		.field--name-field-volume .field__item::after{
+  			content: ",";
+  		}
+  		
+  		.field--name-field-volume, .field--name-field-issue{
+  			flex-direction: row !important;
+  		}
+
+
+
+  /* Columns of newsletter page */
+
+  	.newsletter-left{
+  		flex-basis: 75%;
+  	}
+  	
+  	.newsletter-right{
+  		flex-basis:25%;
+  	}
+  	
+  	.newsletter-right .block__content{
+  		background-color: #c6dae7;
+  		padding: 5%;
+  	}
+  	.newsletter-right .views-field-field-highlights .field-content a{
+  		padding: 5%;
+  		display:block;
+  		border-bottom: 1px solid #5858581a;
+  	}
+  	
+  	.newsletter-right .views-field-field-highlights .field-content a{
+  		text-decoration:none;
+  	}
+  	
+  	.newsletter-right .views-field-field-highlights .field-content a:hover{
+  		background-color: #ffffff59;
+  	}
+  	
+  	.newsletter-row-2{
+  	  position: absolute;
+  	  top: 0;
+  	  right: 0;
+  	  width: 25%;
+  	}
+  	
+  	.newsletter-row-1{
+  	  margin-right: 25%;
+  	}	
+  	
+  	@media (max-width: 991.98px) {
+  	  .newsletter-row-2 {
+  	    display: none !important;
+  	  }
+  	  .newsletter-row-1 {
+  	  margin-right:0;
+  	  }
+  	}	
+  	
+  	
+  	
+  /* Sidebar Menu */
+
+  	.right-nav .field__item a{
+  		padding: 2%;
+  		padding-bottom:3%;
+  		display: block;
+  		text-decoration:none;
+  		border-bottom: 1px solid #b1b1b133;
+  		font-weight: 500;
+  	}
+  	
+  	.right-nav .field__item a:hover{
+  		background-color:#ffffff3d;
+  	}
+
+
+  	
+  /* Misc */
+
+  	/* Background color of item when clicked */
+  	
+  		.node__content a:active:not(.button,#osu-logo-wide,#osu-logo-crest) {
+  		  background-color: hsl(0deg 0% 100% / 0%);
+  		  color: hsl(0, 0%, 100%);
+  		}
+
+  	.align-right{
+  		text-align:right;
+  	}
+  	
+  	.bg-white{
+  		background-color: white;
+  	}
+  	
+  	.bold{
+  		font-weight:bold;
+  	}
+  	
+  	.right-aligned{
+  		text-align:right;
+  	}
+  	
+  	.padding-32{
+  		padding-left:32px;
+  		padding-right:32px;
+  	}
+
+  	.node--type-newsletter > h2:nth-of-type(1) {
+  	  display:none;
+  	}
+
+  	.layout{
+  		overflow:hidden;
+  	}
+  	
+  	.inline{
+  		display:inline-block;
+  	}
+
+  	@media (max-width: 767.98px) {
+  	  .highlights-container article,
+  	  .highlights-container .field__item {
+  	    flex-basis: 100%;
+  	  }
+  	  
+  	  .mobile-left-aligned{
+  	  	text-align: left;
+  	  	padding-left: 2rem !important;
+  	  	padding-top: 1.5rem !important;
+  	  }
+  	  .highlights-container .node__content{
+  	  	margin: 1rem;
+  	  }
+  	  
+  	  .newsletter-name h3{
+  	  	width:75%;
+  	  }
+  	}
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/newsletters\r\n/newsletters/*\r\n/newsletter-highlights/*\r\n/newsletter\r\n/newsletter/*\r\n/newsletters/archive"
+contexts: {  }
+conditions_require_all: true

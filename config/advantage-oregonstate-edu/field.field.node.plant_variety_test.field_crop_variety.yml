@@ -1,0 +1,25 @@
+uuid: a6b01565-9bf9-4081-80eb-82b38821acce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_crop_variety
+    - node.type.plant_variety_test
+id: node.plant_variety_test.field_crop_variety
+field_name: field_crop_variety
+entity_type: node
+bundle: plant_variety_test
+label: 'Crop Variety'
+description: 'Select the primary crop category that best describes this variety. Each variety should be assigned to one category only. Examples include Nuts & Fruits, Grains & Oilseeds, Ornamentals, Vegetables & Roots, and Hops & Specialty Crops.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: views
+  handler_settings:
+    view:
+      view_name: crop_category_terms_test
+      display_name: entity_reference_1
+      arguments: {  }
+field_type: entity_reference

@@ -1,0 +1,33 @@
+uuid: ab470978-b709-4693-9dfb-18a73d543ad1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_opportunity
+    - node.type.job
+    - taxonomy.vocabulary.opportunity_type
+  content:
+    - 'taxonomy_term:opportunity_type:c65e7af9-453f-422c-a655-c9d3b2059d8a'
+id: node.job.field_opportunity
+field_name: field_opportunity
+entity_type: node
+bundle: job
+label: Opportunity
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: c65e7af9-453f-422c-a655-c9d3b2059d8a
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      opportunity_type: opportunity_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

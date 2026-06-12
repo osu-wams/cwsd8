@@ -1,0 +1,39 @@
+uuid: bee1424c-664a-4d0e-b2ea-2874f91ce0c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.sitewide
+  module:
+    - block_visibility_groups
+id: accordion_styling
+label: 'Accordion Styling'
+code: |-
+  /* Accordion styling VRB 3.13.2024 */
+
+  .accordion {
+  	--bs-accordion-border-color:black;
+  	--bs-accordion-border-width:1px;
+  	--bs-accordion-btn-icon: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='black'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+  --bs-accordion-btn-icon-width: 2rem;
+  --bs-accordion-btn-bg:var(bg-neutral-100);
+
+
+  }
+
+
+  .accordion-button:hover {
+      color: var(--bs-accordion-active-color);
+      background-color: var(--bs-accordion-active-bg);
+      box-shadow: inset 0 calc(-1 * var(--bs-accordion-border-width)) 0 var(--bs-accordion-border-color);
+  	
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: sitewide
+contexts: {  }
+conditions_require_all: true

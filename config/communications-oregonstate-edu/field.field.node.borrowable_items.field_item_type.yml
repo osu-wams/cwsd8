@@ -1,0 +1,29 @@
+uuid: ed4b3ecd-a2f2-4f16-b2b9-1121eff0d144
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_item_type
+    - node.type.borrowable_items
+    - taxonomy.vocabulary.borrowable_item_type
+id: node.borrowable_items.field_item_type
+field_name: field_item_type
+entity_type: node
+bundle: borrowable_items
+label: 'Item Type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      borrowable_item_type: borrowable_item_type
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

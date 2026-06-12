@@ -1,0 +1,40 @@
+uuid: 4955d8c9-09fc-4866-b1ac-298f46e0d952
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.stat_block
+    - field.field.block_content.stat_block.field_statistic
+    - field.field.block_content.stat_block.field_statistic_description
+  module:
+    - text_field_formatter
+id: block_content.stat_block.default
+targetEntityType: block_content
+bundle: stat_block
+mode: default
+content:
+  field_statistic:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h2
+      wrap_class: 'display-4 osu-stat-block--statistic '
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_statistic_description:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h3
+      wrap_class: 'h6 osu-stat-block--description '
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

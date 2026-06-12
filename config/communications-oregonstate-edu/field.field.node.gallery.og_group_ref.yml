@@ -1,0 +1,31 @@
+uuid: 838b2caa-304a-4976-9726-60c409caa38e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.og_group_ref
+    - node.type.gallery
+id: node.gallery.og_group_ref
+field_name: og_group_ref
+entity_type: node
+bundle: gallery
+label: 'Groups audience'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: title
+      direction: ASC
+    membership_type: og_membership_type_default
+    behaviors:
+      og_behavior:
+        status: true
+      views-select-list:
+        status: 0
+field_type: entity_reference

@@ -1,0 +1,31 @@
+uuid: 982f1a73-1ccf-480f-bb40-bf6ab6d18a4f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: ceoas_site_visit_pixel
+label: 'CEOAS site-visit-pixel'
+code: |
+  var p=location.protocol=='https:'?'https:':'http:';
+  var r=Math.floor(Math.random()*999999);
+  document.write('<img src="' + p + '//ads.undertone.com/t?trackerid=9361&cb=' + r +'" alt="" style="display:none;" border="0" height="1" width="1" />');
+noscript: '<img src="https://ads.undertone.com/t?trackerid=9361&cb=[INSERT_YOUR_CACHE-BUSTER_HERE]" style="display: none;" width="0" height="0" alt="" />'
+noscriptRegion:
+  claro: page_bottom
+  madrone: footer
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /undergraduate-programs
+contexts: {  }
+conditions_require_all: true

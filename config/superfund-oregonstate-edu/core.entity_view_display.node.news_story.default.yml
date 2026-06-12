@@ -1,0 +1,70 @@
+uuid: 6012c6a2-656d-4b88-a704-4ef90a3f35bb
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.news_story.feeds_item
+    - field.field.node.news_story.field_associated_srp_research
+    - field.field.node.news_story.field_news_source
+    - field.field.node.news_story.field_osu_story_external_url
+    - field.field.node.news_story.field_pub_date_published
+    - node.type.news_story
+  module:
+    - datetime
+    - link
+    - user
+id: node.news_story.default
+targetEntityType: node
+bundle: news_story
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_associated_srp_research:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_news_source:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_osu_story_external_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 104
+    region: blb_region_col_1
+  field_pub_date_published:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true

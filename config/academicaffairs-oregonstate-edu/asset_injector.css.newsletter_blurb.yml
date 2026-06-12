@@ -1,0 +1,90 @@
+uuid: e28aff2e-92f9-4349-9cff-9bfb4d26327e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: newsletter_blurb
+label: 'Newsletter Blurb'
+code: |-
+  /* Newsletter styling for the newsletter blurb on the homepage and Senior Vice Provost */
+
+  .newsletter-h3{
+  	font-family: 'Stratum2Web', serif;
+    font-size: 3rem;
+    font-weight: 500;
+  }
+
+  .newsletter-date{
+  	font-size: 1rem;
+    font-weight: 100;
+    font-style: italic;
+  }
+
+  .newsletter-tab{
+    position: absolute;
+    width: 200px;
+    margin-top: -90px;
+    margin-left: -100px;
+    box-shadow: 0 -8px 8px -8px rgba(0, 0, 0, 0.75);
+  }
+
+  .rounded-image{
+    padding: 4rem;
+    border-radius: 50%;
+    background-color: white;
+    height: 250px;
+    width: 250px;
+    flex-basis:25%;
+    max-width: 250px;
+    max-height: 250px;
+  }
+
+  .newsletter-container{
+  	width: 100% !important;
+  }
+
+  .newsletter-blurb{
+  	flex-basis: 65%;
+  }
+
+  @media (max-width: 1200px) {
+  	.rounded-image{
+  		flex-basis: 50%!important;
+  	}
+  	
+  	.newsletter-blurb{
+  		flex-basis: 50%!important;
+  	}
+  }
+
+  @media (max-width: 800px) {
+  	.rounded-image{
+  		flex-basis: 100%!important;
+  		margin-left: -1.8rem;
+  	}
+  	
+  	.newsletter-blurb{
+  		flex-basis: 100%!important;
+  		margin-left: -1.8rem;
+  	}
+  	
+  	.newsletter-date {
+      font-size: 0.8rem;
+      padding-left: .5rem;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/1291\r\n/node/1581\r\n<front>"
+contexts: {  }
+conditions_require_all: true

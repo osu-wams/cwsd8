@@ -1,0 +1,29 @@
+uuid: c5abb327-f6a9-4d7f-ac98-3617fd7b3877
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_profile_services
+    - node.type.osu_profile
+    - taxonomy.vocabulary.service_fee_categories
+id: node.osu_profile.field_profile_services
+field_name: field_profile_services
+entity_type: node
+bundle: osu_profile
+label: Services
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      service_fee_categories: service_fee_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

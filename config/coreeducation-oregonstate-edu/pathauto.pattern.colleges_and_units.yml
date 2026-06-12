@@ -1,0 +1,23 @@
+uuid: 0e4e947b-c38f-47e9-aad8-78feb98cdc79
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.colleges
+  module:
+    - taxonomy
+id: colleges_and_units
+label: 'Colleges and Units'
+type: 'canonical_entities:taxonomy_term'
+pattern: '/[term:parent:url:path]/[term:name]'
+selection_criteria:
+  957c1b89-f8cb-4beb-a323-8fa80d36516c:
+    id: 'entity_bundle:taxonomy_term'
+    negate: false
+    context_mapping:
+      taxonomy_term: taxonomy_term
+    bundles:
+      colleges: colleges
+selection_logic: and
+weight: -6
+relationships: {  }

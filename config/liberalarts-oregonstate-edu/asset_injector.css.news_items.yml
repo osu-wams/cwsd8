@@ -1,0 +1,47 @@
+uuid: 6bb31d11-fe8b-4f81-913f-6c9435a17965
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: news_items
+label: 'News Items'
+code: |-
+  #block-doug-fir-system-main {
+  padding: 2em 12%;
+  }
+  .field--name-field-publication-date {
+  color: hsl(15.7, 92%, 43.9%);
+  font-family: "Stratum2Web", serif;
+  font-weight: 500;
+  border-bottom: solid;
+  border-bottom-width: 1px;
+  padding-bottom:0.5em;
+  margin-bottom:0.5em;
+  }
+  .field--name-field-external-url {
+  color: hsl(15.7, 92%, 43.9%);
+  font-family: "Stratum2Web", serif;
+  border-top: solid;
+  border-top-width: 1px;
+  padding-top:0.5em;
+  margin-top:0.5em;
+  }
+  .field--name-field-external-url a{
+  color: hsl(15.7, 92%, 43.9%);
+  }
+  .field--name-field-osu-organizations {display:none;}
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/news/*'
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,35 @@
+uuid: 77d3d27a-096d-4b59-9bb5-1d8a0edfd7d9
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: quick_links_background_color
+label: 'Quick Links Background Color'
+code: |-
+  const osuQuickLink = document.querySelectorAll('.block--type-quick-links');
+
+  osuQuickLink.forEach(quickLink => {
+      const quickLinkColor = quickLink.querySelector('.field--name-field-ql-color')
+      const quickLinkParagraph = quickLink.querySelectorAll('.field--name-field-ql-paragraph .field__item .paragraph--type--quick-link');
+      quickLinkParagraph.forEach(qlParagraphItem => {
+          qlParagraphItem.classList.add(quickLinkColor.innerText);
+      })
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

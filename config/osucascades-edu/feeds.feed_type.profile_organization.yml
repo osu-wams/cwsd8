@@ -1,0 +1,83 @@
+uuid: 8d9dd765-7071-466f-b1c6-15fd5e0d6368
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_profile.field_osu_organizations
+    - node.type.osu_profile
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      f920855b-bcca-4183-b0f9-e7c6675fc9b0:
+        separator: '|'
+        limit: null
+        uuid: f920855b-bcca-4183-b0f9-e7c6675fc9b0
+        plugin: explode
+        source: organizations
+        weight: 0
+        label: Explode
+label: 'Profile Organization'
+id: profile_organization
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: osu_profile
+  langcode: en
+  insert_new: 0
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  name:
+    value: Name
+    label: Name
+    machine_name: name
+    type: csv
+  organizations:
+    value: Organizations
+    label: Organizations
+    machine_name: organizations
+    type: csv
+  e_mail:
+    value: E-mail
+    label: E-mail
+    machine_name: e_mail
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: name
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_osu_organizations
+    map:
+      target_id: organizations
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 0
+      autocreate_bundle: osu_organization

@@ -1,0 +1,29 @@
+uuid: cc557260-3bc9-473d-b10a-a3b4fbe78a6e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_managed_by
+    - group.type.basic_group
+    - taxonomy.vocabulary.managing_departments
+id: group.basic_group.field_managed_by
+field_name: field_managed_by
+entity_type: group
+bundle: basic_group
+label: 'Managed By'
+description: "Select the club's managing department (example: SEE, CFSL, etc.)"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      managing_departments: managing_departments
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

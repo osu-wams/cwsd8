@@ -1,0 +1,23 @@
+uuid: 53036d67-8ac5-4458-86c2-36cb2e649c1c
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.internship_spotlight
+  module:
+    - node
+id: intern_spotlight_pages
+label: 'Intern spotlight pages'
+type: 'canonical_entities:node'
+pattern: '/internships/spotlight/[node:field_intern_first_name]-[node:field_intern_last_name]'
+selection_criteria:
+  d41de3ae-faf9-441e-8936-336c1ccb0dec:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      internship_spotlight: internship_spotlight
+selection_logic: and
+weight: -10
+relationships: {  }

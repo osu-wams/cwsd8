@@ -1,0 +1,90 @@
+uuid: 9bad9637-f71d-4255-86ee-e5718fc7039b
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.discipline_research_areas
+    - field.field.block_content.discipline_research_areas.body
+    - field.field.block_content.discipline_research_areas.field_find_out_more_link
+    - field.field.block_content.discipline_research_areas.field_title
+  module:
+    - field_group
+    - layout_builder
+    - link
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_title_field_wrapper:
+      children:
+        - field_title
+      label: 'Title Field Wrapper'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: h4
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_find_out_more_link_wrapper:
+      children:
+        - field_find_out_more_link
+      label: 'Find out more link wrapper'
+      parent_name: ''
+      region: content
+      weight: 2
+      format_type: html_element
+      format_settings:
+        classes: RSVP-Link
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: block_content.discipline_research_areas.default
+targetEntityType: block_content
+bundle: discipline_research_areas
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_find_out_more_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

@@ -1,0 +1,77 @@
+uuid: c1f91284-74c7-4bfc-9243-c9a38b7eccb5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.pp_manual.body
+    - field.field.node.pp_manual.field_a_to_z_index
+    - field.field.node.pp_manual.field_applicability
+    - field.field.node.pp_manual.field_effective
+    - field.field.node.pp_manual.field_page_header
+    - field.field.node.pp_manual.field_policies_guidelines
+    - field.field.node.pp_manual.field_policy_number2
+    - field.field.node.pp_manual.field_revised
+    - field.field.node.pp_manual.field_section
+    - field.field.node.pp_manual.field_statutory_authority
+    - node.type.pp_manual
+  module:
+    - datetime
+    - text
+    - user
+id: node.pp_manual.teaser
+targetEntityType: node
+bundle: pp_manual
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_effective:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: long
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_policies_guidelines:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_policy_number2:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_statutory_authority:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_a_to_z_index: true
+  field_applicability: true
+  field_page_header: true
+  field_revised: true
+  field_section: true

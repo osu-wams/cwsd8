@@ -1,0 +1,593 @@
+uuid: 0749e3ac-b0f0-46d8-af6a-63fa6e557531
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: story_key_takeaways_and_story_by_sections
+label: 'Story content type (Key takeaways, story by, layout, hero sections)'
+code: |-
+  /* ==============================================
+  Story: Story by section styling IS
+  ================================================= */
+
+  /*Story by section title styling*/
+  .block-field-blocknodestoryfield-c-engr-story-author .field__label {
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600 !important;
+  	line-height: 130%;
+  	color: #000;
+  }
+
+  /*Story by Author name styling*/
+  .block-field-blocknodestoryfield-c-engr-story-author .field__items {
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 130%; 
+  	margin-top: 8px;
+  }
+
+  /*Story by Creation date styling*/
+  .block-field-blocknodestorycreated {
+  	font-family: "Open Sans";
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 300;
+  	line-height: 130%; 
+  	
+  	margin-top: 8px;
+  	margin-left: 2px;
+  }
+
+  /*Story by container styling*/
+  .story-by-container .col-lg-8 {
+  	background-color: rgba(198, 218, 231, 0.3);
+  	width: 65%;
+  	margin-left: 12px;
+  	padding-left: 32px;
+  	padding-top: 32px;
+  	padding-bottom: 32px;
+  }
+
+  /*Story by Tablet size update*/
+  @media only screen and (max-width: 994px) and (min-width: 768px){
+  	
+  	/*Story by container width update*/
+  	.story-by-container .col-lg-8 {
+  		width: 100%;
+  	}
+  	
+  	/*Story by container padding update*/
+  	.story-by-container .container {
+  		padding-right: 32px;
+  	}
+  }
+
+  /*Story by Mobile styling*/
+  @media only screen and (max-width: 767px){
+  	
+  	/*Story by container width update*/
+  	.story-by-container .col-lg-8 {
+  		width: 100%;
+  		margin-right: 16px;
+  	}
+  	
+  	/*Story by container padding update*/
+  	.story-by-container .container {
+  		padding-right: 36px;
+  	}
+  }
+
+  /* ==============================================
+  Story: Story Key Takeaways styling DV
+  ================================================= */
+
+  /* Keytakeaways container background box styling */
+  .key-takeaways-container .col-xxl-8{
+  	background: rgba(198, 218, 231, 0.3);
+  	width: 65%;
+  	padding-top: 48px;
+  	padding-left: 48px;
+  	padding-bottom: 28px;
+  	padding-right: 48px;
+  	margin-left: 12px;
+  	margin-right: 12px;
+  }
+
+  /* H2 inside the main block */
+  ._none.block-field-blocknodestoryfield-story-key-takeaways h2,
+  ._none.block-field-blocknodestoryfield-story-key-takeaways-2 h2 {
+      color: #000;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 130%; /* 31.2px */
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+  }
+
+  /* Field items inside the block */
+  ._none.block-field-blocknodestoryfield-story-key-takeaways .block__content .field__item,
+  ._none.block-field-blocknodestoryfield-story-key-takeaways-2 .block__content .field__item {
+      color: #000;
+      font-family: "Open Sans";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%; /* 28.8px */
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 2ch;
+  }
+
+
+  /* Field item arrow styling */
+  ._none.block-field-blocknodestoryfield-story-key-takeaways .block__content .field__item::before,
+  ._none.block-field-blocknodestoryfield-story-key-takeaways-2 .block__content .field__item::before {
+      content: '';
+      display: inline-block;
+      width: 1.8ch;
+  		height: 1.8ch;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="%23D73F09" stroke-width="4" stroke-linecap="square"/></svg>') no-repeat center center;
+      background-size: contain;
+      background-position: top left;
+      position: absolute;
+  		left: 0;
+      top: 0.5ch;
+  }
+
+
+  /* Container backgroud update for Tablet size*/
+  @media only screen and (max-width: 991px) and (min-width: 768px){
+  	
+  	/* Container width update*/
+  	.key-takeaways-container .col-lg-8 {
+  		width: 100%;
+  	}
+  	
+  	/* Container padding update with right edge*/
+  	.key-takeaways-container .container {
+  		padding-right: 32px;
+  	}
+  }
+
+  /* Container backgroud update for Mobile size*/
+  @media only screen and (max-width: 767px){
+  	
+  	/* Container width and margin update*/
+  	.key-takeaways-container .col-lg-8 {
+  		width: 100%;
+  		margin-right: 16px;
+  	}
+  	
+  	/* Container padding update with right edge*/
+  	.key-takeaways-container .container {
+  		padding-right: 36px;
+  	}
+  }
+
+
+  .key-takeaways-container {
+      display: none;
+  }
+
+  .key-takeaways-container:has(.block-field-blocknodestoryfield-story-key-takeaways),
+  .key-takeaways-container:has(.block-field-blocknodestoryfield-story-key-takeaways-2) {
+  	display: block;
+  }
+
+  /* ==============================================
+  Story: Typography SB
+  ================================================= */
+
+  h1{
+  	color: #D73F09;
+
+  	/* H1 */
+  	font-family: Stratum2web;
+  	font-size: 96px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 120% !important; /* 92.16px */
+  	word-wrap: break-word;
+  	padding-bottom: 50px;
+  }
+
+
+  h2{
+  	color: var(--Primary-Beaver-Orange, #D73F09);
+  	
+  	/* H2 */
+  	font-family: Stratum2web;
+  	font-size: 64px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 83.2px */
+  	word-wrap: break-word;
+  }
+
+
+  h3{
+  	color: #000;
+
+  	/* H3 */
+  	font-family: Stratum2web;
+  	font-size: 36px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 46.8px */
+  	padding-bottom: 30px;
+  	padding-top: 30px;
+  }
+
+  h5{
+  	color: #000;
+  	
+  	/* H5 */
+  	font-family: "Open Sans";
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  	padding-bottom: 30px;
+  	padding-top: 30px;
+  }
+
+  .body-text h6{
+  	color: #000;
+
+  	/* H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  	padding-top: 30px !important;
+  	padding-bottom: 30px !important;
+  }
+
+  .body-text p{
+  	color: #000;
+
+  	/* Body */
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  }
+
+
+  	 .block-field-blocknodestoryfield-hero-photo-by{
+  		color:#000;
+  	
+  		/* Notes */
+  		font-family: "Open Sans";
+  		font-size: 12px;
+  		font-style: italic;
+  		font-weight: 300;
+  		line-height: 130%; /* 15.6px */
+  		padding-top: 10px; 
+  	}
+
+  /*
+  	.field--name-field-hero-photo-by:before {
+  		content: "Photo by ";
+  	}
+  */
+
+  .field--name-field-hero-photo-caption{
+  	color:#000;
+
+  	/* Notes */
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: italic;
+  	font-weight: 300;
+  	line-height: 130%; /* 15.6px */
+  	text-align: right;
+  	padding-top: 10px;
+  }
+
+
+
+
+  .layout-content {
+  	background: #FFF;
+  }
+
+  @media only screen and (max-width: 767px) {
+     h1{
+      font-size: 56px;
+    }
+    
+    h2{
+    	font-size: 44px;
+    }
+    .field--name-field-hero-photo-caption{
+    	text-align: left;
+    }
+  }
+
+  /* ==============================================
+  Story: Related Researchers Card SB
+  ================================================= */
+
+  .story-related-researcher-card{
+  	width: 100%;
+  	border-radius: 5px;
+    /*border: 2px solid transparent ;*/
+    box-sizing: border-box ;
+  	box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.08) !important;
+  	background: var(--Primary-Bucktooth-White, #FFF) !important;
+  	border: 1px solid var(--Useful-Grey-Shades-Lightest-Grey, #F8F9FA) !important;
+  }
+
+  .story-related-researcher-card:hover {
+    /*border: 2px solid #F8F9FA !important;*/
+    background-color: #F9FCFD !important;
+    transition: .3s !important;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .story-related-researcher-card:focus {z
+    /*background-color: #F9FCFD !important;*/
+    /*border: 2px solid #D73F09 !important;*/
+    /*box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;*/
+    border-radius: 5px;
+  	border: 1px solid var(--Useful-Grey-Shades-Lightest-Grey, #F8F9FA);
+  	background: var(--useful-seafoam-shades-seafoam-8, #F9FCFD);
+  }
+
+  .story-related-researcher-card:active {
+    background-color: #F9FCFD !important;
+  	border: 1px solid var(--Useful-Grey-Shades-Lightest-Grey, #F8F9FA);
+  	background: var(--useful-seafoam-shades-seafoam-20, #F1F8F9);
+  }
+
+  .story-related-researcher-card-name:active {
+    text-decoration: none !important;
+  }
+
+  .story-related-researcher-card a:focus{
+    background-color: #F9FCFD !important;
+    color: #000 !important;
+  }
+
+  .story-related-researcher-card a:hover{
+    background-color: #F9FCFD !important;
+    color: #000 !important;
+  }
+
+  .story-related-researcher-card a:active{
+    background-color: #F9FCFD !important;
+    color: #000 !important;
+  }
+
+  .story-related-researcher-card a{
+    background-color: #FFF !important;
+    color: #000 !important;
+  }
+
+
+  .story-related-researcher-img img{
+  	width: 100%;
+  	height: 380px;
+  	object-fit: cover;
+  	border-radius: 5px 5px 0 0;
+  }
+
+  .story-related-researcher-card-name a{
+  	text-decoration: none;
+  }
+
+  .story-related-researcher-card-name{
+  	padding: 24px 24px 0px 24px;	
+  }
+
+  .story-related-researcher-title{
+  	padding: 0px 24px 24px 24px;	
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    .story-related-researcher-img img {
+      height: 348px !important;
+      width: 100% !important;
+      object-fit: cover;
+      line-height: 120% !important;
+    }
+  }
+
+
+
+  .container-fluid:has(.madrone-breadcrumb) { 
+    background-color: #FFF !important;
+  }
+
+
+  /** Related Stories */
+  .story-card{
+  	height: 640px !important;
+  }
+
+  .story-body{
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: normal;
+  	padding: 0 30px 30px 30px !important;
+  }
+
+  @media only screen and (max-width: 608px) {
+    .story-card {
+      height: 700px !important;
+    }
+  }
+
+  /* Image effects */
+  .new-story-card-img img{
+  	width: 417px;
+  	border-radius: 5px 5px 0 0;
+  	height: 250px;
+  	object-fit: cover;
+
+  }
+  .new-story-title{
+  	color:  #000;
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600 !important;
+  	line-height: normal;
+  	padding: 30px !important;
+  }
+
+  .read-more-link a{
+
+  text-transform: uppercase;
+  	color: #d73f09 !important;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+  	background-position: 100%;
+  	background-repeat: no-repeat;
+  	background-size: 17px;
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 500 !important;
+  	padding-right: 27px;
+  	font-family: Stratum2Web;
+  	text-decoration: none;
+  	position: absolute;
+  	bottom: 30px;
+  	padding-left: 30px;  
+  	transition: 0.1s ease;
+  }
+
+  .read-more-link a:hover{
+  	transition: 0.1s ease;
+  	padding-right: 40px;
+  	text-decoration: none !important;
+  }
+
+  /* Button Effects and hovers */
+
+  .block-views .related-stories .more-link {
+  	width: 100%;
+  	text-align: center;
+  	margin-top: 70px;
+  	margin-bottom: 120px;
+  }
+
+  .more-link a,
+  .body-text a.btn {
+  	background: #FFF;
+    color: #000;
+    border: 2px solid #000;
+    font-weight: 600 !important;
+    letter-spacing: 1.6px;
+    border-radius: 0;
+    text-transform: uppercase;
+    padding: 17px 52px;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .more-link a:hover,
+  .body-text a.btn:hover {
+  	border: 2px solid #000;
+  	background: #000;
+  	color: #FFF;
+  }
+
+  .more-link a:active,
+  .body-text a.btn:active {
+  	border: 2px solid #000;
+  }
+
+  .body-text a.btn {
+  	margin-top: 30px;
+  }
+
+  /*********************************
+  * Photo Handling for Stories
+  *********************************/
+
+  /* Typography for photo captions */
+  figcaption {
+  	color: #000 !important;
+  	font-family: "Open Sans";
+  	font-size: 12px !important;
+  	font-style: italic;
+  	font-weight: 300;
+  	line-height: 130%; /* 15.6px */
+  }
+
+  .body-text .media--type-image,
+  .body-text figure {
+  	margin-top: 48px;
+  	margin-bottom: 48px;
+  }
+
+  .body-text figure .media--type-image {
+  	margin-top: 0;
+  	margin-bottom: 0;
+  }
+
+  /* Display vertical image side by side */
+  .view-mode--left_50_50 {
+  	display: flex !important;
+  	align-items: center;
+  }
+
+  /* Vertical image and caption width 50% */
+  .media--view-mode-left-50-50,
+  .view-mode--left_50_50 > figcaption {
+  	width: 50%;
+  }
+
+  .media--view-mode-left-50-50 img {
+  	width: 100%;
+  }
+
+  /* Padding between caption and photo */
+  .view-mode--left_50_50 > figcaption {
+  	padding-left: 60px;
+  }
+
+  /* Stack vertical image and caption vertically on mobile, no padding */
+  @media screen and (max-width: 767px) {
+  	.view-mode--left_50_50 {
+  		flex-direction: column;
+  	}
+  	
+  	.media--view-mode-left-50-50,
+  	.view-mode--left_50_50 > figcaption {
+  		width: 100%;
+  	}
+  	
+  	.view-mode--left_50_50 > figcaption {
+  		padding-left: 0px;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/all-stories/*'
+contexts: {  }
+conditions_require_all: true

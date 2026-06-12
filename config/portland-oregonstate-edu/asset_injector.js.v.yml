@@ -1,0 +1,33 @@
+uuid: d0efb51e-ac79-4900-a423-3a521945aa94
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+id: v
+label: 'View all items'
+code: |-
+  (function (Drupal, once) {
+    Drupal.behaviors.viewToggle = {
+      attach(context) {
+        once('viewToggle', '.view-toggle-button', context).forEach(button => {
+          button.addEventListener('click', () => {
+            button.closest('.view-toggle-list').classList.add('is-expanded');
+            button.remove();
+          });
+        });
+      }
+    };
+  })(Drupal, once);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

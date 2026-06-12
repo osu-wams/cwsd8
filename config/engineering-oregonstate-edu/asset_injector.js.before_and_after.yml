@@ -1,0 +1,96 @@
+uuid: 0c376a9b-b3a2-4871-ac34-d512a2476f3d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: before_and_after
+label: 'Before and After'
+code: |
+  // I hope this over-commenting helps. Let's do this!
+  // Let's use the 'active' variable to let us know when we're using it
+  let active = false;
+
+  // First we'll have to set up our event listeners
+  // We want to watch for clicks on our scroller
+  document.querySelectorAll('.before-and-after__wrapper').forEach(beforAndAfterWrapper => {
+    beforAndAfterWrapper.addEventListener('mousemove', event => {
+      if (!active) return;
+      let x = event.pageX;
+      let scrollerParent = event.target.closest('.before-and-after__wrapper');
+      if (scrollerParent) {
+        x -= scrollerParent.getBoundingClientRect().left;
+        scrollIt(scrollerParent, x);
+      }
+    });
+    beforAndAfterWrapper.addEventListener('mouseleave', beforeAndAfterMouseLeave);
+  });
+  document.querySelectorAll('.before-and-after__scroller').forEach(scroller => {
+    scroller.addEventListener('mousedown', beforeAndAfterMouseEnter);
+    scroller.addEventListener('mouseup', beforeAndAfterMouseLeave);
+    scroller.addEventListener('touchstart', beforeAndAfterMouseEnter);
+    scroller.addEventListener('toucheend', beforeAndAfterMouseLeave);
+    scroller.addEventListener('touchecancel', beforeAndAfterMouseLeave);
+  });
+
+  /**
+   * Function to perform the reveal.
+   *
+   * @param {HTMLElement} beforeAndAfterWrapper an html element that should be the wrapper.
+   * @param {number} amount the amount of pixels to move everything around.
+   */
+  function scrollIt(beforeAndAfterWrapper, amount) {
+    let transform = Math.max(0, (Math.min(amount, beforeAndAfterWrapper.offsetWidth)));
+    beforeAndAfterWrapper.querySelector('.before-and-after__before').style.width = transform + "px";
+    beforeAndAfterWrapper.querySelector('.before-and-after__scroller').style.left = transform - 50 + "px";
+  }
+
+  /**
+   * Trigger that the mouse has left the area.
+   * @param {EventTarget} mouseEvent The event target.
+   */
+  function beforeAndAfterMouseLeave(mouseEvent) {
+    active = false;
+    const scrollerIsNested = mouseEvent.target.querySelector('.before-and-after__scroller');
+    if (scrollerIsNested) {
+      scrollerIsNested.classList.remove('scrolling');
+    }
+    mouseEvent.target.classList.remove('scrolling');
+  }
+
+  /**
+   * Trigger that the mouse has entered and started moving.
+   * @param {EventTarget} mouseEvent The event target item.
+   */
+  function beforeAndAfterMouseEnter(mouseEvent) {
+    active = true;
+    mouseEvent.target.classList.add('scrolling');
+  }
+
+  // Let's set our opening state based off the width,
+  // we want to show a bit of both images so the user can see what's going on
+  window.addEventListener('load', () => {
+    // Get Every element that might be the before and after wrapper.
+    document.querySelectorAll('.before-and-after__wrapper').forEach(element => {
+      // use the elements actual with to start in the middle.
+      let wrapperWidth = parseFloat(window.getComputedStyle(element).width);
+      scrollIt(element, wrapperWidth / 2);
+    });
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/32861\r\n/node/33936\r\n/node/34386"
+contexts: {  }
+conditions_require_all: true

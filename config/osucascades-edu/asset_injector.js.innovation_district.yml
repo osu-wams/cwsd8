@@ -1,0 +1,39 @@
+uuid: f932d5c1-bc5e-4871-b0fe-0c39aa9081b3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: innovation_district
+label: 'Innovation District'
+code: |2-
+     const observer = new IntersectionObserver((entries) => {
+              entries.forEach(entry => {
+                  if (entry.isIntersecting) {
+                      entry.target.classList.add('visible');
+                  }
+              });
+          }, {
+              threshold: 0.1
+          });
+
+          document.querySelectorAll('.fadein-text').forEach(el => {
+              observer.observe(el);
+          });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/245976\r\n/node/2145816\r\n/node/2145821\r\n/node/2141951\r\n/node/2148031"
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,42 @@
+uuid: 243b92c3-3ed4-405a-b4c6-7ce688862aad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.coe_stats_and_numbers.field_coe_numbers_body
+    - field.field.paragraph.coe_stats_and_numbers.field_coe_numbers_header
+    - field.field.paragraph.coe_stats_and_numbers.field_sc_numbers
+    - paragraphs.paragraphs_type.coe_stats_and_numbers
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.coe_stats_and_numbers.default
+targetEntityType: paragraph
+bundle: coe_stats_and_numbers
+mode: default
+content:
+  field_coe_numbers_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_coe_numbers_header:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_sc_numbers:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

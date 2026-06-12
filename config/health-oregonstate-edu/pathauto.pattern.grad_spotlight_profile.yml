@@ -1,0 +1,23 @@
+uuid: 3b0d1a70-adbb-47e1-bb19-a58aec2f6d04
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.grad_spotlight_profile
+  module:
+    - node
+id: grad_spotlight_profile
+label: 'Grad spotlight profile'
+type: 'canonical_entities:node'
+pattern: '/alumni/[node:field_grad_spotlight_cohort_year]/[node:title]'
+selection_criteria:
+  d27d3eef-5d89-4479-84a0-e6ebec25a6df:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      grad_spotlight_profile: grad_spotlight_profile
+selection_logic: and
+weight: -5
+relationships: {  }

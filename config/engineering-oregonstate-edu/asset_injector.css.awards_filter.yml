@@ -1,0 +1,31 @@
+uuid: 146d3453-29d5-4e73-ab3a-53e2e6c74075
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: awards_filter
+label: 'Awards filter (width of search page)'
+code: |+
+  /* Sets width for award pages filter */
+
+  @media screen and (min-width: 768px) {
+    .block-views-blockengr-oregon-stater-awards-block-1 .form-item {
+      width: 25% !important;  
+    }
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,29 @@
+uuid: 82c3c404-2171-43d9-bb69-3d335f7963f6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_industry_cluster
+    - node.type.job_shadow_host
+    - taxonomy.vocabulary.industry_cluster
+id: node.job_shadow_host.field_industry_cluster
+field_name: field_industry_cluster
+entity_type: node
+bundle: job_shadow_host
+label: 'Industry Cluster'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      industry_cluster: industry_cluster
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

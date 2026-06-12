@@ -1,0 +1,146 @@
+uuid: 5d250d29-5d60-4e80-b7b0-6b7b6522bfc3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.continuing_education.body
+    - field.field.node.continuing_education.field_completion_time
+    - field.field.node.continuing_education.field_featured_media
+    - field.field.node.continuing_education.field_prerequisites
+    - field.field.node.continuing_education.field_professional_units
+    - field.field.node.continuing_education.field_program_cost
+    - field.field.node.continuing_education.field_timing
+    - field.field.node.continuing_education.layout_builder__layout
+    - node.type.continuing_education
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          0ef08b24-44be-4620-849c-6eac8e0430e5:
+            uuid: 0ef08b24-44be-4620-849c-6eac8e0430e5
+            region: content
+            configuration:
+              id: 'field_block:node:continuing_education:field_professional_units'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          94c3c524-5d70-4095-acb3-f7806cd4db9c:
+            uuid: 94c3c524-5d70-4095-acb3-f7806cd4db9c
+            region: content
+            configuration:
+              id: 'field_block:node:continuing_education:field_prerequisites'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          902599a1-95a7-4c32-8b4c-222bdab4e37b:
+            uuid: 902599a1-95a7-4c32-8b4c-222bdab4e37b
+            region: content
+            configuration:
+              id: 'field_block:node:continuing_education:field_timing'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: above
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          f0d84c5e-7645-4a0a-a0eb-1d99ca53d380:
+            uuid: f0d84c5e-7645-4a0a-a0eb-1d99ca53d380
+            region: content
+            configuration:
+              id: 'extra_field_block:node:continuing_education:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 3
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: node.continuing_education.default
+targetEntityType: node
+bundle: continuing_education
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_featured_media:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_prerequisites:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_professional_units:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_timing:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+hidden:
+  body: true
+  entitygroupfield: true
+  field_completion_time: true
+  field_program_cost: true
+  layout_builder__layout: true
+  links: true

@@ -1,0 +1,39 @@
+uuid: cfa5c3e1-47bc-43d6-ad51-465605d8978a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: materials_science_highlight_faculty_button
+label: 'Materials science faculty button color (button)'
+code: |-
+  /** NOTE: This is essentially the inverse of our typical button styling and changes like this should now be consulted with designer */
+
+  /* Override button styling to have an orange background and white text */
+
+  #mat-sci-faculty {
+  	background-color: #d73f09;
+  	color: WHITE;
+  }
+
+  /* Hover effect to set background transparent and have text be black */
+
+  #mat-sci-faculty:hover {
+  	background-color: transparent;
+  	color: black;
+  	border: 1px solid black;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/726
+contexts: {  }
+conditions_require_all: true

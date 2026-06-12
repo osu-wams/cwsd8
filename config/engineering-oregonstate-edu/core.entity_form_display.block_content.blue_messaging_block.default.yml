@@ -1,0 +1,61 @@
+uuid: ceed5616-1f56-4108-ba62-f68ddea16193
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.blue_messaging_block
+    - field.field.block_content.blue_messaging_block.body
+    - field.field.block_content.blue_messaging_block.field_message_background
+    - field.field.block_content.blue_messaging_block.field_message_link
+    - field.field.block_content.blue_messaging_block.field_message_title
+    - field.field.block_content.blue_messaging_block.layout_builder__layout
+  module:
+    - link
+    - text
+id: block_content.blue_messaging_block.default
+targetEntityType: block_content
+bundle: blue_messaging_block
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 26
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_message_background:
+    type: options_select
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_message_link:
+    type: link_default
+    weight: 28
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_message_title:
+    type: string_textfield
+    weight: 27
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  layout_builder__layout: true

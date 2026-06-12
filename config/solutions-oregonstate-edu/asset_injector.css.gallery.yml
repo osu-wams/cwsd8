@@ -1,0 +1,41 @@
+uuid: 4ba3ed2c-883e-4ebb-9ed7-2d21441399e6
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: gallery
+label: Gallery
+code: |-
+  .my-drupal-gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 0;
+    }
+    .my-drupal-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 12px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s;
+    }
+    .my-drupal-gallery img:hover { transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
+    @media (max-width: 768px) { .my-drupal-gallery { grid-template-columns: 1fr; } }
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/1481/layout\r\n/node/1481"
+contexts: {  }
+conditions_require_all: false

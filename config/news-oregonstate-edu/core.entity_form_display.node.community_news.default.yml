@@ -1,0 +1,205 @@
+uuid: 91d6fe3d-2956-49bb-bccf-d6e0af4abee7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.community_news.body
+    - field.field.node.community_news.feeds_item
+    - field.field.node.community_news.field_boilerplate_cn
+    - field.field.node.community_news.field_cover_photo_cn
+    - field.field.node.community_news.field_custom_thumbnail_cn
+    - field.field.node.community_news.field_feed_category_cn
+    - field.field.node.community_news.field_media_contacts
+    - field.field.node.community_news.field_meta_tags_cn
+    - field.field.node.community_news.field_multimedia_cn
+    - field.field.node.community_news.field_source_cn
+    - field.field.node.community_news.field_story_by
+    - field.field.node.community_news.field_teaser_cn
+    - field.field.node.community_news.field_thematic_tags_cn
+    - node.type.community_news
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - media_library
+    - metatag
+    - path
+    - text
+id: node.community_news.default
+targetEntityType: node
+bundle: community_news
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 121
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 10
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_boilerplate_cn:
+    type: options_buttons
+    weight: 122
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_cover_photo_cn:
+    type: media_library_widget
+    weight: 123
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_custom_thumbnail_cn:
+    type: media_library_widget
+    weight: 124
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_feed_category_cn:
+    type: entity_reference_autocomplete
+    weight: 125
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_media_contacts:
+    type: text_textarea
+    weight: 132
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_meta_tags_cn:
+    type: metatag_firehose
+    weight: 126
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_multimedia_cn:
+    type: media_library_widget
+    weight: 127
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_source_cn:
+    type: text_textarea
+    weight: 128
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_story_by:
+    type: text_textarea
+    weight: 129
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_teaser_cn:
+    type: text_textarea
+    weight: 130
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_thematic_tags_cn:
+    type: entity_reference_autocomplete
+    weight: 131
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 30
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 120
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: -5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 5
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  feeds_item: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

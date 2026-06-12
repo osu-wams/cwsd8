@@ -1,0 +1,41 @@
+uuid: 4df67f8c-1e7c-4b12-a968-063c3aba7af4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.exhibitions.body
+    - field.field.node.exhibitions.field_exhibition_hero
+    - field.field.node.exhibitions.field_exhibition_media
+    - field.field.node.exhibitions.field_exhibition_media_2
+    - field.field.node.exhibitions.field_more_information
+    - field.field.node.exhibitions.field_third_content_section
+    - node.type.exhibitions
+  module:
+    - text
+    - user
+id: node.exhibitions.teaser
+targetEntityType: node
+bundle: exhibitions
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_exhibition_hero: true
+  field_exhibition_media: true
+  field_exhibition_media_2: true
+  field_more_information: true
+  field_third_content_section: true

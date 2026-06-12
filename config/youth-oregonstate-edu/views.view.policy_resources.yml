@@ -11,6 +11,7 @@ dependencies:
     - field.storage.node.field_responsible_office
     - node.type.policy_resources
     - taxonomy.vocabulary.resource_categories
+    - taxonomy.vocabulary.type_of_guidance
   module:
     - date_ap_style
     - file
@@ -423,6 +424,66 @@ display:
           hierarchy: false
           limit: true
           error_message: true
+        field_type_target_id:
+          id: field_type_target_id
+          table: node__field_type
+          field: field_type_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_type_target_id_op
+            label: 'Guidance Type'
+            description: ''
+            use_operator: false
+            operator: field_type_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_type_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              dx_administrator: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: type_of_guidance
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
       filter_groups:
         operator: AND
         groups:
@@ -496,7 +557,7 @@ display:
           plugin_id: text
           empty: false
           content:
-            value: "The guidelines below include references to state and federal laws, university policy, and programmatic best practices related to child safety and youth protection. Each university unit that sponsors or hosts youth activities is ultimately responsible for developing its own safety protocols that align with these guidelines, and ensuring all staff and volunteers are adequately trained on such protocols. \r\n\r\nPer <a href=\"https://policy.oregonstate.edu/policy/protection-minors\">University Policy 07-040 (Protection of Minors)</a>, Section 5.9.2: “Deviation from these activity guidelines requires clearly documented justification and pre-approval from the Sponsoring Unit and the Office of Youth Safety & Compliance.”\r\n\r\n<strong>Note: When something is required rather than optional, this guide uses the terms “will,” “shall” and “must.” Recommended practices generally use the terms “may” and “should.”</strong>\r\n\r\nFrequently asked questions (FAQs) related to university youth programs and applicable policies and procedures can be found <a href=\"/faq\">here</a>. \r\n"
+            value: "<p>The guidelines below include references to state and federal laws, university policy, and programmatic best practices related to child safety and youth protection. Each university unit that sponsors or hosts youth activities is ultimately responsible for developing its own safety protocols that align with these guidelines, and ensuring all staff and volunteers are adequately trained on such protocols. <b>A self-assessment checklist can be downloaded from the <a href=\"/sites/youth.oregonstate.edu/files/2025-10/standards-self-assessment.docx\">Training page</a>.</b></p>\r\n\r\n<p>Per <a href=\"https://policy.oregonstate.edu/policy/protection-minors\">University Policy 07-040 (Protection of Minors)</a>, Section 5.9.2: “Deviation from these activity guidelines requires clearly documented justification and pre-approval from the Sponsoring Unit and the Office of Youth Protection.”</p>\r\n\r\n<p><strong>Note: When something is required rather than optional, this guide uses the terms “will,” “shall” and “must.” Recommended practices generally use the terms “may” and “should.”</strong></p>\r\n\r\n<p>Frequently asked questions (FAQs) related to university youth programs and applicable policies and procedures can be found on the <a href=\"/faq\">FAQ page</a>.</p>\r\n"
             format: full_html
           tokenize: false
       footer: {  }
@@ -519,7 +580,7 @@ display:
     display_plugin: block
     position: 2
     display_options:
-      title: 'Safety of Minors Policy Resource Detail'
+      title: 'Protection of Minors Policy Resource Detail'
       fields:
         title:
           id: title
@@ -718,7 +779,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: 'Download Link'
+          label: 'Print PDF'
           exclude: false
           alter:
             alter_text: false
@@ -825,18 +886,18 @@ display:
           click_sort_column: value
           type: timestamp_ap_style
           settings:
-            always_display_year: 1
-            use_today: 0
-            cap_today: 0
-            display_day: 0
-            month_only: 0
-            display_time: 0
-            hide_date: 0
-            time_before_date: 0
-            display_noon_and_midnight: 0
-            capitalize_noon_and_midnight: 0
-            use_all_day: 0
+            always_display_year: true
+            use_today: false
+            cap_today: false
+            display_day: false
+            display_time: false
+            hide_date: false
+            time_before_date: false
+            display_noon_and_midnight: false
+            capitalize_noon_and_midnight: false
+            use_all_day: false
             timezone: ''
+            month_only: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -899,18 +960,18 @@ display:
           click_sort_column: value
           type: timestamp_ap_style
           settings:
-            always_display_year: 1
-            use_today: 0
-            cap_today: 0
-            display_day: 0
-            month_only: 0
-            display_time: 0
-            hide_date: 0
-            time_before_date: 0
-            display_noon_and_midnight: 0
-            capitalize_noon_and_midnight: 0
-            use_all_day: 0
+            always_display_year: true
+            use_today: false
+            cap_today: false
+            display_day: false
+            display_time: false
+            hide_date: false
+            time_before_date: false
+            display_noon_and_midnight: false
+            capitalize_noon_and_midnight: false
+            use_all_day: false
             timezone: ''
+            month_only: false
           group_column: value
           group_columns: {  }
           group_rows: true

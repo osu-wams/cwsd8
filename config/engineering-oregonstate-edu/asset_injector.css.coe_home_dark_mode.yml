@@ -1,0 +1,167 @@
+uuid: 63ce8c00-137b-4d68-9a98-d96f52c1ceda
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_home_dark_mode
+label: 'COE home (dark Mode, button styling, menu, hover)'
+code: |
+  /* ================================================
+  Dark mode styling for the home page and other dark mode pages. buttons, hover behavior, and menus.
+   ================================================ */
+
+  /*DARK MODE background*/
+
+  .layout-content {
+  	background-color:#212529;
+  	
+  }
+
+
+  /* Not sure why we have button styling in here added the rest of the button styling to fix the homepage */
+  .btn.osu-btn-primary {
+      border-radius: 0px;
+      background-color: transparent;
+      color: white;
+      border-color: white;
+  }
+
+  .home-page-button a {
+      padding: 1em 2em;
+      font-size: 1.25rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+      border-radius: 0px;
+      /*border: 0px white solid;*/
+      border: 2px transparent solid;
+  }
+
+  .home-page-button a:hover {
+      background-color: transparent !important;
+      border: 2px white solid !important;
+  }
+
+  .btn.osu-btn-primary:hover {
+
+      border-color: #d73f09;
+
+      /*border-color:transparent;*/
+
+      background-color:#d73f09;
+
+      color:white;
+
+  }
+  .home-page-button-hover-black a {
+    padding: 1em 2em;
+      font-size: 1.25rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+      border-radius: 0px;!important
+      border: 2px white solid!important;
+  }
+  .home-page-button-hover-black a:hover {
+    color:black !important;
+    background-color: transparent !important;
+    border: 2px white solid !important;
+  }
+
+  /* Nav-bar styling */
+  #block-madrone-main-menu {
+  	background-color: #212529;
+  }
+  #superfish-main > li > a {
+  	color: white;
+  }
+  #superfish-main > li:hover {
+  	background-color: #d73f09;
+  }
+  @media (min-width: 810px) and (max-width: 1450px) {
+  	#superfish-global-secondary-menu {
+  		background-color: #212529;
+  	}
+  	#superfish-global-secondary-menu > li > a {
+  		color: white;
+  	}
+  	#superfish-global-secondary-menu > li > a:hover {
+  		background-color: #d73f09;
+  	}
+  	
+  	/* Utility Menu: "Units" item and child menu styling */
+  	#global-secondary-menu-menu-link-contentf0322b9e-ccad-423d-ac07-033d989ab6a0.sfHover > a {
+  		background-color: #d73f09;
+  	}
+  	#global-secondary-menu-menu-link-contentf0322b9e-ccad-423d-ac07-033d989ab6a0 ul > li {
+  		background-color: #212529;
+  	}
+  	#global-secondary-menu-menu-link-contentf0322b9e-ccad-423d-ac07-033d989ab6a0 ul > li > a {
+  		color: white;
+  	}
+  }
+
+  /* Nav card background */
+  .block--view-mode-engineering-nav-card-dark > .block__content > div {
+  	background-color: #000000 !important;
+  	border-color: black;
+  }
+  .osu-border-light-grey {
+  	border-color: #000000 !important;
+  }
+
+  /** Utility Menu Dark **/
+  @media (min-width: 1451px) {
+  	 #superfish-global-secondary-menu {
+  		background: #423e3c !important;
+  	}
+  	
+  	#superfish-global-secondary-menu a {
+  		color: #fff !important;
+  	}
+  	
+    #superfish-global-secondary-menu a:hover, 
+  	#superfish-global-secondary-menu a:focus,
+  	#superfish-global-secondary-menu a:active,
+  	.madrone-primary-menu > .block-superfish ul.sf-menu li.sf-depth-1.menuparent.sfHover > a {
+  		background: #d73f09 !important;
+  	}
+  	
+  	#superfish-global-secondary-menu li.sf-depth-1.menuparent > ul {
+  		background-color: #423e3c !important;;
+  	}
+  	
+  	.madrone-primary-menu > .block-superfish ul.sf-menu li.sf-depth-1.menuparent > a::after {
+  		color: #fff !important;
+  	}
+  	
+  }
+
+  /** Recent Podcasts Dark **/
+  .card {
+  	background: #333 !important;
+  	color: #fff !important;
+  }
+
+  .card-title {
+  	color: #fff !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/31\r\n/node/41\r\n/node/46\r\n/node/4411\r\n/node/32576\r\n/node/39596\r\n/campus-tours-v3\r\n/node/40661\r\n/test/test-home-page-gr\r\n/node/40916"
+contexts: {  }
+conditions_require_all: true

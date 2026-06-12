@@ -1,0 +1,43 @@
+uuid: 0fde6b04-dd57-4c61-abd1-e6fbbd11a5bc
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: people_4_col_directory_filter_bars
+label: 'People responsive layout (form item)'
+code: |
+  /*=====================================================
+  Responsive width setting for Filters in People pages
+  =====================================================*/
+
+
+  /* Responsive layout for institution personnel directory filters (large screens) */
+
+  @media (min-width: 768px) {
+    #views-exposed-form-engr-profile-directory-page .form-item, #views-exposed-form-engr-profile-block-10 .form-item, #views-exposed-form-engr-profile-block-9 .form-item, #views-exposed-form-engr-profile-block-11 .form-item, #views-exposed-form-engr-profile-block-12 .form-item{
+      width: 30%;
+    }
+  }
+
+  /* Responsive layout for institution personnel directory filters (small screens) */
+
+  @media (max-width: 605px) {
+    #views-exposed-form-engr-profile-directory-page .form-item.form-item-items-per-page, #views-exposed-form-engr-profile-block-11 .form-item.form-item-items-per-page{
+    	width: 50% !important;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/people\r\n/cce/about/people\r\n/mime/about/people\r\n/eecs/about/people\r\n/nse/about/people\r\n/cbee/about/people"
+contexts: {  }
+conditions_require_all: true

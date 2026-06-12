@@ -9,15 +9,21 @@ dependencies:
     - field.field.node.story.field_osu_story_caption
     - field.field.node.story.field_osu_story_cover_image
     - field.field.node.story.field_osu_story_external_url
+    - field.field.node.story.field_osu_story_realtime_seo
     - field.field.node.story.field_tags
     - field.field.node.story.layout_builder__layout
     - node.type.story
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - link
     - media_library
     - metatag
     - path
+    - scheduler
+    - scheduler_content_moderation_integration
     - text
+    - yoast_seo
 _core:
   default_config_hash: k0EgoDgBnLFQDiRPGS10SdU78i9ZCZoyazIRV28xNV4
 id: node.story.default
@@ -82,6 +88,16 @@ content:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
+  field_osu_story_realtime_seo:
+    type: yoast_seo_widget
+    weight: 26
+    region: content
+    settings:
+      edit_title: true
+      edit_description: true
+      render_theme: madrone
+      render_view_mode: default
+    third_party_settings: {  }
   field_tags:
     type: entity_reference_autocomplete
     weight: 11
@@ -91,6 +107,20 @@ content:
       match_limit: 10
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
     third_party_settings: {  }
   path:
     type: path
@@ -104,6 +134,23 @@ content:
     region: content
     settings:
       display_label: true
+    third_party_settings: {  }
+  publish_on:
+    type: datetime_timestamp_no_default
+    weight: 50
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  publish_state:
+    type: scheduler_moderation
+    weight: 55
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  scheduler_settings:
+    weight: 50
+    region: content
+    settings: {  }
     third_party_settings: {  }
   status:
     type: boolean_checkbox
@@ -137,10 +184,23 @@ content:
       size: 60
       placeholder: ''
     third_party_settings: {  }
+  unpublish_on:
+    type: datetime_timestamp_no_default
+    weight: 60
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  unpublish_state:
+    type: scheduler_moderation
+    weight: 65
+    region: content
+    settings: {  }
+    third_party_settings: {  }
   url_redirects:
     weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
+  entitygroupfield: true
   layout_builder__layout: true

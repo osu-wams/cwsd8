@@ -1,0 +1,41 @@
+uuid: 70820c25-ff44-4691-b1fb-051c1574c310
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.plant_variety_test.body
+    - field.field.node.plant_variety_test.field_crop_type
+    - field.field.node.plant_variety_test.field_crop_variety
+    - field.field.node.plant_variety_test.field_image_of_plant
+    - field.field.node.plant_variety_test.field_primary_image
+    - field.field.node.plant_variety_test.field_researcher
+    - node.type.plant_variety_test
+  module:
+    - text
+    - user
+id: node.plant_variety_test.teaser
+targetEntityType: node
+bundle: plant_variety_test
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_crop_type: true
+  field_crop_variety: true
+  field_image_of_plant: true
+  field_primary_image: true
+  field_researcher: true

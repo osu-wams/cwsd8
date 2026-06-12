@@ -1,0 +1,59 @@
+uuid: null
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.osu_accordion
+    - field.field.block_content.osu_accordion.body
+    - field.field.block_content.osu_accordion.field_osu_paragraph_item
+  module:
+    - entity_reference_revisions
+    - field_group
+    - layout_builder
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_pre_accordion_wrapper:
+      children:
+        - body
+      label: pre-accordion-wrapper
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: pb-4
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: block_content.osu_accordion.default
+targetEntityType: block_content
+bundle: osu_accordion
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_osu_paragraph_item:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

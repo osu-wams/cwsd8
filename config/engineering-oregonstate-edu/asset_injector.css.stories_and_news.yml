@@ -1,0 +1,150 @@
+uuid: e8cf2828-d76d-490b-b9ca-4754b2afcf98
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: stories_and_news
+label: 'Stories and News Live Feed Grid (live news block)'
+code: |-
+  /*===============================================
+  Stories and News Live Feed Styling
+  ===============================================*/
+
+
+  /* Bootstrap Grid Styling */
+
+  .live-feeds-news {
+  	display: flex;
+  	flex-direction: column;
+  	margin-bottom: 2.2em;
+  }
+
+  /* Responsive layout for mobile */
+
+  @media only screen and (min-width: 768px) {
+  	.live-feeds-news {
+  	  display: grid;
+  	  gap: .5em;
+  	  grid-template-columns: repeat(4, 1fr);
+  	  grid-template-rows: auto;
+  	}
+  }
+
+  /* Responsive spacing for items */
+
+  @media screen and (max-width: 777px) {
+    .live-feeds-news .news-item {
+      margin-bottom: 5px !important;
+    }
+  }
+
+  /* Spacing before titles */
+
+  .live-feeds-news .news-item .news-item__title a::before {
+  	content: '';
+  	inset: 0;
+  	position: absolute;
+  }
+
+  /* Hide new item images */
+
+  .live-feeds-news .news-item .news-item__image {
+     display: none;
+  }
+
+  /* Card styling for news items */
+
+  .live-feeds-news .news-item {
+    border-bottom: unset;
+    background-color: white;
+    border-radius: .25em;
+    box-shadow: 0 2px 3px rgb(0 0 0 / 25%) !important;
+    position: relative;
+    padding-bottom: 0 !important;
+    margin-bottom: 0;
+  }
+
+  /* Remove padding bottom from last news items */
+
+  .live-feeds-news .news-item:last-child {
+  	  padding-bottom: 0 !important;
+  }
+
+  /* Hide news item bodies */
+
+  .live-feeds-news .news-item .news-item__body {
+    display: none;
+  }
+
+  /* Set ratios of news item images */
+
+  .live-feeds-news .news-item .news-item__image img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    height: 10em;
+  }
+
+  /* News item padding */
+
+  .live-feeds-news .news-item .news-item__data_wrapper {
+    padding: 1rem;
+  }
+
+  /* Display config for date on news item */
+
+  .live-feeds-news .news-item .news-item__date {
+  	display: block;
+  }
+
+  /* Remove margin start from view */
+
+  .views-exposed-form .form--inline > div.form-actions {
+  	margin-block-start: 0rem;
+  }
+
+  /*@media only screen and (max-width: 1400px) {*/
+  /*	.views-exposed-form .d-flex {*/
+  /*		flex-direction: column;*/
+  /*	}*/
+  /*}*/
+
+  @media screen and (max-width: 1400px) {
+  	.bef-exposed-form .form--inline > .form-item-combine {
+  		width: 100%;
+  	}
+  	
+  	.bef-exposed-form .form--inline > .form-item-field-osu-organizations-target-id {
+  		width: 49.5%;
+  	}
+  	
+  		.bef-exposed-form .form--inline > .form-item-field-c-engr-discipline-target-id {
+  		width: 49.5%;
+  	}
+  }
+
+  @media screen and (max-width: 1080px) {
+  	.bef-exposed-form .form--inline > .form-item, .bef-exposed-form .form--inline .js-form-wrapper > .form-item {
+  		float: left;
+  		width: 100%;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /all-stories
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

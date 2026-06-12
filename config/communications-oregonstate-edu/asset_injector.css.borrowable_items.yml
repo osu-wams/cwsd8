@@ -1,0 +1,37 @@
+uuid: 0bdc6725-eb4f-44bc-96e9-6a8c40ea9dac
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: borrowable_items
+label: 'Borrowable Items'
+code: |-
+  .borrowable-container{
+  	padding-left: 5%;
+  	padding-right: 5%;
+  	padding-bottom: 5%;
+  }
+  .borrowable-row{
+  	margin-bottom: 2rem;
+  }
+
+  .borrowable-image{
+    width: 540px;
+    height: 360px;
+    object-fit: cover;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /university-events/borrowable-items
+contexts: {  }
+conditions_require_all: true

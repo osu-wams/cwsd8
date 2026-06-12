@@ -1,0 +1,35 @@
+uuid: cc8c1a12-0bcc-405a-84c7-06d2434bd678
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: podcast_iframe_override
+label: 'Podcast Iframe Override'
+code: |-
+  iframe.spotify {
+  	display: block;
+    height: 80px;
+    min-height: unset;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 540px) {
+  	iframe.spotify {
+  	  height: 152px;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,39 @@
+uuid: 2ebbda12-a4f9-4971-a969-891c8d78e3ea
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.topic.body
+    - field.field.node.topic.field_difficulty
+    - field.field.node.topic.field_short_description
+    - field.field.node.topic.field_why_important
+    - field.field.node.topic.layout_builder__layout
+    - node.type.topic
+  module:
+    - text
+    - user
+id: node.topic.teaser
+targetEntityType: node
+bundle: topic
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_difficulty: true
+  field_short_description: true
+  field_why_important: true
+  layout_builder__layout: true

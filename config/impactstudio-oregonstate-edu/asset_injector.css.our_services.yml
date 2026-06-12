@@ -1,0 +1,58 @@
+uuid: 59f4da08-3318-4231-a8e9-3addfae1c05f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: our_services
+label: our-services
+code: |+
+  .services-card {
+    position: relative;
+    height: 200px;
+    width: 200px;
+    margin: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    border-radius: 8px;
+    text-align: center;
+    overflow: hidden;
+    background-color: #fff;
+    border: 3px solid #006a8e;
+  }
+
+  .services-card:hover {
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.26);
+  }
+
+  .services-card-title {
+    font-family: 'Stratum2Web', sans-serif;
+    color: #dc4405;
+    padding-left: 10px;
+    font-size: 1.4rem;
+    line-height: 1.5rem;
+    font-weight: 300;
+    margin-top: 10px;
+  }
+
+  .services-card-text {
+    color: #000;
+    padding: 2px 15px;
+    line-height: 1.3;
+  }
+
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/11
+contexts: {  }
+conditions_require_all: true

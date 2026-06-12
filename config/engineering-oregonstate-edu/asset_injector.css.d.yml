@@ -1,0 +1,45 @@
+uuid: dd52d446-1e62-42df-9ec7-1beb97cc15e3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: d
+label: 'Discover Resources Umbrella page'
+code: |-
+  /*Umbrella page*/
+  @media screen and (min-width: 1199px) {
+  	.discover-engineering h1{
+  	width: 83% !important;
+  }
+   .discover-engineering-body{
+   	width: 67% !important;
+   }
+  }
+
+  .discover-engineering-body{
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	/* Main/Body Large */
+  	font-family: "Open Sans";
+  	font-size: 22px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: normal;
+
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/test/discover-engineering\r\n/node/52066"
+contexts: {  }
+conditions_require_all: true

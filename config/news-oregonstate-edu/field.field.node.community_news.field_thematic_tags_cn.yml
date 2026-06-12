@@ -1,0 +1,29 @@
+uuid: 0b4dfdb9-3643-435c-b880-89a902d369ef
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_thematic_tags_cn
+    - node.type.community_news
+    - taxonomy.vocabulary.tags
+id: node.community_news.field_thematic_tags_cn
+field_name: field_thematic_tags_cn
+entity_type: node
+bundle: community_news
+label: 'Thematic Tags'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tags: tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

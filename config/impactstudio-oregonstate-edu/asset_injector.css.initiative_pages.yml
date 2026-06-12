@@ -1,0 +1,61 @@
+uuid: 56bbacb0-36c7-46bf-9368-82d355b25c08
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: initiative_pages
+label: 'Initiative Pages'
+code: |
+  .image-card {
+    width: 300px;
+    height: 300px;
+  }
+
+  /* =================== Responsive Design =================== */
+
+  /* Large screens (max width 1200px) */
+  @media (max-width: 1200px) {
+    .image-card {
+      width: 280px;
+      height: 280px;
+    }
+  }
+
+  /* Tablets (max width 992px) */
+  @media (max-width: 992px) {
+    .image-card {
+      width: 250px;
+      height: 250px;
+    }
+  }
+
+  /* Mobile devices (max width 768px) */
+  @media (max-width: 768px) {
+    .image-card {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  /* Small mobile devices (max width 576px) */
+  @media (max-width: 576px) {
+    .image-card {
+      width: 100%;
+      height: auto; /* Maintain aspect ratio */
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/31
+contexts: {  }
+conditions_require_all: true

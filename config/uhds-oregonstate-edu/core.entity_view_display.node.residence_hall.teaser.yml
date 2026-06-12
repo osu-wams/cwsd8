@@ -1,0 +1,41 @@
+uuid: 1e58681a-7aa1-4d72-bd69-ce83da173bb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.residence_hall.body
+    - field.field.node.residence_hall.field_accessibility_options
+    - field.field.node.residence_hall.field_bathroom_style
+    - field.field.node.residence_hall.field_building_type
+    - field.field.node.residence_hall.field_hall_image
+    - field.field.node.residence_hall.field_room_style
+    - node.type.residence_hall
+  module:
+    - text
+    - user
+id: node.residence_hall.teaser
+targetEntityType: node
+bundle: residence_hall
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_accessibility_options: true
+  field_bathroom_style: true
+  field_building_type: true
+  field_hall_image: true
+  field_room_style: true

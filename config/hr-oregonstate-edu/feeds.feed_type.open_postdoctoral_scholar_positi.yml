@@ -1,0 +1,233 @@
+uuid: d5b49e5c-a4b3-40f5-982b-762d4918510c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.open_postdoctoral_scholar_positi.field_appointment
+    - field.field.node.open_postdoctoral_scholar_positi.field_basis
+    - field.field.node.open_postdoctoral_scholar_positi.field_department
+    - field.field.node.open_postdoctoral_scholar_positi.field_end_date
+    - field.field.node.open_postdoctoral_scholar_positi.field_full_announcement_file_upl
+    - field.field.node.open_postdoctoral_scholar_positi.field_full_consideration_date
+    - field.field.node.open_postdoctoral_scholar_positi.field_notes_on_end_date
+    - field.field.node.open_postdoctoral_scholar_positi.field_notes_on_full_consideratio
+    - field.field.node.open_postdoctoral_scholar_positi.field_notes_on_start_date
+    - field.field.node.open_postdoctoral_scholar_positi.field_postdoc_location
+    - field.field.node.open_postdoctoral_scholar_positi.field_start_date
+    - node.type.open_postdoctoral_scholar_positi
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      838f59fc-0f7a-47d4-ae54-805f0ef77c48:
+        allowed_tags: ''
+        uuid: 838f59fc-0f7a-47d4-ae54-805f0ef77c48
+        plugin: strip_tags
+        source: start_date
+        weight: 0
+        label: 'Strip tags'
+      9ea5bb6c-2655-4bb8-8f1b-e5e67a2649c1:
+        allowed_tags: ''
+        uuid: 9ea5bb6c-2655-4bb8-8f1b-e5e67a2649c1
+        plugin: strip_tags
+        source: end_date
+        weight: 0
+        label: 'Strip tags'
+      ea1c6d54-57c0-4677-9d78-902e262108dd:
+        allowed_tags: ''
+        uuid: ea1c6d54-57c0-4677-9d78-902e262108dd
+        plugin: strip_tags
+        source: full_consideration_date
+        weight: 0
+        label: 'Strip tags'
+label: 'Open Postdoctoral Scholar Positions'
+id: open_postdoctoral_scholar_positi
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: open_postdoctoral_scholar_positi
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  position_title:
+    value: 'Position Title'
+    label: 'Position Title'
+    machine_name: position_title
+    type: csv
+  location:
+    value: Location
+    label: Location
+    machine_name: location
+    type: csv
+  appointment:
+    value: Appointment
+    label: Appointment
+    machine_name: appointment
+    type: csv
+  department:
+    value: Department
+    label: Department
+    machine_name: department
+    type: csv
+  basis:
+    value: Basis
+    label: Basis
+    machine_name: basis
+    type: csv
+  start_date:
+    value: 'Start date'
+    label: 'Start date'
+    machine_name: start_date
+    type: csv
+  notes_on_start_date:
+    value: 'Notes on start date'
+    label: 'Notes on start date'
+    machine_name: notes_on_start_date
+    type: csv
+  end_date:
+    value: 'End date'
+    label: 'End date'
+    machine_name: end_date
+    type: csv
+  notes_on_end_date:
+    value: 'Notes on end date'
+    label: 'Notes on end date'
+    machine_name: notes_on_end_date
+    type: csv
+  full_consideration_date:
+    value: 'Full consideration date'
+    label: 'Full consideration date'
+    machine_name: full_consideration_date
+    type: csv
+  notes_on_full_consideration_date:
+    value: 'Notes on full consideration date'
+    label: 'Notes on full consideration date'
+    machine_name: notes_on_full_consideration_date
+    type: csv
+  full_announcement_file_path:
+    value: 'Full Announcement File Path'
+    label: 'Full Announcement File Path'
+    machine_name: full_announcement_file_path
+    type: csv
+  full_announcement_file_name:
+    value: 'Full Announcement File Name'
+    label: 'Full Announcement File Name'
+    machine_name: full_announcement_file_name
+    type: csv
+  department_url:
+    value: 'Department (URL)'
+    label: 'Department (URL)'
+    machine_name: department_url
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: position_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_department
+    map:
+      value: department_url
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_postdoc_location
+    map:
+      value: location
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_appointment
+    map:
+      value: appointment
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_basis
+    map:
+      value: basis
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_start_date
+    map:
+      value: start_date
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_notes_on_start_date
+    map:
+      value: notes_on_start_date
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_end_date
+    map:
+      value: end_date
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_notes_on_end_date
+    map:
+      value: notes_on_end_date
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_full_consideration_date
+    map:
+      value: full_consideration_date
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_notes_on_full_consideratio
+    map:
+      value: notes_on_full_consideration_date
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_full_announcement_file_upl
+    map:
+      target_id: full_announcement_file_name
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: document
+      feeds_item: false

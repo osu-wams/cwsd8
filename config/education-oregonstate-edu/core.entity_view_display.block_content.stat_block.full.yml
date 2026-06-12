@@ -1,0 +1,56 @@
+uuid: 2e24420f-1661-4e9e-a478-24a9362de2a9
+langcode: en
+status: false
+dependencies:
+  config:
+    - block_content.type.stat_block
+    - core.entity_view_mode.block_content.full
+    - field.field.block_content.stat_block.field_statistic
+    - field.field.block_content.stat_block.field_statistic_description
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - text_field_formatter
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: block_content.stat_block.full
+targetEntityType: block_content
+bundle: stat_block
+mode: full
+content:
+  field_statistic:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h2
+      wrap_class: 'display-4 osu-stat-block--statistic '
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_statistic_description:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h3
+      wrap_class: 'h6 osu-stat-block--description '
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

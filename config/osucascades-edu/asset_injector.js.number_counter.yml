@@ -1,0 +1,69 @@
+uuid: 11ac5743-ce7d-4166-812b-14102baa05fd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: number_counter
+label: 'number counter'
+code: |
+  (function ($, Drupal) {
+    var a = 0;
+    $(window).scroll(function() {
+      if ($('.counter').length) {
+        var oTop = $('.counter').offset().top - window.innerHeight;
+        if (a === 0 && $(window).scrollTop() > oTop) {
+          $('.counter-value').each(function() {
+            var $this = $(this);
+
+            // Set data-count dynamically from the element's text
+            var countTo = parseFloat($this.text());
+            $this.attr('data-count', countTo);
+
+            var countStr = $this.attr('data-count');
+            var duration = $this.attr('data-duration') || 2000; // Default duration
+            var decimalPlaces = (countStr.includes('.') && countStr.split('.')[1]) 
+              ? countStr.split('.')[1].length 
+              : 0;
+
+            $({ countNum: 0 }).animate({
+              countNum: countTo
+            }, {
+              duration: parseInt(duration),
+              easing: 'swing',
+              step: function() {
+                $this.text(this.countNum.toLocaleString('en-US', { 
+                  minimumFractionDigits: decimalPlaces, 
+                  maximumFractionDigits: decimalPlaces 
+                }));
+              },
+              complete: function() {
+                $this.text(this.countNum.toLocaleString('en-US', { 
+                  minimumFractionDigits: decimalPlaces, 
+                  maximumFractionDigits: decimalPlaces 
+                }));
+              }
+            });
+          });
+          a = 1;
+        }
+      }
+    });
+  })(jQuery, Drupal);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/245811\r\n/group/245841\r\n/node/248101\r\n/node/248151\r\n/group/245956\r\n/node/248091\r\n/node/248216\r\n/group/245831\r\n/node/248611\r\n/node/248626\r\n/group/245791\r\n/group/245796\r\n/group/245886\r\n/group/245826\r\n/group/245881\r\n/group/245856\r\n/group/245851\r\n/group/245846\r\n/group/245836\r\n/group/245866\r\n/group/245871\r\n/group/245861\r\n/group/245821\r\n/node/2137026\r\n/group/245906\r\n/node/2137051\r\n/group/245901\r\n/group/245776\r\n/group/245766\r\n/group/245771\r\n/node/2147931"
+contexts: {  }
+conditions_require_all: true

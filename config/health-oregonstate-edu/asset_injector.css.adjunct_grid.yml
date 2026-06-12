@@ -1,0 +1,90 @@
+uuid: 43e065cd-d64c-4435-b0ad-e72793f5209e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: adjunct_grid
+label: 'adjunct grid'
+code: |+
+  /*
+  * Prefixed by https://autoprefixer.github.io
+  * PostCSS: v8.4.14,
+  * Autoprefixer: v10.4.7
+  * Browsers: defaults
+  */
+
+
+  .adj-flex-faculty {
+    display: flex;
+  	flex-wrap: wrap;
+    padding: 1em;
+    gap: 0.5em;
+
+  }
+
+  .faculty-member-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1.25em;
+    background-color: white;
+    border-radius: 0.5em;
+    width: 100%;
+  }
+
+
+  /*.faculty-member-item p span {*/
+  .faculty-member-item > * + p {
+  	display: none;
+  	height: 0;
+    padding: 0;
+   margin: 0;
+   width: 0;
+  }
+
+
+  .faculty-right-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+
+
+  @media (min-width: 800px) {
+    .faculty-member-item {
+      flex-direction: revert;
+      align-items: revert;
+      justify-content: space-evenly;
+      gap: 2em;
+    }
+
+    .faculty-member-item .faculty-left-item {
+    	text-align: end !important;
+    }
+
+  	.faculty-member-item .faculty-right-item,
+     .faculty-member-item .faculty-left-item {
+     	width: 50ch;
+     }
+  	}
+
+    /*.faculty-member-item p span{*/
+    .faculty-member-item > * + p {
+    	display: block;
+      height: 100%;
+      padding: 0.5px;
+      background-color: black;
+    }
+  	
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

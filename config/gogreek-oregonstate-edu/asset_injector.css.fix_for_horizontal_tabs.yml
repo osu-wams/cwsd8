@@ -1,0 +1,64 @@
+uuid: 01718916-d1fa-41ba-b5fd-67397efbcfa1
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: fix_for_horizontal_tabs
+label: 'Fix for horizontal tabs'
+code: |-
+  .horizontal-tabs {
+      .horizontal-tab-button::marker {
+          content: none !important;
+      }
+
+      .horizontal-tab-button a:focus-visible {
+          outline: 2px solid #d73f09 !important;
+          outline-offset: -2px;
+      }
+
+      .details-wrapper {
+          padding-block-end: 2rem;
+      }
+
+      details {
+          padding: 1rem;
+          border: 1px solid #212529;
+      }
+
+      summary::marker {
+          font-size: 2rem;
+          line-height: 1;
+      }
+
+      span[class^="fa"] {
+          display: none;
+      }
+  }
+
+  .field-group-tabs-wrapper {
+      background-color: #fff;
+  }
+
+  @media (min-width: 768px) {
+      .horizontal-tabs {
+          span[class^="fa"] {
+              display: inline-block;
+          }
+      }
+
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

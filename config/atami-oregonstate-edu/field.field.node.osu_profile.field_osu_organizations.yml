@@ -1,0 +1,33 @@
+uuid: 96f97ed5-08fe-44ee-a46d-8233bec9c7fd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_osu_organizations
+    - node.type.osu_profile
+    - taxonomy.vocabulary.functional_groups
+    - taxonomy.vocabulary.osu_organization
+_core:
+  default_config_hash: nNJlUltoIMhqrxZ9l8IGU0ToFd1pIPaJbCU86ywwNOk
+id: node.osu_profile.field_osu_organizations
+field_name: field_osu_organizations
+entity_type: node
+bundle: osu_profile
+label: Organizations
+description: 'The Functional Groups for people are ATAMI Staff and Affiliated Faculty.'
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      functional_groups: functional_groups
+      osu_organization: osu_organization
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: functional_groups
+field_type: entity_reference

@@ -1,0 +1,203 @@
+uuid: def4b911-ed6a-4c85-bc25-e961e4910632
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: unit_blocks
+label: 'Unit blocks'
+code: |-
+  /* Unit blocks with arrows */
+
+  	.rotate-45-degrees{
+  		transform: rotate(-45deg);
+  		position: absolute;
+  		bottom:10%;
+  		right:5%;
+  		transition: filter 0.3s ease, color 0.3s ease;
+  	}
+  	
+  	.rotate-45-degrees:hover {
+  	  filter: brightness(1.3);
+  	  color: #d73f09;
+  	}
+
+
+
+  /* These exist on the OUE subpages consult Danielle about removal */
+
+  	.uesp-block{
+  		background: linear-gradient(to bottom, #00000060 0%, #00000060 59%, #00000060 100% 100%), 
+  		url(/sites/academicaffairs.oregonstate.edu/files/2025-10/20250603_osuf_springphotos_kaicasey_169.jpg) no-repeat;
+  	}
+  	
+  	.maco-block{
+  		background: linear-gradient(to bottom, #00000060 0%, #00000060 59%, #00000060 100% 100%), 
+  		url(/sites/academicaffairs.oregonstate.edu/files/2025-10/20250603_osuf_springphotos_kaicasey_078.jpg) no-repeat;
+  	  background-position: center;
+  	}
+  	
+  	.global-affairs-block{
+  		background: url(/sites/academicaffairs.oregonstate.edu/files/2025-10/20250603_osuf_springphotos_kaicasey_078.jpg) no-repeat;
+  	  background-position: right;
+  	}
+  	
+  	.tps-block{
+  		background: linear-gradient(to bottom, #00000060 0%, #00000060 59%, #00000060 100% 100%), 
+  		url(/sites/academicaffairs.oregonstate.edu/files/2025-10/snowday-19.jpg) no-repeat;
+  	  background-position: center;
+  	}
+  	
+  	
+
+  /* Unit Block Styling */
+  	
+  	.unit-blocks a{
+  		text-decoration: none;
+  	}
+  	
+  	.unit-blocks h2{
+  		font-size:2rem;
+  		font-weight: 500;
+  		position:absolute;
+  		padding-right: 1rem;
+  	}
+  	
+  	.unit-blocks {
+  	    position: relative;
+  	    height: 200px;
+  	    margin: 10px;
+  	    border-radius: 15px 0 15px;
+  	    overflow: hidden;   
+  	    transition: transform 0.3s ease;
+  	    padding:10%;
+  	}
+  	
+  	.unit-blocks:hover{
+  	  cursor: pointer;
+  	}
+  	
+  	.unit-blocks:hover .rotate-45-degrees{
+  	  filter: brightness(1.3);
+  	  color: #d73f09;
+  	}
+
+  		/* This is the dark overlay that sits ON TOP of the background image */
+  	.unit-blocks::before {
+  	    content: "";
+  	    position: absolute;
+  	    inset: 0;
+  	    background: linear-gradient(135deg,
+  	        rgba(0,0,0,0.78) 0%,    /* lighter than 0.92 */
+  	        rgba(0,0,0,0.48) 100%); /* lighter than 0.68 */
+  	    border-radius: 15px 0 15px;
+  	    z-index: 1;
+  	    pointer-events: none;
+  	}
+  	
+  	/* All text/content inside becomes bright and readable */
+  	.unit-blocks > * {
+  	  /*  position: relative;*/
+  	    z-index: 2;                           /* above the dark overlay */
+  	    color: #fff !important;
+  	    text-shadow: 0 2px 10px rgba(0,0,0,0.9);
+  	}
+  	/* All text inside will now pop */
+  	.unit-blocks * {
+  	   /* position: relative;*/
+  	    z-index: 2;
+  	    color: #ffffff !important;
+  	    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+  	}
+  	
+  	.unit-blocks:hover{
+  	transform: scale(1.03); /* 10% larger - adjust as needed */
+  	}
+
+
+
+  	/* Unit Block Responsiveness */
+
+  	@media (max-width: 1200px) {
+  		.unit-blocks h2{
+  			font-size:1.5rem!important;
+  			font-weight: 500;
+  		}
+  	}
+
+
+  /* NEW */	
+  .relative{
+  	position: relative;
+  }
+
+  .absolute{
+  	position: absolute;
+  }
+
+  .unit-block-links a{
+    inset: 0; 
+    z-index: 2;
+    text-indent: -9999px;
+    overflow: hidden;
+    position: absolute;
+  }
+
+  .fw-500{
+  	font-weight: 500;
+  }
+
+  .block--type-block-photo-w-text.block--view-mode-full{
+  	  position: relative;
+      border-radius: 15px 0 15px;
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      padding: 10%;
+  		height: 200px;
+  		margin: 10px;
+  }
+
+  .block--type-block-photo-w-text.block--view-mode-full::before{
+  	  content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0, 0, 0, 0.78) 0%, rgba(0, 0, 0, 0.48) 100%);
+      border-radius: 15px 0 15px;
+      z-index: 1;
+  		pointer-events: none;
+  }
+
+  .block--type-block-photo-w-text.block--view-mode-full:hover{
+  	transform: scale(1.03);
+  	}
+  	
+  /*.block--type-block-photo-w-text.block--view-mode-full *{
+  	z-index: 2;
+    color: #ffffff !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.9);
+  }*/
+
+  .text-on-top{
+  	z-index: 2;
+  }
+
+  .unit-block-header{
+    line-height: 1.2;
+    padding-right: 1.5rem;
+  }
+
+  @media (max-width: 1200px) {
+  	.unit-block-header{
+  		font-size:1.5rem!important;
+  		font-weight: 500;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

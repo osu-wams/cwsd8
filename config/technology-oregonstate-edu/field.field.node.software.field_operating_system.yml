@@ -1,0 +1,29 @@
+uuid: 915a0ce5-3a06-49af-84d3-d6167d4aed8f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_operating_system
+    - node.type.software
+    - taxonomy.vocabulary.operating_system
+id: node.software.field_operating_system
+field_name: field_operating_system
+entity_type: node
+bundle: software
+label: 'Operating System'
+description: 'Which operating systems is this software compatible with?'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      operating_system: operating_system
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

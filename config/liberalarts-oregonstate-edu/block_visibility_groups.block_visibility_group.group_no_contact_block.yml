@@ -1,0 +1,25 @@
+uuid: 3786aac6-168c-4440-972b-390740e02cea
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+    - user
+id: group_no_contact_block
+label: group_no_contact_block
+logic: and
+conditions:
+  282ec48e-14b7-40fe-9f4b-c161d7af3410:
+    id: request_path
+    negate: false
+    uuid: 282ec48e-14b7-40fe-9f4b-c161d7af3410
+    pages: /group/spring-creek-project
+  3936ed4c-1537-4697-99fd-b04cd371fab6:
+    id: user_role
+    negate: false
+    uuid: 3936ed4c-1537-4697-99fd-b04cd371fab6
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      authenticated: authenticated
+allow_other_conditions: null

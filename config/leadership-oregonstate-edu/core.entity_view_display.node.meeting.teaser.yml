@@ -1,0 +1,53 @@
+uuid: 8c2df461-159b-4aff-97ef-cae92d72090d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.meeting.body
+    - field.field.node.meeting.field_additional_files
+    - field.field.node.meeting.field_bot_meeting_recording_link
+    - field.field.node.meeting.field_listen_to_the_meeting
+    - field.field.node.meeting.field_meeting_date
+    - field.field.node.meeting.field_meeting_location
+    - field.field.node.meeting.field_meeting_minutes
+    - field.field.node.meeting.field_meeting_type
+    - field.field.node.meeting.field_notice
+    - field.field.node.meeting.field_public_notice_pdf
+    - field.field.node.meeting.field_searchable_meeting_minutes
+    - field.field.node.meeting.field_special_meeting_informatio
+    - node.type.meeting
+  module:
+    - text
+    - user
+id: node.meeting.teaser
+targetEntityType: node
+bundle: meeting
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_additional_files: true
+  field_bot_meeting_recording_link: true
+  field_listen_to_the_meeting: true
+  field_meeting_date: true
+  field_meeting_location: true
+  field_meeting_minutes: true
+  field_meeting_type: true
+  field_notice: true
+  field_public_notice_pdf: true
+  field_searchable_meeting_minutes: true
+  field_special_meeting_informatio: true

@@ -19,12 +19,15 @@ dependencies:
     - field.field.node.osu_profile.field_profile_primary_title
     - field.field.node.osu_profile.field_profile_pronouns
     - field.field.node.osu_profile.field_profile_research_career_in
-    - image.style.thumbnail
+    - field.field.node.osu_profile.field_rank
+    - image.style.x_large
     - node.type.osu_profile
+    - workflows.workflow.editorial
   module:
     - address
+    - content_moderation
     - field_group
-    - image
+    - focal_point
     - media_library
     - path
     - telephone
@@ -76,7 +79,7 @@ third_party_settings:
       label: 'Career Information'
       region: content
       parent_name: ''
-      weight: 13
+      weight: 14
       format_type: details
       format_settings:
         classes: ''
@@ -117,7 +120,7 @@ content:
     third_party_settings: {  }
   field_profile_appointments:
     type: entity_reference_autocomplete
-    weight: 11
+    weight: 12
     region: content
     settings:
       match_operator: CONTAINS
@@ -127,7 +130,7 @@ content:
     third_party_settings: {  }
   field_profile_biography:
     type: text_textarea
-    weight: 12
+    weight: 13
     region: content
     settings:
       rows: 5
@@ -221,6 +224,26 @@ content:
       rows: 5
       placeholder: ''
     third_party_settings: {  }
+  field_rank:
+    type: options_buttons
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
   path:
     type: path
     weight: 5
@@ -274,3 +297,7 @@ content:
 hidden:
   entitygroupfield: true
   feeds_item: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

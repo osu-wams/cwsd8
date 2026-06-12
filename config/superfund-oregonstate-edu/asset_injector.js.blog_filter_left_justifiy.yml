@@ -1,0 +1,32 @@
+uuid: b68c0700-62e0-4c32-bd59-745bd7dc9442
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: blog_filter_left_justifiy
+label: 'Blog Filter Left Justifiy'
+code: |-
+  document.addEventListener("DOMContentLoaded", function() {
+      const form = document.getElementById("views-exposed-form-blog-block-1");
+      if (form) {
+          form.classList.remove("d-flex", "justify-content-center");
+      }
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /news/blog
+contexts: {  }
+conditions_require_all: true

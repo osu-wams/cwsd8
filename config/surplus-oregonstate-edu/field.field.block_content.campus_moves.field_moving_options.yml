@@ -1,0 +1,36 @@
+uuid: c2eebd92-70b9-4a23-9c1b-a08d06dae1dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.campus_moves
+    - field.storage.block_content.field_moving_options
+    - paragraphs.paragraphs_type.osu_accordion_item
+    - paragraphs.paragraphs_type.osu_accordion_section
+  module:
+    - entity_reference_revisions
+id: block_content.campus_moves.field_moving_options
+field_name: field_moving_options
+entity_type: block_content
+bundle: campus_moves
+label: 'Moving Options:'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      osu_accordion_item: osu_accordion_item
+      osu_accordion_section: osu_accordion_section
+    negate: 0
+    target_bundles_drag_drop:
+      osu_accordion_item:
+        weight: 3
+        enabled: true
+      osu_accordion_section:
+        weight: 4
+        enabled: true
+field_type: entity_reference_revisions

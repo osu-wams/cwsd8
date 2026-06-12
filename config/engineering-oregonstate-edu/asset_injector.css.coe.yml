@@ -1,0 +1,39 @@
+uuid: 5b84dba1-9305-4309-8280-d0ddaec332ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe
+label: 'COE Brand iFrames'
+code: |-
+  /* Utilizing an old CSS2 trick to responsively size the frame (padding-bottom percent is calculated based on width) */
+  main *:has(> iframe) {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%; /* The height of the item will now be 56.25% of the width. */
+  }
+
+  /* Adjust the iframe so it's rendered in the outer-width and outer-height of it's parent */
+  main iframe {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/events/graduation-celebrations/cbee-graduation-celebration\r\n/events/graduation-celebrations-2025/cce-graduation-celebration-2025\r\n/alumni-partners/oregon-stater-awards\r\n/all-stories/*\r\n/node/52226\r\n/node/52441\r\n/node/39871\r\n/node/54691\r\n/node/54686"
+contexts: {  }
+conditions_require_all: true

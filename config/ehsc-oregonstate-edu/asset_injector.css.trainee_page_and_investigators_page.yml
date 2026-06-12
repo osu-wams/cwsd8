@@ -1,0 +1,45 @@
+uuid: 30598631-beca-47ca-95fd-d3f6017d2d87
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: trainee_page_and_investigators_page
+label: 'Trainee Page and Investigators Page'
+code: |-
+  /*[class*="col-"] {*/
+  .staff-col{
+      vertical-align: top;
+      float:left;
+      width:97.8%;
+      }
+  .views-field {
+          padding-left: 2%;
+          padding-right: 2%;
+      }
+  .views-field .field-content img{
+          max-width: 225px;
+          max-height: 300px;
+          padding-bottom:2%;
+      }
+      
+  @media (min-width:1200px){
+      /*[class*="col-"]{*/
+      .staff-col{
+          width: 48%;
+          }
+      }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /about-us/staff
+contexts: {  }
+conditions_require_all: true

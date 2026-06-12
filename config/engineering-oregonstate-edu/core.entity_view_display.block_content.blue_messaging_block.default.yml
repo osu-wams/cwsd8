@@ -1,0 +1,161 @@
+uuid: 9f06c9f7-81cd-4ddd-b230-8a6ca9705ca3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.blue_messaging_block
+    - field.field.block_content.blue_messaging_block.body
+    - field.field.block_content.blue_messaging_block.field_message_background
+    - field.field.block_content.blue_messaging_block.field_message_link
+    - field.field.block_content.blue_messaging_block.field_message_title
+    - field.field.block_content.blue_messaging_block.layout_builder__layout
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - link
+    - options
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          cc48f832-d651-49e9-bf1c-c31d7307572d:
+            uuid: cc48f832-d651-49e9-bf1c-c31d7307572d
+            region: content
+            configuration:
+              id: 'field_block:block_content:blue_messaging_block:field_message_title'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: string
+                label: hidden
+                settings:
+                  link_to_entity: false
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          92f4c588-48b1-433d-8779-96a717618940:
+            uuid: 92f4c588-48b1-433d-8779-96a717618940
+            region: content
+            configuration:
+              id: 'field_block:block_content:blue_messaging_block:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          d4a4b6c6-66ce-4a4d-8423-5e0e461122fe:
+            uuid: d4a4b6c6-66ce-4a4d-8423-5e0e461122fe
+            region: content
+            configuration:
+              id: 'field_block:block_content:blue_messaging_block:field_message_link'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: link
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: ''
+                  target: ''
+                third_party_settings: {  }
+            weight: 2
+            additional:
+              component_attributes:
+                block_attributes:
+                  id: ''
+                  class: ''
+                  style: ''
+                  data: ''
+                block_title_attributes:
+                  id: ''
+                  class: ''
+                  style: ''
+                  data: ''
+                block_content_attributes:
+                  id: ''
+                  class: black-arrow-link
+                  style: ''
+                  data: ''
+          a9cc1e43-02b1-473a-acbc-183f329abc5d:
+            uuid: a9cc1e43-02b1-473a-acbc-183f329abc5d
+            region: content
+            configuration:
+              id: 'field_block:block_content:blue_messaging_block:field_message_background'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: list_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: block_content.blue_messaging_block.default
+targetEntityType: block_content
+bundle: blue_messaging_block
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_message_background:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_message_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_message_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  layout_builder__layout: true

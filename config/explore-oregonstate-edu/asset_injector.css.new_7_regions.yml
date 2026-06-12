@@ -1,0 +1,373 @@
+uuid: d6f5f8a3-0175-48ea-b0bb-65d594952877
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: new_7_regions
+label: 'New 7 regions'
+code: |-
+
+  /* Region groups hover/active */
+  #Coast,
+  #Mt\._Hood_Gorge,
+  #Portland,
+  #Southern_Oregon,
+  #Willamette_Valley,
+  #Central_Oregon,
+  #Eastern_Oregon {
+    cursor: pointer;
+    transition: filter 0.18s ease;
+  }
+
+  #Coast:hover,
+  #Mt\._Hood_Gorge:hover,
+  #Portland:hover,
+  #Southern_Oregon:hover,
+  #Willamette_Valley:hover,
+  #Central_Oregon:hover,
+  #Eastern_Oregon:hover {
+    filter: brightness(1.25) saturate(1.15);
+  }
+
+  #Coast.active,
+  #Mt\._Hood_Gorge.active,
+  #Portland.active,
+  #Southern_Oregon.active,
+  #Willamette_Valley.active,
+  #Central_Oregon.active,
+  #Eastern_Oregon.active {
+    filter: brightness(1.35) saturate(1.3) drop-shadow(0 0 4px rgba(0,0,0,0.3));
+  }
+
+  /* Clickable point groups */
+  .point-link {
+    cursor: pointer;
+  }
+
+  .point-link circle,
+  .point-link text {
+    transition: r 0.15s ease, fill 0.15s ease;
+  }
+
+  .point-link:hover circle {
+    fill: var(--orange) !important;
+  }
+
+
+  .orange-texture::before{
+  	content: '';
+  	position: absolute;
+  	inset: 0;
+  	background-image: repeating-linear-gradient(-60deg, transparent, transparent 40px, rgba(0, 0, 0, .055) 40px, rgba(0, 0, 0, .055) 41px);
+  	pointer-events: none;
+  	z-index: -1;
+  }
+
+  .bg-corner-gradient::after{
+  	content: "";
+  	position: absolute;
+  	width: 100%;
+  	height: 100%;
+  	z-index: 2;
+  	top: 0;
+  	background: linear-gradient(216deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+  }
+
+  .osu-regions-opener{
+  	position: relative;
+  	z-index: 3;
+  }
+
+  .osu-regions-stats-container .container{
+  	max-width: 1400px;
+  	margin-top: -75px;
+  	position: absolute;
+  	z-index: 4;
+  	--cut: 75px;
+  	clip-path: polygon(var(--cut) 0%, 100% 0%, 100% 100%, 0% 100%, 0% var(--cut));
+  	right: 0;
+  }
+
+  .stats-diagonal-border .container{
+  	max-width: 1400px;
+  	margin-top: -75px;
+  	position: absolute;
+  	z-index: 3;
+  	--cut: 73px;
+  	clip-path: polygon(var(--cut) 0%, 100% 0%, 100% 100%, 0% 100%, 0% var(--cut));
+  	right: 0;
+  }
+
+  @media (max-width: 1400px){
+  	.stats-diagonal-border .container, .osu-regions-stats-container .container{
+  		max-width: 991px;
+  	}
+  }
+
+  @media (max-width: 1400px){
+  	.stats-diagonal-border .container, .osu-regions-stats-container .container{
+  		max-width: 991px;
+  	}
+  }
+
+  /* TABLET BREAK POINT */
+  @media (max-width: 991px) {
+    .stats-diagonal-border .container, .osu-regions-stats-container .container {
+      max-width: 768px;
+    }
+    
+    .osu-regions .story-container{
+    	flex-wrap: wrap !important;
+    }
+    
+    .osu-regions .story-container .story-img img{
+  		border-top: 2px solid #d73f09;
+  		border-right: 2px solid #d73f09;
+  		border-left: 2px solid #d73f09;
+    }
+    
+  	.osu-regions .story-container .story-body{
+  		border-top: 0px solid #d73f09;
+  		border-left: 2px solid #d73f09;
+  		display: block !important;
+      min-height: 300px;
+  	}
+  }
+
+  /* MOBILE BREAKPOINT */
+
+  @media (max-width: 768px) {
+  	.osu-regions-stats-container .container{
+  		clip-path: none;
+  	}
+  	
+  	.osu-regions-stats .first-child{
+  		border-left: 2px solid #d73f09;
+  	}
+  	
+  	.osu-regions-stats p{
+  		text-align: left !important;
+  		padding-left: 2rem;
+  	}
+  	
+  	.bg-corner-gradient .container-fluid .osu-min-h-600{
+  		min-height: 400px !important;
+  		align-items: end !important;
+      min-height: 400px !important;
+  	}
+  	
+  	.osu-regions-opener-block{
+  		padding-bottom: 3rem !important;
+  	}
+  }
+
+  .osu-regions .story-img img{
+  	height: 500px;
+  	width: 3500px;
+  	object-fit: cover;
+  }
+
+  .osu-regions .story-body{
+  	background: #0000005c;
+    border-top: 2px solid #d73f09;
+    border-right: 2px solid #d73f09;
+    border-bottom: 2px solid #d73f09;
+    min-height: 400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .osu-regions .story-img img 
+  {
+  	transition: scale 0.2s ease;
+  	position: relative;
+  	z-index: 3;
+  }
+
+  .osu-regions .story-container{
+  	transition: filter 0.2s ease;
+  }
+
+  .osu-regions .carousel-item:hover .story-img img{
+  	scale: 1.01;
+  }
+
+  .osu-regions .carousel-item:hover .story-container{
+    filter: drop-shadow(2px 4px 10px #00000080);
+  }
+
+  .osu-regions .carousel-item:hover .story-body{
+  	background: #d73f094f;
+  }
+
+  .osu-regions .carousel .carousel-indicators{
+    background-color: #d73f0900;
+  }
+
+  .osu-regions .carousel-indicators [data-bs-target]{
+  	margin-right: 0px !important; 
+    margin-left: 0px !important;
+    width: 100px !important;
+  }
+
+  .osu-regions .carousel-indicators .active{
+  	background: #d73f09 !important;
+  	background-clip: padding-box !important;
+  }
+
+  .search-wrap input{
+  	border-radius: 50px !important;
+  }
+
+  .map-wrap{
+  	margin-top: -100px;
+  }
+
+  .events-outline{
+  	margin-top: -350px;
+  	margin-left: 90px;
+  }
+
+  @media (max-width: 991px){
+  	.events-outline{
+  		margin-top: -1990px;
+      margin-left: -35px;
+  	}
+  	
+  	.events-outline .block{
+  		height: 1900px;
+  		width: 768px;
+  	}
+  	
+  	.events-line::before{
+  	  height: 0px !important;
+  	  width: 0px !important;
+  	  bottom: 0px !important;
+  	  left: 0px !important;
+  	}
+  	
+  	.carnegie-img img{
+  		margin-bottom: 0 !important;
+  		margin-left: 0 !important;
+  		width: 100%;
+  		border-left: 2px solid #d73f09;
+      border-top: 2px solid #d73f09;
+      border-right: 2px solid #d73f09;
+  	}
+  	
+  	.carnegie-body{
+  		border-left: 2px solid #d73f09;
+      border-bottom: 2px solid #d73f09;
+      border-right: 2px solid #d73f09;
+  	}
+  	
+  	.carnegie-header{
+  		border-bottom: 0px solid #d73f09 !important;
+  		margin-bottom: 0px !important;
+  	}
+  }
+
+  @media (max-width: 768px){
+  	.events-outline .block{
+  		width: 600px;
+  	}
+  }
+
+  .events-line::before{
+    content: "";
+    position: absolute;
+    z-index: 0;
+    height: 2px;
+    width: 25%;
+    bottom: 200px;
+    left: 0rem;
+    background: #d73f09;
+  }
+
+  .carnegie-img img{
+  	margin-bottom: -225px;
+  	margin-left: -75px;
+  }
+
+  .carnegie-header{
+  	border-bottom: 2px solid #d73f09;
+  	padding-bottom: 0.5rem;
+  	margin-bottom: -25px;
+  	position: relative;
+  	z-index: 5;
+  }
+
+  .regions-email{
+  	margin-top: -115px;
+  	clip-path: polygon(0 0, 77% 0, 100% 21%, 100% 100%, 0 100%);
+  }
+
+  .regions-map-side{
+  	margin-top: -100px;
+  }
+
+  .regions-map-side .info-card{
+  	width: 1100px;
+  	margin-top: 75px;
+  	clip-path: polygon(7% 0, 100% 0, 100% 100%, 0 100%, 0 15%);
+  	height: 400px;
+  }
+
+  .regions-map-side .info-card .card-header{
+  	background: #d73f09;
+  	color: #fff !important;
+  	text-align: center;
+  }
+
+  .regions-map-side .info-card .card-header .region-label{
+  	color: #fff !important;
+  }
+
+  .regions-map-side .info-card #cardTitle{
+  	font-family: 'Stratum2Web' !important;
+  }
+
+  .regions-map .card-body{
+  	max-width: 800px;
+  	text-align: left;
+  }
+
+  .regions-map .location-list li{
+  	border-bottom: 1px solid #80808038;
+  	padding: 1rem;
+  	list-style: none;
+  }
+
+  .regions-map .location-list li::marker{
+    content: "" !important;
+  }
+
+  .stat-references{
+  	position: relative;
+  	z-index: 9;
+  	margin-top:75px;
+  	margin-right:1rem;
+  	line-height:1.4;
+  }
+
+  .beaver-bg{
+  	background-size: 40% !important;
+  	background-position-x: 125% !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/276\r\n/node/281\r\n/node/286\r\n/node/291\r\n/node/296\r\n/node/301\r\n/node/306\r\n/node/271"
+contexts: {  }
+conditions_require_all: true

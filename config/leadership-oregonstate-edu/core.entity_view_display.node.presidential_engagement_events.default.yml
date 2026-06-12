@@ -1,0 +1,89 @@
+uuid: f622082e-ba1f-43ea-9bb4-720295565dd2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.presidential_engagement_events.body
+    - field.field.node.presidential_engagement_events.field_photo_caption
+    - field.field.node.presidential_engagement_events.field_president_event_date
+    - field.field.node.presidential_engagement_events.field_president_event_image
+    - field.field.node.presidential_engagement_events.field_president_event_link
+    - node.type.presidential_engagement_events
+  module:
+    - date_ap_style
+    - image
+    - link
+    - text
+    - user
+id: node.presidential_engagement_events.default
+targetEntityType: node
+bundle: presidential_engagement_events
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_photo_caption:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_president_event_date:
+    type: daterange_ap_style
+    label: inline
+    settings:
+      always_display_year: true
+      use_today: false
+      cap_today: false
+      display_day: null
+      display_time: true
+      time_before_date: false
+      display_noon_and_midnight: true
+      capitalize_noon_and_midnight: false
+      use_all_day: false
+      separator: endash
+      timezone: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_president_event_image:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: 270x180-scale-crop
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_president_event_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

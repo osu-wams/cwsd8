@@ -1,0 +1,180 @@
+uuid: a2ed6417-eb02-4fb5-8e6d-b7affc57cf54
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+id: duplicate_of_carousel_cascade_edge
+label: 'Carousel Cascade Edge'
+code: |
+  (function (Drupal) {
+    Drupal = Drupal || {};
+
+    function buildSlider(block) {
+      // Avoid double-init
+      if (block.dataset.edgeSliderInit === '1') return;
+      block.dataset.edgeSliderInit = '1';
+
+      // Collect items by index
+      const imgItems = block.querySelectorAll('.field--name-field-image1 .field__item img');
+      const headerItems = block.querySelectorAll('.field--name-field-header1 .field__item');
+      const bodyItems = block.querySelectorAll('.field--name-field-bodytext1 .field__item');
+
+      const count = Math.max(imgItems.length, headerItems.length, bodyItems.length);
+      if (!count) return;
+
+      // Check if it's an image-only slider (no headers AND no body text)
+      const isImageOnlySlider = headerItems.length === 0 && bodyItems.length === 0;
+
+      // Create slider shell
+      const slider = document.createElement('div');
+      slider.className = isImageOnlySlider ? 'edge-slider image-only-slider' : 'edge-slider text-slider';
+      slider.setAttribute('aria-roledescription', 'carousel');
+
+      const slidesWrap = document.createElement('div');
+      slidesWrap.className = 'edge-slides';
+      slider.appendChild(slidesWrap);
+
+      // Build slides by index
+      if (isImageOnlySlider) {
+        for (let i = 0; i < count; i++) {
+          const imgEl = imgItems[i] ? imgItems[i].cloneNode(true) : null;
+
+          const slide = document.createElement('div');
+          slide.className = 'edge-slide academic-image-slide';
+          slide.setAttribute('role', 'group');
+          slide.setAttribute('aria-label', `Slide ${i + 1} of ${count}`);
+          slide.innerHTML = `
+            <div class="academic-slide-media">${imgEl ? imgEl.outerHTML : ''}</div>
+          `;
+          slidesWrap.appendChild(slide);
+        }
+      } else {
+        // Build slides by index
+        for (let i = 0; i < count; i++) {
+          const imgEl = imgItems[i] ? imgItems[i].cloneNode(true) : null;
+          const headHtml = headerItems[i] ? headerItems[i].innerHTML : '';
+          const bodyHtml = bodyItems[i] ? bodyItems[i].innerHTML : '';
+
+          const slide = document.createElement('div');
+          slide.className = 'edge-slide academic-text-slide';
+          slide.setAttribute('role', 'group');
+          slide.setAttribute('aria-label', `Slide ${i + 1} of ${count}`);
+          slide.innerHTML = `
+            <div class="edge-slide-media">${imgEl ? imgEl.outerHTML : ''}</div>
+            <div class="edge-slide-content">
+              ${headHtml ? `<h3 class="slider-header">${headHtml}</h3>` : ''}
+              ${bodyHtml ? `<div class="edge-body">${bodyHtml}</div>` : ''}
+            </div>
+          `;
+          slidesWrap.appendChild(slide);
+        }
+      }
+
+      // Controls - Different class names based on slider type
+      const prev = document.createElement('button');
+      prev.className = isImageOnlySlider ? 
+        'edge-arrow edge-prev image-slider-prev' : 
+        'edge-arrow edge-prev text-slider-prev';
+      prev.type = 'button';
+      prev.setAttribute('aria-label', 'Previous slide');
+      prev.innerHTML = '&#10094;';
+
+      const next = document.createElement('button');
+      next.className = isImageOnlySlider ? 
+        'edge-arrow edge-next image-slider-next' : 
+        'edge-arrow edge-next text-slider-next';
+      next.type = 'button';
+      next.setAttribute('aria-label', 'Next slide');
+      next.innerHTML = '&#10095;';
+
+      slider.appendChild(prev);
+      slider.appendChild(next);
+
+      // Dots - Different class names based on slider type
+      const dots = document.createElement('div');
+      dots.className = isImageOnlySlider ? 'edge-dots image-slider-dots' : 'edge-dots text-slider-dots';
+      
+      for (let i = 0; i < count; i++) {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = isImageOnlySlider ? 'edge-dot image-slider-dot' : 'edge-dot text-slider-dot';
+        dot.setAttribute('aria-label', `Go to slide ${i + 1}`);
+        dot.dataset.index = String(i);
+        dots.appendChild(dot);
+      }
+      slider.appendChild(dots);
+
+      // Insert slider near your fields (before the two-col layout)
+      const insertBefore =
+        block.querySelector('.layout--twocol-section') ||
+        block.querySelector('.block__content') ||
+        block;
+      insertBefore.parentNode.insertBefore(slider, insertBefore);
+
+      // State + behavior
+      const slides = Array.from(slider.querySelectorAll('.edge-slide'));
+      const dotBtns = Array.from(slider.querySelectorAll('.edge-dot'));
+      let index = 0;
+      let timer = null;
+      const AUTOPLAY_MS = 5000;
+
+      function show(i) {
+        index = (i + slides.length) % slides.length;
+        slides.forEach((s, k) => {
+          s.classList.toggle('is-active', k === index);
+          s.setAttribute('aria-hidden', k === index ? 'false' : 'true');
+        });
+        dotBtns.forEach((d, k) => d.classList.toggle('is-active', k === index));
+      }
+
+      function nextSlide() { show(index + 1); }
+      function prevSlide() { show(index - 1); }
+
+      next.addEventListener('click', nextSlide);
+      prev.addEventListener('click', prevSlide);
+      dotBtns.forEach(btn => btn.addEventListener('click', () => show(parseInt(btn.dataset.index, 10))));
+
+      // Keyboard support when slider is focused
+      slider.tabIndex = 0;
+      slider.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') { e.preventDefault(); nextSlide(); }
+        if (e.key === 'ArrowLeft')  { e.preventDefault(); prevSlide(); }
+      });
+
+      // Autoplay (pause on hover/focus)
+      function startAuto() { if (!timer) timer = setInterval(nextSlide, AUTOPLAY_MS); }
+      function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
+      slider.addEventListener('mouseenter', stopAuto);
+      slider.addEventListener('mouseleave', startAuto);
+      slider.addEventListener('focusin', stopAuto);
+      slider.addEventListener('focusout', startAuto);
+
+      // Initialize
+      show(0);
+      startAuto();
+
+      // Hide original fields only after slider is ready (prevents FOUC)
+      block.classList.add('edge-slider-ready');
+    }
+
+    Drupal.behaviors.edgeCarousel = {
+      attach: function (context) {
+        // Target your specific block type wrapper
+        const blocks = context.querySelectorAll('.block--type-cascades-edge-carousel');
+        blocks.forEach(buildSlider);
+      }
+    };
+  })(window.Drupal || {});
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

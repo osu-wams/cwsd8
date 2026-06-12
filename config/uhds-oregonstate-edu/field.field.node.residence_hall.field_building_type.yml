@@ -1,0 +1,29 @@
+uuid: daa77811-736d-4bbf-82c6-39841eb32d0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_building_type
+    - node.type.residence_hall
+    - taxonomy.vocabulary.residence_halls
+id: node.residence_hall.field_building_type
+field_name: field_building_type
+entity_type: node
+bundle: residence_hall
+label: 'Building Type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      residence_halls: residence_halls
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

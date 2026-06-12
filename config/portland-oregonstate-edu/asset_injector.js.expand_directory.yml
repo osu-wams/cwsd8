@@ -1,0 +1,39 @@
+uuid: f88c91f6-c527-48ab-9a35-e8e712b9af27
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: expand_directory
+label: 'Expand Directory'
+code: |-
+  jQuery(document).on("ajaxComplete", function () {
+    const links = document.querySelectorAll(".form-item-items-per-page a");
+    
+    links.forEach(function(link) {
+      if (link.textContent.trim() !== "6") {
+        if (link.classList.contains("bef-link--selected")) {
+          link.textContent = "View Less";
+        } else {
+          link.textContent = "View All";
+        }
+      }
+    });
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/111
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,29 @@
+uuid: cbf45c05-4bd0-480e-9cd8-04636df23166
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rank
+    - node.type.osu_profile
+    - taxonomy.vocabulary.rank
+id: node.osu_profile.field_rank
+field_name: field_rank
+entity_type: node
+bundle: osu_profile
+label: Rank
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      rank: rank
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

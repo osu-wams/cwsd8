@@ -1,0 +1,137 @@
+uuid: 2339f10c-2dc5-45dd-8a85-f65a528a1989
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.hero_with_cta
+    - field.field.block_content.hero_with_cta.field_hero_cta_banner_text
+    - field.field.block_content.hero_with_cta.field_hero_cta_button
+    - field.field.block_content.hero_with_cta.field_hero_cta_image
+    - field.field.block_content.hero_with_cta.field_hero_cta_subtitle
+    - field.field.block_content.hero_with_cta.field_hero_cta_title
+  module:
+    - field_group
+    - linkit
+    - text
+    - text_field_formatter
+third_party_settings:
+  field_group:
+    group_banner_wrapper:
+      children:
+        - field_hero_cta_banner_text
+        - field_hero_cta_button
+      label: 'Banner Wrapper'
+      parent_name: ''
+      region: content
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: hero-cta-banner-wrapper
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_title_wrapper:
+      children:
+        - field_hero_cta_title
+        - field_hero_cta_subtitle
+      label: 'Title Wrapper'
+      parent_name: group_hero_wrapper
+      region: content
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: hero-cta-title-wrapper
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_hero_wrapper:
+      children:
+        - field_hero_cta_image
+        - group_title_wrapper
+      label: 'Hero Wrapper'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: hero-cta-hero-wrapper
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: block_content.hero_with_cta.default
+targetEntityType: block_content
+bundle: hero_with_cta
+mode: default
+content:
+  field_hero_cta_banner_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_hero_cta_button:
+    type: linkit
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+      linkit_profile: default
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_hero_cta_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_hero_cta_subtitle:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: div
+      wrap_class: 'h4 white-text'
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_hero_cta_title:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h1
+      wrap_class: white-text
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

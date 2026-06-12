@@ -1,0 +1,27 @@
+uuid: 1f2dcddb-0962-4604-b2e0-ab2b03298021
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: play_button_on_school_pages
+label: 'CCE video controls (button, video)'
+code: |-
+  /* Aligns video controls to proper location */
+  .video-content__controls{
+  	left: calc(100vw - 10rem) !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /CCE
+contexts: {  }
+conditions_require_all: true

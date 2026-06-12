@@ -1,0 +1,447 @@
+uuid: 0bb855b4-49c3-4c04-a912-8b913ea5fdd3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.chapter_profile.field_chapter_facts
+    - field.field.node.chapter_profile.field_chapter_name
+    - field.field.node.chapter_profile.field_chapter_president_contact
+    - field.field.node.chapter_profile.field_chapter_type
+    - field.field.node.chapter_profile.field_chapter_website
+    - field.field.node.chapter_profile.field_chartered_at_osu
+    - field.field.node.chapter_profile.field_council_membership
+    - field.field.node.chapter_profile.field_covid_19_workbook
+    - field.field.node.chapter_profile.field_crest
+    - field.field.node.chapter_profile.field_gender
+    - field.field.node.chapter_profile.field_greek_letter
+    - field.field.node.chapter_profile.field_house_capacity
+    - field.field.node.chapter_profile.field_inter_national_website
+    - field.field.node.chapter_profile.field_letters
+    - field.field.node.chapter_profile.field_mailing_address
+    - field.field.node.chapter_profile.field_mission
+    - field.field.node.chapter_profile.field_national_founding_date_loc
+    - field.field.node.chapter_profile.field_nicknames_s
+    - field.field.node.chapter_profile.field_notable_alumni
+    - field.field.node.chapter_profile.field_office
+    - field.field.node.chapter_profile.field_organization_information
+    - field.field.node.chapter_profile.field_other
+    - field.field.node.chapter_profile.field_philanthropy
+    - field.field.node.chapter_profile.field_physical_address
+    - field.field.node.chapter_profile.field_recruitment_requirements
+    - field.field.node.chapter_profile.field_relationship_statement_awa
+    - field.field.node.chapter_profile.field_social_media
+    - field.field.node.chapter_profile.field_social_media_1
+    - field.field.node.chapter_profile.field_total_members
+    - node.type.chapter_profile
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - field_group
+    - link
+    - media_library
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_chapter_profile_informatio:
+      children:
+        - group_general_information
+        - group_chapter_information
+        - group_contact_information
+        - group_relationship_statement
+      label: 'Chapter Profile Information'
+      region: content
+      parent_name: ''
+      weight: 1
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        direction: vertical
+        width_breakpoint: 640
+    group_general_information:
+      children:
+        - field_crest
+        - field_letters
+        - field_greek_letter
+        - field_chapter_name
+        - field_gender
+        - field_national_founding_date_loc
+        - field_chartered_at_osu
+        - field_nicknames_s
+        - field_chapter_facts
+        - field_total_members
+        - field_house_capacity
+        - field_covid_19_workbook
+      label: 'General Information'
+      region: content
+      parent_name: group_chapter_profile_informatio
+      weight: 2
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_chapter_information:
+      children:
+        - field_council_membership
+        - field_chapter_type
+        - field_mission
+        - field_organization_information
+        - field_philanthropy
+        - field_notable_alumni
+      label: 'Chapter Information'
+      region: content
+      parent_name: group_chapter_profile_informatio
+      weight: 3
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_contact_information:
+      children:
+        - field_chapter_president_contact
+        - field_physical_address
+        - field_mailing_address
+        - field_office
+        - field_chapter_website
+        - field_inter_national_website
+        - field_social_media
+        - field_recruitment_requirements
+      label: 'Contact Information'
+      region: content
+      parent_name: group_chapter_profile_informatio
+      weight: 4
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_relationship_statement:
+      children:
+        - field_relationship_statement_awa
+      label: 'Relationship Statement'
+      region: content
+      parent_name: group_chapter_profile_informatio
+      weight: 5
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.chapter_profile.default
+targetEntityType: node
+bundle: chapter_profile
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 3
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_chapter_facts:
+    type: text_textarea
+    weight: 10
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_chapter_name:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_chapter_president_contact:
+    type: text_textarea
+    weight: 12
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_chapter_type:
+    type: entity_reference_autocomplete
+    weight: 20
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_chapter_website:
+    type: link_default
+    weight: 16
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_chartered_at_osu:
+    type: string_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_council_membership:
+    type: options_select
+    weight: 19
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_covid_19_workbook:
+    type: text_textarea
+    weight: 14
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_crest:
+    type: media_library_widget
+    weight: 2
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_gender:
+    type: entity_reference_autocomplete
+    weight: 6
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_greek_letter:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_house_capacity:
+    type: number
+    weight: 12
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_inter_national_website:
+    type: link_default
+    weight: 17
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_letters:
+    type: media_library_widget
+    weight: 3
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_mailing_address:
+    type: text_textarea
+    weight: 14
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_mission:
+    type: text_textarea
+    weight: 21
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_national_founding_date_loc:
+    type: text_textarea
+    weight: 7
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_nicknames_s:
+    type: text_textarea
+    weight: 9
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_notable_alumni:
+    type: text_textarea
+    weight: 24
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_office:
+    type: string_textfield
+    weight: 15
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_organization_information:
+    type: text_textarea
+    weight: 22
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_philanthropy:
+    type: text_textarea
+    weight: 23
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_physical_address:
+    type: text_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_recruitment_requirements:
+    type: text_textarea
+    weight: 20
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_relationship_statement_awa:
+    type: text_textarea
+    weight: 13
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_social_media:
+    type: text_textarea
+    weight: 19
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_total_members:
+    type: number
+    weight: 11
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 8
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 5
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 2
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  field_other: true
+  field_social_media_1: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

@@ -1,0 +1,102 @@
+uuid: 40460d13-b5fc-4b99-aa20-15ec963e1a55
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.contacts.field_pb_contact_department
+    - field.field.paragraph.contacts.field_pb_contact_email
+    - field.field.paragraph.contacts.field_pb_contact_heading
+    - field.field.paragraph.contacts.field_pb_contact_link
+    - field.field.paragraph.contacts.field_pb_contact_person
+    - field.field.paragraph.contacts.field_pb_contact_phone
+    - field.field.paragraph.contacts.field_pb_contact_position
+    - paragraphs.paragraphs_type.contacts
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - link
+    - linkit
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: paragraph.contacts.default
+targetEntityType: paragraph
+bundle: contacts
+mode: default
+content:
+  field_pb_contact_department:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_pb_contact_email:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_pb_contact_heading:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_pb_contact_link:
+    type: linkit
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+      linkit_profile: default
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_pb_contact_person:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_pb_contact_phone:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_pb_contact_position:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+hidden: {  }

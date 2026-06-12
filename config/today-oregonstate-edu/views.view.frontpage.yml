@@ -1,6 +1,6 @@
-uuid: e567a959-3eac-431b-b6ab-8f20429d7372
+uuid: 422ab711-9c01-4f83-9ddd-006b9e3147c5
 langcode: en
-status: true
+status: false
 dependencies:
   config:
     - core.entity_view_mode.node.rss
@@ -9,7 +9,7 @@ dependencies:
     - node
     - user
 _core:
-  default_config_hash: OEEnRQIjfIaCFRsz8U3VqDrE82ltQKlo8wNbQJRZXu0
+  default_config_hash: FB0p62bsuCrUCNdsvmKkh8AQ4ZP1nhnYYUPZx6AAxzg
 id: frontpage
 label: Frontpage
 module: node
@@ -99,7 +99,7 @@ display:
           plugin_id: title
           label: ''
           empty: true
-          title: Welcome!
+          title: 'Welcome to [site:name]'
       sorts:
         sticky:
           id: sticky
@@ -110,7 +110,7 @@ display:
           admin_label: ''
           entity_type: node
           entity_field: sticky
-          plugin_id: standard
+          plugin_id: boolean
           order: DESC
           expose:
             label: ''
@@ -230,15 +230,20 @@ display:
             default_group_multiple: {  }
             group_items: {  }
       style:
-        type: default
+        type: grid
         options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
           uses_fields: false
+          columns: 4
+          automatic_width: true
+          alignment: horizontal
+          row_class_custom: ''
+          row_class_default: true
+          col_class_custom: ''
+          col_class_default: true
       row:
         type: 'entity:node'
         options:
+          relationship: none
           view_mode: teaser
       query:
         type: views_query
@@ -249,6 +254,7 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: container
       header: {  }
       footer: {  }
       display_extenders: {  }
@@ -301,7 +307,10 @@ display:
     display_plugin: page
     position: 1
     display_options:
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       path: node
     cache_metadata:
       max-age: -1

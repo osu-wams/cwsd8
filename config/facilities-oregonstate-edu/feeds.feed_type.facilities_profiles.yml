@@ -1,0 +1,109 @@
+uuid: b0225e18-1f05-4e42-9b21-0c9933b69de1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_profile.field_profile_email
+    - field.field.node.osu_profile.field_profile_first_name
+    - field.field.node.osu_profile.field_profile_last_name
+    - field.field.node.osu_profile.field_profile_primary_title
+    - field.field.node.osu_profile.field_shop_profile
+    - node.type.osu_profile
+  module:
+    - node
+label: 'Facilities Profiles'
+id: facilities_profiles
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: osu_profile
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  first_name:
+    value: 'first name'
+    label: 'first name'
+    machine_name: first_name
+    type: csv
+  last_name:
+    value: 'last name'
+    label: 'last name'
+    machine_name: last_name
+    type: csv
+  shops:
+    value: Shops
+    label: Shops
+    machine_name: shops
+    type: csv
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  email:
+    value: email
+    label: email
+    machine_name: email
+    type: csv
+mappings:
+  -
+    target: field_profile_first_name
+    map:
+      value: first_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_last_name
+    map:
+      value: last_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_shop_profile
+    map:
+      target_id: shops
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: shops
+  -
+    target: field_profile_primary_title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_email
+    map:
+      value: email
+    settings:
+      language: ''
+      defuse: 0
+    unique:
+      value: 1

@@ -1,0 +1,165 @@
+uuid: 3258dcc3-5879-4052-b09c-02516518d882
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: carousel
+label: Carousel
+code: |-
+  // JavaScript for the first carousel
+  const slides1 = document.querySelectorAll('.carousel-container1 .carousel-slide');
+  const prevBtn1 = document.querySelector('.carousel-container1 .carousel-prev');
+  const nextBtn1 = document.querySelector('.carousel-container1 .carousel-next');
+  const dotsContainer1 = document.querySelector('.carousel-container1 .carousel-dots');
+  const carouselContainer1 = document.querySelector('.carousel-container1');
+
+  let slideIndex1 = 0;
+  let autoplayInterval1;
+
+  const createDots1 = () => {
+    for (let i = 0; i < slides1.length; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('carousel-dot');
+      dot.addEventListener('click', () => {
+        slideIndex1 = i;
+        showSlide1();
+        stopAutoplay1(); // Pause autoplay on dot click
+      });
+      dotsContainer1.appendChild(dot);
+    }
+  };
+
+  const showSlide1 = () => {
+    slides1.forEach((slide) => {
+      slide.style.transform = 'translateY(-100%)';
+    });
+
+    slides1[slideIndex1].style.transform = 'translateY(0)';
+
+    const dots = document.querySelectorAll('.carousel-container1 .carousel-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.remove('active');
+      if (index === slideIndex1) {
+        dot.classList.add('active');
+      }
+    });
+  };
+
+  const nextSlide1 = () => {
+    slideIndex1 = (slideIndex1 + 1) % slides1.length;
+    showSlide1();
+  };
+
+  const prevSlide1 = () => {
+    slideIndex1 = (slideIndex1 - 1 + slides1.length) % slides1.length;
+    showSlide1();
+  };
+
+  const startAutoplay1 = () => {
+    autoplayInterval1 = setInterval(nextSlide1, 5500); // Adjust interval as needed
+  };
+
+  const stopAutoplay1 = () => {
+    clearInterval(autoplayInterval1);
+  };
+
+  prevBtn1.addEventListener('click', prevSlide1);
+  nextBtn1.addEventListener('click', nextSlide1);
+
+  // Start autoplay on page load
+  startAutoplay1();
+
+  // Pause autoplay on hover
+  carouselContainer1.addEventListener('mouseover', stopAutoplay1);
+  carouselContainer1.addEventListener('mouseout', startAutoplay1);
+
+  createDots1();
+  showSlide1();
+
+  // JavaScript for the second carousel
+  const slides2 = document.querySelectorAll('.carousel-container2 .carousel-slide');
+  const prevBtn2 = document.querySelector('.carousel-container2 .carousel-prev');
+  const nextBtn2 = document.querySelector('.carousel-container2 .carousel-next');
+  const dotsContainer2 = document.querySelector('.carousel-container2 .carousel-dots');
+  const carouselContainer2 = document.querySelector('.carousel-container2');
+
+  let slideIndex2 = 0;
+  let autoplayInterval2;
+
+  const createDots2 = () => {
+    for (let i = 0; i < slides2.length; i++) {
+      const dot = document.createElement('span');
+      dot.classList.add('carousel-dot');
+      dot.addEventListener('click', () => {
+        slideIndex2 = i;
+        showSlide2();
+        stopAutoplay2(); // Pause autoplay on dot click
+      });
+      dotsContainer2.appendChild(dot);
+    }
+  };
+
+  const showSlide2 = () => {
+    slides2.forEach((slide) => {
+      slide.style.transform = 'translateY(-100%)';
+    });
+
+    slides2[slideIndex2].style.transform = 'translateY(0)';
+
+    const dots = document.querySelectorAll('.carousel-container2 .carousel-dot');
+    dots.forEach((dot, index) => {
+      dot.classList.remove('active');
+      if (index === slideIndex2) {
+        dot.classList.add('active');
+      }
+    });
+  };
+
+  const nextSlide2 = () => {
+    slideIndex2 = (slideIndex2 + 1) % slides2.length;
+    showSlide2();
+  };
+
+  const prevSlide2 = () => {
+    slideIndex2 = (slideIndex2 - 1 + slides2.length) % slides2.length;
+    showSlide2();
+  };
+
+  const startAutoplay2 = () => {
+    autoplayInterval2 = setInterval(nextSlide2, 5500); // Adjust interval as needed
+  };
+
+  const stopAutoplay2 = () => {
+    clearInterval(autoplayInterval2);
+  };
+
+  prevBtn2.addEventListener('click', prevSlide2);
+  nextBtn2.addEventListener('click', nextSlide2);
+
+  // Start autoplay on page load
+  startAutoplay2();
+
+  // Pause autoplay on hover
+  carouselContainer2.addEventListener('mouseover', stopAutoplay2);
+  carouselContainer2.addEventListener('mouseout', startAutoplay2);
+
+  createDots2();
+  showSlide2();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "<front>\r\n/node/1/layout"
+contexts: {  }
+conditions_require_all: true

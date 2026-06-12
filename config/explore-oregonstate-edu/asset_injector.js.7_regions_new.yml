@@ -1,0 +1,777 @@
+uuid: cd1132f4-0dfd-44a7-8656-b6f823f1da50
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: 7_regions_new
+label: '7 regions new'
+code: |-
+  // ── Region data ──────────────────────────────────────────────────────────
+  const regionData = {
+      'Coast': {
+          name: 'Oregon Coast',
+          color: '#b7dde2',
+          locations: [
+              { name: 'Coastal Oregon Marine Exp Station (Seafood Lab)', href: '' },
+              { name: 'Blodgett Forest',                                  href: '' },
+              { name: 'Coastal Oregon Marine Exp Station',                href: '' },
+              { name: 'Hatfield Marine Science Center',                   href: '' },
+          ]
+      },
+      'Mt._Hood_Gorge': {
+          name: 'Mt. Hood & Columbia River Gorge',
+          color: '#09839b',
+          locations: [
+              { name: 'Mid-Columbia Ag Res & Ext Center',  href: '' },
+              { name: 'Columbia Basin Ag Res Center',      href: '' },
+          ]
+      },
+      'Portland': {
+          name: 'Portland Region',
+          color: '#aa9c2e',
+          locations: [
+              { name: 'Matteson Forest',                    href: '' },
+              { name: 'Tualatin Mountain Forest',           href: '' },
+              { name: 'Food Innovation Center',             href: '' },
+              { name: 'OSU Portland Center',                href: '' },
+              { name: 'North Willamette Res & Ext Center',  href: '' },
+              { name: "Ram's Dell Forest",                  href: '' },
+          ]
+      },
+      'Southern_Oregon': {
+          name: 'Southern Oregon',
+          color: '#0c3b5d',
+          locations: [
+              { name: 'H.J. Andrews Exp Forest',            href: '' },
+              { name: 'Collins Demonstration Forest',       href: '' },
+              { name: 'Southern Oregon Res & Ext Center',   href: '' },
+              { name: 'Klamath Basin Res & Ext Center',     href: '' },
+          ]
+      },
+      'Willamette_Valley': {
+          name: 'Willamette Valley',
+          color: '#de4826',
+          locations: [
+              { name: 'Oregon State University',                           href: 'https://oregonstate.edu' },
+              { name: 'McDonald, Dunn, Cameron & Marchell Forests',       href: '' },
+          ]
+      },
+      'Central_Oregon': {
+          name: 'Central Oregon',
+          color: '#46773b',
+          locations: [
+              { name: 'OSU Cascades',                             href: 'https://osucascades.edu' },
+              { name: 'Central Oregon Ag Res & Extension Center', href: '' },
+          ]
+      },
+      'Eastern_Oregon': {
+          name: 'Eastern Oregon',
+          color: '#d6832b',
+          locations: [
+              { name: 'Hermiston Ag Res & Ext Center',                      href: '' },
+              { name: 'Columbia Basin Ag Res Center',                        href: '' },
+              { name: 'Oberteuffer Forest',                                  href: '' },
+              { name: 'Eastern Oregon Ag Res Center (Union Unit)',           href: '' },
+              { name: 'Malheur Exp Station',                                 href: '' },
+          ]
+      }
+  };
+
+  // ── Point / location data ────────────────────────────────────────────────
+  const pointData = {
+      'Oregon_State_University':              { label: 'Location', name: 'Oregon State University',              href: 'https://oregonstate.edu' },
+      'OSU_Cascades':                         { label: 'Location', name: 'OSU Cascades',                         href: 'https://osucascades.edu' },
+      'Central_Oregon_Agricultural_Research_and_Extension_Center': { label: 'Location', name: 'Central Oregon Ag Res & Ext Center', href: '/locations/central-oregon-ag-res-ext-center' },
+      'OSU_Portland_Center':                  { label: 'Location', name: 'OSU Portland Center',                  href: '/locations/osu-portland-center' },
+      'Clackamas_County_-_North_Willamette_Research_and_Extension_Center': { label: 'Location', name: 'North Willamette Res & Ext Center', href: '/locations/north-willamette-res-ext-cntr' },
+      'Mid-Columbia_Ag_Res_Ext_Center':       { label: 'Location', name: 'Mid-Columbia Ag Res & Ext Center',    href: '/locations/mid-columbia-ag-res-ext-center' },
+      'Columbia_Basin_Ag_Res_Center_Moro_Unit_': { label: 'Location', name: 'Columbia Basin Ag Res Center (Moro Unit)', href: '/locations/columbia-basin-moro' },
+      'Columbia_Basin_Ag_Res_Center':         { label: 'Location', name: 'Columbia Basin Ag Res Center',        href: '/locations/columbia-basin-ag-res-center' },
+      'Hermiston_Ag_Res_Ext_Center':          { label: 'Location', name: 'Hermiston Ag Res & Ext Center',       href: '/locations/hermiston-ag-res-ext-center' },
+      'Klamath_Basin_Res_Ext_Cntr':           { label: 'Location', name: 'Klamath Basin Res & Ext Center',      href: '/locations/klamath-basin-res-ext-cntr' },
+      'Eastern_Oregon_Ag_Res_Center_Union_Unit_': { label: 'Location', name: 'Eastern Oregon Ag Res Center (Union Unit)', href: '/locations/eastern-oregon-union' },
+      'Eastern_Oregon_Ag_Res_Center_Burns_Unit_': { label: 'Location', name: 'Eastern Oregon Ag Res Center (Burns Unit)', href: '/locations/eastern-oregon-burns' },
+      'Malheur_Exp_Station':                  { label: 'Location', name: 'Malheur Exp Station',                 href: '/locations/malheur-exp-station' },
+      'Tualatin_Mountain_Forest':             { label: 'Location', name: 'Tualatin Mountain Forest',             href: '/locations/tualatin-mountain-forest' },
+      'Matteson_Forest':                      { label: 'Location', name: 'Matteson Forest',                     href: '/locations/matteson-forest' },
+      'Ram_s_Dell_Forest':                    { label: 'Location', name: "Ram's Dell Forest",                   href: '/locations/rams-dell-forest' },
+      'McDonald_Dunn_Cameron_and_Marchel_Forests': { label: 'Location', name: 'McDonald, Dunn, Cameron & Marchel Forests', href: '/locations/mcdonald-dunn-forests' },
+      'H.J._Andrews_Exp_Forest':              { label: 'Location', name: 'H.J. Andrews Exp Forest',             href: '/locations/hj-andrews-exp-forest' },
+      'Collins_Demonstration_Forest':         { label: 'Location', name: 'Collins Demonstration Forest',        href: '/locations/collins-demonstration-forest' },
+      'Oberteuffer_Forest':                   { label: 'Location', name: 'Oberteuffer Forest',                  href: '/locations/oberteuffer-forest' },
+      'Food_Innovation_Center':               { label: 'Location', name: 'Food Innovation Center',              href: '/locations/food-innovation-center' },
+      'Blodgett_Forest':                      { label: 'Location', name: 'Blodgett Forest',                     href: '/locations/blodgett-forest' },
+      'Coastal_Oregon_Marine_Exp_Station':    { label: 'Location', name: 'Coastal Oregon Marine Exp Station',   href: '/locations/coastal-oregon-marine-exp-station' },
+      'Coastal_Oregon_Marine_Exp_Stn_Seafood_lab_': { label: 'Location', name: 'Coastal Oregon Marine Exp Station (Seafood Lab)', href: '/locations/coastal-oregon-seafood-lab' },
+      'Hatfield_Marine_Science_Center':       { label: 'Location', name: 'Hatfield Marine Science Center',      href: '/locations/hatfield-marine-science-center' },
+      'Southern_Oregon_Research_and_Extension_Center': { label: 'Location', name: 'Southern Oregon Res & Ext Center', href: '/locations/southern-oregon-res-ext-center' },
+  };
+
+  // ── ZIP Code → Region mapping ────────────────────────────────────────────
+  // When a ZIP spans multiple counties/regions, the first listed region in
+  // the source data is used (priority given to the more specific assignment).
+  const zipToRegion = {
+      '97001': 'Eastern_Oregon',
+      '97002': 'Willamette_Valley',
+      '97003': 'Portland',
+      '97004': 'Mt._Hood_Gorge',
+      '97005': 'Portland',
+      '97006': 'Portland',
+      '97007': 'Portland',
+      '97008': 'Portland',
+      '97009': 'Mt._Hood_Gorge',
+      '97010': 'Mt._Hood_Gorge',
+      '97011': 'Mt._Hood_Gorge',
+      '97013': 'Willamette_Valley',
+      '97014': 'Mt._Hood_Gorge',
+      '97015': 'Portland',
+      '97016': 'Coast',
+      '97017': 'Willamette_Valley',
+      '97018': 'Portland',
+      '97019': 'Mt._Hood_Gorge',
+      '97020': 'Willamette_Valley',
+      '97021': 'Central_Oregon',
+      '97022': 'Willamette_Valley',
+      '97023': 'Mt._Hood_Gorge',
+      '97024': 'Portland',
+      '97026': 'Willamette_Valley',
+      '97027': 'Portland',
+      '97028': 'Mt._Hood_Gorge',
+      '97029': 'Eastern_Oregon',
+      '97030': 'Portland',
+      '97031': 'Mt._Hood_Gorge',
+      '97032': 'Willamette_Valley',
+      '97033': 'Eastern_Oregon',
+      '97034': 'Portland',
+      '97035': 'Portland',
+      '97036': 'Portland',
+      '97037': 'Central_Oregon',
+      '97038': 'Willamette_Valley',
+      '97039': 'Eastern_Oregon',
+      '97040': 'Mt._Hood_Gorge',
+      '97041': 'Mt._Hood_Gorge',
+      '97042': 'Willamette_Valley',
+      '97044': 'Mt._Hood_Gorge',
+      '97045': 'Portland',
+      '97048': 'Portland',
+      '97049': 'Mt._Hood_Gorge',
+      '97050': 'Eastern_Oregon',
+      '97051': 'Portland',
+      '97053': 'Portland',
+      '97054': 'Portland',
+      '97055': 'Mt._Hood_Gorge',
+      '97056': 'Portland',
+      '97057': 'Central_Oregon',
+      '97058': 'Mt._Hood_Gorge',
+      '97060': 'Portland',
+      '97062': 'Portland',
+      '97063': 'Central_Oregon',
+      '97064': 'Portland',
+      '97065': 'Eastern_Oregon',
+      '97067': 'Mt._Hood_Gorge',
+      '97068': 'Portland',
+      '97070': 'Portland',
+      '97071': 'Willamette_Valley',
+      '97075': 'Portland',
+      '97078': 'Portland',
+      '97079': 'Portland',
+      '97080': 'Portland',
+      '97086': 'Portland',
+      '97089': 'Portland',
+      '97101': 'Willamette_Valley',
+      '97102': 'Coast',
+      '97103': 'Coast',
+      '97106': 'Portland',
+      '97107': 'Coast',
+      '97108': 'Coast',
+      '97109': 'Portland',
+      '97110': 'Coast',
+      '97111': 'Willamette_Valley',
+      '97112': 'Coast',
+      '97113': 'Portland',
+      '97114': 'Willamette_Valley',
+      '97115': 'Willamette_Valley',
+      '97116': 'Portland',
+      '97117': 'Portland',
+      '97118': 'Coast',
+      '97119': 'Portland',
+      '97121': 'Coast',
+      '97122': 'Coast',
+      '97123': 'Willamette_Valley',
+      '97124': 'Portland',
+      '97125': 'Portland',
+      '97127': 'Willamette_Valley',
+      '97128': 'Willamette_Valley',
+      '97129': 'Portland',
+      '97130': 'Coast',
+      '97131': 'Coast',
+      '97132': 'Willamette_Valley',
+      '97133': 'Portland',
+      '97134': 'Coast',
+      '97135': 'Coast',
+      '97136': 'Coast',
+      '97137': 'Willamette_Valley',
+      '97138': 'Coast',
+      '97140': 'Portland',
+      '97141': 'Coast',
+      '97144': 'Portland',
+      '97145': 'Coast',
+      '97146': 'Coast',
+      '97147': 'Coast',
+      '97148': 'Willamette_Valley',
+      '97149': 'Coast',
+      '97201': 'Portland',
+      '97202': 'Portland',
+      '97203': 'Portland',
+      '97204': 'Portland',
+      '97205': 'Portland',
+      '97206': 'Portland',
+      '97207': 'Portland',
+      '97208': 'Portland',
+      '97209': 'Portland',
+      '97210': 'Portland',
+      '97211': 'Portland',
+      '97212': 'Portland',
+      '97213': 'Portland',
+      '97214': 'Portland',
+      '97215': 'Portland',
+      '97216': 'Portland',
+      '97217': 'Portland',
+      '97218': 'Portland',
+      '97219': 'Portland',
+      '97220': 'Portland',
+      '97221': 'Portland',
+      '97222': 'Portland',
+      '97223': 'Portland',
+      '97224': 'Portland',
+      '97225': 'Portland',
+      '97227': 'Portland',
+      '97228': 'Portland',
+      '97229': 'Portland',
+      '97230': 'Portland',
+      '97231': 'Portland',
+      '97232': 'Portland',
+      '97233': 'Portland',
+      '97236': 'Portland',
+      '97238': 'Portland',
+      '97239': 'Portland',
+      '97240': 'Portland',
+      '97242': 'Portland',
+      '97250': 'Portland',
+      '97251': 'Portland',
+      '97252': 'Portland',
+      '97253': 'Portland',
+      '97254': 'Portland',
+      '97266': 'Portland',
+      '97267': 'Portland',
+      '97268': 'Portland',
+      '97269': 'Portland',
+      '97280': 'Portland',
+      '97281': 'Portland',
+      '97282': 'Portland',
+      '97283': 'Portland',
+      '97286': 'Portland',
+      '97290': 'Portland',
+      '97291': 'Portland',
+      '97292': 'Portland',
+      '97293': 'Portland',
+      '97294': 'Portland',
+      '97296': 'Portland',
+      '97298': 'Portland',
+      '97301': 'Willamette_Valley',
+      '97302': 'Willamette_Valley',
+      '97303': 'Willamette_Valley',
+      '97304': 'Willamette_Valley',
+      '97305': 'Willamette_Valley',
+      '97306': 'Willamette_Valley',
+      '97307': 'Willamette_Valley',
+      '97308': 'Willamette_Valley',
+      '97309': 'Willamette_Valley',
+      '97310': 'Willamette_Valley',
+      '97311': 'Willamette_Valley',
+      '97312': 'Willamette_Valley',
+      '97314': 'Willamette_Valley',
+      '97317': 'Willamette_Valley',
+      '97321': 'Willamette_Valley',
+      '97322': 'Willamette_Valley',
+      '97324': 'Willamette_Valley',
+      '97325': 'Willamette_Valley',
+      '97326': 'Coast',
+      '97327': 'Willamette_Valley',
+      '97329': 'Willamette_Valley',
+      '97330': 'Willamette_Valley',
+      '97331': 'Willamette_Valley',
+      '97333': 'Willamette_Valley',
+      '97335': 'Willamette_Valley',
+      '97336': 'Willamette_Valley',
+      '97338': 'Willamette_Valley',
+      '97339': 'Willamette_Valley',
+      '97341': 'Coast',
+      '97342': 'Willamette_Valley',
+      '97343': 'Coast',
+      '97344': 'Willamette_Valley',
+      '97345': 'Willamette_Valley',
+      '97346': 'Willamette_Valley',
+      '97347': 'Willamette_Valley',
+      '97348': 'Willamette_Valley',
+      '97350': 'Willamette_Valley',
+      '97351': 'Willamette_Valley',
+      '97352': 'Willamette_Valley',
+      '97355': 'Willamette_Valley',
+      '97357': 'Coast',
+      '97358': 'Willamette_Valley',
+      '97360': 'Willamette_Valley',
+      '97361': 'Willamette_Valley',
+      '97362': 'Willamette_Valley',
+      '97364': 'Coast',
+      '97365': 'Coast',
+      '97366': 'Coast',
+      '97367': 'Coast',
+      '97368': 'Coast',
+      '97369': 'Coast',
+      '97370': 'Willamette_Valley',
+      '97371': 'Willamette_Valley',
+      '97373': 'Willamette_Valley',
+      '97374': 'Willamette_Valley',
+      '97375': 'Willamette_Valley',
+      '97376': 'Coast',
+      '97377': 'Willamette_Valley',
+      '97378': 'Willamette_Valley',
+      '97380': 'Coast',
+      '97381': 'Willamette_Valley',
+      '97383': 'Willamette_Valley',
+      '97384': 'Willamette_Valley',
+      '97385': 'Willamette_Valley',
+      '97386': 'Willamette_Valley',
+      '97388': 'Coast',
+      '97389': 'Willamette_Valley',
+      '97390': 'Coast',
+      '97391': 'Coast',
+      '97392': 'Willamette_Valley',
+      '97394': 'Coast',
+      '97396': 'Willamette_Valley',
+      '97401': 'Willamette_Valley',
+      '97402': 'Willamette_Valley',
+      '97403': 'Willamette_Valley',
+      '97404': 'Willamette_Valley',
+      '97405': 'Willamette_Valley',
+      '97406': 'Coast',
+      '97407': 'Coast',
+      '97408': 'Willamette_Valley',
+      '97409': 'Willamette_Valley',
+      '97410': 'Willamette_Valley',
+      '97411': 'Coast',
+      '97412': 'Willamette_Valley',
+      '97413': 'Central_Oregon',
+      '97414': 'Coast',
+      '97415': 'Coast',
+      '97416': 'Coast',
+      '97417': 'Southern_Oregon',
+      '97419': 'Willamette_Valley',
+      '97420': 'Coast',
+      '97423': 'Coast',
+      '97424': 'Willamette_Valley',
+      '97426': 'Willamette_Valley',
+      '97429': 'Southern_Oregon',
+      '97430': 'Willamette_Valley',
+      '97431': 'Willamette_Valley',
+      '97432': 'Southern_Oregon',
+      '97434': 'Willamette_Valley',
+      '97435': 'Southern_Oregon',
+      '97436': 'Southern_Oregon',
+      '97437': 'Willamette_Valley',
+      '97438': 'Willamette_Valley',
+      '97439': 'Coast',
+      '97440': 'Willamette_Valley',
+      '97441': 'Coast',
+      '97442': 'Southern_Oregon',
+      '97443': 'Southern_Oregon',
+      '97444': 'Coast',
+      '97446': 'Willamette_Valley',
+      '97447': 'Southern_Oregon',
+      '97448': 'Willamette_Valley',
+      '97449': 'Coast',
+      '97450': 'Coast',
+      '97451': 'Willamette_Valley',
+      '97452': 'Willamette_Valley',
+      '97453': 'Coast',
+      '97454': 'Willamette_Valley',
+      '97455': 'Willamette_Valley',
+      '97456': 'Willamette_Valley',
+      '97457': 'Southern_Oregon',
+      '97458': 'Coast',
+      '97459': 'Coast',
+      '97461': 'Willamette_Valley',
+      '97462': 'Southern_Oregon',
+      '97463': 'Willamette_Valley',
+      '97464': 'Coast',
+      '97465': 'Coast',
+      '97466': 'Coast',
+      '97467': 'Coast',
+      '97469': 'Southern_Oregon',
+      '97470': 'Southern_Oregon',
+      '97471': 'Southern_Oregon',
+      '97473': 'Coast',
+      '97475': 'Willamette_Valley',
+      '97476': 'Coast',
+      '97477': 'Willamette_Valley',
+      '97478': 'Willamette_Valley',
+      '97479': 'Southern_Oregon',
+      '97480': 'Coast',
+      '97481': 'Southern_Oregon',
+      '97484': 'Southern_Oregon',
+      '97486': 'Southern_Oregon',
+      '97487': 'Willamette_Valley',
+      '97488': 'Willamette_Valley',
+      '97489': 'Willamette_Valley',
+      '97490': 'Willamette_Valley',
+      '97491': 'Coast',
+      '97492': 'Willamette_Valley',
+      '97493': 'Coast',
+      '97494': 'Southern_Oregon',
+      '97495': 'Southern_Oregon',
+      '97496': 'Southern_Oregon',
+      '97497': 'Southern_Oregon',
+      '97498': 'Coast',
+      '97499': 'Southern_Oregon',
+      '97501': 'Southern_Oregon',
+      '97502': 'Southern_Oregon',
+      '97503': 'Southern_Oregon',
+      '97504': 'Southern_Oregon',
+      '97520': 'Southern_Oregon',
+      '97522': 'Southern_Oregon',
+      '97523': 'Southern_Oregon',
+      '97524': 'Southern_Oregon',
+      '97525': 'Southern_Oregon',
+      '97526': 'Southern_Oregon',
+      '97527': 'Southern_Oregon',
+      '97528': 'Southern_Oregon',
+      '97530': 'Southern_Oregon',
+      '97531': 'Southern_Oregon',
+      '97532': 'Southern_Oregon',
+      '97533': 'Southern_Oregon',
+      '97534': 'Southern_Oregon',
+      '97535': 'Southern_Oregon',
+      '97536': 'Southern_Oregon',
+      '97537': 'Southern_Oregon',
+      '97538': 'Southern_Oregon',
+      '97539': 'Southern_Oregon',
+      '97540': 'Southern_Oregon',
+      '97541': 'Southern_Oregon',
+      '97543': 'Southern_Oregon',
+      '97544': 'Southern_Oregon',
+      '97601': 'Southern_Oregon',
+      '97602': 'Southern_Oregon',
+      '97603': 'Southern_Oregon',
+      '97604': 'Southern_Oregon',
+      '97620': 'Southern_Oregon',
+      '97621': 'Southern_Oregon',
+      '97622': 'Southern_Oregon',
+      '97623': 'Southern_Oregon',
+      '97624': 'Southern_Oregon',
+      '97625': 'Southern_Oregon',
+      '97626': 'Southern_Oregon',
+      '97627': 'Southern_Oregon',
+      '97630': 'Southern_Oregon',
+      '97632': 'Southern_Oregon',
+      '97633': 'Southern_Oregon',
+      '97634': 'Southern_Oregon',
+      '97635': 'Southern_Oregon',
+      '97636': 'Southern_Oregon',
+      '97637': 'Southern_Oregon',
+      '97638': 'Southern_Oregon',
+      '97639': 'Southern_Oregon',
+      '97640': 'Southern_Oregon',
+      '97641': 'Central_Oregon',
+      '97701': 'Central_Oregon',
+      '97702': 'Central_Oregon',
+      '97703': 'Central_Oregon',
+      '97707': 'Central_Oregon',
+      '97708': 'Central_Oregon',
+      '97709': 'Central_Oregon',
+      '97710': 'Eastern_Oregon',
+      '97711': 'Central_Oregon',
+      '97712': 'Central_Oregon',
+      '97720': 'Eastern_Oregon',
+      '97721': 'Eastern_Oregon',
+      '97722': 'Eastern_Oregon',
+      '97730': 'Central_Oregon',
+      '97731': 'Southern_Oregon',
+      '97732': 'Eastern_Oregon',
+      '97733': 'Central_Oregon',
+      '97734': 'Central_Oregon',
+      '97735': 'Central_Oregon',
+      '97736': 'Eastern_Oregon',
+      '97737': 'Central_Oregon',
+      '97738': 'Eastern_Oregon',
+      '97739': 'Southern_Oregon',
+      '97741': 'Central_Oregon',
+      '97750': 'Eastern_Oregon',
+      '97751': 'Central_Oregon',
+      '97752': 'Central_Oregon',
+      '97753': 'Central_Oregon',
+      '97754': 'Central_Oregon',
+      '97756': 'Central_Oregon',
+      '97758': 'Eastern_Oregon',
+      '97759': 'Central_Oregon',
+      '97760': 'Central_Oregon',
+      '97761': 'Central_Oregon',
+      '97801': 'Eastern_Oregon',
+      '97810': 'Eastern_Oregon',
+      '97812': 'Eastern_Oregon',
+      '97813': 'Eastern_Oregon',
+      '97814': 'Eastern_Oregon',
+      '97817': 'Eastern_Oregon',
+      '97818': 'Eastern_Oregon',
+      '97819': 'Eastern_Oregon',
+      '97820': 'Eastern_Oregon',
+      '97823': 'Eastern_Oregon',
+      '97824': 'Eastern_Oregon',
+      '97825': 'Eastern_Oregon',
+      '97826': 'Eastern_Oregon',
+      '97827': 'Eastern_Oregon',
+      '97828': 'Eastern_Oregon',
+      '97830': 'Eastern_Oregon',
+      '97833': 'Eastern_Oregon',
+      '97834': 'Eastern_Oregon',
+      '97835': 'Eastern_Oregon',
+      '97836': 'Eastern_Oregon',
+      '97837': 'Eastern_Oregon',
+      '97838': 'Eastern_Oregon',
+      '97839': 'Eastern_Oregon',
+      '97840': 'Eastern_Oregon',
+      '97841': 'Eastern_Oregon',
+      '97842': 'Eastern_Oregon',
+      '97843': 'Eastern_Oregon',
+      '97844': 'Eastern_Oregon',
+      '97845': 'Eastern_Oregon',
+      '97846': 'Eastern_Oregon',
+      '97848': 'Eastern_Oregon',
+      '97850': 'Eastern_Oregon',
+      '97856': 'Eastern_Oregon',
+      '97857': 'Eastern_Oregon',
+      '97859': 'Eastern_Oregon',
+      '97862': 'Eastern_Oregon',
+      '97864': 'Eastern_Oregon',
+      '97865': 'Eastern_Oregon',
+      '97867': 'Eastern_Oregon',
+      '97868': 'Eastern_Oregon',
+      '97869': 'Eastern_Oregon',
+      '97870': 'Eastern_Oregon',
+      '97873': 'Eastern_Oregon',
+      '97874': 'Eastern_Oregon',
+      '97875': 'Eastern_Oregon',
+      '97876': 'Eastern_Oregon',
+      '97877': 'Eastern_Oregon',
+      '97880': 'Eastern_Oregon',
+      '97882': 'Eastern_Oregon',
+      '97883': 'Eastern_Oregon',
+      '97884': 'Eastern_Oregon',
+      '97885': 'Eastern_Oregon',
+      '97886': 'Eastern_Oregon',
+      '97901': 'Eastern_Oregon',
+      '97902': 'Eastern_Oregon',
+      '97903': 'Eastern_Oregon',
+      '97904': 'Eastern_Oregon',
+      '97905': 'Eastern_Oregon',
+      '97906': 'Eastern_Oregon',
+      '97907': 'Eastern_Oregon',
+      '97908': 'Eastern_Oregon',
+      '97909': 'Eastern_Oregon',
+      '97910': 'Eastern_Oregon',
+      '97911': 'Eastern_Oregon',
+      '97913': 'Eastern_Oregon',
+      '97914': 'Eastern_Oregon',
+      '97917': 'Eastern_Oregon',
+      '97918': 'Eastern_Oregon',
+      '97920': 'Eastern_Oregon',
+  };
+
+  // ── Per-instance initializer (scoped to one tab pane) ────────────────────
+  function initMapInstance(container) {
+      const infoCard      = container.querySelector('#infoCard');
+      const cardLabel     = container.querySelector('#cardLabel');
+      const cardTitle     = container.querySelector('#cardTitle');
+      const cardBody      = container.querySelector('#cardBody');
+      const cardColorBar  = container.querySelector('#cardColorBar');
+      const searchInput   = container.querySelector('#searchInput');
+      const searchResults = container.querySelector('#searchResults');
+      const closeBtn      = container.querySelector('.modal-close-btn');
+      const overlay       = container.querySelector('.region-modal-overlay');
+
+      if (!infoCard || container.dataset.mapInit === 'true') return;
+      container.dataset.mapInit = 'true';
+
+      let activeRegionId = null;
+
+      // ── Modal helpers ────────────────────────────────────────────────────
+      function isMobile() {
+          return window.innerWidth <= 991;
+      }
+
+      function openModal() {
+          if (!isMobile()) return;
+          infoCard.classList.add('modal-visible');
+          if (overlay) overlay.style.display = 'block';
+          document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+          infoCard.classList.remove('modal-visible');
+          if (overlay) overlay.style.display = 'none';
+          document.body.style.overflow = '';
+      }
+
+      closeBtn?.addEventListener('click', closeModal);
+      overlay?.addEventListener('click', closeModal);
+      document.addEventListener('keydown', e => {
+          if (e.key === 'Escape') closeModal();
+      });
+
+      // ── Select region ────────────────────────────────────────────────────
+      function selectRegion(id) {
+          if (activeRegionId === id) {
+              container.querySelector('#' + CSS.escape(id))?.classList.remove('active');
+              activeRegionId = null;
+              closeModal();
+              return;
+          }
+          if (activeRegionId) {
+              container.querySelector('#' + CSS.escape(activeRegionId))?.classList.remove('active');
+          }
+          activeRegionId = id;
+          container.querySelector('#' + CSS.escape(id))?.classList.add('active');
+
+          const region = regionData[id];
+          cardLabel.textContent = 'Oregon Region';
+          cardTitle.textContent = region.name;
+          cardColorBar.style.background = region.color;
+          cardBody.innerHTML = `
+              <ul class="location-list">
+                  ${region.locations.map(loc =>
+                      loc.href
+                          ? `<li><a href="${loc.href}" target="_blank">${loc.name}</a></li>`
+                          : `<li><span class="no-link">${loc.name}</span></li>`
+                  ).join('')}
+              </ul>
+          `;
+          infoCard.classList.remove('hidden');
+          openModal();
+      }
+
+      // ── Wire region group clicks ─────────────────────────────────────────
+      Object.keys(regionData).forEach(id => {
+          const el = container.querySelector('#' + CSS.escape(id));
+          if (el) el.addEventListener('click', () => selectRegion(id));
+      });
+
+      // ── Wire point / location clicks + hover ─────────────────────────────
+      Object.entries(pointData).forEach(([id, data]) => {
+          const el = container.querySelector('#' + CSS.escape(id));
+          if (!el) return;
+          el.classList.add('point-link');
+          el.addEventListener('click', (e) => {
+              e.stopPropagation();
+              if (data.href) window.open(data.href, '_blank');
+          });
+          el.addEventListener('mouseenter', () => {
+              cardLabel.textContent = data.label;
+              cardTitle.textContent = data.name;
+              cardColorBar.style.background = '#d73f09';
+              cardBody.innerHTML = `<div class="info-row">
+                  <span class="label">Click to visit</span>
+                  <span class="value">${data.href}</span>
+              </div>`;
+              infoCard.classList.remove('hidden');
+              openModal();
+          });
+      });
+
+      // ── Search ───────────────────────────────────────────────────────────
+      // Build search index from regions + ZIP codes
+      const searchIndex = [
+          // Region entries
+          ...Object.entries(regionData).map(([id, r]) => ({
+              id, type: 'region', label: r.name, regionId: id
+          })),
+          // ZIP code entries (deduplicated — each zip maps to one region)
+          ...Object.entries(zipToRegion).map(([zip, regionId]) => ({
+              id: zip,
+              type: 'zip',
+              label: zip,
+              regionId
+          }))
+      ];
+
+      function showSearchResults(query) {
+          if (!query) { searchResults.classList.remove('visible'); return; }
+          const q = query.toLowerCase();
+          const matches = searchIndex.filter(item => item.label.toLowerCase().includes(q));
+          if (!matches.length) { searchResults.classList.remove('visible'); return; }
+          searchResults.innerHTML = matches.slice(0, 10).map(m => `
+              <div class="search-result-item" data-region-id="${m.regionId}" data-type="${m.type}">
+                  <div>${m.label}</div>
+                  <div class="item-type">${m.type === 'region' ? 'Region' : 'ZIP Code · ' + regionData[m.regionId].name}</div>
+              </div>
+          `).join('');
+          searchResults.classList.add('visible');
+      }
+
+      searchInput?.addEventListener('input', () => showSearchResults(searchInput.value.trim()));
+
+      searchResults?.addEventListener('click', e => {
+          const item = e.target.closest('.search-result-item');
+          if (!item) return;
+          searchInput.value = '';
+          searchResults.classList.remove('visible');
+          selectRegion(item.dataset.regionId);
+      });
+
+      document.addEventListener('click', e => {
+          if (!searchInput?.contains(e.target) && !searchResults?.contains(e.target)) {
+              searchResults?.classList.remove('visible');
+          }
+      });
+  }
+
+  // ── Bootstrap 5: init when a tab becomes visible ─────────────────────────
+  document.addEventListener('shown.bs.tab', function (e) {
+      const targetPane = document.querySelector(e.target.getAttribute('data-bs-target'));
+      if (targetPane) initMapInstance(targetPane);
+  });
+
+  // ── Init on page load ────────────────────────────────────────────────────
+  // The SVG and sidebar live in separate columns, so document.body is the
+  // correct container — it contains both and querySelector works across them.
+  function initAll() {
+      const panes = document.querySelectorAll('.tab-pane.active, .tab-pane.show');
+      if (panes.length) {
+          panes.forEach(pane => initMapInstance(pane));
+      } else {
+          initMapInstance(document.body);
+      }
+  }
+
+  if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initAll);
+  } else {
+      initAll();
+  }
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/276\r\n/node/281\r\n/node/286\r\n/node/291\r\n/node/296\r\n/node/301\r\n/node/306\r\n/node/271"
+contexts: {  }
+conditions_require_all: true

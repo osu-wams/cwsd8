@@ -1,0 +1,37 @@
+uuid: fc2e663a-c7c3-4194-a419-ef964afdc82b
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - ctools_block
+  theme:
+    - madrone
+id: madrone_image
+theme: madrone
+region: full_top
+weight: -6
+provider: null
+plugin: 'entity_field:node:field_profile_image'
+settings:
+  id: 'entity_field:node:field_profile_image'
+  label: Image
+  label_display: visible
+  provider: ctools_block
+  context_mapping:
+    entity: '@node.node_route_context:node'
+  formatter:
+    type: image
+    weight: 0
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

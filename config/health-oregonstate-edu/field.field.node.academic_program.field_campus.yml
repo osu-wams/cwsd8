@@ -1,0 +1,33 @@
+uuid: 6f94a0ab-71cc-4455-8b42-e59b1ed78cc5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_campus
+    - node.type.academic_program
+    - taxonomy.vocabulary.degree_campus
+  content:
+    - 'taxonomy_term:degree_campus:aca2a5d8-1297-4fda-a97b-61546f59d3ae'
+id: node.academic_program.field_campus
+field_name: field_campus
+entity_type: node
+bundle: academic_program
+label: Campus
+description: ''
+required: true
+translatable: false
+default_value:
+  -
+    target_uuid: aca2a5d8-1297-4fda-a97b-61546f59d3ae
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      degree_campus: degree_campus
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

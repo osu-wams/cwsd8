@@ -1,0 +1,29 @@
+uuid: 68352998-888b-426d-87e0-4e789fbc9ce7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image
+    - media.type.image
+    - node.type.tabs
+id: node.tabs.field_image
+field_name: field_image
+entity_type: node
+bundle: tabs
+label: Image
+description: 'Recommended all images to be the same size. This will prevent jumping of content as someone clicks through all the tabs. A recommended starting point for the image size is 900x600 pixels.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

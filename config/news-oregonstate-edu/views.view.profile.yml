@@ -41,7 +41,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: Directory
+      title: 'Media Relations'
       fields:
         field_profile_image:
           id: field_profile_image
@@ -512,13 +512,15 @@ display:
               autosubmit: true
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
               autosubmit_hide: false
               input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
-              autosubmit_textfield_minimum_length: 3
+              autosubmit_breakpoint: ''
+              auto_submit_sort_only: false
             filter:
               title:
                 plugin_id: default
@@ -527,6 +529,10 @@ display:
                   collapsible: false
                   is_secondary: false
                   hide_label: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
               field_osu_organizations_target_id:
                 plugin_id: default
                 advanced:
@@ -536,6 +542,10 @@ display:
                   collapsible: false
                   is_secondary: false
                   hide_label: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
       access:
         type: perm
         options:
@@ -545,17 +555,15 @@ display:
         options: {  }
       empty: {  }
       sorts:
-        title:
-          id: title
-          table: node_field_data
-          field: title
+        field_importance_value:
+          id: field_importance_value
+          table: node__field_importance
+          field: field_importance_value
           relationship: none
           group_type: group
           admin_label: ''
-          entity_type: node
-          entity_field: title
           plugin_id: standard
-          order: ASC
+          order: DESC
           expose:
             label: ''
             field_identifier: ''
@@ -587,60 +595,6 @@ display:
           expose:
             operator_limit_selection: false
             operator_list: {  }
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          entity_type: node
-          entity_field: title
-          plugin_id: string
-          operator: word
-          value: ''
-          group: 1
-          exposed: true
-          expose:
-            operator_id: title_op
-            label: 'Search the directory for faculty and staff.'
-            description: ''
-            use_operator: false
-            operator: title_op
-            operator_limit_selection: false
-            operator_list: {  }
-            identifier: title
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-              anonymous: '0'
-              content_authors: '0'
-              manage_content: '0'
-              manage_asset_injector: '0'
-              manage_blocks: '0'
-              manage_layout_templates: '0'
-              manage_menus: '0'
-              manage_taxonomy: '0'
-              manage_users: '0'
-              manage_webforms: '0'
-              manage_site_configuration: '0'
-              architect: '0'
-              administrator: '0'
-            placeholder: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
       style:
         type: views_bootstrap_grid
         options:
@@ -649,9 +603,9 @@ display:
           default_row_class: true
           grid_class: ''
           col_xs: col-12
-          col_sm: col-sm-6
+          col_sm: col-sm-4
           col_md: none
-          col_lg: col-lg-4
+          col_lg: col-lg-3
           col_xl: none
           col_xxl: none
       row:
@@ -680,7 +634,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions
@@ -962,7 +915,7 @@ display:
           type: image
           settings:
             image_link: content
-            image_style: profile_image
+            image_style: ''
             image_loading:
               attribute: lazy
           group_column: ''
@@ -1364,7 +1317,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"directory-card osu-bg-page-alt-1 osu-img-full osu-min-h-600 osu-shadow rounded overflow-hidden\">\r\n  {{ field_profile_image }}\r\n  <div class=\"p-4\">\r\n    <h2 class=\"fw-bolder text-break\">\r\n      {{ title }}\r\n    </h2>\r\n    {{ field_profile_pronouns }}\r\n    {{ field_profile_email }}\r\n    {{ field_profile_office_phone }}\r\n    {{ field_profile_address }}\r\n{{ field_profile_biography }} \r\n  </div>\r\n</div>"
+            text: "<div class=\"osu-bg-page-alt-1 osu-img-full osu-min-h-350 osu-shadow rounded overflow-wrap\">\r\n  <div class=\"news-profile-image\">{{ field_profile_image }}</div>\r\n  <div class=\"p-3\">\r\n    <h2 class=\"fw-bolder text-break fs-5 osu-text-osuorange profile-link\">\r\n      {{ title }}\r\n    </h2>\r\n    <div class=\"lh-1 mb-3\">{{ field_profile_pronouns }}</div>\r\n    <span class=\"fs-7\">{{ field_profile_email }}</span>\r\n    <span class=\"fs-7\">{{ field_profile_office_phone }}</span>\r\n    <span class=\"fs-7\">{{ field_profile_address }}</span>\r\n<span class=\"fs-7 lh-sm\">{{ field_profile_biography }} </span>\r\n  </div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -1418,7 +1371,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url
         - url.query_args
         - 'user.node_grants:view'
         - user.permissions

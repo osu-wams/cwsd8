@@ -1,0 +1,31 @@
+uuid: 5873194d-da89-4e7b-b44a-da145e1ed2f7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pagekeywords
+    - node.type.page
+    - taxonomy.vocabulary.definitions
+    - taxonomy.vocabulary.volcano_types
+id: node.page.field_pagekeywords
+field_name: field_pagekeywords
+entity_type: node
+bundle: page
+label: Keywords
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      definitions: definitions
+      volcano_types: volcano_types
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: definitions
+field_type: entity_reference

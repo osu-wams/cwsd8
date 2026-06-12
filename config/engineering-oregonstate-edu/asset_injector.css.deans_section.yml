@@ -1,0 +1,111 @@
+uuid: 0a740ace-7557-4b3d-836d-7e3339b73dce
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: deans_section
+label: 'Deans Section'
+code: |
+  .deans-text p{
+  	margin-right: 25px;
+  	margin-bottom: 30px !important;
+  }
+
+
+  @media (max-width: 768px) {
+    .deans-text {
+      margin-bottom: 30px;
+    }
+    .deans-image img{
+    	vertical-align: top;
+    }
+  }
+
+
+  @media (max-width: 420px) {
+    .deans-text-block {
+      padding-right: 0px !important;
+  }
+  	
+  }
+
+  .deans-text h2{
+  	color: #FFF;
+
+  	/* Main/H2 */
+  	font-family: Stratum2web;
+  	font-size: 64px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 83.2px */
+  }
+
+  .deans-text p{
+  	color: #FFF;
+  }
+
+  /*Code for white button*/
+  .osu-btn-white-2{
+  	background: #FFF;
+    color: #000;
+    border: 2px solid #000;
+    width: 320px;
+    font-weight: 600 !important;
+    letter-spacing: 1.6px;
+    height: 60px;
+    border-radius: 0;
+    padding-top: 12px;
+    text-transform: uppercase;
+  }
+
+  .osu-btn-white-2:hover{
+  	background: #000;
+  	color: #FFF;
+  	border: 2px solid #000;
+  }
+
+  .img-bottom-right-yellow img {
+  	box-shadow: 15px 15px 0 #FFB500;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+
+
+  .deans-button{
+    color: #000;
+    border: 2px solid #FFF;
+    width: 320px;
+    font-weight: 600 !important;
+    letter-spacing: 1.6px;
+    height: 60px;
+    border-radius: 0;
+    padding-top: 12px;
+    text-transform: uppercase;
+    padding: 15px;
+    text-decoration: none !important;
+    margin-top: 30px;
+    width: 35px;
+    transition: .3s;
+  }
+
+  .deans-button:hover{
+  	background: #FFF;
+  	color: #000 !important;
+  	border: 2px solid #FFF;
+  	text-decoration: none !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/1
+contexts: {  }
+conditions_require_all: true

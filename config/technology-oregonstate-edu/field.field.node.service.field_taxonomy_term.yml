@@ -1,0 +1,29 @@
+uuid: ad95984b-f948-4ccf-9309-d4ec8bd5337d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_taxonomy_term
+    - node.type.service
+    - taxonomy.vocabulary.services
+id: node.service.field_taxonomy_term
+field_name: field_taxonomy_term
+entity_type: node
+bundle: service
+label: 'Service Category'
+description: 'This is administrative functionality. This name needs to match the title of this category. It allows the individual services to be appropriately assigned to the Service Category and display as a list on the service category landing page. '
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      services: services
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

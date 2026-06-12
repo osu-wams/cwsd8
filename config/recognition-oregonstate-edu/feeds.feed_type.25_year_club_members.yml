@@ -1,0 +1,176 @@
+uuid: 2d632d43-a04e-447d-9282-5fe2e3b7cafc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.25_year_club.title
+    - field.field.node.25_year_club.field_bio
+    - field.field.node.25_year_club.field_college_department
+    - field.field.node.25_year_club.field_first_name
+    - field.field.node.25_year_club.field_image
+    - field.field.node.25_year_club.field_last_name
+    - field.field.node.25_year_club.field_length_of_service_date
+    - field.field.node.25_year_club.field_member_title
+    - field.field.node.25_year_club.field_service_recognition_year
+    - field.field.node.25_year_club.field_service_year
+    - node.type.25_year_club
+  module:
+    - node
+label: '25-Year Club Members'
+id: 25_year_club_members
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: 25_year_club
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  member_name:
+    value: 'Member Name'
+    label: 'Member Name'
+    machine_name: member_name
+    type: csv
+  first_name:
+    value: 'First name'
+    label: 'First name'
+    machine_name: first_name
+    type: csv
+  last_name:
+    value: 'Last name'
+    label: 'Last name'
+    machine_name: last_name
+    type: csv
+  service_recognition_year:
+    value: 'Service Recognition Year'
+    label: 'Service Recognition Year'
+    machine_name: service_recognition_year
+    type: csv
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  college_department:
+    value: College/Department
+    label: College/Department
+    machine_name: college_department
+    type: csv
+  bio:
+    value: Bio
+    label: Bio
+    machine_name: bio
+    type: csv
+  service_year:
+    value: 'Service Year'
+    label: 'Service Year'
+    machine_name: service_year
+    type: csv
+  length_of_service_date:
+    value: 'Length of Service Date'
+    label: 'Length of Service Date'
+    machine_name: length_of_service_date
+    type: csv
+  image_name:
+    value: 'Image Name'
+    label: 'Image Name'
+    machine_name: image_name
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: member_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_first_name
+    map:
+      value: first_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_last_name
+    map:
+      value: last_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_service_recognition_year
+    map:
+      value: service_recognition_year
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_member_title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_college_department
+    map:
+      value: college_department
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_bio
+    map:
+      value: bio
+      summary: ''
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_service_year
+    map:
+      target_id: service_year
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: 25_year_club
+  -
+    target: field_length_of_service_date
+    map:
+      value: length_of_service_date
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_image
+    map:
+      target_id: image_name
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: image
+      feeds_item: false

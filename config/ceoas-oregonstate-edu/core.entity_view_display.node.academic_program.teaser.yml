@@ -1,0 +1,37 @@
+uuid: 58f55d19-ddde-4c79-969f-d3dd737a8192
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.academic_program.body
+    - field.field.node.academic_program.field_degree_level
+    - field.field.node.academic_program.field_link_to_program
+    - field.field.node.academic_program.field_program_image
+    - node.type.academic_program
+  module:
+    - text
+    - user
+id: node.academic_program.teaser
+targetEntityType: node
+bundle: academic_program
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_degree_level: true
+  field_link_to_program: true
+  field_program_image: true

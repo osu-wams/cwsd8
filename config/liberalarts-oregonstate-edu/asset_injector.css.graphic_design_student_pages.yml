@@ -1,0 +1,50 @@
+uuid: 1892faf8-b1bd-4a40-9225-5c74f250733d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: graphic_design_student_pages
+label: 'Graphic Design Student Pages'
+code: |-
+  .page-title {
+    overflow:hidden;
+    height:0;
+    width:0;
+  }
+
+  .img-fluid {
+    width: 400px !important;
+    border-radius: 15px !important;
+    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),0 2px 2px hsl(0deg 0% 0% / 0.075),0 4px 4px hsl(0deg 0% 0% / 0.075),0 8px 8px hsl(0deg 0% 0% / 0.075),0 16px 16px hsl(0deg 0% 0% / 0.075);
+  }
+
+  div.field:nth-child(2){
+  margin-top:20px;
+    font-family: 'Stratum2Web',sans-serif;
+    font-size: 3rem;
+    color: #d73f09;
+  }
+
+  .field--name-field-link-emergence {margin-top:20px;}
+
+
+  @media (min-width: 768px) {
+  .node__content {
+      margin: 0px 25%;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/emergence-student/*'
+contexts: {  }
+conditions_require_all: true

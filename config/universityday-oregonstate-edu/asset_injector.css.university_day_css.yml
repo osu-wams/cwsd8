@@ -1,0 +1,30 @@
+uuid: 0bd6a87c-22cb-45b1-a9b0-ed2a229eb0ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: university_day_css
+label: 'University Day CSS'
+code: |-
+  .dark-transparent-bg {
+    background: rgba(0,0,0,0.75) !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: "<front>\r\n/*"
+contexts: {  }
+conditions_require_all: true

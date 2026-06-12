@@ -1,0 +1,30 @@
+uuid: 065f8ba0-364d-4174-8133-a8e7d484a1cb
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: landing_page_child_unit
+label: landing-page-child-unit
+logic: and
+conditions:
+  e26bc6f2-279a-4528-bb16-8786de3b7b82:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e26bc6f2-279a-4528-bb16-8786de3b7b82
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page
+  0292797a-11f7-4aaf-a932-b01a86b66ad6:
+    id: request_path
+    negate: false
+    uuid: 0292797a-11f7-4aaf-a932-b01a86b66ad6
+    pages: /air
+  f7cef0f0-4e1e-4cc5-a356-be1ff75ec250:
+    id: request_path
+    negate: true
+    uuid: f7cef0f0-4e1e-4cc5-a356-be1ff75ec250
+    pages: "/main\r\n/main/*\r\n/group/*"
+allow_other_conditions: null

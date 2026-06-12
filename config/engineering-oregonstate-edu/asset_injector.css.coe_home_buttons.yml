@@ -1,0 +1,174 @@
+uuid: 5466d03a-be29-4dda-add0-acb69f42c4d0
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_home_buttons
+label: 'COE home (buttons, stories, hover stories, hover colors, read more)'
+code: |-
+  /* ================================================
+  * COE home page buttons, stories, hover effects, and read more link styling
+  ================================================ */
+
+  /* HOME PAGE BUTTON ADJUSTMENTS */
+
+  .home-page-button a{
+      padding: 1em 2em;
+      font-size: 1.25rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+      border-radius: 0px;
+      border: 2px white solid;
+  }
+
+  .osu-btn-dark a :hover{
+  	 background-color: transparent !important;
+      border: 2px white solid !important;
+  }
+  .home-page-button a:hover {
+      background-color: transparent !important;
+      border: 2px white solid !important;
+  }
+
+  .home-page-button-hover-black a {
+    padding: 1em 2em;
+      font-size: 1.25rem;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      flex-direction: column;
+      /*border-radius: 0px;!important*/
+      /*border: 2px white solid!important;*/
+  }
+  .home-page-button-hover-black a:hover {
+    color:black !important;
+    background-color: transparent !important;
+    /*border: 2px white solid !important;*/
+  }
+
+
+  .text-button a {
+      border-radius: 0px;
+      font-size: 1rem;
+  }
+
+  /* Home page title text and button text */
+
+  @media (max-width: 768px) {
+  	.home-page-button div > div > p > a {
+      font-size: 1rem;
+    }
+    .home-page-button div > div > h4 > a {
+      font-size: 1rem;
+    }
+    .main-display-text > div > div > .fs-5 {
+      font-size: 1rem !important;
+  	}
+  	.main-display-text > div > div > .fs-2 {
+      font-size: 1.5rem !important;
+  	}
+  }
+
+
+  h1, .h1 {
+   
+      font-size: 40px;
+   
+    /* HOME PAGE OVERLAY MENU BUTTONS */
+   
+   #block-secondarymenu > div.contextual {
+    Float:right;
+  }
+
+  #block-secondarymenu > div.block__content {
+     Float:right;
+     Padding:10px;
+  }
+  }
+
+    /* STORY ZOOM */
+
+  .photo-zoom:hover {
+    transform: scale(1.1);
+    transition: transform .5s ease;
+  }
+
+   /* TILE HOVER COLORS */
+   
+   .yellow-background {
+    background-color: #ffb500 !important;
+  }
+  .yellow-background:hover {
+    background-color: #cc9100 !important;
+  }
+
+  .dark-blue-background {
+    background-color: #0d5257 !important;
+  }
+  .dark-blue-background:hover {
+    background-color: #06282b !important;
+  }
+
+  .light-blue-background {
+    background-color: #00859b !important;
+  }
+  .light-blue-background:hover {
+    background-color: #005968 !important;
+  }
+
+  .dark-navy-background {
+    background-color: #003b5c !important;
+  }
+  .dark-navy-background:hover {
+    background-color: #001a29 !important;
+  }
+
+  .orange-hover-action {
+    background-color: #d73f09 !important;
+  }
+  .orange-hover-action:hover {
+    background-color: #a63107 !important;
+  }
+  .black-hover-action:hover {
+    background-color: #404040 !important;
+  }
+  .grey-hover-action:hover {
+    background-color: #ababab !important;
+  }
+
+  .yellow-background, .grey-hover-action, .orange-hover-action, .dark-navy-background, .black-hover-action {
+  	height: 100%;
+  }
+
+  /* READ MORE BUTTON BEHAVIOR */ 
+
+  .osu-bg-page-alt-2 .more-link a {
+  	color: #fff;
+  }
+  .read-more-hover:hover {
+    background-color: #212529 !important;
+    color: white !important;
+  }
+
+  #lclst_widget_footer {
+  	display: none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/1
+contexts: {  }
+conditions_require_all: true

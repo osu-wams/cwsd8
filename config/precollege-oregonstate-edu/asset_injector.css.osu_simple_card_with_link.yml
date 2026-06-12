@@ -1,0 +1,30 @@
+uuid: 70641c8c-01b1-4c1c-842f-3b00d707eb69
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: osu_simple_card_with_link
+label: 'OSU Simple Card With Link'
+code: |-
+  .block--type-osu-card.block--view-mode-simple-card-w-link {
+    & .field--name-field-osu-card-link a:before {
+      content: '';
+      inset: 0;
+      position: absolute;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

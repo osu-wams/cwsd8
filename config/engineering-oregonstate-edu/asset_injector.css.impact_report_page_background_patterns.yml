@@ -1,0 +1,193 @@
+uuid: 15e08cd6-c800-45b9-b5e6-459a0aac1723
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: impact_report_page_background_patterns
+label: 'Impact report page (background patterns, box shadow)'
+code: |-
+  .Sustainable-Greatness-Hero .bg-image ._none{
+  	background: linear-gradient(0deg, rgb(0 0 0 / 60%), rgb(223 223 223 / 60%)), url(/sites/engineering.oregonstate.edu/files/2024-09/hero_image.png)
+  }
+
+  /*------ Background pattern for Scholarship section -------*/
+  .scholarships-background-pattern{
+  	position: relative;
+    margin-bottom: -200px;
+    left: -160px;
+    top: -575px;
+    opacity: 50%;
+  }
+  /*Better scaling for smaller screens*/
+  @media only screen and (max-width: 1600px){
+  	.scholarships-background-pattern{
+      margin-bottom: -200px;
+      left: -110px;
+      top: -575px;
+      opacity: 50%;
+      width: 25%;
+  	}
+  } 
+  /*Hide on Mobile and Tablet*/
+  @media only screen and (max-width: 991px){
+  	.scholarships-background-pattern{
+  		display: none;
+  	}
+  } /*------ Scholarship Section END -------*/
+
+  /*------- Background pattern for Philanthropy section -------*/
+  .philanthropy-background-pattern{
+    position: relative;
+    top: -320px;
+    left: 50px;
+    margin-left: 330px;
+    opacity: 50%;
+    margin-bottom: -370px;
+  }
+
+  /*Hide on Mobile and Tablet*/
+  @media only screen and (max-width: 991px){
+  	.philanthropy-background-pattern{
+  		display: none;
+  	}
+  }
+
+  /*------ Philanthropy Section END -------*/
+
+  /*------ Background pattern for Transformative section ------*/
+  .transformative-background-pattern{
+  	position: relative;
+  	margin-top: -530px;
+    width: 73%;
+  }
+
+  /*Hide Background pattern for Transformative section in Mobile*/
+  @media only screen and (max-width: 991px){
+  	.transformative-background-pattern{
+  		display: none;
+  	}
+  }
+
+  /*Better scaling for smaller screens*/
+  @media only screen and (max-width: 1500px){
+  	.transformative-background-pattern{
+  		position: relative;
+  		margin-top: -530px;
+  	  width: 73%;
+  	}
+  }
+  /*------ Transformative Section END -------*/
+
+  /*------ Background pattern for Experiential section ------*/
+  .experiential-background-pattern-1{
+  	position: relative;
+    top: -500px;
+    left: -290px;
+    opacity: 50%;
+  }
+
+  @media only screen and (max-width: 991px){
+  	.experiential-background-pattern-1{
+  		display: none;
+  	}
+  }
+
+  .experiential-background-pattern-2{
+  	position: relative;
+    top: -340px;
+    right: -90px;
+    margin-bottom: -400px;
+    opacity: 50%;
+  }
+
+  @media only screen and (max-width: 991px){
+  	.experiential-background-pattern-2{
+  		display: none;
+  	}
+  }
+
+  /*------ Experiential Section END -------*/
+
+  /*------ Background pattern for Research section ------*/
+  .research-background-pattern-1{
+    position: relative;
+    top: -370px;
+    left: -200px;
+    opacity: 50%;
+  }
+
+  @media only screen and (max-width: 991px){
+  	.research-background-pattern-1{
+  		display: none;
+  	}
+  }
+
+  .research-background-pattern-2{
+  	position: relative;
+    top: -255px;
+    right: -90px;
+    margin-bottom: -400px;
+    opacity: 50%;
+  }
+
+  @media only screen and (max-width: 991px){
+  	.research-background-pattern-2{
+  		display: none;
+  	}
+  }
+
+  /*------ Research Section END -------*/
+
+  /*
+  * Box shadow styling for letter from the dean block.
+  */
+  .box-shadow{
+  	border-radius: 5px;
+  	border: 1px solid #ECEDEE;
+  	background: var(--Primary-Bucktooth-White, #FFF);
+  	box-shadow: 2px 4px 4px 0px rgba(0, 0, 0, 0.08);
+  }
+
+  .yellow-hr{
+  	width: 100%;
+  	height: 6px;
+  	flex-shrink: 0;
+  	background-color: #FFB500;
+  	opacity: 1;
+  	margin-top: 10px !important;
+  	margin-bottom: 0px !important;
+  }
+
+
+  @media only screen and (max-width: 1200px){
+  	.osu-min-h-400{
+  		min-height: 300px!important;
+  	}
+  }
+
+  .image-width-100 img{
+  	width: 100%;
+  }
+
+
+  @media only screen and (max-width: 991px){
+  .experiential-education {
+  	background-image: none !important;
+  	background-color: #212529 !important;
+  }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/45811\r\n/test/2024-impact-report"
+contexts: {  }
+conditions_require_all: false

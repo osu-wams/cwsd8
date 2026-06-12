@@ -3,17 +3,24 @@ langcode: en
 status: true
 dependencies:
   module:
-    - group
+    - node
+    - system
 id: committee_pages
 label: committee-pages
-logic: and
+logic: or
 conditions:
-  1f904641-7412-4fea-8ec5-02f54297494d:
-    id: group_type
-    group_types:
-      basic_group: basic_group
-    negate: 0
+  6f56fc96-f8b3-4c5c-8319-12d122a0746f:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 6f56fc96-f8b3-4c5c-8319-12d122a0746f
     context_mapping:
-      group: '@group.group_route_context:group'
-    uuid: 1f904641-7412-4fea-8ec5-02f54297494d
-allow_other_conditions: false
+      node: '@node.node_route_context:node'
+    bundles:
+      committee: committee
+  9ad346e7-e8ef-4ae0-aa8f-7dbeccacea1f:
+    id: request_path
+    negate: false
+    uuid: 9ad346e7-e8ef-4ae0-aa8f-7dbeccacea1f
+    context_mapping: {  }
+    pages: /committees
+allow_other_conditions: true

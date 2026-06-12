@@ -1,0 +1,71 @@
+uuid: f99f2695-c126-4272-bf82-bb31cbd94c36
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: lucy_event_cards_design
+label: 'Event card styling (card, text, date)'
+code: |-
+  /*===================================
+  Event Card V2 Styling
+  ===================================*/
+
+
+  /* Set border and shadow effect */
+  .new-events-cards{
+  	box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  	border-radius: 5px;
+  	border-top-color: #D73F09 !important;
+  	border-top: 10px !important;
+  }
+
+  /* Typography for date element of event card */
+  .event-date{
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: "Open Sans" !important;
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: normal;
+  	letter-spacing: 0.7px;
+  	text-transform: uppercase;
+  }
+
+  /* Typography for event title element*/
+  .event-title{
+  	color: #D73F09 !important;
+
+  	/* Main/H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  }
+
+  /* Typography for event location element */
+  .event-location{
+  	color: #212529 !important;
+  	font-family: "Open Sans" !important;
+  	font-size: 14px !important;
+  	font-style: normal;
+  	font-weight: 600 !important;
+  	line-height: normal;
+  	letter-spacing: 0.7px;
+  	text-transform: uppercase;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/45031\r\n\r\n"
+contexts: {  }
+conditions_require_all: true

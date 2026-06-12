@@ -1,0 +1,227 @@
+uuid: 352db04d-1e70-472e-9920-9b82968c7645
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: grids
+label: Grids
+code: |-
+
+
+
+
+  /* ya super basic 2 column grid  */
+  .grid-columns-2 {
+  	display: grid;
+  	grid-template-columns: 1fr;
+  }
+
+  .css-grid-wrapper-02 {
+      display: grid;
+      gap: 3rem;
+      justify-content: center;
+  }
+
+  @media (min-width: 900px) {
+      .css-grid-wrapper-02 {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+
+  .grid-cols-2 {
+      display: grid;
+      gap: 3rem;
+  }
+
+  @media (min-width: 900px) {
+  		.grid-columns-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+  	
+      .grid-cols-2 {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+
+  /* reverse 2 col grid on smaller screens */
+  .grid-wrapper-2-reverse {
+      display: grid;
+       grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  @media (max-width: 900px) {
+      .grid-wrapper-2-reverse {
+          grid-template-columns: repeat(1,1fr) !important; /* Switch to a single column */
+      }
+
+      /* Change the order of items on smaller screens */
+      .grid-wrapper-2-reverse > :nth-child(1) {
+          order: 2; /* Content A moves to the second position */
+      }
+
+      .grid-wrapper-2-reverse > :nth-child(2) {
+          order: 1; /* Content B moves to the first position */
+      }
+  }
+
+
+  /* ya basic 2 column that turns to 3 rows under some ch value. ch value classes located in next commented section  */
+
+  .grid-ya-basic-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+  }
+
+  @media (max-width: 140ch) {
+      .grid-ya-basic-2 {
+          grid-template-columns: none;
+          grid-template-rows: repeat(2, 1fr);
+      }
+
+      .grid-ya-basic-2>*:nth-child(1) {
+          -ms-grid-row: 1;
+          -ms-grid-column: 1;
+      }
+
+      .grid-ya-basic-2>*:nth-child(2) {
+          -ms-grid-row: 2;
+          -ms-grid-column: 1;
+      }
+
+  }
+
+
+
+
+  /* ya basic 3 column that turns to 3 rows under some ch value. ch value classes located in next commented section  */
+
+  .grid-ya-basic-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+  }
+
+  @media (max-width: 140ch) {
+      .grid-ya-basic-3 {
+          grid-template-columns: none;
+          grid-template-rows: repeat(3, 1fr);
+      }
+
+      .grid-ya-basic-3>*:nth-child(1) {
+          -ms-grid-row: 1;
+          -ms-grid-column: 1;
+      }
+
+      .grid-ya-basic-3>*:nth-child(2) {
+          -ms-grid-row: 2;
+          -ms-grid-column: 1;
+      }
+
+      .grid-ya-basic-3>*:nth-child(3) {
+          -ms-grid-row: 3;
+          -ms-grid-column: 1;
+      }
+  }
+
+
+  /* ya basic 3 column ch values  */
+
+
+
+
+
+
+  /* ya basic 4 column that turns to 2 then 4 rows under some ch value. ch value classes located in next commented section  */
+
+  .grid-ya-basic-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+  }
+
+
+  @media (max-width: 70ch) {
+      .grid-ya-basic-4 {
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: repeat(2, 1fr);
+      }
+
+  }
+
+
+  @media (max-width: 140ch) {
+      .grid-ya-basic-4 {
+          grid-template-columns: none;
+          grid-template-rows: repeat(4, 1fr);
+      }
+
+      .grid-ya-basic-4>*:nth-child(1) {
+          -ms-grid-row: 1;
+          -ms-grid-column: 1;
+      }
+
+      .grid-ya-basic-4>*:nth-child(2) {
+          -ms-grid-row: 2;
+          -ms-grid-column: 1;
+      }
+
+      .grid-ya-basic-4>*:nth-child(3) {
+          -ms-grid-row: 3;
+          -ms-grid-column: 1;
+      }
+      
+          .grid-ya-basic-4>*:nth-child(4) {
+          -ms-grid-row: 4;
+          -ms-grid-column: 1;
+      }
+  }
+
+
+  /* ya basic 4 column ch values -- currently empty  */
+
+
+
+
+  .grid-pub-widget-sm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--size-3);
+    place-items: center;
+    max-width: 35ch;
+    margin-inline: auto;
+    padding-block: var(--size-fluid-1);
+    padding-inline: var(--size-fluid-1);
+  }
+
+
+  .grid-pub-widget-sm-start {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--size-3);
+    place-items: start;
+    max-width: 35ch;
+    padding-block: var(--size-fluid-1);
+    /*padding-inline: var(--size-fluid-1);*/
+  }
+
+
+  .altmetric-widget-fix-01 {
+  	margin-top:-7px !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

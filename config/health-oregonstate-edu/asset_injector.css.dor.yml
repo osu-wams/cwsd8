@@ -1,0 +1,76 @@
+uuid: 8fa497a4-c0dd-41c8-88e1-e2d7a898e01e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: dor
+label: 'directory filters'
+code: |-
+  #views-exposed-form-profile-directory-page div.d-flex {
+  	display: grid !important;
+  	grid-template-columns: repeat(3,minmax(200px,400px)) !important;
+  	grid-template-rows: repeat(3, auto) !important;
+  }
+
+  #views-exposed-form-profile-directory-page #edit-secondary{
+  	grid-row: 2 / span 1;
+  }
+
+  #views-exposed-form-profile-directory-page #edit-actions{
+  	grid-row: 3 /span 1;
+  }
+
+  .details-wrapper {
+  	display: flex !important;
+  	/*flex-wrap: wrap;*/
+  	align-items: baseline;
+  	gap: 0.5em;
+  }
+
+  .details-wrapper > * {
+  	min-width: 325px;
+  }
+
+
+  @media(max-width: 768px) {
+  	#views-exposed-form-profile-directory-page div.d-flex {
+  		grid-template-columns: repeat(2, minmax(165px,400px)) !important;
+  		grid-template-rows: repeat(4, auto) !important;
+  	}
+  	
+  	#views-exposed-form-profile-directory-page div.d-flex :first-child {
+  		grid-column: span 2;
+  	}
+  	
+  	#views-exposed-form-profile-directory-page #edit-secondary{
+  		grid-row: 3 / span 1;
+  	}
+
+  	#views-exposed-form-profile-directory-page #edit-actions{
+  		grid-row: 4 /span 1;
+  	}
+  	
+  	.details-wrapper > * {
+  		min-width: 165px;
+  	}
+  	
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /directory
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

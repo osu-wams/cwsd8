@@ -1,0 +1,29 @@
+uuid: 682fb5f5-ebdd-405a-bb43-312a48b31148
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_functional_group
+    - node.type.osu_profile
+    - taxonomy.vocabulary.functional_groups
+id: node.osu_profile.field_functional_group
+field_name: field_functional_group
+entity_type: node
+bundle: osu_profile
+label: Unit
+description: 'The Unit is a functional group within Advantage such as Accelerator, ATAMI, IP & Licensing, etc.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      functional_groups: functional_groups
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

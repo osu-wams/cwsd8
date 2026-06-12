@@ -1,0 +1,35 @@
+uuid: ae06abc2-8f10-41ad-9365-5345b74056a4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.simple_tabs.body
+    - field.field.node.simple_tabs.field_simple_tab_image
+    - field.field.node.simple_tabs.field_sort_weight
+    - node.type.simple_tabs
+  module:
+    - text
+    - user
+id: node.simple_tabs.teaser
+targetEntityType: node
+bundle: simple_tabs
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_simple_tab_image: true
+  field_sort_weight: true

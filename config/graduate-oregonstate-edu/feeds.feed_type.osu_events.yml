@@ -1,0 +1,96 @@
+uuid: 4bbec39b-b2c7-412b-927b-4003fe6427f1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.event_feed_item.body
+    - field.field.node.event_feed_item.field_event_feed_item_link
+    - node.type.event_feed_item
+  module:
+    - feeds_ex
+    - node
+label: 'OSU Events'
+id: osu_events
+description: ''
+help: ''
+import_period: -1
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: querypathxml
+parser_configuration:
+  context:
+    value: entry
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+  use_tidy: false
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: event_feed_item
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 31181
+custom_sources:
+  feed_body:
+    label: body
+    machine_name: feed_body
+    value: summary
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  feed_link:
+    label: link
+    machine_name: feed_link
+    value: id
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  feed_title:
+    label: Title
+    machine_name: feed_title
+    value: title
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+mappings:
+  -
+    target: body
+    map:
+      value: feed_body
+      summary: ''
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_event_feed_item_link
+    map:
+      uri: feed_link
+      title: ''
+    settings:
+      language: null
+  -
+    target: title
+    map:
+      value: feed_title
+    settings:
+      language: null
+    unique: {  }

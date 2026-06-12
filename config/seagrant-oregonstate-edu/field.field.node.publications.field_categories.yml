@@ -1,0 +1,30 @@
+uuid: eddef1ba-112f-44eb-951a-22e41e4f9c67
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_categories
+    - node.type.publications
+    - taxonomy.vocabulary.category
+id: node.publications.field_categories
+field_name: field_categories
+entity_type: node
+bundle: publications
+label: Categories
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      category: category
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

@@ -1,0 +1,29 @@
+uuid: 15186789-1227-4a37-b35d-9a3927b9622c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_accepting_grad_students
+    - node.type.osu_profile
+    - taxonomy.vocabulary.accepting_grad_students
+id: node.osu_profile.field_accepting_grad_students
+field_name: field_accepting_grad_students
+entity_type: node
+bundle: osu_profile
+label: 'Graduate students'
+description: 'Leave as -None- if not an academic faculty member'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      accepting_grad_students: accepting_grad_students
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

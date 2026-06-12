@@ -1,0 +1,101 @@
+uuid: c778f2e1-5f43-460a-85ef-0d3724aed35c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: news
+label: 'News Page'
+code: |-
+  .hidden{
+  	display:none;
+  }
+
+  .news-card{
+  	border-radius: 15px;
+  	height: 425px;
+    transition: 0.3s !important;
+    position:relative;
+  }
+  @media (max-width: 1400px){
+  	.news-card{
+  		height: 400px !important;
+  	}
+  }
+
+  @media (max-width: 992px){
+  	.news-card{
+  		height: auto !important
+  	}
+  }
+
+  .news-card:hover{
+    margin-top: -7px;
+  }
+
+  .news-card:hover .news-image img{
+  	filter: brightness(50%);
+  }
+
+  .news-card:hover .read-more-div{
+  	display: block !important;
+  	position: absolute;
+  	top: 100px;
+  	width: 100%;
+  	text-align: center;
+  }
+
+  .news-image img{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .newscard-padding{
+  	padding:20px;
+  }
+
+  .link-stretched{
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    z-index: 2;
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none !important;
+    position: absolute;
+  }
+
+  .news-card .link-stretched{
+    text-decoration: none;
+  }
+
+  .news-card a:active:not(.button,#osu-logo-wide,#osu-logo-crest) {
+    background-color: #21252900!important;
+  }
+
+  .news-title-link{
+  	text-decoration:none;
+  	color:#d73f09;
+  	font-size: 25px;
+  	font-family: 'Stratum2Web',serif;
+  	font-weight:500;
+  	line-height:1;
+  }
+
+  .all-stories .story-card img{
+      height: 200px;
+      object-fit: cover;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/16
+contexts: {  }
+conditions_require_all: true

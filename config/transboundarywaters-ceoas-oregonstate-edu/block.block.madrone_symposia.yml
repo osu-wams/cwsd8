@@ -1,0 +1,39 @@
+uuid: 6aa04df0-d335-4cd7-8d1e-a28d4913009d
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:5bf92697-0d60-4b7c-9be4-d8003620fe3a'
+  module:
+    - block_content
+    - block_visibility_groups
+    - node
+  theme:
+    - madrone
+id: madrone_symposia
+theme: madrone
+region: content
+weight: 0
+provider: null
+plugin: 'block_content:5bf92697-0d60-4b7c-9be4-d8003620fe3a'
+settings:
+  id: 'block_content:5bf92697-0d60-4b7c-9be4-d8003620fe3a'
+  label: Symposia
+  label_display: visible
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      gallery: gallery
+      gallery_image: gallery_image

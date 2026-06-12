@@ -1,0 +1,36 @@
+uuid: 174a7b4c-13cb-4a37-b3b9-c401e923132c
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: job_board_grid_header
+label: job-board-grid-header
+code: |
+  const newHeader = document.createElement("div");
+
+  newHeader.classList.add('osu-bg-page-alt-1'); // = '<div class="osu-bg-page-alt-1 osu-img-full osu-shadow rounded">';
+  newHeader.classList.add('osu-img-full');
+  newHeader.classList.add('osu-shadow');
+  newHeader.classList.add('rounded');
+  newHeader.textContent += "I can inject code that puts content here!";
+  newHeader.id = "myDiv";
+
+  document.getElementById("views-bootstrap-jobs-page-1").prepend(newHeader);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /jobs
+contexts: {  }
+conditions_require_all: true

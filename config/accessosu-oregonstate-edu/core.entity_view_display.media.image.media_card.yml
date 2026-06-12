@@ -1,0 +1,48 @@
+uuid: fa600154-eb6e-4d46-9645-ee5f447a8a67
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_card
+    - field.field.media.image.field_caption
+    - field.field.media.image.field_media_image
+    - image.style.fluid_webp
+    - media.type.image
+  module:
+    - image
+    - layout_builder
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+_core:
+  default_config_hash: ySfEzquy2qW-03c_fI2iP1k8roqYy1CG9To5S8XTPlY
+id: media.image.media_card
+targetEntityType: media
+bundle: image
+mode: media_card
+content:
+  field_caption:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_media_image:
+    type: image
+    label: visually_hidden
+    settings:
+      image_link: ''
+      image_style: fluid_webp
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  created: true
+  name: true
+  thumbnail: true
+  uid: true

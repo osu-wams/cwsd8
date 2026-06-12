@@ -1,0 +1,29 @@
+uuid: c63833d9-acde-4529-8f4a-06dbbb88dbfd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_course_type
+    - node.type.coh_course
+    - taxonomy.vocabulary.coh_course_type
+id: node.coh_course.field_course_type
+field_name: field_course_type
+entity_type: node
+bundle: coh_course
+label: 'Course type'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      coh_course_type: coh_course_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

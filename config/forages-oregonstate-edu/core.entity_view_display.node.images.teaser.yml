@@ -1,0 +1,45 @@
+uuid: 35cfba11-7065-4f2a-b199-65b33f25844c
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.images.body
+    - field.field.node.images.field_animal
+    - field.field.node.images.field_caption
+    - field.field.node.images.field_copyright
+    - field.field.node.images.field_image_file
+    - field.field.node.images.field_image_type
+    - field.field.node.images.field_species
+    - field.field.node.images.field_topic
+    - node.type.images
+  module:
+    - text
+    - user
+id: node.images.teaser
+targetEntityType: node
+bundle: images
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_animal: true
+  field_caption: true
+  field_copyright: true
+  field_image_file: true
+  field_image_type: true
+  field_species: true
+  field_topic: true

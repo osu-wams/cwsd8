@@ -1,0 +1,29 @@
+uuid: 1e493bef-6422-46a9-8cf9-fc28f8932ffe
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_author_s
+    - node.type.blog_post
+    - taxonomy.vocabulary.authors_and_researchers
+id: node.blog_post.field_author_s
+field_name: field_author_s
+entity_type: node
+bundle: blog_post
+label: Author(s)
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      authors_and_researchers: authors_and_researchers
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

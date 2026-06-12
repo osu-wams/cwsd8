@@ -1,0 +1,29 @@
+uuid: 36d7af7a-73e2-400f-8f1b-d8dd0ef72f66
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_functional_group
+    - node.type.osu_profile
+    - taxonomy.vocabulary.functional_groups
+id: node.osu_profile.field_functional_group
+field_name: field_functional_group
+entity_type: node
+bundle: osu_profile
+label: 'Functional Group'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      functional_groups: functional_groups
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,997 @@
+uuid: 9201a52f-2fd6-4f1d-a619-68206d911097
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: coe_brand_profiles
+label: 'COE Brand Profiles'
+code: |+
+  /*
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  	--COE Brand Profile Content Type--
+  	
+  	Profile content type styling. Created 6/11/2026.
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  */
+
+  /*------------------------------------------------------------------------------
+  	Hero Section with Image, Name, Title, etc.
+  	
+  	----------------------------------------------------------------------------*/
+
+  .engr-titles {
+    display: inline-block;
+    /*padding-bottom: 16px;  */
+  }
+
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 4fr 5fr 3fr;
+    column-gap: 1.5rem;
+    align-items: start;
+  	position: relative;
+  	padding-top: 50px;
+  	padding-bottom: 50px;
+  	padding-right: 12px;
+  	padding-left: 12px;
+  }
+
+  div:has(> .container > .profile-grid) {
+  	background-color: #F4F8FA;
+  }
+
+  .block-views-blockengr-profile-block-40, .contact-col {
+  	padding: 30px 0 0;
+  }
+
+  /* Dissolve the first wrapper col so its children are direct grid items */
+  .profile-grid > .col-lg-4:first-child {
+    display: contents;
+  }
+
+  .profile-grid > div {
+  	width: 100% !important;
+  }
+
+  .block-field-blocknodeosu-profilefield-profile-image {
+    grid-column: 1;
+    grid-row: 1 / span 10; /* span generously, won't create extra rows */
+    align-self: stretch;
+  }
+
+  /* Title and pronouns span cols 2-3, auto-placed into rows 1 and 2 */
+  .block-field-blocknodeosu-profiletitle, .block-field-blocknodeosu-profilefield-engr-c-accepting-student {
+    grid-column: 2 / 4;
+    /* no grid-row — auto-places to row 1 */
+  }
+
+  .block-field-blocknodeosu-profilefield-profile-pronouns {
+    grid-column: 2 / 4;
+    /* no grid-row — auto-places to row 2 */
+  }
+
+  .block-views-blockengr-profile-block-40 {
+  	grid-column: 2;
+  	grid-row: 4;
+  }
+
+  /* Identity and contact auto-place into row 3, side by side */
+  .identity-col {
+    grid-column: 2;
+    /* no grid-row — auto-places after pronouns */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 0;
+    grid-row: 5;
+    padding-top: 16px;
+  }
+
+  .contact-col {
+    grid-column: 3;
+    /* no grid-row — auto-places alongside identity */
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    grid-row: 4 / 7;
+  }
+
+  #block-views-blockengr-profile-block-40 > div {
+  	margin-top: 0 !important;
+  	padding: 0 !important;
+  }
+
+
+  @media (max-width: 1199px) {
+  	.profile-grid {
+  		grid-template-columns: repeat(12, 1fr);
+  	}
+  	.block-field-blocknodeosu-profilefield-profile-image {
+  		grid-column: 1 / 5;
+  	}
+  	.block-field-blocknodeosu-profiletitle, .block-field-blocknodeosu-profilefield-profile-pronouns, .block-views-blockengr-profile-block-40, .block-field-blocknodeosu-profilefield-engr-c-accepting-student {
+  		grid-column: 5 / 13
+  	}
+  	.identity-col {
+  		grid-column: 1 / 7;
+  	}
+  	.contact-col {
+  		grid-column: 7 / 13;
+  	}
+  	.identity-col, .contact-col {
+  		grid-row: auto;
+  		padding-top: 32px;
+  	}
+  	.block-views-blockengr-profile-block-40 {
+  		padding-top: 12px;
+  	}
+  	.block-field-blocknodeosu-profilefield-profile-pronouns + .block-views-blockengr-profile-block-40 {
+  	  padding-top: 30px;
+  	}
+  }
+
+  @media (max-width: 767px) {
+  	.profile-grid {
+  		display: block;
+  		padding: 50px 12px;
+  	}
+  	.identity-col, .contact-col {
+  		padding-top: 16px;
+  	}
+  	.block-field-blocknodeosu-profilefield-profile-image {
+  		padding-bottom: 20px;
+  	}
+  	.block-views-blockengr-profile-block-40 {
+  		padding-top: 30px;
+  	}
+  }
+
+  /*************************************
+  * Accepting Grad Students Styling
+  **************************************/
+  @media screen and (min-width: 1200px) {
+  	.field--name-field-engr-c-accepting-student {
+      position: absolute;
+      right: 0;
+      top: -20px;
+  	}
+  }
+
+  .field--name-field-engr-c-accepting-student:has(> .coe-profile-not-accepting){
+  	display: none;
+  }
+
+  .field--name-field-engr-c-accepting-student{
+  	background: #f4b400; 
+    padding: 8px 16px;
+    border-radius: 3px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 14px;
+    width: -webkit-max-content;
+  }
+
+  @media (min-width: 1200px) {
+  	.field--name-field-engr-c-accepting-student {
+  		right: 58px;
+  	}
+  }
+
+  @media (min-width: 1400px) {
+  	.field--name-field-engr-c-accepting-student {
+  		right: 103px;
+  	}
+  }
+
+
+  .field--name-field-engr-c-accepting-student p{
+  	color: var(--Primary-Paddletail-Black, #000);
+  	
+  	/* Main/Label */
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  }
+
+
+  /*Organizations pipe seperator*/
+  .field--name-field-osu-organizations .field__items {
+    display: block !important;
+  }
+
+  .field--name-field-osu-organizations .field__item {
+    display: inline !important;
+    width: auto !important;
+  }
+
+  .field--name-field-osu-organizations .field__item:not(:last-child)::after {
+    content: " | ";
+  }
+
+  .field--name-field-profile-email a{
+  	color: #be3706 !important;
+  }
+
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Orange Bullet Point Styling
+  	
+  	Styling for orange bullet points
+  	----------------------------------------------------------------------------*/
+  	
+  	
+  /* Orange bullet styling for field__item divs */
+  main .field--name-field-c-engr-degrees .field__item,
+  .field--name-field-c-engr-awards .field__item,
+  .field--name-field-research-groups .field__item,
+  .field--name-field-engr-research-website .field__item,
+  .field--name-field-field-c-engr-labs .field__item,
+  .field--name-field-field-c-engr-labs .field__item,
+  .field--name-field-publications .field__item
+  {
+  	display: block !important;
+    position: relative; 
+    padding-left: 20px; 
+    padding-bottom: 18px;
+  	list-style: none !important; 
+  }
+
+  /* Adds bullet icon */
+  main .field--name-field-c-engr-degrees .field__item::before,
+  .field--name-field-c-engr-awards .field__item::before,
+  .field--name-field-research-groups .field__item::before,
+  .field--name-field-engr-research-website .field__item::before,
+  .field--name-field-field-c-engr-labs .field__item::before,
+  .field--name-field-field-c-engr-labs .field__item::before,
+  .field--name-field-publications .field__item::before
+  {
+  	content: '' !important;
+    display: inline-block;
+    width: 1.8ch;
+  	height: 1.8ch;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="%23D73F09" stroke-width="4" stroke-linecap="square"/></svg>') no-repeat center center;
+    background-size: contain;
+    background-position: top left;
+    position: absolute;
+  	left: 0;
+    top: 0.5ch;
+  }
+
+
+  /*main a:not(.field--name-field-research-groups .field__item),*/
+  /*main a:not(.field--name-field-engr-research-website .field__item){*/
+  /*	color: var(--Primary-Paddletail-Black, #000) !important;*/
+  	
+  	/* Main/Body */
+  /*	font-family: "Open Sans" !important;*/
+  /*	font-size: 18px !important;*/
+  /*	font-style: normal !important;*/
+  /*	font-weight: 400 !important;*/
+  /*}*/
+
+
+  .field__label,
+  .label-text{
+  	color: var(--Secondary-High-Tide, #006A8E);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	/* Main/Label */
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  	padding-bottom: 5px;
+  }
+
+  .profile-hero-section .body-small, .body-small a {
+  	font-weight: 400 !important;
+  }
+
+
+
+
+  .paragraph--type--profile-assistants > *:not(:last-child) {
+  	margin-bottom: 8px;
+  }
+
+  .field--name-field-c-engr-external-links {
+  	padding-top: 10px;
+  }
+
+  .field--name-field-c-engr-external-links > div {
+  	margin-top: 20px;
+  }
+
+
+  .field--name-field-engr-c-assistants {
+  	display: flex;
+  	flex-wrap: wrap;
+  	column-gap: 20px;
+  }
+
+  .field--name-field-engr-c-assistants > div {
+  	width: 100%;
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 991px) {
+  	.field--name-field-engr-c-assistants > div {
+  		width: calc(50% - 10px);
+  	}
+  }
+
+
+  /*****************************************
+  *  Teaching Block
+  ******************************************/
+
+  @media (min-width: 768px) { 
+  .block-field-blocknodeosu-profilefield-coe-profile-teaching .field__items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); 
+      gap: 20px 80px; 
+  }
+  }
+  @media (max-width: 768px) { 
+  .paragraph--type--profile-teaching{
+  	padding-bottom: 20px;	
+  }
+  }
+
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Header Visibility
+  	
+  	Logic to have display of headers depend on existence of corresponding field 
+  	----------------------------------------------------------------------------*/
+
+  /* About */
+  .main-profile-body:not(:has(.field--name-field-profile-biography)) .block:has(.biography-header) {
+  	display: none;
+  }
+
+  .main-profile-body:not(:has(.field--name-field-c-engr-degrees)) .block:has(.degrees-header) {
+  	display: none;
+  }
+
+  .main-profile-body:not(:has(.field--name-field-c-engr-awards)) .block:has(.awards-header) {
+  	display: none;
+  }
+
+  .main-profile-body:not(:has(.field--name-field-coe-profile-teaching)) .block:has(.teaching-header) {
+  	display: none;
+  }
+
+  .main-profile-body:not(:has(.field--name-field-coe-profile-documents)) .block:has(.documents-header) {
+  	display: none;
+  }
+
+  /* Research */
+  .main-profile-body:not(:has(.profile-research-interests)) .block:has(.research-interests-header) {
+  	display: none;
+  }
+
+  .main-profile-body:not(:has(.profile-research-groups)) .block:has(.research-groups-header) {
+  	display: none;
+  }
+
+  .main-profile-body:not(:has(.profile-research-website)) .block:has(.research-website-header) {
+  	display: none;
+  }
+
+  .main-profile-body:not(:has(.profile-labs)) .block:has(.labs-header) {
+  	display: none;
+  }
+
+  .main-profile-body:not(:has(.profile-publications)) .block:has(.publications-header) {
+  	display: none;
+  }
+
+
+  /*********************************************************
+
+  *SIDEBAR
+
+  **********************************************************/
+
+  .orange-arrow-link, .yellow-arrow-link, .black-arrow-link, .white-arrow-link{
+  	margin-top: 0px !important;
+  }
+
+
+  /*********************************************************
+
+  Body Spacing
+
+  **********************************************************/
+  .main-profile-body-col-1 > div:first-of-type {
+    margin-top: 0 !important;
+  }
+
+  .main-profile-body-col-2 > div:last-of-type {
+    margin-bottom: 0 !important;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Document Cards
+  	
+  	Purpose: Buttons that can link doucments with download/link icon
+  	==============================================================================================================================================================*/
+
+
+  .field--name-field-coe-profile-documents .field__item {
+    position: relative;
+    border-radius: 5px;
+    border: 2px solid rgba(0,133,155,0.12); /* subtle High-Tide border */
+    padding: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: 0.3s ease;
+  }
+
+  .field--name-field-coe-profile-documents .field__item:hover {
+    box-shadow: inset 0 0 0 3px var(--Secondary-High-Tide, #00859B);
+    border-color: transparent; 
+  }
+
+  .field--name-field-coe-profile-documents .field__item:active {
+    box-shadow: inset 0 0 0 3px #003B5C;
+    border-color: transparent; 
+  }
+
+  .field--name-field-coe-profile-documents .field__item .file {
+    display: flex;
+    align-items: center;          /* vertical centering */
+    justify-content: space-between; /* push text left, icon right */
+    height: 100%;
+    text-align: left;
+  }
+
+  /* Make full block clickable */
+  .field--name-field-coe-profile-documents .field__item .file a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  /* Icons */
+  .field--name-field-coe-profile-documents .field__item .file::after {
+    content: url("/sites/engineering.oregonstate.edu/files/2025-11/link%20icon.svg");
+    padding-top: 5px;
+  }
+
+  .field--name-field-coe-profile-documents .field__item .file::after{
+  	content: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjUiIHZpZXdCb3g9IjAgMCAyNCAyNSIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTEyIDEuMjVWMTUuMjUiIHN0cm9rZT0iIzAwODU5QiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTYgMTEuMjVMMTIgMTcuMjVMMTggMTEuMjUiIHN0cm9rZT0iIzAwODU5QiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiLz4KPHBhdGggZD0iTTAgMjEuMjVIMjRWMjQuMjVIMFYyMS4yNVoiIGZpbGw9IiMwMDg1OUIiLz4KPC9zdmc+Cg==");
+  	padding-top: 5px;
+  }
+
+  .field--name-field-coe-profile-documents .field__item span:not(.file) {
+    display: none;
+  }
+
+
+  .field--name-field-coe-profile-documents .field__item a:hover,
+  .field--name-field-coe-profile-documents .field__item a:active,
+  .field--name-field-coe-profile-documents .field__item a:focus{
+  	color: var(--Primary-Paddletail-Black, #000) !important;
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	 /*Main/H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	border-bottom: none;
+  }
+
+  .field--name-field-coe-profile-documents .field__item a{
+  	border-bottom: none;
+  	color: var(--Primary-Paddletail-Black, #000);
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 130%;
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  .field--name-field-coe-profile-documents > .field__item {
+  	width: calc(50% - 10px);	
+  }
+
+  @media (max-width: 991px) {
+  .field--name-field-coe-profile-documents .field__item {
+  	margin-bottom: 16px;
+  	width: 100%;
+  }
+  }
+
+  .field--name-field-coe-profile-documents {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: space-between;
+  }
+
+  .moondust-background:not(
+    :has(.block-views-blockengr-profile-related-stories-related-people-stories-block,
+         .block-views-blockengr-videos-profiles-related-video,
+         .block-views-blockengr-videos-block-4,
+         .block-views-blockpodcast-series-episode-cards-block-2)
+  ) {
+    display: none !important;
+  }
+
+  .layout-content{
+    background: #FFF;
+  }
+
+  .layout-content .node--unpublished {
+    background: #FFF;
+  }
+
+  .container-fluid:has(.madrone-breadcrumb) { 
+    background-color: #FFF !important;
+  }
+
+  .moondust-background{
+    background-color: #F4F8FA !important;
+  }
+
+
+  /*===========================================
+  Custom stylings and overrides for Story cards
+  ===========================================*/
+
+
+  /*#views-bootstrap-engr-stories-block-11{*/
+  /*	margin-bottom: 80px;	*/
+  /*}*/
+
+  .related-story-card > div,
+  .story-card {
+    border-radius: 5px;
+    border: 1px solid #F8F9FA;
+    background: #FFF;
+    box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+    height: 100%;
+    transition: .3s;
+  }
+
+  .story-card-wide{
+    border-radius: 5px;
+    border: 1px solid #F8F9FA;
+    background: #FFF;
+    box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+    transition: .3s;
+  }
+
+  .related-story-card > div:hover,
+  .story-card:hover,
+  .story-card-wide:hover {
+    background: #F9FCFD !important;
+    transition: .3s;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+    
+  .story-card a, .story-card-wide a, #views-bootstrap-engr-stories-block-7 a{
+    text-decoration: none !important;
+  }
+
+  .story-body{
+    color: #000;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    padding: 0 30px 30px 30px !important;
+  	flex-grow: 1;
+  }
+
+  .story-card-text,
+  .podcast-card-body {
+    height: calc(100% - 250px);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  @media only screen and (max-width: 608px) {
+    .story-card {
+      height: 700px !important;
+    }
+  }
+
+  /* Image effects */
+  .new-story-card-img img{
+    /*width: 417px;*/
+    border-radius: 5px 5px 0 0 !important;
+    height: 250px;
+    object-fit: cover;
+    width: 100%;
+  }
+  .new-story-title{
+    color:  #000;
+    font-family: "Open Sans";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600 !important;
+    line-height: normal;
+    padding: 30px !important;
+  }
+
+  .new-story-title{
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical !important;
+    -webkit-line-clamp: 3 !important;
+    overflow: hidden !important;
+    
+  }
+
+
+  .related-stories-header{
+    color: #D73F09;
+    font-family: Stratum2web;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+    padding-top: 120px;
+    padding-bottom: 70px;
+  }
+
+  /* Button Effects and hovers */
+
+  .read-more-stories-btn{
+    background: #FFF;
+    color: #000;
+    border: 2px solid #000;
+    width: 320px;
+    font-weight: 600 !important;
+    letter-spacing: 1.6px;
+    height: 60px;
+    border-radius: 0;
+    text-transform: uppercase;
+    padding-top: 12px;
+  }
+
+  .read-more-stories-btn:hover{
+    border: 2px solid #D73F09;
+    background: #D73F09;
+    color: #FFF;
+  }
+
+  .yellow-button{
+    background: #003B5C;
+    color: #FFB500;
+    border: 2px solid #FFB500;
+    width: 320px;
+    font-weight: 600 !important;
+    letter-spacing: 1.6px;
+    height: 60px;
+    border-radius: 0;
+    text-transform: uppercase;
+    padding-top: 12px;
+  }
+
+  .yellow-button:hover{
+    color: #000;
+    background:#FFB500 ;
+    border: 2px solid #FFB500;
+    
+  }
+
+  /* Anchor Link effects and hovers */
+
+  /* Read more link */
+  .read-more-link a {
+    font-family: Stratum2Web;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #D73F09;
+    text-decoration: none !important;
+    background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 25px;
+    margin-right: 10px;
+    margin-top: 18px;
+    transition: 0.2s ease;
+    border-bottom: none;
+  }
+
+  .read-more-link {
+    padding-right: 30px;
+    padding-left: 30px;
+    margin-top: auto;
+  }
+
+  /* Orange Arrow Links Hover State */
+  .read-more-link a:hover {
+    padding-right: 35px;
+    margin-right: 0px;
+    border-bottom: none;
+  }
+
+  /* Orange Arrow Links Active State */
+  .read-more-link a:focus,
+  .read-more-link a:active {
+    background-color: transparent !important;
+    color: #BE3706 !important;
+    padding-right: 35px !important;
+    border-bottom: none !important;
+  }
+  .yellow-link{
+    color: #FFB500;
+    text-decoration: underline;
+    text-decoration-color: #FFB500 !important;
+    text-decoration-thickness: 1.5px !important;
+    background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .yellow-link:hover{
+    color: #FFB500 !important;
+    text-decoration: underline !important;
+    text-decoration-color:#FFB500 !important;
+    text-decoration-thickness: 3px !important;
+    background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+  .yellow-link:active{
+    color: #FFB500 !important;
+    text-decoration: underline !important;
+    text-decoration-color:#FFB500 !important;
+    text-decoration-thickness: 3px !important;
+    background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .orange-link{
+    color: #D73F09 !important;
+    text-decoration: underline;
+    text-decoration-color:#D73F09 !important;
+    text-decoration-thickness: 1.5px !important;
+    background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .orange-link:hover{
+    color: #D73F09 !important;
+    text-decoration: underline !important;
+    text-decoration-color:#D73F09 !important;
+    text-decoration-thickness: 3px !important;
+    background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .orange-link:active{
+    color: #D73F09 !important;
+    text-decoration: underline !important;
+    text-decoration-color:#D73F09 !important;
+    text-decoration-thickness: 3px !important;
+    background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  /* Doesn't display spacing on Program pages without stories */
+  .osu-toc-stop:not(:has(.story-card)) {
+     display: none;
+  }
+
+  .block-views-blockengr-stories-block-10 h2{
+    color: #D73F09;
+
+    /* Main/H2 */
+    font-family: Stratum2web;
+    font-size: 64px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 130%; /* 83.2px */
+    /*margin-top: 120px;*/
+    margin-bottom: 50px;
+  }
+
+  /*Story Filters Styling*/
+
+  .form-select{
+    border-radius: 5px;
+    border: 2px solid var(--Primary-Paddletail-Black, #000);
+    width: 580px;
+    height: 76px;
+    flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+    .block-views-blockengr-stories-block-10 h2{
+      font-size: 44px;
+      line-height: 120%; 
+    }
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 768px) { 
+    .block-views-blockengr-stories-block-10 h2{
+      font-size: 48px;
+      line-height: 120%; 
+    }
+    
+    .story-card {
+      height: 700px !important;
+    }
+    
+  }
+
+  @media only screen and (max-width: 881px) and (min-width: 768px) {
+    .story-card {
+      height: 750px !important;
+    }
+  }
+
+  @media only screen and (max-width: 799px) and (min-width: 768px) {
+    .story-card {
+      height: 800px !important;
+    }
+  }
+
+
+  /*Header Styling*/
+  .views-element-container h2{
+    color: var(--Primary-Paddletail-Black, #000);
+    font-feature-settings: 'liga' off, 'clig' off;
+    
+    /* Main/H3 */
+    font-family: Stratum2web;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 130%; /* 46.8px */
+  }
+
+  .block-views-blockengr-profile-related-stories-block-1 h2,
+  .black-border-bottom{
+    border-bottom: 6px solid #000;
+  }
+
+
+  .related-story-card .read-more-link a:before {
+  	position: absolute;
+  	inset: 0;
+  	content: "";
+  }
+
+
+
+  /******************************
+  RELATED MEDIA SECTION
+  *******************************/
+
+  .card{
+    background: #FFF;
+    display: grid;
+    grid-template-rows: 1fr auto; /* The first row takes available space, the second is auto-sized */
+    border-color: #ECEDEE;
+    border-radius: 0px 0px 5px 5px !important;
+    width: 100%;
+    height: 100%;
+    box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .card:hover{
+    background: #F9FCFD;
+    transition: .3s;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .card-body{
+    padding: 30px 30px 24px 30px;
+  }
+
+  iframe{
+    border-radius: 5px 5px 0px 0px;
+    width: 100%;
+    height: 327px;
+  }
+
+  /* Hide header by default */
+  .related-media-header {
+    display: none;
+  }
+
+  .podcast-card-body .label-text {
+      padding: 30px 0px 0px 30px;
+  }
+
+  /* Show header if Videos OR Podcasts view exists */
+  .layout-builder__layout:has(
+    .block-views-blockengr-videos-profiles-related-video,
+    .block-views-blockpodcast-series-episode-cards-block-2
+  ) .related-media-header {
+    display: block;
+  }
+
+
+  /****************
+  BODY SECTION
+
+  ******************/
+
+  .field--name-field-c-engr-degrees .field__items {
+    padding-left: 1.25rem;
+  }
+
+  .field--name-field-c-engr-degrees .field__item {
+    display: list-item;
+    list-style-type: disc;
+    margin-left: 0;
+  }
+
+  /* Entire Body */
+  .main-profile-body:not(:has(
+    /* Sidebar */
+    .sidebar,
+    /* About */
+    .profile-biography,
+    .profile-degrees,
+    .profile-awards,
+    .profile-teaching,
+    .field--name-field-coe-profile-documents,
+    /* Research */
+    .profile-research-interests,
+    .profile-research-groups,
+    .profile-research-website,
+    .profile-labs,
+    .profile-additional-links
+    )) {
+    display: none;
+  }
+
+  /* About */
+  .layout-builder__layout:not(:has(
+    .profile-biography,
+    .profile-degrees,
+    .profile-awards,
+    .profile-teaching,
+    .REPLACE_WITH_DOCS_FIELD_NAME
+  )) .block:has(.about-header) {
+    display: none;
+  }
+
+  /* Research */
+  .layout-builder__layout:not(:has(
+    .profile-research-interests,
+    .profile-research-groups,
+    .profile-research-website,
+    .profile-labs,
+    .profile-additional-links
+  )) .block:has(.research-header) {
+    display: none;
+  }
+
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      osu_profile: osu_profile
+contexts: {  }
+conditions_require_all: true

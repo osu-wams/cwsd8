@@ -1,0 +1,1358 @@
+uuid: fe41c548-e8a8-447d-8236-f6f56515611a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: 7_regions_draft
+label: '7 Regions'
+code: |
+  /*body{
+  	overflow: hidden !important;
+  }
+  */
+  /*.overlay-text{
+  	display:none;
+  }*/
+  /*
+  .overlay-regions{
+  	position: absolute;
+    top: -150px;
+    z-index: 9999;
+    height: 100vh;
+  }*/
+
+  /*.overlay-regions .flex-1::before{
+  	content: '';
+  	height: 100%;
+  	width: 100%;
+  	z-index: 99999;
+  	background: #0000008a;
+  	top: 0;
+  	bottom: 0;
+  	position: absolute;
+  	left: 0;
+  }*/
+
+  .mw-1700{
+  	max-width: 1700px !important;
+  }
+
+  .flex-1{
+  	flex:1;
+  }
+
+  .dsktop{
+  	display: block;
+  }
+
+  .desktop-tablet{
+  	display: block;
+  }
+
+  .mobile{ 
+  	display: none;
+  }
+
+  .tablet-mobile{
+  	display: none;
+  }
+
+  .no-overflow{
+  	overflow: hidden;
+  }
+
+  .landing-stories.regional-news{
+  	padding-left: 3rem;
+  	padding-right: 3rem;
+  }
+
+  @media (max-width: 991px){
+  	.dsktop{
+  		display: none !important;
+  	}
+  	
+  	.tablet-mobile{
+  		display: block !important;
+  	}
+  	
+  	.oregon-regions .nav-tabs button{
+      width: 100%;
+  	}
+  	
+  	.oregon-regions .nav-tabs button.active{
+  		border-radius: 0 !important;
+  	}
+
+  	.oregon-regions .nav-tabs{
+      display: flex;
+      flex-direction: column;
+      position: initial !important;
+      width: 100% !important;
+      border-radius: 0 !important;
+      margin-bottom: -0.5rem !important;
+  	}
+  	
+  	.carnegie-img {
+  		min-height: 200px !important;
+  	}
+  	
+  	.email-further-reading{
+  		margin-top: 0 !important;
+  	}
+  }
+
+  /* TABS */
+
+  .more-regions-btn{
+  	width: fit-content;
+    position: absolute;
+    top: 2rem;
+    right: 1rem;
+    z-index: 9;
+  }
+
+  .oregon-regions .tab-content{
+  	margin-bottom: 0 !important;
+  }
+
+  .oregon-regions h2 a span{
+  	display: none !important;
+  }
+
+  .oregon-regions .nav-tabs{
+  	position: absolute;
+  	z-index: 999;
+  	width: 95%;
+  	top: 1rem;
+  	left: 0;
+  	right: 0;
+  	margin: auto;
+  	border: none;
+  	background: rgba(0, 0, 0, .3);
+  	backdrop-filter: blur(8px);
+  	border-radius: 50px;
+  }
+
+  .oregon-regions .nav-tabs button{
+  	color: rgba(255, 255, 255, .7);
+  	font-weight: 700;
+  	letter-spacing: .6px;
+  	text-transform: uppercase;
+  	border-top-left-radius: 0 !important;
+  	border-top-right-radius: 0 !important;
+  	font-size: 12px;
+  }
+
+  .nav-tabs .nav-link:not(.active):last-child:hover, .nav-tabs .nav-link:not(.active):last-child:focus{
+  		border-radius: 0px 50px 50px 0px !important
+  }
+
+  .nav-tabs .nav-link:not(.active):first-child:hover, .nav-tabs .nav-link:not(.active):first-child:focus{
+  		border-radius: 50px 0px 0px 50px !important;
+  }
+
+  @media (min-width: 992px){
+  	.oregon-regions .nav-tabs .nav-link.active:first-child{
+  		border-radius: 50px 0px 0px 50px !important;
+  	}
+  	
+  	.oregon-regions .nav-tabs .nav-link.active:last-child{
+  		border-radius: 0px 50px 50px 0px !important
+  	}
+  	
+  }
+
+  .region-intro{
+  	z-index:1;
+  }
+
+  .gradient-bg::after{
+  	content: "";
+  	position:absolute;
+  	top: 0;
+  	background: #000000;
+  	background: linear-gradient(83deg, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%);
+  	width:100%;
+  	height:100%;
+  	
+  }
+
+  .regional-news .carousel-inner .col-md-4{
+    margin-bottom: 3rem;
+  }
+
+  .regional-news .carousel .carousel-indicators, .regional-news-all .carousel .carousel-indicators{
+  	background-color: hsl(15.7deg 92% 43.9% / 0%);
+  }
+
+  .regional-news .carousel .carousel-indicators button, .regional-news-all .carousel .carousel-indicators button{
+  	height: 10px !important;
+  	width: 10px !important;
+  	border-radius: 50% !important;
+  }
+
+  .regional-news .story-card .story-title{
+  	font-weight: 800;
+  	color: #212529;
+  }
+
+  .regional-news .story-card a.btn {
+    display: block;
+    margin: auto;
+    width: fit-content;
+  }
+
+  .regional-news .carousel-control-prev, .regional-news-all .carousel-control-prev{
+  	left: -4rem;
+  }
+
+  .regional-news .carousel-control-next, .regional-news-all .carousel-control-next{
+  	right: -4rem;
+  }
+
+  .region-header{
+  	font-size: 6rem;
+  	line-height: 1;
+  	font-weight: 800;
+  }
+
+  @media (max-width: 1509px){
+  	.region-header{
+  		font-size: 5rem;
+  	}
+  }
+
+  @media (max-width: 1277px){
+  	.region-header{
+  		font-size: 4rem;
+  	}
+  	
+  	.region-stat-dsk .region-stat{
+  		font-size: 2rem;
+  	}
+  }
+
+  @media (max-width: 1046px){
+  	.region-header{
+  		font-size: 3rem;
+  	}
+  }
+
+  .region-bg-height{
+  	height: 800px;
+  	padding-bottom:4rem;
+  	padding-top:1rem;
+  	
+  	--osu-bg-overaly-from-color: hsl(210deg 11% 15% / 28%);
+    --osu-bg-overaly-to-color: hsl(210deg 11% 15% / 32%);
+    --osu-bg-overlay-deg: 0deg;
+    position: relative;
+  }
+
+  @media (max-width: 1024px){
+  	.region-bg-height{
+  		height: 600px;
+  	}
+  	
+  }
+
+  @media (max-width: 768px){
+  	.region-bg-height{
+  		height:300px;
+  		padding-bottom:0;
+  	}
+  	
+  	.oregon-regions .nav-tabs{
+  		position: relative;
+  		top: 0;
+  	}
+  	
+  	.gradient-bg::after{
+  		background: #00000000 !important;
+  	}
+  	
+  	.desktop-tablet{
+  		display: none !important;
+  	}
+  	
+  	.mobile{
+  		display: block;
+  	}
+  	
+  	.regional-news-all .carousel-inner .carousel-item{
+  		display: block !important;
+  		margin-right: 0 !important;
+  	}
+  	.regional-news-all .carousel-control-next, 
+  	.regional-news-all .carousel-control-prev, 
+  	.regional-news-all .carousel .carousel-indicators{
+  		display: none !important;
+  	}
+  	
+  	.regional-news-all .carousel.slide{
+  		margin-left: 1rem !important;
+  		margin-right: 1rem !important;
+  	}
+  	
+  	.landing-stories.regional-news{
+  		padding-left: 1rem !important;
+  		padding-right: 1rem !important;
+  	}
+  }
+
+  @media (min-width: 769px){
+  	.events-line{
+  		padding-left: 4rem;
+  		padding-right: 4rem;
+  	}
+  }
+
+  .region-stat{
+  	font-size: 3rem;
+  	font-weight: 800;
+  	line-height:1;
+  }
+
+  .region-stat-mobile{
+  	display:none;
+  }
+
+  @media (max-width: 768px){
+  	.region-stat-dsk{
+  		display: none !important;
+  	}
+  	
+  	.region-stat-mobile{
+  		display: block !important;
+  	}
+  }
+
+  .economic-impact-border{
+  	border-bottom: 2rem solid #d73f09;
+  	margin-top: -4rem;
+  }
+
+  @media (max-width: 767px){
+  	.economic-impact-border{
+  		border-bottom-right-radius: 2rem;
+  		margin-top: 0!important;
+  	}
+  	
+  	.economic-impact{
+  		flex-direction: column;
+      max-width: fit-content;
+      margin: auto !important;
+  	}
+  }
+
+  /* Stories */
+
+  	.regional-news-all .carousel.slide{
+  		margin-left: 3rem;
+  		margin-right: 3rem;
+  	}
+
+  .regional-news-all .carousel-inner .carousel-item .col-md-3 a{
+  	display:none;
+  }
+
+  .regional-news-all .carousel-inner .carousel-item .col-md-3:hover a{
+  	display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+  }
+
+  .regional-news-all .carousel-inner .carousel-item .col-md-3:hover img{
+  	transform: scale(1.07);
+  	filter: saturate(1);
+  }
+
+  .regional-news-all .carousel-inner .carousel-item .col-md-4 a{
+  	display:none;
+  }
+
+  .regional-news-all .carousel-inner .carousel-item .col-md-4:hover a{
+  	display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+  }
+
+  .regional-news-all .carousel-inner .carousel-item .col-md-4:hover img{
+  	transform: scale(1.07);
+  	filter: saturate(1);
+  }
+
+  .regional-news-all .image-outer{
+  	width: 100%;
+  	aspect-ratio: 3 / 2;
+  	overflow: hidden;
+  	margin-bottom: 14px;
+  	position: relative;
+  }
+
+  .regional-news-all img{
+  	width: 100%;
+  	height: 100%;
+  	object-fit: cover;
+  	display: block;
+  	filter: saturate(0.7);
+  	transition: transform 0.5s, filter 0.3s;
+  }
+
+  .regional-news-all img::after{
+  	content: '';
+      position: absolute;
+      inset: 0;
+      background: #d73f09;
+      opacity: 0;
+      mix-blend-mode: multiply;
+      transition: opacity 0.3s;
+  }
+
+  .regional-news-all .carousel .carousel-indicators {
+  	background-color: #d73f0900 !important;
+  	bottom: -40px !important;
+  }
+
+  .regional-news-all .carousel .carousel-indicators button{
+  	height: 10px !important;
+  	width: 10px !important;
+  	border-radius: 50% !important;
+  }
+
+  .shield-bg-stretch{
+  	background-repeat: no-repeat;
+  	background-size: 150%;
+  }
+
+  .region-section-sup{
+  	letter-spacing: 0.2em;
+  	display: flex;
+  	align-items: center;
+  	gap: 10px;
+  	margin-bottom: 10px;
+  }
+
+  .region-section-sup::before{
+  	content: '';
+  	display: inline-block;
+  	width: 20px;
+  	height: 1px;
+  	background: #d73f09;
+  }
+
+  /* Top Stories */
+
+  /**/
+
+  .new-regional-stories-top img{
+  	height: 500px;
+  	object-fit: cover;
+  	width: 100%;
+    filter: saturate(0.7);
+    transition: transform 0.5s, filter 0.3s;
+  }
+
+  .list-regional-stories-top img{
+  	height: 200px;
+  	width: 400px;
+  	object-fit: cover;
+  	min-width: 200px;
+    filter: saturate(0.7);
+    transition: transform 0.5s, filter 0.3s;
+  }
+
+  .new-regional-stories-top .product-display a, .list-regional-stories-top .views-field a{
+  	display: none;
+  }
+
+  .new-regional-stories-top .product-display:hover a, .list-regional-stories-top .views-field:hover a{
+  	display: block;
+  	position: absolute;
+  	height: 100%;
+  	width: 100%;
+  	top: 0;
+  	z-index: 999;
+  }
+
+  .new-regional-stories-top .product-display .image-outer, .list-regional-stories-top .views-field .image-outer{
+  	overflow: hidden;
+  	position: relative;
+  }
+
+  .list-regional-stories-top .views-field .image-outer{
+    min-width: 200px;
+  }
+
+  .new-regional-stories-top .product-display:hover img, .list-regional-stories-top .views-field:hover img{
+  	transform: scale(1.07);
+  	filter: saturate(1);
+  }
+
+  @media (max-width: 1200px){
+  	.new-regional-stories-top .product-display .regions-top-body{
+  		display: none!important;
+  	}
+  }
+
+  @media (max-width: 991px){
+  	.new-regional-stories-top .product-display img{
+  		height: 300px;
+  	}
+  	
+  	.list-regional-stories-top .views-field .image-outer{
+  		display: none;
+  	}
+  }
+
+  @media (max-width: 768px){
+  	.list-regional-stories-top .views-field .image-outer{
+  		display: block;
+  		margin-bottom: 1.5rem;
+  	}	
+  	
+  	.list-regional-stories-top .views-field img{
+  		height: 300px;
+  		width: 100% !important;
+  	}
+  	
+  	.list-regional-stories-top .views-field span{
+  		display: block !important;
+  	}
+  	
+  	.list-regional-stories-top .views-field .regions-top-title{
+  		font-size:calc(1.321875rem + 0.8625vw) !important;
+  	}
+  }
+
+  /**/
+
+  @media screen and (min-width: 1200px) {
+  	.landing-stories.regional-news {
+  		grid-template-columns: repeat(3, 1fr) !important;
+  	}
+  	
+  	.landing-stories{
+  		max-width: max-content !important;
+  	}
+  }
+      	
+  @media screen and (min-width: 1200px) {
+    .landing-stories.regional-news .views-row--1 img {
+      height: 400px;
+      object-fit: cover;
+    }
+  }
+
+  @media screen and (max-width: 991px) {
+    .landing-stories.regional-news .views-row--1 img, .landing-stories.regional-news .views-row--2 img, .landing-stories.regional-news .views-row--3 img {
+      height: 300px;
+      object-fit: cover;
+    }
+  }
+
+
+  @media screen and (min-width: 992px) {
+    .landing-stories.regional-news .views-row--2 img, .landing-stories.regional-news .views-row--3 img {
+  		height: 200px;
+  		object-fit: cover;
+    }
+  }
+
+  .landing-stories.regional-news .views-row--2 .regions-top-body, .landing-stories.regional-news .views-row--3 .regions-top-body{
+  	display:none;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.landing-stories.regional-news .views-row--1 .regions-top-body, .landing-stories.regional-news .views-row--2 .regions-top-body, .landing-stories.regional-news .views-row--3 .regions-top-body{
+  		display: -webkit-box;
+  		-webkit-line-clamp: 2;
+  		-webkit-box-orient: vertical;
+  		overflow: hidden;
+  	}
+  }
+
+  .landing-stories.regional-news .views-row--1 .regions-top-title{
+    font-size: calc(1.29375rem + 0.525vw) !important;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.landing-stories.regional-news .views-row--1 .regions-top-title, .landing-stories.regional-news .views-row--2 .regions-top-title, .landing-stories.regional-news .views-row--3 .regions-top-title{
+  		font-size: calc(1.265625rem + 0.1875vw) !important;
+  	}
+  }
+
+  .landing-stories.regional-news .product-display hr{
+  	margin-block: 1rem !important;
+  }
+
+  .landing-stories.regional-news .product-display{
+  	background: #fff;
+  	height: 100%;
+  }
+
+  .landing-stories.regional-news .product-display .views-field{
+  	height: 100%;
+  }
+
+  .landing-stories.regional-news .product-display .views-field .field-content{
+  	display: flex;
+  	flex-direction: column;
+  	height: 100%;
+  }
+
+  .news-footer{
+  	margin-top: auto;
+  	border-top: 1px solid #3333;
+  }
+
+  .landing-stories.regional-news .product-display .text-content-outer{
+  	flex: 1;
+  	display: flex;
+  	flex-direction: column;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.landing-stories.regional-news .product-display{
+  		margin-bottom: 2rem;
+  	}
+  }
+
+  .landing-stories.regional-news .image-outer {
+      width: 100%;
+      overflow: hidden;
+      position: relative;
+  }
+
+  .landing-stories.regional-news img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.7);
+      transition: transform 0.5s, filter 0.3s;
+  }
+
+  .landing-stories.regional-news .product-display:hover img {
+      transform: scale(1.07);
+      filter: saturate(1);
+  }
+
+  .landing-stories.regional-news .image-outer::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: #d73f09;
+      opacity: 0;
+      mix-blend-mode: multiply;
+      transition: opacity 0.3s;
+  }
+
+  .landing-stories.regional-news .product-display:hover.image-outer::after {
+      opacity: 0.4;
+  }
+
+  .landing-stories.regional-news .product-display{
+  	position: relative;
+  	transition: box-shadow 0.3s;
+  }
+
+  .landing-stories.regional-news .product-display:hover{
+  	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .landing-stories.regional-news .product-display .region-stretched-link{
+  	display:none;
+  }
+
+  .landing-stories.regional-news .product-display:hover .region-stretched-link{
+  	display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    z-index: 999;
+  }
+
+  /* MAP */
+
+  /*.map-white-bg::after{
+  	content: '';
+    width: 100%;
+    height: 450px;
+    background: white;
+    position: absolute;
+    z-index: -1;
+    top: 50px;
+    bottom: 0;
+    margin: auto 0;
+  }*/
+
+  .map-section .container-fluid{
+  	max-width: 1600px;
+  	position:relative;
+  }
+
+  .map-section .container-fluid::after{
+    content: '';
+    border-bottom: 1px solid #d73f09;
+    width: 50%;
+    position: absolute;
+    height: 450px;
+    top: 20px;
+    bottom: 0;
+    margin: auto;
+    right: 12px;
+    z-index: -1;
+  }
+
+  .map-section .row::after{
+  	content: '';
+  	width: 100%;
+  	position: absolute;
+  	background: white;
+  	height: 450px;
+  	z-index: -1;
+  	left: 0px;
+  	margin: auto;
+  }
+
+  .map-section .row::before{
+  	content: '';
+  	width: 50%;
+  	position: absolute;
+  	height: 450px;
+  	z-index: -1;
+  	left: 0px;
+  	margin: auto;
+  	border-top: 1px solid #d73f09;
+  	top: -20px;
+  	bottom:0;
+  }
+
+  .map-wrap {
+    flex: 1 1 600px;
+    min-width: 0;
+    position: relative;
+    z-index: 8;
+  }
+
+  @media (max-width: 1700px){
+  .map-section .container-fluid{
+  		max-width: unset;
+  		padding-left: 4rem;
+  		padding-right: 4rem;
+  	}
+  	
+  	.map-section .container-fluid::after{
+  	  right: 4rem;
+  	}
+  }
+
+  @media (max-width: 1400px){
+  	.map-section .row::after{
+  	    height: 370px;
+  	    top: 0;
+  	    bottom: 0;
+  	}
+  	
+  	.map-section .row::before{
+      height: 370px;
+  	}
+  	
+  	.map-section .container-fluid::after{
+  	  height:370px;
+  	}
+  }
+
+  @media (max-width: 991px){
+  	.map-section .row::after{
+  		height: 100%!important;
+  	}
+  	
+  	.map-section .row::before{
+      height: 100%;
+  	}
+  	
+  	.map-section .container-fluid::after{
+  	  height:100%;
+  	}
+  	
+  	.map-section .row{
+  		padding-inline:2rem !important;
+  	}
+  	
+  	.map-section .map-footnote{
+  		display:none;
+  	}
+  }
+
+  @media (max-width: 768px){
+  	.map-section .container-fluid{
+  		padding-left: 0rem;
+  		padding-right: 0rem;
+  	}
+  	.map-section .container-fluid::after{
+  	  right:0;
+  	}
+  }
+
+  svg {
+    width: 100%;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 4px 24px rgba(0,0,0,0.12));
+  }
+
+  /* Region groups hover/active */
+  /*#Oregon_Coast,
+  #Mt\._Hood_Columnbia_River_Gorge,
+  #Portland_Region,
+  #Southern_Oregon,
+  #Willamette_Valley,
+  #Central_Oregon,
+  #Eastern_Oregon {
+    cursor: pointer;
+    transition: filter 0.18s ease;
+  }
+
+  #Oregon_Coast:hover,
+  #Mt\._Hood_Columnbia_River_Gorge:hover,
+  #Portland_Region:hover,
+  #Southern_Oregon:hover,
+  #Willamette_Valley:hover,
+  #Central_Oregon:hover,
+  #Eastern_Oregon:hover { 
+  	filter: brightness(1.25) saturate(1.15); 
+  }
+
+  #Oregon_Coast.active,
+  #Mt\._Hood_Columnbia_River_Gorge.active,
+  #Portland_Region.active,
+  #Southern_Oregon.active,
+  #Willamette_Valley.active,
+  #Central_Oregon.active,
+  #Eastern_Oregon.active {
+  	filter: brightness(1.35) saturate(1.3) drop-shadow(0 0 4px rgba(0,0,0,0.3)); 
+  }*/
+
+  /* Clickable point groups — circles and their labels */
+  .point-link {
+    cursor: pointer;
+  }
+
+  .point-link circle,
+  .point-link text {
+    transition: r 0.15s ease, fill 0.15s ease;
+  }
+
+  .point-link:hover circle {
+    fill: var(--orange) !important;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    flex: 0 0 300px;
+    position: sticky;
+    top: 40px;
+  }
+
+  .info-card {
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.09);
+    overflow: hidden;
+    width: 120%;
+    height: 400px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  @media (min-width: 992px) and (max-width: 1399px){
+  	.info-card {
+  	  width: 130% !important;
+  	}
+  }
+
+  .card-header { 
+  	padding: 22px 24px 18px; border-bottom: 1px solid #eee; 
+  }
+  .card-header .region-label {
+    font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+    font-weight: 500; color: #999; margin-bottom: 6px;
+  }
+
+  .card-header h2 {
+    font-size: 1.6rem; color: var(--navy); line-height: 1.15;
+  }
+
+  .card-color-bar { 
+  	height: 4px; width: 100%; 
+  }
+
+  .card-body { 
+  	padding: 20px 24px; 
+  	max-width: 90%;
+  }
+
+  .info-row {
+    display: flex; justify-content: space-between;
+    align-items: baseline; padding: 10px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  .info-row:last-child { 
+  	border-bottom: none; 
+  }
+
+  .info-row .label {
+    font-size: 0.78rem; font-weight: 500; text-transform: uppercase;
+    letter-spacing: 0.07em; color: #888;
+  }
+
+  .info-row .value {
+    font-size: 0.95rem; color: var(--text);
+    font-weight: 400; text-align: right; max-width: 180px;
+  }
+
+  .placeholder-card {
+    background: #fff; border-radius: 2px;
+    text-align: center; color: #bbb;
+  }
+
+  .placeholder-card p { 
+  	font-size: 0.9rem; line-height: 1.5; 
+  }
+
+  /* Search */
+  .search-wrap {
+    position: relative;
+    margin-bottom: 16px;
+  }
+
+  .search-wrap input {
+    width: 100%;
+    padding: 10px 14px 10px 38px;
+    border: 1.5px solid #d4cfc6;
+    border-radius: 4px;
+    background: #fff;
+    font-family: inherit;
+    font-size: 0.9rem;
+    color: var(--text);
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .search-wrap input:focus { 
+  	border-color: var(--navy); 
+  }
+
+  .search-wrap .search-icon {
+    position: absolute;
+    left: 11px; top: 50%;
+    transform: translateY(-50%);
+    color: #aaa;
+    font-size: 1rem;
+    pointer-events: none;
+  }
+
+  .search-results {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0; right: 0;
+    background: #fff;
+    border: 1.5px solid #d4cfc6;
+    border-radius: 4px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    z-index: 100;
+    max-height: 260px;
+    overflow-y: auto;
+    display: none;
+  }
+
+  .search-results.visible { 
+  	display: block; 
+  }
+
+  .search-result-item {
+    padding: 10px 14px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    font-size: 0.88rem;
+  }
+
+  .search-result-item:last-child { 
+  	border-bottom: none; 
+  }
+
+  .search-result-item:hover { 
+  	background: #f5f0e8; 
+  }
+
+  .search-result-item .item-type {
+    font-size: 0.72rem;
+    color: #aaa;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 800px) {
+    .sidebar { 
+    	position: static; flex: none; width: 100%; 
+    }
+  }
+
+  .search-wrap input{
+  	border-radius: 50px !important;
+  }
+  @media (max-width: 991px) {
+    .info-card {
+      display: none; /* hidden until region selected */
+    }
+
+    .info-card.modal-visible {
+      display: block;
+    }
+  }
+
+  @media (max-width: 991px){
+  	.info-card{
+  		position: absolute;
+  		z-index: 99999;
+  		top:50%;
+  		bottom: 50%;
+  		width: 500px;
+  		height: 500px;
+  		left: 50%;
+  		transform: translate(-50%, -50%);
+  		right: 50%;
+  	}
+  	
+  	.region-modal-overlay{
+  		background: rgba(0, 0, 0, 0.7);
+  		width: 100%;
+  		height: 100%;
+  		position: fixed;
+  		top: 0;
+  		bottom: 0;
+  		left: 0;
+  		right: 0;
+  		z-index: 9;
+  		display: block;
+  	}
+  	
+  	.modal-close-btn {
+  		display: flex !important;
+  	}
+  	
+  	.map-wrap{
+  		margin-top: 2rem !important;
+  	}
+  	
+  	.carnegie{
+  		padding-bottom: 1rem !important;
+  		padding-top: 1rem !important;
+  	}
+  }
+
+  .modal-close-btn {
+    display: none;
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    background: none;
+    border: 1px solid #ddd;
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #888;
+    z-index: 10;
+    line-height: 1;
+  }
+
+  .carnegie-container .container{
+  	display:flex;
+  	max-width:100%;
+  	justify-content:end;
+  	padding-right: 0;
+  }
+
+  .carnegie .corner-outline::after{
+  	content: '';
+  	position: absolute;
+  	width: 100px;
+  	border-top: 1px solid #d73f09;
+  	right: -10px;
+  	top: -10px;
+  	height: 100px;
+  	border-right: 1px solid #d73f09;
+  }
+
+  .carnegie .container{
+  	max-width: 1600px !important;
+  }
+
+  .carnegie .row::after{
+  	content: '';
+    position: absolute;
+    background: #d73f09;
+    width: 1700px;
+    bottom: 60px;
+    height: 1px;
+    z-index: -1;
+    right: 0;
+    margin: auto;
+  }
+
+  .orange-boxshadow-left{
+    box-shadow: -10px 10px #d73f09;
+  }
+
+  @media (max-width: 1700px){
+  	.carnegie .container{
+  		max-width: unset;
+  		padding-left: 4rem;
+  		padding-right: 4rem;
+  	}
+  }
+
+  @media (max-width: 1450px){
+  	.carnegie .row::after{
+  	  bottom: 35px;
+  	}
+  }
+
+  @media (max-width: 768px){
+  	.carnegie, .carnegie .container{
+  		padding: 1rem !important;
+  	}
+  }
+
+
+
+  /*NEW*/
+  #Oregon_Coast,
+  #Mt_Hood_and_Gorge,
+  #Portland_Region,
+  #Southern_Oregon,
+  #Willamette_Valley,
+  #Central_Oregon,
+  #Eastern_Oregon {
+      cursor: pointer;
+      transition: filter 0.18s ease;
+  }
+   
+  #Oregon_Coast:hover,
+  #Mt_Hood_and_Gorge:hover,
+  #Portland_Region:hover,
+  #Southern_Oregon:hover,
+  #Willamette_Valley:hover,
+  #Central_Oregon:hover,
+  #Eastern_Oregon:hover {
+      filter: brightness(1.25) saturate(1.15);
+  }
+   
+  #Oregon_Coast.active,
+  #Mt_Hood_and_Gorge.active,
+  #Portland_Region.active,
+  #Southern_Oregon.active,
+  #Willamette_Valley.active,
+  #Central_Oregon.active,
+  #Eastern_Oregon.active {
+      filter: brightness(1.35) saturate(1.3) drop-shadow(0 0 4px rgba(0,0,0,0.3));
+  }
+   
+   
+   
+   
+   
+   
+   /* ── MAP: Region hover/active — replace the old 7-region CSS block ───────
+     The only change from the original CSS is the region ID for Mt. Hood:
+       OLD: #Mt\._Hood_Columnbia_River_Gorge  (required backslash-escaping)
+       NEW: #Mt_Hood_and_Gorge               (no escaping needed)
+     All other region IDs are unchanged.
+     ──────────────────────────────────────────────────────────────────────── */
+
+  #Oregon_Coast,
+  #Mt_Hood_and_Gorge,
+  #Portland_Region,
+  #Southern_Oregon,
+  #Willamette_Valley,
+  #Central_Oregon,
+  #Eastern_Oregon {
+      cursor: pointer;
+      transition: filter 0.18s ease;
+  }
+
+  #Oregon_Coast:hover,
+  #Mt_Hood_and_Gorge:hover,
+  #Portland_Region:hover,
+  #Southern_Oregon:hover,
+  #Willamette_Valley:hover,
+  #Central_Oregon:hover,
+  #Eastern_Oregon:hover {
+      filter: brightness(1.25) saturate(1.15);
+  }
+
+  #Oregon_Coast.active,
+  #Mt_Hood_and_Gorge.active,
+  #Portland_Region.active,
+  #Southern_Oregon.active,
+  #Willamette_Valley.active,
+  #Central_Oregon.active,
+  #Eastern_Oregon.active {
+      filter: brightness(1.35) saturate(1.3) drop-shadow(0 0 4px rgba(0,0,0,0.3));
+  }
+
+  /* ── Region popup modal ───────────────────────────────────────────────── */
+  .region-popup-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.55);
+      z-index: 10000;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .region-popup-overlay.region-popup-visible {
+      display: flex;
+  }
+
+  .region-popup-dialog {
+      position: relative;
+      background: #fff;
+      border-radius: 8px;
+      width: 90%;
+      max-width: 480px;
+      max-height: 80vh;
+      overflow-y: auto;
+      padding: 0 0 24px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      display: flex;
+      flex-direction: column;
+  }
+
+  .region-popup-colorbar {
+      height: 6px;
+      border-radius: 8px 8px 0 0;
+      flex-shrink: 0;
+  }
+
+  .region-popup-close {
+      position: absolute;
+      top: 10px;
+      right: 14px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+      color: #555;
+      padding: 0;
+  }
+
+  .region-popup-close:hover { color: #000; }
+
+  .region-popup-label {
+      margin: 16px 20px 2px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #888;
+  }
+
+  .region-popup-title {
+      margin: 0 20px 16px;
+      font-size: 22px;
+      font-weight: 700;
+      color: #1a1a1a;
+  }
+
+  .region-popup-list {
+      margin: 0 20px;
+      padding: 0;
+      list-style: none;
+  }
+
+  .region-popup-list li {
+      padding: 8px 0;
+      border-bottom: 1px solid #f0f0f0;
+      font-size: 14px;
+      color: #333;
+  }
+
+  .region-popup-list li:last-child { border-bottom: none; }
+
+  .region-popup-list a {
+      color: #d73f09;
+      text-decoration: none;
+  }
+
+  .region-popup-list a:hover { text-decoration: underline; }
+
+  .region-popup-list .no-link { color: #555; }
+
+  /* ── Pin tooltip ─────────────────────────────────────────────────────── */
+  .pin-tooltip {
+      position: absolute;
+      transform: translate(-50%, calc(-100% - 10px));
+      background: #1a1a1a;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.3;
+      padding: 6px 10px;
+      border-radius: 5px;
+      white-space: nowrap;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s ease;
+      z-index: 999;
+      max-width: 220px;
+      white-space: normal;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  /* Small downward-pointing arrow */
+  .pin-tooltip::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: #1a1a1a;
+  }
+
+  .pin-tooltip.visible {
+      opacity: 1;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/271\r\n/osu-oregon’s-7-regions/draft\r\n/group/6\r\n/regions-oregon/*"
+contexts: {  }
+conditions_require_all: true

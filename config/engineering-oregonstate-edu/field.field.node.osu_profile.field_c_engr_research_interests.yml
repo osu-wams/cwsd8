@@ -1,0 +1,29 @@
+uuid: c0210d04-5163-460f-8032-6398971acb0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_c_engr_research_interests
+    - node.type.osu_profile
+    - taxonomy.vocabulary.tags
+id: node.osu_profile.field_c_engr_research_interests
+field_name: field_c_engr_research_interests
+entity_type: node
+bundle: osu_profile
+label: 'Research Interests'
+description: 'Add your current research topics, any story added  to the site with these topics will be shown on your profile.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tags: tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

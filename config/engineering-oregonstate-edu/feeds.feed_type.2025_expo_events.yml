@@ -1,0 +1,132 @@
+uuid: d2164933-4e09-446d-9ebb-60eb678c597d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.2024_senior_projects.title
+    - field.field.node.2024_senior_projects.field_building
+    - field.field.node.2024_senior_projects.field_engr_expo_project_id
+    - field.field.node.2024_senior_projects.field_engr_expo_team_members
+    - field.field.node.2024_senior_projects.field_room
+    - field.field.node.2024_senior_projects.field_table_number
+    - field.field.node.2024_senior_projects.field_unit
+    - node.type.2024_senior_projects
+  module:
+    - node
+label: '2025 expo events'
+id: 2025_expo_events
+description: ''
+help: ''
+import_period: -1
+import_period_per_feed: false
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: 2024_senior_projects
+  langcode: en
+  insert_new: 1
+  update_existing: 1
+  update_non_existent: _delete
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  building:
+    value: Building
+    label: Building
+    machine_name: building
+    type: csv
+  project_id:
+    value: 'Project ID'
+    label: 'Project ID'
+    machine_name: project_id
+    type: csv
+  project_title:
+    value: 'Project Title'
+    label: 'Project Title'
+    machine_name: project_title
+    type: csv
+  room:
+    value: Room
+    label: Room
+    machine_name: room
+    type: csv
+  table:
+    value: Table
+    label: 'Table Formatted'
+    machine_name: table
+    type: csv
+  unit:
+    value: 'Unit:'
+    label: 'Unit:'
+    machine_name: unit
+    type: csv
+  team_members:
+    value: 'Team members:'
+    label: 'Team members:'
+    machine_name: team_members
+    type: csv
+mappings:
+  -
+    target: field_building
+    map:
+      value: building
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_engr_expo_project_id
+    map:
+      value: project_id
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: title
+    map:
+      value: project_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_room
+    map:
+      value: room
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_unit
+    map:
+      value: unit
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_engr_expo_team_members
+    map:
+      value: team_members
+    settings:
+      language: null
+  -
+    target: field_table_number
+    map:
+      value: table
+    settings:
+      language: null
+    unique: {  }

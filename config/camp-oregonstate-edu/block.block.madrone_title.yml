@@ -1,0 +1,34 @@
+uuid: 57268e4f-8ee8-439f-a5be-fa62c5c74392
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - ctools_block
+  theme:
+    - madrone
+id: madrone_title
+theme: madrone
+region: pre_footer
+weight: -5
+provider: null
+plugin: 'entity_field:group:label'
+settings:
+  id: 'entity_field:group:label'
+  label: 'Contact Info'
+  label_display: '0'
+  provider: ctools_block
+  context_mapping:
+    entity: '@group.group_route_context:group'
+  formatter:
+    type: string
+    weight: 0
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

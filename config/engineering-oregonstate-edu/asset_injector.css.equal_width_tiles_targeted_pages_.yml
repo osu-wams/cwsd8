@@ -1,0 +1,41 @@
+uuid: d0b6d7c1-e24d-445f-a8cb-376cae08cc87
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: equal_width_tiles_targeted_pages_
+label: 'Equal height tiles (targeted pages)'
+code: |-
+  /** Equal heights on some of the card rows **/
+
+
+  .row .block-inline-blockengineering-card,
+  .row .block-inline-blockengineering-card .block__content,
+  .row .block-inline-blockengineering-card .block__content > div:first-child{
+  	height: 97%;
+  } 
+
+  /** These are nested inside and we cannot control row height, so we're accounting for 2 lines instead to minimize impact**/ 
+
+  .row .block-inline-blockengineering-card .field--name-field-osu-card-link {
+  	height: 45px;
+  }
+
+  .h5 {
+      font-size: 20px !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/tools-services\r\n/node/5186"
+contexts: {  }
+conditions_require_all: true

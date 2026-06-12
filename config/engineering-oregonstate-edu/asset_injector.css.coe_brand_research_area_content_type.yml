@@ -1,0 +1,157 @@
+uuid: d1b6c3b0-d93c-424d-a870-134bc50dbe83
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_brand_research_area_content_type
+label: 'COE Brand Research Area Content Type'
+code: |-
+  .coe-research-hero > .container > .layout > .col-12 { 
+  	display: flex; 
+  	flex-direction: column-reverse; 
+  	gap: 10px;
+  }
+
+
+  .field--name-field-coe-article-module-body{
+  	width: 100%;
+  }
+
+  @media (min-width: 1200px){
+  .field--name-field-coe-article-module-body{
+  	width: 67%;
+  }
+  }
+
+  /*
+  Labs section
+  */
+  @media (min-width: 991px){
+  .paragraph--type--coe-image-and-text{
+  	display: flex;
+  	justify-content: space-between;
+  	align-items: center;
+  }
+  }
+
+  @media (max-width: 991px){
+  .field--name-field-media-image{
+  	margin-top: 50px;
+  }
+  }
+
+
+  .field--name-field-coe-image-style{
+  	display: none;
+  }
+
+  .field--name-field-coe-research-area-sections > .field__item { 
+  	margin-bottom: 60px; 
+  }
+
+  .field--name-field-coe-text-image-text h2{
+  	margin-bottom: 20px;
+  }
+
+  /************************************************************************
+
+  	SECTION: Image Box Shadow Color
+  	
+  	PURPOSE: Applies a box shadow color to images
+  	
+  	INSTRUCTIONS:
+  		1. Insert class name (ex. img-bottom-left-hop-bine) into block 
+  		2. Configure > Manage Attributes > Block content attributes
+  ************************************************************************/
+
+
+  .block-field-blocknoderesearch-areafield-labs-image-box-shadow span {
+    display: none;
+  }
+
+  /* High Tide shadow */
+  .field--name-field-coe-image-style:has(.img-bottom-right-high-tide)
+    ~ .field--name-field-coe-image-image-and-text img {
+      box-shadow: 15px 15px 0 #00859B;
+      margin-bottom: 25px;
+      width: calc(100% - 15px);
+  }
+
+  /* Hop-Bine shadow */
+  .field--name-field-coe-image-style:has(.img-bottom-right-hop-bine)
+    ~ .field--name-field-coe-image-image-and-text img {
+      box-shadow: 15px 15px 0 #AA9D2E;
+      margin-bottom: 25px;
+      width: calc(100% - 15px);
+  }
+
+  /* Yellow shadow */
+  .field--name-field-coe-image-style:has(.img-bottom-right-luminance)
+  	~ .field--name-field-coe-image-image-and-text img {
+  	box-shadow: 15px 15px 0 #FFB500;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+
+  /* Pine stand */
+  .field--name-field-coe-image-style:has(.img-bottom-right-pine-stand)
+  	~ .field--name-field-coe-image-image-and-text .field__item img {
+  	box-shadow: 15px 15px 0 #4A773C;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+
+  /* Solar Flare */
+  .field--name-field-coe-image-style:has(.img-bottom-right-solar-flare)
+   ~ .field--name-field-coe-image-image-and-text .field__item img {
+  	box-shadow: 15px 15px 0 #D3832B;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+
+  /* Rogue Wave */
+  .field--name-field-coe-image-style:has(.img-bottom-right-rogue-wave)
+   ~ .field--name-field-coe-image-image-and-text .field__item img {
+  	box-shadow: 15px 15px 0 #0D5257;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+
+  /* Orange */
+  .field--name-field-coe-image-style:has(.img-bottom-right-orange)
+   ~ .field--name-field-coe-image-image-and-text .field__item img {
+  	box-shadow: 15px 15px 0 #d73f09;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+
+  /* Seafoam */
+  .field--name-field-coe-image-style:has(.img-bottom-right-seafoam)
+  	~ .field--name-field-coe-image-image-and-text .field__item img {
+  	box-shadow: 15px 15px 0 #B8DDE1;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+
+  /* Stratosphere */
+  .field--name-field-coe-image-style:has(.img-bottom-right-stratosphere)
+  	~ .field--name-field-coe-image-image-and-text .field__item img {
+  	box-shadow: 15px 15px 0 #006A8E;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/research/robotics/*\r\n/research/artificial-intelligence/*"
+contexts: {  }
+conditions_require_all: true

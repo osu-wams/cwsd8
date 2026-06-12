@@ -1,0 +1,46 @@
+uuid: 92c8f935-b3a0-4486-9db0-ae4ef0cbfcb2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.coe_numbers_block.field_coe_divider
+    - field.field.paragraph.coe_numbers_block.field_coe_label
+    - field.field.paragraph.coe_numbers_block.field_coe_number
+    - paragraphs.paragraphs_type.coe_numbers_block
+  module:
+    - text_field_formatter
+id: paragraph.coe_numbers_block.default
+targetEntityType: paragraph
+bundle: coe_numbers_block
+mode: default
+content:
+  field_coe_divider:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_coe_label:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h4
+      wrap_class: ''
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_coe_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

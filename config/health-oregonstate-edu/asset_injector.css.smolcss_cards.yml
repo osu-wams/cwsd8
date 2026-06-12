@@ -1,0 +1,374 @@
+uuid: 2a7509c2-bff0-4a6b-b7d6-70e804cc80db
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: smolcss_cards
+label: 'SmolCSS cards'
+code: |-
+  /*
+  * Prefixed by https://autoprefixer.github.io
+  * PostCSS: v8.4.14,
+  * Autoprefixer: v10.4.7
+  * Browsers: defaults
+  */
+
+  /* Minimal snippets for modern CSS layouts and components via https://smolcss.dev/ */
+
+
+
+
+  /* Smol Responsive CSS Grid */
+
+  .smol-css-grid {
+    --min: 20ch;
+    --gap: 3rem;
+    display: grid;
+     grid-template-columns: repeat(auto-fill, minmax(302px, 1fr));
+    justify-content: center;
+    grid-gap: var(--gap);
+
+    /* min() with 100% prevents overflow
+    in extra narrow spaces */
+    
+    /*grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--min)), 1fr);*/
+  }
+
+  /* Smol Responsive Flexbox Grid */
+
+  .smol-flexbox-grid {
+    --min: 10ch;
+    --gap: 3rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--gap);
+  }
+
+  .smol-flexbox-grid > * {
+    flex: 1 1 var(--min);
+  }
+
+
+  .smol-flexbox-grid-15ch {
+      --min: 15ch;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3em;
+      justify-content: center;
+  }
+
+  .smol-flexbox-grid-15ch > * {
+      flex: 1 1 var(--min);
+  }
+
+  .smol-flexbox-grid-20ch {
+      --min: 20ch;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3em;
+      justify-content: center;
+  }
+
+  .smol-flexbox-grid-20ch > * {
+      flex: 1 1 var(--min);
+  }
+
+  .smol-flexbox-grid-25ch {
+      --min: 25ch;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3em;
+      justify-content: center;
+  }
+
+  .smol-flexbox-grid-25ch > * {
+      flex: 1 1 var(--min);
+  }
+
+  .smol-flexbox-grid-30ch {
+      --min: 30ch;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3em;
+      justify-content: center;
+  }
+
+  .smol-flexbox-grid-30ch > * {
+      flex: 1 1 var(--min);
+  }
+
+
+  .smol-flexbox-grid-35ch {
+      --min: 35ch;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3em;
+      justify-content: center;
+  }
+
+  .smol-flexbox-grid-35ch > * {
+      flex: 1 1 var(--min);
+  }
+
+
+  .smol-flexbox-grid-40ch {
+      --min: 40ch;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3em;
+      justify-content: center;
+  }
+
+  .smol-flexbox-grid-40ch > * {
+      flex: 1 1 var(--min);
+  }
+
+  .smol-flexbox-grid-45ch {
+      --min: 45ch;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3em;
+      justify-content: center;
+  }
+
+  .smol-flexbox-grid-45ch > * {
+      flex: 1 1 var(--min);
+  }
+
+
+  .smol-flexbox-grid-50ch {
+      --min: 50ch;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3em;
+      justify-content: center;
+  }
+
+  .smol-flexbox-grid-50ch > * {
+      flex: 1 1 var(--min);
+  }
+
+  .smol-flexbox-grid-50ch-start {
+      --min: 50ch;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3em;
+  }
+
+  .smol-flexbox-grid-50ch-start > * {
+      flex: 1 1 var(--min);
+  }
+
+
+  /*
+
+  Smol Modern Centering
+
+  */
+
+  .smol-centering {
+    display: grid;
+    place-content: center;
+  }
+
+
+  /*
+
+  Smol Responsive Padding
+
+  */
+
+  .smol-responsive-padding {
+    padding: 1.5rem clamp(1rem, 5%, 3rem);
+  }
+
+
+  /*
+
+  Smol Responsive Sidebar Layout
+
+  */
+
+  .smol-sidebar {
+    display: grid;
+    grid-template-columns: fit-content(20ch) minmax(min(50vw, 30ch), 1fr);
+  }
+
+
+  /*
+
+  Smol Composable Card Component
+
+  */
+
+
+  .smol-card-component {
+    --img-ratio: 16/9;
+
+    display: flex;
+    flex-direction: column;
+    /* Supported for flexbox in modern browsers since April 2021 */
+    gap: 0.5rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+    border-radius: 0.5rem;
+    background: white;
+    transition: 0.2s ease-out;
+  }
+
+  .smol-card-component > img {
+    aspect-ratio: var(--img-ratio);
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+  }
+
+  .smol-card-component > img:first-child {
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .smol-card-component > img:last-child {
+    border-radius: 0 0 0.5rem 0.5rem;
+    margin-top: auto;
+  }
+
+  .smol-card-component > :not(img) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .smol-card-component > :not(img):first-child {
+    /*margin-top: 1rem;*/
+  }
+
+  /* Enhanced `:not()` accepts a selector list,
+  but as a fallback you can chain `:not()` instead */
+  .smol-card-component > :last-of-type:not(img, h2, h3, h4) {
+    /*margin-bottom: 1rem;*/
+  }
+
+  .smol-card-component > h4 {
+  	font-size: 1.4rem;
+  }
+
+  .smol-card-component > :not(h2, h3, h4) {
+    font-size: 0.9rem;
+  }
+
+  .smol-card-component > a {
+    align-self: start;
+  }
+
+
+  /* inclusive design book for cards via https://inclusive-components.design/cards/*/
+  .smol-card-component { 
+  	position: relative;
+  }
+
+  .smol-card-component > * {
+  	 margin: 0;
+  }
+
+  .smol-card-component :first-child {
+  	 margin: 0;
+  }
+
+  .smol-card-component :last-child {
+  	margin-bottom: 0.5rem;
+  }
+
+
+  .smol-card-component a::before {
+  	content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .smol-card-component div img {
+    aspect-ratio: var(--img-ratio);
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .smol-card-component:hover {
+  	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transform: scale(1.01);
+  }
+
+
+
+
+  /*
+
+  Smol Composable Card Component Original... no modifications
+
+  */
+
+  .smol-card-component-og {
+    --img-ratio: 3/2;
+
+    display: flex;
+    flex-direction: column;
+    /* Supported for flexbox in modern browsers since April 2021 */
+    gap: 1rem;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+    border-radius: 0.5rem;
+  }
+
+  .smol-card-component-og > img {
+    aspect-ratio: var(--img-ratio);
+    object-fit: cover;
+    width: 100%;
+  }
+
+  .smol-card-component-og > img:first-child {
+    border-radius: 0.5rem 0.5rem 0 0;
+  }
+
+  .smol-card-component-og > img:last-child {
+    border-radius: 0 0 0.5rem 0.5rem;
+    margin-top: auto;
+  }
+
+  .smol-card-component-og > :not(img) {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+
+  .smol-card-component-og > :not(img):first-child {
+    margin-top: 1rem;
+  }
+
+  /* Enhanced `:not()` accepts a selector list,
+  but as a fallback you can chain `:not()` instead */
+  .smol-card-component-og > :last-of-type:not(img, h2, h3, h4) {
+    margin-bottom: 1rem;
+  }
+
+  .smol-card-component-og > :not(h2, h3, h4) {
+    font-size: 0.9rem;
+  }
+
+  .smol-card-component-og > a {
+    align-self: start;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

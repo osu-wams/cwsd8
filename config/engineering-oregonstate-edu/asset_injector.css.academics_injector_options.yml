@@ -1,0 +1,92 @@
+uuid: e6d09910-df7a-4f6e-9a0d-11cd59975b70
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: academics_injector_options
+label: 'Academics Injector (Options)'
+code: |-
+  /*
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  	--Academic Option Pages Injector--
+  	
+  	Styling for Option content type. Created 11/12/2025.
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  */
+
+  .field--name-field-coe-discipline-location .field__item {
+  	border-radius: 3px !important;
+  	background-color: rgba(184, 221, 225, 0.3);
+  	padding: 10px !important;
+  	margin-bottom: 10px;
+  	margin-right: 10px;
+  	color: #000 !important;
+  	font-family: "Open Sans";
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 300;
+  	line-height: 130%; /* 18.2px */
+  }
+
+  .field--name-field-coe-discipline-location {
+  	display: flex;
+  	flex-wrap: wrap;
+  }
+
+  .block-field-blocknodeoptionfield-coe-discipline-location > .block__content::before {
+  	content: "Locations";
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  	color: #000;
+  	margin-bottom: 20px;
+  	display: block;
+  }
+
+  .option-hero-background img {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+      bottom: 0;
+      object-fit: cover;
+      object-position: right;
+      width: 67%;
+      z-index: 0;
+  }
+
+  .option-hero-section > .container {
+  	position: relative;
+  }
+  .block-field-blocknodeoptiontitle h1 {
+    position: relative;
+    z-index: 1; 
+  }
+
+  @media screen and (max-width: 1199px) {
+  	.option-hero-background img {
+  		width: 75%;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      option: option
+contexts: {  }
+conditions_require_all: true

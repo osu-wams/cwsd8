@@ -1,0 +1,29 @@
+uuid: e5a4b96b-9c0f-4cb6-9918-0fabff9f450d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_author_s_last_name_
+    - node.type.publication
+    - taxonomy.vocabulary.publication_author
+id: node.publication.field_author_s_last_name_
+field_name: field_author_s_last_name_
+entity_type: node
+bundle: publication
+label: 'Author(s) - (Last Name)'
+description: "<strong>Used to filter on Publications pages.</strong><br>\r\nSeparate multiple last names by a comma and space. <strong>Example:</strong> Name, Name, Name"
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      publication_author: publication_author
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

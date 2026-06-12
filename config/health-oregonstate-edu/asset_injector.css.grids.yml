@@ -1,0 +1,574 @@
+uuid: a4c0e1f1-dafb-4c47-a9f6-9b6f3b3086e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: grids
+label: Grids
+code: |-
+  .grid-faculty-cphhs {
+      display: -ms-grid;
+      display: grid;
+      gap: 3em;
+      grid-template-columns: repeat(auto-fill, minmax(352px, 1fr));
+      grid-auto-rows: minmax(150px, auto);
+      padding-inline: 2em;
+      justify-content: center;
+  }
+
+
+  .grid-faculty-coh {
+      display: grid;
+      gap: 3rem;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+      grid-auto-rows: minmax(175px, auto);
+      justify-content: center;
+      margin-inline: auto;
+  }
+
+  .grid-faculty-cphhs-content-vis {
+      content-visibility: auto;
+      contain-intrinsic-height: 480px;
+      /* A guess at the height of it */
+  }
+
+
+
+
+  /* ya super basic 2 column grid  */
+  .grid-columns-2 {
+  	display: grid;
+  	grid-template-columns: 1fr;
+  }
+
+  .css-grid-wrapper-02 {
+      display: grid;
+      gap: 3rem;
+      justify-content: center;
+  }
+
+  @media (min-width: 900px) {
+      .css-grid-wrapper-02 {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+
+  .grid-cols-2 {
+      display: grid;
+      gap: 3rem;
+  }
+
+  @media (min-width: 900px) {
+  		.grid-columns-2 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+  	
+      .grid-cols-2 {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+
+  /* reverse 2 col grid on smaller screens */
+  .grid-wrapper-2-reverse {
+      display: grid;
+       grid-template-columns: repeat(2, 1fr);
+  }
+
+
+  @media (max-width: 900px) {
+      .grid-wrapper-2-reverse {
+          grid-template-columns: repeat(1,1fr) !important; /* Switch to a single column */
+      }
+
+      /* Change the order of items on smaller screens */
+      .grid-wrapper-2-reverse > :nth-child(1) {
+          order: 2; /* Content A moves to the second position */
+      }
+
+      .grid-wrapper-2-reverse > :nth-child(2) {
+          order: 1; /* Content B moves to the first position */
+      }
+  }
+
+
+  /* ya basic 2 column that turns to 3 rows under some ch value. ch value classes located in next commented section  */
+
+  .grid-ya-basic-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+  }
+
+  @media (max-width: 140ch) {
+      .grid-ya-basic-2 {
+          grid-template-columns: none;
+          grid-template-rows: repeat(2, 1fr);
+      }
+
+      .grid-ya-basic-2>*:nth-child(1) {
+          -ms-grid-row: 1;
+          -ms-grid-column: 1;
+      }
+
+      .grid-ya-basic-2>*:nth-child(2) {
+          -ms-grid-row: 2;
+          -ms-grid-column: 1;
+      }
+
+  }
+
+  .grid-ya-basic-2-claude-02 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+      gap: 2rem;
+  }
+
+
+  .grid-ya-basic-2-claude-01 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: clamp(2rem, 3vw, 3rem);
+  }
+  .grid-ya-basic-2-claude-01 > * {
+      min-height: 0;
+      min-width: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+      .grid-ya-basic-2-claude-01 {
+          transition: grid-template-columns 0.3s ease;
+      }
+  }
+  @media (max-width: 768px) {
+      .grid-ya-basic-2-claude-01 {
+          grid-template-columns: minmax(0, 1fr);
+      }
+  }
+  @supports (grid-template-rows: masonry) {
+      .grid-ya-basic-2-claude-01 {
+          grid-template-rows: masonry;
+      }
+  }
+
+
+  .grid-ya-basic-2-claude-03 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(450px, 100%), 1fr));
+      gap: clamp(2rem, 3vw, 3rem);
+  }
+
+  .grid-ya-basic-2-claude-03 > * {
+      min-height: 0;
+      min-width: 0;
+  }
+
+  @supports (grid-template-rows: masonry) {
+      .grid-ya-basic-2-claude-03 {
+          grid-template-rows: masonry;
+      }
+  }
+
+
+
+  .grid-ya-basic-2-gemini-01 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* Or: repeat(2, minmax(150px, 1fr)) */
+      gap: 2rem;
+  }
+
+  @media (max-width: 140ch) {
+      .grid-ya-basic-2-gemini-01 {
+          grid-template-columns: 1fr; /* Single column layout */
+          grid-auto-flow: column; /* Arrange items column by column */
+      }
+  }
+
+
+
+
+  /* ya basic 3 column that turns to 3 rows under some ch value. ch value classes located in next commented section  */
+
+  .grid-ya-basic-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+  }
+
+  @media (max-width: 140ch) {
+      .grid-ya-basic-3 {
+          grid-template-columns: none;
+          grid-template-rows: repeat(3, 1fr);
+      }
+
+      .grid-ya-basic-3>*:nth-child(1) {
+          -ms-grid-row: 1;
+          -ms-grid-column: 1;
+      }
+
+      .grid-ya-basic-3>*:nth-child(2) {
+          -ms-grid-row: 2;
+          -ms-grid-column: 1;
+      }
+
+      .grid-ya-basic-3>*:nth-child(3) {
+          -ms-grid-row: 3;
+          -ms-grid-column: 1;
+      }
+  }
+
+
+  .grid-ya-basic-3-claude-01 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 400px), 1fr));
+      gap: clamp(2rem, 3vw, 3rem);
+  }
+
+  .grid-ya-basic-3-claude-01 > * {
+      min-height: 0;
+      min-width: 0;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+      .grid-ya-basic-3-claude-01 {
+          transition: grid-template-columns 0.3s ease;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .grid-ya-basic-3-claude-01 {
+          grid-template-columns: minmax(0, 1fr);
+      }
+  }
+
+  @supports (grid-template-rows: masonry) {
+      .grid-ya-basic-3-claude-01 {
+          grid-template-rows: masonry;
+      }
+  }
+
+
+  /* ya basic 3 claude 02 should get rid of dangler  */
+
+  .grid-ya-basic-3-claude-02 {
+    display: grid;
+    gap: clamp(2rem, 3vw, 3rem);
+  }
+
+  /* Default: Three columns */
+  .grid-ya-basic-3-claude-02 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .grid-ya-basic-3-claude-02 > * {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  /* Media query for smaller screens: One column */
+  @media (max-width: 768px) {
+    .grid-ya-basic-3-claude-02 {
+      grid-template-columns: minmax(0, 1fr); /* or 1fr */
+    }
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .grid-ya-basic-3-claude-02 {
+      transition: grid-template-columns 0.3s ease;
+    }
+  }
+
+  @supports (grid-template-rows: masonry) {
+    .grid-ya-basic-3-claude-02 {
+      grid-template-rows: masonry;
+    }
+  }
+
+
+  /* ya basic 3 column ch values  */
+
+
+  .card-contact-school {
+      max-width: 55ch;
+  }
+
+  /*   email list owners  */
+
+  .elist-owners {
+      display: -ms-grid;
+      display: grid;
+      background: white;
+      border-radius: 0.5em;
+      margin: 1em;
+  }
+
+
+  @media (min-width: 55em) {
+      .elist-owners {
+          -ms-grid-columns: 1fr 1fr;
+          grid-template-columns: 1fr 1fr;
+      }
+  }
+
+
+
+  /* ya basic 4 column that turns to 2 then 4 rows under some ch value. ch value classes located in next commented section  */
+
+  .grid-ya-basic-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+  }
+
+
+  @media (max-width: 70ch) {
+      .grid-ya-basic-4 {
+          grid-template-columns: repeat(2, 1fr);
+      }
+
+  }
+
+
+  @media (max-width: 140ch) {
+      .grid-ya-basic-4 {
+          grid-template-columns: none;
+          grid-template-rows: repeat(4, 1fr);
+      }
+
+      .grid-ya-basic-4>*:nth-child(1) {
+          -ms-grid-row: 1;
+          -ms-grid-column: 1;
+      }
+
+      .grid-ya-basic-4>*:nth-child(2) {
+          -ms-grid-row: 2;
+          -ms-grid-column: 1;
+      }
+
+      .grid-ya-basic-4>*:nth-child(3) {
+          -ms-grid-row: 3;
+          -ms-grid-column: 1;
+      }
+      
+          .grid-ya-basic-4>*:nth-child(4) {
+          -ms-grid-row: 4;
+          -ms-grid-column: 1;
+      }
+  }
+
+
+
+  .grid-ya-basic-4-claude {
+      display: grid;
+      gap: 2rem;
+  }
+
+  @media (min-width: 90ch) {
+      .grid-ya-basic-4-claude {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+
+  @media (min-width: 140ch) {
+      .grid-ya-basic-4-claude {
+          grid-template-columns: repeat(4, 1fr);
+      }
+  }
+
+  /* ya basic 4 column ch values -- currently empty  */
+
+
+
+
+  /* color grid for home page */
+  .grid-color-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    margin: 0 !important; 
+    padding: 0 !important;
+    width: 100%;
+  }
+
+  .grid-color-container > div {
+    overflow: hidden;
+    position: relative;
+    padding: 2em;
+    margin: 0;
+
+  }
+
+
+
+  .color-card .color-card-link::before {
+  	content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+
+  .grid-color-container .color-card {
+  	transition: 200ms ease-in-out;
+    text-decoration: none;
+  }
+
+
+  .grid-color-container .color-card a{
+    text-decoration: none;
+  }
+
+
+  .grid-color-container .color-card:nth-child(1) {
+    background-color: #636363;
+    color: rgb(255, 255, 255) !important;
+  }
+
+  .grid-color-container .color-card:nth-child(1) h2 {
+  	  color: rgb(255, 255, 255) !important;
+  }
+
+  .grid-color-container .color-card:nth-child(2){
+  	background-color: #D73F09 ;
+    color: rgb(255, 255,255) !important;
+  }
+
+  .grid-color-container .color-card:nth-child(2) a {
+  	  color: rgb(255, 255, 255) !important;
+  }
+
+  .grid-color-container .color-card:nth-child(3) {
+    background-color: #636363;
+    color: rgb(255, 255,255) !important;
+  }
+
+
+  .grid-color-container .color-card:nth-child(3) a {
+  	  color: rgb(255, 255, 255) !important;
+  }
+
+
+  .grid-color-container .color-card:nth-child(4) {
+    background-color: rgb(13, 82, 87) ;
+    color: rgb(255, 255,255) !important;
+  }
+
+  .grid-color-container .color-card:nth-child(4) a {
+  	  color: rgb(255, 255, 255) !important;
+  }
+
+  .grid-color-container .color-card:nth-child(5) {
+    background-color: rgb(0, 106, 142);
+    color: rgb(255, 255,255) !important;
+  }
+
+  .grid-color-container .color-card:nth-child(5) a {
+    color: rgb(255, 255,255) !important;
+  }
+
+  .grid-color-container .color-card:nth-child(6) {
+    background-color: #B8DDE1;
+    color: rgb(0, 0 ,0) ;
+  }
+
+  .grid-color-container .color-card:nth-child(6) a {
+    color: rgb(0, 0 ,0) !important;
+  }
+
+
+  .grid-color-container .color-card:nth-child(7) {
+    background-color: rgb(0, 59, 92) ;
+    color: rgb(255, 255,255) !important;
+  }
+
+  .grid-color-container .color-card:nth-child(7) a {
+    color: rgb(255, 255,255) !important;
+  }
+
+  .grid-color-container .color-card:hover:not(:first-child) {
+  	background-color:  rgb(55, 55, 55) !important;
+  	color: rgb(255, 255, 255) !important;
+  } 
+
+  .grid-color-container .color-card:hover a {
+  		color: rgb(255, 255, 255) !important;
+  }
+
+
+  @media(min-width: 561px) {
+    .grid-color-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .grid-color-container :nth-child(1) {
+      grid-column: span 2;
+    }
+  }
+
+  @media(min-width: 971px) {
+    .grid-color-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+
+
+
+  .grid-deans {
+      display: grid;
+      margin: 0 auto;
+      gap: 2em;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      grid-auto-rows: minmax(150px, auto);
+      padding-left: 2em;
+      padding-right: 2em;
+  }
+
+  .grid-deans-content-vis {
+      content-visibility: auto;
+      contain-intrinsic-height: 480px;
+      /* A guess at the height of it */
+  }
+
+
+
+
+  .grid-pub-widget-sm {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--size-3);
+    place-items: center;
+    max-width: 35ch;
+    margin-inline: auto;
+    padding-block: var(--size-fluid-1);
+    padding-inline: var(--size-fluid-1);
+  }
+
+
+  .grid-pub-widget-sm-start {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--size-3);
+    place-items: start;
+    max-width: 35ch;
+    padding-block: var(--size-fluid-1);
+    /*padding-inline: var(--size-fluid-1);*/
+  }
+
+
+  .altmetric-widget-fix-01 {
+  	margin-top:-7px !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

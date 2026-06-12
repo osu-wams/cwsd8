@@ -1,0 +1,40 @@
+uuid: 2d903842-2f35-4030-b125-c4c6c490dc9a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.previous_fellows.body
+    - field.field.node.previous_fellows.field_names
+    - field.field.node.previous_fellows.field_year
+    - node.type.previous_fellows
+  module:
+    - text
+    - user
+id: node.previous_fellows.teaser
+targetEntityType: node
+bundle: previous_fellows
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_names: true
+  field_year: true

@@ -1,0 +1,79 @@
+uuid: df8d651d-dda4-48d4-80db-f44ec777ae5e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: calendar_of_events
+label: 'Calendar of Events'
+code: |-
+  .coe-container {
+  	display:flex;
+  }
+
+  .coe-date, .lwn0 {
+  	  float: left;
+      width: 50px;
+      padding-right: 60px;
+      margin-top: -0.5rem;
+  }
+
+  .coe-title, .lwn a {
+  	  float: left;
+      min-height: 65px;
+      border-left: 4px solid #d73f09;
+      margin: 10px 0;
+      padding: 0px 0 0px 20px;
+      line-height: 1;
+      width:100%;
+      max-width:300px;
+      display: flex;
+      align-items: center;
+      height: 100%;
+  }
+
+  .coe-title a, .lwn a {
+  	  font-size: 17px;
+      text-decoration: none;
+      font-weight: 700;
+  }
+
+  .coe-day time, .lwn0{
+  	  font-size: 2.8rem;
+      font-family: "Stratum2Web", "Open Sans", serif;
+      font-weight: 700;
+  }
+
+  .coe-month time, .lwn0 {
+      font-family: "Stratum2Web", "Open Sans", serif;
+      font-weight: 800;
+      text-transform: uppercase;
+      line-height: 1;
+      text-align: center;
+      margin-top: 16px;
+      font-size:1.5rem;
+  }
+
+  .coe-month {
+  	margin-top: -1.5rem;
+  }
+  .lwl {
+  	display:none!important;
+  }
+  li.lwe {
+  	display:block;
+  }
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/test-page\r\n<front>\r\n/node/2135226\r\n/news-and-events-template\r\n/node/2136776\r\n/group/232691\r\n/community-connect"
+contexts: {  }
+conditions_require_all: false

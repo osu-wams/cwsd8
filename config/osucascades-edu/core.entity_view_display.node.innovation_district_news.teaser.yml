@@ -1,0 +1,39 @@
+uuid: db4e997e-3efa-4833-a455-9ac0504aacdc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.innovation_district_news.body
+    - field.field.node.innovation_district_news.field_innovation_dist_news_link
+    - field.field.node.innovation_district_news.field_news_date
+    - field.field.node.innovation_district_news.field_news_image
+    - field.field.node.innovation_district_news.field_news_title
+    - node.type.innovation_district_news
+  module:
+    - text
+    - user
+id: node.innovation_district_news.teaser
+targetEntityType: node
+bundle: innovation_district_news
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_innovation_dist_news_link: true
+  field_news_date: true
+  field_news_image: true
+  field_news_title: true

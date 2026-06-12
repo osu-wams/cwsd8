@@ -5,12 +5,14 @@ dependencies:
   config:
     - field.storage.node.field_conference_photos
     - field.storage.node.field_past_conference_details
+    - image.style.hero_background_style
     - node.type.past_conference
   module:
     - image
     - node
     - text
     - user
+    - views_bootstrap
 id: past_conferences_view
 label: 'Past Conferences View'
 module: views
@@ -510,6 +512,7 @@ display:
           field: field_conference_photos
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: field
           label: ''
           exclude: false
@@ -553,11 +556,13 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: fid
+          click_sort_column: target_id
           type: image
           settings:
             image_link: ''
-            image_style: 1200x564-scale-only
+            image_style: hero_background_style
+            image_loading:
+              attribute: lazy
           group_column: ''
           group_columns: {  }
           group_rows: false
@@ -577,6 +582,7 @@ display:
           field: title
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: string
           default_action: 'not found'
           exception:
@@ -584,7 +590,7 @@ display:
             title_enable: false
             title: All
           title_enable: true
-          title: '[title]'
+          title: '{{ arguments.title }}'
           default_argument_type: fixed
           default_argument_options:
             argument: ''
@@ -613,13 +619,27 @@ display:
           breadcrumb: ''
           not: 0
       style:
-        type: default
+        type: views_bootstrap_carousel
         options:
           grouping: {  }
-          interval: '5000'
-          navigation: 1
-          indicators: 0
-          pause: 0
+          row_class: ''
+          default_row_class: true
+          interval: 5000
+          keyboard: true
+          ride: ''
+          navigation: true
+          indicators: true
+          pause: true
+          use_caption: true
+          caption_breakpoints: 'd-none d-md-block'
+          wrap: true
+          effect: slide
+          columns: 1
+          breakpoints: md
+          display: fields
+          image: field_conference_photos
+          title: ''
+          description: ''
       row:
         type: fields
         options:

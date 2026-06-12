@@ -1,0 +1,1745 @@
+uuid: 1677e856-e981-494c-9582-be76e765964e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_brand_blocks
+label: 'COE Brand Blocks'
+code: |-
+  /*
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  	--COE Blocks--
+  	
+  	Block component styling. Created 10/15/2025.
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  */
+
+  /*================================================================================================================================================================
+  	SECTION: Quote Block Styling
+  	
+  	PURPOSE: Configurations of various quote block options
+  	==============================================================================================================================================================*/
+
+  /* Hide style selector list from display */
+  .block--type-quote-block .field--name-field-coe-bl-quote-styling {
+  	display: none;
+  }
+
+  /* Quote spacing */
+  .block--type-quote-block {
+  	margin-top: 50px;
+    margin-bottom: 50px;
+    padding: 70px;
+  }
+
+  /* Quotation typography */
+  .block--type-quote-block .field--name-field-coe-bl-quote-quotation {
+    font-style: italic;
+    font-weight: 600;
+    line-height: 150%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Quotation Author Name typography */
+  .block--type-quote-block .field--name-field-coe-bl-attribution-name {
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+    display: inline;
+  }
+
+  /******************
+  The following blocks set the correct border and background color for the styling options
+  ******************/
+  .block--type-quote-block:has( .coe-bl-quote-star-canvas) {
+  	border: 3px solid #003B5C;
+  	background-color: #003B5C;
+  }
+
+  .block--type-quote-block:has( .coe-bl-quote-beaver-orange) {
+  	border: 3px solid #D73F09;
+  	background-color: #FFF;
+  }
+
+  .block--type-quote-block:has( .coe-bl-quote-high-tide) {
+  	border: 3px solid #00859B;
+  	background-color: #FFF;
+  }
+
+  /******************
+  The following blocks set the correct font-size, spacing, and text color of the quotation text
+  ******************/
+  .block--type-quote-block:has( .coe-bl-quote-star-canvas) .field--name-field-coe-bl-quote-quotation {
+    color: #FFF;
+  }
+
+  .block--type-quote-block:has( .coe-bl-quote-beaver-orange) .field--name-field-coe-bl-quote-quotation,
+  .block--type-quote-block:has( .coe-bl-quote-high-tide) .field--name-field-coe-bl-quote-quotation {
+    color: #000;
+  }
+
+  .block--type-quote-block .field--name-field-coe-bl-quote-quotation {
+    font-size: 32px;
+    margin-bottom: 30px;  
+  }
+
+  /******************
+  The following blocks set varios quote icon colors, icon spacing, and quote author colors
+  ******************/
+  .block--type-quote-block:has( .coe-bl-quote-star-canvas) .field--name-field-coe-bl-quote-quotation::before {
+    content: url("/sites/engineering.oregonstate.edu/files/2024-11/quote-icon.svg");
+  }
+
+  .block--type-quote-block:has( .coe-bl-quote-beaver-orange) .field--name-field-coe-bl-quote-quotation::before {
+    content: url("/sites/engineering.oregonstate.edu/files/2025-02/quote_icon.svg");
+  }
+
+  .block--type-quote-block:has( .coe-bl-quote-high-tide) .field--name-field-coe-bl-quote-quotation::before {
+    content: url("/sites/engineering.oregonstate.edu/files/2025-10/quote-icon.svg");
+  }
+
+  .block--type-quote-block .field--name-field-coe-bl-quote-quotation::before {
+  	text-align: right;
+  	margin-top: -95px;
+  	margin-right: -35px;
+  }
+
+  .block--type-quote-block:has( .coe-bl-quote-star-canvas) .field--name-field-coe-bl-attribution-name {
+    color: #FFB500;
+  }
+
+  .block--type-quote-block:has( .coe-bl-quote-beaver-orange) .field--name-field-coe-bl-attribution-name {
+    color: #D73F09;
+  }
+
+  .block--type-quote-block:has( .coe-bl-quote-high-tide) .field--name-field-coe-bl-attribution-name {
+    color: #00859B;
+  }
+
+  /* Star Canvas quote background needs white description text */
+  .block--type-quote-block:has( .coe-bl-quote-star-canvas) .field--name-field-coe-bl-attribution-desc {
+    color: #FFF;
+  }
+
+  /* Line up name and description fields */
+  .block--type-quote-block .field--name-field-coe-bl-attribution-desc,
+  .block--type-quote-block .field--name-field-coe-bl-attribution-desc p {
+     display: inline;
+  } 
+
+  /* Add a comma between name and description */
+  .block--type-quote-block .field--name-field-coe-bl-attribution-name::after {
+      content: ', ';
+  }
+
+  @media screen and (max-width: 991px) {
+  	.block--type-quote-block .field--name-field-coe-bl-quote-quotation {
+      gap: 0;
+      font-size: 24px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+  	/* Mobile quote spacing */
+    .block--type-quote-block {
+        padding: 0px 30px 50px 30px;
+    }
+    /* Smaller quotation text */
+    .block--type-quote-block .field--name-field-coe-bl-quote-quotation {
+        gap: 0;
+        font-size: 24px;
+    }
+    /* Smaller quote icon */
+    .block--type-quote-block .field--name-field-coe-bl-quote-quotation::before {
+        margin-top: -30px;
+        margin-right: -50px;
+        transform: scale(0.83);
+    }
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Quote Block with Borders Styling
+  	
+  	PURPOSE: Configurations of various quote block options
+  	==============================================================================================================================================================*/
+
+  .block--type-image-quote-block .field--name-field-coe-bl-quote-styling {
+  	    display: none;
+  	} 
+
+  	/* Quote spacing */
+  	.block--type-image-quote-block {
+  	    margin-top: 50px;
+  	    margin-bottom: 50px;
+  	    padding: 70px;
+  	    position: relative;   /* Quote icon positioning depends on this */
+  	}
+  	
+  	.block--type-image-quote-block .block__content {
+  		position: relative;
+  	}
+  	
+  	/* Target the attribution div to ensure it doesn't span full width */
+  	.block--type-image-quote-block .block__content .quote-attribution {
+  		max-width: 580px;
+  	}
+  	
+  	
+  	/****************************************
+  		Quote Corner Decorations
+  	****************************************/
+  	
+  	/* Top left - vertical bar */ 
+  	.block--type-image-quote-block::before {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 125px;
+  		  width: 40px;
+  		  top: -32px;
+    		left: -22px;
+  		  transform: scale(75%);
+  	} 
+  	
+  	/* Top left - horizontal bar */
+  	.block--type-image-quote-block::after {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 40px;
+  		  width: 125px;
+  		  top: -23px;
+    		left: -33px;
+  		  transform: scale(75%);
+  	} 
+  	
+  		/* Bottom right - vertical bar */ 
+  	.block--type-image-quote-block .block__content::before {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 125px;
+  		  width: 40px;
+  			bottom: -104px;
+  		  right: -93px;
+  		  transform: scale(75%);
+  	} 
+  	
+  	/* Bottom right - horizontal bar */
+  	.block--type-image-quote-block .block__content::after {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 40px;
+  		  width: 125px;
+  		  bottom: -93px;
+    		right: -104px;
+  		  transform: scale(75%);
+  	} 
+  	
+
+
+  	/* Quotation typography */
+  	.block--type-image-quote-block .field--name-field-coe-bl-quote-quotation {
+  	    font-style: italic;
+  	    font-weight: 600;
+  	    line-height: 150%;
+  	    display: flex;
+  	    flex-direction: column;
+  	    gap: 10px;
+  	    position: relative;
+  	} 
+
+  	/* Quotation Author Name typography */
+  	.block--type-image-quote-block .field--name-field-coe-bl-attribution-name {
+  	    font-size: 18px;
+  	    font-style: normal;
+  	    font-weight: 700;
+  	    line-height: 160%;
+  	    letter-spacing: 0.9px;
+  	    text-transform: uppercase;
+  	    display: inline;
+  	} 
+
+  	/****************** 
+  	 The following blocks set the correct border and background color for the styling options
+  	 ******************/
+  	.block--type-image-quote-block:has(.coe-bl-quote-star-canvas) {
+  	    border: 3px solid #003b5c;
+  	    background-color: #003b5c;
+  	}
+  	
+  	.block--type-image-quote-block:has(.coe-bl-quote-beaver-orange) {
+  	    border: 3px solid #d73f09;
+  	    background-color: #fff;
+  	}
+  	
+  	.block--type-image-quote-block:has(.coe-bl-quote-high-tide) {
+  	    border: 3px solid #00859b;
+  	    background-color: #fff;
+  	} 
+  	
+  	/****************** 
+  		The following blocks set the correct font-size, spacing, and text color of the quotation text 
+  	******************/
+  	
+  	.block--type-image-quote-block:has(.coe-bl-quote-star-canvas)
+  	    .field--name-field-coe-bl-quote-quotation {
+  	    color: #fff;
+  	}
+  	
+  	.block--type-image-quote-block:has(.coe-bl-quote-beaver-orange)
+  	    .field--name-field-coe-bl-quote-quotation,
+  	.block--type-image-quote-block:has(.coe-bl-quote-high-tide)
+  	    .field--name-field-coe-bl-quote-quotation {
+  	    color: #000;
+  	}
+  	
+  	.block--type-image-quote-block .field--name-field-coe-bl-quote-quotation {
+  	    font-size: 32px;
+  	    margin-bottom: 30px;
+  	} 
+  	
+  	/****************** 
+  		The following blocks set varios quote icon colors, icon spacing, and quote author colors 
+  	******************/
+  	.block--type-image-quote-block:has(.coe-bl-quote-star-canvas)
+  	    .field--name-field-coe-bl-quote-quotation::before {
+  	    content: url("/sites/engineering.oregonstate.edu/files/2024-11/quote-icon.svg");
+  	}
+  	
+  	.block--type-image-quote-block:has(.coe-bl-quote-beaver-orange)
+  	    .field--name-field-coe-bl-quote-quotation::before {
+  	    content: url("/sites/engineering.oregonstate.edu/files/2025-02/quote_icon.svg");
+  	}
+  	
+  	.block--type-image-quote-block:has(.coe-bl-quote-high-tide)
+  	    .field--name-field-coe-bl-quote-quotation::before {
+  	    content: url("/sites/engineering.oregonstate.edu/files/2025-10/quote-icon.svg");
+  	}
+  	
+  	.block--type-image-quote-block
+  	    .field--name-field-coe-bl-quote-quotation::before {
+  	    position: absolute;   /* This relies on parent div being position: relative to ensure quote icon can lay on top */
+  		  top: -90px;
+    		right: -275px;	
+    		transform: scale(130%);
+  	}
+  	
+  	.block--type-image-quote-block:has(.coe-bl-quote-star-canvas)
+  	    .field--name-field-coe-bl-attribution-name {
+  	    color: #ffb500;
+  	}
+  	
+  	.block--type-image-quote-block:has(.coe-bl-quote-beaver-orange)
+  	    .field--name-field-coe-bl-attribution-name {
+  	    color: #d73f09;
+  	}
+  	
+  	.block--type-image-quote-block:has(.coe-bl-quote-high-tide)
+  	    .field--name-field-coe-bl-attribution-name {
+  	    color: #00859b;
+  	}
+  	
+  	/* Star Canvas quote background needs white description text */
+  	.block--type-image-quote-block:has(.coe-bl-quote-star-canvas)
+  	    .field--name-field-coe-bl-attribution-desc {
+  	    color: #fff;
+  	} 
+  	
+  	/* Line up name and description fields */
+  	.block--type-image-quote-block .field--name-field-coe-bl-attribution-desc,
+  	.block--type-image-quote-block .field--name-field-coe-bl-attribution-desc p {
+  	    display: inline;
+  	} 
+  	
+  	/* Add a comma between name and description */
+  	.block--type-image-quote-block
+  	    .field--name-field-coe-bl-attribution-name::after {
+  	    content: ", ";
+  	}
+  	
+  	/************************************ 
+  		Image 
+  	***********************************/
+  	/* Shift the image down slightly so its not right up against quote marks */
+  	.field--name-field-coe-bl-quote-image .field--name-field-media-image .field__item {
+  		padding-top: 20px;
+  	}
+
+  	.block--type-image-quote-block .field--name-field-coe-bl-quote-image img {
+  		width: 240px;
+  		height: 240px;
+  		border-radius: 50%;
+  	}
+  	
+  	/* Ensure image is anchored to bottom of block */
+  	.block--type-image-quote-block .block__content .field--name-field-coe-bl-quote-image {
+  		display: flex;
+  		align-items: flex-end;
+  	}
+
+  	.block--type-image-quote-block .block__content {
+  		display: flex;
+  		flex-wrap: wrap;
+  		justify-content: space-between;
+  	}
+  	
+  	
+  	.block--type-image-quote-block .block__content .field--name-field-coe-bl-quote-image {
+  		width: 240px;
+  	}
+  	
+  	.block--type-image-quote-block .block__content .img-quote-body {
+  		width: calc(100% - 260px);
+  	}
+  	
+  	/************************************* 
+  		Arrow Link 
+  	************************************/
+  	
+  	.block--type-image-quote-block .field--name-field-coe-bl-arrow-link a {
+  	    font-family: Stratum2Web;
+  	    font-size: 20px;
+  	    font-style: normal;
+  	    font-weight: 500;
+  	    line-height: normal;
+  	    letter-spacing: 1px;
+  	    text-transform: uppercase;
+  	    color: #ffb500; /* Yellow default*/
+  	    text-decoration: none !important;
+  	    background-image: url("/sites/engineering.oregonstate.edu/files/2025-02/arrow-right-yellow.svg"); /* Yellow Default */
+  	    background-position: 100%;
+  	    background-repeat: no-repeat;
+  	    background-size: 20px;
+  	    padding-right: 25px;
+  	    margin-right: 10px;
+  	    transition: 0.2s ease;
+  	    border-bottom: none;
+  	} 
+  	
+  	.block--type-image-quote-block .field--name-field-coe-bl-arrow-link {
+  		margin-top: 30px;
+  	}
+  	
+  	/* Arrow link hover state */
+  	.block--type-image-quote-block .field--name-field-coe-bl-arrow-link a:hover {
+  	    padding-right: 35px;
+  	    margin-right: 0px;
+  	    border-bottom: none;
+  	} 
+  	
+  	/* Yellow arrow active/focus state */
+  	.block--type-image-quote-block .field--name-field-coe-bl-arrow-link a:active,
+  	.block--type-image-quote-block .field--name-field-coe-bl-arrow-link a:focus {
+  	    background-color: transparent !important;
+  	    color: #d3832b !important;
+  	    padding-right: 35px !important;
+  	    border-bottom: none !important;
+  	}
+
+
+    /************************************************
+    	Media Queries
+    ************************************************/	
+  	@media screen and (max-width: 991px) {
+  	
+  		.block--type-image-quote-block {
+          padding: 70px 50px 50px 50px;
+      } 
+      
+      /* Shrink font size */
+      .block--type-image-quote-block .field--name-field-coe-bl-quote-quotation {
+          font-size: 24px;
+      }
+      
+      /* Update content to stack vertically */
+      .block--type-image-quote-block .block__content {
+      	display: flex;
+      	flex-direction: column;
+      	width: fit-content;
+      	align-items: flex-start;
+      }
+      
+      /* Ensure the text fields now take up the available width */
+      .block--type-image-quote-block .block__content .img-quote-body {
+  		width: 100%;
+  	}
+  	
+  	.block--type-image-quote-block .block__content .field--name-field-coe-bl-quote-image {
+  		width: 100%;
+  		display: flex;
+  		justify-content: flex-end;
+  	} 
+  	
+  	/* Ensure positioning of quote icon */
+  	.block--type-image-quote-block
+      .field--name-field-coe-bl-quote-quotation::before {
+      position: absolute;   
+  	  top: -95px;
+  		right: -10px;	
+  		transform: scale(100%);
+  	}
+  	
+  	/* Smaller corner decorations */
+    /* Top left - vertical bar */ 
+  	.block--type-image-quote-block::before {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 125px;
+  		  width: 40px;
+  		  top: -40px;
+      	left: -23px;
+  		  transform: scale(60%);
+  	} 
+  	
+  	/* Top left - horizontal bar */
+  	.block--type-image-quote-block::after {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 40px;
+  		  width: 125px;
+  			top: -23px;
+  	    left: -40px;
+  		  transform: scale(60%);
+  	} 
+  	
+  		.block--type-image-quote-block .block__content::before {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 125px;
+  		  width: 40px;
+  		  bottom: -90px;
+      	right: -73px;
+  	    transform: scale(60%);
+  	} 
+  	
+  	/* Bottom right - horizontal bar */
+  	.block--type-image-quote-block .block__content::after {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 40px;
+  		  width: 125px;
+  		  bottom: -73px;
+      	right: -90px;
+  	    transform: scale(60%);
+  	} 
+  }
+  	
+  	@media screen and (max-width: 767px) {
+  	/* Remove excess padding from wider viewport settings */
+  	.field--name-field-coe-bl-quote-image .field--name-field-media-image .field__item {
+  		padding-top: 0px;
+  	}
+  	
+  	  .block--type-image-quote-block {
+        padding: 70px 30px 50px 30px;
+    }
+  		
+    /* Smaller quote icon and updated positioning*/
+    .block--type-image-quote-block
+        .field--name-field-coe-bl-quote-quotation::before {
+        transform: scale(0.83);
+        position: absolute;
+        right: -25px;
+        top: -100px;
+    }
+
+    /* Smaller corner decorations */
+    /* Top left - vertical bar */ 
+  	.block--type-image-quote-block::before {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 125px;
+  		  width: 40px;
+  			top: -41px;
+  	    left: -23px;
+  		  transform: scale(50%);
+  	} 
+  	
+  	/* Top left - horizontal bar */
+  	.block--type-image-quote-block::after {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 40px;
+  		  width: 125px;
+  			top: -23px;
+  	    left: -44px;
+  		  transform: scale(50%);
+  	} 
+  	
+  		.block--type-image-quote-block .block__content::before {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 125px;
+  		  width: 40px;
+  		  bottom: -91px;
+      	right: -53px;
+  	    transform: scale(50%);
+  	} 
+  	
+  	/* Bottom right - horizontal bar */
+  	.block--type-image-quote-block .block__content::after {
+  	    content: "";
+  		  background: #B8DDE1;
+  		  position: absolute;
+  		  height: 40px;
+  		  width: 125px;
+  			bottom: -73px;
+  	    right: -74px;
+  	    transform: scale(50%);
+  	} 
+  	
+  		
+  	.block--type-image-quote-block .block__content .field--name-field-coe-bl-quote-image {
+  		width: 100%;
+  		display: flex;
+  		justify-content: center;
+  		margin-top: 50px;
+  	} 
+  	
+  	} 
+
+
+  /*================================================================================================================================================================
+  	SECTION: RSVP Block Styling
+  	
+  	PURPOSE: Configurations of various RSVP block options
+  	==============================================================================================================================================================*/
+
+  .block--type-rsvp-menu h2 {
+  	padding-top: 20px;
+  	border-top: 6px solid #D73F09;
+  	margin-bottom: 30px;
+  }
+
+  .block-field-blockblock-contentrsvp-menufield-rsvp-primary-link {
+  	margin-top: 30px;
+  }
+
+  .field--name-field-rsvp-date {
+  	font-weight: 700;
+  }
+
+  .field--name-field-rsvp-information{
+  	padding-bottom: 10px;
+  }
+
+  .block--type-rsvp-menu a {
+  	text-align: center;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: normal;
+  	letter-spacing: 0.9px;
+  	text-transform: uppercase;
+  	padding: 17px 10px;
+  	transition: 0.3s;
+  	display: block;
+  	margin-top: 20px !important;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	width: 100%;
+  }
+
+  .field--name-field-rsvp-primary-link a {
+  	background-color: #D73F09;
+  	color: #FFF;
+  	border: 2px solid #D73F09;
+  }
+
+  .field--name-field-rsvp-primary-link a:hover, .field--name-field-rsvp-primary-link a:focus {
+  	background-color: inherit;
+  	color: #D73F09;
+  	border-bottom: 2px solid #D73F09; /* cancel out main a styling */
+  }
+
+  .field--name-field-rsvp-primary-link a:active {
+  	background-color: inherit !important;
+  	color: #BE3706 !important;
+  	border: 2px solid #BE3706;
+  }
+
+  .field--name-field-rsvp-primary-link span {
+  	width: 100%;
+  	background-color: #ECEDEE;
+  	text-align: center;
+  	padding: 18px;
+  	display: block;
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: normal;
+  	letter-spacing: 0.9px;
+  	text-transform: uppercase;
+  }
+
+  @media screen and (max-width: 991px) and (min-width: 768px) {
+  	.field--name-field-rsvp-primary-link span {
+  		width: 50%;
+  	}
+  }
+
+  .field--name-field-rsvp-secondary-link a {
+  	background-color: inherit;
+  	color: #000;
+  	border: 2px solid #000;
+  }
+
+  .field--name-field-rsvp-secondary-link a:hover, .field--name-field-rsvp-secondary-link a:focus {
+  	background-color: #000;
+  	color: #FFF;
+  	border-bottom: 2px solid #000; /* cancel out main a styling */
+  }
+
+  .field--name-field-rsvp-secondary-link a:active {
+  	background-color: #212529 !important;
+  	color: #FFF !important;
+  	border: 2px solid #212529 !important;
+  	color: var(--Primary-Paddletail-Black, #000);
+  	text-align: center;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: normal;
+  	letter-spacing: 0.9px;
+  	text-transform: uppercase;
+  	display: block;
+  }
+
+  @media screen and (max-width: 1199px) and (min-width: 768px) {
+  	.block--type-rsvp-menu a {
+  		width: max-content;
+  		min-width: 300px;
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Announcement Block
+  	
+  	==============================================================================================================================================================*/
+
+
+  .block.block-inline-blockannouncement {
+    background-color: #FFB500;
+    margin-top: 70px;
+    padding: 34px 30px 30px 30px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+  }
+
+  .block.block-inline-blockannouncement p{
+  	margin-top: -5px;
+  }
+
+  .block.block-inline-blockannouncement::before {
+    content: url('/sites/engineering.oregonstate.edu/files/2025-02/announcement-icon.svg');
+    display: inline-block;
+    /*margin-right: 20px;*/
+  }
+
+  .block.block-inline-blockannouncement a {
+    color: #000;
+  }
+
+  .block.block-inline-blockannouncement a:hover,
+  .block.block-inline-blockannouncement a:active,
+  .block.block-inline-blockannouncement a:focus {
+    border-color: #000;
+  }
+
+  /* Content spacing */
+  .block.block-inline-blockannouncement .block__content {
+    padding-left: 20px;
+  }
+
+
+
+  /*================================================================================================================================================================
+  	SECTION: Directional Card Block Styling
+  	
+  	PURPOSE: Configurations of various directional card block options
+  	==============================================================================================================================================================*/
+
+  .block-inline-blockdirectional-card {
+  	  background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+      background-position: 95%;
+      background-repeat: no-repeat;
+      background-size: 40px;
+      background-color: white;
+      border: 3px solid #d73f09;
+      border-radius: 5px;
+      padding: 25px;
+      padding-right: 95px;
+      box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.12);
+      margin-bottom: 1rem;
+      transition: background-image 0.4s ease-in-out, background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  		width: 100%;
+      position: relative;
+  }
+
+  .block-inline-blockdirectional-card:hover {
+    background-color: #d73f09;
+    background-size: 40px;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="33" viewBox="0 0 41 33" fill="none"><path d="M2 16.5H33.5" stroke="%23FFFFFF" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M24.5 30L38 16.5L24.5 3" stroke="%23FFFFFF" stroke-width="4" stroke-linecap="square"/></svg>') !important;
+    box-shadow: none;
+    color: #fff;
+  }
+
+  .block-inline-blockdirectional-card:active {
+    background-color: #BE3706;
+    background-size: 40px;
+    background-image: url('data:image/svg+xml;charset=UTF-8,<svg xmlns="http://www.w3.org/2000/svg" width="41" height="33" viewBox="0 0 41 33" fill="none"><path d="M2 16.5H33.5" stroke="%23FFFFFF" stroke-width="4" stroke-linecap="square" stroke-linejoin="round"/><path d="M24.5 30L38 16.5L24.5 3" stroke="%23FFFFFF" stroke-width="4" stroke-linecap="square"/></svg>') !important;
+    box-shadow: none;
+  }
+
+  @supports (hanging-punctuation: first) and (font: -apple-system-body) and (-webkit-appearance: none) {
+  	.block-inline-blockdirectional-card {
+  	    transition: background-color 0.4s ease-in;
+  	}
+  }
+
+  .field--name-field-directional-card-secondary {
+  	transition: color 0.4s ease-in-out;
+  }
+
+  .block-inline-blockdirectional-card a,
+  .block-inline-blockdirectional-card a:focus {
+      color: #212529;
+  		font-family: Stratum2Web;
+  		font-size: 24px;
+  		font-style: normal;
+  		font-weight: 900;
+  		line-height: 130%; /* 31.2px */
+  		letter-spacing: 1.2px;
+  		text-transform: uppercase;
+  		text-decoration: none;
+  		transition: color 0.4s ease-in-out;
+  		border: none;
+  }
+
+  .block-inline-blockdirectional-card a:hover {
+  	border: none;
+  	color: #fff !important;
+  }
+
+  .block-inline-blockdirectional-card a::before {
+  	content: "";
+  	position: absolute;
+  	inset: 0;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Messaging Block
+  	==============================================================================================================================================================*/
+
+  .field--name-field-message-title{
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	/* Main/H4 */
+  	font-family: Stratum2web;
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  	padding-bottom: 10px;
+  }
+
+  .block-field-blockblock-contentblue-messaging-blockbody{
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	/* Main/Body */
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 160%; /* 28.8px */
+  }
+
+  .block--type-blue-messaging-block{
+  	background: #F4F8FA;
+  	padding: 50px;
+  }
+
+  @media (max-width: 767px) {
+  	.block--type-blue-messaging-block{
+  	padding-top: 50px;
+  	padding-left: 20px;
+  	padding-bottom: 50px;
+  	padding-right: 30px;
+  	}
+  }
+
+  .col-xxl-12 .block-field-blockblock-contentblue-messaging-blockbody{
+  	width: 75%;
+  }
+
+  @media (max-width: 991px) {
+  .col-xxl-12 .block-field-blockblock-contentblue-messaging-blockbody{
+  	width: 100%;
+  }
+  }
+
+  /* Pattern */
+  .pattern-background{
+  	display: none;
+  }
+
+  .block--type-blue-messaging-block:has(.pattern-background) {
+  	background-color: rgba(198,218,231,0.2);
+  	background-position: right;
+  	background-repeat: no-repeat;
+  	background-size: cover;
+
+  }
+
+  /* Pattern - Trails */
+
+  .block--type-blue-messaging-block:has(.pattern-trails) {
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2025-11/trails_stratosphere_25_full.svg);
+
+  }
+
+  @media (max-width: 991px) {
+  .block--type-blue-messaging-block:has(.pattern-trails){
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2025-11/trails_stratosphere_25_full.svg);
+  }
+  }
+
+  @media (max-width: 767px) {
+  .block--type-blue-messaging-block:has(.pattern-trails){
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2025-11/trails_stratosphere_25_mobile.svg);
+  }
+  }
+
+  /* Pattern - Circuit */
+
+  .block--type-blue-messaging-block:has(.pattern-circuit) {
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2026-03/circuit-pattern-desktop.svg);
+
+  }
+
+  @media (max-width: 991px) {
+  .block--type-blue-messaging-block:has(.pattern-circuit){
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2026-03/circuit-pattern-tablet.svg);
+  }
+  }
+
+  @media (max-width: 767px) {
+  .block--type-blue-messaging-block:has(.pattern-circuit){
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2026-03/circuit-pattern-mobile.svg);
+  }
+  }
+
+  /* Link styling */
+
+  main .block--type-blue-messaging-block .block .black-arrow-link .field a {
+  	font-family: Stratum2Web;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #000 !important;
+    text-decoration: none !important;
+  	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='27' height='20' viewBox='0 0 20 16' fill='none'><path d='M2 8H16' stroke='black' stroke-width='2.0' stroke-linecap='square' stroke-linejoin='round'/><path d='M12 14L18 8L12 2' stroke='black' stroke-width='2.0' stroke-linecap='square'/></svg>") !important;
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 25px;
+    margin-right: 10px;
+    margin-top: 18px;
+    transition: 0.2s ease;
+    border-bottom: none;
+  }
+
+  main .block--type-blue-messaging-block .block .black-arrow-link .field a:hover {
+    padding-right: 35px;
+    margin-right: 0px;
+    border-bottom: none;
+  }
+
+  main .block--type-blue-messaging-block .block .black-arrow-link .field a:active, main .block--type-blue-messaging-block .block .black-arrow-link .field a:focus {
+  	background-color: transparent !important;
+    color: #000 !important;
+    padding-right: 35px !important;
+    border-bottom: none !important;
+  }
+
+  /*================================================================================================================================================================
+  	VIEW NAME: COE brand people cards view
+  	------VIEW-------
+  	==============================================================================================================================================================*/
+
+
+  .coe-brand-people-email-label,
+  .coe-brand-people-phone-label {
+  	color: #006A8E;
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	/* Main/Label */
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  	padding-bottom: 5px;
+  	margin-bottom: 0px;
+  }
+
+  .coe-brand-people-email a{
+  	color: #D73F09;
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 130%;
+  	text-decoration: none !important;
+  }
+
+  .body-small {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	
+  	/* Main/Body Small */
+  	font-family: "Open Sans";
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 130%;
+  }
+
+
+  .coe-brand-people-phone {
+  	margin-bottom: 20px;
+  }
+
+
+  .coe-brand-people-card-name {
+  	padding-top: 6px;
+  }
+
+
+  .coe-brand-people-card,
+  .block--type-people-cards{
+  	border-radius: 5px;
+  	background: var(--Primary-Bucktooth-White, #FFF);
+  	box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.08);
+  	transition: .3s;
+  }
+
+  .block--type-people-cards {
+  	height: 100%;
+  }
+
+  .block--type-people-cards .field--name-body{
+  	padding: 30px;
+  }
+
+
+  .coe-brand-people-card:hover,
+  .block--type-people-cards:hover{
+  	background: #F9FCFD !important;
+  	transition: .3s;
+  	box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.08) !important;
+  }
+  .coe-brand-people-card img,
+  .block--type-people-cards img{
+  	border-radius: 5px 5px 0 0;
+  	width: 100%;
+  }
+
+  .block--type-people-cards img{
+  	height: 380px;	
+  	object-fit: cover;
+  }
+
+  .coe-brand-people-email a {
+  	text-transform: lowercase;
+  	z-index: 5;
+  	position: relative;
+  }
+
+  .coe-brand-people-card a:has(> img)::before{
+  	content: "";
+  	position: absolute;
+  	inset: 0;
+  }
+
+
+  /*================================================================================================================================================================
+  	SECTION: Document Cards
+  	
+  	Purpose: Buttons that can link doucments with download/link icon
+  	==============================================================================================================================================================*/
+
+
+  .block--type-document-card {
+    position: relative;
+    border-radius: 5px;
+    border: 2px solid rgba(0,133,155,0.12); /* subtle High-Tide border */
+    padding: 20px;
+    cursor: pointer;
+    overflow: hidden;
+    box-sizing: border-box;
+    transition: 0.3s ease;
+  }
+
+  .block--type-document-card:hover {
+    box-shadow: inset 0 0 0 3px var(--Secondary-High-Tide, #00859B);
+    border-color: transparent; 
+  }
+
+  .block--type-document-card:active {
+    box-shadow: inset 0 0 0 3px #003B5C;
+    border-color: transparent; 
+  }
+
+  .block--type-document-card .block__content {
+    display: flex;
+    align-items: center;          /* vertical centering */
+    justify-content: space-between; /* push text left, icon right */
+    height: 100%;
+    text-align: left;
+  }
+
+  /* Make full block clickable */
+  .block--type-document-card .field--name-field-document-card-link a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  /* Icons */
+  .link-icon::before {
+    content: url("/sites/engineering.oregonstate.edu/files/2025-11/link%20icon.svg");
+  }
+  .link-icon span {
+    display: none;
+  }
+
+  .download-icon::before{
+  	content: url("/sites/engineering.oregonstate.edu/files/2025-11/download%20icon.svg");
+  }
+
+  .download-icon span {
+    display: none;
+  }
+
+  .field--name-field-document-card-icons{
+  	padding-top: 5px;
+  }
+
+  .field--name-field-document-card-link a:hover,
+  .field--name-field-document-card-link a:active,
+  .field--name-field-document-card-link a:focus{
+  	color: var(--Primary-Paddletail-Black, #000) !important;
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	 /*Main/H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	border-bottom: none;
+  }
+
+  .field--name-field-document-card-link a{
+  	border-bottom: none;
+  }
+
+  @media (max-width: 991px) {
+  .block--type-document-card{
+  	margin-bottom: 16px;
+  }
+  }
+  @media (min-width: 1200px) {
+    .h-lg-100 {
+      height: 100% !important;
+    }
+  }
+
+
+  /*================================================================================================================================================================
+  	SECTION: Accordions
+  	
+  	Purpose: COE Brand Accordion custom block
+  	==============================================================================================================================================================*/
+  .field--name-field-coe-accordion-sections {
+  	display: flex;
+  	column-gap: 20px;
+  	flex-wrap: wrap;
+  }
+
+  .field--name-field-coe-accordion-sections {
+      display: grid;
+      grid-template-columns: calc(50% - 10px) calc(50% - 10px);
+      column-gap: 20px; 
+  }
+
+  .block-field-blockparagraphcoe-accordion-contentfield-coe-acc-section-titl {
+      align-self: end;
+  }
+
+  .field--name-field-coe-accordion-sections > .field__item,
+  .field--name-field-coe-accordion-sections > .field__item > .paragraph,
+  .field--name-field-coe-accordion-sections > .field__item > .paragraph > .layout,
+  .field--name-field-coe-accordion-sections > .field__item > .paragraph > .layout > .layout__region {
+      display: contents;
+  }
+
+  .block--type-coe-accordion:has(.coe-acc-one) .field--name-field-coe-accordion-sections,
+  .block--type-coe-black-accordions:has(.coe-acc-one) .field--name-field-coe-accordion-sections{
+      grid-template-columns: 1fr;
+  }
+
+  .block--type-coe-accordion:has(.coe-acc-one) .field--name-field-coe-accordion-sections > .field__item,
+  .block--type-coe-black-accordions:has(.coe-acc-one) .field--name-field-coe-accordion-sections > .field__item{
+      display: block;
+  }
+
+  @media screen and (max-width: 1199px) {
+      .field--name-field-coe-accordion-sections {
+          grid-template-columns: 1fr;
+      }
+
+      .field--name-field-coe-accordion-sections > .field__item {
+          display: block;
+      }
+  }
+
+  /*.block--type-coe-black-accordions:has( .coe-acc-one) .field--name-field-coe-accordion-sections > .field__item{*/
+  /*	padding-bottom: 30px;*/
+  /*}*/
+
+
+  .field--name-field-coe-accordion-columns, .field--name-field-coe-acc-typography {
+  	display: none;
+  }
+  	
+  .field--name-field-coe-acc-section-titl,
+  .field--name-field-coe-accordion-title{
+  	padding: 0 0 10px;
+    margin-top: 30px;
+    gap: 10px;
+    color: #000;
+    line-height: 130%;
+    align-items: end;
+    font-family: Stratum2Web;
+  	font-size: 36px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 46.8px */
+  	display: flex;
+  	justify-content: space-between;
+  	border-bottom: 2px solid #C6DAE7;
+  	cursor: pointer;
+  }
+
+  .field--name-field-coe-accordion-title h3{
+  	margin-bottom: 0px;
+  }
+
+
+  .block--type-coe-accordion:has( .coe-acc-small) .field--name-field-coe-acc-section-titl,
+  .block--type-coe-accordion:has( .coe-acc-small) .field--name-field-coe-accordion-title{
+  	font-weight: 600;
+  	font-family: 'Open Sans';
+  	font-size: 20px;
+  }
+
+
+  .field--name-field-coe-acc-section-titl::after,
+  .field--name-field-coe-accordion-title::after{
+  	content: "";
+    background-image: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="%23C6DAE7"/><path d="M11 17L20 26L29 17" stroke="%23006A8E" stroke-width="4" stroke-linecap="square"/></svg>');
+    width: 40px;
+    height: 40px;
+    background-size: 40px;
+    display: block;
+    flex-shrink: 0;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .accordion-open .field--name-field-coe-acc-section-titl::after,
+  .accordion-open .field--name-field-coe-accordion-title::after{
+  	transform: rotate(-180deg);
+  }
+
+  .field--name-field-coe-accordion-section-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+  }
+
+  .field--name-field-coe-accordion-section-body > *:first-child {
+  	padding-top: 50px;
+  }
+
+  .field--name-field-coe-accordion-section-body > *:last-child {
+  	padding-bottom: 20px;
+  }
+
+  .label-text{
+  	color: var(--Secondary-Stratosphere, #006A8E);
+  	
+  	/* Main/Label */
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  }
+
+  /*************************
+  * Black accordion styling
+  **************************/
+
+  .block--type-coe-black-accordions .field--name-field-coe-acc-section-titl{
+  	padding: 0 0 10px;
+    margin-top: 30px;
+    gap: 10px;
+    color: #000;
+    line-height: 130%;
+    align-items: end;
+    font-family: Stratum2Web;
+  	font-size: 36px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 46.8px */
+  	display: flex;
+  	justify-content: space-between;
+  	border-bottom: 6px solid black;
+  	cursor: pointer;
+  }
+
+  .block--type-coe-black-accordions .field--name-field-coe-acc-section-titl::after,
+  .block--type-coe-black-accordions .field--name-field-coe-accordion-title::after{
+  	content: "";
+    background-image: url('data:image/svg+xml,<svg width="33" height="20" viewBox="0 0 33 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M28.2427 4.24268L16.2427 16.2427L4.24268 4.24268" stroke="black" stroke-width="6" stroke-linecap="square" stroke-linejoin="round"/></svg>');
+    width: 40px;
+    height: 40px;
+    background-size: 33px 20px;
+    display: block;
+    flex-shrink: 0;
+    transition: transform 0.2s ease-in-out;
+  	background-repeat: no-repeat;
+  	background-position: center;
+  }
+
+  /* Note: Inherits transition code from COE Accordion */
+
+  /* Smaller typography styling */
+  .block--type-coe-black-accordions:has(.coe-acc-small) .field--name-field-coe-acc-section-titl::after,
+  .block--type-coe-black-accordions:has(.coe-acc-small) .field--name-field-coe-accordion-title::after{
+    background-image: url('data:image/svg+xml,<svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M2.12134 2.12109L14.1213 14.1211L26.1213 2.12109" stroke="black" stroke-width="3" stroke-linecap="square" stroke-linejoin="round"/></svg>');
+    width: 30px;
+    height: 20px;
+    background-size: 29px 16px;
+  }
+
+  /* Small typography font styling + thinner border */
+  .block--type-coe-black-accordions:has(.coe-acc-small) .field--name-field-coe-acc-section-titl,
+  .block--type-coe-black-accordions:has(.coe-acc-small) .field--name-field-coe-accordion-title{
+  	font-weight: 600;
+  	font-family: 'Open Sans';
+  	font-size: 20px;
+  	font-style: normal;
+  	border-bottom: 3px solid black;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Resource Grids
+  	
+  	Purpose: Grid for resource cards with title, body, and an arrow link
+  ==============================================================================================================================================================*/
+
+  /* Resource Grid */
+  .field--name-field-resources-grid-sections {
+  	display: flex;
+  	column-gap: 20px;
+  	flex-wrap: wrap;
+  	align-items: stretch;
+  }
+
+  /* Card Container */
+  .field--name-field-resources-grid-sections > .field__item {
+  	margin-bottom: 1rem;
+  	width: calc(50% - 10px);
+  }
+
+  @media screen and (max-width: 1199px) {
+  	.field--name-field-resources-grid-sections > .field__item {
+  		width: 100%;
+  	}
+  }
+
+  /* Card */
+  .field--name-field-resources-grid-sections .paragraph--type--coe-text-with-links {
+  	background-color: white;
+  	border: 3px solid #d73f09;
+  	border-radius: 5px;
+  	box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.12);
+  	width: 100%;
+  	height: 100%;
+  	padding: 25px;
+  	display: flex;
+  	flex-direction: column;
+  	position: relative;
+  	transition: background-color 0.4s ease-in-out, color 0.4s ease-in-out;
+  }
+
+  /* Card - hover and focus */
+  .field--name-field-resources-grid-sections .paragraph--type--coe-text-with-links:hover,
+  .field--name-field-resources-grid-sections .paragraph--type--coe-text-with-links:focus-within {
+  	background-color: #d73f09;
+  	color: white;
+  	box-shadow: none;
+  }
+
+  /* Title */
+  .field--name-field-resources-grid-sections .field--name-field-coe-text-with-link h4 {
+  	font-family: Stratum2Web;
+  	font-size: 24px;
+  	font-weight: 900;
+  	letter-spacing: 1px;
+  	margin-bottom: 20px;
+  	transition: color 0.4s ease-in-out;
+  }
+
+  /* Title - hover and focus */
+  .field--name-field-resources-grid-sections .paragraph--type--coe-text-with-links:hover .field--name-field-coe-text-with-link h4,
+  .field--name-field-resources-grid-sections .paragraph--type--coe-text-with-links:focus-within .field--name-field-coe-text-with-link h4 {
+  	color: white;
+  }
+
+  /* Body spacing (gap between body and link) */
+  .field--name-field-resources-grid-sections .field--name-field-coe-text-w-link-text {
+  	margin-bottom: 30px;
+  }
+
+  /* Link spacing (push to bottom) */
+  .field--name-field-resources-grid-sections .field--name-field-coe-text-w-link-link {
+  	margin-top: auto;
+  }
+
+  /* Arrow Link */
+  .field--name-field-resources-grid-sections .paragraph--type--coe-text-with-links .field--name-field-coe-text-w-link-link a {
+  	font-family: Stratum2Web;
+  	font-size: 20px;
+  	font-weight: 500;
+  	text-transform: uppercase;
+  	color: #d73f09 !important;
+  	text-decoration: none !important;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+  	background-position: 100%;
+  	background-repeat: no-repeat;
+  	background-size: 20px;
+  	padding-right: 25px;
+  	transition: 0.4s ease;
+  	border-bottom: none;
+  }
+
+  /* Arrow Link - hover and focus */
+  .field--name-field-resources-grid-sections .paragraph--type--coe-text-with-links:hover .field--name-field-coe-text-w-link-link a,
+  .field--name-field-resources-grid-sections .paragraph--type--coe-text-with-links:focus-within .field--name-field-coe-text-w-link-link a {
+  	color: white !important;
+  	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='27' height='20' viewBox='0 0 20 16' fill='none'><path d='M2 8H16' stroke='white' stroke-width='2.0' stroke-linecap='square' stroke-linejoin='round'/><path d='M12 14L18 8L12 2' stroke='white' stroke-width='2.0' stroke-linecap='square'/></svg>") !important;
+  	padding-right: 35px;
+  }
+
+  /* Arrow Link - cover entire card */
+  .field--name-field-resources-grid-sections .paragraph--type--coe-text-with-links .field--name-field-coe-text-w-link-link a::before {
+  	content: "";
+  	inset: 0;
+  	position: absolute;
+  }
+
+  /*==============================================================================
+  	Academic Degrees List
+  	============================================================================*/	
+  	
+  #views-bootstrap-academics-degrees-simple-display-block-2 a,
+  .block-inline-blockprograms-list .field--name-body a,
+  #views-bootstrap-academics-degrees-simple-display-block-3 a,
+  #views-bootstrap-academics-degrees-simple-display-block-5 a{
+  	/*min-height: 105px;*/
+  	padding-top: 25px;
+  	padding-right: 60px;
+  	width: 100%;
+  	display: flex;
+  	justify-content: space-between;
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  	text-decoration: none;
+  	border-bottom: none;
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 a:hover,
+  .block-inline-blockprograms-list .field--name-body a:hover,
+  #views-bootstrap-academics-degrees-simple-display-block-3 a:hover,
+  #views-bootstrap-academics-degrees-simple-display-block-5 a:hover{
+  	border-bottom: none;
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 a:active,
+  .block-inline-blockprograms-list .field--name-body a:active,
+  #views-bootstrap-academics-degrees-simple-display-block-3 a:active,
+  #views-bootstrap-academics-degrees-simple-display-block-5 a:active{
+   color: #000 !important;
+   background-color: transparent;
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 .views-field-title,
+  #views-bootstrap-academics-degrees-simple-display-block-3 .views-field-title,
+  #views-bootstrap-academics-degrees-simple-display-block-5 .views-field-title,
+  .block-inline-blockprograms-list{
+  	border-top: 1px solid #B8DDE1;
+    transition: border-top 0.3s ease;
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 .views-field-title:has( a:hover),
+  #views-bootstrap-academics-degrees-simple-display-block-3 .views-field-title:has( a:hover),
+  #views-bootstrap-academics-degrees-simple-display-block-5 .views-field-title:has( a:hover),
+  .block-inline-blockprograms-list:has( a:hover){
+  	border-top: 1px solid #00859B;
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 .views-field-title:has( a:hover), 
+  #views-bootstrap-academics-degrees-simple-display-block-2 .views-field-title:has( a:active),
+  #views-bootstrap-academics-degrees-simple-display-block-3 .views-field-title:has( a:hover),
+  #views-bootstrap-academics-degrees-simple-display-block-3 .views-field-title:has( a:active),
+  #views-bootstrap-academics-degrees-simple-display-block-5 .views-field-title:has( a:hover),
+  #views-bootstrap-academics-degrees-simple-display-block-5 .views-field-title:has( a:active),
+  .block-inline-blockprograms-list .field--name-body:( a:hover),
+  .block-inline-blockprograms-list .field--name-body:( a:active){
+  	border-top: 1px solid transparent;
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 span,
+  #views-bootstrap-academics-degrees-simple-display-block-3 span,
+  #views-bootstrap-academics-degrees-simple-display-block-5 span,
+  .block-inline-blockprograms-list .field--name-body{
+  	width: 100%;
+  	display: block;
+    border-top: 2px solid transparent;
+    cursor: pointer;
+    transition: border-top 0.3s ease;
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 a::before,
+  #views-bootstrap-academics-degrees-simple-display-block-3 a::before,
+  #views-bootstrap-academics-degrees-simple-display-block-5 a::before,
+  .block-inline-blockprograms-list .field--name-body a::before{
+  	content: "";
+  	position: absolute;
+  	inset: 0;
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 .col-12,
+  #views-bootstrap-academics-degrees-simple-display-block-3 .col-12,
+  #views-bootstrap-academics-degrees-simple-display-block-5 .col-12,
+  .col-12 .block-inline-blockprograms-list{
+  	background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBvcGFjaXR5PSIwLjIiIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI0I4RERFMSIvPgo8cGF0aCBkPSJNMTEgMTkuNzVIMjYuNzUiIHN0cm9rZT0iIzAwODU5QiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTIyLjI1IDI2LjVMMjkgMTkuNzVMMjIuMjUgMTMiIHN0cm9rZT0iIzAwODU5QiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiLz4KPC9zdmc+Cg==");
+  	background-position: right 12px top 32%;
+    background-repeat: no-repeat;
+  	transition: background-image 0.3s ease, border-top 0.3s ease;
+  	position: relative;
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 .col-12:has( a:hover),
+  #views-bootstrap-academics-degrees-simple-display-block-3 .col-12:has( a:hover),
+  #views-bootstrap-academics-degrees-simple-display-block-5 .col-12:has( a:hover),
+  .col-12 .block-inline-blockprograms-list:has( a:hover){
+  	background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBvcGFjaXR5PSIwLjYiIGN4PSIyMCIgY3k9IjIwIiByPSIyMCIgZmlsbD0iI0I4RERFMSIvPgo8cGF0aCBkPSJNMTEgMTkuNzVIMjYuNzUiIHN0cm9rZT0iIzAwODU5QiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KPHBhdGggZD0iTTIyLjI1IDI2LjVMMjkgMTkuNzVMMjIuMjUgMTMiIHN0cm9rZT0iIzAwODU5QiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiLz4KPC9zdmc+Cg==");
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 .col-12:has( a:active),
+  #views-bootstrap-academics-degrees-simple-display-block-3 .col-12:has( a:active),
+  #views-bootstrap-academics-degrees-simple-display-block-5 .col-12:has( a:active),
+  .col-12 .block-inline-blockprograms-list:has( a:active){
+   background-image: url("data:image/svg+xml;charset=utf-8;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHZpZXdCb3g9IjAgMCA0MCA0MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPGNpcmNsZSBjeD0iMjAiIGN5PSIyMCIgcj0iMjAiIGZpbGw9IiMwMDg1OUIiLz4KPHBhdGggZD0iTTExIDE5Ljc1SDI2Ljc1IiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InNxdWFyZSIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgo8cGF0aCBkPSJNMjIuMjUgMjYuNUwyOSAxOS43NUwyMi4yNSAxMyIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJzcXVhcmUiLz4KPC9zdmc+Cg==");
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2 span:has( a:hover), 
+  #views-bootstrap-academics-degrees-simple-display-block-2 span:has( a:active),
+  #views-bootstrap-academics-degrees-simple-display-block-3 span:has( a:hover),
+  #views-bootstrap-academics-degrees-simple-display-block-3 span:has( a:active),
+  #views-bootstrap-academics-degrees-simple-display-block-5 span:has( a:hover),
+  #views-bootstrap-academics-degrees-simple-display-block-5 span:has( a:active),
+  .block-inline-blockprograms-list .field--name-body:has( a:hover), .block-inline-blockprograms-list .field--name-body:has( a:active)
+  {
+  	 border-top: 2px solid #00859B;
+  }
+
+  .views-field-field-coe-degree-type-graduate,
+  .views-field-field-coe-discipline-location,
+  .views-field-field-coe-graduate-locations{
+  	color: var(--Secondary-Stratosphere, #006A8E);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	/* Main/Label */
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  	word-spacing: 10px;
+  }
+
+  #views-bootstrap-academics-degrees-simple-display-block-2,
+  #views-bootstrap-academics-degrees-simple-display-block-3,
+  #views-bootstrap-academics-degrees-simple-display-block-5,
+  .views-field-field-coe-degree-type-graduate,
+  .views-field-field-coe-discipline-location,
+  .views-field-field-coe-graduate-locations,
+  .block-inline-blockprograms-list{
+    margin-top: 10px !important;
+    padding-bottom: 20px !important;
+  }
+
+  *:has(> .block-inline-blockprograms-list) {
+  	display: flex;
+  	flex-wrap: wrap;
+  	column-gap: 20px;
+  }
+
+  .block-inline-blockprograms-list {
+  	width: calc(33% - 16.67px);
+  }
+
+  @media screen and (max-width: 991px) {
+  	.block-inline-blockprograms-list {
+  		width: 100%;
+  	}
+  }
+
+  /*==============================================================================
+  	Looping Animated Ticker
+  	============================================================================*/	
+  div:has(> .container > .layout .animated-ticker) { /* Selecting the full-width section div */
+  	overflow-x: clip;
+  }
+
+  .animated-ticker {
+  	/* Ticker settings */
+  	--ticker-padding: 15px 0;
+  	--ticker-animation-time: 60s;
+  	--ticker-image-width: 300px;
+  	--ticker-image-height: 120px;
+  	--ticker-image-min-margin: 60px;
+  	--ticker-image-count: 13;
+
+  	width: 100%;
+  	margin-left: calc(50% - 50vw);
+  	margin-right: calc(50% - 50vw);
+  }
+
+  .animated-ticker-content {
+  	display: flex;
+  	align-items: center;
+  	width: max-content;
+  	height: auto;
+  	padding: var(--ticker-padding);
+  	animation: animated-ticker-scroll var(--ticker-animation-time) linear infinite;
+  }
+
+  .animated-ticker-content img {
+  	object-fit: contain;
+  	width: var(--ticker-image-width);
+  	height: var(--ticker-image-height);
+  	margin: 0 max(var(--ticker-image-min-margin), calc((100vw / var(--ticker-image-count) / 2) - (var(--ticker-image-width) / 2))); /* Ensures images are evenly spread out */
+  }
+
+  .animated-ticker-button {
+  	/* Default */
+  	--bs-btn-bg: rgb(255, 255, 255, 0);
+  	--bs-btn-active-border-color: #000;
+  	--bs-btn-color: #000;
+  	/* Hover/Focus */
+  	--bs-btn-hover-bg: #000;
+  	--bs-btn-active-border-color: #000;
+  	--bs-btn-hover-color: #fff;
+  	/* Active */
+  	--bs-btn-active-bg: #212529;
+  	--bs-btn-active-border-color: #212529;
+  	--bs-btn-active-color: #FFFFFF;
+
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+
+  	position: absolute;
+  	bottom: -40px;
+  	right: 20px;
+
+  	height: 40px;
+  	width: 40px;
+
+  	padding: 0;
+  	border: 2px solid #000;
+  	
+  	transition: 0.3s ease;
+  }
+
+  @keyframes animated-ticker-scroll {
+  	0% {
+  		transform: translateX(0);
+  	}
+  	100% {
+  		transform: translateX(-50%);
+  	}
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+  	.animated-ticker-content {
+  		animation-play-state: paused;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/*/layout\r\n"
+contexts: {  }
+conditions_require_all: true

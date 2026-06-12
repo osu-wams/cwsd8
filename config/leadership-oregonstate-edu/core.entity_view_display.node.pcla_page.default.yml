@@ -1,0 +1,103 @@
+uuid: 1b499892-6319-4c21-89f8-0f0fc758eab1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.pcla_page.body
+    - field.field.node.pcla_page.field_language
+    - field.field.node.pcla_page.layout_builder__layout
+    - node.type.pcla_page
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - options
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          a8a86868-9003-46b1-a4b6-f2f3cd10a97c:
+            uuid: a8a86868-9003-46b1-a4b6-f2f3cd10a97c
+            region: content
+            configuration:
+              id: 'extra_field_block:node:pcla_page:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          c1d439df-742b-43ce-b0a6-9b5800b1219a:
+            uuid: c1d439df-742b-43ce-b0a6-9b5800b1219a
+            region: content
+            configuration:
+              id: 'field_block:node:pcla_page:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          6079fd8b-b575-4bf2-bd7d-8f3c5a8f2e93:
+            uuid: 6079fd8b-b575-4bf2-bd7d-8f3c5a8f2e93
+            region: content
+            configuration:
+              id: 'extra_field_block:node:pcla_page:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 2
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: node.pcla_page.default
+targetEntityType: node
+bundle: pcla_page
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_language:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  layout_builder__layout: true

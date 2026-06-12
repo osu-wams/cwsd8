@@ -1,0 +1,29 @@
+uuid: 5480fa12-3fbf-442c-93a6-91ee8e38b964
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: kaku_ixt_mana_ina_haws
+label: 'Kaku-ixt Mana Ina Haws'
+code: |-
+  body.page--kaku nav[aria-label="Breadcrumb"] [aria-current="page"],
+  body.page--kaku nav[aria-label="Breadcrumb"] [aria-current="page"] * {
+    text-transform: lowercase !important;
+    font-variant: normal !important;
+    font-variant-caps: normal !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    pages: ''
+contexts: {  }
+conditions_require_all: true

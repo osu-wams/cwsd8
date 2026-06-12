@@ -1,0 +1,29 @@
+uuid: 53977c58-1ad2-4fa1-92a9-ffad277b8f63
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_volume
+    - node.type.newsletter
+    - taxonomy.vocabulary.newsletter_volumes
+id: node.newsletter.field_volume
+field_name: field_volume
+entity_type: node
+bundle: newsletter
+label: Volume
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      newsletter_volumes: newsletter_volumes
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,41 @@
+uuid: 523d129c-c73b-43ec-b527-a9b64902c3a2
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.website.body
+    - field.field.node.website.field_address_state
+    - field.field.node.website.field_contact_individual
+    - field.field.node.website.field_country
+    - field.field.node.website.field_species
+    - field.field.node.website.field_website_url2
+    - node.type.website
+  module:
+    - text
+    - user
+id: node.website.teaser
+targetEntityType: node
+bundle: website
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_address_state: true
+  field_contact_individual: true
+  field_country: true
+  field_species: true
+  field_website_url2: true

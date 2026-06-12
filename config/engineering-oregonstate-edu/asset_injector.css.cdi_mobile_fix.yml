@@ -1,0 +1,34 @@
+uuid: 30af5c92-fcfd-4ba9-817c-b78b6fd3ac93
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: cdi_mobile_fix
+label: 'CDI mobile fix (remove mobile padding) '
+code: |
+  /*  Remove mobile padding for CDI page blocks */
+
+  @media only screen and (max-width: 600px) {
+  	#block-madrone-content > div > article > div.node__content > div.osu-bg-page-alt-1.bg-color._none.pt-6 {
+  	    padding-top: Orem
+  	}
+  	
+  	#block-madrone-content > div > article > div.node__content > div.osu-bg-page-alt-1.bg-color._none.pb-6 {
+  	    padding-bottom: Orem;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/43236\r\n/test/CDI/resources"
+contexts: {  }
+conditions_require_all: true

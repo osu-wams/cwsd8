@@ -1,0 +1,32 @@
+uuid: 41876347-b282-4672-b70a-c4b92544e55f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: sitewide_temporary_header_fix
+label: 'Sitewide - Temporary Header fix'
+code: |
+  /*this fixes the issue of the header breaking with groups because they have a custom logo and header for being a campus*/
+
+  #block-madrone-sitebranding > .block__content {
+  	flex-wrap: wrap;
+  }
+
+  .site-name__site-link--with-group {
+  	display: none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

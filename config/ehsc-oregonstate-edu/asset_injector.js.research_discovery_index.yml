@@ -1,0 +1,420 @@
+uuid: 6bce792a-d791-48c4-bd6f-a6839f58af48
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: research_discovery_index
+label: 'Research Discovery Index'
+code: |-
+  /***** Config *****/
+  const CSV_URL = '/discovery_index_csv_file'; // same-origin
+
+  /***** Tiny CSV parser (handles quoted fields) *****/
+  function CSVToArray(strData, strDelimiter) {
+    strDelimiter = (strDelimiter || ",");
+    const objPattern = new RegExp(
+      "(\\"
+        + strDelimiter
+        + "|\\r?\\n|\\r|^)(?:\"([^\"]*(?:\"\"[^\"]*)*)\"|([^\"\\"
+        + strDelimiter
+        + "\\r\\n]*))", "gi"
+    );
+    const arrData = [[]];
+    let match;
+    while ((match = objPattern.exec(strData))) {
+      const delim = match[1];
+      if (delim.length && delim !== strDelimiter) arrData.push([]);
+      const value = match[2] ? match[2].replace(/""/g, "\"") : (match[3] || "");
+      arrData[arrData.length - 1].push(value);
+    }
+    return arrData;
+  }
+
+  /***** Helpers *****/
+  function headerIndex(headers, patterns, fallback = -1) {
+    const L = headers.map(h => (h || "").toLowerCase());
+    for (let i = 0; i < L.length; i++) {
+      const t = L[i];
+      for (const re of patterns) {
+        if (re.test(t)) return i;
+      }
+    }
+    return fallback;
+  }
+  function isHttp(url) { return /^https?:\/\//i.test(url); }
+  function splitCSVList(val) {
+    if (!val) return [];
+    return val
+      .split(/[;,]+/)        // split on comma OR semicolon (one or more)
+      .map(s => s.trim())    // trim whitespace
+      .filter(Boolean);      // drop empties
+  }
+  function mergeLists(a, b) {
+    const out = [];
+    const seen = new Set();
+    [...(a||[]), ...(b||[])].forEach(x => {
+      const key = x.toLowerCase();
+      if (!seen.has(key)) { seen.add(key); out.push(x); }
+    });
+    return out;
+  }
+  function addTagLine(td, label, items) {
+    if (!items.length) return;
+    td.appendChild(document.createElement('br'));
+    td.appendChild(document.createTextNode(label + ': '));
+    items.forEach((item, i) => {
+      const link = document.createElement('a');
+      link.href = '#';
+      link.className = 'js-search-tag';
+      link.dataset.term = item;
+      link.textContent = item;
+      td.appendChild(link);
+      if (i < items.length - 1) td.appendChild(document.createTextNode(', '));
+    });
+  }
+
+  /***** Build thead/tbody; enrich Name cell *****/
+  function buildTableFromCSV(table, csvArray) {
+    if (!csvArray || !csvArray.length) return;
+
+    // Remove fully-empty rows
+    const rowsClean = csvArray.filter(r => r && r.some(c => (c || "").trim() !== ""));
+    if (!rowsClean.length) return;
+
+    const rawHead = rowsClean[0] || [];
+    const dataRows = rowsClean.slice(1);
+
+    // Column count = widest row
+    let columnCount = rawHead.length;
+    for (const r of dataRows) columnCount = Math.max(columnCount, r.length);
+
+    // Normalized header list
+    const headers = Array.from({ length: columnCount }, (_, i) => (rawHead[i] ?? "").trim());
+
+    // Indices (with fallbacks)
+    const nameIdx  = headerIndex(headers, [/^name\b/], 0);
+    const emailIdx = headerIndex(headers, [/mail/], 1);
+    const instIdx  = headerIndex(headers, [/institution|organisa?tion|org\b|university|college|centre|center/], 2);
+    const deptIdx  = headerIndex(headers, [/^department\b|^dept\b/], 3);
+    const orcidIdx = headerIndex(headers, [/orcid/], 4);
+    const ghIdx    = headerIndex(headers, [/github/], 5);
+    const gsIdx    = headerIndex(headers, [/google.*scholar|scholar/], 6);
+    const cvIdx    = headerIndex(headers, [/^cv\b|curriculum vitae|external.*profile|profile\b|website|home\s*page|link/], 7);
+
+    // Tag fields (and “Other” to merge)
+    const pollIdx       = headerIndex(headers, [/^pollution\b/], -1);
+    const pollOtherIdx  = headerIndex(headers, [/^pollution.*other/], -1);
+    const policyIdx     = headerIndex(headers, [/^policy\b/], -1);
+    const policyOtherIdx= headerIndex(headers, [/^policy.*other/], -1);
+    const commIdx       = headerIndex(headers, [/^community.*engage/], -1);
+    const commOtherIdx  = headerIndex(headers, [/^community.*other/], -1);
+
+    // Columns shown under "Name" (hide them as stand-alone columns)
+    const absorbed = new Set(
+      [nameIdx, emailIdx, instIdx, deptIdx, orcidIdx, ghIdx, gsIdx, cvIdx,
+       pollIdx, pollOtherIdx, policyIdx, policyOtherIdx, commIdx, commOtherIdx]
+      .filter(i => i >= 0)
+    );
+
+    // THEAD: "Name" + remaining non-absorbed headers
+    const thead = document.createElement('thead');
+    const hr = document.createElement('tr');
+
+    const thName = document.createElement('th');
+    thName.textContent = headers[nameIdx] || "Name";
+    hr.appendChild(thName);
+
+    for (let i = 0; i < columnCount; i++) {
+      if (absorbed.has(i)) continue;
+      const th = document.createElement('th');
+      th.textContent = (headers[i] || `Column ${i + 1}`);
+      hr.appendChild(th);
+    }
+    thead.appendChild(hr);
+
+    // TBODY
+    const tbody = document.createElement('tbody');
+
+    dataRows.forEach(r => {
+      const tr = document.createElement('tr');
+
+      // First cell: Name + details + tags
+      const tdMain = document.createElement('td');
+
+      // Name
+      const name = (r[nameIdx] || "").trim();
+      const b = document.createElement('b');
+      b.textContent = name;
+      tdMain.appendChild(b);
+
+      // Email (mailto)
+      const email = (r[emailIdx] || "").trim();
+      if (email) {
+        tdMain.appendChild(document.createElement('br'));
+        const a = document.createElement('a');
+        a.href = `mailto:${email}`;
+        a.textContent = email;
+        tdMain.appendChild(a);
+      }
+
+      // Institution
+      const inst = (r[instIdx] || "").trim();
+      if (inst) { tdMain.appendChild(document.createElement('br')); tdMain.appendChild(document.createTextNode(inst)); }
+
+      // Department
+      const dept = (r[deptIdx] || "").trim();
+      if (dept) { tdMain.appendChild(document.createElement('br')); tdMain.appendChild(document.createTextNode(dept)); }
+
+      // ORCiD, GitHub, Google Scholar, CV
+      const orcid = (r[orcidIdx] || "").trim();
+      if (orcid) {
+        tdMain.appendChild(document.createElement('br'));
+        const a = document.createElement('a');
+        a.textContent = 'ORCiD';
+        a.href = isHttp(orcid) ? orcid : `https://orcid.org/${orcid}`;
+        a.target = '_blank';
+        tdMain.appendChild(a);
+      }
+      const gh = (r[ghIdx] || "").trim();
+      if (gh) {
+        tdMain.appendChild(document.createElement('br'));
+        const a = document.createElement('a');
+        a.textContent = 'GitHub';
+        a.href = isHttp(gh) ? gh : `https://github.com/${gh}`;
+        a.target = '_blank';
+        tdMain.appendChild(a);
+      }
+      const gs = (r[gsIdx] || "").trim();
+      if (gs) {
+        tdMain.appendChild(document.createElement('br'));
+        const a = document.createElement('a');
+        a.textContent = 'Google Scholar';
+        a.href = isHttp(gs) ? gs : `https://scholar.google.com/${gs}`;
+        a.target = '_blank';
+        tdMain.appendChild(a);
+      }
+      const cv = (r[cvIdx] || "").trim();
+      if (cv) {
+        tdMain.appendChild(document.createElement('br'));
+        const a = document.createElement('a');
+        a.textContent = 'CV';
+        a.href = isHttp(cv) ? cv : (cv.startsWith('/') ? cv : `https://${cv}`);
+        a.target = '_blank';
+        tdMain.appendChild(a);
+      }
+
+      // Merge “Other” into main lists, render as CSV-separated clickable tags
+      const pollutionTags = mergeLists(
+        splitCSVList(pollIdx >= 0 ? r[pollIdx] : ""),
+        splitCSVList(pollOtherIdx >= 0 ? r[pollOtherIdx] : "")
+      );
+      addTagLine(tdMain, 'Pollution', pollutionTags);
+
+      const policyTags = mergeLists(
+        splitCSVList(policyIdx >= 0 ? r[policyIdx] : ""),
+        splitCSVList(policyOtherIdx >= 0 ? r[policyOtherIdx] : "")
+      );
+      addTagLine(tdMain, 'Policy', policyTags);
+
+      const communityTags = mergeLists(
+        splitCSVList(commIdx >= 0 ? r[commIdx] : ""),
+        splitCSVList(commOtherIdx >= 0 ? r[commOtherIdx] : "")
+      );
+      addTagLine(tdMain, 'Community Engagement', communityTags);
+
+      tr.appendChild(tdMain);
+
+      // Remaining visible columns (not absorbed)
+      for (let i = 0; i < columnCount; i++) {
+        if (absorbed.has(i)) continue;
+        const td = document.createElement('td');
+        td.textContent = r[i] ?? "";
+        tr.appendChild(td);
+      }
+
+      tbody.appendChild(tr);
+    });
+
+    table.innerHTML = "";
+    table.appendChild(thead);
+    table.appendChild(tbody);
+  }
+
+  /***** Labels for cards view *****/
+  function applyCardLabels(table) {
+    const headers = Array.from(table.querySelectorAll('thead th')).map(th => th.textContent || "");
+    table.querySelectorAll('tbody tr').forEach(tr => {
+      tr.querySelectorAll('td').forEach((td, i) => {
+        td.setAttribute('data-label', headers[i] || "");
+      });
+    });
+  }
+
+  /***** Simple filter (no highlighting) *****/
+  function filterRows(table, query) {
+    const q = (query || "").trim().toLowerCase();
+    const rows = table.querySelectorAll('tbody tr');
+    rows.forEach(r => {
+      const txt = r.textContent.toLowerCase();
+      r.style.display = q ? (txt.includes(q) ? "" : "none") : "";
+    });
+  }
+
+  /***** Wire tag clicks to pre-fill the search box and filter *****/
+  function wireTagClicks(container, table, searchInput) {
+    container.querySelectorAll('.js-search-tag').forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        const term = a.dataset.term || '';
+        if (searchInput) searchInput.value = term;
+        filterRows(table, term);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
+  }
+
+  /***** Fetch (same-origin) with dev mirror fallback *****/
+  async function fetchCSVWithFallback(url) {
+    try {
+      const res = await fetch(url, { cache: 'no-store', credentials: 'omit' });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      return await res.text();
+    } catch (_e) {
+      // Dev-only: mirror if you’re testing off-site
+      const path = url.startsWith('/') ? location.host + url : url.replace(/^https?:\/\//, '');
+      const mirrors = [
+        `https://r.jina.ai/http/${path}`,
+        `https://r.jina.ai/https/${path}`,
+      ];
+      for (const m of mirrors) {
+        try {
+          const res = await fetch(m, { cache: 'no-store', credentials: 'omit' });
+          if (!res.ok) throw new Error(`Proxy HTTP ${res.status}`);
+          return await res.text();
+        } catch (_e2) {}
+      }
+      throw new Error('Failed to fetch CSV.');
+    }
+  }
+
+  /***** Main *****/
+  async function main() {
+    const table = document.getElementById('directory');
+    const status = document.getElementById('status');
+    const toggleBtn = document.getElementById('toggle-view');
+    const search = document.getElementById('search');
+    const clearBtn = document.getElementById('clear-search');
+
+    if (!table) return;
+
+    // Toggle cards/table
+    if (toggleBtn) toggleBtn.addEventListener('click', () => table.classList.toggle('cards'));
+
+    // Search input (debounced)
+    if (search) {
+      let deb;
+      search.addEventListener('input', () => {
+        clearTimeout(deb);
+        deb = setTimeout(() => filterRows(table, search.value), 120);
+      });
+    }
+
+    // Clear Search button
+    if (clearBtn) {
+      clearBtn.addEventListener('click', () => {
+        if (search) search.value = '';
+        filterRows(table, '');
+      });
+    }
+
+    // Load CSV → table
+    try {
+      if (status) status.textContent = 'Loading…';
+      const text = await fetchCSVWithFallback(CSV_URL);
+      const csv = CSVToArray(text, ',');
+      if (!csv || !csv.length) throw new Error('CSV appears empty.');
+      buildTableFromCSV(table, csv);
+      applyCardLabels(table);
+  	
+  	
+  	installCardExpanders(table);
+
+  	// optional: keep button visibility accurate on resize
+  	let resizeDeb;
+  	window.addEventListener('resize', () => {
+  	  clearTimeout(resizeDeb);
+  	  resizeDeb = setTimeout(() => refreshCardExpanders(table), 120);
+  	});
+  	
+  	
+      if (status) status.textContent = `Loaded ${csv.length - 1} rows.`;
+
+      // Make tag chips clickable
+      wireTagClicks(document, table, search);
+    } catch (err) {
+      if (status) status.innerHTML = `Error loading CSV: ${err.message}`;
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', main);
+
+
+  /* Install a “View more / View less” button on each card */
+  function installCardExpanders(table) {
+    const rows = table.querySelectorAll('tbody tr');
+    rows.forEach(tr => {
+      // avoid duplicates
+      if (tr.querySelector('.card-toggle')) return;
+      const firstTd = tr.querySelector('td');
+      if (!firstTd) return;
+
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'card-toggle';
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = 'View more';
+      firstTd.appendChild(btn);
+
+      // Hide the button if the card doesn’t overflow when collapsed
+      const collapsedMax = 400 + 46; // height + bottom padding
+      const needsToggle = tr.scrollHeight > collapsedMax;
+      if (!needsToggle) btn.style.display = 'none';
+
+      btn.addEventListener('click', () => {
+        const expanded = tr.classList.toggle('expanded');
+        btn.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+        btn.textContent = expanded ? 'View less' : 'View more';
+      });
+    });
+  }
+
+  /* Re-check whether buttons should show/hide on resize */
+  function refreshCardExpanders(table) {
+    const rows = table.querySelectorAll('tbody tr');
+    const collapsedMax = 400 + 46;
+    rows.forEach(tr => {
+      const btn = tr.querySelector('.card-toggle');
+      if (!btn) return;
+      const expanded = tr.classList.contains('expanded');
+      if (expanded) { btn.style.display = ''; return; }
+      btn.style.display = tr.scrollHeight > collapsedMax ? '' : 'none';
+    });
+  }
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /resources/research-discovery-index
+contexts: {  }
+conditions_require_all: true

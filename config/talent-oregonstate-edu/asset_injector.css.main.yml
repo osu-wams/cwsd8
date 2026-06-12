@@ -1,0 +1,138 @@
+uuid: 848c6a78-5335-4aa1-93b7-efd38bb48eef
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: main
+label: Main
+code: |-
+  #scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(30, 33, 36, 0.5);
+    color: #ffffff;
+    border: none;
+    border-radius:5px;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .small-text {
+  	font-size:14px;
+  	line-height:1.5;
+  }
+  .icon-header {
+  	color:#d73f09;
+  	font-size:16px;
+  	font-weight:bold;
+  }
+  .large-numbers .medium-numbers .small-numbers {
+      font-family: "Stratum2Web", serif; 
+      line-height: 1;
+      }
+  .fact-header {
+  		font-size: 2rem;
+      font-weight: 600;
+      line-height: 1;
+      font-family: "Stratum2Web", sans-serif;
+  }
+  .news-image {
+  	  width: 100%; /* Image container takes full width */
+    height: 0; /* Height is calculated based on aspect ratio */
+    padding-bottom: 60%; /* 300 / 600 = 0.5 = 50%  Aspect ratio trick */
+    position: relative; /* Needed for absolute positioning of the image */
+    overflow: hidden; /* Key: Hides any overflowing image content */
+  }
+  .news-image img {
+  		position: absolute; /* Allows positioning within the container */
+    top: 0;
+    left: 0;
+    width: 100%; /* Image covers the entire container width */
+    height: 100%; /* Image covers the entire container height */
+    object-fit: cover;
+      border-radius: 10px 10px 0 0;
+  }
+  .date {
+  	font-size:14px;
+  	font-style: italic;
+  }
+  .news-story {
+  	border-top:solid 5px #d73f09;
+  	padding: 7px 24px 24px 24px;
+  	margin-bottom:24px;
+  }
+
+  @media (min-width: 1201px) {
+        .large-font { font-size: 70px;
+        text-transform:uppercase
+      }
+      .medium-font {
+      	font-size:2.5rem;
+      }
+      .text-center-image {
+  			padding:90px 0 0 25px;
+  		}
+  }
+  @media (max-width: 1200px) {
+      .large-font {
+          font-size: 40px;
+          text-transform:uppercase
+      }
+      .text-center-image {
+  			padding:5px 0 0 0px;
+  		}
+  		.desktop {
+  			display:none;
+  		}
+  		  .mobile-spacing {
+      	margin-top:-50px;
+      }
+  		.mobile-header {
+          padding-bottom: 50px !important;
+          font-size: 55px;
+      }
+      .mobile-padding-bottom {
+      	padding-bottom: 30px;
+      }
+  }
+  @media (min-width: 1199px) {
+      .mobile {
+      	display:none;
+      }
+  }
+  .neg-margin-top {
+  	margin-top:-20px;
+  }
+
+  .trans-bg {
+  	background-color: rgba(255, 255, 255, 0.7);
+  }
+  .check {
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+  }
+
+  .check::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #28a745;
+    font-weight: bold;
+    font-size: 1.4em;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

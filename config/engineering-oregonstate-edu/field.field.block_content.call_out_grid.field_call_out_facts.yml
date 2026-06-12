@@ -1,0 +1,40 @@
+uuid: 63d99954-e9f2-49a1-b5d2-3481c9de6bfe
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.call_out_grid
+    - field.storage.block_content.field_call_out_facts
+    - paragraphs.paragraphs_type.call_out_fact
+  module:
+    - entity_reference_revisions
+id: block_content.call_out_grid.field_call_out_facts
+field_name: field_call_out_facts
+entity_type: block_content
+bundle: call_out_grid
+label: 'Call-out Facts'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      call_out_fact: call_out_fact
+    negate: 0
+    target_bundles_drag_drop:
+      call_out_fact:
+        weight: 5
+        enabled: true
+      osu_accordion_item:
+        weight: 4
+        enabled: false
+      osu_accordion_section:
+        weight: 5
+        enabled: false
+      profile_research_description:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

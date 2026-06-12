@@ -1,0 +1,29 @@
+uuid: 7784f2ec-ca38-413a-92d2-16ef8490e003
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_coe_dp_degree_level
+    - node.type.degree_programs
+    - taxonomy.vocabulary.degree_levels
+id: node.degree_programs.field_coe_dp_degree_level
+field_name: field_coe_dp_degree_level
+entity_type: node
+bundle: degree_programs
+label: 'Degree Level'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      degree_levels: degree_levels
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: degree_levels
+field_type: entity_reference

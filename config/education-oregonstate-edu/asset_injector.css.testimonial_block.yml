@@ -1,0 +1,60 @@
+uuid: d7c0e53f-ad57-4a38-8109-f1265f2f53db
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: testimonial_block
+label: 'Testimonial Block'
+code: |
+  /**
+   * Testimonial Section
+  **/
+  .section--testimonial::before {
+  	content: open-quote " " close-quote !important;
+    color: var(--co-ed--beaver--orange) !important;
+    text-align: center !important;
+    font-family: "Stratum2Web" !important;
+    font-size: 7.5rem !important;
+    font-style: normal !important;
+    font-weight: 700 !important;
+    line-height: 0 !important;
+    width: 131px !important;
+    display: block;
+    border-bottom: 14px solid var(--secondary---co-ed--candela) !important;
+    margin: 2rem auto;
+  }
+
+  /**
+   * Testimonial Block: Testimonial Card View Mode
+  **/
+  .block--view-mode-testimonial-card {
+  	max-width: 100% !important;
+  	margin-bottom: 2rem !important;
+  }
+  .block--view-mode-testimonial-card	.field--name-field-photo {
+  	border-radius: 50%;
+  	overflow: hidden;
+  	width: 100px;
+  	height: 100px;
+  	margin-bottom: 1.5rem;
+  }
+  .block--view-mode-testimonial-card	.field--name-field-quote {
+  	margin-bottom: 1.5rem;
+  	padding-bottom: 0.5rem;
+  	border-bottom: 1px solid var(--co-ed--beaver--orange);
+  }
+media: screen
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,221 @@
+uuid: 6c60d826-228c-4b7b-bf7c-6b8988f8581f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_brand_sidebars
+label: 'COE Brand Sidebars'
+code: |
+  /*
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  	--COE Sidebars--
+  	
+  	Global sidebar styling. Created 4/2/2025.
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  */
+
+  /*================================================================================================================================================================
+  	SECTION: Sidebar Styling
+  	
+  	PURPOSE: Configuration of sidebars
+  	==============================================================================================================================================================*/
+
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Menu Header Styles
+  	
+  	Styles the headers of desktop and tablet/mobile views of sidebars
+  	----------------------------------------------------------------------------*/
+
+  /* Main/H5 */
+  /*.sidebar {*/
+  /*	border-top: 6px solid #D73F09;*/
+  /*}*/
+
+  .sidebar > h2:first-child {
+  	padding-top: 20px;
+  	border-top: 6px solid #D73F09;
+  	margin-bottom: 20px;
+  }
+
+  @media screen and (min-width: 1200px) {
+  	.sidebar > *:not(h2):first-child {
+  		border-top: 6px solid #D73F09;
+  		padding-top: 50px;
+  	}
+  }
+
+  /*.sidebar > .block__content {*/
+  /*	padding-top: 50px;*/
+  /*}*/
+
+  /*.sidebar:has(> h2) > .block__content {*/
+  /*	margin-top: 50px;*/
+  /*	padding-top: 0;*/
+  /*}*/
+
+  .sidebar-mobile-toggle {
+  	font-weight: 700;
+    letter-spacing: 1.1px;
+  	text-transform: uppercase;
+  	display: flex;
+  	align-items: center;
+  	padding: 10px 8px 10px 0px;
+  	border-top: 6px solid #d73f09;
+  	border-bottom: none;
+  }
+
+  /* Sidebar mobile header hover state */
+  .sidebar-mobile-toggle:focus,
+  .sidebar-mobile-toggle:hover {
+  	border-bottom: none;
+  	padding-right: 8px;
+  }
+
+  /* Sidebar mobile header active state */
+  .sidebar-mobile-toggle:active {
+  	background-color: transparent !important;
+  	color: #d73f09 !important;
+  }
+
+  .sidebar-mobile-toggle-arrow {
+  	transition: all 0.3s ease-out;
+  	margin-left: auto;
+  	width: 40px;
+  	height: 40px;
+  }
+
+  /* Rotate arrow upside down when active */
+  .active .sidebar-mobile-toggle-arrow {
+  	transform: rotate(180deg);
+  }
+
+  @media screen and (max-width: 1199px) {
+  	.hidden-content:not(.delay-mobile) {
+  		max-height: 0;
+  		overflow: hidden;
+  		transition: max-height 0.5s ease-out;
+  	}
+  	.sidebar:not(.same-mobile, .delay-mobile) {
+  		border-top: none;
+  	}
+  	
+  	.sidebar:not(.same-mobile, .delay-mobile) > h2 {
+  		display: none;
+  	}
+  	
+  	.sidebar:not(.delay-mobile) > .block__content {
+  		margin-top: 0;
+  	}
+  	.mobile-sidebar-header p {
+  		margin-bottom: 0;
+  	}
+  	.hidden-content:not(.delay-mobile) > .block__content {
+  		margin: 40px 0 50px;
+  	}
+  	.hidden-content:not(.delay-mobile):last-child {
+  		border-bottom: 6px solid #D73F09;
+  	}
+  }
+
+  @media screen and (max-width: 991px) {
+  	.hidden-content {
+  		max-height: 0;
+  		overflow: hidden;
+  		transition: max-height 0.5s ease-out;
+  	}
+  	.sidebar:not(.same-mobile) {
+  		border-top: none;
+  	}
+  	
+  	.sidebar:not(.same-mobile) > h2 {
+  		display: none;
+  	}
+  	
+  	.sidebar > .block__content {
+  		margin-top: 0;
+  	}
+  	.mobile-sidebar-header p {
+  		margin-bottom: 0;
+  	}
+  	.hidden-content > .block__content {
+  		margin: 40px 0 50px;
+  	}
+  	.hidden-content:last-child {
+  		border-bottom: 6px solid #D73F09;
+  	}
+  }
+
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Accordion Sidebar
+  	
+  	Styles the accordion type of sidebar
+  	----------------------------------------------------------------------------*/
+
+  .sidebar .accordion-button:after {
+  	content: "";
+  	background-image: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="%23C6DAE7"/><path d="M11 17L20 26L29 17" stroke="%23006A8E" stroke-width="4" stroke-linecap="square"/></svg>');
+  	width: 40px;
+  	height: 40px;
+  	background-size: 40px;
+  }
+
+  .sidebar .accordion-button {
+  	padding: 0 0 20px;
+  	margin-top: 30px;
+  	gap: 10px;
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  	align-items: end;
+  }
+
+  .sidebar .accordion-button:hover {
+  	box-shadow: none;
+  }
+
+  .sidebar .accordion-button:focus {
+  	outline: none;
+  	box-shadow: none;
+  }
+
+  .sidebar .accordion-button:not(.collapsed) {
+  	background-color: #FFF;
+  	color: #000;
+  	box-shadow: none;
+  }
+
+  .sidebar .accordion-item {
+  	border: none;
+  	border-bottom: 2px solid #C6DAE7;
+  	border-radius: 0;
+  }
+
+  .sidebar .accordion-body {
+  	padding: 0 0 20px;
+  	background-color: #FFF;
+  	color: #000;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47741\r\n/test/home-test\r\n/node/52851\r\n/node/43266\r\n/node/53236\r\n/option/test-option\r\n/node/53511\r\n/node/53516\r\n/node/53521\r\n/node/53526\r\n/node/53531\r\n/node/53536\r\n/node/53541\r\n/node/53566\r\n/node/53576\r\n/node/53581\r\n/node/53691\r\n/node/53696\r\n/node/53736\r\n/node/53741\r\n/node/53756\r\n/node/53761\r\n/node/1\r\n/node/45161\r\n/node/45161/latest\r\n/node/47176"
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

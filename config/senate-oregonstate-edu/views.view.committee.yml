@@ -12,7 +12,6 @@ dependencies:
     - node
     - options
     - text
-    - views_bootstrap
 id: committee
 label: Committee
 module: views
@@ -27,7 +26,7 @@ display:
     display_plugin: default
     position: 1
     display_options:
-      title: '<none>'
+      title: ''
       fields:
         title:
           id: title
@@ -115,6 +114,7 @@ display:
     display_plugin: block
     position: 3
     display_options:
+      title: 'Standing Committees & Councils'
       fields:
         title:
           id: title
@@ -507,38 +507,33 @@ display:
         groups:
           1: AND
       style:
-        type: default
+        type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
       query:
         type: views_query
         options: {  }
       defaults:
+        title: false
         style: false
         row: false
         fields: false
         filters: false
         filter_groups: false
         header: false
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          admin_label: ''
-          label: ''
-          empty: false
-          tokenize: 0
-          content:
-            value: '<h3>Standing Committees & Councils</h3>'
-            format: full_html
-          ui_name: ''
+      header: {  }
       display_extenders:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
+      block_description: 'Standing Committees & Councils'
       style_plugin: list
     cache_metadata:
       max-age: -1
@@ -632,7 +627,7 @@ display:
           admin_label: ''
           plugin_id: field
           label: ''
-          exclude: true
+          exclude: false
           alter:
             alter_text: false
             text: ''
@@ -687,57 +682,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-          ui_name: ''
-        nothing:
-          id: nothing
-          table: views
-          field: nothing
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: custom
-          label: ''
-          exclude: false
-          alter:
-            alter_text: true
-            text: '&rsaquo; <span> </span>{{ title }}</br>'
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: null
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-            unwanted_characters: ''
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: false
           ui_name: ''
       sorts:
         field_committee_ad_hoc_status_value:
@@ -940,21 +884,14 @@ display:
         groups:
           1: AND
       style:
-        type: views_bootstrap_accordion
+        type: html_list
         options:
-          grouping:
-            -
-              field: field_committee_ad_hoc_status
-              rendered: true
-              rendered_strip: false
-          panel_output: single
-          panel_title_field: title
-          flush: false
-          behavior: closed
-          sections:
-            first: 0
-            middle: 0
-            last: 0
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
       query:
@@ -969,20 +906,7 @@ display:
         filters: false
         filter_groups: false
         header: false
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          label: ''
-          empty: false
-          ui_name: ''
-          content:
-            value: '<h3>Ad Hoc Committees & Task Forces</h3>'
-            format: basic_html
-          tokenize: 0
+      header: {  }
       display_extenders:
         metatag_display_extender:
           metatags: {  }
@@ -1198,6 +1122,7 @@ display:
     display_plugin: block
     position: 5
     display_options:
+      title: 'Other Committees and Groups'
       fields:
         title:
           id: title
@@ -1276,8 +1201,9 @@ display:
           field: field_committee_ad_hoc_value
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: boolean
-          operator: '='
+          operator: '!='
           value: '1'
           group: 1
           exposed: false
@@ -1287,6 +1213,8 @@ display:
             description: ''
             use_operator: false
             operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
             identifier: ''
             required: false
             remember: false
@@ -1308,58 +1236,26 @@ display:
             group_items: {  }
           ui_name: ''
           reduce_duplicates: 0
-        nid:
-          id: nid
-          table: node_field_data
-          field: nid
-          relationship: none
-          group_type: group
-          plugin_id: numeric
-          operator: '!='
-          value:
-            min: ''
-            max: ''
-            value: '1606'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            operator_label: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          ui_name: ''
       filter_groups:
         operator: AND
         groups:
           1: AND
       style:
-        type: default
+        type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
       query:
         type: views_query
         options: {  }
       defaults:
+        title: false
         style: false
         row: false
         fields: false
@@ -1367,21 +1263,11 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          label: ''
-          empty: false
-          ui_name: ''
-          content:
-            value: '<h3>Other Committees and Groups</h3>'
-            format: full_html
-          tokenize: 0
-      display_extenders: {  }
+      header: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       style_plugin: list
     cache_metadata:
       max-age: -1
@@ -1546,6 +1432,7 @@ display:
     display_plugin: block
     position: 8
     display_options:
+      title: 'Retired Committees'
       fields:
         title:
           id: title
@@ -1628,7 +1515,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: boolean
-          operator: '='
+          operator: '!='
           value: '1'
           group: 1
           exposed: false
@@ -1661,58 +1548,26 @@ display:
             group_items: {  }
           ui_name: ''
           reduce_duplicates: 0
-        nid:
-          id: nid
-          table: node_field_data
-          field: nid
-          relationship: none
-          group_type: group
-          plugin_id: numeric
-          operator: '!='
-          value:
-            min: ''
-            max: ''
-            value: '1606'
-          group: 1
-          exposed: false
-          expose:
-            operator_id: ''
-            label: ''
-            description: ''
-            use_operator: false
-            operator: ''
-            identifier: ''
-            required: false
-            remember: false
-            multiple: false
-            remember_roles:
-              authenticated: authenticated
-            operator_label: ''
-          is_grouped: false
-          group_info:
-            label: ''
-            description: ''
-            identifier: ''
-            optional: true
-            widget: select
-            multiple: false
-            remember: false
-            default_group: All
-            default_group_multiple: {  }
-            group_items: {  }
-          ui_name: ''
       filter_groups:
         operator: AND
         groups:
           1: AND
       style:
-        type: default
+        type: html_list
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          type: ul
+          wrapper_class: item-list
+          class: ''
       row:
         type: fields
       query:
         type: views_query
         options: {  }
       defaults:
+        title: false
         style: false
         row: false
         fields: false
@@ -1720,21 +1575,11 @@ display:
         filter_groups: false
         header: false
       display_description: ''
-      header:
-        area:
-          id: area
-          table: views
-          field: area
-          relationship: none
-          group_type: group
-          label: ''
-          empty: false
-          ui_name: ''
-          content:
-            value: '<h3>Retired Committees</h3>'
-            format: full_html
-          tokenize: 0
-      display_extenders: {  }
+      header: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       style_plugin: list
     cache_metadata:
       max-age: -1
@@ -1750,6 +1595,7 @@ display:
     display_plugin: page
     position: 2
     display_options:
+      title: 'Committees Roster Page'
       filters:
         status:
           id: status
@@ -1805,16 +1651,24 @@ display:
         type: views_query
         options: {  }
       defaults:
+        title: false
+        css_class: false
         filters: false
         filter_groups: false
-      display_extenders: {  }
+      css_class: 'container mb-6'
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       path: committees-current-roster
       menu:
         type: normal
         title: 'Committees Roster Page'
         description: ''
-        weight: -40
+        weight: -50
+        enabled: false
         menu_name: main
+        parent: 'menu_link_content:9d5d0c54-e732-401d-9c8a-280e828ac64c'
         context: '0'
         name: main
         context_only_inline: 0

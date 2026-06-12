@@ -1,0 +1,63 @@
+uuid: 92e8f617-7d4d-45b9-9dc9-32c08181a6f2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.social_media_account.field_department_link
+    - field.field.node.social_media_account.field_facebook
+    - field.field.node.social_media_account.field_icon
+    - node.type.social_media_account
+  module:
+    - entity_reference_revisions
+    - link
+    - user
+id: node.social_media_account.default
+targetEntityType: node
+bundle: social_media_account
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_department_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_facebook:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_icon:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

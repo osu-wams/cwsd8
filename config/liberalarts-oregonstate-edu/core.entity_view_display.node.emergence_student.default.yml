@@ -1,0 +1,76 @@
+uuid: a48987d4-3840-443f-a623-ce05cc894fc7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.emergence_student.field_bio_emergence
+    - field.field.node.emergence_student.field_display_name
+    - field.field.node.emergence_student.field_first_name
+    - field.field.node.emergence_student.field_last_name_emergence
+    - field.field.node.emergence_student.field_link_emergence
+    - field.field.node.emergence_student.field_photo_emergence
+    - field.field.node.emergence_student.field_year
+    - node.type.emergence_student
+  module:
+    - image
+    - link
+    - text
+    - user
+id: node.emergence_student.default
+targetEntityType: node
+bundle: emergence_student
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_bio_emergence:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_display_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_link_emergence:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_photo_emergence:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_first_name: true
+  field_last_name_emergence: true
+  field_year: true

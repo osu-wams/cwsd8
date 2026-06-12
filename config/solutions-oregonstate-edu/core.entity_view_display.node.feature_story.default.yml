@@ -1,0 +1,141 @@
+uuid: fb605bbd-d12d-41dd-87fa-2704a453e42e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.feature_story.body
+    - field.field.node.feature_story.field_alternate_url
+    - field.field.node.feature_story.field_caption
+    - field.field.node.feature_story.field_front_page
+    - field.field.node.feature_story.field_group_content_visibility
+    - field.field.node.feature_story.field_picture
+    - node.type.feature_story
+  module:
+    - layout_builder
+    - layout_discovery
+    - link
+    - options
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          ea287c0e-292d-4bf7-a7fa-8ef1e75088b3:
+            uuid: ea287c0e-292d-4bf7-a7fa-8ef1e75088b3
+            region: content
+            configuration:
+              id: 'field_block:node:feature_story:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          2da48340-d427-4f0e-a2fd-f866d1bef4bd:
+            uuid: 2da48340-d427-4f0e-a2fd-f866d1bef4bd
+            region: content
+            configuration:
+              id: 'field_block:node:feature_story:field_picture'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                  link: false
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          ba1b1117-ede0-4db6-bea8-7138e583e749:
+            uuid: ba1b1117-ede0-4db6-bea8-7138e583e749
+            region: content
+            configuration:
+              id: 'extra_field_block:node:feature_story:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 5
+            additional: {  }
+        third_party_settings: {  }
+id: node.feature_story.default
+targetEntityType: node
+bundle: feature_story
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_alternate_url:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  field_caption:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_front_page:
+    type: boolean
+    label: hidden
+    settings:
+      format: default
+      format_custom_false: ''
+      format_custom_true: ''
+    third_party_settings: {  }
+    weight: 103
+    region: content
+  field_group_content_visibility:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_picture:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

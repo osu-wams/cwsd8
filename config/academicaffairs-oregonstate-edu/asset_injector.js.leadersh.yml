@@ -1,0 +1,331 @@
+uuid: 5108c9d0-0020-437e-922e-a8d68f08d0bd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: leadersh
+label: 'Leadership Team'
+code: |-
+  (function () {
+    'use strict';
+    
+    const grid = document.querySelector('.team-grid');
+    if (!grid) return;
+    
+    let activePanel = null;
+    let activeCard = null;
+    let isAnimating = false;
+    const DURATION = 600;
+    const EASE = 'cubic-bezier(0.25, 1, 0.5, 1)';
+    const MOBILE_BREAKPOINT = 768;
+    
+    // Check if we're on mobile
+    function isMobile() {
+      return window.innerWidth <= MOBILE_BREAKPOINT;
+    }
+    
+    // Get all cards in the same row as the clicked card
+    function getRowCards(clickedCard) {
+      const allCards = Array.from(grid.querySelectorAll('.views-row'));
+      const clickedTop = clickedCard.offsetTop;
+      
+      return allCards.filter(card => 
+        Math.abs(card.offsetTop - clickedTop) < 5
+      );
+    }
+    
+    // Calculate row dimensions
+    function getRowDimensions(clickedCard) {
+      const rowCards = getRowCards(clickedCard);
+      const firstCard = rowCards[0];
+      const lastCard = rowCards[rowCards.length - 1];
+      const gridRect = grid.getBoundingClientRect();
+      
+      const rowLeft = firstCard.getBoundingClientRect().left - gridRect.left;
+      const lastCardRect = lastCard.getBoundingClientRect();
+      const lastCardRight = lastCardRect.right - gridRect.left;
+      
+      // Calculate how many cards can fit in a row based on card width and grid width
+      const cardWidth = clickedCard.offsetWidth;
+      const cardsPerRow = Math.floor(gridRect.width / cardWidth);
+      
+      // If this row has fewer cards than a full row, extend to full grid width
+      const rowWidth = rowCards.length < cardsPerRow 
+        ? gridRect.width - rowLeft 
+        : lastCardRight - rowLeft;
+      
+      const rowTop = clickedCard.offsetTop;
+      const rowHeight = clickedCard.offsetHeight;
+      
+      return { rowLeft, rowWidth, rowTop, rowHeight, firstCard, lastCard };
+    }
+    
+    // Close any open panel - returns a promise
+    function closePanel() {
+      return new Promise((resolve) => {
+        if (!activePanel || !activeCard) {
+          resolve();
+          return;
+        }
+        
+        const panelToClose = activePanel;
+        const cardToReset = activeCard;
+        
+        if (isMobile()) {
+          // Mobile: fade out overlay
+          panelToClose.style.opacity = '0';
+          cardToReset.classList.remove('active');
+          grid.classList.remove('flyout-open');
+          
+          setTimeout(() => {
+            if (panelToClose && panelToClose.parentNode) {
+              panelToClose.remove();
+            }
+            resolve();
+          }, DURATION);
+        } else {
+          // Desktop: slide out
+          panelToClose.style.opacity = '0';
+          panelToClose.style.transform = 'translateX(40px)';
+          cardToReset.style.transform = '';
+          cardToReset.classList.remove('active');
+          grid.classList.remove('flyout-open');
+          
+          setTimeout(() => {
+            if (panelToClose && panelToClose.parentNode) {
+              panelToClose.remove();
+            }
+            resolve();
+          }, DURATION);
+        }
+        
+        activePanel = null;
+        activeCard = null;
+      });
+    }
+    
+    // Open detail panel - mobile overlay version
+    async function openPanelMobile(clickedCard) {
+      if (isAnimating) return;
+      
+      const teamCard = clickedCard.querySelector('.team-card');
+      const bio = teamCard?.querySelector('.team-card__bio');
+      const name = teamCard?.querySelector('[data-name]')?.getAttribute('data-name') || 
+                   teamCard?.querySelector('.team-card__name')?.textContent.trim() || '';
+      const title = teamCard?.querySelector('[data-title]')?.getAttribute('data-title') || 
+                    teamCard?.querySelector('.team-card__title')?.textContent.trim() || '';
+      
+      if (!bio) return;
+      
+      if (activeCard === clickedCard) {
+        isAnimating = true;
+        await closePanel();
+        isAnimating = false;
+        return;
+      }
+      
+      isAnimating = true;
+      await closePanel();
+      
+      // Create overlay panel
+      const panel = document.createElement('div');
+      panel.className = 'detail-panel-overlay';
+      panel.innerHTML = `
+        <div class="detail-panel-overlay__content">
+          <button class="detail-panel__close" aria-label="Close">&times;</button>
+          <h3>${name}</h3>
+          <p class="detail-panel__title"><strong>${title}</strong></p>
+          <div class="detail-panel__bio">
+            ${bio.innerHTML}
+          </div>
+        </div>
+      `;
+      
+      panel.style.opacity = '0';
+      
+      document.body.appendChild(panel);
+      
+      activeCard = clickedCard;
+      activePanel = panel;
+      clickedCard.classList.add('active');
+      grid.classList.add('flyout-open');
+      
+      // Force reflow
+      void panel.offsetHeight;
+      
+      // Fade in
+      requestAnimationFrame(() => {
+        panel.style.transition = `opacity ${DURATION}ms ${EASE}`;
+        panel.style.opacity = '1';
+        isAnimating = false;
+      });
+      
+      // Close button handler
+      panel.querySelector('.detail-panel__close').addEventListener('click', (e) => {
+        e.stopPropagation();
+        closePanel().then(() => {
+          isAnimating = false;
+        });
+      });
+      
+      // Close on overlay background click
+      panel.addEventListener('click', (e) => {
+        if (e.target === panel) {
+          closePanel().then(() => {
+            isAnimating = false;
+          });
+        }
+      });
+    }
+    
+    // Open detail panel - desktop flyout version
+    async function openPanelDesktop(clickedCard) {
+      if (isAnimating) return;
+      
+      const teamCard = clickedCard.querySelector('.team-card');
+      const bio = teamCard?.querySelector('.team-card__bio');
+      const name = teamCard?.querySelector('[data-name]')?.getAttribute('data-name') || 
+                   teamCard?.querySelector('.team-card__name')?.textContent.trim() || '';
+      const title = teamCard?.querySelector('[data-title]')?.getAttribute('data-title') || 
+                    teamCard?.querySelector('.team-card__title')?.textContent.trim() || '';
+      
+      if (!bio) return;
+      
+      if (activeCard === clickedCard) {
+        isAnimating = true;
+        await closePanel();
+        isAnimating = false;
+        return;
+      }
+      
+      isAnimating = true;
+      await closePanel();
+      
+      // Get row dimensions
+      const { rowLeft, rowWidth, rowTop, rowHeight } = getRowDimensions(clickedCard);
+      
+      // Calculate how far to move the card
+      const gridRect = grid.getBoundingClientRect();
+      const cardRect = clickedCard.getBoundingClientRect();
+      const cardLeft = cardRect.left - gridRect.left;
+      const cardWidth = cardRect.width;
+      
+      const slideDistance = rowLeft - cardLeft;
+      const panelWidth = rowWidth - cardWidth;
+      const panelLeft = rowLeft + cardWidth;
+      
+      // Create detail panel
+      const panel = document.createElement('div');
+      panel.className = 'detail-panel-flyout';
+      panel.innerHTML = `
+        <button class="detail-panel__close" aria-label="Close">&times;</button>
+        <h3>${name}</h3>
+        <p class="detail-panel__title"><strong>${title}</strong></p>
+        <div class="detail-panel__bio">
+          ${bio.innerHTML}
+        </div>
+      `;
+      
+      // Position panel absolutely
+      panel.style.position = 'absolute';
+      panel.style.top = rowTop + 'px';
+      panel.style.left = panelLeft + 'px';
+      panel.style.width = panelWidth + 'px';
+      panel.style.height = rowHeight + 'px';
+      panel.style.opacity = '0';
+      panel.style.transform = 'translateX(40px)';
+      
+      grid.appendChild(panel);
+      
+      clickedCard.classList.add('active');
+      activeCard = clickedCard;
+      activePanel = panel;
+      grid.classList.add('flyout-open');
+      
+      // Force reflow
+      void panel.offsetHeight;
+      
+      // Animate
+      requestAnimationFrame(() => {
+        clickedCard.style.transition = `transform ${DURATION}ms ${EASE}`;
+        clickedCard.style.transform = `translateX(${slideDistance}px)`;
+        
+        panel.style.transition = `transform ${DURATION}ms ${EASE}, opacity ${DURATION}ms ${EASE}`;
+        panel.style.transform = 'translateX(0)';
+        panel.style.opacity = '1';
+        
+        setTimeout(() => {
+          isAnimating = false;
+        }, DURATION);
+      });
+      
+      // Close button handler
+      panel.querySelector('.detail-panel__close').addEventListener('click', (e) => {
+        e.stopPropagation();
+        closePanel().then(() => {
+          isAnimating = false;
+        });
+      });
+    }
+    
+    // Main open panel function
+    function openPanel(clickedCard) {
+      if (isMobile()) {
+        openPanelMobile(clickedCard);
+      } else {
+        openPanelDesktop(clickedCard);
+      }
+    }
+    
+    // Click handler for cards
+    grid.addEventListener('click', (e) => {
+      const card = e.target.closest('.views-row');
+      if (!card) return;
+      
+      // Don't trigger if clicking inside panels
+      if (e.target.closest('.detail-panel-flyout') || e.target.closest('.detail-panel-overlay')) return;
+      
+      openPanel(card);
+    });
+    
+    // Close on outside click (desktop only)
+    document.addEventListener('click', (e) => {
+      if (!activePanel || isMobile() || isAnimating) return;
+      if (e.target.closest('.team-grid')) return;
+      closePanel().then(() => {
+        isAnimating = false;
+      });
+    });
+    
+    // Close and recalculate on window resize
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        if (activePanel && !isAnimating) {
+          closePanel().then(() => {
+            isAnimating = false;
+          });
+        }
+      }, 100);
+    });
+    
+  })();
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/6\r\n/node/1301\r\n/group/21\r\n/group/11\r\n/group/16\r\n/group/26\r\n/node/1306\r\n/node/1366\r\n/node/1381\r\n/node/1496\r\n/node/1501\r\n/node/1506\r\n/node/1856"
+contexts: {  }
+conditions_require_all: true

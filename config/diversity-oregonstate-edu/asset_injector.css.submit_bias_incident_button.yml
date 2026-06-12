@@ -1,0 +1,49 @@
+uuid: 5719ac71-c1f1-40b9-9faf-4d2186dadc49
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: submit_bias_incident_button
+label: 'Submit Bias Incident Button'
+code: |-
+  #block-doug-fir-block-6 {
+    display: none;
+    position: absolute;
+    top: 1.5rem;
+    right: 6rem;
+
+  }
+
+  @media screen and (min-width: 768px) {
+  	#block-doug-fir-block-6 {
+      display: block;
+      top: 1.5rem;
+    }
+  }
+  @media screen and (min-width: 1000px) {
+  	#block-doug-fir-block-6 {
+  	    right: 20rem;
+  	    top: 0;
+  	}
+  }
+
+  @media screen and (min-width: 1200px) {
+  	#block-doug-fir-block-6 {
+  		top: 1.5rem;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

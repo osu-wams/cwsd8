@@ -1,0 +1,394 @@
+uuid: f16818e6-c05c-4ad5-bf3a-77f141411d2b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.node.classification_specification.title
+    - field.field.node.classification_specification.body
+    - field.field.node.classification_specification.field_class_comp_2nd_quartile
+    - field.field.node.classification_specification.field_class_comp_4th_quartile
+    - field.field.node.classification_specification.field_class_comp_accountability
+    - field.field.node.classification_specification.field_class_comp_disclaimer
+    - field.field.node.classification_specification.field_class_comp_distinguishing
+    - field.field.node.classification_specification.field_class_comp_flsa
+    - field.field.node.classification_specification.field_class_comp_job_family
+    - field.field.node.classification_specification.field_class_comp_level
+    - field.field.node.classification_specification.field_class_comp_maximum
+    - field.field.node.classification_specification.field_class_comp_midpoint
+    - field.field.node.classification_specification.field_class_comp_minimum
+    - field.field.node.classification_specification.field_class_comp_ppr
+    - field.field.node.classification_specification.field_class_comp_psdm
+    - field.field.node.classification_specification.field_class_comp_relat_other
+    - field.field.node.classification_specification.field_class_comp_salary_grade
+    - field.field.node.classification_specification.field_class_comp_typical_req
+    - node.type.classification_specification
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      b8d64acc-5988-463f-aaa2-4be18ef15fc4:
+        find: E
+        replace: '1'
+        case_sensitive: false
+        word_boundaries: false
+        whole: true
+        uuid: b8d64acc-5988-463f-aaa2-4be18ef15fc4
+        plugin: find_replace
+        source: flsa
+        weight: 0
+        label: 'Find replace'
+      c6757b35-a08e-45b4-9b12-2012800cbac4:
+        find: NE
+        replace: '0'
+        case_sensitive: false
+        word_boundaries: false
+        whole: true
+        uuid: c6757b35-a08e-45b4-9b12-2012800cbac4
+        plugin: find_replace
+        source: flsa
+        weight: 1
+        label: 'Find replace'
+      29ebef33-f5d3-4c57-ae1e-b35ed6baeb41:
+        decimals: 2
+        dec_point: .
+        thousands_sep: ''
+        uuid: 29ebef33-f5d3-4c57-ae1e-b35ed6baeb41
+        plugin: number_format
+        source: minimum
+        weight: -9
+        label: 'Format a number'
+      f4cd7239-aa80-42c8-ba9e-e092af38071c:
+        decimals: 2
+        dec_point: .
+        thousands_sep: ''
+        uuid: f4cd7239-aa80-42c8-ba9e-e092af38071c
+        plugin: number_format
+        source: 2nd_quartile
+        weight: -9
+        label: 'Format a number'
+      3ad84dae-aefc-4820-8b6d-2977e71e7f1e:
+        decimals: 2
+        dec_point: .
+        thousands_sep: ''
+        uuid: 3ad84dae-aefc-4820-8b6d-2977e71e7f1e
+        plugin: number_format
+        source: midpoint
+        weight: -9
+        label: 'Format a number'
+      61ab942b-cf96-459f-974b-c106fb1d90fb:
+        decimals: 2
+        dec_point: .
+        thousands_sep: ''
+        uuid: 61ab942b-cf96-459f-974b-c106fb1d90fb
+        plugin: number_format
+        source: 4th_quartile
+        weight: -9
+        label: 'Format a number'
+      a24919e1-9287-465e-bf00-ee816ed52486:
+        decimals: 2
+        dec_point: .
+        thousands_sep: ''
+        uuid: a24919e1-9287-465e-bf00-ee816ed52486
+        plugin: number_format
+        source: max
+        weight: -9
+        label: 'Format a number'
+      8e9daaf1-5e60-485b-a65c-fe24fd88625c:
+        find: '/[,$]/'
+        replace: ''
+        limit: null
+        uuid: 8e9daaf1-5e60-485b-a65c-fe24fd88625c
+        plugin: find_replace_regex
+        source: minimum
+        weight: -10
+        label: 'Find replace REGEX'
+      a6ff2071-f4e5-4079-a265-a78c2900a479:
+        find: '/[,$]/'
+        replace: ''
+        limit: null
+        uuid: a6ff2071-f4e5-4079-a265-a78c2900a479
+        plugin: find_replace_regex
+        source: 2nd_quartile
+        weight: -10
+        label: 'Find replace REGEX'
+      0e9cfc04-c76d-412f-adb1-2230d45fc05c:
+        find: '/[,$]/'
+        replace: ''
+        limit: null
+        uuid: 0e9cfc04-c76d-412f-adb1-2230d45fc05c
+        plugin: find_replace_regex
+        source: midpoint
+        weight: -10
+        label: 'Find replace REGEX'
+      d993669b-577e-43b1-babb-d4e1230a8887:
+        find: '/[,$]/'
+        replace: ''
+        limit: null
+        uuid: d993669b-577e-43b1-babb-d4e1230a8887
+        plugin: find_replace_regex
+        source: 4th_quartile
+        weight: -10
+        label: 'Find replace REGEX'
+      010683d5-bb11-4c4b-9f7d-a2b8880c87c9:
+        find: '/[,$]/'
+        replace: ''
+        limit: null
+        uuid: 010683d5-bb11-4c4b-9f7d-a2b8880c87c9
+        plugin: find_replace_regex
+        source: max
+        weight: -10
+        label: 'Find replace REGEX'
+label: 'Unclassified Compensation'
+id: unclassified_compensation
+description: 'Add/Update Unclassified Position information for HR website database'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: classification_specification
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  job_title:
+    value: 'Job Title'
+    label: 'Job Title'
+    machine_name: job_title
+    type: csv
+  job_family:
+    value: 'Job Family'
+    label: 'Job Family'
+    machine_name: job_family
+    type: csv
+  flsa:
+    value: FLSA
+    label: FLSA
+    machine_name: flsa
+    type: csv
+  salary_grade:
+    value: 'Salary Grade'
+    label: 'Salary Grade'
+    machine_name: salary_grade
+    type: csv
+  minimum:
+    value: Minimum
+    label: Minimum
+    machine_name: minimum
+    type: csv
+  2nd_quartile:
+    value: '2nd Quartile'
+    label: '2nd Quartile'
+    machine_name: 2nd_quartile
+    type: csv
+  midpoint:
+    value: Midpoint
+    label: Midpoint
+    machine_name: midpoint
+    type: csv
+  4th_quartile:
+    value: '4th Quartile'
+    label: '4th Quartile'
+    machine_name: 4th_quartile
+    type: csv
+  max:
+    value: Max
+    label: Max
+    machine_name: max
+    type: csv
+  profile_summary:
+    value: 'Profile Summary'
+    label: 'Profile Summary'
+    machine_name: profile_summary
+    type: csv
+  distinguishing_characteristics:
+    value: 'Distinguishing Characteristics'
+    label: 'Distinguishing Characteristics'
+    machine_name: distinguishing_characteristics
+    type: csv
+  primary_position_responsibilities:
+    value: 'Primary Position Responsibilities'
+    label: 'Primary Position Responsibilities'
+    machine_name: primary_position_responsibilities
+    type: csv
+  problem_solving_and_decision_making:
+    value: 'Problem Solving and Decision Making'
+    label: 'Problem Solving and Decision Making'
+    machine_name: problem_solving_and_decision_making
+    type: csv
+  accountability:
+    value: Accountability
+    label: Accountability
+    machine_name: accountability
+    type: csv
+  relationship_with_others:
+    value: 'Relationship With Others'
+    label: 'Relationship With Others'
+    machine_name: relationship_with_others
+    type: csv
+  typical_requirements:
+    value: 'Typical Requirements'
+    label: 'Typical Requirements'
+    machine_name: typical_requirements
+    type: csv
+  disclaimer:
+    value: Disclaimer
+    label: Disclaimer
+    machine_name: disclaimer
+    type: csv
+  new_level:
+    value: 'New Level'
+    label: 'New Level'
+    machine_name: new_level
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: job_title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_class_comp_job_family
+    map:
+      target_id: job_family
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: class_and_comp_job_family
+      feeds_item: false
+  -
+    target: field_class_comp_flsa
+    map:
+      value: flsa
+    settings:
+      language: null
+  -
+    target: field_class_comp_salary_grade
+    map:
+      value: salary_grade
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_class_comp_minimum
+    map:
+      value: minimum
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_class_comp_2nd_quartile
+    map:
+      value: 2nd_quartile
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_class_comp_midpoint
+    map:
+      value: midpoint
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_class_comp_4th_quartile
+    map:
+      value: 4th_quartile
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_class_comp_maximum
+    map:
+      value: max
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: body
+    map:
+      value: profile_summary
+      summary: ''
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_class_comp_distinguishing
+    map:
+      value: distinguishing_characteristics
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_class_comp_ppr
+    map:
+      value: primary_position_responsibilities
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_class_comp_psdm
+    map:
+      value: problem_solving_and_decision_making
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_class_comp_accountability
+    map:
+      value: accountability
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_class_comp_relat_other
+    map:
+      value: relationship_with_others
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_class_comp_typical_req
+    map:
+      value: typical_requirements
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_class_comp_disclaimer
+    map:
+      value: disclaimer
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_class_comp_level
+    map:
+      value: new_level
+    settings:
+      language: null
+    unique: {  }

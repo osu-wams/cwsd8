@@ -1,0 +1,136 @@
+uuid: bbae9426-a3d2-4b6b-b0f3-0431fce8a6e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.stat_block
+    - core.entity_view_mode.block_content.vertical
+    - field.field.block_content.stat_block.field_statistic
+    - field.field.block_content.stat_block.field_statistic_description
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - text_field_formatter
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          28bae13b-c4b2-48ec-a492-8e5ea8aede16:
+            uuid: 28bae13b-c4b2-48ec-a492-8e5ea8aede16
+            region: content
+            configuration:
+              id: 'field_block:block_content:stat_block:field_statistic'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_field_formatter
+                label: hidden
+                settings:
+                  wrap_tag: h2
+                  wrap_class: 'display-4 text-align-center osu-stat-block--statistic '
+                  wrap_attributes: ''
+                  override_link_label: ''
+                  link_to_entity: 0
+                third_party_settings: {  }
+            weight: 0
+            additional:
+              component_attributes:
+                block_attributes:
+                  id: ''
+                  class: ''
+                  style: ''
+                  data: ''
+                block_title_attributes:
+                  id: ''
+                  class: ''
+                  style: ''
+                  data: ''
+                block_content_attributes:
+                  id: ''
+                  class: text-align-center
+                  style: ''
+                  data: ''
+          bd5cfdf1-c557-498f-97fd-4c8e36f13592:
+            uuid: bd5cfdf1-c557-498f-97fd-4c8e36f13592
+            region: content
+            configuration:
+              id: 'field_block:block_content:stat_block:field_statistic_description'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_field_formatter
+                label: hidden
+                settings:
+                  wrap_tag: h3
+                  wrap_class: 'h6 text-align-center osu-stat-block--description '
+                  wrap_attributes: ''
+                  override_link_label: ''
+                  link_to_entity: 0
+                third_party_settings: {  }
+            weight: 1
+            additional:
+              component_attributes:
+                block_attributes:
+                  id: ''
+                  class: ''
+                  style: ''
+                  data: ''
+                block_title_attributes:
+                  id: ''
+                  class: ''
+                  style: ''
+                  data: ''
+                block_content_attributes:
+                  id: ''
+                  class: text-align-center
+                  style: ''
+                  data: ''
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: block_content.stat_block.vertical
+targetEntityType: block_content
+bundle: stat_block
+mode: vertical
+content:
+  field_statistic:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h2
+      wrap_class: 'display-4 text-align-center osu-stat-block--statistic '
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_statistic_description:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h3
+      wrap_class: 'h6 text-align-center osu-stat-block--description '
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

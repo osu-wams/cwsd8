@@ -1,0 +1,28 @@
+uuid: 785b4267-457c-4e2a-98ad-d887cd12006e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: webform_css
+label: 'EECS grad exit form (checkbox)'
+code: |-
+  /** Sets width for Grad Exit Checkboxes section **/
+
+  .checkboxes--wrapper{
+  	width: 3000px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/40656
+contexts: {  }
+conditions_require_all: true

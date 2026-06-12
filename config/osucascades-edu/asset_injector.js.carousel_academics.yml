@@ -1,0 +1,172 @@
+uuid: d06f223a-2bfa-4623-982e-e8eba322d60d
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+id: carousel_academics
+label: Carousel-Academics
+code: |-
+  document.addEventListener("DOMContentLoaded", () => {
+      const slides = document.querySelectorAll('.carousel-slide');
+      const slideContainer = document.querySelector('.carousel-slide-container');
+      const dotsContainers = document.querySelectorAll('.carousel-dots');
+      let pauseBtns = document.querySelectorAll('.carousel-pause');
+
+      let slideIndex = 0;
+      let autoplayInterval;
+      let isPlaying = true;
+
+      if (slides.length === 0) {
+          console.error('No carousel slides found');
+          return;
+      }
+
+      // Ensure pause buttons exist, create them if missing
+      dotsContainers.forEach((dotsContainer) => {
+          let pauseBtn = dotsContainer.querySelector('.carousel-pause');
+          if (!pauseBtn) {
+              console.warn('Pause button missing in a carousel-dots container, creating one');
+              pauseBtn = document.createElement('button');
+              pauseBtn.classList.add('carousel-pause');
+              pauseBtn.textContent = '⏸';
+              dotsContainer.appendChild(pauseBtn);
+          }
+      });
+
+      pauseBtns = document.querySelectorAll('.carousel-pause');
+
+      const createDots = () => {
+          dotsContainers.forEach((dotsContainer) => {
+              const pauseBtn = dotsContainer.querySelector('.carousel-pause');
+              dotsContainer.innerHTML = '';
+              for (let i = 0; i < slides.length; i++) {
+                  const dot = document.createElement('span');
+                  dot.classList.add('carousel-dot');
+                  if (i === 0) dot.classList.add('active');
+                  dot.addEventListener('click', () => {
+                      const prevIndex = slideIndex;
+                      slideIndex = i;
+                      showSlide(prevIndex < slideIndex ? 'right' : 'left');
+                      stopAutoplay(false);
+                  });
+                  dotsContainer.appendChild(dot);
+              }
+              if (pauseBtn) {
+                  dotsContainer.appendChild(pauseBtn);
+              }
+          });
+      };
+
+      const showSlide = (direction = 'right') => {
+          slideIndex = Math.max(0, Math.min(slideIndex, slides.length - 1));
+
+          slides.forEach((slide, index) => {
+              slide.classList.toggle('active', index === slideIndex);
+          });
+
+          // Remove animations to reset
+          slideContainer.classList.remove('slide-in-right', 'slide-in-left');
+
+          // Force reflow to ensure animation replays
+          void slideContainer.offsetWidth;
+
+          // Apply the correct animation
+          slideContainer.classList.add(direction === 'right' ? 'slide-in-right' : 'slide-in-left');
+
+          // Update transform for positioning
+          slideContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+          dotsContainers.forEach((dotsContainer) => {
+              const dots = dotsContainer.querySelectorAll('.carousel-dot');
+              dots.forEach((dot, index) => {
+                  dot.classList.toggle('active', index === slideIndex);
+              });
+          });
+
+          // Clean up animation classes after transition
+          setTimeout(() => {
+              slideContainer.classList.remove('slide-in-right', 'slide-in-left');
+          }, 500);
+      };
+
+      const nextSlide = () => {
+          slideIndex = (slideIndex + 1) % slides.length;
+          showSlide('right'); // Always slide in from right
+      };
+
+      const prevSlide = () => {
+          slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+          showSlide('left'); // Slide in from left for previous
+      };
+
+      const startAutoplay = (updateIcon = true) => {
+          clearInterval(autoplayInterval);
+          autoplayInterval = setInterval(nextSlide, 5000);
+          if (updateIcon) {
+              pauseBtns.forEach((btn) => {
+                  btn.textContent = '⏸';
+              });
+          }
+          isPlaying = true;
+      };
+
+      const stopAutoplay = (updateIcon = true) => {
+          clearInterval(autoplayInterval);
+          if (updateIcon) {
+              pauseBtns.forEach((btn) => {
+                  btn.textContent = '▶';
+              });
+          }
+          isPlaying = false;
+      };
+
+      const toggleAutoplay = () => {
+          if (isPlaying) {
+              stopAutoplay(true);
+          } else {
+              nextSlide();
+              startAutoplay(true);
+          }
+      };
+
+      slides.forEach(slide => {
+          const prevBtn = slide.querySelector('.carousel-prev');
+          const nextBtn = slide.querySelector('.carousel-next');
+          if (prevBtn) {
+              prevBtn.addEventListener('click', () => {
+                  prevSlide();
+                  stopAutoplay(false);
+              });
+          }
+          if (nextBtn) {
+              nextBtn.addEventListener('click', () => {
+                  nextSlide();
+                  stopAutoplay(false);
+              });
+          }
+      });
+
+      pauseBtns.forEach((pauseBtn, index) => {
+          pauseBtn.addEventListener('click', () => {
+              console.log(`Pause button ${index} clicked`);
+              toggleAutoplay();
+          });
+      });
+
+      createDots();
+      showSlide();
+      startAutoplay(true);
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

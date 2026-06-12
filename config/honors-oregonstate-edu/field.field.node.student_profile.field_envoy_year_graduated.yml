@@ -1,0 +1,29 @@
+uuid: c2c24ac4-6d68-4a75-98d4-cd7f22ea5090
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_envoy_year_graduated
+    - node.type.student_profile
+    - taxonomy.vocabulary.year_graduated
+id: node.student_profile.field_envoy_year_graduated
+field_name: field_envoy_year_graduated
+entity_type: node
+bundle: student_profile
+label: 'Year Graduated'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      year_graduated: year_graduated
+    sort:
+      field: name
+      direction: DESC
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

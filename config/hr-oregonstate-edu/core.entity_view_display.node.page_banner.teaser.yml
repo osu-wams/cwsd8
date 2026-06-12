@@ -1,0 +1,33 @@
+uuid: b9053e34-2ddb-44d2-895e-7abddee1fc04
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.page_banner.body
+    - field.field.node.page_banner.field_picture
+    - node.type.page_banner
+  module:
+    - text
+    - user
+id: node.page_banner.teaser
+targetEntityType: node
+bundle: page_banner
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_picture: true

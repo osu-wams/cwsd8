@@ -1,0 +1,55 @@
+uuid: e856e143-761f-4347-9f5e-653d2db2a327
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.straight_from_the_source
+    - field.field.block_content.straight_from_the_source.body
+    - field.field.block_content.straight_from_the_source.field_expert
+    - field.field.block_content.straight_from_the_source.field_expert_email
+    - field.field.block_content.straight_from_the_source.field_expert_name
+    - field.field.block_content.straight_from_the_source.field_topic
+  module:
+    - text
+id: block_content.straight_from_the_source.default
+targetEntityType: block_content
+bundle: straight_from_the_source
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 3
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_expert_email:
+    type: email_default
+    weight: 2
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_expert_name:
+    type: text_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  field_expert: true
+  field_topic: true

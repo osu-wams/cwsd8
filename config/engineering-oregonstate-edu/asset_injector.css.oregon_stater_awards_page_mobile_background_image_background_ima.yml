@@ -1,0 +1,168 @@
+uuid: 1d890e04-2cf1-4d23-b0c2-b144f9c389ee
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: oregon_stater_awards_page_mobile_background_image_background_ima
+label: 'Oregon Stater Awards page custom styling (background image, iframe sizing)'
+code: |-
+  /*
+  * This injector is controls the custom mobile background image and iframe sizing on the Oregon Stater Awards page
+  */
+          
+  .explore-past-awardees .container {
+  	background-color: rgba(198, 218, 231, 0.2);
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2025-07/awardee-background-pattern.svg);
+  	background-position: right center;
+  	background-size: contain;
+  	background-repeat: no-repeat;
+  }
+
+  .explore-past-awardees p:last-child {
+  	padding-top: 24px !important;
+  }
+
+  .explore-past-awardees .Arrow-link-orange {
+  	color: #000 !important;
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2024-12/Arrow-3.svg);;
+  }
+
+  .explore-past-awardees .col-xxl-12{
+  	width: 75% !important;
+  }
+
+  .image-text-cards img {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    overflow: hidden;
+    display: block;
+  }
+
+  .image-text-cards {
+    position: relative;
+    border: 2px solid transparent;
+    box-sizing: border-box;
+  }
+
+  .image-text-cards:hover {
+    border: 2px solid #F8F9FA;
+    background-color: #F9FCFD !important;
+    transition: .3s;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .image-text-cards:focus {
+    background-color: #F9FCFD;
+    border: 2px solid #D73F09;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .image-text-cards:active {
+    background-color: #F9FCFD;
+    border: 2px solid #F8F9FA;
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .image-text-cards a:focus{
+    background-color: #F9FCFD !important;
+    color: #000 !important;
+  }
+
+  .image-text-cards a:hover{
+    background-color: #F9FCFD !important;
+    color: #000 !important;
+  }
+
+  .image-text-cards a:active{
+    background-color: #F9FCFD !important;
+    color: #000 !important;
+  }
+
+  .image-text-cards a{
+    background-color: #FFF !important;
+    color: #000 !important;
+  }
+
+  /*
+  mobile background image
+  */
+  @media only screen and (max-width: 474px) {
+  	.mobile-background-image {
+  		background-image: url(/sites/engineering.oregonstate.edu/files/2025-07/osa_2025_hero_bg_mobile.svg) !important;
+  	}
+  	
+  	.explore-past-awardees .container {
+  		background-image: url(/sites/engineering.oregonstate.edu/files/2025-07/awardee-background-mobile-pattern.svg) !important;
+  		background-position: center;
+  		background-size: contain;
+  		background-repeat: no-repeat;
+  	}
+  	
+  	.explore-past-awardees .col-xxl-12{
+  		width: 100% !important;
+  	}
+  	
+  	.explore-past-awardees .p-5{
+  		padding-left: 20px !important;
+  		padding-right: 20px !important;
+  		width: 100% !important;
+  	}
+  	
+  		
+  	.osa-awards-and-categories-body {
+  		padding-top: 24px !important;
+  	}
+  }
+
+  /*
+  tablet background image
+  */
+  @media only screen and (min-width: 475px) and (max-width: 991px){
+  	.mobile-background-image {
+  		background-image: url(/sites/engineering.oregonstate.edu/files/2025-07/osa_2025_hero_bg_tablet.svg) !important;
+  	}
+  	
+  	.explore-past-awardees .col-xxl-12{
+  		width: 100% !important;
+  	}
+  	
+  	.osa-awards-and-categories-body {
+  		padding-top: 24px !important;
+  	}
+
+  }
+
+  @media only screen and (min-width: 991px) {
+  .paragraph--type--osu-accordion-section .media--type-remote-video{
+  	width: 50%;
+  }
+  }
+
+  /*
+  Youtube videos within accordion
+  */
+  /*iframe{*/
+  /*	height: 315px;*/
+  /*	width: 560px;*/
+  /*}*/
+  /*
+  background color set to white for accordions.
+  */
+  .accordion-item{
+  	background-color: white;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/45161
+contexts: {  }
+conditions_require_all: true

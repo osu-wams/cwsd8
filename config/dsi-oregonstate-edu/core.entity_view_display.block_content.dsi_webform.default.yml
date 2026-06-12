@@ -1,0 +1,42 @@
+uuid: 5af71152-d517-4850-a6e8-eadd3e105965
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dsi_webform
+    - field.field.block_content.dsi_webform.body
+    - field.field.block_content.dsi_webform.field_dsi_form
+    - field.field.block_content.dsi_webform.field_form_title
+  module:
+    - text
+    - webform
+id: block_content.dsi_webform.default
+targetEntityType: block_content
+bundle: dsi_webform
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_dsi_form:
+    type: webform_entity_reference_entity_view
+    label: hidden
+    settings:
+      source_entity: true
+      lazy: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_form_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

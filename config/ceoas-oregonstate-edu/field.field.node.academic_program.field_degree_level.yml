@@ -1,0 +1,29 @@
+uuid: 11326b5f-517c-4a90-9b23-de2c4c696572
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_degree_level
+    - node.type.academic_program
+    - taxonomy.vocabulary.degree_level
+id: node.academic_program.field_degree_level
+field_name: field_degree_level
+entity_type: node
+bundle: academic_program
+label: 'Degree Level'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      degree_level: degree_level
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

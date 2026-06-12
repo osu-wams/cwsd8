@@ -4,17 +4,21 @@ status: true
 dependencies:
   config:
     - core.entity_view_display.group.basic_group.default
+    - core.entity_view_display.node.custom_content_example.default
     - core.entity_view_display.node.page.default
     - filter.format.full_html
     - media.type.document
     - media.type.image
     - media.type.remote_video
+    - node.type.custom_content_example
     - node.type.page
+    - workflows.workflow.editorial
   module:
     - captcha
+    - content_moderation
+    - contextual
     - dropzonejs
     - editoria11y
-    - exclude_node_title
     - file
     - filter
     - honeypot
@@ -22,9 +26,11 @@ dependencies:
     - layout_builder_component_attributes
     - media
     - media_bulk_upload
+    - moderation_sidebar
     - node
     - path
     - redirect
+    - scheduler
     - system
     - toc_js_per_node
     - views_bulk_edit
@@ -36,6 +42,7 @@ weight: -8
 is_admin: null
 permissions:
   - 'access content overview'
+  - 'access contextual links'
   - 'access files overview'
   - 'access media overview'
   - 'access site reports'
@@ -44,8 +51,10 @@ permissions:
   - 'administer toc_js per node'
   - 'bypass honeypot protection'
   - 'configure editable basic_group group layout overrides'
+  - 'configure editable custom_content_example node layout overrides'
   - 'configure editable page node layout overrides'
   - 'create and edit custom blocks'
+  - 'create custom_content_example content'
   - 'create document media'
   - 'create image media'
   - 'create media'
@@ -53,10 +62,12 @@ permissions:
   - 'create remote_video media'
   - 'create url aliases'
   - 'delete all revisions'
+  - 'delete own custom_content_example content'
   - 'delete own files'
   - 'delete own page content'
   - 'delete page revisions'
   - 'dropzone upload files'
+  - 'edit own custom_content_example content'
   - 'edit own document media'
   - 'edit own image media'
   - 'edit own page content'
@@ -66,13 +77,25 @@ permissions:
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
   - 'revert all revisions'
+  - 'revert custom_content_example revisions'
   - 'revert page revisions'
+  - 'schedule publishing of nodes'
   - 'skip CAPTCHA'
   - 'use bulk_image bulk upload form'
-  - 'use exclude node title'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition preserve'
+  - 'use editorial transition publish'
+  - 'use moderation sidebar'
   - 'use text format full_html'
   - 'use views bulk edit'
   - 'view all revisions'
+  - 'view any unpublished content'
+  - 'view custom_content_example revisions'
   - 'view editoria11y checker'
+  - 'view latest version'
   - 'view own unpublished content'
   - 'view page revisions'
+  - 'view scheduled content'

@@ -1,0 +1,214 @@
+uuid: 687fa6c3-087f-42cb-ac0b-33ff15772d0e
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.data.data_user_site_access
+    - field.field.data.data_user_site_access.field_data_report_domain
+    - field.field.data.data_user_site_access.field_data_report_status
+    - field.field.data.data_user_site_access.field_data_report_user_created
+    - field.field.data.data_user_site_access.field_data_report_user_initial
+    - field.field.data.data_user_site_access.field_data_report_user_lastacces
+    - field.field.data.data_user_site_access.field_data_report_user_lastlogin
+    - field.field.data.data_user_site_access.field_data_report_user_nodecount
+    - field.field.data.data_user_site_access.field_data_report_user_roles
+    - field.field.data.data_user_site_access.field_data_report_user_updated
+    - field.field.data.data_user_site_access.field_field_data_report_username
+  module:
+    - eck
+    - feeds_tamper
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      bf7a09f8-d611-4a95-9dec-14115acd1a94:
+        separator: ', '
+        limit: null
+        uuid: bf7a09f8-d611-4a95-9dec-14115acd1a94
+        plugin: explode
+        source: roles
+        weight: 0
+        label: Explode
+      c336cf85-f03a-471b-8e0e-397b6dfe0c2d:
+        text: '[username] - [domain]'
+        uuid: c336cf85-f03a-471b-8e0e-397b6dfe0c2d
+        plugin: rewrite
+        source: import_item_title
+        weight: 2
+        label: Rewrite
+label: 'ECK User Report -- Report'
+id: eck_user_report_report
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:data'
+processor_configuration:
+  values:
+    type: data_user_site_access
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 6
+custom_sources:
+  cas:
+    value: CAS
+    label: CAS
+    machine_name: cas
+    type: csv
+  username:
+    value: Username
+    label: Username
+    machine_name: username
+    type: csv
+  status:
+    value: Status
+    label: Status
+    machine_name: status
+    type: csv
+  initial_mail:
+    value: 'Initial Mail'
+    label: 'Initial Mail'
+    machine_name: initial_mail
+    type: csv
+  created:
+    value: Created
+    label: Created
+    machine_name: created
+    type: csv
+  updated:
+    value: Updated
+    label: Updated
+    machine_name: updated
+    type: csv
+  last_access:
+    value: 'Last Access'
+    label: 'Last Access'
+    machine_name: last_access
+    type: csv
+  last_login:
+    value: 'Last Login'
+    label: 'Last Login'
+    machine_name: last_login
+    type: csv
+  node_count:
+    value: 'Node Count'
+    label: 'Node Count'
+    machine_name: node_count
+    type: csv
+  roles:
+    value: Roles
+    label: Roles
+    machine_name: roles
+    type: csv
+  domain:
+    value: Domain
+    label: Domain
+    machine_name: domain
+    type: csv
+  import_item_title:
+    value: 'Import Item Title'
+    label: 'Import Item Title'
+    machine_name: import_item_title
+    type: blank
+mappings:
+  -
+    target: field_field_data_report_username
+    map:
+      target_id: username
+    settings:
+      language: null
+      reference_by: title
+      autocreate: false
+      autocreate_bundle: user
+      feeds_item: false
+  -
+    target: field_data_report_status
+    map:
+      value: status
+    settings:
+      language: null
+  -
+    target: field_data_report_user_initial
+    map:
+      value: initial_mail
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_data_report_user_created
+    map:
+      value: created
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_data_report_user_updated
+    map:
+      value: updated
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_data_report_user_lastacces
+    map:
+      value: last_access
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_data_report_user_lastlogin
+    map:
+      value: last_login
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_data_report_user_nodecount
+    map:
+      value: node_count
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_data_report_user_roles
+    map:
+      target_id: roles
+    settings:
+      language: ''
+      reference_by: title
+      feeds_item: guid
+      autocreate: 1
+      autocreate_bundle: user_roles
+  -
+    target: field_data_report_domain
+    map:
+      target_id: domain
+    settings:
+      language: null
+      reference_by: title
+      autocreate: false
+      autocreate_bundle: domain
+      feeds_item: false
+  -
+    target: title
+    map:
+      value: import_item_title
+    settings:
+      language: null
+    unique: {  }

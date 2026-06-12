@@ -1,0 +1,29 @@
+uuid: fb18a733-63c4-4732-acff-074ad5cf9995
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pub_keywords
+    - node.type.publication
+    - taxonomy.vocabulary.research_keywords
+id: node.publication.field_pub_keywords
+field_name: field_pub_keywords
+entity_type: node
+bundle: publication
+label: Keywords
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      research_keywords: research_keywords
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

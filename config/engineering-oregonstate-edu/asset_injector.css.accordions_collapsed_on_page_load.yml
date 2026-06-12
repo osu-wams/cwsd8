@@ -1,0 +1,36 @@
+uuid: 1e718aee-d5df-40c4-9a84-41d44553173d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: accordions_collapsed_on_page_load
+label: 'Accordions collapsed on page load'
+code: |-
+  .accordion-button::after {
+    display: none !important;
+    content: none !important;
+    pointer-events: none !important;
+    cursor: default !important;
+  }
+
+  .accordion-button,
+  .accordion__button,
+  .ui-accordion-header {
+    pointer-events: none;
+    cursor: default;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/391
+contexts: {  }
+conditions_require_all: true

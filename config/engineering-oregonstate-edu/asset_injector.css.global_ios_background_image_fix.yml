@@ -1,0 +1,30 @@
+uuid: 257eb4c7-25fc-427d-9e32-d3f0a60efc96
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_ios_background_image_fix
+label: 'GLOBAL: iOS Background Image Fix (scroll issues fix)'
+code: |-
+  /* Fixes scroll issue for background images on iOS */
+
+  @supports (-webkit-touch-callout: none) {
+    .bg-ios-fix {
+    	background-attachment: scroll !important;
+    }    
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

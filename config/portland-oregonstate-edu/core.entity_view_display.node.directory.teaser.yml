@@ -1,0 +1,41 @@
+uuid: cb796e8d-bfec-406a-9910-d5e46f651766
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.directory.body
+    - field.field.node.directory.field_directory_connect_photo
+    - field.field.node.directory.field_directory_link_for_photo
+    - field.field.node.directory.field_portland_directory_connect
+    - field.field.node.directory.field_portland_directory_text
+    - field.field.node.directory.field_portland_directory_title_l
+    - node.type.directory
+  module:
+    - text
+    - user
+id: node.directory.teaser
+targetEntityType: node
+bundle: directory
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_directory_connect_photo: true
+  field_directory_link_for_photo: true
+  field_portland_directory_connect: true
+  field_portland_directory_text: true
+  field_portland_directory_title_l: true

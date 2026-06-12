@@ -1,0 +1,76 @@
+uuid: 2884adc0-ad82-4ed0-9804-af3bc77487c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.project_overview_dropdown.field_project_overview_collapse
+    - field.field.paragraph.project_overview_dropdown.field_project_overview_desc
+    - field.field.paragraph.project_overview_dropdown.field_project_overview_resources
+    - field.field.paragraph.project_overview_dropdown.field_project_overview_title
+    - paragraphs.paragraphs_type.project_overview_dropdown
+  module:
+    - field_group
+    - link
+    - text
+third_party_settings:
+  field_group:
+    group_project_overview_collapse:
+      children: {  }
+      label: 'Project Overview Collapse'
+      region: hidden
+      parent_name: ''
+      weight: 6
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: '"project-overview-collapsible"'
+        effect: none
+        speed: fast
+        required_fields: true
+id: paragraph.project_overview_dropdown.default
+targetEntityType: paragraph
+bundle: project_overview_dropdown
+mode: default
+content:
+  field_project_overview_collapse:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_project_overview_desc:
+    type: text_textarea
+    weight: 2
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_project_overview_resources:
+    type: link_default
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_project_overview_title:
+    type: string_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

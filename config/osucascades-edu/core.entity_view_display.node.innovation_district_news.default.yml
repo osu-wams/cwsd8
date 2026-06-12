@@ -1,0 +1,77 @@
+uuid: d624da4d-b995-4e27-935f-6c5fa02bd9c6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.innovation_district_news.body
+    - field.field.node.innovation_district_news.field_innovation_dist_news_link
+    - field.field.node.innovation_district_news.field_news_date
+    - field.field.node.innovation_district_news.field_news_image
+    - field.field.node.innovation_district_news.field_news_title
+    - node.type.innovation_district_news
+  module:
+    - datetime
+    - link
+    - text
+    - user
+id: node.innovation_district_news.default
+targetEntityType: node
+bundle: innovation_district_news
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_innovation_dist_news_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_news_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_news_image:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_news_title:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entitygroupfield: true

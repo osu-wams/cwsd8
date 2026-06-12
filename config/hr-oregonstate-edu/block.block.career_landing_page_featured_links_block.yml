@@ -1,0 +1,45 @@
+uuid: 37b4931e-4217-48ad-b82c-6f928d8775f4
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.career_landing_page
+    - views.view.featured_links
+  module:
+    - block_class
+    - block_visibility_groups
+    - system
+    - views
+  theme:
+    - madrone
+third_party_settings:
+  block_class:
+    classes: py-3
+id: career_landing_page_featured_links_block
+theme: madrone
+region: sidebar
+weight: -68
+provider: null
+plugin: 'views_block:featured_links-block'
+settings:
+  id: 'views_block:featured_links-block'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+  exposed: {  }
+  arguments:
+    gid:
+      type: group_id
+      value: ''
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: career_landing_page
+  request_path:
+    id: request_path
+    negate: true
+    pages: ''

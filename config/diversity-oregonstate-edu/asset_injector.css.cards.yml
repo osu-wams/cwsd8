@@ -1,0 +1,303 @@
+uuid: 165f3a0d-db7f-42cd-92d2-fd166e16ca86
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: cards
+label: Cards
+code: |-
+  h1.page-title {
+    display: none!important;
+  }
+  .background-wrapper {
+  	background-image: url('/sites/solutions.oregonstate.edu/files/2024-10/OSU-shield-trans.png');
+  	background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-attachment: fixed; /* Makes the background image fixed */
+      padding: 20px; /* Optional: Add padding for content */
+  }
+  .field--name-field-background-graphic {
+      display: none; /* Hide the image field if rendered */
+  }
+  .image-style-large {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      margin-top: -100px !important;
+  }
+  .position-title {
+  	  margin-top: -10px !important;
+      line-height: 1.2;
+  }
+  .top-header {
+  	min-height:250px;
+  }
+  @media screen and (max-width: 1399px) {
+  .position-title {
+      max-width: 600px;
+  }
+  }
+  @media screen and (max-width: 975px) {
+  .top-header {
+  	min-height:150px;
+  	}
+  	.image-style-large {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      margin-top: 30px !important;
+  }
+  .position-title {
+      max-width: 600px;
+  }
+  }
+  @media screen and (max-width: 767px) {
+  .top-header {
+  	min-height:75px;
+  	}
+  	.image-style-large {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      margin-top: 30px !important;
+  	}
+  	.position-title {
+      max-width: 600px;
+  }
+  }
+  /* ---------- FLIP ---------- */
+  .directory-card {
+      position: relative;
+      overflow: hidden;
+      width: 285px; 
+      height: 401px;
+      margin: 20px;
+  }
+  .directory-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: all 0.7s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+  }
+
+  .directory-inner-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+
+  /* Change this line - use field-content instead of directory-card */
+  .field-content:hover .directory-inner-card {
+      transform: rotateY(180deg);
+  }
+
+  .profile-image, .hover-image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+  }
+
+  .profile-image {
+      background-color: #bbb;
+      color: black;
+  }
+
+  .hover-image {
+      background-color: #2980b9;
+      color: white;
+      transform: rotateY(180deg);
+  }
+
+  /* Add button styling */
+  .field-content .btn {
+      opacity: 0;
+      transition: opacity 0.3s ease;
+  }
+  .field-content:hover .btn {
+      opacity: 1;
+  }
+  .field-content {
+    position: relative;
+  }
+  .field-content .btn {
+    position: relative;
+    bottom: 20px;
+    left: 38px;
+    width: 250px;
+    z-index: 20;
+    opacity: 0;
+    transition: all 0.3s ease;
+    pointer-events: none;
+    margin: 0;
+  }
+  .directory-card:hover + .btn,
+  .field-content:hover .btn {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .field-content .btn a {
+      color: #fff!important;
+      text-decoration: none!important;
+      }
+  h3, h3 a {
+  	color: #d73f09 !important;
+  	font-size: 36px !important;
+  	font-family: "Stratum2Web", serif !important;
+  	position: relative;
+    padding-bottom: 0;
+    margin-top: 4rem;
+    
+  }
+
+  h3::before{
+  	  content: '';
+      width: 75px;
+      height: 4px;
+      position: absolute;
+      background-color: #353535;
+      top: -1rem;
+  }
+  .program-title {
+  	    color: #d73f09;
+      font-size: 24px;
+      font-weight: 600;
+      margin: 15px 0 -30px 0;
+      line-height: 1.2;
+      max-width: 800px;
+  }
+  .card-program-title {
+      font-size: 11px;
+      margin: 0 -20px -15px 20px;
+      font-style: italic;
+      line-height: 1.25;
+  }
+  .bar-orange-above-headings{
+    position: relative;
+    margin-top: 2.5rem;
+  }
+   .bar-orange-above-headings::before {
+    content: '';
+    width: 50px;
+    height: 4px;
+    position: absolute;
+    background-color: #d73f09;
+    top: -1rem;
+  }
+  /*.views-exposed-form .form--inline > div.form-actions
+   {
+      align-self: end;
+          position: absolute;
+      right: 0;
+      top: 0;
+      margin: 2px 0 0 0;
+  }*/
+  /*.bef-exposed-form .form--inline > .form-item, .bef-exposed-form .form--inline .js-form-wrapper > .form-item {
+      float: left;
+      width: 87%!important;
+      margin-left: 18px;
+  }
+  div.form--inline.clearfix.d-flex.flex-wrap.gap-2 {
+  	    flex-wrap: nowrap;
+  }*/
+  /*#edit-submit-state-inclusive-excellence-cards::before {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    margin-right: 8px;
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+    box-shadow: 3px 3px 0 0px currentColor;
+  }*/
+  .mt-108 {
+  	margin-top:108px;
+  }
+  .top-box-text {
+      display: flex;
+      align-items: center;
+  }
+
+  .sideways-title {
+      writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      font-family: "Georgia", "Noto serif", serif;
+      font-size: 120px;
+      font-weight: 700;
+      line-height: 1;
+      margin-right: 16px;
+      opacity: 0.50;
+  }
+  .heading-orange-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    white-space: nowrap;
+  	padding-left:18px;
+  }
+
+  .heading-orange-line::after {
+    content: '';
+    display: block;
+    height: 3px;
+    background-color: #d73f09;
+    flex: 1;
+  }
+  #scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(30, 33, 36, 0.5);
+    color: #ffffff;
+    border: none;
+    border-radius:5px;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  .toc-h3 {
+  	font-size:14px;
+  }
+  .toc-h3 a {
+  	text-decoration:none;
+  }
+  li.toc-3 {
+  	background:#d73f09;
+  }
+  /*h3:nth-of-type(2)::after {
+    content: "The VETS-UP: Veterans Semiconductor Upskilling Program is helping address Oregon's growing semiconductor workforce needs by providing veterans and military-connected students with paid, hands-on training in semiconductor manufacturing, electronics, and robotics in partnership with Analog Devices.";
+    display: block;
+    font-size: 16px;
+    font-weight: 400;
+  }*/
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/state-inclusive-excellence/*\r\n/node/2601"
+contexts: {  }
+conditions_require_all: true

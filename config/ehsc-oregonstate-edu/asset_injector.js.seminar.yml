@@ -1,0 +1,149 @@
+uuid: 5829cc31-e8c7-429b-a935-d1f28b55e118
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: seminar
+label: 'Seminars Page JS web scraper'
+code: |-
+  (() => {
+    // === CONFIG ===
+    const BASE = 'https://superfund.oregonstate.edu/';
+    const UPCOMING_URL = BASE + 'data-export/upcoming-seminars';
+    const PREVIOUS_URL = BASE + 'data-export/previous-seminars';
+    const FALLBACK_HTML_URL = '/sites/ehsc.oregonstate.edu/files/2025-10/seminars-10-14-25.txt';
+    const CORS_PROXY = 'https://corsproxy.io/?';
+
+    const $up   = document.querySelector('.upcoming-seminars-block');
+    const $prev = document.querySelector('.previous-seminars-block');
+    if (!$up || !$prev) return;
+
+    // === Add section headings ===
+    const upHeader = document.createElement('h2');
+    upHeader.textContent = 'Upcoming Seminars';
+    upHeader.className = 'seminars-heading';
+    $up.before(upHeader);
+
+    const prevHeader = document.createElement('h2');
+    prevHeader.textContent = 'Previous Seminars';
+    prevHeader.className = 'seminars-heading';
+    $prev.before(prevHeader);
+
+    // --- Utilities ---
+    const toFragment = (html) => {
+      const t = document.createElement('template');
+      t.innerHTML = String(html || '').trim();
+      return t.content;
+    };
+
+    const fixLinks = (root, base) => {
+      root.querySelectorAll('a[href]').forEach(a => {
+        a.href   = new URL(a.getAttribute('href'), base).href;
+        a.target = '_blank';
+        a.rel    = 'noopener';
+      });
+      root.querySelectorAll('img[src]').forEach(img => {
+        img.src = new URL(img.getAttribute('src'), base).href;
+        img.removeAttribute('width');
+        img.removeAttribute('height');
+        img.removeAttribute('style');
+      });
+    };
+
+    const proxyFetchJSON = async (url) => {
+      const proxied = CORS_PROXY + encodeURIComponent(url);
+      const r = await fetch(proxied, { headers: { 'Accept': 'application/json, text/plain;q=0.9, */*;q=0.8' } });
+      if (!r.ok) throw new Error(`HTTP ${r.status} for ${url}`);
+      try {
+        return await r.json();
+      } catch {
+        const txt = await r.text();
+        return JSON.parse(txt);
+      }
+    };
+
+    const renderFeed = (data, $container) => {
+      const frag = document.createDocumentFragment();
+
+      (Array.isArray(data) ? data : []).forEach(item => {
+        const article = document.createElement('article');
+        article.className = 'seminar';
+
+        if (item.field_pub_date_published) {
+          const dateBlock = document.createElement('div');
+          dateBlock.className = 'seminar__date';
+          dateBlock.appendChild(toFragment(item.field_pub_date_published));
+          article.appendChild(dateBlock);
+        }
+
+        if (item.field_time || item.field_location) {
+          const meta = document.createElement('p');
+          meta.className = 'seminar__meta';
+          meta.textContent = [item.field_time, item.field_location].filter(Boolean).join(' · ');
+          article.appendChild(meta);
+        }
+
+        if (item.field_speaker_info) {
+          const infoWrap = document.createElement('div');
+          infoWrap.className = 'seminar__info';
+          infoWrap.appendChild(toFragment(item.field_speaker_info));
+          article.appendChild(infoWrap);
+        }
+
+        frag.appendChild(article);
+      });
+
+      $container.innerHTML = '';
+      $container.appendChild(frag);
+      fixLinks($container, BASE);
+    };
+
+    const renderFromFallback = async () => {
+      const html = await fetch(FALLBACK_HTML_URL).then(r => r.text());
+      const doc  = new DOMParser().parseFromString(html, 'text/html');
+
+      const SEL = {
+        upcoming: '.block-views-blockupcoming-seminars-block-1 .block__content',
+        previous: '.block-views-blockupcoming-seminars-block-2 .block__content'
+      };
+
+      const up   = doc.querySelector(SEL.upcoming);
+      const prev = doc.querySelector(SEL.previous);
+
+      if (up)   { const n = up.cloneNode(true);   fixLinks(n, BASE); $up.innerHTML   = n.innerHTML; }
+      if (prev) { const n = prev.cloneNode(true); fixLinks(n, BASE); $prev.innerHTML = n.innerHTML; }
+    };
+
+    (async () => {
+      try {
+        const [upData, prevData] = await Promise.all([
+          proxyFetchJSON(UPCOMING_URL),
+          proxyFetchJSON(PREVIOUS_URL)
+        ]);
+        renderFeed(upData, $up);
+        renderFeed(prevData, $prev);
+      } catch (e) {
+        console.warn('Proxy/JSON failed; using fallback HTML snapshot.', e);
+        try { await renderFromFallback(); }
+        catch (err) { console.error('Fallback failed:', err); }
+      }
+    })();
+  })();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /about-us/seminars
+contexts: {  }
+conditions_require_all: true

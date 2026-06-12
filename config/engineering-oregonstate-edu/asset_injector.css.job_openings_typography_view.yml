@@ -1,0 +1,475 @@
+uuid: d86a2d78-9742-45e0-8aba-9f1433e7bf67
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: job_openings_typography_view
+label: 'Job Openings (typography, view)'
+code: |-
+  /*
+  * Background color white for whole page
+  */
+  .block-system-main-block{
+  	background-color: #FFF;
+  }
+
+  /* Hide pink background for unpublished (remove later) */
+  .node--unpublished {
+  	background-color: #FFF;
+  }
+
+  /* White breadcrumbs section*/
+  .gx-0 {
+  	background-color: #FFF;
+  }
+
+  /*======================================
+  Typography for Page
+  ======================================*/
+  :root {
+  	--Primary-Paddletail-Black: #000;
+  	--Primary-Beaver-Orange: #D73F09;
+  	--Primary-Bucktooth-White: #FFF;
+  	--Secondary-Luminance: #FFB500;
+  }
+
+  main .black-text{
+  	color: #000;
+  }
+
+  main .yellow-text {
+  	color: var(--Secondary-Luminance, #FFB500);
+  }
+
+  /* H1 Styling */
+  h1 {
+  	color: #D73F09;
+  	
+  	/* Main/H1 */
+  	font-family: Stratum2Web;
+  	font-size: 96px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 96%; /* 92.16px */
+  }
+
+  /* H2 Styling (color changes) */
+  h2 {
+  	/* Main/H2 */
+  	font-family: Stratum2Web;
+  	font-size: 64px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 83.2px */
+  }
+
+  /* H2 color in about section */
+  .about-header h2 {
+  	color: #000;
+  }
+
+  /* Current Job Openings */
+  .current-jobs h2 {
+  	color: #D73F09
+  }
+
+  /* H2 color in key areas section */
+  .key-areas-section h2 {
+  	color: #FFB500 !important;
+  }
+
+  /* H2 styling (used in title section) */
+  .title-header h2 {
+  	color: #000;
+  	
+  	/* Main/H2 */
+  	font-family: "Open Sans";
+  	font-size: 22px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 130%; /* 28.6px */
+  	letter-spacing: 1.1px;
+  	text-transform: uppercase;
+  }
+
+  /* Applies to all <p> in main page body */
+  .block-system-main-block p {
+  	color: #000;
+    font-family: "Open Sans";
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 160%; /* 28.8px */
+  }
+
+  /* Tablet typography changes */
+  @media (max-width: 991px) {
+  	h1 {
+  		font-size: 72px;
+  	}
+  	
+  	h2 {
+  		font-size: 48px;
+  	}
+  	
+  	.block-system-main-block h2 {
+  		font-size: 18px;
+  		letter-spacing: 0.9px;
+  	}
+  }
+
+  /* Mobile typography changes */
+  @media (max-width: 767px) {
+  	h1 {
+  		font-size: 56px;
+  		line-height: 120%;
+  	}
+  	
+  	h2 {
+  		font-size: 44px;
+  	}
+  }
+
+  /*======================================
+  Page Header Styling
+  ======================================*/
+
+  /* Orange box shadow behind title image */
+  .hero-section img {
+  	box-shadow: 15px 15px 0 #D73F09;
+  }
+
+  .hero-section {
+  	position: relative;
+  	z-index: 1;
+  	margin-top: -407px;
+  }
+
+  .hero-background-mobile {
+  	display: none;
+  	opacity: 0.5;
+  }
+
+  @media screen and (max-width: 1399px) {
+  	.hero-section {
+  		margin-top: -360px;
+  	}
+  	.hero-background-image img.img-fluid {
+  	  height: 360px;
+  	}
+  }
+
+  @media screen and (max-width: 1199px) {
+  	.hero-section {
+  		margin-top: -312px;
+  	}
+  	.hero-background-image img.img-fluid {
+  	  height: 312px;
+  	}
+  }
+
+  @media screen and (max-width: 991px) {
+  	.hero-section {
+  		margin-top: -249px;
+  	}
+  	.hero-background-image img.img-fluid {
+  	  height: 249px;
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	.hero-background-desktop {
+  		display: none;
+  	}
+  	.hero-background-mobile {
+  		display: block;
+  	}
+  	.hero-background-image img.img-fluid {
+  		height: 630px;
+      width: 100%;
+      object-fit: cover;
+      margin: 0;
+      object-position: 0 0;
+  	}
+  	.hero-section {
+  		margin-top: -630px;
+  	}
+  }
+
+  .hero-background-image img {
+  	width: 100vw;
+    max-width: 100vw;
+    margin-left: calc(calc(100% - 100vw) / 2);
+    height: 407px;
+    object-fit: cover;
+    object-position: 0 0;
+  }
+
+  /*======================================
+  About Section Styling
+  ======================================*/
+
+  /* Light blue about background */
+  .about-header {
+  	background-color: rgba(184, 221, 225, 0.12);
+  }
+
+  @media screen and (max-width: 767px) {
+  	.about-header {
+  		margin-top: 8rem !important;
+  	}
+  }
+
+  /* Light blue about background */
+  .about-points {
+  	background-color: rgba(184, 221, 225, 0.12);
+  }
+
+  /* Pad the right side of the bullet points on desktop */
+  @media (min-width: 992px) {
+  	.about-points .block {
+  		padding-right: 96px;
+  	}
+  }
+
+  /* Move text out of the way of bullet points */
+  .about-points p {
+    margin-bottom: 20px;
+    position: relative;
+    padding-left: 2ch;
+  }
+
+  /* Adds in bullet points */
+  .about-points p::before {
+      content: '';
+      display: inline-block;
+      width: 1.8ch;
+  		height: 1.8ch;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="%23D73F09" stroke-width="4" stroke-linecap="square"/></svg>') no-repeat center center;
+      background-size: contain;
+      background-position: top left;
+      position: absolute;
+  		left: 0;
+      top: 0.5ch;
+  }
+
+  /* Colors links in bullet points */
+  .about-points a {
+  	color: #D73F09;
+  	text-decoration: underline transparent;
+  	transition: 0.3s;
+  }
+
+  /* Hover behavior for bullet point links */
+  .about-points a:hover {
+  	/*text-decoration: underline;*/
+  	text-decoration-color: #D73F09;
+  }
+
+  /* Change color on click */
+  .about-points a:active:not(.button, #osu-logo-wide, #osu-logo-crest) {
+  	color: #000;
+  	text-decoration-color: #000;
+  	background: transparent;
+  }
+
+  /*======================================
+  Job Openings View Styling
+  ======================================*/
+
+  /* Job posting card title */
+  .job-posting-card h3 {
+  	color: #000;
+  	/* Main/H3 */
+  	font-family: Stratum2Web;
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  	margin-bottom: 5px;
+  	hyphens: auto;
+  	word-break: break-word;
+  }
+
+  a.job-posting-card {
+  	text-decoration: none;
+  }
+
+  /* Link overrides for job post title */
+  a.job-posting-card > div {
+  	border: 1px solid #ECEDEE;
+  	border-radius: 5px;
+  	transition: 0.3s;
+  }
+
+  /* Job post title hover behavior*/
+  a.job-posting-card > div:hover {
+  	border: 1px solid #D73F09;
+  }
+
+  a.job-posting-card:active:not(.button, #osu-logo-wide, #osu-logo-crest) > div {
+  	box-shadow: -2px -4px 8px 0px rgba(0, 0, 0, 0.08);
+  	background-color: #FFF;
+  }
+
+  /* Italicized job posting number, and typography */
+  .job-posting-number {
+  	color: #000;
+  	
+  	/* Main/Notes */
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: italic;
+  	font-weight: 300;
+  	line-height: 130%; /* 15.6px */
+  }
+
+  /* Job posting department typography*/
+  .job-opening-department {
+  	color: #D73F09;
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  	margin-top: 20px;
+  	margin-bottom: 20px;
+  }
+
+  .job-openings-body, .job-openings-body strong {
+  	color: #000;
+  	
+  	/* Main/Body */
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 160%; /* 28.8px */
+  }
+
+  /* Typography for labels on the dates */
+  .date-label {
+  	color: #00859B;
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  	margin-bottom: 10px;
+  }
+
+  /* Line up the dates next to each other */
+  .date-fields-container {
+  	color: #000;
+  	display: flex;
+  	margin-top: auto;
+  }
+
+  /* Consistent space taken up by dates */
+  .date-container {
+  	width: 50%;
+  }
+
+  /* Border and shadow effect for job posting */
+  .job-posting-card > div {
+  	padding: 50px;
+  	background: #FFF;
+  	box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  	height: 100%;
+  	margin-bottom: 50px;
+  	display: flex;
+  	flex-direction: column;
+  }
+
+  .job-openings-body {
+  	padding-bottom: 50px;
+  }
+
+  /* Set all postings in a row to the same height */
+  .views-field {
+  	height: 100%;
+  }
+
+  /* Set all postings in a row to the same height */
+  .field-content {
+  	height: 100%;
+  }
+
+  /* Bottom margin on job posting cards */
+  #views-bootstrap-job-openings-block-1 > div {
+  	margin-bottom: 50px;
+  }
+
+  @media (max-width: 767px) {
+  	.job-posting-card {
+  		padding: 30px;
+  	}
+  	
+  	.date-fields-container {
+  		flex-direction: column;
+  		gap: 30px;
+  	}
+  	
+  	.date-container {
+  		width: 100%;
+  	}
+  }
+
+  /*======================================
+  Key Areas Styling
+  ======================================*/
+
+  /* Set background color and bottom border styling for key areas */
+  .key-areas-section {
+  	background-color: #212529;
+  	padding-bottom: 30px;
+  	border-bottom: 10px solid #FFB500;
+  }
+
+  /* Mobile bottom spacing */
+  @media (max-width: 991px) {
+  	.key-areas-section {
+  		padding-bottom: 50px;
+  	}
+  }
+
+  /* Typography for key area headers */
+  .key-areas-section h3 {
+  	color: #FFB500;
+  	
+  	/* Main/H3 */
+  	font-family: Stratum2Web;
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  }
+
+  /* Typography for key area text */
+  .key-areas-section p {
+  	color: #FFF;
+  	margin-bottom: 50px;
+  }
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/45816
+contexts: {  }
+conditions_require_all: true

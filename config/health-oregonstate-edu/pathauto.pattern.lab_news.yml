@@ -1,0 +1,23 @@
+uuid: 29c0544c-34d5-4e99-9df1-5a0110962630
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.lab_news
+  module:
+    - node
+id: lab_news
+label: 'Lab news'
+type: 'canonical_entities:node'
+pattern: '/lab-news/[node:field_lab_news_date:date:html_month]/[node:title]'
+selection_criteria:
+  13a6c665-3718-4839-9dd7-dae09f708a6c:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      lab_news: lab_news
+selection_logic: and
+weight: -5
+relationships: {  }

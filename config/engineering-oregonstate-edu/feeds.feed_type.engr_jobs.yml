@@ -1,0 +1,219 @@
+uuid: 5c4f31a0-2446-4033-866c-8ba3c2ee3346
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.job.body
+    - field.field.node.job.field_job_appointment_type
+    - field.field.node.job.field_job_classification_title
+    - field.field.node.job.field_job_closing_date
+    - field.field.node.job.field_job_full_consideration
+    - field.field.node.job.field_job_link
+    - field.field.node.job.field_job_opening_department
+    - field.field.node.job.field_job_posting_number
+    - field.field.node.job.field_job_posting_title
+    - node.type.job
+  module:
+    - feeds_ex
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      d9f6f749-ea3e-43c2-80e9-ed5709cbd9e3:
+        find_replace:
+          - "&lt;|<\r"
+          - '&gt;|>'
+        separator: '|'
+        case_sensitive: false
+        word_boundaries: false
+        whole: false
+        uuid: d9f6f749-ea3e-43c2-80e9-ed5709cbd9e3
+        plugin: find_replace_multiline
+        source: job_description
+        weight: 0
+        label: 'Find replace (multiline)'
+label: 'ENGR Jobs'
+id: engr_jobs
+description: ''
+help: ''
+import_period: 86400
+import_period_per_feed: false
+fetcher: http
+fetcher_configuration:
+  auto_detect_feeds: false
+  use_pubsubhubbub: false
+  always_download: false
+  fallback_hub: ''
+  request_timeout: 30
+parser: querypathxml
+parser_configuration:
+  context:
+    value: entry
+  source_encoding:
+    - auto
+  display_errors: false
+  line_limit: 100
+  use_tidy: false
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: job
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: 15552000
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  job_link:
+    label: 'Job Link'
+    machine_name: job_link
+    value: link
+    attribute: href
+    raw: false
+    inner: false
+    type: querypathxml
+  job_posting_title:
+    label: 'Job Posting Title'
+    machine_name: job_posting_title
+    value: title
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  classification_title:
+    label: 'Classification Title'
+    machine_name: classification_title
+    value: classification_title
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  appointment_type:
+    label: 'Appointment Type'
+    machine_name: appointment_type
+    value: appointment_type
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  closing_date:
+    label: 'Closing Date'
+    machine_name: closing_date
+    value: closing_date
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  full_consideration:
+    label: 'Full Consideration'
+    machine_name: full_consideration
+    value: full_consideration_date
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  job_description:
+    label: 'Job Description'
+    machine_name: job_description
+    value: content
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  posting_number:
+    label: 'Posting number'
+    machine_name: posting_number
+    value: posting_number
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+  job_opening_department:
+    label: Department
+    machine_name: job_opening_department
+    value: name
+    attribute: ''
+    raw: false
+    inner: false
+    type: querypathxml
+mappings:
+  -
+    target: title
+    map:
+      value: job_link
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_job_posting_title
+    map:
+      value: job_posting_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_job_classification_title
+    map:
+      value: classification_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_job_link
+    map:
+      uri: job_link
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_job_appointment_type
+    map:
+      value: appointment_type
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_job_closing_date
+    map:
+      value: closing_date
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_job_full_consideration
+    map:
+      value: full_consideration
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: body
+    map:
+      value: job_description
+      summary: ''
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_job_posting_number
+    map:
+      value: posting_number
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_job_opening_department
+    map:
+      value: job_opening_department
+    settings:
+      language: null
+    unique: {  }

@@ -1,0 +1,36 @@
+uuid: 51528708-4e9f-4b02-90d4-0244bdd4b5d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.college_stories.body
+    - field.field.node.college_stories.field_college_communicator_stori
+    - field.field.node.college_stories.layout_builder__layout
+    - node.type.college_stories
+  module:
+    - text
+    - user
+id: node.college_stories.teaser
+targetEntityType: node
+bundle: college_stories
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_college_communicator_stori: true
+  layout_builder__layout: true
+  toc_js: true

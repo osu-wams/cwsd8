@@ -1,0 +1,47 @@
+uuid: 5ddd6995-4059-4468-8043-4217c6ec260e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.projects.body
+    - field.field.node.projects.field_coe_co_principal
+    - field.field.node.projects.field_coe_principal_investigator
+    - field.field.node.projects.field_coe_project_overview_link
+    - field.field.node.projects.field_coe_project_overview_tag
+    - field.field.node.projects.field_coe_project_overview_time
+    - field.field.node.projects.field_project_overview_desc
+    - field.field.node.projects.field_project_overview_sponsor
+    - field.field.node.projects.field_research_title
+    - node.type.projects
+  module:
+    - text
+    - user
+id: node.projects.teaser
+targetEntityType: node
+bundle: projects
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_coe_co_principal: true
+  field_coe_principal_investigator: true
+  field_coe_project_overview_link: true
+  field_coe_project_overview_tag: true
+  field_coe_project_overview_time: true
+  field_project_overview_desc: true
+  field_project_overview_sponsor: true
+  field_research_title: true

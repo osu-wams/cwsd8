@@ -1,0 +1,282 @@
+uuid: ba1b8525-0181-412f-a210-c202fe4f8079
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.accreditation.body
+    - field.field.node.accreditation.field_accreditation_card
+    - field.field.node.accreditation.field_accreditation_departement
+    - field.field.node.accreditation.field_accreditation_name
+    - field.field.node.accreditation.field_accreditation_title
+    - field.field.node.accreditation.field_back_of_card
+    - field.field.node.accreditation.field_background_graphic
+    - field.field.node.accreditation.field_describe_an_osu_class_acti
+    - field.field.node.accreditation.field_fron
+    - field.field.node.accreditation.field_how_do_you_support_student
+    - field.field.node.accreditation.field_last_name
+    - field.field.node.accreditation.field_sketch_photo
+    - field.field.node.accreditation.field_what_do_you_enjoy_most_abo
+    - field.field.node.accreditation.field_where_at_osu_do_you_feel_y
+    - field.field.node.accreditation.field_why_are_you_proud_to_be_pa
+    - field.field.node.accreditation.field_why_did_you_choose_to_come
+    - field.field.node.accreditation.layout_builder__layout
+    - node.type.accreditation
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - field_group
+    - media_library
+    - path
+    - text
+third_party_settings:
+  field_group:
+    group_students:
+      children:
+        - field_why_did_you_choose_to_come
+        - field_what_do_you_enjoy_most_abo
+        - field_describe_an_osu_class_acti
+      label: Students
+      region: content
+      parent_name: ''
+      weight: 15
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+    group_faculty_staff:
+      children:
+        - field_how_do_you_support_student
+        - field_where_at_osu_do_you_feel_y
+        - field_why_are_you_proud_to_be_pa
+      label: Faculty/Staff
+      region: content
+      parent_name: ''
+      weight: 14
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        required_fields: true
+        direction: vertical
+        width_breakpoint: 640
+    group_images:
+      children:
+        - field_accreditation_card
+        - field_back_of_card
+        - field_sketch_photo
+      label: Images
+      region: content
+      parent_name: ''
+      weight: 13
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: node.accreditation.default
+targetEntityType: node
+bundle: accreditation
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 12
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 2
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_accreditation_card:
+    type: media_library_widget
+    weight: 10
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_accreditation_departement:
+    type: text_textfield
+    weight: 11
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_accreditation_name:
+    type: text_textfield
+    weight: 8
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_accreditation_title:
+    type: text_textfield
+    weight: 10
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_back_of_card:
+    type: media_library_widget
+    weight: 11
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_describe_an_osu_class_acti:
+    type: text_textarea
+    weight: 23
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_how_do_you_support_student:
+    type: text_textarea
+    weight: 16
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_last_name:
+    type: text_textfield
+    weight: 9
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_sketch_photo:
+    type: media_library_widget
+    weight: 12
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_what_do_you_enjoy_most_abo:
+    type: text_textarea
+    weight: 22
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_where_at_osu_do_you_feel_y:
+    type: text_textarea
+    weight: 17
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_why_are_you_proud_to_be_pa:
+    type: text_textarea
+    weight: 18
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_why_did_you_choose_to_come:
+    type: text_textarea
+    weight: 21
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 3
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 7
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 4
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 1
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 6
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  field_background_graphic: true
+  field_fron: true
+  layout_builder__layout: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

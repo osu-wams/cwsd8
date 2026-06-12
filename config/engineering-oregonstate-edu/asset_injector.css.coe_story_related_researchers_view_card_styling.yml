@@ -1,0 +1,95 @@
+uuid: 0b76e06a-8b9c-4edc-b53c-eef68fa04522
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+    - system
+id: coe_story_related_researchers_view_card_styling
+label: 'COE Story Related Researchers view (card styling)'
+code: |
+  .story-related-researcher-card {
+  	width: 100%;
+  	border-radius: 5px !important;
+  	box-shadow: 2px 4px 8px 0 rgba(0, 0, 0, 0.08) !important;
+  	background: var(--Primary-Bucktooth-White, #FFF) !important;
+  	border: 1px solid var(--Useful-Grey-Shades-Lightest-Grey, #F8F9FA) !important;
+  }
+
+
+  .story-related-researcher-img img{
+  	width: 100%;
+  	height: 380px;
+  	object-fit: cover;
+  	border-radius: 5px 5px 0 0;
+  }
+
+  .story-related-researcher-card-name{
+  	padding: 24px 24px 0px 24px;
+  }
+
+  .story-related-researcher-title{
+  	padding: 0px 24px 24px 24px;	
+  }
+
+
+  @media only screen and (max-width: 768px) {
+    .story-related-researcher-img img {
+      height: 348px !important;
+      width: 100% !important;
+      object-fit: cover;
+      line-height: 120% !important;
+    }
+  }
+
+  .block-inline-blockpeople-card {
+    width: calc(33.34% - 14px);
+    height: auto;
+    position: relative;
+    border-radius: 5px;
+    overflow: hidden;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .block-inline-blockpeople-card:hover {
+    background-color: #F9FCFD;
+    box-shadow: 0px 1px 8px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .block-inline-blockpeople-card:active {
+  	border: 1px solid var(--Useful-Grey-Shades-Lightest-Grey, #F8F9FA);
+  	background: var(--useful-seafoam-shades-seafoam-20, #F1F8F9);
+  }
+
+  @media screen and (max-width: 991px) {
+    .block-inline-blockpeople-card{
+      width: calc(50% - 10px);
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .block-inline-blockpeople-card{
+      width: 100%;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      story: story
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/48026\r\n/node/47176"
+contexts: {  }
+conditions_require_all: true

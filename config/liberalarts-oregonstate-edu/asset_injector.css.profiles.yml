@@ -1,0 +1,50 @@
+uuid: 31984f2e-f207-4413-9300-de5cbc4c731c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: profiles
+label: Profiles
+code: |-
+  .field__label{
+    font-family: 'Stratum2Web',sans-serif;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    font-weight: 300;
+    color: #d73f09;
+    margin-top: 1.5em;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid hsl(15.7, 92%, 43.9%);
+  padding-bottom: 0.5rem;
+  }
+
+    h3 {
+      font-size: 1.5rem;
+      margin-top:0.5rem;
+    }
+    
+  .field--name-field-profile-credentials {
+  	  margin-top: 1em;
+  }
+
+  .field--name-field-affiliated-school {
+  	color: hsl(15.7, 92%, 43.9%);
+  	font-weight: bold;
+  }
+
+  .country {display:none;}
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/directory/*'
+contexts: {  }
+conditions_require_all: true

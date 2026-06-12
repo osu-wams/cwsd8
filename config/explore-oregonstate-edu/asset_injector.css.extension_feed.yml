@@ -1,0 +1,220 @@
+uuid: 880cfbaf-f46e-4d76-b7b5-c5e0fb07dd8f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: extension_feed
+label: 'Extension Feed'
+code: |-
+  #news-container{
+  	display: flex;
+  }
+
+  .osu-news-wrapper {
+      font-family: Arial, Helvetica, sans-serif;
+      width: 100%;
+      margin: 0 auto 0px auto;
+      padding: 50px 50px 25px 0;
+      box-sizing: border-box;
+  }
+  .osu-news-wrapper > * {
+      max-width: 1400px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+  .osu-news-wrapper h2 {
+      padding-left: 63px;
+  }
+  .news-layout {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      padding: 10px 15px 0px 65px;
+  }
+  .ex-event-card {
+      background: #fff;
+      border-radius: 0;
+      overflow: hidden;
+      box-shadow: none;
+      transition: box-shadow 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      text-decoration: none;
+      color: inherit;
+      flex: 1;
+      margin: 10px;
+      position: relative;
+  }
+  .ex-event-card:hover {
+      box-shadow: none;
+  }
+  .news-title {
+    background: rgba(0, 0, 0, 0.8) left top;
+    bottom: 0;
+    color: #fff;
+    font-weight: 800;
+    left: 0;
+    overflow: hidden;
+    padding: 7px 20px 5px;
+    position: absolute;
+    text-overflow: ellipsis;
+    width: 100%;
+    white-space: nowrap;
+    z-index: 1;
+    line-height: 1.875rem;
+    font-size: .8125rem;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+    outline: 0;
+    vertical-align: baseline;
+    border: 0;
+    -webkit-transition: all .10s ease-out;
+    -moz-transition: all .10s ease-out;
+    transition: all .10s ease-out;
+  }
+  .ex-event-card:hover .news-title {
+      color: #d73f09;
+  }
+  .image-container {
+      width: 100%;
+      height: 180px;
+      background: #f5f5f5;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+  }
+  .news-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 0.3s ease;
+  }
+  .news-card:hover .news-image {
+      transform: scale(1.05);
+  }
+  .no-image {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #888;
+      font-style: italic;
+      background: linear-gradient(#f8f8f8, #eee);
+      font-size: 0.75rem;
+  }
+  .card-content {
+      padding: 10px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 4px;
+  }
+  .card-excerpt{
+  	height: 7.615384615em;
+  	border: 1px solid #efefef;
+  	border-width: 0 1px;
+  	padding: 23px 20px 19px;
+  	overflow: hidden;
+  	margin: 0;
+  	display: -webkit-box;
+  	text-overflow: ellipsis;
+  	-webkit-line-clamp: 3;
+  	-webkit-box-orient: vertical;
+  	-moz-box-orient: vertical;
+  	box-orient: vertical;
+  	line-height: 1.5em;
+  	font-family: Georgia, serif;
+  	font-size: .8125rem;
+  }
+  .card-date {
+  	background: #d73f09;
+  	position: absolute;
+  	width: 2.777777778em;
+  	height: 2.777777778em;
+  	top: 0;
+  	left: 0;
+  	z-index: 1;
+  	padding: .333333333em 0 0;
+  	color: #fff;
+  	font-weight: 800;
+  	font-size: 1.125rem;
+  	line-height: 1.111111111em;
+  	font-family: : "Helvetica Neue",Helvetica,Arial,sans-serif;
+  	text-align: center;
+  	text-transform: uppercase;
+  	-webkit-transition: all .10s ease-out;
+  	-moz-transition: all .10s ease-out;
+  	transition: all .10s ease-out;
+  }
+  .card-month{
+  	display: block;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 1.181818182em;
+    border: 0 none;
+  	text-decoration: underline dotted;
+  	cursor: help;
+  	text-decoration-skip-ink: none;
+  }
+  .card-tag {
+      top: 5px;
+      left: 5px;
+      background: #fff;
+      text-align: center;
+      width: fit-content;
+      padding-left: 5px;
+      padding-right: 5px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: bold;
+      position:relative;
+  }
+  .error-message {
+      color: #c8102e;
+      text-align: center;
+      font-size: 1.2rem;
+      margin: 40px 0;
+  }
+  @media (max-width: 1024px) {
+      .news-layout {
+          grid-template-columns: repeat(2, 1fr);
+      }
+  }
+  @media (max-width: 600px) {
+      .osu-news-wrapper {
+          padding: 20px 0;
+      }
+      .osu-news-wrapper h2 {
+          padding-left: 18px;
+      }
+      .news-layout {
+          grid-template-columns: 1fr;
+          padding: 10px 20px 0px 20px;
+      }
+      .news-room-btn {
+          padding-right: 20px;
+      }
+  }
+  .news-divider {
+      display: none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/186
+contexts: {  }
+conditions_require_all: true

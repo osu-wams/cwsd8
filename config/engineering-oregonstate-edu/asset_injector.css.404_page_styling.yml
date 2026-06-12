@@ -1,0 +1,429 @@
+uuid: 1f80d8e7-1b59-4edc-9dfd-1ce0812b1917
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: 404_page_styling
+label: '404 Page Styling'
+code: |-
+  /* Lightbulb Page */
+
+  /*=================
+  	Typography
+  ===================*/
+  :root {
+  	--Primary-Paddletail-Black: #000;
+  	--Primary-Beaver-Orange: #D73F09;
+  	--Primary-Bucktooth-White: #FFF;
+  	--Secondary-Luminance: #FFB500;
+  	--Secondary-Seafoam: #B8DDE1;
+  }
+
+  /* COE Brand h1 (slightly smaller) */
+  h1 {
+  	color: var(--Primary-Bucktooth-White, #FFF);
+  	font-family: Stratum2Web;
+  	font-size: 72px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 96%; /* 92.16px */
+  	text-transform: uppercase;
+  	margin-bottom: 20px;
+  }
+
+  /* COE Brand h4 */
+  .h4 {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: Stratum2Web;
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  }
+
+  .errorMsg,
+  .errorCode {
+  	display: block;
+  }
+
+  /* COE Brand h3 */
+  .errorCode {
+  	color: var(--Secondary-Luminance, #FFB500);
+  	font-size: 36px;
+  	line-height: 130%; /* 46.8px */
+  	margin-bottom: 10px;
+  }
+
+  /* Seafoam Text */
+  .text-seafoam {
+  	color: var(--Secondary-Seafoam, #B8DDE1) !important;
+  }
+
+  /* Tablet and Mobile changes */
+  @media screen and (max-width: 992px) {
+  	/* COE Brand h2 */
+  	.errorMsg {
+  		font-size: 64px;
+  		line-height: 130%; /* 83.2px */
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	/* COE Brand h3 */
+  	.errorMsg {
+  		font-size: 36px;
+  		line-height: 130%; /* 46.8px */
+  	}
+
+  	/* COE Brand h4 */
+  	.errorCode {
+  		font-size: 24px;
+  		line-height: 130%; /* 31.2px */
+  		letter-spacing: 1.2px;
+  	}
+  	
+  	/* Seafoam Button Wide */
+  	.seafoam-border {
+  		width: 90vw !important;
+  	}
+  }
+
+  /*===================
+  	Bottom Section
+  ===================== */
+
+  .error-explore-link {
+  	max-width: 250px;
+  	margin-left: auto;
+  }
+
+  /* Hide mobile and tablet circuit images on desktop */
+  .circuit-mobile {
+  	display: none;
+  }
+  .circuit-tablet {
+  	display: none;
+  }
+
+  @media screen and (max-width: 992px) {
+  	.col-xxl-8.col-lg-8 {
+  		order: 2 !important;
+  	}
+  	.col-xxl-4.col-lg-4 {
+  		order: 1 !important;
+  		margin-bottom: 30px;
+  		margin-top: 80px;
+  	}
+
+  	.error-explore-link {
+  		max-width: none;
+  		margin-left: none;
+  	}
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 992px) {
+  	/* Swap desktop and tablet images */
+  	.circuit-desktop {
+  		display: none;
+  	}
+  	.circuit-tablet {
+  		display: block;
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	/* Swap desktop and mobile images */
+  	.circuit-desktop {
+  		display: none;
+  	}
+  	.circuit-mobile {
+  		display: block;
+  	}
+    
+  	.col-xxl-4.col-lg-4 {
+  		margin-top: 90px;
+  	}
+    
+  	.error-explore-link {
+  		max-width: 250px;
+  		margin: auto;
+  	}
+  }
+
+  /* Bottom yellow bar */
+  .error-bar {
+  	border-bottom: 10px solid var(--Secondary-Luminance, #FFB500);
+  }
+
+  /*=================
+  	Lightbulb
+  ===================*/
+  .bulb-wrap {
+  	position: absolute;
+  	/* Exact height of the breadcrumb section */
+  	top: -54.8px;
+  	/* This provides the right 'margin' and keeps it in the same relative spot once the 'breakpoint' of 1440px width is hit */
+  	right: max(10px, (100vw - 1440px) / 2 + 10px);
+  	/* This caps width at 60% view width to keep it centered above the header at small screen sizes */
+  	max-width: 60vw;
+  	/* This scales the height when the lightbulb is about to intersect the header to shift it above it, then at small screens it fits the 60vw max-width ratio */
+  	height: clamp(min(38.57vw, 180px), 25vw, 250px);
+  	aspect-ratio: 14/9;
+  }
+
+  /* Anchor to Breadcrumbs section unless Anchor Positioning is not supported */
+  @supports (anchor-name: --test-anchor) {
+  	div:has(> .madrone-breadcrumb) {
+  		anchor-name: --breadcrumb-anchor;
+  	}
+  	.bulb-wrap {
+  		position: fixed;
+  		position-anchor: --breadcrumb-anchor;
+  		top: anchor(top);
+  	}
+  }
+
+  /* Hide breadcrumb on mobile */
+  @media screen and (max-width: 767px) {
+  	.madrone-breadcrumb {
+  		display: none;
+  	}
+  	.bulb-wrap {
+  		position: absolute;
+  		top: 0;
+  	}
+  }
+
+  /* Lightbulb Button */
+  .bulb-wrap button {
+  	/* Default */
+  	--bs-btn-bg: rgb(255, 181, 0, 0.12);
+  	--bs-btn-color: #FFB500;
+  	/* Hover/Focus */
+  	--bs-btn-hover-bg: rgb(255, 181, 0, 0.30);
+  	--bs-btn-hover-color: #FFB500;
+  	/* Active */
+  	--bs-btn-active-bg: #FFB500;
+  	--bs-btn-active-color: #FFFFFF;
+
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+
+  	position: absolute;
+  	top: 70px;
+  	right: 0px;
+  	
+  	height: 40px;
+  	width: 40px;
+
+  	padding: 0;
+  	border: none;
+  }
+
+  /* Lightbulb Image */
+  .bulb img {
+  	position: absolute;
+  	inset: 0;
+  	width: 100%;
+  	height: 100%;
+  	object-fit: contain;
+  	pointer-events: none;
+  }
+
+  .bulb-on img,
+  .bulb-faded img {
+  	opacity: 0;
+  }
+
+  /*=================
+  	Breadcrumbs
+  ===================*/
+  div.container-fluid:has(.madrone-breadcrumb) {
+  	background-color: #212529 !important;
+  }
+
+  .breadcrumb {
+  	--bs-breadcrumb-divider-color: white;
+  	--bs-breadcrumb-active-color: white;
+  }
+
+  .breadcrumb-item,
+  .breadcrumb-item > a {
+  	color: white;
+  }
+
+  .breadcrumb-item > a:hover {
+  	text-decoration: underline white !important;
+  }
+
+  /*========================
+  	COE Brand Typograhpy
+  ==========================*/
+  /* Apply to all links by default */
+  main a {
+  	color: #D73F09;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 160%; /* 28.8px */
+  	text-decoration: none;
+  	border-bottom: 3px solid transparent;
+  	transition: 0.2s ease;
+  	background-image: none;
+  }
+
+  /* Inline Links Hover */
+  main a:hover,
+  main a:focus {
+  	color: #D73F09;
+  	border-bottom: 3px solid #D73F09;
+  	text-decoration: none !important;
+  }
+
+  main a:active {
+  	color: #BE3706 !important;
+  	background-color: transparent !important;
+  	border-bottom: 3px solid #BE3706;
+  }
+
+  .yellow-inline a, a.yellow-inline {
+  	color: #FFB500;
+  }
+
+  .yellow-inline a:hover, a.yellow-inline:hover,
+  .yellow-inline a:focus, a.yellow-inline:focus {
+  	color: #FFB500;
+  	border-bottom: 3px solid #FFB500;
+  	padding-right: 0;
+  	text-decoration: none !important;
+  }
+
+  .yellow-inline a:active, a.yellow-inline:active {
+  	background-color: transparent !important;
+  	color: #D3832B !important;
+  	border-bottom: 3px solid #D3832B;
+  }
+
+
+
+
+
+  /* Bullet point icon setup */
+  main ul > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item)::before {
+  	content: '' !important;
+  	display: inline-block;
+  	width: 1.8ch;
+  	height: 1.8ch;
+  	position: absolute;
+  	left: 0;
+  	top: 0.5ch;
+  	background-size: contain;
+  	background-repeat: no-repeat;
+  	background-position: top left;
+  }
+
+  /* Sets orange bullet point icon */
+  main ul > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item)::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="%23D73F09" stroke-width="4" stroke-linecap="square"/></svg>');
+  }
+
+  /* Sets yellow bullet point icon */
+  main ul.bullets-yellow > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item)::before {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="%23FFB500" stroke-width="4" stroke-linecap="square"/></svg>');
+  }
+
+  /* Bullet point spacing */
+  main ul > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item) {
+    position: relative; /* Allows positioning of the pseudo-element */
+    padding-left: 20px; /* Space for the bullet */
+    padding-bottom: 18px;
+  	list-style: none;
+  }
+
+  main ul > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item)::marker {
+  	content: "" !important;
+  }
+
+  main ul {
+  	padding-left: 0;
+  }
+
+
+
+
+  /* Button Styles */
+  a.seafoam-border,
+  .seafoam-border a {
+  	text-align: center;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: normal;
+  	letter-spacing: 0.9px;
+  	text-transform: uppercase;
+  	padding: 17px 10px;
+  	transition: 0.3s;
+  	display: block;
+  	margin-top: 20px;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  }
+
+  a.seafoam-border:not([class$="-width"]),
+  .seafoam-border a:not([class$="-width"]) {
+  	min-width: 320px;
+  	width: max-content;
+  }
+
+  @media screen and (max-width: 767px) {
+  	a.seafoam-border,
+  	.seafoam-border a,
+  	a.seafoam-border:not([class$="-width"]),
+  	.seafoam-border a:not([class$="-width"]) {
+  		width: 100%;
+  		min-width: 0;
+  	}
+  }
+
+  a.seafoam-border, .seafoam-border a {
+  	color: var(--Secondary-Seafoam, #B8DDE1) !important;
+  	border: 2px solid var(--Secondary-Seafoam, #B8DDE1);
+  }
+
+  a.seafoam-border:hover,
+  .seafoam-border a:hover,
+  a.seafoam-border:focus,
+  .seafoam-border a:focus {
+  	background-color: var(--Secondary-Seafoam, #B8DDE1);
+  	color: var(--Secondary-Rogue-Wave, #0D5257) !important;
+  	border-bottom: 2px solid var(--Secondary-Seafoam, #B8DDE1); /* cancel out main a styling */
+  }
+
+  a.seafoam-border:active,
+  .seafoam-border a:active {
+  	border: 2px solid var(--Useful-Seafoam-Shades-Seafoam-Active, #ACCBCF);
+  	background-color: var(--Useful-Seafoam-Shades-Seafoam-Active, #ACCBCF) !important;
+  	color: var(--Secondary-Rogue-Wave, #0D5257) !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  response_status:
+    id: response_status
+    negate: false
+    status_codes:
+      - 404
+contexts: {  }
+conditions_require_all: true

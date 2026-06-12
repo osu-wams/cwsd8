@@ -1,0 +1,42 @@
+uuid: 99cd893f-e803-4983-8b92-a3446190dcff
+langcode: en
+status: true
+dependencies:
+  content:
+    - 'block_content:basic:73c8a766-43f2-4b26-84fb-089f90aaaf90'
+  module:
+    - block_class
+    - block_content
+    - block_visibility_groups
+    - user
+  theme:
+    - madrone
+third_party_settings:
+  block_class:
+    classes: py-3
+id: madrone_adminlinks
+theme: madrone
+region: highlighted
+weight: -4
+provider: null
+plugin: 'block_content:73c8a766-43f2-4b26-84fb-089f90aaaf90'
+settings:
+  id: 'block_content:73c8a766-43f2-4b26-84fb-089f90aaaf90'
+  label: 'Admin links'
+  label_display: '0'
+  provider: block_content
+  status: true
+  info: ''
+  view_mode: full
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  user_role:
+    id: user_role
+    negate: false
+    context_mapping:
+      user: '@user.current_user_context:current_user'
+    roles:
+      dx_administrator: dx_administrator

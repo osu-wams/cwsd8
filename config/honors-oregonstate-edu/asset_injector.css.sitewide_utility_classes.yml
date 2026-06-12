@@ -1,0 +1,44 @@
+uuid: ae58d8ee-c271-441e-926c-32c7f87dc910
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: sitewide_utility_classes
+label: 'Sitewide - utility classes'
+code: |-
+  .grid-gap-2rem {
+      display: grid;
+      gap: 2rem;
+  }
+
+  .service-card {
+      display: grid;
+      grid-template-columns: 0.3fr 1fr;
+      column-gap: 1rem;
+
+      .views-field-body {
+          grid-column-start: 2;
+      }
+  }
+
+  @media (min-width: 766px) {
+      .grid-cards-xl-three-column  {
+          grid-template-columns: 1fr 1fr;
+      }
+  }
+
+  @media (min-width: 1200px) {
+      .grid-cards-xl-three-column  {
+          grid-template-columns: repeat(3, 1fr);
+      }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

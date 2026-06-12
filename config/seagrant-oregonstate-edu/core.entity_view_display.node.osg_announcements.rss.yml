@@ -1,0 +1,43 @@
+uuid: d3e6f952-e867-4a27-a7a6-132a6e6d9cce
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.rss
+    - field.field.node.osg_announcements.body
+    - field.field.node.osg_announcements.field_expire
+    - field.field.node.osg_announcements.field_osg_expiration_date
+    - field.field.node.osg_announcements.field_osg_publish_date
+    - field.field.node.osg_announcements.field_type_osg_announcement
+    - node.type.osg_announcements
+  module:
+    - layout_builder
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+id: node.osg_announcements.rss
+targetEntityType: node
+bundle: osg_announcements
+mode: rss
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_expire: true
+  field_osg_expiration_date: true
+  field_osg_publish_date: true
+  field_type_osg_announcement: true

@@ -1,0 +1,37 @@
+uuid: 0c120af9-68be-4ac2-aedc-23a95367f6f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.marien_pathways_pages.body
+    - field.field.node.marien_pathways_pages.field_main_image
+    - field.field.node.marien_pathways_pages.field_title
+    - field.field.node.marien_pathways_pages.layout_builder__layout
+    - node.type.marien_pathways_pages
+  module:
+    - text
+    - user
+id: node.marien_pathways_pages.teaser
+targetEntityType: node
+bundle: marien_pathways_pages
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_main_image: true
+  field_title: true
+  layout_builder__layout: true

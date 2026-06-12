@@ -1,0 +1,35 @@
+uuid: be0f6c06-95c5-40ae-abaf-be8a10e47e1d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.internship_pages.body
+    - field.field.node.internship_pages.field_card_media
+    - field.field.node.internship_pages.field_yaday
+    - node.type.internship_pages
+  module:
+    - text
+    - user
+id: node.internship_pages.teaser
+targetEntityType: node
+bundle: internship_pages
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_card_media: true
+  field_yaday: true

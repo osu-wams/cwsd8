@@ -1,0 +1,29 @@
+uuid: d6160ba8-4483-4f7d-978f-a08bb33b22f9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_coe_undergraduate_location
+    - node.type.degree_programs
+    - taxonomy.vocabulary.location
+id: node.degree_programs.field_coe_undergraduate_location
+field_name: field_coe_undergraduate_location
+entity_type: node
+bundle: degree_programs
+label: 'Undergraduate Location'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

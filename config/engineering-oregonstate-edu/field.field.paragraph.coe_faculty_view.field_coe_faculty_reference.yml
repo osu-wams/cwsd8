@@ -1,0 +1,29 @@
+uuid: 613b2342-a8c0-4220-bcf8-23fdef0663cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_coe_faculty_reference
+    - paragraphs.paragraphs_type.coe_faculty_view
+    - taxonomy.vocabulary.affiliations
+id: paragraph.coe_faculty_view.field_coe_faculty_reference
+field_name: field_coe_faculty_reference
+entity_type: paragraph
+bundle: coe_faculty_view
+label: 'COE Faculty Reference'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      affiliations: affiliations
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

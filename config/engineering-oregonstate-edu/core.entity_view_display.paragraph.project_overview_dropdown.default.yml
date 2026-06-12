@@ -1,0 +1,98 @@
+uuid: db71b030-252a-4610-b124-9f5a8c20d344
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.project_overview_dropdown.field_project_overview_collapse
+    - field.field.paragraph.project_overview_dropdown.field_project_overview_desc
+    - field.field.paragraph.project_overview_dropdown.field_project_overview_resources
+    - field.field.paragraph.project_overview_dropdown.field_project_overview_title
+    - paragraphs.paragraphs_type.project_overview_dropdown
+  module:
+    - field_group
+    - layout_builder
+    - layout_builder_restrictions
+    - link
+    - text
+    - text_field_formatter
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+  field_group:
+    group_project_overview_collapse:
+      children:
+        - field_project_overview_collapse
+        - field_project_overview_title
+        - field_project_overview_desc
+        - field_project_overview_resources
+      label: 'Project Overview Collapse'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: paragraph.project_overview_dropdown.default
+targetEntityType: paragraph
+bundle: project_overview_dropdown
+mode: default
+content:
+  field_project_overview_collapse:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: div
+      wrap_class: ''
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_project_overview_desc:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_project_overview_resources:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_project_overview_title:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden: {  }

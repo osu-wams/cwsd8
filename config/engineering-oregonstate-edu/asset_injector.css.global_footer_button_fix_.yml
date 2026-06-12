@@ -1,0 +1,36 @@
+uuid: 55e973e9-cb98-4e8e-82d9-e6ff219c6832
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_footer_button_fix_
+label: 'GLOBAL footer button (border and colors)'
+code: |-
+  /* targeting footer button only */
+
+  .osu-btn-primary-footer-button:hover {
+      border-color: #d73f09;
+      background-color:#d73f09;
+      color:white;
+  }
+
+  .osu-btn-primary-footer-button {
+  	border-radius: 1px;
+  	background-color: transparent;
+  	border-color: white;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

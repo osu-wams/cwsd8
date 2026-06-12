@@ -1,0 +1,60 @@
+uuid: 4f538a54-cb53-4b24-97d6-487523061a9d
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: oid_equity_data_collection
+label: 'OID Equity Data Collection'
+code: |
+  (function ($, Drupal) {
+      Drupal.behaviors.oidEquityDataModule = {
+          attach: function (context, settings) {
+              var viewCards = $('.view-card');
+              var formItems = $('.form-type-bef-link a');
+              var filterItems = $('.bef-select-as-links .form-item a');
+
+              // Directly create wrappers around view card with respective links
+              viewCards.each(function () {
+                  var link = $(this).find('.view-card-link-to-dashboard').children('a').attr('href');
+                  $(this).wrap("<a class='card-wrapper' href=" + link + "></a>");
+              });
+
+              // Handle click on form item links
+              formItems.click(function () {
+                  // remove active class from all and add only to the clicked one
+                  formItems.removeClass('active');
+                  $(this).addClass('active');
+              });
+
+              // If icons not loaded, prepend to filter buttons
+              if (filterItems.find('i').length !== 2) {
+                  filterIcons(filterItems);
+              }
+          }
+      };
+
+      // Helper function to prepend icons to filter buttons
+      function filterIcons(filterItems) {
+          filterItems.eq(0).prepend("<i class='fas fa-3x fa-book-open'></i>");
+          filterItems.eq(1).prepend("<i class='fas fa-3x fa-people-group'></i>");
+          filterItems.eq(2).prepend("<i class='fas fa-3x fa-graduation-cap'></i>");
+      }
+  }(jQuery, Drupal));
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /data
+contexts: {  }
+conditions_require_all: true

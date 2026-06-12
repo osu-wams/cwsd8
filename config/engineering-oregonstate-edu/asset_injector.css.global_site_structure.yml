@@ -1,0 +1,77 @@
+uuid: ec29b432-a2b1-4054-874c-6788f4f16e22
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_site_structure
+label: 'GLOBAL page title and breadcrumb (breadcrumb  and page title styling)'
+code: |-
+  /* ==========================================================================
+     Global Page Title Styling
+     ========================================================================== */
+     
+     
+  /* Page title customization */
+
+  #block-madrone-page-title {
+  	text-align: left;
+  	max-width: 100%;
+  }
+
+  /* CHANGED THIS 2.22.23*/
+
+  main .block-page-title-block > .block__content > h1, main .block-page-title-block > .block__content > .h1 {
+  	text-align:left;
+  	padding-inline:1.0rem;
+  	margin-top: -5px;
+  	max-width: none;
+  }
+
+  main .block-page-title-block {
+      margin-inline: inherit !important;
+  }
+
+  /* Sets width for screen size */
+
+  @media (min-width: 1451px) and (max-width:1800px) {
+  	.block__content__site-name .site-name__group-link--wrapper {
+  		width: 500px;
+  	}
+  }
+
+  /* ==========================================================================
+     Global Page Breadcrumb Styling
+     ========================================================================== */
+     
+     
+  /* Adds breadcrumb divider */
+
+  .breadcrumb-item + .breadcrumb-item::before {
+  	content: var(--bs-breadcrumb-divider,"<");
+  }
+
+  /* Breadcrumb text customization */
+
+  .breadcrumb-item > a {
+  	font-weight: 600;
+  	text-decoration: none;
+  }
+
+  .breadcrumb-item > a:hover {
+  	text-decoration: underline black;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

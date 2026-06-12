@@ -1,0 +1,44 @@
+uuid: 53c4e09d-3ed0-4712-ba28-3952af9298ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_list_with_image
+    - field.field.block_content.cta_list_with_image.field_cta_list_image
+    - field.field.block_content.cta_list_with_image.field_cta_list_link
+    - field.field.block_content.cta_list_with_image.field_cta_list_title
+  module:
+    - linkit
+    - media_library
+id: block_content.cta_list_with_image.default
+targetEntityType: block_content
+bundle: cta_list_with_image
+mode: default
+content:
+  field_cta_list_image:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_cta_list_link:
+    type: linkit
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
+    third_party_settings: {  }
+  field_cta_list_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  info: true

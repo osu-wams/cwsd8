@@ -1,0 +1,57 @@
+uuid: 9748cc48-45e9-4b2d-af6b-a4d297c963dd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: tabs
+label: Tabs
+code: |-
+  function openTab(event, tabName) {
+      // Hide all tab contents
+      var tabContents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabContents.length; i++) {
+          tabContents[i].classList.remove("active");
+      }
+      
+      // Remove active class from all tabs
+      var tabs = document.getElementsByClassName("tab");
+      for (var i = 0; i < tabs.length; i++) {
+          tabs[i].classList.remove("active");
+      }
+      
+      // Show the current tab content
+      document.getElementById(tabName).classList.add("active");
+      
+      // Add active class to the clicked tab
+      event.currentTarget.classList.add("active");
+      
+      // Change background image based on tab
+      var container = document.querySelector('.tab-container');
+      
+      // Remove all background classes
+      container.classList.remove('bg-tab1', 'bg-tab2');
+      
+      // Add the class for the current tab
+      container.classList.add('bg-' + tabName);
+  }
+
+  // Set initial background on page load
+  document.addEventListener('DOMContentLoaded', function() {
+      var container = document.querySelector('.tab-container');
+      if (container) {
+          container.classList.add('bg-tab1');
+      }
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

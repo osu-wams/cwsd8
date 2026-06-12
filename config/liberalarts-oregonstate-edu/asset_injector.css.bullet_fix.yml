@@ -1,0 +1,49 @@
+uuid: 11e320ca-c53e-4fe1-9386-7c8acfbf4778
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+    - system
+id: bullet_fix
+label: 'bullet fix'
+code: |-
+  /* bullet fix */
+  .block-system-main-block ul:not(.nav, .navbar, .list-unstyled, .contextual-links, .vertical-tabs__menu, .pager__items, .select2-selection__rendered) > li:not([style*="list-style: none"])::marker {
+    content: "\2022  ";
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/*'
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      academic_program: academic_program
+      alumni: alumni
+      emergence_student: emergence_student
+      fellows: fellows
+      grad_student_faq: grad_student_faq
+      news: news
+      osu_profile: osu_profile
+      page: page
+      program: program
+      sps_lab: sps_lab
+      story: story
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,29 @@
+uuid: f29c26e8-02dc-4ca4-bdee-53989abf09f5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_associated_researcher
+    - node.type.engr_podcast
+    - node.type.osu_profile
+id: node.engr_podcast.field_associated_researcher
+field_name: field_associated_researcher
+entity_type: node
+bundle: engr_podcast
+label: 'Associated Podcast Researcher'
+description: 'Researchers added here will show the podcast on their profile pages.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      osu_profile: osu_profile
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

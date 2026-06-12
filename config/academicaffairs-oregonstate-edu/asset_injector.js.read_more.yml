@@ -1,0 +1,46 @@
+uuid: a2d3d6a6-efdc-4df3-a23b-0e447149f1ef
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: read_more
+label: 'Read more'
+code: |-
+  document.addEventListener('DOMContentLoaded', () => {
+    const buttons = document.querySelectorAll('.read-more');
+
+    buttons.forEach(button => {
+      button.addEventListener('click', () => {
+        const content = button.closest('#content');
+        const preview = content.querySelector('.preview');
+        const fullText = content.querySelector('.full-text');
+        const isPreviewVisible = window.getComputedStyle(preview).display !== 'none';
+
+        if (isPreviewVisible) {
+          preview.style.display = 'none';
+          fullText.style.display = 'block';
+        } else {
+          preview.style.display = 'block';
+          fullText.style.display = 'none';
+        }
+      });
+    });
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/6\r\n/node/1366"
+contexts: {  }
+conditions_require_all: true

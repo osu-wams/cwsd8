@@ -1,0 +1,39 @@
+uuid: ad9f39f0-c149-4e4a-adef-86bf2e3219e4
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.form_link.body
+    - field.field.node.form_link.field_form_link_audience
+    - field.field.node.form_link.field_form_link_file
+    - field.field.node.form_link.field_form_link_link
+    - field.field.node.form_link.field_send_to_salesforce
+    - node.type.form_link
+  module:
+    - text
+    - user
+id: node.form_link.teaser
+targetEntityType: node
+bundle: form_link
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_form_link_audience: true
+  field_form_link_file: true
+  field_form_link_link: true
+  field_send_to_salesforce: true

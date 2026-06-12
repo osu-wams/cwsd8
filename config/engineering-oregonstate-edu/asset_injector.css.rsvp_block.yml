@@ -1,0 +1,116 @@
+uuid: 6da39d05-5e9c-4837-8bbc-48daec2e5386
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: rsvp_block
+label: 'RSVP Block'
+code: |
+  .block--type-rsvp-block {
+  	border-top: 6px solid #d73f09;
+  }
+
+  .block--type-rsvp-block h5 {
+  	color: #D73F09;
+  	font-family: "Open Sans";
+  	font-size: 22px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 130%;
+  	letter-spacing: 1.1px;
+  	text-transform: uppercase;
+  }
+
+  .block--type-rsvp-block .field--name-field-rsvp-header {
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%;
+  }
+
+  .rsvp-button {
+    width: 100%;
+  	border: 2px solid #D73F09 !important;
+    text-transform: uppercase;
+    font-weight: 600;
+    background-color: #D73F09 !important;
+    color: white !important;
+  }
+
+  .rsvp-button--disabled {
+    background-color: #ECEDEE !important;
+    color: black !important;
+    pointer-events: none;
+    cursor: default;
+    color: inherit;
+  }
+
+  .rsvp-button:hover:not(.rsvp-button--disabled),
+  .rsvp-button:focus:not(.rsvp-button--disabled) {
+    background-color: #FFF !important;  	
+    border: 2px solid #D73F09 !important;
+    color: #D73F09 !important;
+  }
+
+  .rsvp-button:active:not(.rsvp-button--disabled) {
+    background-color: #FFF !important;
+  	border: 2px solid #BE3706 !important;
+    color: #D73F09 !important;
+  }
+
+
+  @media only screen and (max-width: 991px) {
+    .block--type-rsvp-block {
+      margin-top: 48px !important;
+    }
+
+  	.rsvp-button {
+  		width: 280px;
+  	}
+  }
+
+  @media only screen and (max-width: 767px) {
+    .awardees-column-2 {
+      margin-top: 48px;
+    }
+  }
+
+
+  @media only screen and (min-width: 992px) {
+    .block--type-rsvp-block {
+      position: relative;
+      padding-top: 8px !important;
+      padding-left: 128px !important;
+    }
+
+    .block--type-rsvp-block::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 128px;
+      right: 0;
+      height: 6px;
+      background-color: #d73f09;
+    }
+
+    .block--type-rsvp-block {
+      border-top: none;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/45161
+contexts: {  }
+conditions_require_all: true

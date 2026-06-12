@@ -1,0 +1,218 @@
+uuid: 3488e502-7521-4629-aa65-91db8840cdd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.policy.body
+    - field.field.node.policy.field_download_policy
+    - field.field.node.policy.field_effective_date
+    - field.field.node.policy.field_last_revised
+    - field.field.node.policy.field_policy_category
+    - field.field.node.policy.field_policy_or_standard
+    - field.field.node.policy.field_responsible_office
+    - field.field.node.policy.field_responsible_official
+    - field.field.node.policy.field_university_policy_no_
+    - node.type.policy
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          d15caa97-9564-476f-a827-404b475f5c03:
+            uuid: d15caa97-9564-476f-a827-404b475f5c03
+            region: content
+            configuration:
+              id: 'extra_field_block:node:policy:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 2
+            additional: {  }
+          bfdefbad-40c6-4a3f-8406-0961d0aa3cc7:
+            uuid: bfdefbad-40c6-4a3f-8406-0961d0aa3cc7
+            region: content
+            configuration:
+              id: 'field_block:node:policy:body'
+              label: 'Text of Policy'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional:
+              bootstrap_styles:
+                block_style:
+                  background:
+                    background_type: null
+                  background_color:
+                    class: null
+                  background_media:
+                    image:
+                      media_id: null
+                    video:
+                      media_id: null
+                    background_options:
+                      background_position: center
+                      background_repeat: no-repeat
+                      background_attachment: not_fixed
+                      background_size: cover
+                  text_color:
+                    class: null
+                  text_alignment:
+                    class: null
+                  padding:
+                    class: p-4-5
+                  padding_left:
+                    class: _none
+                  padding_top:
+                    class: _none
+                  padding_right:
+                    class: _none
+                  padding_bottom:
+                    class: _none
+                  margin:
+                    class: m-4-5
+                  margin_left:
+                    class: _none
+                  margin_top:
+                    class: _none
+                  margin_right:
+                    class: _none
+                  margin_bottom:
+                    class: _none
+                  border:
+                    border_style:
+                      class: null
+                    border_width:
+                      class: _none
+                    border_color:
+                      class: null
+                    rounded_corners:
+                      class: _none
+                    border_left_style:
+                      class: null
+                    border_left_width:
+                      class: _none
+                    border_left_color:
+                      class: null
+                    border_top_style:
+                      class: null
+                    border_top_width:
+                      class: _none
+                    border_top_color:
+                      class: null
+                    border_right_style:
+                      class: null
+                    border_right_width:
+                      class: _none
+                    border_right_color:
+                      class: null
+                    border_bottom_style:
+                      class: null
+                    border_bottom_width:
+                      class: _none
+                    border_bottom_color:
+                      class: null
+                    rounded_corner_top_left:
+                      class: _none
+                    rounded_corner_top_right:
+                      class: _none
+                    rounded_corner_bottom_left:
+                      class: _none
+                    rounded_corner_bottom_right:
+                      class: _none
+                  box_shadow:
+                    class: null
+                  items_alignment:
+                    class: null
+                  scroll_effects:
+                    class: null
+                  min_height:
+                    class: 0
+          f48d23ce-fd25-416f-bff2-1f468f3d34bc:
+            uuid: f48d23ce-fd25-416f-bff2-1f468f3d34bc
+            region: content
+            configuration:
+              id: 'extra_field_block:node:policy:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 3
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories:
+        - 'Chaos Tools'
+        - Forms
+        - Help
+        - 'Purge UI'
+        - User
+        - core
+    entity_view_mode_restriction_by_region:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+id: node.policy.default
+targetEntityType: node
+bundle: policy
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_download_policy: true
+  field_effective_date: true
+  field_last_revised: true
+  field_policy_category: true
+  field_policy_or_standard: true
+  field_responsible_office: true
+  field_responsible_official: true
+  field_university_policy_no_: true

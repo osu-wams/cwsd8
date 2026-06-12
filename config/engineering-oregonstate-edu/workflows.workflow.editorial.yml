@@ -1,0 +1,144 @@
+uuid: 5d717d8f-826e-4bba-9ae1-6ae10c6587f3
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.2024_senior_projects
+    - node.type.accreditation
+    - node.type.coe_simple_column
+    - node.type.content_card
+    - node.type.degree_programs
+    - node.type.engr_oregon_stater_awards
+    - node.type.engr_podcast
+    - node.type.engr_statistic
+    - node.type.engr_video
+    - node.type.event
+    - node.type.facilities
+    - node.type.graduate_program
+    - node.type.job
+    - node.type.option
+    - node.type.osu_profile
+    - node.type.osu_simple_tabs
+    - node.type.page
+    - node.type.projects
+    - node.type.research_area
+    - node.type.story
+    - node.type.undergraduate_program
+    - node.type.webform
+  module:
+    - content_moderation
+_core:
+  default_config_hash: HPoRRe_c6GmY-m_PDDrOhIDq7qUs9nScS0zEkrctSkw
+id: editorial
+label: Editorial
+type: content_moderation
+type_settings:
+  states:
+    archived:
+      label: Archived
+      weight: 1
+      published: false
+      default_revision: true
+    draft:
+      label: Draft
+      weight: -2
+      published: false
+      default_revision: false
+    needs_review:
+      label: 'Needs Review'
+      weight: -1
+      published: false
+      default_revision: false
+    preserve:
+      label: Preserved
+      weight: 2
+      published: true
+      default_revision: true
+    published:
+      label: Published
+      weight: 0
+      published: true
+      default_revision: true
+  transitions:
+    archive:
+      label: Archive
+      from:
+        - published
+      to: archived
+      weight: 1
+    archived_draft:
+      label: 'Restore to Draft'
+      from:
+        - archived
+      to: draft
+      weight: 2
+    archived_published:
+      label: Restore
+      from:
+        - archived
+      to: published
+      weight: 3
+    create_new_draft:
+      label: 'Create New Draft'
+      from:
+        - draft
+        - published
+      to: draft
+      weight: -4
+    force_publish:
+      label: 'Force Publish'
+      from:
+        - draft
+      to: published
+      weight: 0
+    needs_changes:
+      label: 'Needs Changes'
+      from:
+        - needs_review
+      to: draft
+      weight: -2
+    preserve:
+      label: Preserve
+      from:
+        - archived
+        - published
+      to: preserve
+      weight: 4
+    publish:
+      label: Publish
+      from:
+        - needs_review
+        - published
+      to: published
+      weight: -1
+    send_for_review:
+      label: 'Send for Review'
+      from:
+        - draft
+      to: needs_review
+      weight: -3
+  entity_types:
+    node:
+      - 2024_senior_projects
+      - accreditation
+      - coe_simple_column
+      - content_card
+      - degree_programs
+      - engr_oregon_stater_awards
+      - engr_podcast
+      - engr_statistic
+      - engr_video
+      - event
+      - facilities
+      - graduate_program
+      - job
+      - option
+      - osu_profile
+      - osu_simple_tabs
+      - page
+      - projects
+      - research_area
+      - story
+      - undergraduate_program
+      - webform
+  default_moderation_state: draft

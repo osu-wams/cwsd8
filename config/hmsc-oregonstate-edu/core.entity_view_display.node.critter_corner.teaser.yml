@@ -1,0 +1,37 @@
+uuid: c172d41e-e242-460a-b26b-be99ca09c5dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.critter_corner.body
+    - field.field.node.critter_corner.field_animal_location
+    - field.field.node.critter_corner.field_commonname
+    - field.field.node.critter_corner.field_latinname
+    - node.type.critter_corner
+  module:
+    - text
+    - user
+id: node.critter_corner.teaser
+targetEntityType: node
+bundle: critter_corner
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_animal_location: true
+  field_commonname: true
+  field_latinname: true

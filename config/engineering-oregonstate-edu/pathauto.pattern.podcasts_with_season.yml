@@ -1,0 +1,23 @@
+uuid: d4ce1163-a59c-4c5d-a411-43d8d3db92ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.engr_podcast
+  module:
+    - node
+id: podcasts_with_season
+label: 'Podcasts with Season'
+type: 'canonical_entities:node'
+pattern: '/engineering-out-loud/[node:field_engr_pod_season_number:entity:name]/[node:title]'
+selection_criteria:
+  0e73270f-75f5-4b6a-9780-2edf52e69e17:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      engr_podcast: engr_podcast
+selection_logic: and
+weight: -5
+relationships: {  }

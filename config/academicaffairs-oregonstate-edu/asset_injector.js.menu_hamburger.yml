@@ -1,0 +1,80 @@
+uuid: 02b9792b-200f-4a29-ace7-c670cfe281c6
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: menu_hamburger
+label: 'Menu hamburger'
+code: |-
+  console.log('Megamenu script loaded');
+
+  function initMegaMenu() {
+      const hamburger = document.getElementById('hamburger');
+      const megamenu = document.getElementById('megamenu');
+      const overlay = document.getElementById('overlay');
+
+      console.log('Elements found:', {
+          hamburger: hamburger,
+          megamenu: megamenu,
+          overlay: overlay
+      });
+
+      // Only run if hamburger and megamenu exist (overlay is optional)
+      if (hamburger && megamenu) {
+          console.log('Initializing megamenu...');
+          
+          let previousOverflow = ''; // Store the original value
+          
+          function toggleMenu() {
+              console.log('Toggle menu called');
+              hamburger.classList.toggle('active');
+              megamenu.classList.toggle('active');
+              if (overlay) {
+                  overlay.classList.toggle('active');
+              }
+              if (megamenu.classList.contains('active')) {
+                  // Save current overflow before changing it
+                  previousOverflow = document.body.style.overflow || getComputedStyle(document.body).overflow;
+                  document.body.style.overflow = 'hidden';
+              } else {
+                  // Restore the exact previous value
+                  document.body.style.overflow = previousOverflow || '';
+              }
+          }
+          
+          hamburger.addEventListener('click', toggleMenu);
+          if (overlay) {
+              overlay.addEventListener('click', toggleMenu);
+          }
+          
+          // Close menu on ESC key
+          document.addEventListener('keydown', (e) => {
+              if (e.key === 'Escape' && megamenu.classList.contains('active')) {
+                  toggleMenu();
+              }
+          });
+      } else {
+          console.log('Megamenu elements not found - script not initialized');
+      }
+  }
+
+  // Wait for DOM to be ready
+  if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initMegaMenu);
+  } else {
+      // DOM is already ready
+      initMegaMenu();
+  }
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

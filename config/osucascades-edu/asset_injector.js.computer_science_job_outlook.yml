@@ -1,0 +1,109 @@
+uuid: 8e4503e1-bb29-44f5-ab8c-2e7268924754
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: computer_science_job_outlook
+label: 'Computer Science Job Outlook '
+code: |2-
+   /* if (!document.getElementById("modern-campus-pathways-loader")) {
+      const script = document.createElement("script");
+      script.src = "https://widget.pathways.moderncampus.net/pathways.loader.js";
+      script.id = "modern-campus-pathways-loader";
+      script.setAttribute("onload", "ModernCampusPublicPathwaysWidgetLoader('en_US')");
+      document.getElementsByTagName("head")[0].appendChild(script);
+    }
+
+    document.addEventListener("PathwaysJobMarketScriptLoaded", function (event) {
+      new PathwaysJobMarketOutlook({
+        "title": { "text": "" },
+        "codes": "0081",
+        "locale": "en_US",
+        "themeCode": "0004",
+        "apiKey": "1vFz4wMIxZ7gQlW9TOA1n17KMwqZ0JgV9MZAeGGG",
+        "elementId": "moderncampuspathwayswidgetle7jjlazb83h5s2xnrh",
+        "clientName": "OregonStateUniversity",
+        "translateProps": ["title.text"]
+      });
+    }, false);*/
+    
+  (function() {
+    function initWidget() {
+      var el = document.getElementById(
+        "moderncampuspathwayswidgetle7jjlazb83h5s2xnrh"
+      );
+      if (!el) return; // element not on this page
+
+      // If shadow DOM already populated by server, skip re-init
+      if (el.shadowRoot && el.shadowRoot.innerHTML.trim() !== "") return;
+
+      if (typeof PathwaysJobMarketOutlook !== "undefined") {
+        new PathwaysJobMarketOutlook({
+          "title": { "text": "" },
+          "codes": "0081",
+          "locale": "en_US",
+          "themeCode": "0004",
+          "apiKey": "1vFz4wMIxZ7gQlW9TOA1n17KMwqZ0JgV9MZAeGGG",
+          "elementId": "moderncampuspathwayswidgetle7jjlazb83h5s2xnrh",
+          "clientName": "OregonStateUniversity",
+          "translateProps": ["title.text"]
+        });
+      }
+    }
+
+    function loadScript() {
+      if (document.getElementById("modern-campus-pathways-loader")) {
+        // Script tag exists — may already be loaded or loading
+        if (typeof PathwaysJobMarketOutlook !== "undefined") {
+          initWidget();
+        } else {
+          document.addEventListener(
+            "PathwaysJobMarketScriptLoaded", initWidget, { once: true }
+          );
+        }
+        return;
+      }
+
+      // Register listener FIRST, then inject script
+      document.addEventListener(
+        "PathwaysJobMarketScriptLoaded", initWidget, { once: true }
+      );
+
+      var script = document.createElement("script");
+      script.src = "https://widget.pathways.moderncampus.net/pathways.loader.js";
+      script.id = "modern-campus-pathways-loader";
+      script.onload = function() {
+        if (typeof ModernCampusPublicPathwaysWidgetLoader === "function") {
+          ModernCampusPublicPathwaysWidgetLoader("en_US");
+        }
+      };
+      // async false ensures it doesn't race against DOMContentLoaded
+      script.async = false;
+      document.head.appendChild(script);
+    }
+
+    // Wait for full DOM — handles Drupal's deferred/aggregated JS
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", loadScript);
+    } else {
+      loadScript();
+    }
+  })();
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/2141951
+contexts: {  }
+conditions_require_all: true

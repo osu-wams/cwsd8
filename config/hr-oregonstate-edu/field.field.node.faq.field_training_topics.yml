@@ -1,0 +1,29 @@
+uuid: a7609ec3-730b-40f1-b3ba-ac3cb2a3bd11
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_training_topics
+    - node.type.faq
+    - taxonomy.vocabulary.training_topics
+id: node.faq.field_training_topics
+field_name: field_training_topics
+entity_type: node
+bundle: faq
+label: 'Training Topics'
+description: 'Please select at least one training topic by which to categorize this FAQ.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      training_topics: training_topics
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

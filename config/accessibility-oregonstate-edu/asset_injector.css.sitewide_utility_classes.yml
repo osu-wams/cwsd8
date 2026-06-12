@@ -1,0 +1,24 @@
+uuid: 159341a2-0262-4fb4-b3d5-f5f579c26e0b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: sitewide_utility_classes
+label: 'Sitewide - utility classes'
+code: |-
+  /* Make all the blocks in a section be the same height as the tallest block */
+  .osu-align-items-stretch,
+  .osu-align-items-stretch > div,
+  .osu-align-items-stretch > div > div {
+        min-height: 100%;
+      }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

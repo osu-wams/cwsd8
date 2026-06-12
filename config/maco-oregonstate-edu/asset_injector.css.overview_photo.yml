@@ -1,0 +1,46 @@
+uuid: 02d75b50-dfee-4008-ac57-5632ebd208ce
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: overview_photo
+label: 'Overview Page'
+code: |-
+  /* Image on page */
+  .field__item img {
+      height: 500px;  /* Set a fixed height, adjust as needed */
+      width: 100%;    /* Allow the width to be responsive */
+      object-fit: cover;  /* Keeps the aspect ratio while cropping */
+      object-position: center; /* Ensures the image is centered if cropped */
+      image-rendering: crisp-edges;  /* For most other browsers */
+  }
+
+  @media (max-width: 768px) {
+      .field_item img {
+          height: 200px;  /* Reduce height on mobile */
+      }
+  }
+
+  /* BLUE BAR WITH TERMS */
+  .w-100 > .row.layout-builder__layout {
+    margin-inline:0;
+  	background-color: #006A8E;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      overview_pages_course_profiles: overview_pages_course_profiles
+contexts: {  }
+conditions_require_all: true

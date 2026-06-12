@@ -1,0 +1,39 @@
+uuid: d9ec44ea-8eb5-49b5-bce7-be8e7b96a613
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: accordions_collapsed_on_page_load
+label: 'Accordions collapsed on page load'
+code: |-
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.accordion-collapse').forEach(function(el) {
+      // Add "show" class to expand them
+      el.classList.add('show');
+
+      // Removing the "collapsed" class from the button
+      const button = el.closest('.accordion-item').querySelector('.accordion-button');
+      if (button) {
+        button.classList.remove('collapsed');
+        button.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/391
+contexts: {  }
+conditions_require_all: true

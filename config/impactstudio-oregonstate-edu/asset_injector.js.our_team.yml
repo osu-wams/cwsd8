@@ -1,0 +1,60 @@
+uuid: 6cf05d10-2101-4361-b5dc-e9ea2213af0d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: our_team
+label: Our_team
+code: |-
+  document.addEventListener("DOMContentLoaded", function () {
+      document.querySelectorAll(".team-member").forEach((member) => {
+        member.addEventListener("click", function () {
+          const bio = this.querySelector(".bio") ? this.querySelector(".bio").textContent : "No bio available.";
+          showPopup(bio);
+        });
+      });
+
+      function showPopup(bio) {
+        document.getElementById("popup-text").innerHTML = bio;
+        document.getElementById("popup").style.display = "block";
+        document.getElementById("popup-overlay").style.display = "block";
+      }
+
+      function closePopup() {
+        document.getElementById("popup").style.display = "none";
+        document.getElementById("popup-overlay").style.display = "none";
+      }
+
+      window.showSection = function (sectionId) {
+        document.querySelectorAll(".team-category").forEach((section) => {
+          section.style.display = "none";
+        });
+        document.getElementById(sectionId).style.display = "block";
+
+        document.querySelectorAll(".team-tab").forEach((tab) => {
+          tab.classList.remove("active");
+        });
+
+        document.querySelector(`[onclick="showSection('${sectionId}')"]`).classList.add("active");
+      };
+
+      window.closePopup = closePopup; // Expose function globally
+    });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/26
+contexts: {  }
+conditions_require_all: true

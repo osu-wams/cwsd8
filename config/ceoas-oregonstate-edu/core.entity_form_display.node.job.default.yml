@@ -1,0 +1,150 @@
+uuid: 1c0f89da-4206-4287-adb5-5a2808b840fc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.job.field_application_deadline
+    - field.field.node.job.field_city_location
+    - field.field.node.job.field_description
+    - field.field.node.job.field_job_title_link_to_listing
+    - field.field.node.job.field_opportunity
+    - field.field.node.job.field_organization
+    - field.field.node.job.field_state
+    - node.type.job
+    - workflows.workflow.editorial
+  module:
+    - content_moderation
+    - datetime
+    - link
+    - path
+id: node.job.default
+targetEntityType: node
+bundle: job
+mode: default
+content:
+  created:
+    type: datetime_timestamp
+    weight: 11
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_application_deadline:
+    type: datetime_default
+    weight: 7
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_city_location:
+    type: string_textfield
+    weight: 3
+    region: content
+    settings:
+      size: 60
+      placeholder: 'The city or other type of location of the job'
+    third_party_settings: {  }
+  field_description:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 512
+      placeholder: 'Enter a brief description of the opportunity (500 characters or less)'
+    third_party_settings: {  }
+  field_job_title_link_to_listing:
+    type: link_default
+    weight: 1
+    region: content
+    settings:
+      placeholder_url: 'This is the URL of the web site or application form with more info.'
+      placeholder_title: 'This is the job title, which will be the link text'
+    third_party_settings: {  }
+  field_opportunity:
+    type: options_select
+    weight: 5
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_organization:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: 'The company or organization offering the job'
+    third_party_settings: {  }
+  field_state:
+    type: options_select
+    weight: 4
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 14
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 12
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 13
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: 'Title for the system record. It can be the same as the Job Title'
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 10
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: 'This is you, the person who entered this job record'
+    third_party_settings: {  }
+  url_redirects:
+    weight: 15
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  entitygroupfield: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

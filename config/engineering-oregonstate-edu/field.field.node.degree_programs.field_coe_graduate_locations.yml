@@ -1,0 +1,29 @@
+uuid: c15bf0d5-9188-42af-a5a5-d84db032039f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_coe_graduate_locations
+    - node.type.degree_programs
+    - taxonomy.vocabulary.location
+id: node.degree_programs.field_coe_graduate_locations
+field_name: field_coe_graduate_locations
+entity_type: node
+bundle: degree_programs
+label: 'Graduate Locations'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      location: location
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

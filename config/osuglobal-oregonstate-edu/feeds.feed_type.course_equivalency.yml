@@ -1,0 +1,234 @@
+uuid: e3ada60b-7772-48d4-b727-c8dde3f1af38
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.course_equivalency.field_ce_bacc_core
+    - field.field.node.course_equivalency.field_ce_country
+    - field.field.node.course_equivalency.field_ce_foreign_course_number
+    - field.field.node.course_equivalency.field_ce_foreign_course_title
+    - field.field.node.course_equivalency.field_ce_institution
+    - field.field.node.course_equivalency.field_ce_language
+    - field.field.node.course_equivalency.field_ce_osu_course_number
+    - field.field.node.course_equivalency.field_ce_provider
+    - field.field.node.course_equivalency.field_ce_subject
+    - field.field.node.course_equivalency.field_core_ed
+    - field.field.node.course_equivalency.field_reference_number_text
+    - field.field.node.course_equivalency.field_term_reviewed
+    - node.type.course_equivalency
+  module:
+    - node
+label: 'Course Equivalency'
+id: course_equivalency
+description: ''
+help: ''
+import_period: -1
+import_period_per_feed: false
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: course_equivalency
+  langcode: en
+  insert_new: 1
+  update_existing: 1
+  update_non_existent: _delete
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 2081
+custom_sources:
+  equivalency_course_title:
+    value: 'Equivalency Course Title'
+    label: 'Equivalency Course Title'
+    machine_name: equivalency_course_title
+    type: csv
+  new_equivalency_code:
+    value: 'NEW Equivalency Code'
+    label: 'NEW Equivalency Code'
+    machine_name: new_equivalency_code
+    type: csv
+  id:
+    value: ID
+    label: ID
+    machine_name: id
+    type: csv
+  foreign_course_title:
+    value: 'Foreign Course Title'
+    label: 'Foreign Course Title'
+    machine_name: foreign_course_title
+    type: csv
+  foreign_course_code:
+    value: 'Foreign Course Code'
+    label: 'Foreign Course Code'
+    machine_name: foreign_course_code
+    type: csv
+  course_equivalency_subject:
+    value: 'Course Equivalency Subject'
+    label: 'Course Equivalency Subject'
+    machine_name: course_equivalency_subject
+    type: csv
+  country:
+    value: Country
+    label: Country
+    machine_name: country
+    type: csv
+  foreign_institution:
+    value: 'Foreign Institution'
+    label: 'Foreign Institution'
+    machine_name: foreign_institution
+    type: csv
+  provider:
+    value: Provider
+    label: Provider
+    machine_name: provider
+    type: csv
+  language_of_instruction:
+    value: 'Language of Instruction'
+    label: 'Language of Instruction'
+    machine_name: language_of_instruction
+    type: csv
+  bacc_core:
+    value: 'Bacc Core'
+    label: 'Bacc Core'
+    machine_name: bacc_core
+    type: csv
+  core_ed:
+    value: 'Core Ed'
+    label: 'Core Ed'
+    machine_name: core_ed
+    type: csv
+  term_reviewed:
+    value: ' Term Reviewed'
+    label: ' Term Reviewed'
+    machine_name: term_reviewed
+    type: csv
+  term_reviewed_0:
+    value: 'Term Reviewed'
+    label: 'Term Reviewed'
+    machine_name: term_reviewed_0
+    type: csv
+  term_reviewed_1:
+    value: 'Term Reviewed'
+    label: 'Term Reviewed'
+    machine_name: term_reviewed_1
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: equivalency_course_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_ce_osu_course_number
+    map:
+      value: new_equivalency_code
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_ce_foreign_course_title
+    map:
+      value: foreign_course_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_ce_foreign_course_number
+    map:
+      value: foreign_course_code
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_ce_subject
+    map:
+      target_id: course_equivalency_subject
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: ce_subject
+  -
+    target: field_ce_country
+    map:
+      target_id: country
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: ce_country
+  -
+    target: field_ce_institution
+    map:
+      target_id: foreign_institution
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: ce_institution
+  -
+    target: field_ce_provider
+    map:
+      target_id: provider
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: ce_provider
+  -
+    target: field_ce_language
+    map:
+      target_id: language_of_instruction
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: language
+  -
+    target: field_ce_bacc_core
+    map:
+      target_id: bacc_core
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: ce_bacc_core
+  -
+    target: field_core_ed
+    map:
+      target_id: core_ed
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: core_ed
+  -
+    target: field_reference_number_text
+    map:
+      value: id
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_term_reviewed
+    map:
+      value: term_reviewed_1
+    settings:
+      language: null
+    unique: {  }

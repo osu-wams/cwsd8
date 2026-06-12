@@ -1,0 +1,39 @@
+uuid: b98688d0-8477-4374-83d8-6f6b020fd2dc
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.service.body
+    - field.field.node.service.field_audience
+    - field.field.node.service.field_callout_summary
+    - field.field.node.service.field_service_icon
+    - field.field.node.service.field_taxonomy_term
+    - node.type.service
+  module:
+    - text
+    - user
+id: node.service.teaser
+targetEntityType: node
+bundle: service
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_audience: true
+  field_callout_summary: true
+  field_service_icon: true
+  field_taxonomy_term: true

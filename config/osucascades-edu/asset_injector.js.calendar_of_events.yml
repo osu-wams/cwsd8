@@ -1,0 +1,54 @@
+uuid: a9bfafe6-8e8b-4533-ad91-585d4d08baf0
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: calendar_of_events
+label: 'Calendar of Events'
+code: |-
+  function convertCOEDates() {
+    // Target all coe-date containers
+    const coeDateElements = document.querySelectorAll('.coe-date');
+    
+    coeDateElements.forEach(dateContainer => {
+      const dayElement = dateContainer.querySelector('.coe-day time');
+      const monthElement = dateContainer.querySelector('.coe-month time');
+      
+      if (dayElement && monthElement) {
+        // Get datetime from either element (they should be the same)
+        const datetime = dayElement.getAttribute('datetime') || monthElement.getAttribute('datetime');
+        
+        if (datetime) {
+          const date = new Date(datetime);
+          
+          // Extract day
+          const day = date.getDate();
+          dayElement.textContent = day;
+          
+          // Extract abbreviated month
+          const monthName = date.toLocaleDateString('en-US', { month: 'short' });
+          monthElement.textContent = monthName;
+        }
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', convertCOEDates);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/test-page\r\n<front>\r\n/node/2136776\r\n/group/232691"
+contexts: {  }
+conditions_require_all: true

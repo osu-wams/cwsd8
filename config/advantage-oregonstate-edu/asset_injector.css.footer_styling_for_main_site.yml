@@ -1,0 +1,87 @@
+uuid: 71a940fb-ae6a-4daa-aba4-eb8b5d9f6305
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: footer_styling_for_main_site
+label: 'Footer Styling for Main Site'
+code: |
+  /* This will target all the footers for the entire site */
+  #madrone-footer-container {
+      margin-left: 80px;
+      margin-right: 80px;
+      padding-bottom: 40px;
+  }
+
+  /* This will target the outer container around the basic block footer */
+  .outer-footer-container {
+      margin: 0 auto; /* Center the container horizontally */
+  }
+
+  /* Media query for screens smaller than 768px (MOBILE) */
+  @media screen and (max-width: 768px) {
+      .outer-container {
+          width: 90%; /* Adjust the width for smaller screens */
+      }
+  }
+
+  /* Footer margin adjustments for MOBILE */
+  @media screen and (max-width: 768px) {
+      #madrone-footer-container {
+          margin-left: 20px; /* Narrower margins for mobile */
+          margin-right: 20px;
+      }
+  }
+
+  /* Footer margin adjustments for TABLETS */
+  @media screen and (max-width: 1024px) and (min-width: 768px) {
+      #madrone-footer-container {
+          margin-left: 40px; /* Less margin on tablet than desktop */
+          margin-right: 40px;
+      }
+  }
+
+  /* Add spacing between footer columns (for ALL screen sizes) */
+  .left-column,
+  .middle-column,
+  .right-column {
+      padding-right: 15px; /* Create breathing space between columns */
+      box-sizing: border-box; /* Prevent padding from causing overflow */
+  }
+
+  /* Footer column structure for desktop */
+  .left-column {
+      float: left;
+      width: 33.33%;
+  }
+
+  .middle-column {
+      float: left;
+      width: 33.33%;
+  }
+
+  .right-column {
+      float: left;
+      width: 33.33%;
+  }
+
+  /* Media query for screens smaller than 768px (MOBILE) */
+  @media screen and (max-width: 768px) {
+      .left-column,
+      .middle-column,
+      .right-column {
+          float: none; /* Remove the float for stacking */
+          width: 100%; /* Set each column to take full width */
+          padding-bottom: 24px;
+      }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

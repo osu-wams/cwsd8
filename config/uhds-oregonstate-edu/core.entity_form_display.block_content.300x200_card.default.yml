@@ -1,0 +1,54 @@
+uuid: 6a64b624-f9cd-445c-bf5d-2b7fff8e6494
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.300x200_card
+    - field.field.block_content.300x200_card.body
+    - field.field.block_content.300x200_card.field_osu_card_image
+    - field.field.block_content.300x200_card.field_osu_card_link
+  module:
+    - linkit
+    - media_library
+    - text
+id: block_content.300x200_card.default
+targetEntityType: block_content
+bundle: 300x200_card
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 4
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_osu_card_image:
+    type: media_library_widget
+    weight: 1
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_osu_card_link:
+    type: linkit
+    weight: 3
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

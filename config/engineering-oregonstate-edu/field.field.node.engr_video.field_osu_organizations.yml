@@ -1,0 +1,29 @@
+uuid: ffdefa76-560a-4734-91e2-4160dfef972e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_osu_organizations
+    - node.type.engr_video
+    - taxonomy.vocabulary.osu_organization
+id: node.engr_video.field_osu_organizations
+field_name: field_osu_organizations
+entity_type: node
+bundle: engr_video
+label: Organizations
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      osu_organization: osu_organization
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

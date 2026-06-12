@@ -1,0 +1,76 @@
+uuid: abb48ea8-b191-4f8a-9ffa-cd2f640ba795
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: view_cards
+label: ViewCards
+code: |
+  /* Grid container for the cards */
+  .view-Course-Profile-Search-Filter {
+      display: flex;
+      flex-wrap: wrap; /* allow items to wrap to new rows */
+      gap: 1rem;       /* space between items */
+      padding: 0px;
+  }
+
+  /* Style for each card */
+  .course-card {
+      border: 1px solid #ddd; /* Border around the card */
+      border-radius: 8px;  /* Rounded corners */
+      overflow: hidden; /* Prevent overflow */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+      background-color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
+      display: flex; /* Flexbox for vertical centering */
+      flex-direction: column; /* Stack image and text vertically */
+      justify-content: flex-start; /* Align content to the top of the card */
+      text-align: center; /* Center the text globally */
+      flex: 1 1 300px; /* grow, shrink, min width 300px */
+      max-width: 100%; /* prevent overflow */
+  }
+
+  /* Image styling */
+  .course-card .card-media {
+      width: 100%;
+      height: 100%; /* Set the height of the image container */
+      overflow: hidden; /* Ensure the image doesn't overflow */
+      padding: 0; /* Ensure no padding on the container */
+      margin: 0; /* Ensure no margin on the container */
+  }
+
+  .course-card .card-media img {
+     width: 100%; /* Image takes the full width of its container */
+     height: 100%; /* Image takes the full height of its container */
+     object-fit: cover; /* Ensure the image covers the container */
+     object-position: center; /* Center the image inside the container */
+     margin: 0; /* Remove any margin on the image */
+     padding: 0; /* Remove any padding on the image */
+  }
+
+  /* Card content styling */
+  .course-card h2 {
+  	font-size: 2.1rem !important;
+    margin: 5px 0; /* Adjust margin for better spacing */
+    padding: 8px; /* Ensure no padding around text */
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+      .view-Course-Profile-Search-Filter {
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Adjust card sizes for smaller screens */
+      }
+      .course-card h2 {
+          font-size: 0.9em; /* Smaller font size for smaller screens */
+      }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

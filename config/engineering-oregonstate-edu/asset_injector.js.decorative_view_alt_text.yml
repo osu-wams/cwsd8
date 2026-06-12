@@ -1,0 +1,35 @@
+uuid: 476f535e-bad0-4b2a-ae1f-19efd11d0715
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: decorative_view_alt_text
+label: 'Decorative View Alt Text'
+code: |+
+  document.querySelectorAll('.block-views img').forEach(img => {
+    img.setAttribute("alt", "");
+  });
+
+  /* Modified parent class selector for Podcast Season Views*/
+  document.querySelectorAll('.views-view-grid img').forEach(img => {
+    img.setAttribute("alt", "");
+  });
+
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/academics/programs\r\n/CCE/academics\r\n/engineering-out-loud\r\n/engineering-out-loud/season-\\d+/?$"
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,66 @@
+uuid: 3b597866-bfa2-4f44-97ad-8a9492e2b9d3
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_field_label_inline
+label: 'GLOBAL profile overrides (margin, padding and displays)'
+code: |-
+  /* ==========================================================================
+     Profile Styling
+     ========================================================================== */
+
+
+  /* Profile field label gaps*/
+
+  .field--label-inline {
+  	display: flex;
+  	gap: .5em;
+  }
+
+  /* Profile email text customizations*/
+
+  .field--name-field-profile-email > .field__item {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  /* Remove country from address */
+
+  p.address > .country {
+  	display: none;
+  }
+
+  /** Remove weird spacing on organizations on individual profile pages **/
+
+  .node--type-osu-profile .field--name-field-osu-organizations .field__items {
+  	display: block;
+  }
+
+  /* Controls image width in various areas of profile tables */
+
+  .coe-profile-image-360 {
+  	border-right: 1px solid #ccc !important;
+    padding: 20px;
+    text-align: center;
+  }
+  .coe-profile-image-360 img {
+  	min-width: 260px;
+  	width: 260px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

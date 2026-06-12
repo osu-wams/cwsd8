@@ -1,0 +1,298 @@
+uuid: 463c1e7e-471b-4be5-90a8-826c972ae893
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.osu_profile.field_c_engr_affiliations
+    - field.field.node.osu_profile.field_c_engr_awards
+    - field.field.node.osu_profile.field_c_engr_classification
+    - field.field.node.osu_profile.field_c_engr_degrees
+    - field.field.node.osu_profile.field_c_engr_endowed_title
+    - field.field.node.osu_profile.field_c_engr_external_links
+    - field.field.node.osu_profile.field_c_engr_fax
+    - field.field.node.osu_profile.field_c_engr_secondary_title
+    - field.field.node.osu_profile.field_c_engr_teaching
+    - field.field.node.osu_profile.field_c_engr_title
+    - field.field.node.osu_profile.field_field_c_engr_labs
+    - field.field.node.osu_profile.field_osu_organizations
+    - field.field.node.osu_profile.field_profile_biography
+    - field.field.node.osu_profile.field_profile_email
+    - field.field.node.osu_profile.field_profile_first_name
+    - field.field.node.osu_profile.field_profile_last_name
+    - field.field.node.osu_profile.field_profile_middle_name
+    - field.field.node.osu_profile.field_profile_office_phone
+    - field.field.node.osu_profile.field_profile_pronouns
+    - node.type.osu_profile
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      ac6cf1a5-4296-46c7-84f4-1f11c6ca9bb9:
+        separator: '|'
+        limit: null
+        uuid: ac6cf1a5-4296-46c7-84f4-1f11c6ca9bb9
+        plugin: explode
+        source: degrees
+        weight: 0
+        label: Explode
+label: 'ENGR Profiles'
+id: engr_profiles
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'public://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: osu_profile
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 46
+custom_sources:
+  first_name:
+    value: 'First Name'
+    label: 'First Name'
+    machine_name: first_name
+    type: csv
+  last_name:
+    value: 'Last Name'
+    label: 'Last Name'
+    machine_name: last_name
+    type: csv
+  email:
+    value: Email
+    label: Email
+    machine_name: email
+    type: csv
+  middle_name:
+    value: 'Middle Name'
+    label: 'Middle Name'
+    machine_name: middle_name
+    type: csv
+  pronouns:
+    value: Pronouns
+    label: Pronouns
+    machine_name: pronouns
+    type: csv
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  secondary_title_s_:
+    value: 'Secondary Title(s)'
+    label: 'Secondary Title(s)'
+    machine_name: secondary_title_s_
+    type: csv
+  endowed_title:
+    value: 'Endowed Title'
+    label: 'Endowed Title'
+    machine_name: endowed_title
+    type: csv
+  phone:
+    value: Phone
+    label: Phone
+    machine_name: phone
+    type: csv
+  fax:
+    value: FAX
+    label: FAX
+    machine_name: fax
+    type: csv
+  degrees:
+    value: Degrees
+    label: Degrees
+    machine_name: degrees
+    type: csv
+  _classification_new_:
+    value: ' Classification'
+    label: Classification
+    machine_name: _classification_new_
+    type: csv
+  long_bio:
+    value: 'Long Bio'
+    label: 'Long Bio'
+    machine_name: long_bio
+    type: csv
+  teaching:
+    value: Teaching
+    label: Teaching
+    machine_name: teaching
+    type: csv
+  urls:
+    value: URLs
+    label: URLs
+    machine_name: urls
+    type: csv
+  _awards_accolades:
+    value: ' Awards/Accolades'
+    label: ' Awards/Accolades'
+    machine_name: _awards_accolades
+    type: csv
+  affiliations:
+    value: Affiliations
+    label: Affiliations
+    machine_name: affiliations
+    type: csv
+  lab:
+    value: Lab
+    label: Lab
+    machine_name: lab
+    type: csv
+  organization:
+    value: Organization
+    label: Organization
+    machine_name: organization
+    type: csv
+mappings:
+  -
+    target: field_profile_first_name
+    map:
+      value: first_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_last_name
+    map:
+      value: last_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_email
+    map:
+      value: email
+    settings:
+      language: null
+      defuse: false
+    unique: {  }
+  -
+    target: field_profile_middle_name
+    map:
+      value: middle_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_pronouns
+    map:
+      value: pronouns
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_c_engr_title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_c_engr_secondary_title
+    map:
+      value: secondary_title_s_
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_c_engr_endowed_title
+    map:
+      value: endowed_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_profile_office_phone
+    map:
+      value: phone
+    settings:
+      language: null
+  -
+    target: field_c_engr_fax
+    map:
+      value: fax
+    settings:
+      language: null
+  -
+    target: field_c_engr_degrees
+    map:
+      value: degrees
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_c_engr_classification
+    map:
+      target_id: _classification_new_
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_profile_biography
+    map:
+      value: long_bio
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_c_engr_teaching
+    map:
+      value: teaching
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_c_engr_external_links
+    map:
+      uri: urls
+      title: ''
+    settings:
+      language: null
+  -
+    target: field_c_engr_awards
+    map:
+      value: _awards_accolades
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_c_engr_affiliations
+    map:
+      target_id: affiliations
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: '1'
+  -
+    target: field_field_c_engr_labs
+    map:
+      value: lab
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_osu_organizations
+    map:
+      target_id: organization
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false

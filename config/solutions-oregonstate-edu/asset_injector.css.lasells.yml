@@ -1,0 +1,36 @@
+uuid: 5000dafd-0a40-41fb-9c77-4f5d2aed46ea
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: lasells
+label: 'Lasells Spaces Images'
+code: |-
+  .lasells-images-flex .field-content .field__item img{
+  	  border-radius: 10px;
+      border: 10px solid white;
+      box-shadow: 5px 10px 8px #888888;
+  }
+
+  .spaces-image-caption{
+  	margin-top: 1rem;
+  }
+
+  #cboxTitle {
+  	display:none !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/1116\r\n/node/1146"
+contexts: {  }
+conditions_require_all: true

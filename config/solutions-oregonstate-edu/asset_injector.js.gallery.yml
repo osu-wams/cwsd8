@@ -1,0 +1,66 @@
+uuid: 2298b9c4-2e62-4937-8e92-8cc0649da7f5
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: gallery
+label: Gallery
+code: |-
+  // This runs AFTER the page is fully loaded → Drupal can't break it
+    const images = document.querySelectorAll('.my-drupal-gallery img');
+    const lightbox = document.getElementById('myLightbox');
+    const bigImg = document.getElementById('bigImg');
+    let current = 0;
+
+    images.forEach((img, i) => {
+      img.onclick = () => {
+        current = i;
+        bigImg.src = img.src;
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+      };
+    });
+
+    window.nextPhoto = () => {
+      current = (current + 1) % images.length;
+      bigImg.src = images[current].src;
+    };
+
+    window.prevPhoto = () => {
+      current = (current - 1 + images.length) % images.length;
+      bigImg.src = images[current].src;
+    };
+
+    // ESC key + click outside
+    lightbox.onclick = (e) => {
+      if (e.target === lightbox) {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = '';
+      }
+    };
+
+    document.onkeydown = (e) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') { lightbox.style.display = 'none'; document.body.style.overflow = ''; }
+        if (e.key === 'ArrowLeft') prevPhoto();
+        if (e.key === 'ArrowRight') nextPhoto();
+      }
+    };
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/1481
+contexts: {  }
+conditions_require_all: false

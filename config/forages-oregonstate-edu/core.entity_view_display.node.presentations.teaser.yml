@@ -1,0 +1,58 @@
+uuid: 6b649ed4-fcb3-41f5-9bc6-c5a30091da30
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.presentations.body
+    - field.field.node.presentations.field_pdf
+    - field.field.node.presentations.field_ppt
+    - field.field.node.presentations.field_thumbnail
+    - node.type.presentations
+  module:
+    - colorbox
+    - file
+    - user
+id: node.presentations.teaser
+targetEntityType: node
+bundle: presentations
+mode: teaser
+content:
+  field_pdf:
+    type: file_default
+    label: inline
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_ppt:
+    type: file_default
+    label: inline
+    settings:
+      use_description_as_link_text: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_thumbnail:
+    type: colorbox
+    label: hidden
+    settings:
+      colorbox_image_style: ''
+      colorbox_gallery: post
+      colorbox_gallery_custom: ''
+      colorbox_caption: auto
+      colorbox_caption_custom: ''
+      colorbox_node_style: 75x75
+      colorbox_node_style_first: ''
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  entitygroupfield: true

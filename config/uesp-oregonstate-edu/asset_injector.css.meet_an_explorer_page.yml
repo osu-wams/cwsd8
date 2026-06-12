@@ -1,0 +1,32 @@
+uuid: c38e375b-09da-4f38-ae84-c44c74f351d9
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: meet_an_explorer_page
+label: 'Meet an Explorer Page'
+code: |-
+  @media screen and (width >= 768px) {
+    .block-inline-blockbasic img {
+      width: 300px;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/51\r\n/node/51/layout"
+contexts: {  }
+conditions_require_all: true

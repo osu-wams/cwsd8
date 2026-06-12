@@ -16,12 +16,14 @@ dependencies:
     - field.field.node.osu_profile.field_profile_office_phone
     - field.field.node.osu_profile.field_profile_primary_title
     - field.field.node.osu_profile.field_profile_pronouns
-    - image.style.thumbnail
+    - image.style.x_large
     - node.type.osu_profile
+    - workflows.workflow.editorial
   module:
     - address
+    - content_moderation
     - field_group
-    - image
+    - focal_point
     - media_library
     - path
     - telephone
@@ -151,12 +153,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_profile_image:
-    type: image_image
+    type: image_focal_point
     weight: 14
     region: content
     settings:
       progress_indicator: throbber
-      preview_image_style: thumbnail
+      preview_image_style: x_large
+      preview_link: true
+      offsets: '50,50'
     third_party_settings: {  }
   field_profile_last_name:
     type: string_textfield
@@ -196,6 +200,20 @@ content:
     settings:
       size: 60
       placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
     third_party_settings: {  }
   path:
     type: path
@@ -249,3 +267,7 @@ content:
     third_party_settings: {  }
 hidden:
   entitygroupfield: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

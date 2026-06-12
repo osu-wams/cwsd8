@@ -1,0 +1,28 @@
+uuid: ba16a4ff-504e-4274-b193-7c3e4a0fe72c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: tools_services_accordion
+label: 'Tools & Services padding (accordion)'
+code: |-
+  /* Overrides pb-4 to have 0 padding bottom on Tools & Services page*/
+
+  .pb-4 {
+  	padding-bottom:0 !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/131
+contexts: {  }
+conditions_require_all: true

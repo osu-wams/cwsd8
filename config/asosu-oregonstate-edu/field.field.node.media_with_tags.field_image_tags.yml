@@ -1,0 +1,29 @@
+uuid: 2d86d62b-accf-464f-90dd-6e4c9f585c5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_tags
+    - node.type.media_with_tags
+    - taxonomy.vocabulary.tags
+id: node.media_with_tags.field_image_tags
+field_name: field_image_tags
+entity_type: node
+bundle: media_with_tags
+label: 'Image Tags'
+description: 'Attach tags related to the image. These tags will assist in relating the image into the right carousel.'
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      tags: tags
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

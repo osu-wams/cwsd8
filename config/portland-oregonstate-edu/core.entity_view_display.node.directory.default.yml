@@ -1,0 +1,234 @@
+uuid: 5d605e6d-f86a-441c-9350-6629d8e9e7e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.directory.body
+    - field.field.node.directory.field_directory_connect_photo
+    - field.field.node.directory.field_directory_link_for_photo
+    - field.field.node.directory.field_portland_directory_connect
+    - field.field.node.directory.field_portland_directory_text
+    - field.field.node.directory.field_portland_directory_title_l
+    - node.type.directory
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - link
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          945384b5-c4be-457f-8619-fb4dbfc57e96:
+            uuid: 945384b5-c4be-457f-8619-fb4dbfc57e96
+            region: content
+            configuration:
+              id: 'extra_field_block:node:directory:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          568a5660-3386-4b6e-bba3-50b1140b2e0f:
+            uuid: 568a5660-3386-4b6e-bba3-50b1140b2e0f
+            region: content
+            configuration:
+              id: 'field_block:node:directory:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+          cbb52cd4-2272-49b6-b7f5-25169cc8485f:
+            uuid: cbb52cd4-2272-49b6-b7f5-25169cc8485f
+            region: content
+            configuration:
+              id: 'field_block:node:directory:field_directory_connect_photo'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_entity_view
+                label: above
+                settings:
+                  view_mode: default
+                  link: false
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          0cec5e2a-486d-4ad5-9487-f1406c659148:
+            uuid: 0cec5e2a-486d-4ad5-9487-f1406c659148
+            region: content
+            configuration:
+              id: 'field_block:node:directory:field_portland_directory_text'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 4
+            additional: {  }
+          5ecf9c77-4d72-46bd-ab0c-199027c43e54:
+            uuid: 5ecf9c77-4d72-46bd-ab0c-199027c43e54
+            region: content
+            configuration:
+              id: 'field_block:node:directory:field_portland_directory_connect'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 5
+            additional: {  }
+          8590fc0d-5aee-41f2-a23f-582b5351f23a:
+            uuid: 8590fc0d-5aee-41f2-a23f-582b5351f23a
+            region: content
+            configuration:
+              id: 'field_block:node:directory:field_portland_directory_title_l'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: link
+                label: above
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: ''
+                  target: ''
+                third_party_settings: {  }
+            weight: 6
+            additional: {  }
+          1ef90eb6-2d34-477c-bcef-705a96346f8d:
+            uuid: 1ef90eb6-2d34-477c-bcef-705a96346f8d
+            region: content
+            configuration:
+              id: 'field_block:node:directory:field_directory_link_for_photo'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: link
+                label: above
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: ''
+                  target: ''
+                third_party_settings: {  }
+            weight: 7
+            additional: {  }
+          8a9c1527-314c-4a54-901b-c1cc517a72dc:
+            uuid: 8a9c1527-314c-4a54-901b-c1cc517a72dc
+            region: content
+            configuration:
+              id: 'extra_field_block:node:directory:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 8
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: node.directory.default
+targetEntityType: node
+bundle: directory
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_directory_connect_photo:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_directory_link_for_photo:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 107
+    region: content
+  field_portland_directory_connect:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 105
+    region: content
+  field_portland_directory_text:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 104
+    region: content
+  field_portland_directory_title_l:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 106
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

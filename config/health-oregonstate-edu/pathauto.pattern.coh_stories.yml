@@ -1,0 +1,23 @@
+uuid: 5bd64e97-0749-421a-9c58-8ef7c88dabda
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.coh_stories
+  module:
+    - node
+id: coh_stories
+label: 'COH Stories'
+type: 'canonical_entities:node'
+pattern: '/news-and-stories/[node:publish_date:date:html_month]/[node:title]'
+selection_criteria:
+  0a934d45-b72c-4ad4-9ad7-2b2878a21245:
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: node
+    bundles:
+      coh_stories: coh_stories
+selection_logic: and
+weight: -5
+relationships: {  }

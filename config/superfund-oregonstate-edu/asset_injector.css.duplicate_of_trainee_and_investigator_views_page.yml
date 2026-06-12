@@ -1,0 +1,34 @@
+uuid: 658c451e-ad78-49dd-aa8e-e19c275e3cbd
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: duplicate_of_trainee_and_investigator_views_page
+label: 'Trainee and Investigator individual pages'
+code: |+
+  img.image-style-large.img-fluid {
+      border-radius: 7px;
+  }
+
+  @media screen and (min-width: 992px) {
+  	.block-field-blocknodetrainee-profilefield-photo{
+  		float:right;
+  		padding-left:30px;
+  	}
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/about-us/trainees/*\r\n/about-us/our-team/*"
+contexts: {  }
+conditions_require_all: true

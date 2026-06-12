@@ -1,0 +1,69 @@
+uuid: f2ce2960-b798-435b-968b-644a4e41f93a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.document.field_media_file
+    - media.type.document
+  module:
+    - media
+label: 'Open Postdoctoral Scholar Positions Files'
+id: open_postdoc_files
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:media'
+processor_configuration:
+  values:
+    bundle: document
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  full_announcement_file_name:
+    value: 'Full Announcement File Name'
+    label: 'Full Announcement File Name'
+    machine_name: full_announcement_file_name
+    type: csv
+  full_announcement_file_path:
+    value: 'Full Announcement File Path'
+    label: 'Full Announcement File Path'
+    machine_name: full_announcement_file_path
+    type: csv
+mappings:
+  -
+    target: name
+    map:
+      value: full_announcement_file_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_media_file
+    map:
+      target_id: full_announcement_file_path
+      description: ''
+    settings:
+      language: ''
+      reference_by: fid
+      autocreate: 0
+      existing: '2'
+      autocreate_bundle: false

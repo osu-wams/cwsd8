@@ -1,0 +1,122 @@
+uuid: baaa127b-cd7b-4f6d-85c6-9f8a668b4923
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.image_quote_block
+    - field.field.block_content.image_quote_block.field_coe_bl_arrow_link
+    - field.field.block_content.image_quote_block.field_coe_bl_attribution_desc
+    - field.field.block_content.image_quote_block.field_coe_bl_attribution_name
+    - field.field.block_content.image_quote_block.field_coe_bl_quote_image
+    - field.field.block_content.image_quote_block.field_coe_bl_quote_quotation
+    - field.field.block_content.image_quote_block.field_coe_bl_quote_styling
+  module:
+    - field_group
+    - layout_builder
+    - link
+    - options
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: false
+    allow_custom: false
+  field_group:
+    group_image_quote_body:
+      children:
+        - field_coe_bl_quote_quotation
+        - group_attribution
+        - field_coe_bl_arrow_link
+      label: 'Image Quote Body'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: img-quote-body
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_attribution:
+      children:
+        - field_coe_bl_attribution_name
+        - field_coe_bl_attribution_desc
+      label: Attribution
+      parent_name: group_image_quote_body
+      region: hidden
+      weight: 2
+      format_type: html_element
+      format_settings:
+        classes: quote-attribution
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: block_content.image_quote_block.default
+targetEntityType: block_content
+bundle: image_quote_block
+mode: default
+content:
+  field_coe_bl_arrow_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_coe_bl_attribution_desc:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_coe_bl_attribution_name:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_coe_bl_quote_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_coe_bl_quote_quotation:
+    type: basic_string
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_coe_bl_quote_styling:
+    type: list_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+hidden: {  }

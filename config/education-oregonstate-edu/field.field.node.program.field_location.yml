@@ -1,0 +1,29 @@
+uuid: b2996fb0-f499-4d90-83e8-064d3cdc4c8e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location
+    - node.type.program
+    - taxonomy.vocabulary.program_grid_location
+id: node.program.field_location
+field_name: field_location
+entity_type: node
+bundle: program
+label: Location
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      program_grid_location: program_grid_location
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

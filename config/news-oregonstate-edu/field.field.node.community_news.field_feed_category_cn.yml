@@ -1,0 +1,29 @@
+uuid: 898f452d-1109-4580-8989-43a9c9482b0d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_feed_category_cn
+    - node.type.community_news
+    - taxonomy.vocabulary.feed_categories
+id: node.community_news.field_feed_category_cn
+field_name: field_feed_category_cn
+entity_type: node
+bundle: community_news
+label: 'Feed Category'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      feed_categories: feed_categories
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

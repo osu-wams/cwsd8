@@ -1,0 +1,50 @@
+uuid: 7684cf21-438b-4216-9dc8-29c483d825c7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.coe_text_with_links.field_coe_text_w_link_link
+    - field.field.paragraph.coe_text_with_links.field_coe_text_w_link_text
+    - field.field.paragraph.coe_text_with_links.field_coe_text_with_link
+    - paragraphs.paragraphs_type.coe_text_with_links
+  module:
+    - link
+    - text
+    - text_field_formatter
+id: paragraph.coe_text_with_links.default
+targetEntityType: paragraph
+bundle: coe_text_with_links
+mode: default
+content:
+  field_coe_text_w_link_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_coe_text_w_link_text:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_coe_text_with_link:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h4
+      wrap_class: ''
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

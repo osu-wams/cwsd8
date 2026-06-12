@@ -1,0 +1,43 @@
+uuid: 47a6f2c6-05f4-46ab-be04-845af2c46569
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.resources.body
+    - field.field.node.resources.field_address
+    - field.field.node.resources.field_email
+    - field.field.node.resources.field_parent_department
+    - field.field.node.resources.field_phone_number
+    - field.field.node.resources.field_tags
+    - field.field.node.resources.field_website
+    - node.type.resources
+  module:
+    - text
+    - user
+id: node.resources.teaser
+targetEntityType: node
+bundle: resources
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_address: true
+  field_email: true
+  field_parent_department: true
+  field_phone_number: true
+  field_tags: true
+  field_website: true

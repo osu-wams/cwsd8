@@ -1,0 +1,949 @@
+uuid: 94aee00d-7f75-44c3-a5de-735c8db9782b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: sitewide_utilities
+label: 'Sitewide Utilities'
+code: |
+  /* The copyright that says Oregon State University in the footer was in black for some reason so I added this */
+  .madrone-copyright p {
+  	color: white;
+  }
+  /* Increase size of the main website menu */
+  #superfish-main a {
+    font-size: 1.25rem;
+    }
+
+  /* Increase size of the breadcrumb menu */
+  .breadcrumb {
+  	font-size: 1.25rem;
+  }
+  /* Increase size of the H1 header sitewide */
+  h1 {
+    font-size: 3.75rem;
+  }
+
+  /* Increase size of the H2 header sitewide */
+  h2 {
+    font-size: 2.75rem;
+    font-family: Stratum2Web;
+  }
+  @media (max-width: 767px) {
+    h2 {
+      font-size: 2.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    h2 {
+      font-size: 2.2rem;
+    }
+  }
+
+  /* Increase size of the H3 header sitewide */
+  h3 {
+    font-size: 1.95rem;
+    font-weight: bold;
+  }
+  /* Make basic body paragraph font black for readability 
+  p {
+    color: #000;
+  }
+  */
+
+  /* Sets directory card height (overrides osu-min-h-600) */
+  .osu-min-h-550 {
+    min-height: 550px;
+  }
+
+
+  /* Darken the accordion button title */
+  .accordion-button {
+      font-weight: bold;
+  }
+
+  /* Set the video in the Innovation Showcase hero to align with the top edge */
+  .bg-video.background-local-video video {
+    object-fit: cover;
+    object-position: top center;
+    width: 100%;
+    height: 100%;
+    display: block;
+     z-index: 0;
+  }
+
+  /* Ensure the video container clips overflow and supports stacking */
+  .bg-video.background-local-video {
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Add a dark overlay on the video background to improve text visibility in the Innovation Showcase hero
+  .bg-video.background-local-video::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    pointer-events: none;
+  }
+
+  un-comment this out for the overlay to take affect /*
+
+  /* Stack Innovation Showcase hero text above both the video and overlay */
+  .innovation-showcase-hero-video-top-aligned {
+    position: relative;
+    z-index: 0;
+    }
+
+
+
+
+
+
+  /* End of the video section */
+
+  /* Transparent overlay for backgrounds */
+  .innovation-showcase-hero-text-box {
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 2rem;
+  }
+
+  /* Rogue Colored background for the Investor section on the Oregon Innovation Showcase page */
+  .innovation-showcase-investor-section {
+    background-color: rgb(13, 82, 87);
+    color: #ffffff;
+  }
+
+  /* Turns the black hover card background color to the Rogue Colored background for the Investor section on the Oregon Innovation Showcase page */
+  .innovation-showcase-investors-card .black-card-hover {
+    background-color: rgb(13, 82, 87) !important;
+  }
+
+  /* Large fontawesome arrow for homepage (large desktop arrow) so it will get smaller on mobile */
+  .arrow-block .fa-arrow-right-long {
+      font-size: 165px;
+      line-height: 1;
+      display: inline-block;
+  }
+
+  /* Tablet screens */
+  @media (max-width: 991px) {
+      .arrow-block .fa-arrow-right-long {
+          font-size: 120px;
+      }
+  }
+
+  /* Mobile screens */
+  @media (max-width: 767px) {
+      .arrow-block .fa-arrow-right-long {
+          font-size: 80px;
+      }
+  }
+
+  /* Tiny mobile */
+  @media (max-width: 480px) {
+      .arrow-block .fa-arrow-right-long {
+          font-size: 60px;
+      }
+  }
+  /* End arrow */
+
+  /* Large text next to large fontawesome arrow on homepage, so it gets smaller on mobile */
+
+  /* Tablet screens and smaller */
+  @media (max-width: 991px) {
+      .arrow-title-block .display-1 {
+          font-size: 3.5rem;
+      }
+  }
+
+  /* Mobile screens */
+  @media (max-width: 767px) {
+      .arrow-title-block .display-1 {
+          font-size: 3rem;
+      }
+  }
+
+  /* Tiny mobile screens */
+  @media (max-width: 480px) {
+      .arrow-title-block .display-1 {
+          font-size: 2.5rem;
+      }
+  }
+  /* End large text next to arrow */
+
+
+
+  /* Spotlight card for Accelerator clients to showcase their company profile */
+
+  /* Full-width black company name bar at the top of the card */
+  .spotlight-company-box {
+    background: #000;
+      padding: 1rem;
+    margin: -1.5rem -1.5rem 0 -1.5rem;
+    pointer-events: none;
+      /* Change default h3 style */
+    font-family: Stratum2Web;
+    font-size: 1.75rem;
+    font-weight: bold;
+    line-height: 1.5;
+    color: white;
+     text-align: center;
+    text-transform: uppercase;
+  }
+
+  .spotlight-title-wrapper {
+    padding: 1rem 0 0.2rem 0;
+     /* Change default h4 style */
+    font-size: 1.5rem;
+   
+  }
+
+  /* Modal container overlay */
+  .spotlight-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  /* Modal content box */
+  .spotlight-modal-content {
+    background: #fff;
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 12px;
+    overflow-y: auto;
+    max-height: 90vh;
+    position: relative;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Modal close (X) button */
+  .spotlight-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: #666;
+  }
+
+  .spotlight-card-body {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  .spotlight-readmore-wrapper {
+    margin-top: auto;
+    padding-top: 1rem;
+  }
+
+
+
+  /* End of spotlight card */
+
+
+
+   /* Accelerator cohort table style layout cards – for displaying cohort names by term */
+      .osu-cohort-block {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .osu-cohort-block .cohort {
+    flex: 1;
+    min-width: 200px;
+    background-color: #fff;
+    padding: 28px;
+    border-radius: 8px;
+    box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.25); /* same as .osu-shadow */
+  }
+
+  .osu-cohort-block .cohort h3 {
+    margin-bottom: 14px;
+    border-bottom: 3px solid #d73f09; /* OSU orange */
+    padding-bottom: 6px;
+  }
+
+  .osu-cohort-block .cohort p {
+    margin: 16px 0;
+  }
+
+  @media (max-width: 768px) {
+    .osu-cohort-block {
+      flex-direction: column;
+    }
+  }
+
+   /* END Accelerator cohort layout */   
+      
+      /* Sticky Note Container - this is displayed on the homepage for the Accelerator to make announcement notes */
+       /* Sticky Note Container - Hidden by Default */
+      .sticky-note-container {
+          display: none;
+      }
+
+      /* Check if ANY parent element has 'show-note' */
+      .show-note .sticky-note-container {
+          display: flex !important; /* Force it to override Drupal styles */
+          justify-content: flex-end; /* Aligns the sticky note to the right */
+          padding-right: 50px; /* Moves it left */
+      }
+
+      .sticky-note {
+          display: inline-block;
+          width: 100%;
+          max-width: 280px;
+          height: auto;
+          min-height: 130px;
+          padding: 10px 30px 25px; /* Adjusted padding to balance spacingtop, sides, bottom */
+          background: #fff58a; /* Slightly muted yellow */
+          font-family: "Segoe Print", "Arial Rounded MT Bold", sans-serif;
+          font-size: 1.3em;
+          font-weight: bold;
+          color: #000;
+          text-align: center;
+          box-shadow: 8px 8px 25px rgba(0, 0, 0, 0.7); /* Darker shadow for better 3D effect */
+          transform: rotate(-5deg);
+          border-radius: 0;
+          transition: transform 0.2s ease-in-out, background 0.2s ease-in-out;
+          line-height: 1.4; /* Restored proper spacing for main text */
+          margin-top: -50px;
+          position: relative;
+      }
+
+      /* Brighten yellow on hover */
+      .sticky-note:hover {
+          background: #ffea40; /* Brighter yellow on hover */
+          transform: rotate(-3deg) scale(1.05);
+      }
+
+      /* Date styling at the top right */
+      .sticky-note-date {
+          position: absolute;
+          top: 8px; /* Slightly lowers it from the very top */
+          right: 10px;
+          font-family: "Comic Sans MS", "Bradley Hand", cursive;
+          font-size: .85em; /* Slightly larger for readability */
+          font-weight: normal;
+          color: #444;
+          line-height: 1; /* Ensures no extra spacing inside */
+          padding-bottom: 0px; /* Reduced spacing below the date */
+          margin-bottom: -10px; /* Further reduces spacing below the date */
+      }
+
+         /* Center sticky note for smaller screens */
+      @media (max-width: 1024px) {
+          .show-note .sticky-note-container {
+              justify-content: center !important; /* Centers the sticky note */
+              padding-right: 0;
+          }
+          .sticky-note {
+              margin-top: auto; align-self: flex-end;
+          }
+      }
+      
+      /* Beginning of Curl effect */
+  .sticky-note::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      background: linear-gradient(315deg, rgba(255, 235, 59, 0.5) 40%, #aaa 50%, #ccc 56%, white 85%);
+      box-shadow: -2px -2px 3px rgba(0, 0, 0, 0.4);
+      transition: width 0.3s ease-in-out, height 0.3s ease-in-out;
+  }
+
+  /* Lower-right cutout to prevent background overlap */
+  .sticky-note::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 35px;
+      height: 35px;
+      background: transparent;
+      clip-path: polygon(100% 100%, 100% 0, 0 100%);
+      transition: all 0.3s ease-in-out;
+  }
+
+  /* On hover, trigger curl effect */
+  .sticky-note:hover::before, 
+  .sticky-note:focus::before, 
+  .sticky-note:active::before {
+      width: 35px;
+      height: 35px;
+  }
+  /* End of curl effect */
+
+      /* Adjust for tablets */
+      @media (max-width: 768px) {
+          .sticky-note {
+              font-size: 1.1em;
+              width: 80%;
+              max-width: 250px;
+              min-height: 120px;
+              padding: 18px 25px 18px;
+          }
+      }
+
+      /* Adjust for smaller phones */
+      @media (max-width: 480px) {
+          .sticky-note {
+              font-size: 0.9em;
+              width: 75%;
+              max-width: 220px;
+              min-height: 110px;
+              padding: 15px;
+          }
+      }
+
+      /* Adjust for very small screens */
+      @media (max-width: 400px) {
+          .sticky-note {
+              font-size: 0.8em;
+              width: 70%;
+              max-width: 200px;
+              min-height: 100px;
+              padding: 10px;
+          }
+      }
+
+
+
+
+
+
+
+
+
+
+  /* To create a three column content in a single block that is used for the accelerator cohorts */
+  .three-column-cohorts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .three-column-cohorts > div {
+    flex: 1 1 33%; /* Sets the default flex-basis to 33% for three columns */
+    box-sizing: border-box;
+    padding: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .three-column-cohorts > div {
+      flex: 0 0 100%; /* Changes flex-basis to 100% on smaller screens */
+    }
+  }
+
+
+
+
+  /* To apply a consisent height to the "media card" option so profile images on the board and mentors page will be the same size */
+  .profile-pic-media-card {
+      max-width: 100%; /* Ensures responsiveness */
+      height: auto; /* Allows the container to scale */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .profile-pic-media-card img {
+      height: 100%; /* Makes sure image scales with the container */
+      width: auto; /* Keeps proportions */
+      max-height: 300px; /* Sets max height for consistency */
+      object-fit: contain; /* Ensures image fits without being cropped */
+  }
+
+
+
+
+
+
+  /* To change the menu bar hover color to orange */
+
+  .orange-hover-menu-bar:hover .position-relative.p-2.bs-border-radius-1 {
+    background-color: #D73F09 !important; /* OSU Orange */
+    border-radius: 0.65rem !important; /* Updated to match the original rounding */
+  }
+
+  /* Keep border-radius unchanged in default state */
+  .orange-hover-menu-bar .position-relative.p-2.bs-border-radius-1 {
+    border-radius: 0.65rem; /* Ensures it matches the original exactly */
+  }
+
+  /* Change icon color on hover */
+  .orange-hover-menu-bar:hover .field--name-field-osu-menu-bar-item-icon i {
+    color: white !important;
+  }
+
+  /* Change text color on hover */
+  .orange-hover-menu-bar:hover .field--name-field-osu-menu-bar-item-link a {
+    color: white !important;
+    text-decoration: none;
+  }
+
+  /* End of the menu bar hover color to orange */
+
+  /* TO make the hero title go smaller on mobilee */
+
+  .hero-title {
+      font-size: 3.5rem; /* Full size for desktop */
+      color: white;
+  }
+
+  /* Tablet screens */
+  @media (max-width: 991px) {
+      .hero-title {
+          font-size: 3.2rem;
+      }
+  }
+
+  /* Mobile screens */
+  @media (max-width: 767px) {
+      .hero-title {
+          font-size: 2.8rem;
+      }
+  }
+
+  /* Tiny mobile screens */
+  @media (max-width: 480px) {
+      .hero-title {
+          font-size: 2.5rem;
+      }
+  }
+
+
+  /* End hero title */
+
+
+
+
+
+
+  .white-font {
+      color: white;
+  }
+
+  .image-padding img {
+      padding: 10px 30px 10px 0px;
+  }
+
+
+  .hero-text-shadow {
+  	text-shadow: 2px 4px 3px rgba(0,0,0,0.5) !important;
+  }
+
+
+  /*This creates the large orange statistics numbers */
+  .large-osu-number {
+      line-height: 1;
+      color: #d73f09;
+      font-family: "Stratum2Web", serif;
+      font-weight: 600;
+      font-size: 3.5rem;
+  }
+
+  /* Media query for adjusting font size above the breakpoint */
+  @media screen and (max-width: 992px) {
+      .large-osu-number {
+          font-size: 2.5rem;
+      }
+  }
+  /*End of large numbers*/
+
+  /*Orange hover card styling from K Holcomb*/
+
+  .orange-card-hover {
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  .block-inline-blockorange- {
+      padding-bottom: 1rem !important;
+  }
+
+  .block-inline-blockorange- > .block__content,
+  .block-inline-blockorange-,
+  .orange-card-hover {
+    height: 100%;
+  }
+
+  .orange-card-hover:hover {
+    background-color: #d73f09 !important;
+    color: #fff;
+  }
+
+
+  .block-inline-blockorange- i {
+    font-size: 4rem;
+  }
+
+  .block-inline-blockorange- a {
+    text-decoration: none;
+  }
+
+  .block-inline-blockorange- a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .block-inline-blockorange- a:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+  /*End of orange hover card*/
+
+  /*Black hover card modified from K Holcomb*/
+
+  .black-card-hover {
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+
+
+  /*
+  .block-inline-blockblack- {
+      padding-bottom: 1rem !important;
+  }
+  */
+
+  .block-inline-blockblack- > .block__content,
+  .block-inline-blockblack-,
+  .black-card-hover {
+    height: 100%;
+  }
+
+  .black-card-hover:hover {
+    background-color: #d73f09 !important;
+    color: #fff;
+  }
+
+  .black-card-hover {
+    background-color: #212529 !important;
+    color: #fff;
+  }
+
+  .block-inline-blockblack- i {
+    font-size: 4rem;
+  }
+
+  .block-inline-blockblack- a {
+    text-decoration: none;
+  }
+
+  .block-inline-blockblack- a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .block-inline-blockblack- a:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+  /*End of black hover card*/
+
+
+
+  /*Crater hover card modified from K Holcomb*/
+
+  .crater-card-hover {
+    transition: all 0.4s ease;
+    position: relative;
+  }
+
+  .crater-card-hover a {
+      font-weight: bold;
+  }
+
+  .crater-card-hover a:hover {
+      font-weight: bold;
+  }
+
+  /*
+  .block-inline-blockcrater- {
+      padding-bottom: 1rem !important;
+  }
+  */
+
+  .block-inline-blockcrater- > .block__content,
+  .block-inline-blockcrater-,
+  .crater-card-hover {
+    height: 100%;
+  }
+
+  .crater-card-hover:hover {
+    background-color: #8e9089 !important;
+    color: #fff;
+  }
+
+  .crater-card-hover {
+    background-color: #212529 !important;
+    color: #fff;
+  }
+
+  .block-inline-blockcrater- i {
+    font-size: 4rem;
+  }
+
+  .block-inline-blockcrater- a {
+    text-decoration: none;
+  }
+
+  .block-inline-blockcrater- a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .block-inline-blockcrater- a:hover {
+    text-decoration: underline;
+    color: #fff;
+  }
+  /*End of crater hover card*/
+
+
+
+  /* Custom five-column grid system */
+  .custom-five-column {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-right: 0px; /* right alighments */
+      margin-left: -4px; /* left alignment  */
+  }
+
+  .custom-column {
+      flex: 0 0 calc(20% - 18px); /* Adjust for spacing between columns */
+      margin-bottom: 15px;
+      box-sizing: border-box;
+      word-wrap: break-word;
+      position: relative;
+      cursor: pointer;
+  }
+
+  .custom-column-content {
+      padding: 20px 30px; /* padding around the p text */
+      height: 100%;
+     background-color: white; 
+      box-shadow: 0 2px 3px hsla(0, 0%, 0%, 0.4);
+      transition: background-color 0.3s, box-shadow 0.3s;
+      hyphens: auto; /* Enable hyphenation */
+      word-wrap: break-word; /* Allow long words to break */
+  }
+
+  .custom-column-content:hover {
+     /* background-color: #d73f09; */
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Shadow around the box on hover */
+    /*  color: #fff; */
+  }
+
+
+  .custom-column a {
+      text-decoration: none;
+      color: inherit;
+  }
+
+  .custom-column-content h3 {
+      margin-top: 20px;
+      margin-bottom: 15px;
+      text-decoration: underline;
+       font-size: 1.4rem;
+        line-height: 1.5;
+  }
+
+  .custom-column-content p {
+      margin-bottom: 15px;
+  }
+
+  /* Icon styling */
+  .icon-holder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 110px; /* Adjust size as needed */
+      height: 110px; /* Adjust size as needed */
+      border: 7px solid #d73f09; /* Adjust color as needed */
+      border-radius: 50%; /* Make it circular */
+      margin: 30px auto 30px; /* Adjust spacing as needed */
+      background-color: white;
+  }
+
+
+  .custom-column-content:hover .icon-holder .fa {
+      color: inherit;
+  }
+
+  .custom-column-content:hover h3 {
+      text-decoration: none;
+  }
+
+  @media screen and (max-width: 1200px) {
+      .custom-five-column .custom-column {
+          flex-basis: calc(50% - 20px); /* Adjust width for two columns */
+          margin-bottom: 60px;
+      }
+  }
+
+  @media screen and (max-width: 576px) {
+      .custom-five-column .custom-column {
+          flex-basis: calc(100% - 20px); /* Adjust width for single column */
+          margin-bottom: 30px;
+      }
+  }
+
+
+  /*This is specific to the custom 5 column with photos that zoom in on hover on homepage*/
+
+  .custom-column-image img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    display: block;
+    object-fit: cover;
+    margin: 0 !important;
+    padding: 0;
+    transition: transform 0.4s ease-in-out;
+  }
+
+  .custom-column-content .custom-column-image {
+    overflow: hidden;
+  }
+
+  .custom-column-content:hover .custom-column-image img {
+    transform: scale(1.1);
+  }
+
+  .custom-column-image {
+    margin: 0;
+    padding: 0;
+  }
+
+  .custom-column-image-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 0;
+  }
+
+  /*end for photo cards*/
+
+
+  /* This creates an animated radiating effect around the icon circle for the Accelerator programs homepage */
+  @keyframes shimmer {
+    0% {
+      box-shadow: 0 0 0 0 rgba(215, 63, 9, 0.7);
+    }
+    100% {
+      box-shadow: 0 0 40px 20px rgba(215, 63, 9, 0);
+    }
+  }
+
+  .outer-circle {
+    transition: box-shadow 1s; /* Adjust the duration here */
+    z-index: 1; /* Ensure the glow effect appears above the background */
+  }
+
+  .custom-column:hover .outer-circle {
+    animation: shimmer 2.5s forwards; /*Add the following right after the semicolon if you want a second round of shimmers: " , 2s forwards 1.5s " */
+  }
+  /*End of animation effect */
+
+  /*End of custom 5 columns styling */
+
+
+
+
+  /* Puts an orange bar at the top left of title text*/
+  .orange-line {
+      position: relative;
+  }
+
+  .orange-line > p > span::before {
+      content: "";
+      position: absolute;
+      top: 0px; /* Adjust to position the line as desired */
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background-color: #D73F09;
+  }
+  .orange-line > * {
+      position: relative;
+      top: -5px; /* Adjust to move the text closer to the line */
+  }
+  /* end of orange line */
+
+  .simple-card-white-background {
+    background-color: white !important; /* Set the background color to white for the simple card block - apply to attribu in block */
+    margin: 0 !important;
+  	}
+  	
+  	/* Hover effect on the "Simple Card" block - only for images that have a url link and used on homepage for the partner logos */
+  .simple-card-hover a:hover img {
+    transform: scale(1.1); /* Increase size on hover */
+    transition: 0.4s ease-in-out; /* Add smooth transition */
+    }
+    
+  .simple-card-hover a img {
+    transition: transform 0.4s ease-in-out; /* Add smooth transition when mouse off */
+  }
+  	/* End of Hover effect on the "Simple Card" block */
+  	
+  	
+  		/* Hover effect for menu bar to remove rounded corners */
+  	.osu-menu-bar-item-overrides,
+  .osu-menu-bar-item-overrides:hover {
+    border-radius: 0;
+    font-size: 1.5rem;
+  }
+
+  /* Remove the rounded edges from the theme buttons */
+  .osu-btn-primary {
+    border-radius: 0 !important;
+  }
+
+  .hero-text-backdrop {
+    display: inline-block; /* Ensures the backdrop fits closely around the text */
+    padding: 0.5rem 1rem; /* Adjust for desired spacing */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    border-radius: 0; /* Removes rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Subtle shadow for depth */
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

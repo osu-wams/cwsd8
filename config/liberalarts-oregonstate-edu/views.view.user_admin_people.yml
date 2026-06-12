@@ -1,11 +1,11 @@
-uuid: a256d593-759d-483e-b1f5-7deae9d89e2c
+uuid: 722fa3de-f11d-47f8-b229-4c615a716c17
 langcode: en
 status: true
 dependencies:
   module:
     - user
 _core:
-  default_config_hash: FFLg74mnzRE10lgg5fspPCZWLnIEcvCnJMlNzj8OEtw
+  default_config_hash: njaZigMvB4ap21Fg_tQcJhWgYJCGNi49Z5rRL_N6RI0
 id: user_admin_people
 label: People
 module: user
@@ -881,6 +881,17 @@ display:
       use_more_text: more
       link_display: page_1
       link_url: ''
+      header:
+        result:
+          id: result
+          table: views
+          field: result
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: result
+          empty: false
+          content: 'Displaying @start - @end of @total'
       display_comment: ''
       hide_attachment_summary: false
       display_extenders: {  }
@@ -902,7 +913,10 @@ display:
       defaults:
         show_admin_links: false
       show_admin_links: false
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       path: admin/people/list
       menu:
         type: 'default tab'

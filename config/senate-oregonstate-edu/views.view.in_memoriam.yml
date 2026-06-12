@@ -4,11 +4,13 @@ status: true
 dependencies:
   config:
     - field.storage.node.field_portrait
+    - image.style.300x300_scale_and_crop
     - node.type.in_memoriam
   module:
     - image
     - node
     - user
+    - views_bootstrap
 id: in_memoriam
 label: 'In Memoriam'
 module: views
@@ -31,6 +33,7 @@ display:
           field: field_portrait
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: field
           label: ''
           exclude: false
@@ -73,11 +76,13 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          click_sort_column: fid
+          click_sort_column: target_id
           type: image
           settings:
             image_link: ''
-            image_style: 75x75-scale-crop
+            image_style: 300x300_scale_and_crop
+            image_loading:
+              attribute: lazy
           group_column: entity_id
           group_columns:
             title: title
@@ -97,6 +102,7 @@ display:
           field: title
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: field
           label: ''
           exclude: false
@@ -128,7 +134,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: ''
+          element_class: 'fw-bold fs-5'
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -139,14 +145,25 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
+          click_sort_column: value
+          type: string
           settings:
-            link_to_entity: 1
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
           ui_name: ''
       pager:
-        type: full
+        type: none
         options:
-          pagination_heading_level: h4
-          items_per_page: 10
+          offset: 0
       exposed_form:
         type: basic
       access:
@@ -214,13 +231,25 @@ display:
             group_items: {  }
           ui_name: ''
       style:
-        type: default
+        type: views_bootstrap_grid
+        options:
+          grouping: {  }
+          row_class: mb-3
+          default_row_class: true
+          grid_class: ''
+          col_xs: none
+          col_sm: none
+          col_md: col-md-2
+          col_lg: col-lg-4
+          col_xl: col-xl-3
+          col_xxl: none
       row:
         type: fields
         options: {  }
       query:
         type: views_query
         options: {  }
+      css_class: 'container mb-6'
       use_ajax: true
       group_by: false
       display_extenders: {  }
@@ -230,7 +259,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -242,163 +270,39 @@ display:
     position: 3
     display_options:
       title: 'In Memoriam VB'
-      fields:
-        field_portrait:
-          id: field_portrait
-          table: node__field_portrait
-          field: field_portrait
-          relationship: none
-          group_type: group
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: null
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: fid
-          type: image
-          settings:
-            image_link: content
-            image_style: 75x75-scale-crop
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-          ui_name: ''
-          delta_random: false
-        title:
-          id: title
-          table: node_field_data
-          field: title
-          relationship: none
-          group_type: group
-          plugin_id: field
-          label: ''
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: null
-            word_boundary: false
-            ellipsis: false
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          settings:
-            link_to_entity: 1
-          ui_name: ''
       pager:
         type: some
         options:
           items_per_page: 15
-      style:
-        type: grid
-        options:
-          grouping: {  }
-          row_class: ''
-          default_row_class: true
-          columns: 1
-          alignment: horizontal
-          row_class_special: 1
-          fill_single_line: 1
-          caption: ''
-          summary: ''
-      row:
-        type: fields
-        options:
-          default_field_elements: true
-          inline:
-            field_portrait: field_portrait
-            title: title
-            field_memoriam_teaser_in_brief: field_memoriam_teaser_in_brief
-          separator: '&nbsp;'
-          hide_empty: false
       query:
         type: views_query
         options: {  }
       defaults:
         title: false
+        css_class: false
         pager: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
         group_by: false
-        style: false
-        row: false
-        fields: false
+        style: true
+        row: true
+        fields: true
         pager_options: false
+      css_class: ''
       group_by: false
       display_description: ''
-      display_extenders: {  }
+      use_more: false
+      use_more_always: true
+      use_more_text: 'See all memorials'
+      link_display: '0'
+      link_url: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       style_plugin: grid
       style_options:
         grouping: {  }
@@ -429,28 +333,17 @@ display:
     display_plugin: page
     position: 2
     display_options:
-      style:
-        type: default
-        options:
-          alignment: horizontal
-          columns: '1'
-      row:
-        type: fields
-        options:
-          default_field_elements: true
-          inline:
-            field_portrait: field_portrait
-            title: title
-          separator: ''
-          hide_empty: false
       query:
         type: views_query
         options: {  }
       defaults:
-        style: false
-        row: false
+        style: true
+        row: true
       display_description: ''
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       path: in-memoriam-vp
       style_plugin: views_bootstrap_grid_plugin_style
       style_options:
@@ -461,7 +354,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags:

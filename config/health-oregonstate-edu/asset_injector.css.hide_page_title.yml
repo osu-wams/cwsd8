@@ -1,0 +1,30 @@
+uuid: 0a60ea1a-f4c5-46fb-855f-417711be2531
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: hide_page_title
+label: 'Hide page title'
+code: |-
+  #block-madrone-page-title {
+  	display:none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/research/ppl/*'
+contexts: {  }
+conditions_require_all: true

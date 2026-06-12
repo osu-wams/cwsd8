@@ -1,0 +1,41 @@
+uuid: 2c82d6bd-a72d-4b4b-bd0d-45c7b888dfab
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.employee_spotlight.body
+    - field.field.node.employee_spotlight.field_employee_name
+    - field.field.node.employee_spotlight.field_photo
+    - field.field.node.employee_spotlight.field_position
+    - field.field.node.employee_spotlight.field_shop
+    - field.field.node.employee_spotlight.field_years_at_oregon_state
+    - node.type.employee_spotlight
+  module:
+    - text
+    - user
+id: node.employee_spotlight.teaser
+targetEntityType: node
+bundle: employee_spotlight
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_employee_name: true
+  field_photo: true
+  field_position: true
+  field_shop: true
+  field_years_at_oregon_state: true

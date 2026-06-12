@@ -1,0 +1,61 @@
+uuid: f7de9152-7554-47ae-8734-881c7eb3c38e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.ecologue_feed.body
+    - field.field.node.ecologue_feed.feeds_item
+    - field.field.node.ecologue_feed.field_osu_story_external_url
+    - field.field.node.ecologue_feed.field_post_date
+    - node.type.ecologue_feed
+  module:
+    - datetime
+    - link
+    - text
+    - user
+id: node.ecologue_feed.default
+targetEntityType: node
+bundle: ecologue_feed
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_osu_story_external_url:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 104
+    region: blb_region_col_1
+  field_post_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true

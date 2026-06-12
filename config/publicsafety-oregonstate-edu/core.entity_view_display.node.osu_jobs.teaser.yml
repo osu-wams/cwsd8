@@ -1,0 +1,45 @@
+uuid: 927ff017-ec9b-4f47-b7dd-18b4006a09ce
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.osu_jobs.body
+    - field.field.node.osu_jobs.feeds_item
+    - field.field.node.osu_jobs.field_osu_job_appointment_type
+    - field.field.node.osu_jobs.field_osu_job_classification_tit
+    - field.field.node.osu_jobs.field_osu_job_closing
+    - field.field.node.osu_jobs.field_osu_job_full_consideration
+    - field.field.node.osu_jobs.field_osu_job_link
+    - field.field.node.osu_jobs.field_osu_job_title
+    - node.type.osu_jobs
+  module:
+    - text
+    - user
+id: node.osu_jobs.teaser
+targetEntityType: node
+bundle: osu_jobs
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true
+  field_osu_job_appointment_type: true
+  field_osu_job_classification_tit: true
+  field_osu_job_closing: true
+  field_osu_job_full_consideration: true
+  field_osu_job_link: true
+  field_osu_job_title: true

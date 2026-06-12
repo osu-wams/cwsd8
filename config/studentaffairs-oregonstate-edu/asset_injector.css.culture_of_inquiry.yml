@@ -1,0 +1,107 @@
+uuid: abd219d2-dbd5-4978-a2a6-60a48b11b509
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: culture_of_inquiry
+label: 'Culture of Inquiry'
+code: |+
+  .container {
+          width: 100%;
+      }
+      
+      ul li {
+          list-style-image: none;
+      }
+      
+      a {
+          text-decoration: none;
+      }
+      
+      @media (max-width: 768px) {
+          .nav-tabs.nav-justified img {
+              visibility: hidden;
+              max-width: 0;
+              width: 0;
+          }
+      }
+      
+      @media (min-width: 768px) {
+          .nav-tabs.nav-justified > li > a {
+              line-height: 0;
+              font-size: 0;
+              /*            color: transparent;*/
+          }
+      }
+      
+      .node-type-feature-page .field-name-field-section-content .field-item > .even {
+          padding: 0px;
+      }
+      /*-------bootstrap 3.3.6-----------------------*/
+      
+      .nav-tabs.nav-justified {
+          width: 100%;
+          border-bottom: 0;
+      }
+      
+      .nav-tabs.nav-justified > li {
+          float: none;
+      }
+      
+      .nav-tabs.nav-justified > li > a {
+          margin-bottom: 5px;
+          text-align: center;
+      }
+      
+      .nav-tabs.nav-justified > .dropdown .dropdown-menu {
+          top: auto;
+          left: auto;
+      }
+      
+      @media (min-width: 768px) {
+          .nav-tabs.nav-justified > li {
+              display: table-cell;
+          }
+          .nav-tabs.nav-justified > li > a {
+              margin-bottom: 0;
+          }
+      }
+      
+      .nav-tabs.nav-justified > li > a {
+          margin-right: 0;
+          border-radius: 4px;
+      }
+      
+      .nav-tabs.nav-justified > .active > a,
+      .nav-tabs.nav-justified > .active > a:hover,
+      .nav-tabs.nav-justified > .active > a:focus {
+          border: 1px solid #ddd;
+      }
+      
+      @media (min-width: 768px) {
+          .nav-tabs.nav-justified > li > a {
+              border-bottom: 1px solid #ddd;
+              border-radius: 4px 4px 0 0;
+          }
+          .nav-tabs.nav-justified > .active > a,
+          .nav-tabs.nav-justified > .active > a:hover,
+          .nav-tabs.nav-justified > .active > a:focus {
+              border-bottom-color: #fff;
+          }
+      }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /saa/culture-inquiry
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,82 @@
+uuid: 9f7804e3-5e44-42d2-9127-65fb799db576
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.coe_article_conclusion.field_coe_conclusion_add_body
+    - field.field.paragraph.coe_article_conclusion.field_coe_conclusion_add_link
+    - field.field.paragraph.coe_article_conclusion.field_coe_conclusion_body
+    - field.field.paragraph.coe_article_conclusion.field_coe_conclusion_link
+    - field.field.paragraph.coe_article_conclusion.field_coe_conclusion_title
+    - paragraphs.paragraphs_type.coe_article_conclusion
+  module:
+    - field_group
+    - link
+    - text
+third_party_settings:
+  field_group:
+    group_coe_conclusion_add_section:
+      children:
+        - field_coe_conclusion_add_body
+        - field_coe_conclusion_add_link
+      label: 'Additional Section'
+      region: content
+      parent_name: ''
+      weight: 3
+      format_type: details
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        open: false
+        description: ''
+        required_fields: true
+id: paragraph.coe_article_conclusion.default
+targetEntityType: paragraph
+bundle: coe_article_conclusion
+mode: default
+content:
+  field_coe_conclusion_add_body:
+    type: text_textarea
+    weight: 4
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_coe_conclusion_add_link:
+    type: link_default
+    weight: 5
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_coe_conclusion_body:
+    type: text_textarea
+    weight: 1
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_coe_conclusion_link:
+    type: link_default
+    weight: 2
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_coe_conclusion_title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden:
+  created: true
+  status: true

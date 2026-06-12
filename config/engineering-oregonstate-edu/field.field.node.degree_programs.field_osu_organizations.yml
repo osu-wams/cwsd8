@@ -1,0 +1,29 @@
+uuid: 9166143a-ba57-4da3-89d7-8ee9d85bb199
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_osu_organizations
+    - node.type.degree_programs
+    - taxonomy.vocabulary.osu_organization
+id: node.degree_programs.field_osu_organizations
+field_name: field_osu_organizations
+entity_type: node
+bundle: degree_programs
+label: Organization
+description: ''
+required: true
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      osu_organization: osu_organization
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

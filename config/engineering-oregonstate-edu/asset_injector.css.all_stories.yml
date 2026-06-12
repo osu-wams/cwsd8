@@ -1,0 +1,41 @@
+uuid: f97a04e4-d743-4faa-b545-f13f1f586cd3
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+    - system
+id: all_stories
+label: 'Stories content pages spacing (header)'
+code: |-
+  /* Margin bottom spacing for stories content block */
+
+  .block-views-blockosu-stories-related-stories-block h2 {
+  	margin-bottom: 0.5rem !important;
+  	text-align: left;
+  }
+
+  figure:has( .media--view-mode-frameless), .media--view-mode-frameless img {
+  	width: 100%;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      story: story
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

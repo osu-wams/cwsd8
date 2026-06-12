@@ -1,0 +1,29 @@
+uuid: 5d129024-13aa-4f8d-8bda-efdc4c2a68e6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_location
+    - node.type.osu_profile
+    - taxonomy.vocabulary.program_grid_location
+id: node.osu_profile.field_location
+field_name: field_location
+entity_type: node
+bundle: osu_profile
+label: Location
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      program_grid_location: program_grid_location
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

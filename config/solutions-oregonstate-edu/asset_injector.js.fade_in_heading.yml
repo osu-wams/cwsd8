@@ -1,0 +1,32 @@
+uuid: ad7de844-f2ec-444b-b98a-a7400db5f342
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: fade_in_heading
+label: 'Fade in heading'
+code: |-
+  window.addEventListener('scroll', function() {
+              const text = document.querySelector('.fade-heading .fade-text');
+              if (window.scrollY > 50) { // Trigger after scrolling 50px
+                  text.classList.add('visible');
+              }
+          });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/916\r\n/node/916/layout\r\n/node/951\r\n/node/951/layout"
+contexts: {  }
+conditions_require_all: true

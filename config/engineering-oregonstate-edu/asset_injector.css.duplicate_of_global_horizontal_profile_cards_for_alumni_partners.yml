@@ -1,0 +1,122 @@
+uuid: 776ff297-1c7b-4667-ab48-c2809f3b55da
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: duplicate_of_global_horizontal_profile_cards_for_alumni_partners
+label: 'Horizontal profile cards (for alumni partners page; card and image resolution, headers, and misc)'
+code: |-
+  /* ==========================================================================
+     Horizontal profile cards for the alumni and partners pages.
+     ========================================================================== */
+     
+     
+  .osu-line-clamp-2 {
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+  	display: -webkit-box;
+    overflow: hidden;
+  }
+
+  /* Profile card margin and resolution */
+
+  .research-page-profile-cards{
+  	float: left;
+  	margin-right: 19px;
+  	width: 312px;
+  	min-height: 320px;
+  }
+
+  .views-bootstrap-engr-profile-block-7{
+  	margin-bottom: 5px;
+  }
+
+  /* ==========================================================================
+     Text/Bio Styling
+     ========================================================================== */
+     
+     
+  /* Profile Bio Display */
+
+  .profile-item--short-bio {
+  	display: none;
+  }
+
+  @media screen and (min-width: 768px) {
+  	.profile-item--short-bio {
+  		display: -webkit-box;
+  	}
+  }
+
+  /* Hide header */
+
+  .node--view-mode-research-profiles h2 {
+  	display: none !important;
+  }
+
+  .more-link {
+    margin: 7px;
+    font-weight: bold;
+  }
+
+  /* ==========================================================================
+     Image styling
+     ========================================================================== */
+     
+     
+  /* Profile Image custom resolution for media */
+
+  .profile-img--horizontal img {
+  	max-width: 125px !important;
+  }
+
+  @media screen and (min-width: 1180px) {
+  	.profile-img--horizontal img {
+  		max-width: 200px !important;
+    }
+  	.horizontal-card-height{
+  		height: 175px;
+  		width: 620px;
+  	}
+  }
+
+  /* ==========================================================================
+     Mobile styling
+     ========================================================================== */
+     
+     
+  .phone-margin{
+  	margin-top: -15px;
+  }
+
+  /* Mobile Margin */
+
+  @media screen and (max-width: 675px) {
+  	.phone-margin {
+  		margin-top: -15px;
+  	}
+  }
+
+  /* Profile Image custom resolution for mobile */
+
+  @media screen and (max-width: 480px) {
+  		.profile-img--horizontal img {
+  		max-width: 200px !important;
+  		height: 175px;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/46\r\n/node/866\r\n/node/156\r\n/node/2686\r\n/node/1651\r\n/node/16\r\n/node/40916"
+contexts: {  }
+conditions_require_all: true

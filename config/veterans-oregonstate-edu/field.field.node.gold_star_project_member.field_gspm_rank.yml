@@ -1,0 +1,29 @@
+uuid: 1188b35d-89da-4972-b11c-e9d7ac480732
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_gspm_rank
+    - node.type.gold_star_project_member
+    - taxonomy.vocabulary.military_rank
+id: node.gold_star_project_member.field_gspm_rank
+field_name: field_gspm_rank
+entity_type: node
+bundle: gold_star_project_member
+label: Rank
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      military_rank: military_rank
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

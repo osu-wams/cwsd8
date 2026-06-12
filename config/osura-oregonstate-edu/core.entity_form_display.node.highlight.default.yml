@@ -11,7 +11,9 @@ dependencies:
     - field.field.node.highlight.og_group_ref
     - image.style.thumbnail
     - node.type.highlight
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - focal_point
     - link
     - path
@@ -65,6 +67,20 @@ content:
     region: content
     settings: {  }
     third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
   path:
     type: path
     weight: 30
@@ -117,3 +133,7 @@ content:
     third_party_settings: {  }
 hidden:
   og_group_ref: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

@@ -1,0 +1,45 @@
+uuid: b4b07e49-23a4-42ea-aaac-466276cee99e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.fellows.body
+    - field.field.node.fellows.field__research_details
+    - field.field.node.fellows.field_fel_first_name
+    - field.field.node.fellows.field_fel_last_name
+    - field.field.node.fellows.field_fel_photo
+    - field.field.node.fellows.field_fellow_link
+    - field.field.node.fellows.field_fellowship_year
+    - field.field.node.fellows.field_school_or_program
+    - node.type.fellows
+  module:
+    - text
+    - user
+id: node.fellows.teaser
+targetEntityType: node
+bundle: fellows
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field__research_details: true
+  field_fel_first_name: true
+  field_fel_last_name: true
+  field_fel_photo: true
+  field_fellow_link: true
+  field_fellowship_year: true
+  field_school_or_program: true

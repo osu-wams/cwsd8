@@ -1,0 +1,31 @@
+uuid: 3654ee85-6375-4c74-a685-57a32c9dc1a1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.og_group_ref
+    - node.type.knowledge_base
+id: node.knowledge_base.og_group_ref
+field_name: og_group_ref
+entity_type: node
+bundle: knowledge_base
+label: 'Unit or Group'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: title
+      direction: ASC
+    membership_type: og_membership_type_default
+    behaviors:
+      og_behavior:
+        status: true
+      views-select-list:
+        status: 0
+field_type: entity_reference

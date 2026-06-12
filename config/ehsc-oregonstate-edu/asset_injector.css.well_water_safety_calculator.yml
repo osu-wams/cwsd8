@@ -1,0 +1,28 @@
+uuid: b295cb41-7257-493e-aca9-dc561e6cb22c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: well_water_safety_calculator
+label: 'Well water safety calculator'
+code: |-
+  .non-edit { background-color:#a7c4c9; }
+    .hidden { display:none; }
+    table { border-collapse: collapse; }
+    td { vertical-align: top; padding: 0.5rem 1rem; }
+    input[type="text"], select { margin-left: .5rem; }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/946
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,162 @@
+uuid: b30b4eb8-8649-425e-ba11-35684da45eea
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: css_table_of_contents
+label: 'Global table of contents (title and list padding, margin, background, and animations)'
+code: |-
+  /* ==========================================================================
+     Global styling for the table of contents
+     ========================================================================== */
+     
+     
+  /* equalize title height with the main body on the right */
+
+  .toc-title {
+  	padding-top: 8px;
+  	font-size: 36px;
+  }
+
+  .toc-title,
+  span[id^="toc"] + h2,
+  span[id^="toc"] + h3 {
+  	border-bottom: 6px solid #000;
+  }
+
+  /* typography for h3 */
+
+  span[id^="toc"] + h3 {
+  		color: #000;
+  		font-family: "Stratum2Web", serif;
+      font-weight: 600;
+      font-size: 2.25rem;
+      padding-top: 6px;
+  }
+
+  /** secondary items **/
+
+  .toc-h2 {
+  	margin-left: 0;
+  	border-bottom: 1px solid #8E9089;
+  }
+
+  /** text shadow used so bold does not drop it to a second line **/
+
+  .toc-js a {
+    text-decoration: none;
+    padding: .6rem .4rem;
+    transition: background-color 0.4s ease;
+    display: block;
+  }
+
+  .toc-js ul {
+  	list-style-type: none;
+  }
+
+  .toc-js ul li {
+  	padding-inline: 0; 
+  	padding-block: .8rem;
+  }
+
+  /** text shadow used so bold does not drop it to a second line **/
+
+  .toc-js ul li.toc-active a {
+  		color: #000;
+  		background: rgba(198, 218, 231, 0.3);
+  }
+
+  .toc-js ul li.toc-active,
+  .toc-js a:active:not(.button, #osu-logo-wide, #osu-logo-crest) {
+  	background-color: transparent;
+  	color: #000;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: TOC Module Block Styling
+  	
+  	PURPOSE: Style the Toc.js module block
+  	==============================================================================================================================================================*/
+  	
+  .h2.toc-title {
+  	color: #000;
+  	
+  	/* H3 */
+  	font-family: Stratum2Web;
+  	font-size: 36px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 46.8px */
+  	margin-bottom: 24px;
+  }
+
+  ul > .toc-h3, ul > .toc-h2 {
+  	margin: 0 !important;
+  }
+
+  .toc-js ul {
+  	margin-bottom: 0;
+  }
+
+  .toc-js ul > li {
+  	padding: 0 !important;
+  	border: none !important;
+  }
+
+  .toc-js ul > li a {
+  	padding-top: 24px;
+  	padding-bottom: 24px;
+  	border: none !important;
+  	color: #000 !important;
+  	
+  	/* H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  	transition: 0.3s;
+  }
+
+  .toc-js ul > li a:hover, .toc-js ul > li a:active {
+  	background: rgba(198,218,231,0.3) !important;
+  }
+
+  .toc-js ul > .toc-active a {
+  	padding-left: 24px;
+  }
+
+  main span[id^="toc"] + h2, main span[id^="toc"] + h3 {
+  	border-bottom: none;
+  }
+
+  @media screen and (min-width: 992px) and (max-width: 1199px) {
+    .toc-js.sticky.is-sticked {
+      position: relative !important;
+    }
+  }
+
+  @media screen and (max-width: 1199px) {
+  	.toc-js {
+  		margin-bottom: 50px;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/node/*'
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

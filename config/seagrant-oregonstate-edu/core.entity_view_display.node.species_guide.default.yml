@@ -1,0 +1,67 @@
+uuid: 1e960905-2fd7-41a6-a42f-69275136caad
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.species_guide.body
+    - field.field.node.species_guide.field_species_guide_photo
+    - field.field.node.species_guide.field_species_student_activities
+    - field.field.node.species_guide.field_teacher_species_guide_teac
+    - node.type.species_guide
+  module:
+    - image
+    - text
+    - user
+id: node.species_guide.default
+targetEntityType: node
+bundle: species_guide
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_species_guide_photo:
+    type: image
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_species_student_activities:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_teacher_species_guide_teac:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

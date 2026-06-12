@@ -1,0 +1,68 @@
+uuid: 30af3100-515a-46cf-a7cb-fab249a90045
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: newsroom_feed
+label: 'newsroom feed'
+code: |-
+  async function fetchLatestNewsImage() {
+              try {
+                  // Use a CORS proxy to bypass CORS restrictions
+                  const proxyUrl = 'https://corsproxy.io/?';
+                  const rssUrl = 'https://news.oregonstate.edu/releases/feed';
+                  const response = await fetch(proxyUrl + encodeURIComponent(rssUrl));
+                  const text = await response.text();
+
+                  // Parse the XML
+                  const parser = new DOMParser();
+                  const xml = parser.parseFromString(text, 'application/xml');
+                  const items = xml.querySelectorAll('item');
+                  
+                  // Get the most recent post (first item)
+                  const latestItem = items[0];
+                  const title = latestItem.querySelector('title').textContent;
+                  const imageUrl = latestItem.querySelector('enclosure').getAttribute('url');
+                  const link = latestItem.querySelector('link').textContent;
+
+                  // Create image element to get natural dimensions
+                  const img = new Image();
+                  img.src = imageUrl;
+                  img.onload = () => {
+                      const container = document.getElementById('news-container');
+                      container.style.height = `${img.naturalHeight}px`; // Set container height to image's natural height
+                      container.innerHTML = `
+                          <img src="${imageUrl}" alt="${title}" class="news-image">
+                          <div class="image-title"><a href="${link}" target="_blank">${title}</a></div>
+                      `;
+                  };
+                  img.onerror = () => {
+                      throw new Error('Image failed to load');
+                  };
+              } catch (error) {
+                  console.error('Error fetching RSS feed or image:', error);
+                  const container = document.getElementById('news-container');
+                  container.innerHTML = '<p class="error-message">Failed to load news image. Please try again later.</p>';
+              }
+          }
+
+          // Fetch the news image when the page loads
+          fetchLatestNewsImage();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "<front>\r\n/node/11531"
+contexts: {  }
+conditions_require_all: true

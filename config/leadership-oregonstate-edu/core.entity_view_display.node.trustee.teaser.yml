@@ -1,0 +1,43 @@
+uuid: ba184ba8-b0bf-4579-be77-1babcfb8470e
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.trustee.body
+    - field.field.node.trustee.field_committees
+    - field.field.node.trustee.field_last_name
+    - field.field.node.trustee.field_special_appointments
+    - field.field.node.trustee.field_term_ends
+    - field.field.node.trustee.field_trustee_email
+    - field.field.node.trustee.field_trustee_photo
+    - node.type.trustee
+  module:
+    - text
+    - user
+id: node.trustee.teaser
+targetEntityType: node
+bundle: trustee
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_committees: true
+  field_last_name: true
+  field_special_appointments: true
+  field_term_ends: true
+  field_trustee_email: true
+  field_trustee_photo: true

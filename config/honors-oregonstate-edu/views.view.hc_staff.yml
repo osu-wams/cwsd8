@@ -1,0 +1,221 @@
+uuid: bb1df431-3b0e-4900-af0c-9c5dcf3e5d2a
+langcode: en
+status: false
+dependencies:
+  config:
+    - taxonomy.vocabulary.tags
+  content:
+    - 'taxonomy_term:tags:1989937e-a122-4ea4-95f9-e767ceb9f30f'
+  module:
+    - node
+    - taxonomy
+    - user
+id: hc_staff
+label: 'HC Staff'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+      pager:
+        type: full
+        options:
+          pagination_heading_level: h4
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+        perm: 'access content'
+      cache:
+        type: none
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          plugin_id: date
+          order: DESC
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        tid:
+          id: tid
+          table: taxonomy_index
+          field: tid
+          plugin_id: taxonomy_index_tid
+          operator: in
+          value:
+            - 131
+          vid: tags
+      style:
+        type: default
+        options:
+          grouping: {  }
+          alignment: horizontal
+          columns: '4'
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      style_plugin: views_bootstrap_grid_plugin_style
+      style_options:
+        grouping: {  }
+        alignment: horizontal
+        columns: '4'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_1:
+    id: block_1
+    display_title: 'HC Staff Block'
+    display_plugin: block
+    position: 2
+    display_options:
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 0
+      cache:
+        type: time
+        results_lifespan: '3600'
+        results_lifespan_custom: '0'
+        output_lifespan: '3600'
+        output_lifespan_custom: '0'
+      sorts:
+        field_status_value:
+          id: field_status_value
+          table: node__field_status
+          field: field_status_value
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+        field_last_name_value:
+          id: field_last_name_value
+          table: node__field_last_name
+          field: field_last_name_value
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+      style:
+        type: default
+        options:
+          grouping: {  }
+          alignment: horizontal
+          columns: '4'
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline:
+            title: title
+            field_photo: field_photo
+          separator: '<br />'
+          hide_empty: true
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        cache: false
+        pager: false
+        style: false
+        row: false
+        sorts: false
+        header: false
+        pager_options: false
+        cache_options: false
+      display_description: ''
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: ''
+          empty: false
+          ui_name: ''
+          content:
+            value: |-
+              <style>
+
+              .views-label-field-language {
+              float:left;
+              margin-right:5px;
+              }
+
+
+              </style>
+            format: basic_html
+          tokenize: 0
+      display_extenders: {  }
+      style_plugin: views_bootstrap_grid_plugin_style
+      style_options:
+        grouping: {  }
+        alignment: horizontal
+        columns: '4'
+      pager_options: null
+      cache_options: null
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

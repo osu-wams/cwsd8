@@ -3,8 +3,22 @@ langcode: en
 status: true
 dependencies:
   config:
+    - node.type.announcement
+    - node.type.events
+    - node.type.highlight
+    - node.type.impact_story
+    - node.type.incentive_program_deadlines
+    - node.type.organizational_index
+    - node.type.orin_participant
+    - node.type.osu_profile
     - node.type.page
+    - node.type.program
+    - node.type.research_news
+    - node.type.research_news_external
+    - node.type.sidebar_carousel
     - node.type.story
+    - node.type.tools_and_services
+    - node.type.webform
   module:
     - content_moderation
 _core:
@@ -24,6 +38,11 @@ type_settings:
       weight: -5
       published: false
       default_revision: false
+    preserve:
+      label: Preserved
+      weight: 6
+      published: true
+      default_revision: true
     published:
       label: Published
       weight: 0
@@ -55,6 +74,13 @@ type_settings:
         - published
       to: draft
       weight: 0
+    preserve:
+      label: Preserve
+      from:
+        - archived
+        - published
+      to: preserve
+      weight: 5
     publish:
       label: Publish
       from:
@@ -64,6 +90,20 @@ type_settings:
       weight: 1
   entity_types:
     node:
+      - announcement
+      - events
+      - highlight
+      - impact_story
+      - incentive_program_deadlines
+      - organizational_index
+      - orin_participant
+      - osu_profile
       - page
+      - program
+      - research_news
+      - research_news_external
+      - sidebar_carousel
       - story
+      - tools_and_services
+      - webform
   default_moderation_state: draft

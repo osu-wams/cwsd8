@@ -11,6 +11,7 @@ dependencies:
     - image.style.thumbnail
     - node.type.posters
   module:
+    - file
     - image
     - node
     - text
@@ -40,7 +41,7 @@ display:
           group_type: group
           admin_label: ''
           plugin_id: field
-          label: ''
+          label: 'Poster Image'
           exclude: false
           alter:
             alter_text: false
@@ -107,8 +108,9 @@ display:
           field: field_poster_session
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: field
-          label: ''
+          label: 'Poster Session'
           exclude: false
           alter:
             alter_text: false
@@ -151,8 +153,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_default
-          settings: {  }
+          type: file_link
+          settings:
+            link_to_entity: 0
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -171,8 +174,9 @@ display:
           field: field_poster_number_
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: field
-          label: ''
+          label: 'Poster Number'
           exclude: false
           alter:
             alter_text: false
@@ -215,8 +219,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_default
-          settings: {  }
+          type: file_link
+          settings:
+            link_to_entity: 0
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -233,27 +238,72 @@ display:
           id: title
           table: node_field_data
           field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
           plugin_id: field
-          label: ''
+          label: 'Title and Project Author(s)'
+          exclude: false
           alter:
             alter_text: false
+            text: ''
             make_link: false
+            path: ''
             absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
             word_boundary: false
             ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
             strip_tags: false
             trim: false
+            preserve_tags: ''
             html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
           hide_empty: false
           empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
           settings:
-            link_to_entity: 1
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         field_project_presenter:
           id: field_project_presenter
           table: node__field_project_presenter
           field: field_project_presenter
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: field
           label: ''
           exclude: false
@@ -298,8 +348,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_default
-          settings: {  }
+          type: file_link
+          settings:
+            link_to_entity: 0
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -332,12 +383,14 @@ display:
           field: field_poster_session_value
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: standard
           order: ASC
           expose:
             label: 'Poster Session (field_poster_session)'
+            field_identifier: ''
             order: ASC
-          exposed: true
+          exposed: false
           ui_name: ''
         field_poster_number__value:
           id: field_poster_number__value
@@ -500,8 +553,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -765,8 +816,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -855,8 +904,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -936,17 +983,19 @@ display:
         type: views_query
         options: {  }
       defaults:
+        fields: true
         filters: false
         filter_groups: false
       display_description: ''
-      display_extenders: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1035,8 +1084,196 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_poster_image'
+        - 'config:field.storage.node.field_poster_number_'
+        - 'config:field.storage.node.field_poster_session'
+        - 'config:field.storage.node.field_project_presenter'
+  block_13:
+    id: block_13
+    display_title: '2025 Fall Symposium Block'
+    display_plugin: block
+    position: 14
+    display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            posters: posters
+        field_event_title_value:
+          id: field_event_title_value
+          table: node__field_event_title
+          field: field_event_title_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: '='
+          value: '2025 Fall Symposium'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            operator_label: ''
+            limit_operators: false
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_poster_image'
+        - 'config:field.storage.node.field_poster_number_'
+        - 'config:field.storage.node.field_poster_session'
+        - 'config:field.storage.node.field_project_presenter'
+  block_14:
+    id: block_14
+    display_title: '2026 Spring Symposium Block'
+    display_plugin: block
+    position: 14
+    display_options:
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            posters: posters
+        field_event_title_value:
+          id: field_event_title_value
+          table: node__field_event_title
+          field: field_event_title_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: string
+          operator: '='
+          value: '2026 Spring Symposium'
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            placeholder: ''
+            operator_label: ''
+            limit_operators: false
+            available_operators: {  }
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        filters: false
+        filter_groups: false
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1121,8 +1358,9 @@ display:
           field: field_poster_session
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: field
-          label: ''
+          label: 'Poster Session'
           exclude: false
           alter:
             alter_text: false
@@ -1165,8 +1403,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_default
-          settings: {  }
+          type: file_filemime
+          settings:
+            link_to_entity: 0
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1185,8 +1424,9 @@ display:
           field: field_poster_number_
           relationship: none
           group_type: group
+          admin_label: ''
           plugin_id: field
-          label: ''
+          label: 'Poster Number'
           exclude: false
           alter:
             alter_text: false
@@ -1229,8 +1469,9 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: value
-          type: text_default
-          settings: {  }
+          type: file_filemime
+          settings:
+            link_to_entity: 0
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -1247,21 +1488,65 @@ display:
           id: title
           table: node_field_data
           field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
           plugin_id: field
-          label: ''
+          label: 'TItle and Project Author(s)'
+          exclude: false
           alter:
             alter_text: false
+            text: ''
             make_link: false
+            path: ''
             absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
             word_boundary: false
             ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
             strip_tags: false
             trim: false
+            preserve_tags: ''
             html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
           hide_empty: false
           empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
           settings:
-            link_to_entity: 1
+            link_to_entity: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
         field_project_presenter:
           id: field_project_presenter
           table: node__field_project_presenter
@@ -1402,8 +1687,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1492,8 +1775,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1516,8 +1797,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1606,8 +1885,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1696,8 +1973,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1786,8 +2061,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1876,8 +2149,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:
@@ -1966,8 +2237,6 @@ display:
       contexts:
         - 'languages:language_content'
         - 'languages:language_interface'
-        - 'url.query_args:sort_by'
-        - 'url.query_args:sort_order'
         - 'user.node_grants:view'
         - user.permissions
       tags:

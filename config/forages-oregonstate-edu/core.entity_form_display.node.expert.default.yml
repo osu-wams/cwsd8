@@ -1,0 +1,330 @@
+uuid: 7ea4907e-bb91-4838-b144-cde01fd64301
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.expert.body
+    - field.field.node.expert.career_interests
+    - field.field.node.expert.career_links
+    - field.field.node.expert.field_expert_affiliation
+    - field.field.node.expert.field_expert_email
+    - field.field.node.expert.field_expert_group_fax
+    - field.field.node.expert.field_expert_location_address
+    - field.field.node.expert.field_expert_phone_office
+    - field.field.node.expert.field_expert_phone_other
+    - field.field.node.expert.field_expertise
+    - field.field.node.expert.field_picture
+    - field.field.node.expert.field_responsibilities
+    - field.field.node.expert.field_species_affiliation
+    - field.field.node.expert.first_name
+    - field.field.node.expert.last_name
+    - field.field.node.expert.position
+    - image.style.thumbnail
+    - node.type.expert
+    - workflows.workflow.editorial
+  module:
+    - address
+    - content_moderation
+    - entitygroupfield
+    - field_group
+    - focal_point
+    - link
+    - path
+    - telephone
+    - text
+third_party_settings:
+  field_group:
+    group_expert_details:
+      children:
+        - group_contact_information
+        - group_specialization
+        - group_species_expertise
+      label: 'Expert Details'
+      region: content
+      parent_name: ''
+      weight: 35
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        direction: horizontal
+        width_breakpoint: 640
+    group_contact_information:
+      children:
+        - field_organization
+        - location_address_one
+        - location_address_two
+        - location_city
+        - field_address_state
+        - location_zip
+        - field_country
+        - field_expert_location_address
+        - phone_office
+        - field_expert_phone_office
+        - phone_other
+        - field_expert_phone_other
+        - field_group_fax
+        - field_expert_group_fax
+        - email
+        - field_expert_email
+      label: 'Contact Information'
+      region: content
+      parent_name: group_expert_details
+      weight: 11
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_specialization:
+      children:
+        - career_links
+        - career_interests
+        - field_expertise
+        - field_responsibilities
+        - field_expert_affiliation
+      label: Specialization
+      region: content
+      parent_name: group_expert_details
+      weight: 12
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_species_expertise:
+      children:
+        - field_species_affiliation
+      label: 'Species Expertise'
+      region: content
+      parent_name: group_expert_details
+      weight: 13
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: false
+        formatter: closed
+        description: ''
+        required_fields: true
+id: node.expert.default
+targetEntityType: node
+bundle: expert
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 7
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  career_interests:
+    type: string_textarea
+    weight: 20
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  career_links:
+    type: link_default
+    weight: 19
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  created:
+    type: datetime_timestamp
+    weight: 9
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  entitygroupfield:
+    type: entitygroupfield_select_widget
+    weight: 1
+    region: content
+    settings:
+      help_text: ''
+      label: 'Group name'
+      multiple: true
+      required: false
+    third_party_settings: {  }
+  field_expert_affiliation:
+    type: options_buttons
+    weight: 23
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_expert_email:
+    type: email_default
+    weight: 32
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_expert_group_fax:
+    type: telephone_default
+    weight: 30
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_expert_location_address:
+    type: address_default
+    weight: 24
+    region: content
+    settings:
+      wrapper_type: fieldset
+    third_party_settings: {  }
+  field_expert_phone_office:
+    type: telephone_default
+    weight: 26
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_expert_phone_other:
+    type: telephone_default
+    weight: 28
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_expertise:
+    type: options_buttons
+    weight: 21
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_picture:
+    type: image_focal_point
+    weight: 2
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+      preview_link: true
+      offsets: '50,50'
+    third_party_settings: {  }
+  field_responsibilities:
+    type: options_buttons
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_species_affiliation:
+    type: options_buttons
+    weight: 22
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  first_name:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  last_name:
+    type: string_textfield
+    weight: 5
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  path:
+    type: path
+    weight: 28
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  position:
+    type: string_textfield
+    weight: 6
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  promote:
+    type: boolean_checkbox
+    weight: 15
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  status:
+    type: boolean_checkbox
+    weight: 30
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  sticky:
+    type: boolean_checkbox
+    weight: 16
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  title:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  uid:
+    type: entity_reference_autocomplete
+    weight: 3
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  url_redirects:
+    weight: 29
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden:
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

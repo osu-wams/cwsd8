@@ -1,0 +1,153 @@
+uuid: 15fe4e02-7997-4ddd-8754-4614324a646e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: pagination_styling
+label: 'Pagination Styling'
+code: |-
+  .pager__item--next a > span,
+  .pager__item--previous a > span {
+  	display: none;
+  }
+
+  .pager__item--next a:before {
+  	content: url("/sites/engineering.oregonstate.edu/files/2024-12/Arrow-3.svg");
+    transform: scale(1.3);
+  }
+
+  .pager__item--previous a:before {
+  	content: url("/sites/engineering.oregonstate.edu/files/2024-12/Arrow-4.svg");
+    transform: scale(1.3);
+  }
+
+  .pager__item--next a,
+  .pager__item--previous a,
+  .pager__item.disabled .page-link {
+  	border-radius: 50% !important;
+  	border: 3px solid #000;
+  	width: 56px;
+  	height: 56px;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	background-color: #FFF;
+  	margin-top: 30px;
+  	transition: background-color 0.5s ease, color 0.5 ease;
+  }
+  .pager__item.disabled .page-link {
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 22px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: normal;
+  }
+
+  .pager__item--next a,
+  .pager__item--previous a {
+  	font-size: 0;
+  }
+
+  nav.pager ul.pager__items.pagination {
+  	gap: 40px;
+  }
+
+
+  .pager__item--next a:hover,
+  .pager__item--next a:focus,
+  .pager__item--next a:active {
+  	z-index: 2;
+  	color: #FFF;
+  	background-color: #000 !important;
+  	border-color: #000;
+  	transform: scaleX(-1);
+  	 /*-webkit-transform: matrix(-1, 0, 0, 1, 0, 0);*/
+    /*  -moz-transform: matrix(-1, 0, 0, 1, 0, 0);*/
+    /*  -o-transform: matrix(-1, 0, 0, 1, 0, 0);*/
+    /*  transform: matrix(-1, 0, 0, 1, 0, 0);*/
+  }
+
+  .pager__item--previous a:hover,
+  .pager__item--previous a:focus,
+  .pager__item--previous a:active {
+  	z-index: 2;
+  	color: #FFF;
+  	background-color: #000 !important;
+  	border-color: #000;
+  }
+
+  /* Focus */
+  /* Hover and active states (without focus) */
+  .pager__item--next a:hover:not(:focus), 
+  .pager__item--next a:active:not(:focus) {
+    z-index: 2;
+    content: url("/sites/engineering.oregonstate.edu/files/2025-01/Arrow-5.svg") !important;
+    color: #FFF;
+    background-color: #000 !important;
+    border-color: #000;
+    transform: scaleX(-1);
+  }
+
+  .pager__item--previous a:hover:not(:focus), 
+  .pager__item--previous a:active:not(:focus) {
+    z-index: 2;
+    content: url("/sites/engineering.oregonstate.edu/files/2025-01/Arrow-5.svg") !important;
+    color: #FFF;
+    background-color: #000 !important;
+    border-color: #000;
+  }
+
+  /* Focus state with arrow change and frame */
+  .pager__item--next a:focus,
+  .pager__item--previous a:focus {
+    outline: none;
+    position: relative;
+    z-index: 2;
+    color: #FFF;
+    background-color: #000 !important;
+    border-color: #000;
+  }
+
+  .pager__item--next a:focus::before {
+    content: url("/sites/engineering.oregonstate.edu/files/2025-01/Arrow-5.svg") !important;
+  }
+
+  .pager__item--previous a:focus::before {
+    content: url("/sites/engineering.oregonstate.edu/files/2025-01/Arrow-5.svg") !important;
+  }
+
+  .pager__item--next a:focus::after,
+  .pager__item--previous a:focus::after {
+    content: '';
+    position: absolute;
+    top: -16px;
+    left: -16px;
+    width: 82px;
+    height: 82px;
+    /*background-image: url("/sites/engineering.oregonstate.edu/files/2025-09/frame.svg");*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .coe-brand-story-filters{
+  	margin-bottom: 120px;
+  }
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/test/event-video-library-0\r\n/node/46831\r\n/node/47611\r\n/node/52391\r\n/node/53291\r\n/node/32766\r\n/node/32771\r\n/node/32786\r\n/node/32781\r\n/node/32776\r\n/all-stories\r\n/node/1256"
+contexts: {  }
+conditions_require_all: true

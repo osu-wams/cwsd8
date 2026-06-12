@@ -1,0 +1,65 @@
+uuid: 8f73b945-ee3c-40c5-8b40-e377c064ea9f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: mime_school_text
+label: 'MIME button and header theming (hr, a, button, border)'
+code: |-
+  /*===================================
+  MIME Theming
+  ===================================*/
+
+
+  /* Font size for MIME brand links */
+
+  .block-system-branding-block a {
+      font-size: 1.1rem;
+  }
+
+  /*  Global Button Styling */
+
+  .btn.osu-btn-primary {
+      border-radius: 0px;
+      background-color: transparent;
+      color: black;
+      border-color: black;
+  }
+
+  /* Global Button Styling Hover Effect */
+
+  .btn.osu-btn-primary:hover {
+      background-color: #0D5257 !important;
+      border-color: #0D5257 !important;
+  }
+
+  /* Adds white border on hover */
+
+  .white-border-hover:hover {
+    border-color: white !important;
+  }
+
+  /* School accent bar coloration */
+
+  .school-accent-bar {
+    height: 3px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background-color: #0D5257;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/21\r\n/group/21/*\r\n/MIME\r\n/MIME/*"
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,632 @@
+uuid: 44869df0-76aa-4847-a748-f0a49ce9136c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: feature_story_prax
+label: 'Feature Story PRAx and Tallwood'
+code: |-
+  .layout-content {
+  	background-color: #FFF !important;
+  }
+
+  .container-fluid:has(.madrone-breadcrumb) { 
+    background-color: #FFF !important;
+  }
+
+  article.node--unpublished {
+  	background-color: #FFF;
+  }
+
+  main {
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 160%; /* 28.8px */
+  }
+
+  main h3 {
+  	margin-bottom: 0px;
+  }
+
+  /*Header Offset and Styling*/
+  h1.header-text{
+  	  margin-top: -250px;
+  		color: #FFF;
+      font-family: Stratum2Web; 
+      font-size: 96px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 96% !important;
+      padding-bottom: 0px;
+  }
+
+  .tallwood-header h1.header-text {
+  	margin-top: -340px;
+  }
+
+  .tallwood-hero-gradient {
+  	background: linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%), url('/sites/engineering.oregonstate.edu/files/2024-12/tallwood-hero-image.jpg');
+  	background-position: center;
+  	background-size: cover;
+  }
+
+  .tallwood-tablet-hero-image img {
+  	width: 100%;
+  }
+
+  /* scaling hero image down for mobile so that image is fully shown */
+  @media screen and (max-width: 767px) {
+  	.prax-hero-image,
+  	.hero-image-scale-mobile {
+  		max-height: 200px;
+  	}
+  }
+
+  /* scaling hero image down for tablet so that image is fully shown */
+  @media screen and (max-width: 991px) and (min-width: 768px) {
+  	.prax-hero-image {
+  		max-height: 500px;
+  	}
+  	
+  	.hero-image-scale-tablet {
+  		max-height: 400px;
+  	}
+  }
+
+  @media screen and (max-width: 1399px) {
+  	h1.long-header {
+  		margin-top: -340px;
+  	}
+  }
+
+  @media screen and (max-width: 1199px) {
+  	h1.header-text {
+  		margin-top: -340px;
+  	}
+  	.tallwood-header h1.header-text{
+  		margin-top: 0px;
+  		color: #D73F09;
+  		font-size: 72px;
+  	}
+  	.col-lg-8 {
+  		width: 100%;
+  	}
+  }
+
+  @media screen and (max-width: 991px) {
+  	h1.header-text{
+      margin-top: -260px;
+      font-size: 72px;
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	h1.header-text, .tallwood-header h1.header-text {
+  		margin-top: 0px;
+  		padding-bottom: 0px;
+  		font-size: 56px;
+  		line-height: 120% !important; /* 69.12px */
+  	}
+  	
+  	/*Only for PRAx header because of word wrapping weirdly*/
+  	h1.prax-mobile-header {
+  		font-size: 44px;
+  		padding-bottom: 0px;
+  	}
+  }
+
+  /*Header Styling without Offset */
+  h2.header-text-no-offset {
+      color: var(--Primary-Beaver-Orange, #D73F09);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: 'Stratum2Web';
+      font-size: 64px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 130%;
+  }
+
+  /* Header 2 Styling Black Text*/
+  h2.header-text-black {
+      color: var(--Primary-Paddletail-Black, #000);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: Stratum2Web;
+      font-size: 64px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 130%;
+  }
+
+  @media screen and (max-width: 991px) {
+  	h2.header-text-no-offset{
+      color: var(--Primary-Beaver-Orange, #D73F09);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: 'Stratum2Web';
+      font-size: 48px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 130%;
+  	}
+  	
+  	h2.header-text-black{
+  		font-size: 48px;
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	h2.header-text-no-offset{
+      color: var(--Primary-Beaver-Orange, #D73F09);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: 'Stratum2Web';
+      font-size: 44px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 130%;
+  	}
+  	
+  	h2.header-text-black{
+  		font-size: 44px;
+  	}
+  	
+  }
+
+  .two-column-img-text h3 {
+  	padding-top: 0px;
+  }
+
+  /*Photo By Styling*/
+  .photo-by-header-styling,
+  .photo-by-additional-image-styling,
+  .hero-caption,
+  figcaption {
+      color: #000;
+      font-family: "Open Sans";
+      font-size: 12px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 130%;
+  }
+
+  /*Hero Caption align right*/
+  .hero-caption,
+  figcaption {
+  	text-align: right;
+  }
+
+  /* This is for a edge case related to 2-column setup, dont use unless it is the same case */
+  .photo-by-additional-image-styling-offset,
+  figcaption {
+  		/*padding-top: 126rem;*/
+    /*  padding-left: 25px;*/
+      color: #000;
+      font-family: "Open Sans";
+      font-size: 12px;
+      font-style: italic;
+      font-weight: 300;
+      line-height: 130%;
+  }
+
+  @media screen and (max-width: 767px) {
+  	.hero-caption {
+  		text-align: left;
+  	}
+  }
+
+  /* Key Takeaways Blue Block Background Color */
+  .key-takeaways-container{
+  		background: rgba(198, 218, 231, 0.3);
+      padding-top: 48px;
+      padding-left: 48px;
+      padding-bottom: 28px;
+      padding-right: 48px;
+      /*margin-right: 12px;*/
+      display: block !important;
+  }
+
+  .key-takeaways-container h2 {
+      color: #000;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 130%; /* 31.2px */
+      letter-spacing: 1.2px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+  }
+
+  .key-takeaway {
+      color: #000;
+      font-family: "Open Sans";
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 160%; /* 28.8px */
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 2ch;
+  }
+
+
+  /* Field item arrow styling */
+  .key-takeaway::before {
+      content: '';
+      display: inline-block;
+      width: 1.8ch;
+  		height: 1.8ch;
+      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="%23D73F09" stroke-width="4" stroke-linecap="square"/></svg>') no-repeat center center;
+      background-size: contain;
+      background-position: top left;
+      position: absolute;
+  		left: 0;
+      top: 0.5ch;
+  }
+
+  /* Padding/Spacing between key takeaways bullet points */ 
+  li.key-takeaway {
+      padding-bottom: 20px;
+  }
+
+  /* Use for Header threes throughout the story */
+  main h3 {
+      color: #000;
+      font-family: Stratum2Web;
+      font-size: 36px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 130%;
+  }
+
+  /* Quote Block Container */
+  .quote-container {
+      padding: 72px 70px;
+      margin-top: 10px;
+      position: relative;
+      /*Added this for pattern on PRAx story*/
+      z-index: 1;
+  }
+
+  .quote-container-navy {
+      padding: 72px 70px;
+      margin-top: 30px;
+      margin-bottom: 30px;
+      position: relative;
+      z-index: 1;
+      background-color: #003B5C;
+      color: white;
+  }
+
+  @media screen and (max-width: 767px) {
+  	.quote-container .quote-container-navy {
+  		padding: 50px 30px;
+  	}
+  }
+
+  /* Quote Block Text*/
+  .navy-quote-theme .quote-container {
+      color: #FFF;
+      background-color: #003B5C;
+  }
+
+  .yellow-quote-theme .quote-container {
+  		background-color: #FFB500;
+  		color: #000;
+  }
+
+  /* Quote Typography */
+  .quote {
+      font-family: "Open Sans";
+      font-size: 36px;
+      font-style: italic;
+      font-weight: 600;
+      line-height: 130%;
+  }
+
+  /* Quote Attribution */
+  .quote-credit {
+  	margin-top: 40px;
+  }
+
+  .quote-credit > div {
+  	display: inline;
+  }
+
+  .quote-author {
+  	font-weight: 700;
+  	letter-spacing: 0.9px;
+  	text-transform: uppercase;
+  }
+
+  /* Quote Icon Positioning */
+  svg.quote-icon {
+      position: absolute;
+      top: -22px;
+      right: 30px;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.quote {
+  		font-size: 24px;
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	svg.quote-icon {
+  		transform: scale(0.6);
+  		top: -28px;
+  		right: 0px;
+  	}
+  }
+
+  .img-background-color-block-blue div,
+  .img-background-color-block-yellow div,
+  .img-background-color-block-blue figure,
+  .img-background-color-block-yellow figure {
+  	width: 100%;
+  }
+
+  .img-background-color-block-blue img,
+  .img-background-color-block-yellow img,
+  .img-background-color-block-yellow-left img {
+  	width: calc(100% - 15px);
+  }
+
+
+  /* Background Color Block (Blue, Bottom Left) */
+  .img-background-color-block-blue img {
+  		margin-left: 15px;
+      box-shadow: -15px 15px 0 #003B5C;
+      margin-bottom: 25px;
+  }
+
+  /* Apply Padding/Spacing below image on Desktop Only */
+  @media screen and (min-width: 1199px) {
+      .img-background-color-block-blue img {
+          margin-left: 15px;
+          box-shadow: -15px 15px 0 #003B5C;
+          margin-bottom: 50px;
+      }
+  }
+
+  /* Background Color Block (Yellow, Bottom Right) */
+  .img-background-color-block-yellow img {
+      box-shadow: 15px 15px 0 #FFB500;
+      margin-bottom: 25px;
+  }
+
+  /* Background Color Block (Yellow, Bottom Left) */
+  .img-background-color-block-yellow-left img {
+  		margin-left: 15px;
+      box-shadow: -15px 15px 0 #FFB500;
+      margin-bottom: 25px;
+  }
+
+  .story-footer {
+  		background-color: rgba(198, 218, 231, 0.3);
+      padding: 32px;
+  }
+
+  .story-footer h6 {
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  }
+
+  .photos-by-footer,
+  .date-footer {
+  	margin-top: 30px;
+  }
+
+  .date-footer {
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 300;
+  	line-height: 130%; /* 18.2px */
+  }
+
+  .two-column-img-text .layout > div {
+  	display: flex;
+  	flex-wrap: wrap;
+  }
+
+  .two-column-img div, .two-column-img article {
+  	height: 100%;
+  }
+
+  .two-column-img .field__item {
+  	position: relative;
+  }
+
+  .two-column-img img {
+  	height: 100%;
+  	position: absolute;
+  	width: 80%;
+  	object-fit: cover;
+  }
+
+  @media screen and (max-width: 1199px) {
+  	.two-column-img img {
+  		width: calc(100% - 20px);
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	.two-column-img img {
+  		width: 100%;
+  		height: 1000px;
+  		position: relative;
+  		margin-bottom: 48px;
+  	}
+  }
+
+  /*PRAx Background Color Seafoam*/
+  .background-color-seafoam {
+      background: rgba(184, 221, 225, 0.3);
+  }
+
+  /*PRAx Student Fellows section */
+  h5.header-names {
+      color: var(--Primary-Beaver-Orange, #D73F09);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: "Open Sans";
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 130%;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+    	padding-top: 0px;
+      padding-bottom: 7px;
+  }
+
+  .full-width-image img {
+  	width: 100%;
+  }
+
+  strong.bold-text-name {
+  	  color: var(--Primary-Beaver-Orange, #D73F09);
+      font-feature-settings: 'liga' off, 'clig' off;
+      font-family: "Open Sans";
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 130%;
+      letter-spacing: 1.1px;
+      text-transform: uppercase;
+      padding-bottom: 25px;
+  }
+
+  /*Student Fellows Blocks */
+  div.previous-students {
+      padding-bottom: 30px;
+  }
+
+  /******************************
+  Patterns for PRAx Story
+  *******************************/
+
+  /*Sound Wave Pattern for Quote Block*/
+  @media screen and (max-width: 1920px) and (min-width: 992px) {
+  	/*Old Sound Wave Pattern (Might have to revert to this) */
+  	.sound-wave-pattern {
+  		transform: scaleY(0.8);
+      height: 190px;
+      position: absolute;
+      margin-top: -440px;
+      margin-left: -16vw;
+      margin-right: 0vw;
+      z-index: 0;
+  	}
+  	
+  	/*Smaller Sound Wave Pattern has to scale it up*/
+  	/*.sound-wave-pattern {*/
+  	/*	    transform: scale(44);*/
+   /*       position: absolute;*/
+   /*       margin-top: -352px;*/
+   /*       margin-left: -18rem;*/
+   /*       z-index: 0;*/
+  	/*}*/
+  }
+
+  /* Sound Wave Pattern for Larger Desktop Screen Sizes*/
+  @media screen and (min-width: 1921px) {
+  	.sound-wave-pattern {
+  		transform: scaleY(0.6);
+      object-fit: contain;
+      object-position: left;
+      height: 0px;
+      position: absolute;
+      margin-top: -458px;
+      margin-left: -18vw;
+      margin-right: 0vw;
+      z-index: 0;
+  	}
+  }
+
+  /*Triangle Pattern*/
+  @media screen and (min-width: 992px) {
+  	.triangle-pattern {
+  		position: relative;
+      margin-top: -508px;
+      margin-left: 414px;
+      margin-right: -404px;
+      transform: rotate(90deg);
+  	}
+  }
+
+  /*Triangle Smaller Pattern Position: Relative Method*/
+  @media screen and (min-width: 992px) {
+      .triangle-pattern-small {
+  				position: relative;
+          margin-top: -500px;
+          margin-right: -66px;
+          margin-left: 625px;
+          transform: scale(0.70);
+      }
+  }
+
+  @media screen and (min-width: 992px){
+  /*Equal Pattern Horizontal below text*/
+  .equal-pattern-horizontal {
+      position: absolute;
+      transform: scale(0.30);
+  		margin-left: -32rem;
+      margin-top: -12rem;
+  	}
+  	
+  /*Equal Pattern Vertical above image*/
+  	.equal-pattern-vertical {
+      position: absolute;
+      transform: scale(0.30);
+      margin-right: -8rem;
+      margin-left: 137px;
+      margin-top: -53rem;
+  	}
+  	
+  }
+
+  /*Hide Patterns below Desktop*/
+  @media screen and (max-width: 1199px){
+  	
+  	.sound-wave-pattern {
+  	  display: none !important; 
+  	}
+  	
+  	.triangle-pattern {
+      display: none !important; 
+  	}
+  	
+    .triangle-pattern-small {
+      display: none !important; 
+      }
+      
+  	.equal-pattern-horizontal {
+      display: none !important; 
+  	}
+  	
+  	.equal-pattern-vertical {
+      display: none !important; 
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/46596\r\n/node/46606"
+contexts: {  }
+conditions_require_all: true

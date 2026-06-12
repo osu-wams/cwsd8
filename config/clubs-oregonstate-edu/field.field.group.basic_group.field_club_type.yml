@@ -1,0 +1,29 @@
+uuid: bb0e4fa6-a9fa-4764-850e-b898b4126723
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_club_type
+    - group.type.basic_group
+    - taxonomy.vocabulary.club_type
+id: group.basic_group.field_club_type
+field_name: field_club_type
+entity_type: group
+bundle: basic_group
+label: 'Club Type'
+description: '<p>Is this a Department, Sponsored, or Voluntary club type?</p>'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      club_type: club_type
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

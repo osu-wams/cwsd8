@@ -1,0 +1,29 @@
+uuid: 67aadf36-6017-4151-9b02-249669e6aff6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_undergrad_degrees_offered
+    - node.type.program
+    - taxonomy.vocabulary.majors_undergraduate
+id: node.program.field_undergrad_degrees_offered
+field_name: field_undergrad_degrees_offered
+entity_type: node
+bundle: program
+label: 'Undergraduate Degree(s) Offered'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      majors_undergraduate: majors_undergraduate
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

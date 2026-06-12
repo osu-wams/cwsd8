@@ -1,0 +1,29 @@
+uuid: 062b7ae5-7480-4ce3-9f72-df67a83d8675
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_placement_tags
+    - node.type.resources
+    - taxonomy.vocabulary.placement_tags
+id: node.resources.field_placement_tags
+field_name: field_placement_tags
+entity_type: node
+bundle: resources
+label: 'Placement Tags'
+description: 'Chose these tags to place resources into specific views displays used in the experience website. Contact an architect before changing.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      placement_tags: placement_tags
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

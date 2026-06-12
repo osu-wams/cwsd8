@@ -1,0 +1,30 @@
+uuid: 8cd0ce9f-8a76-4616-8b74-be9c2498491d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: hide_localist_if_empty
+label: 'hide localist if empty'
+code: |-
+  ol.event-list:has(.nocontent) {
+    display: none;
+  }
+
+  .hide-localist-margin:has(.nocontent) {
+  	margin-bottom: 0px !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/46846\r\n/node/38806"
+contexts: {  }
+conditions_require_all: true

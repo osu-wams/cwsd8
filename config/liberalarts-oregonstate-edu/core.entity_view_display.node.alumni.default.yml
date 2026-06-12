@@ -1,0 +1,121 @@
+uuid: 860a336b-8a05-4296-8864-51e6e0c985bc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.alumni.field_alumni_details
+    - field.field.node.alumni.field_alumni_school_or_group
+    - field.field.node.alumni.field_degree
+    - field.field.node.alumni.field_firest_name
+    - field.field.node.alumni.field_graduating_year
+    - field.field.node.alumni.field_last_name
+    - field.field.node.alumni.field_osu_organizations
+    - field.field.node.alumni.field_photo
+    - field.field.node.alumni.field_program
+    - field.field.node.alumni.field_program_2
+    - node.type.alumni
+  module:
+    - datetime
+    - image
+    - options
+    - text
+    - user
+id: node.alumni.default
+targetEntityType: node
+bundle: alumni
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_alumni_details:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_alumni_school_or_group:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 8
+    region: content
+  field_degree:
+    type: list_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_firest_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_graduating_year:
+    type: datetime_custom
+    label: above
+    settings:
+      timezone_override: ''
+      date_format: 'Y'
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_last_name:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_osu_organizations:
+    type: entity_reference_label
+    label: hidden
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_photo:
+    type: image
+    label: above
+    settings:
+      image_link: ''
+      image_style: ''
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_program:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_program_2:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 9
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

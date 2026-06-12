@@ -1,0 +1,100 @@
+uuid: 1b7bb68c-a20f-46e8-9b04-54debaec81e1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.development_timeline.body
+    - field.field.node.development_timeline.field_date
+    - node.type.development_timeline
+  module:
+    - datetime
+    - layout_builder
+    - layout_discovery
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          2ea8da9a-980e-465a-b50c-a0f1f9f36720:
+            uuid: 2ea8da9a-980e-465a-b50c-a0f1f9f36720
+            region: content
+            configuration:
+              id: 'field_block:node:development_timeline:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          c29c278a-2fc7-429f-a7f2-dda2dee3d276:
+            uuid: c29c278a-2fc7-429f-a7f2-dda2dee3d276
+            region: content
+            configuration:
+              id: 'field_block:node:development_timeline:field_date'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: datetime_default
+                label: above
+                settings:
+                  timezone_override: ''
+                  format_type: medium
+                third_party_settings: {  }
+            weight: 3
+            additional: {  }
+          d57621dd-4348-4ac0-a97e-17ffbb2e76bb:
+            uuid: d57621dd-4348-4ac0-a97e-17ffbb2e76bb
+            region: content
+            configuration:
+              id: 'extra_field_block:node:development_timeline:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 4
+            additional: {  }
+        third_party_settings: {  }
+id: node.development_timeline.default
+targetEntityType: node
+bundle: development_timeline
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_date:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

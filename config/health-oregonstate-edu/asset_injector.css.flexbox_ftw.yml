@@ -1,0 +1,202 @@
+uuid: 6935c64d-585c-40eb-b22e-9208fe3fd809
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: flexbox_ftw
+label: 'Flexbox ftw'
+code: |-
+  /****
+
+  sort of a utility - needs to be assessed to see if something is better
+
+  ***/
+
+  .flex-that-column {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+  }
+
+
+
+
+
+
+
+
+  /****
+
+  This needs to be modernized with logical properties and probably making sure the right flex properties are used
+
+  ***/
+
+  .fc-badge {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      align-content: center;
+  }
+
+  .fi-badge {
+  	margin:0 0.25em 0 0.25em;
+  }
+
+
+
+  /****
+
+  Creates buttons that are the same size lenght wise with different size of content
+
+  ***/
+  .button-flex-grow {
+  	flex: 1;
+    display: flex; /* Allow the button to use flex properties */
+    align-items: center; /* Center the content vertically */
+    text-align: center;
+  	
+  }
+
+
+
+  /* ya basic 2 column that turns to 3 rows under some ch value. ch value classes located in next commented section  */
+
+  .flex-ya-basic-2 {
+     display: flex;
+     flex-wrap: wrap; /* Allow items to wrap onto new lines */
+     gap: 2rem;
+     align-items: stretch;
+  }
+
+  .flex-ya-basic-2 > * { /* Target direct children of the container */
+    flex: 1 1 45%;  /* Allow items to grow and shrink, set initial width to 30% */
+    min-width: 200px; /* Optional: Ensure minimum width for smaller screens */
+  }
+
+  .flex-ya-basic-2::after { /* Create the pseudo-element */
+    content: '';
+    flex: 1 1 45%;         /* Match the flex properties of the other items */
+    visibility: hidden;    /* Make it invisible */
+  }
+
+  @media (max-width: 140ch) {
+    .flex-ya-basic-2 {
+      flex-direction: column; /* Change to column layout */
+      align-items: center;
+    }
+  }
+
+
+  .flex-ya-basic-2-claude {
+     display: flex;
+     flex-wrap: wrap;
+     gap: clamp(1rem, 3vw, 2rem);
+     align-items: stretch;
+  }
+
+  .flex-ya-basic-2-claude > * {
+    flex: 1 1 calc(50% - 1rem);
+    min-width: min(100%, 200px);
+  }
+
+  .flex-ya-basic-2-claude::after {
+    content: '';
+    flex: 1 1 calc(50% - 1rem);
+    min-width: min(100%, 200px);
+  }
+
+  @media (max-width: 140ch) {
+    .flex-ya-basic-2-claude {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .flex-ya-basic-2-claude > * {
+      width: 100%;
+    }
+
+    .flex-ya-basic-2-claude::after {
+      display: none;
+    }
+  }
+
+
+
+
+
+  /* ya basic 3 column that turns to 3 rows under some ch value. ch value classes located in next commented section  */
+
+  .flex-ya-basic-3 {
+     display: flex;
+     flex-wrap: wrap; /* Allow items to wrap onto new lines */
+     gap: 2rem;
+     align-items: stretch;
+  }
+
+  .flex-ya-basic-3 > * { /* Target direct children of the container */
+    flex: 1 1 30%;  /* Allow items to grow and shrink, set initial width to 30% */
+    min-width: 200px; /* Optional: Ensure minimum width for smaller screens */
+  }
+
+  .flex-ya-basic-3::after { /* Create the pseudo-element */
+    content: '';
+    flex: 1 1 30%;         /* Match the flex properties of the other items */
+    visibility: hidden;    /* Make it invisible */
+  }
+
+  @media (max-width: 140ch) {
+    .flex-ya-basic-3 {
+      flex-direction: column; /* Change to column layout */
+      align-items: center;
+    }
+  }
+
+
+
+  .flex-ya-basic-3-claude {
+     display: flex;
+     flex-wrap: wrap;
+     gap: clamp(1rem, 2vw, 2rem);
+     align-items: stretch;
+  }
+
+  .flex-ya-basic-3-claude > * {
+    flex: 1 1 calc(33.333% - 2rem);
+    min-width: min(100%, 200px);
+  }
+
+  .flex-ya-basic-3-claude::after {
+    content: '';
+    flex: 1 1 calc(33.333% - 2rem);
+    min-width: min(100%, 200px);
+  }
+
+  @media (max-width: 140ch) {
+    .flex-ya-basic-3-claude {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    
+    .flex-ya-basic-3-claude > * {
+      width: 100%;
+    }
+
+    .flex-ya-basic-3-claude::after {
+      display: none;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

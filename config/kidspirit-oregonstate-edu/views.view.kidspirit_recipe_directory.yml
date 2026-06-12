@@ -1,0 +1,973 @@
+uuid: 1a89e136-59e5-45d8-b4d1-9a7f25b304bd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_recipe_serving_size
+    - field.storage.node.image
+    - image.style.medium
+    - node.type.kidspirit_recipe
+    - taxonomy.vocabulary.recipe_ingredient
+    - taxonomy.vocabulary.recipe_meal_type
+    - taxonomy.vocabulary.recipe_special_diet
+  module:
+    - better_exposed_filters
+    - image
+    - node
+    - options
+    - taxonomy
+    - user
+id: kidspirit_recipe_directory
+label: 'KidSpirit recipe directory'
+module: views
+description: 'Main page to filter recipes'
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: ''
+      fields:
+        image:
+          id: image
+          table: node__image
+          field: image
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: '<div align="center">{{ image }}</div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: fid
+          type: image
+          settings:
+            image_link: content
+            image_style: medium
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: Image
+          delta_random: false
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: h3
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          settings:
+            link_to_entity: 1
+          ui_name: ''
+        field_recipe_serving_size:
+          id: field_recipe_serving_size
+          table: node__field_recipe_serving_size
+          field: field_recipe_serving_size
+          relationship: none
+          group_type: group
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: null
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: list_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+          ui_name: ''
+          delta_random: false
+      pager:
+        type: full
+        options:
+          offset: 0
+          pagination_heading_level: h4
+          items_per_page: 20
+          total_pages: null
+          id: 0
+          tags:
+            next: 'next ›'
+            previous: '‹ previous'
+            first: '« first'
+            last: 'last »'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 20, 40, 60'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          quantity: 9
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: filtered_html
+          bef:
+            general:
+              autosubmit: false
+              autosubmit_hide: true
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              secondary_collapse_override: '0'
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_breakpoint: ''
+              auto_submit_sort_only: false
+            filter:
+              title:
+                plugin_id: default
+                advanced:
+                  collapsible: false
+                  is_secondary: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+              field_recipe_serving_size_value:
+                plugin_id: bef
+                advanced:
+                  collapsible: true
+                  is_secondary: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+                select_all_none: false
+                soft_limit: 0
+                soft_limit_label_less: 'Show less'
+                soft_limit_label_more: 'Show more'
+                scrollable: false
+                scrollable_height: 300
+              field_recipe_prep_time_value:
+                plugin_id: bef
+                advanced:
+                  collapsible: true
+                  is_secondary: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+                select_all_none: false
+                soft_limit: 0
+                soft_limit_label_less: 'Show less'
+                soft_limit_label_more: 'Show more'
+                scrollable: false
+                scrollable_height: 300
+              field_recipe_cook_time_value:
+                plugin_id: bef
+                advanced:
+                  collapsible: true
+                  is_secondary: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+                select_all_none: false
+                soft_limit: 0
+                soft_limit_label_less: 'Show less'
+                soft_limit_label_more: 'Show more'
+                scrollable: false
+                scrollable_height: 300
+              field_recipe_meal_type_tid:
+                plugin_id: bef
+                advanced:
+                  collapsible: true
+                  is_secondary: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+                select_all_none: false
+                soft_limit: 0
+                soft_limit_label_less: 'Show less'
+                soft_limit_label_more: 'Show more'
+                scrollable: false
+                scrollable_height: 300
+              field_recipe_special_diet_tid:
+                plugin_id: bef
+                advanced:
+                  collapsible: true
+                  is_secondary: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+                select_all_none: false
+                soft_limit: 0
+                soft_limit_label_less: 'Show less'
+                soft_limit_label_more: 'Show more'
+                scrollable: false
+                scrollable_height: 300
+              field_recipe_main_ingredient_tid:
+                plugin_id: bef
+                advanced:
+                  collapsible: true
+                  is_secondary: false
+                  field_classes: ''
+                  open_by_default: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+                select_all_none: false
+                soft_limit: 0
+                soft_limit_label_less: 'Show less'
+                soft_limit_label_more: 'Show more'
+                scrollable: false
+                scrollable_height: 300
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+        perm: 'access content'
+      cache:
+        type: none
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+          exposed: false
+          ui_name: ''
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          plugin_id: bundle
+          operator: in
+          value:
+            kidspirit_recipe: kidspirit_recipe
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: string
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Title
+            description: ''
+            use_operator: false
+            operator: title_op
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+              group_user: group_user
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+        field_recipe_serving_size_value:
+          id: field_recipe_serving_size_value
+          table: node__field_recipe_serving_size
+          field: field_recipe_serving_size_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_recipe_serving_size_value_op
+            label: 'Serving size'
+            description: ''
+            use_operator: false
+            operator: field_recipe_serving_size_value_op
+            identifier: field_recipe_serving_size_value
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+              group_user: group_user
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+        field_recipe_prep_time_value:
+          id: field_recipe_prep_time_value
+          table: node__field_recipe_prep_time
+          field: field_recipe_prep_time_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_recipe_prep_time_value_op
+            label: 'Prep time'
+            description: ''
+            use_operator: false
+            operator: field_recipe_prep_time_value_op
+            identifier: field_recipe_prep_time_value
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+              group_user: group_user
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+        field_recipe_cook_time_value:
+          id: field_recipe_cook_time_value
+          table: node__field_recipe_cook_time
+          field: field_recipe_cook_time_value
+          relationship: none
+          group_type: group
+          plugin_id: list_field
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_recipe_cook_time_value_op
+            label: 'Cook time'
+            description: ''
+            use_operator: false
+            operator: field_recipe_cook_time_value_op
+            identifier: field_recipe_cook_time_value
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+              group_user: group_user
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          ui_name: ''
+        field_recipe_meal_type_tid:
+          id: field_recipe_meal_type_tid
+          table: node__field_recipe_meal_type
+          field: field_recipe_meal_type_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_recipe_meal_type_tid_op
+            label: 'Meal type'
+            description: ''
+            use_operator: false
+            operator: in
+            identifier: field_recipe_meal_type_tid
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+              group_user: group_user
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: recipe_meal_type
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+          ui_name: ''
+          field_name: field_recipe_meal_type
+        field_recipe_special_diet_tid:
+          id: field_recipe_special_diet_tid
+          table: node__field_recipe_special_diet
+          field: field_recipe_special_diet_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_recipe_special_diet_tid_op
+            label: 'Special diet'
+            description: ''
+            use_operator: false
+            operator: in
+            identifier: field_recipe_special_diet_tid
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+              group_user: group_user
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: recipe_special_diet
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+          ui_name: ''
+          field_name: field_recipe_special_diet
+        field_recipe_main_ingredient_tid:
+          id: field_recipe_main_ingredient_tid
+          table: node__field_recipe_main_ingredient
+          field: field_recipe_main_ingredient_target_id
+          relationship: none
+          group_type: group
+          entity_type: node
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_recipe_main_ingredient_tid_op
+            label: 'Main ingredient'
+            description: ''
+            use_operator: false
+            operator: in
+            identifier: field_recipe_main_ingredient_tid
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+              group_user: group_user
+            reduce: false
+            operator_label: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: recipe_ingredient
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+          ui_name: ''
+          field_name: field_recipe_main_ingredient
+      style:
+        type: default
+        options:
+          grouping: {  }
+          row_class: 'flex-items-program-directory list-style-none'
+          default_row_class: false
+          row_class_special: 0
+          type: ul
+          wrapper_class: ''
+          class: flex-container-program-directory
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      use_ajax: true
+      use_more: true
+      use_more_always: false
+      use_more_text: more
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          label: ''
+          empty: true
+          ui_name: ''
+          content:
+            value: |-
+              <h2 class="rtecenter">KidSpirit Recipe Search</h2>
+              <p style="text-align: center; max-width: 690px; margin: 0 auto;">Find the easy to prepare and kid-tested recipe you are looking for by using the filters below.</p>
+            format: full_html
+          tokenize: 0
+      display_extenders: {  }
+      style_plugin: list
+      style_options:
+        grouping: {  }
+        row_class: 'flex-items-program-directory list-style-none'
+        default_row_class: 0
+        row_class_special: 0
+        type: ul
+        wrapper_class: ''
+        class: flex-container-program-directory
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_recipe_serving_size'
+        - 'config:field.storage.node.image'
+  page:
+    id: page
+    display_title: 'Recipe Page'
+    display_plugin: page
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      display_description: ''
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: 'Recipes | OSU KidSpirit'
+            description: '[view:description]'
+            abstract: ''
+            keywords: ''
+            robots: 'index,follow,noindex,nofollow,noarchive,nosnippet,noodp,noydir,noimageindex,notranslate'
+            news_keywords: ''
+            standout: ''
+            rating: ''
+            referrer: ''
+            rights: ''
+            image_src: 'http://kidspirit.dev.acquia.cws.oregonstate.edu/sites/kidspirit.oregonstate.edu/files/kidspirit-recipe-default-image-1920px.jpg'
+            canonical_url: '[view:url]'
+            set_cookie: ''
+            shortlink: '[current-page:url:unaliased]'
+            original_source: ''
+            prev: ''
+            next: ''
+            content_language: ''
+            geo_position: ''
+            geo_placename: ''
+            geo_region: ''
+            icbm: ''
+            refresh: ''
+            revisit_after: ''
+            pragma: ''
+            cache_control: ''
+            expires: ''
+            itemtype: ''
+            'itemprop:name': '[current-page:title]'
+            'itemprop:description': ''
+            'itemprop:image': ''
+            author: ''
+            publisher: ''
+            'og:type': website
+            'og:url': '[current-page:url:absolute]'
+            'og:title': '[current-page:title]'
+            'og:determiner': ''
+            'og:description': ''
+            'og:updated_time': ''
+            'og:see_also': ''
+            'og:image': 'http://kidspirit.dev.acquia.cws.oregonstate.edu/sites/kidspirit.oregonstate.edu/files/kidspirit-recipe-default-image-1920px.jpg'
+            'og:image:url': 'http://kidspirit.dev.acquia.cws.oregonstate.edu/sites/kidspirit.oregonstate.edu/files/kidspirit-recipe-default-image-1920px.jpg'
+            'og:image:secure_url': 'http://kidspirit.dev.acquia.cws.oregonstate.edu/sites/kidspirit.oregonstate.edu/files/kidspirit-recipe-default-image-1920px.jpg'
+            'og:image:type': ''
+            'og:image:width': ''
+            'og:image:height': ''
+            'og:latitude': ''
+            'og:longitude': ''
+            'og:street_address': ''
+            'og:locality': ''
+            'og:region': ''
+            'og:postal_code': ''
+            'og:country_name': ''
+            'og:email': ''
+            'og:phone_number': ''
+            'og:fax_number': ''
+            'og:locale': ''
+            'og:locale:alternate': ''
+            'article:author': ''
+            'article:publisher': ''
+            'article:section': ''
+            'article:tag': ''
+            'article:published_time': ''
+            'article:modified_time': ''
+            'article:expiration_time': ''
+            'profile:first_name': ''
+            'profile:last_name': ''
+            'profile:username': ''
+            'profile:gender': ''
+            'og:audio': ''
+            'og:audio:secure_url': ''
+            'og:audio:type': ''
+            'book:author': ''
+            'book:isbn': ''
+            'book:release_date': ''
+            'book:tag': ''
+            'og:video:url': ''
+            'og:video:secure_url': ''
+            'og:video:width': ''
+            'og:video:height': ''
+            'og:video:type': ''
+            'video:actor': ''
+            'video:actor:role': ''
+            'video:director': ''
+            'video:writer': ''
+            'video:duration': ''
+            'video:release_date': ''
+            'video:tag': ''
+            'video:series': ''
+            'twitter:card': summary
+            'twitter:creator': ''
+            'twitter:creator:id': ''
+            'twitter:url': '[current-page:url:absolute]'
+            'twitter:title': '[current-page:title]'
+            'twitter:description': ''
+            'twitter:dnt': ''
+            'twitter:image': ''
+            'twitter:image:width': ''
+            'twitter:image:height': ''
+            'twitter:image:alt': ''
+            'twitter:image0': ''
+            'twitter:image1': ''
+            'twitter:image2': ''
+            'twitter:image3': ''
+            'twitter:player': ''
+            'twitter:player:width': ''
+            'twitter:player:height': ''
+            'twitter:player:stream': ''
+            'twitter:player:stream:content_type': ''
+            'twitter:app:country': ''
+            'twitter:app:name:iphone': ''
+            'twitter:app:id:iphone': ''
+            'twitter:app:url:iphone': ''
+            'twitter:app:name:ipad': ''
+            'twitter:app:id:ipad': ''
+            'twitter:app:url:ipad': ''
+            'twitter:app:name:googleplay': ''
+            'twitter:app:id:googleplay': ''
+            'twitter:app:url:googleplay': ''
+            'twitter:label1': ''
+            'twitter:data1': ''
+            'twitter:label2': ''
+            'twitter:data2': ''
+          tokenize: true
+      path: recipes
+      open_new_window: 0
+      metatags_tokenize: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_recipe_serving_size'
+        - 'config:field.storage.node.image'

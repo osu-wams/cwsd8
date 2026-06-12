@@ -1,0 +1,372 @@
+uuid: 50e8fdfd-924c-45c0-ac8b-4bc336c37b80
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: rfi_mat_cascades
+label: 'RFI MAT Cascades'
+code: |-
+  "use strict"
+
+  // Add the event listener to the button once the DOM has finished loading with vanilla JavaScript
+  window.addEventListener("load", function(){
+  	document.getElementById("formSubmitBtn").addEventListener("click", preSubmit);
+  	document.getElementById("confirmSubmitBtn").addEventListener("click", submitRFI);
+  	document.getElementById("confirmCancelBtn").addEventListener("click", hideConfirmModal);
+  });
+
+  /**
+   * @desc: Constructs and sends the xhttp request
+   */
+  function submitRFI(){
+  	// Variable for specific Salesforce instances
+  	const env = "oregonstate.my.salesforce-sites.com";
+  	// Production URL
+  	//const env = "osu.secure"
+  	
+  	// Construct the request
+  	const xhttp = new XMLHttpRequest();
+  	
+  	// Notify the user of result of the request
+  	xhttp.onreadystatechange = function () {
+  		if (this.readyState == 4 && this.status == 200) {
+  			showThankyouDisplay();
+  		}
+  	};
+  	
+  	// Display the loading icon
+  	document.getElementById("loader").style.display = "block";
+  	
+  	// Open the request via the API endpoint URI
+  	xhttp.open("POST", "https://" + env + "/forms/services/apexrest/ugradrfi/gradinq", true);
+  	xhttp.setRequestHeader("Content-type", "application/json");
+  	
+  	// Format the field values as a JSON string
+  	let formattedResponses = formatResponses();
+  	
+  	// Send the request
+  	xhttp.send(JSON.stringify(formattedResponses));
+  }
+
+  /**
+   *	@desc: On click event handler for the submit button that collects validates, and formats the form field values before posting.
+   */
+  function preSubmit(){
+  	const validationResult = validateFields();
+  	
+  	// Validate the fields and then prompt for confirmation
+  	if(validationResult.length == 0){
+  		showConfirmModal();
+  	}
+  	// If any invalid fields were encountered, notify the user
+  	else{
+  		const feedback = document.getElementById("feedback");
+  		const feedbackMsg = document.getElementById("feedbackMsg");
+  		feedbackMsg.innerHTML = validationResult;
+  		feedback.style.display = "block";
+  	}
+  }
+
+  /**
+   *	@desc: Validates the default fields with standard null checks, email/confirm email matching, and whether the dob is >= 10
+   */
+  function validateFields(){
+  	const firstName = document.getElementById("firstName");
+  	const lastName = document.getElementById("lastName");
+  	const email = document.getElementById("email");
+  	const confirmEmail = document.getElementById("confirmEmail");
+  	const dob = document.getElementById("dob");
+  	const term = document.getElementById("term");
+  	const option = document.getElementById("option-PL");
+  	const feedback = document.getElementById("feedback");
+  	feedback.style.display = "none";
+  	
+  	let result = "";
+  	
+  	if(firstName.value.trim().length == 0){
+  		result += "Please provide your legal first name.<br>";
+  		firstName.classList.remove("defaultField");
+  		firstName.classList.add("invalidField");
+  	}
+  	else{
+  		firstName.classList.remove("invalidField");
+  		firstName.classList.add("defaultField");
+  	}
+  	
+  	if(lastName.value.trim().length == 0){
+  		result += "Please provide your last (family) name.<br>";
+  		lastName.classList.remove("defaultField");
+  		lastName.classList.add("invalidField");
+  	}
+  	else{
+  		lastName.classList.remove("invalidField");
+  		lastName.classList.add("defaultField");
+  	}
+  	
+  	if(!email.value.trim().match(/^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/i)){
+  		result += "A valid email email address matching the pattern 'someone@example.com' must be provided.<br>";
+  		email.classList.remove("defaultField");
+  		email.classList.add("invalidField");
+  		confirmEmail.classList.remove("defaultField");
+  		confirmEmail.classList.add("invalidField");
+  	}
+  	else if(email.value.trim() != confirmEmail.value.trim() && email.value.trim().match(/^[A-Z0-9._%+-]+@(?:[A-Z0-9-]+\.)+[A-Z]{2,}$/i)){
+  		result += "Email addresses do not match.<br>";
+  		email.classList.remove("defaultField");
+  		email.classList.add("invalidField");
+  		confirmEmail.classList.remove("defaultField");
+  		confirmEmail.classList.add("invalidField");
+  	}
+  	else{
+  		email.classList.remove("invalidField");
+  		email.classList.add("defaultField");
+  		confirmEmail.classList.remove("invalidField");
+  		confirmEmail.classList.add("defaultField");
+  	}
+  	
+  	if(dob.value.length == 0){
+  		result += "Please provide your date of birth<br>";
+  		dob.classList.remove("defaultField");
+  		dob.classList.add("invalidField");
+  	}
+  	else{
+  		// Validate the age of the user by deriving it from the date of birth
+  		const diffMS = Date.now() - new Date(dob.value).getTime();
+  		const ageDate = new Date(diffMS); 
+  		const age = Math.abs(ageDate.getUTCFullYear() - 1970);
+
+  		if(age < 10){
+  			result += "You must be at least 10 years old to continue.<br>";
+  			dob.classList.remove("defaultField");
+  			dob.classList.add("invalidField");
+  		}
+  		else{
+  			dob.classList.remove("invalidField");
+  			dob.classList.add("defaultField");
+  		}
+  	}
+
+  	if (term.value == '000000'){
+  		result += "Please select a term.<br>";
+  		term.classList.remove("defaultField");
+  		term.classList.add("invalidField");
+  	}
+  	else {
+  		term.classList.remove("invalidField");
+  		term.classList.add("defaultField");
+  	}
+
+  	if (option.value == '0000'){
+  		result += "Please select an option.<br>";
+  		option.classList.remove("defaultField");
+  		option.classList.add("invalidField");
+  	}
+  	else {
+  		option.classList.remove("invalidField");
+  		option.classList.add("defaultField");
+  	}
+  	return result;
+  }
+
+  /**
+   *	@desc: Collects and appends all of the additional fields that will be included in the "more" node for any non-default RFI responses 
+   */
+  function collectAdditionalFields(jsonData){
+  	// Collect all of the additional fields by class name
+  	const additionalFields = document.getElementsByClassName("additionalField");
+  	
+  	// Array for any additional fields encountered
+  	let additionalFieldsJSON = [];
+  	
+  	// Iterate over the elements and add to the collection if valid
+  	for(let i = 0; i < additionalFields.length; i++){
+  		
+  		// Input elements
+  		if(additionalFields[i].tagName.toLowerCase() == "input"){
+  			// Special behavior for radio buttons and check boxes
+  			if(additionalFields[i].type == "radio" || additionalFields[i].type == "checkbox"){
+  				additionalFieldsJSON.push('{"apiname":"' + additionalFields[i].name + '","response":"' + additionalFields[i].checked + '"}');
+  			}
+  			// Special behavior for text fields
+  			else{
+  				if(additionalFields[i].value.trim().length > 0){
+  					additionalFieldsJSON.push('{"apiname":"' + additionalFields[i].name + '","response":"' + additionalFields[i].value.trim() + '"}');
+  				}
+  			}
+  		}
+  		// Select elements
+  		else if(additionalFields[i].tagName.toLowerCase() == "select"){
+  			if(additionalFields[i].selectedIndex != 0){
+  				additionalFieldsJSON.push('{"apiname":"' + additionalFields[i].name + '","response":"' 
+  					+ additionalFields[i].options[additionalFields[i].selectedIndex].value + '"}');
+  			}
+  		}
+  	}
+  	
+  	return additionalFieldsJSON;
+  }
+
+  /**
+   *	@desc: Construct the JSON string from the form field values. Defaults are provided in absence of a required field.
+   */
+  function formatResponses(){
+  	// Fields required by the API
+  	const firstName = document.getElementById("firstName").value.trim();
+  	const lastName = document.getElementById("lastName").value.trim();
+  	const email = document.getElementById("email").value.trim();
+  	const dob = document.getElementById("dob").value;
+  	const major = document.getElementById("major");
+  	const degree = document.getElementById("degree");
+  	const campus = document.getElementById("campus");
+  	const term = document.getElementById("term");
+  	
+  	// Construct the JSON, providing default values for missing fields as necessary
+  	let jsonData = '{"data":[{'
+  			+ '"firstname":"' + firstName.charAt(0).toUpperCase() + firstName.substr(1) + '",'
+  			+ '"lastname":"' + lastName.charAt(0).toUpperCase() + lastName.substr(1) + '",'
+  			+ '"email":"' + email + '",'
+  			+ '"major":"' + (major && major.value.length != 0 ? major : "2100") + '",'
+  			+ '"degree":"' + (degree && degree.value.length != 0 ? degree : "MAT") + '",'
+  			+ '"campus":"' + (campus && campus.value.length != 0 ? campus : "B") + '",'
+  			+ '"term":"' + (term && term.selectedIndex != 0 ? term.options[term.selectedIndex].value : "202300") + '",'
+  			+ '"dob":"' + dob + '",'
+  			+ '"sourcecode":"",';
+  			
+  	        jsonData += '"more":[' + collectAdditionalFields(jsonData) +  ',{"apiname": "campaignId-PL", "response": "202103-Cascades-GS-Drupal"}]}]}';
+
+  	
+  	return JSON.parse(jsonData);
+  }
+
+  /**
+   * @desc: Display the confirmation modal dialog before submission
+   */
+  function showConfirmModal(){
+  	const confirmModalContainer = document.getElementById("confirmModalContainer");
+  	const requiredFieldsConfirm = document.getElementById("requiredFieldsConfirm");
+  	// const optionalFieldsConfirm = document.getElementById("optionalFieldsConfirm");
+  	const rfiForm = document.forms.namedItem("rfiForm");
+  	const defaultFields = rfiForm.getElementsByClassName("defaultField");
+  	const additionalFields = rfiForm.getElementsByClassName("additionalField");
+  	let requiredFields = "";
+  	let optionalFields = "";
+  	
+  	
+  	// Iterate over the default/required fields and collect values
+  	for(let i = 0; i < defaultFields.length; i ++){
+  		let fieldLabel = document.getElementById(defaultFields[i].id + "Label").textContent.replace(" *", "");
+  		let fieldValue = "";
+  		
+  		// If an input element
+  		if(defaultFields[i].tagName.toLowerCase() == "input"){
+  			// Special behavior for check boxes and radios
+  			if(defaultFields[i].type == "radio" || defaultFields[i].type == "checkbox"){
+  				fieldValue = defaultFields[i].checked;
+  			}
+  			// Special formatting for dates
+  			else if(defaultFields[i].type == "date"){
+  				const d = new Date(defaultFields[i].value);
+  				const month = defaultFields[i].value.substr(5, 2);
+  				const day = defaultFields[i].value.substr(8, 2);
+  				const year = defaultFields[i].value.substr(0, 4);
+  				
+  				fieldValue = month + "/" + day + "/" + year;
+  			}
+  			// Special behavior for text fields
+  			else{
+  				fieldValue = defaultFields[i].value;
+  			}
+  		}
+  		// If a select element
+  		else if(defaultFields[i].tagName.toLowerCase() == "select"){
+  			fieldValue = defaultFields[i].options[defaultFields[i].selectedIndex].textContent;
+  		}
+  		
+  		requiredFields += "<b>" + fieldLabel + "</b>: " + fieldValue + "<br>";
+  	}
+  	
+  	// Iterate over the additional/optional fields and collect values
+  	for(let i = 0; i < additionalFields.length; i ++){
+  		let fieldLabel = document.getElementById(additionalFields[i].id + "Label").textContent.replace(" *", "");
+  		let fieldValue = "";
+  		
+  		// If an input element
+  		if(additionalFields[i].tagName.toLowerCase() == "input"){
+  			// Special behavior for check boxes and radios
+  			if(additionalFields[i].type == "radio" || additionalFields[i].type == "checkbox"){
+  				fieldValue = additionalFields[i].checked;
+  			}
+  			// Special formatting for dates
+  			else if(defaultFields[i].type == "date"){
+  				const d = new Date(defaultFields[i].value);
+  				const month = d.getMonth() + 1;
+  				const day = d.getDate();
+  				const year = d.getFullYear();
+  				
+  				fieldValue = month + "/" + day + "/" + year;
+  			}
+  			// Special behavior for text fields
+  			else{
+  				fieldValue = additionalFields[i].value;
+  			}
+  		}
+  		// If a select element
+  		else if(additionalFields[i].tagName.toLowerCase() == "select"){
+  			fieldValue = additionalFields[i].options[additionalFields[i].selectedIndex].textContent;
+  		}
+  		
+  		optionalFields += "<b>" + fieldLabel + "</b>: " + fieldValue + "<br>";
+  	}
+  	
+  	// Add the collected values and show the confirmation modal
+  	requiredFieldsConfirm.innerHTML = requiredFields;
+  	// optionalFieldsConfirm.innerHTML = optionalFields;
+  	confirmModalContainer.style.display = "block";
+  	rfiForm.style.display = "none";
+  }
+
+
+  /**
+   * @desc: Hides the confirmation modal dialog
+   */
+  function hideConfirmModal(){
+  	const rfiForm = document.forms.namedItem("rfiForm");
+  	const confirmModalContainer = document.getElementById("confirmModalContainer");
+  	requiredFieldsConfirm.innerHTML = "";
+  	// optionalFieldsConfirm.innerHTML = "";
+  	confirmModalContainer.style.display = "none";
+  	rfiForm.style.display = "block";
+  }
+
+  /**
+   * @desc: Display the thank you prompt after a successful submission
+   */
+  function showThankyouDisplay(){
+  	const tyDisplay = document.getElementById("thankyouDisplay");
+  	// Hide the loading icon
+  	document.getElementById("loader").style.display = "none";
+  	hideConfirmModal();
+  	tyDisplay.style.display = "block";
+  	
+  	setTimeout(function(){ 
+  	    window.location = "https://gradschool.oregonstate.edu/request-info/thank-you";
+  	}, 3000);
+  }
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: true
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/14986
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,53 @@
+uuid: f383b28e-1b41-49b3-9351-9c303ba8bd6e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: blank_slate
+label: 'blank slate'
+code: |+
+  #madrone-primary-menu-container, #block-madrone-breadcrumbs, #block-madrone-search, #madrone-footer-container, #search-link, #main-menu, #page-title, #osu-top-hat + .group-header {
+  display:none!important;
+  }
+
+  #osu-top-hat img {
+  margin:10px auto !important;
+  display:block;
+  }
+
+  #page-wrapper {
+  background: white;
+  }
+
+
+  .block__content__site-name {
+  	display:none !important;
+  }
+
+
+  .site-name__site-link--wrapper {
+  }
+
+  .region-footer {
+  	display:none !important;
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/future\r\n/future/pre-med-pre-health-professions\r\n/future-utone\r\n/future-graduate\r\n/future-graduate/athletic-training\r\n/future-graduate/hdfs\r\n/future-graduate/kinesiology\r\n/future-graduate/mape\r\n/future-graduate/nutrition*\r\n/future-graduate/public-health-mph\r\n/future-graduate/public-health-mph-complete-sophas\r\n/future-graduate/public-health-mph-online\r\n/future-graduate/public-health-phd\r\n/linktree"
+contexts: {  }
+conditions_require_all: true

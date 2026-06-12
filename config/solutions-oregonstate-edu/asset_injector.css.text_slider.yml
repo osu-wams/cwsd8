@@ -1,0 +1,151 @@
+uuid: 006c391d-d205-4858-b51a-dad7b178d13f
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: text_slider
+label: 'text slider'
+code: |-
+  /* TEXT/BUTTON SLIDER STYLES */
+
+  /* Hide unnecessary elements */
+  .projects-container.text-slider footer,
+  .projects-container.text-slider .video-container-portfolio h2 {
+    display: none;
+  }
+
+  /* Container setup */
+  .projects-container.text-slider {
+    position: relative;
+    width: 100%;
+    min-height: 500px;
+    padding: 40px 0;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 30px;
+  }
+
+  /* Individual text card */
+  .projects-container.text-slider > .video-container-portfolio {
+    position: relative;
+    width: calc(33.333% - 20px);
+    max-width: 400px;
+    min-width: 280px;
+    margin: 0;
+    left: auto;
+    transform: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+
+  /* Card styling */
+  .projects-container.text-slider > .video-container-portfolio article {
+    background: #fff;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .projects-container.text-slider > .video-container-portfolio article:hover {
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    transform: translateY(-5px);
+  }
+
+  /* Text content */
+  .projects-container.text-slider .thumbnail-portfolio {
+    flex: 1;
+    text-align: center;
+  }
+
+  .projects-container.text-slider .thumbnail-portfolio h2 {
+    color: #d73f09;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+  }
+
+  .projects-container.text-slider .thumbnail-portfolio p {
+    color: #333;
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+
+  /* Icon/Image */
+  .projects-container.text-slider .thumbnail-portfolio .media {
+    margin: 20px 0;
+  }
+
+  .projects-container.text-slider .thumbnail-portfolio img {
+    max-width: 150px;
+    height: auto;
+    margin: 0 auto;
+  }
+
+  /* Button styling */
+  .projects-container.text-slider .web-projects-btn,
+  .projects-container.text-slider .osu-btn-primary {
+    position: relative;
+    bottom: auto;
+    width: auto;
+    margin: 20px auto 0;
+    padding: 12px 30px;
+    background-color: #d73f09;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  .projects-container.text-slider .web-projects-btn a,
+  .projects-container.text-slider .osu-btn-primary a {
+    color: white !important;
+    text-decoration: none;
+    font-weight: 600;
+    display: block;
+  }
+
+  .projects-container.text-slider .web-projects-btn:hover,
+  .projects-container.text-slider .osu-btn-primary:hover {
+    background-color: #b33607;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(215, 63, 9, 0.3);
+  }
+
+  /* Responsive layout */
+  @media (max-width: 1200px) {
+    .projects-container.text-slider > .video-container-portfolio {
+      width: calc(50% - 20px);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .projects-container.text-slider {
+      gap: 20px;
+      padding: 20px 10px;
+    }
+    
+    .projects-container.text-slider > .video-container-portfolio {
+      width: 100%;
+      max-width: 500px;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/1726
+contexts: {  }
+conditions_require_all: true

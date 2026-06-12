@@ -1,0 +1,33 @@
+uuid: 1e0ddc44-5833-46e6-a2df-dcfc1a2456f0
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - ctools_block
+  theme:
+    - madrone
+id: madrone_body
+theme: madrone
+region: sidebar
+weight: -7
+provider: null
+plugin: 'entity_field:node:body'
+settings:
+  id: 'entity_field:node:body'
+  label: Body
+  label_display: visible
+  provider: ctools_block
+  context_mapping:
+    entity: '@node.node_route_context:node'
+  formatter:
+    type: text_default
+    weight: 0
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

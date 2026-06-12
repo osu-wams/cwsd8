@@ -1,0 +1,39 @@
+uuid: d18351cb-b72c-44b4-8939-bab445cdecbc
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - help
+    - node
+    - system
+  theme:
+    - claro
+id: claro_help_2
+theme: claro
+region: pre_content
+weight: 0
+provider: null
+plugin: help_block
+settings:
+  id: help_block
+  label: Help
+  label_display: '0'
+  provider: help
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    pages: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page
+      story: story

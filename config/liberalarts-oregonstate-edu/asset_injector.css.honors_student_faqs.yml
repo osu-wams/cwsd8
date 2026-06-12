@@ -1,0 +1,40 @@
+uuid: 3f146104-cf44-42a3-b4f8-c28a918ca6d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: honors_student_faqs
+label: 'Honors Student FAQs'
+code: |
+  .field--name-field-headshot {float: right; max-width: 40%; height: auto; margin-left: 2em; margin-bottom: 1em; border-style: solid; border-color: #d73f09; border-width: .5em;}
+  .field--name-field-major {background: #d73f09; padding: 20px; color: #fff; font-weight: 900; font-size: 1.2rem;}
+  .field--name-field-major-2 {background: #d73f09; padding: 0px 20px 20px 20px; color: #fff; font-weight: 900; font-size: 1.2rem;}
+  .field--name-field-major-3 {background: #d73f09; padding: 0px 20px 20px 20px; color: #fff; font-weight: 900; font-size: 1.2rem;}
+  .field--name-body {padding: 1rem 0px;}
+  .field--name-body h3 {font-family: 'Stratum2Web',sans-serif; font-size: 1.5rem;line-height: 1.6rem;font-weight: 500; color: #d73f09; padding-top:1em;}
+
+  @media (max-width: 480px) {
+  .field--name-field-headshot {float: none; max-width: 100%; height: auto; margin-left: 0; margin-bottom: 0;}
+  .field--name-field-major {background: #d73f09; padding: 20px; color: #fff; font-weight: 900; font-size: 1rem;}
+  .field--name-field-major {background: #d73f09; padding: 0px 20px 20px 20px; color: #fff; font-weight: 900; font-size: 1rem;}
+  .field--name-field-major {background: #d73f09; padding: 0px 20px 20px 20px; color: #fff; font-weight: 900; font-size: 1rem;}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/honors-student/*\r\n/honors-student-faq/*"
+contexts: {  }
+conditions_require_all: true

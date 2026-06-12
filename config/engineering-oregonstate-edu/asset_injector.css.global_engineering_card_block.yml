@@ -1,0 +1,79 @@
+uuid: bf791a67-771d-4e50-9f52-9300fc9e9887
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_engineering_card_block
+label: 'GLOBAL engr nav card block (Equal height rows, image to edge)'
+code: |+
+  /* ================================================
+  Styling for Engr Nav Card content block
+  =================================================== */
+
+  .block-inline-blockengineering-card {
+  	position: relative;
+    font-size: 1.2rem;
+  }
+
+  /* Blow up card on hover */
+
+  .block-inline-blockengineering-card:hover {
+  	transform: scale(1.10);
+    transition: transform .5s ease;
+  }
+
+  .block-inline-blockengineering-card .block-field-blockblock-contentengineering-cardfield-osu-card-link a::before {
+  	content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  /** Image to Edge **/
+
+  .block-inline-blockengineering-card,
+  .block-inline-blockengineering-card .block__content > div:first-child, 
+  .block-inline-blockengineering-card .block__content > div:first-child > div > div > div{
+  	padding: 0 !important;
+  }
+  .block-inline-blockengineering-card .block__content .img-fluid {
+  	width: 100%;
+  }
+  .block-inline-blockengineering-card .block-field-blockblock-contentengineering-cardfield-osu-card-link {
+  	padding-left: 1rem;
+  	padding-right: 1rem;
+  	
+  }
+
+  /** Hide Images in mobile **/
+
+  @media (max-width: 540px) {
+  	.block-inline-blockengineering-card .field--name-field-osu-card-image {
+  		display: none;
+  	}
+  	.block-inline-blockengineering-card a {
+  		display: block;
+  		padding: .5rem 1rem;
+  		
+  	}
+  }
+
+  /**Nav card font size**/
+  .block-inline-blockengineering-card a{
+  	font-size: 1.2rem;
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

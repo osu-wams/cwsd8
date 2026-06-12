@@ -1,0 +1,46 @@
+uuid: c141c9ba-2da6-4335-9a93-84d0401c74af
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: coe_responsive_layout
+label: 'COE Brand Responsive Layout'
+code: |
+  .coe-3-col .col-12 {
+  	display: flex;
+  	flex-wrap: wrap;
+  	column-gap: 20px;
+  	row-gap: 50px;
+  	align-items: stretch;
+  }
+
+  .coe-3-col .coe-col-item {
+  	width: calc(33% - 17px);
+  }
+
+  @media screen and (max-width: 991px) {
+  	.coe-3-col .coe-col-item {
+  		width: calc(50% - 10px);
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	.coe-3-col .coe-col-item {
+  		width: 100%;
+  	}
+  }
+
+  .bottom-align-title {
+  	display: flex;
+  	flex-direction: column-reverse;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

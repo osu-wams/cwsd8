@@ -1,0 +1,70 @@
+uuid: 10a29267-edd0-4fd1-96e6-a7470ef2f5ab
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: new
+label: 'News Page'
+code: |-
+  .news-card{
+  	border-radius: 15px;
+  	height: 450px;
+    transition: 0.3s !important;
+    position:relative;
+  }
+
+  .news-card:hover{
+    margin-top: -7px;
+  }
+
+  .news-image img{
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .newscard-padding{
+  	padding:3%;
+    border-top: 4px solid #d73f09;
+
+  }
+
+  .newscard-padding h2{
+  	font-size: 1.5rem;
+  }
+
+  .link-stretched{
+    inset: 0; /* top:0; right:0; bottom:0; left:0 */
+    z-index: 2;
+    text-indent: -9999px;
+    overflow: hidden;
+    text-decoration: none !important;
+    position: absolute;
+  }
+
+  .news-card .link-stretched{
+    text-decoration: none;
+  }
+
+  .news-card a:active:not(.button,#osu-logo-wide,#osu-logo-crest) {
+    background-color: #21252900!important;
+  }
+
+  .news-title-link{
+  	text-decoration:none;
+  	color:#d73f09;
+  	font-size: 25px;
+  	font-family: 'Stratum2Web',serif;
+  	font-weight:500;
+  	line-height:1;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

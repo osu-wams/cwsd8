@@ -1,0 +1,41 @@
+uuid: e90b01bb-f289-482d-b35c-d0e756f7c5cc
+langcode: en
+status: false
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.project.body
+    - field.field.node.project.field_featured_image
+    - field.field.node.project.field_old_project
+    - field.field.node.project.field_project_mentor
+    - field.field.node.project.field_project_partners
+    - field.field.node.project.field_student_participants
+    - node.type.project
+  module:
+    - text
+    - user
+id: node.project.teaser
+targetEntityType: node
+bundle: project
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_featured_image: true
+  field_old_project: true
+  field_project_mentor: true
+  field_project_partners: true
+  field_student_participants: true

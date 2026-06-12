@@ -5,9 +5,14 @@ dependencies:
   config:
     - system.menu.menu-membership
   module:
+    - block_class
+    - block_visibility_groups
     - system
   theme:
     - madrone
+third_party_settings:
+  block_class:
+    classes: pt-3
 id: doug_fir_menu_menu_membership
 theme: madrone
 region: sidebar
@@ -16,8 +21,8 @@ provider: null
 plugin: 'system_menu_block:menu-membership'
 settings:
   id: 'system_menu_block:menu-membership'
-  label: ''
-  label_display: '0'
+  label: Participation
+  label_display: visible
   provider: system
   level: 1
   depth: 0
@@ -26,20 +31,8 @@ visibility:
   request_path:
     id: request_path
     negate: false
-    pages: |-
-      /participation
-      /current-year-membership
-      /membership-year
-      /membership-2018
-      /membership-2017
-      /membership-2016
-      /membership-2015
-      /attendance-year
-      /faculty-service
-      /directory
-      /admin/members
-      /*elections*
-      /2016-president-elect-early-fall-election
-      /faculty-senate-handbook
-      /2018-new-senator-orientation-materials
-      /attendance*
+    pages: "/participation\r\n/current-year-membership\r\n/membership-year\r\n/membership-2018\r\n/membership-2017\r\n/membership-2016\r\n/membership-2015\r\n/attendance-year\r\n/faculty-service\r\n/directory\r\n/admin/members\r\n/*elections*\r\n/2016-president-elect-early-fall-election\r\n/faculty-senate-handbook\r\n/2018-new-senator-orientation-materials\r\n/attendance*\r\n/faculty-senate-resources*"
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''

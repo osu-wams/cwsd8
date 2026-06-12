@@ -1,0 +1,229 @@
+uuid: 54f6fd37-11e1-4781-b3ca-ae7aacfbd9b7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.publications.field_c_pub_issn
+    - field.field.node.publications.field_c_pub_url
+    - field.field.node.publications.field_pub_abstract
+    - field.field.node.publications.field_pub_authors
+    - field.field.node.publications.field_pub_date_published
+    - field.field.node.publications.field_pub_doi
+    - field.field.node.publications.field_pub_journal
+    - field.field.node.publications.field_pub_publisher
+    - field.field.node.publications.field_pub_type
+    - field.field.node.publications.field_pub_volume
+    - field.field.node.publications.field_pub_year_publication
+    - node.type.publications
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      356fe79a-d4b0-445e-ae68-15e61bb70af2:
+        separator: '; '
+        limit: null
+        uuid: 356fe79a-d4b0-445e-ae68-15e61bb70af2
+        plugin: explode
+        source: authors
+        weight: 0
+        label: Explode
+label: Publications
+id: publications
+description: 'Importing publications from a CSV'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: publications
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  nid:
+    value: Nid
+    label: Nid
+    machine_name: nid
+    type: csv
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  type:
+    value: Type
+    label: Type
+    machine_name: type
+    type: csv
+  year_of_publication:
+    value: 'Year of Publication'
+    label: 'Year of Publication'
+    machine_name: year_of_publication
+    type: csv
+  date_published:
+    value: 'Date Published'
+    label: 'Date Published'
+    machine_name: date_published
+    type: csv
+  doi:
+    value: DOI
+    label: DOI
+    machine_name: doi
+    type: csv
+  blank:
+    value: Blank
+    label: Blank
+    machine_name: blank
+    type: blank
+  abstract:
+    value: Abstract
+    label: Abstract
+    machine_name: abstract
+    type: csv
+  secondary_title:
+    value: 'Secondary Title'
+    label: 'Secondary Title'
+    machine_name: secondary_title
+    type: csv
+  authors:
+    value: Authors
+    label: Authors
+    machine_name: authors
+    type: csv
+  volume:
+    value: Volume
+    label: Volume
+    machine_name: volume
+    type: csv
+  publisher:
+    value: Publisher
+    label: Publisher
+    machine_name: publisher
+    type: csv
+  issn:
+    value: ISSN
+    label: ISSN
+    machine_name: issn
+    type: csv
+  url:
+    value: URL
+    label: URL
+    machine_name: url
+    type: csv
+  blank_2:
+    value: 'Blank 2'
+    label: 'Blank 2'
+    machine_name: blank_2
+    type: blank
+mappings:
+  -
+    target: nid
+    map:
+      value: nid
+    settings: {  }
+    unique:
+      value: 1
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_type
+    map:
+      target_id: type
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: publication_type
+  -
+    target: field_pub_year_publication
+    map:
+      value: year_of_publication
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_date_published
+    map:
+      value: date_published
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_pub_doi
+    map:
+      uri: doi
+      title: blank
+    settings:
+      language: null
+  -
+    target: field_pub_abstract
+    map:
+      value: abstract
+    settings:
+      language: null
+      format: plain_text
+  -
+    target: field_pub_journal
+    map:
+      value: secondary_title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_authors
+    map:
+      value: authors
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_volume
+    map:
+      value: volume
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_pub_publisher
+    map:
+      value: publisher
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_c_pub_issn
+    map:
+      value: issn
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_c_pub_url
+    map:
+      uri: url
+      title: blank_2
+    settings:
+      language: null

@@ -1,0 +1,47 @@
+uuid: b23a7407-a24b-41a3-ae66-3e55835f8bbd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.software.body
+    - field.field.node.software.field_audiences
+    - field.field.node.software.field_can_install_on
+    - field.field.node.software.field_category
+    - field.field.node.software.field_cost
+    - field.field.node.software.field_external_url
+    - field.field.node.software.field_operating_system
+    - field.field.node.software.field_price
+    - field.field.node.software.field_version
+    - node.type.software
+  module:
+    - text
+    - user
+id: node.software.teaser
+targetEntityType: node
+bundle: software
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_audiences: true
+  field_can_install_on: true
+  field_category: true
+  field_cost: true
+  field_external_url: true
+  field_operating_system: true
+  field_price: true
+  field_version: true

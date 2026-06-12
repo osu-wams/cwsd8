@@ -1,0 +1,30 @@
+uuid: cb7da9a3-28ae-440b-8caf-12ee5c651854
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_cqls_category
+    - node.type.cqls_service_fee
+    - taxonomy.vocabulary.service_fee_categories
+id: node.cqls_service_fee.field_cqls_category
+field_name: field_cqls_category
+entity_type: node
+bundle: cqls_service_fee
+label: Service
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      service_fee_categories: service_fee_categories
+    sort:
+      field: _none
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 0
+field_type: entity_reference

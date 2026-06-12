@@ -1,0 +1,195 @@
+uuid: c638f4c1-6065-4ba6-915e-42ca799099ed
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.salary_steps.field_step_1
+    - field.field.taxonomy_term.salary_steps.field_step_10
+    - field.field.taxonomy_term.salary_steps.field_step_2
+    - field.field.taxonomy_term.salary_steps.field_step_3
+    - field.field.taxonomy_term.salary_steps.field_step_4
+    - field.field.taxonomy_term.salary_steps.field_step_5
+    - field.field.taxonomy_term.salary_steps.field_step_6
+    - field.field.taxonomy_term.salary_steps.field_step_7
+    - field.field.taxonomy_term.salary_steps.field_step_8
+    - field.field.taxonomy_term.salary_steps.field_step_9
+    - taxonomy.vocabulary.salary_steps
+  module:
+    - feeds_tamper
+    - taxonomy
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      a2c7914f-96d4-473b-92a3-85f5371f5f7e:
+        character: '1'
+        side: ltrim
+        uuid: a2c7914f-96d4-473b-92a3-85f5371f5f7e
+        plugin: trim
+        source: step_1
+        weight: 0
+        label: 'Characters to trim'
+label: 'Classified Staff Steps'
+id: classified_staff_steps
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:taxonomy_term'
+processor_configuration:
+  values:
+    vid: salary_steps
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: false
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  salary_steps:
+    value: 'Salary Steps'
+    label: 'Salary Steps'
+    machine_name: salary_steps
+    type: csv
+  step_1:
+    value: 'Step 1'
+    label: 'Step 1'
+    machine_name: step_1
+    type: csv
+  step_10:
+    value: 'Step 10'
+    label: 'Step 10'
+    machine_name: step_10
+    type: csv
+  step_2:
+    value: 'Step 2'
+    label: 'Step 2'
+    machine_name: step_2
+    type: csv
+  step_3:
+    value: 'Step 3'
+    label: 'Step 3'
+    machine_name: step_3
+    type: csv
+  step_4:
+    value: 'Step 4'
+    label: 'Step 4'
+    machine_name: step_4
+    type: csv
+  step_5:
+    value: 'Step 5'
+    label: 'Step 5'
+    machine_name: step_5
+    type: csv
+  step_6:
+    value: 'Step 6'
+    label: 'Step 6'
+    machine_name: step_6
+    type: csv
+  step_7:
+    value: 'Step 7'
+    label: 'Step 7'
+    machine_name: step_7
+    type: csv
+  step_8:
+    value: 'Step 8'
+    label: 'Step 8'
+    machine_name: step_8
+    type: csv
+  step_9:
+    value: 'Step 9'
+    label: 'Step 9'
+    machine_name: step_9
+    type: csv
+mappings:
+  -
+    target: name
+    map:
+      value: salary_steps
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_step_1
+    map:
+      value: step_1
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_step_10
+    map:
+      value: step_10
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_step_2
+    map:
+      value: step_2
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_step_3
+    map:
+      value: step_3
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_step_4
+    map:
+      value: step_4
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_step_5
+    map:
+      value: step_5
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_step_6
+    map:
+      value: step_6
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_step_7
+    map:
+      value: step_7
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_step_8
+    map:
+      value: step_8
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_step_9
+    map:
+      value: step_9
+    settings:
+      language: null
+    unique: {  }

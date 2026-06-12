@@ -1,0 +1,468 @@
+uuid: 0b077e25-7ff7-4086-9eaf-f54624187c8f
+langcode: en
+status: open
+dependencies: {  }
+weight: 0
+open: null
+close: null
+uid: 26
+template: false
+archive: false
+id: youth_program_guidance
+title: 'Youth Program Guidance'
+description: '<p>EOA guidance for youth programs on their processes for disabled youth</p>'
+categories: {  }
+elements: |-
+  markup:
+    '#type': webform_markup
+    '#markup': |-
+      <p>This decision tree dynamically changes based on your answers and is divided into four phases: <strong>Registration</strong>, <strong>Review</strong>, <strong>Process</strong>, and <strong>Implementation</strong>.</p>
+
+      <p>View the full tree if you prefer.</p>
+
+      <p>&nbsp;</p>
+  phase_1_registration:
+    '#type': container
+    phase_1_registration1:
+      '#type': webform_markup
+      '#markup': '<p><strong>Phase 1: Registration Materials</strong></p>'
+    request_statement:
+      '#type': radios
+      '#title': 'Do your registration materials contain a statement on how to request accommodations?'
+      '#options': yes_no
+    request_statement_no:
+      '#type': webform_markup
+      '#states':
+        visible:
+          ':input[name="request_statement"]':
+            value: 'No'
+      '#markup': '<p>Add an accommodation statement. OSU has provided a sample accommodation statement. Every potential program participant needs to know how to request accommodations. Then go back to the previous question and answer Yes.</p>'
+  phase_2_review:
+    '#type': container
+    '#states':
+      visible:
+        '':
+          '': ''
+    phase_2_review1:
+      '#type': webform_markup
+      '#states':
+        visible:
+          ':input[name="request_statement"]':
+            value: 'Yes'
+      '#markup': '<p><strong>Phase 2: Review</strong></p>'
+    accommodation_requests:
+      '#type': radios
+      '#title': 'Review registration materials regularly. Are there any access or accommodation needs?'
+      '#options': yes_no
+      '#states':
+        visible:
+          ':input[name="request_statement"]':
+            value: 'Yes'
+    accommodation_requests_no:
+      '#type': webform_markup
+      '#states':
+        visible:
+          ':input[name="accommodation_requests"]':
+            value: 'No'
+      '#markup': '<p>No further action needed.</p>'
+    additional_questions:
+      '#type': radios
+      '#title': 'Follow up with the family and/or caregiver to confirm you received the request. Do you have additional questions about the request?'
+      '#options': yes_no
+      '#states':
+        visible:
+          ':input[name="accommodation_requests"]':
+            value: 'Yes'
+    additional_questions_yes:
+      '#type': radios
+      '#title': "Gather additional information by talking with the family and/or caregiver. Be sure to document your conversation. Consider questions such as i.\tWhat works at home and/or school?  ii.\tWhat has worked in other programs before (if applicable)?  iii.\tAre there any outside resources to consider? Are your questions now answered sufficiently to understand the request?"
+      '#options': yes_no
+      '#states':
+        visible:
+          ':input[name="additional_questions"]':
+            value: 'Yes'
+    questions_answered_no:
+      '#type': webform_markup
+      '#states':
+        visible:
+          ':input[name="additional_questions_yes"]':
+            value: 'No'
+      '#markup': '<p>Keep asking additional questions until you understand, be sure the questions are about the needed accommodation request only. Then go back to the previous question and answer Yes to move on.</p>'
+    additional_questions_no:
+      '#type': radios
+      '#title': 'Can you provide the accommodation without additional infrastructure, support, resources, training, and/or safety concerns?'
+      '#options': yes_no
+      '#states':
+        visible:
+          - ':input[name="additional_questions"]':
+              value: 'No'
+          - or
+          - ':input[name="additional_questions_yes"]':
+              value: 'Yes'
+  phase_3_process:
+    '#type': container
+    '#states':
+      visible:
+        ':input[name="additional_questions_no"]':
+          value: 'No'
+    phase_3_process1:
+      '#type': webform_markup
+      '#states':
+        visible:
+          ':input[name="additional_questions_no"]':
+            value: 'No'
+      '#markup': '<p><strong>Phase 3: Process</strong></p>'
+    accommodation_needs_list:
+      '#type': radios
+      '#title': 'The accommodation needs are related to (select one at a time as needed):'
+      '#options':
+        'Environmental or facility access.': 'Environmental or facility access.'
+        'Behavioral support.': 'Behavioral support.'
+        'Food allergies or dietary restrictions.': 'Food allergies or dietary restrictions.'
+        'Housing or overnight stays.': 'Housing or overnight stays.'
+        'Medication management.': 'Medication management.'
+        'Financial barrier to providing accommodation.': 'Financial barrier to providing accommodation.'
+      '#states':
+        visible:
+          ':input[name="additional_questions_no"]':
+            value: 'No'
+    financial_need:
+      '#type': radios
+      '#title': 'Consult with your supervisor about options and work with your superivsor and/or unit to locate available funds as needed. Was a solution found?'
+      '#options': yes_no
+      '#states':
+        visible:
+          - ':input[name="accommodation_needs_list"]':
+              value: 'Environmental or facility access.'
+          - or
+          - ':input[name="accommodation_needs_list"]':
+              value: 'Financial barrier to providing accommodation.'
+    uhds:
+      '#type': radios
+      '#title': 'Are you using University Housing and Dining Services?'
+      '#options': yes_no
+      '#states':
+        visible:
+          - ':input[name="accommodation_needs_list"]':
+              value: 'Housing or overnight stays.'
+          - or
+          - ':input[name="accommodation_needs_list"]':
+              value: 'Food allergies or dietary restrictions.'
+    medication_management:
+      '#type': radios
+      '#title': 'Is the medication management request related to:'
+      '#options':
+        'Severe allergies: an Epi Pen is necessary.': 'Severe allergies: an Epi Pen is necessary.'
+        'Administration of medication.': 'Administration of medication.'
+      '#states':
+        visible:
+          ':input[name="accommodation_needs_list"]':
+            value: 'Medication management.'
+    uhds_yes:
+      '#type': radios
+      '#title': 'Great, UHDS is adept at accommodating various dietary and allergy needs, as well as accommodations for disability-related needs in housing. Be sure to verify they have the information needed and a plan in place before the event.'
+      '#options':
+        'Move to Implementation': 'Move to Implementation'
+      '#states':
+        visible:
+          ':input[name="uhds"]':
+            value: 'Yes'
+    uhds_no:
+      '#type': radios
+      '#title': 'Have you communicated allergies, dietary restrictions, and accommodation needs to the site/vendor?'
+      '#options':
+        'Yes': 'Yes. The site/vendor is prepared to accommodate those requests.'
+        'No': 'No. The site/vendor is unable to accommodate those requests.'
+      '#states':
+        visible:
+          ':input[name="uhds"]':
+            value: 'No'
+    epi_pen_plan:
+      '#type': radios
+      '#title': 'Does your program have an Epi Pen and a plan for training staff to us the Epi Pen?'
+      '#options': yes_no
+      '#states':
+        visible:
+          ':input[name="medication_management"]':
+            value: 'Severe allergies: an Epi Pen is necessary.'
+    consult_youth_protection:
+      '#type': radios
+      '#title': 'Consult with the Office of Youth Protection. They help support Epi Pen training for staff and can help you obtain an Epi Pen. They also can help talk through administration of medication. Was a solution found?'
+      '#options':
+        'Yes': 'Yes'
+        'No': 'No -- Explore other options with EOA and Youth Protection until you are ready to implement.'
+      '#states':
+        visible:
+          - ':input[name="epi_pen_plan"]':
+              value: 'No'
+          - or
+          - ':input[name="self_administer"]':
+              value: 'No'
+    self_administer:
+      '#type': radios
+      '#title': 'Is the youth able to self-administer their medication according to the OSU Medication Management Policy?'
+      '#description': '<p><a href="https://youth.oregonstate.edu/policy-resource/medication-management">OSU Medication Management Policy</a></p>'
+      '#options': yes_no
+      '#states':
+        visible:
+          ':input[name="medication_management"]':
+            value: 'Administration of medication.'
+    behavioral_support:
+      '#type': radios
+      '#title': "Behavioral standards are important, but so too is understanding that some disabled youth may have different needs than non-disabled youth. Something that can often impact neurodivergent people are rigid requirements that don't account for their needs. Ask the family/caregiver questions and determine if your program design allows for flexibility for the youth to participate in ways that meet their needs (low stim, less noisy, less large group). Be flexible with that kind of program design where you can. Did this answer your questions?"
+      '#options': yes_no
+      '#states':
+        visible:
+          ':input[name="accommodation_needs_list"]':
+            value: 'Behavioral support.'
+    consult_eoa:
+      '#type': radios
+      '#title': 'Consult with Equal Opportunity and Access (EOA). Discuss the accommodation request, disability-related barriers, and what you have done so far. Did you find a solution?'
+      '#options':
+        'Yes': 'Yes'
+        'No': 'No. Using this process to determine reasonable accommodations can take time. Be patient and continue to engage. EOA will help you find an answer.'
+      '#states':
+        visible:
+          - ':input[name="uhds_no"]':
+              value: 'No'
+          - or
+          - ':input[name="financial_need"]':
+              value: 'No'
+          - or
+          - ':input[name="consult_youth_protection"]':
+              value: 'No'
+          - or
+          - ':input[name="behavioral_support"]':
+              value: 'No'
+  phase_4_implementation:
+    '#type': container
+    '#states':
+      visible:
+        - ':input[name="additional_questions_no"]':
+            value: 'Yes'
+        - or
+        - ':input[name="financial_need"]':
+            value: 'Yes'
+        - or
+        - ':input[name="uhds_no"]':
+            value: 'Yes'
+        - or
+        - ':input[name="consult_eoa"]':
+            value: 'Yes'
+        - or
+        - ':input[name="epi_pen_plan"]':
+            value: 'Yes'
+        - or
+        - ':input[name="consult_youth_protection"]':
+            value: 'Yes'
+        - or
+        - ':input[name="self_administer"]':
+            value: 'Yes'
+        - or
+        - ':input[name="uhds_yes"]':
+            checked: true
+        - or
+        - ':input[name="behavioral_support"]':
+            value: 'Yes'
+    phase_4_implementation1:
+      '#type': webform_markup
+      '#markup': '<p><strong>Phase 4: Implementation</strong></p>'
+    implementation:
+      '#type': webform_markup
+      '#markup': |-
+        <p>You are ready to implement the accommodation(s). Make sure to document the following and maintain a record in accordance with the <a href="https://policy.oregonstate.edu/UPSM/04-010_records_retention">OSU documentation retention policy</a>:</p>
+
+        <ul>
+        	<li>Any communication related to a reasonable accommodation request.</li>
+        	<li>Any documentation associated with the allergy, dietary needs, or disability.</li>
+        	<li>Any documentation that helped determine reasonable accommodation.</li>
+        </ul>
+  actions:
+    '#type': webform_actions
+    '#title': 'Submit button(s)'
+    '#submit_hide': true
+css: ''
+javascript: ''
+settings:
+  ajax: false
+  ajax_scroll_top: form
+  ajax_progress_type: ''
+  ajax_effect: ''
+  ajax_speed: null
+  page: true
+  page_submit_path: ''
+  page_confirm_path: ''
+  page_theme_name: ''
+  form_title: both
+  form_submit_once: false
+  form_open_message: ''
+  form_close_message: ''
+  form_exception_message: ''
+  form_previous_submissions: true
+  form_confidential: false
+  form_confidential_message: ''
+  form_disable_remote_addr: false
+  form_convert_anonymous: false
+  form_prepopulate: false
+  form_prepopulate_source_entity: false
+  form_prepopulate_source_entity_required: false
+  form_prepopulate_source_entity_type: ''
+  form_unsaved: false
+  form_disable_back: false
+  form_submit_back: false
+  form_disable_autocomplete: false
+  form_novalidate: false
+  form_disable_inline_errors: false
+  form_required: false
+  form_autofocus: false
+  form_details_toggle: false
+  form_reset: false
+  form_access_denied: default
+  form_access_denied_title: ''
+  form_access_denied_message: ''
+  form_access_denied_attributes: {  }
+  form_file_limit: ''
+  form_attributes: {  }
+  form_method: ''
+  form_action: ''
+  share: false
+  share_node: false
+  share_theme_name: ''
+  share_title: true
+  share_page_body_attributes: {  }
+  submission_label: ''
+  submission_exception_message: ''
+  submission_locked_message: ''
+  submission_log: false
+  submission_excluded_elements: {  }
+  submission_exclude_empty: false
+  submission_exclude_empty_checkbox: false
+  submission_views: {  }
+  submission_views_replace: {  }
+  submission_user_columns: {  }
+  submission_user_duplicate: false
+  submission_access_denied: default
+  submission_access_denied_title: ''
+  submission_access_denied_message: ''
+  submission_access_denied_attributes: {  }
+  previous_submission_message: ''
+  previous_submissions_message: ''
+  autofill: false
+  autofill_message: ''
+  autofill_excluded_elements: {  }
+  wizard_progress_bar: true
+  wizard_progress_pages: false
+  wizard_progress_percentage: false
+  wizard_progress_link: false
+  wizard_progress_states: false
+  wizard_start_label: ''
+  wizard_preview_link: false
+  wizard_confirmation: true
+  wizard_confirmation_label: ''
+  wizard_auto_forward: true
+  wizard_auto_forward_hide_next_button: false
+  wizard_keyboard: true
+  wizard_track: ''
+  wizard_prev_button_label: ''
+  wizard_next_button_label: ''
+  wizard_toggle: false
+  wizard_toggle_show_label: ''
+  wizard_toggle_hide_label: ''
+  wizard_page_type: container
+  wizard_page_title_tag: h2
+  preview: 0
+  preview_label: ''
+  preview_title: ''
+  preview_message: ''
+  preview_attributes: {  }
+  preview_excluded_elements: {  }
+  preview_exclude_empty: true
+  preview_exclude_empty_checkbox: false
+  draft: none
+  draft_multiple: false
+  draft_auto_save: false
+  draft_saved_message: ''
+  draft_loaded_message: ''
+  draft_pending_single_message: ''
+  draft_pending_multiple_message: ''
+  confirmation_type: page
+  confirmation_url: ''
+  confirmation_title: ''
+  confirmation_message: ''
+  confirmation_attributes: {  }
+  confirmation_back: true
+  confirmation_back_label: ''
+  confirmation_back_attributes: {  }
+  confirmation_exclude_query: false
+  confirmation_exclude_token: false
+  confirmation_update: false
+  limit_total: null
+  limit_total_interval: null
+  limit_total_message: ''
+  limit_total_unique: false
+  limit_user: null
+  limit_user_interval: null
+  limit_user_message: ''
+  limit_user_unique: false
+  entity_limit_total: null
+  entity_limit_total_interval: null
+  entity_limit_user: null
+  entity_limit_user_interval: null
+  purge: none
+  purge_days: null
+  results_disabled: false
+  results_disabled_ignore: false
+  results_customize: false
+  token_view: false
+  token_update: false
+  token_delete: false
+  serial_disabled: false
+access:
+  create:
+    roles:
+      - anonymous
+      - authenticated
+    users: {  }
+    permissions: {  }
+  view_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  purge_any:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  view_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  update_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  delete_own:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  administer:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  test:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+  configuration:
+    roles: {  }
+    users: {  }
+    permissions: {  }
+handlers: {  }
+variants: {  }

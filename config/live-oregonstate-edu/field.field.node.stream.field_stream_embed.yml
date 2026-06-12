@@ -1,0 +1,31 @@
+uuid: 4875c19d-88da-4f4b-bc94-1518b523b467
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_stream_embed
+    - media.type.kaltura
+    - media.type.remote_video
+    - node.type.stream
+id: node.stream.field_stream_embed
+field_name: field_stream_embed
+entity_type: node
+bundle: stream
+label: 'Stream Embed'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      kaltura: kaltura
+      remote_video: remote_video
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: kaltura
+field_type: entity_reference

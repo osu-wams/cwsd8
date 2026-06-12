@@ -1,0 +1,26 @@
+uuid: cfae24b1-02d1-4a38-92c9-2951a559eeec
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_n
+label: 'COE No Menu on Page (hide menu)'
+code: |-
+  header {
+  	display: none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/52071
+contexts: {  }
+conditions_require_all: true

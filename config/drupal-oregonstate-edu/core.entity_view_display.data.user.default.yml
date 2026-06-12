@@ -1,0 +1,68 @@
+uuid: a2d0946b-5b64-4abf-bae1-be690a4949e3
+langcode: en
+status: true
+dependencies:
+  config:
+    - eck.eck_type.data.user
+    - field.field.data.user.feeds_item
+    - field.field.data.user.field_data_user_cas_username
+    - field.field.data.user.field_data_user_email
+  module:
+    - user
+id: data.user.default
+targetEntityType: data
+bundle: user
+mode: default
+content:
+  created:
+    type: timestamp
+    label: hidden
+    settings:
+      date_format: medium
+      custom_date_format: ''
+      timezone: ''
+      tooltip:
+        date_format: long
+        custom_date_format: ''
+      time_diff:
+        enabled: false
+        future_format: '@interval hence'
+        past_format: '@interval ago'
+        granularity: 2
+        refresh: 60
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_data_user_cas_username:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_data_user_email:
+    type: basic_string
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  uid:
+    type: author
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+hidden:
+  changed: true
+  feeds_item: true

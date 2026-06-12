@@ -1,0 +1,274 @@
+uuid: 2cfbfc94-f7b5-49b3-ac26-032579ead41b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: homep
+label: Homepage
+code: |-
+  /* ── Base styles: Mobile (< 768px) ───────────────────────── */
+  .portland-title-text,
+  .portland-title h2,
+  .portland-title-text-left-line {
+    font-family: "Georgia", "Noto Serif", serif;
+    font-size: 30px; /* base size for small screens (below 768px) */
+  }
+  .portland-title-text-left-line {
+    font-family: "Georgia", "Noto Serif", serif;
+    font-size: 30px;
+    position: relative;
+  }
+
+  .portland-title-text-left-line::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    background-color: #d73f09;
+    width: 100vw;
+    margin-right: 16px;
+  }
+
+  .hp-sideways-gradient {
+      background: linear-gradient(to left,rgba(255,0,0,0)5%,rgba(0,0,0,1)80%);
+      padding: 40px 0px 40px 0px;
+      background-size: 100vw;
+      background-repeat: no-repeat;
+  }
+  .hp-sideways-text {
+  	padding: 0 60px 0 0px;
+  	 max-width: 450px;
+      line-height: 1.6;
+  }
+  .above-sideways {
+  	font-family: "Stratum2Web", serif;
+  	font-size:50px;
+  	font-weight:600;
+  	margin:0;
+  }
+  .sideways-title {
+  		writing-mode: vertical-lr;
+      transform: rotate(180deg);
+      font-family: "Georgia", "Noto serif", serif;
+      font-size: 120px;
+      font-weight: 700;
+      line-height: 0;
+  }
+  .hero-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: -25px;
+  }
+
+  .hero-line__bar {
+    width: 54px;
+    min-width: 54px;
+    height: 2px;
+    background: #d73f09;
+  }
+
+  .stat-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .stat-bars-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .stat-red-bar,
+  .stat-gray-bar,
+  .stat-black-bar {
+    flex: 1;
+    min-width: 100%;
+    min-width: 300px;
+  }
+
+  .stat-red-bar {
+    border-bottom: solid 30px #d73f09;
+    border-radius: 0;
+    background: #fff;
+    padding-top: 30px;
+  }
+
+  .stat-gray-bar {
+    border-bottom: solid 30px #bdbcba;
+    border-radius: 0;
+    background: #fff;
+    padding-top: 30px;
+  }
+
+  .stat-black-bar {
+    border-bottom: solid 30px #000000;
+    border-radius: 0;
+    background: #fff;
+    padding-top: 30px;
+  }
+     
+  .view-toggle-list .views-row:nth-child(n+7) {
+    display: none;
+  }
+
+  .view-toggle-list.is-expanded .views-row {
+    display: block;
+  }
+
+  /* ── Tablet (768px – 1023px) ─────────────────────────────── */
+  @media (min-width: 768px) {
+    .portland-title-text,
+  .portland-title h2,
+  .portland-title-text-left-line {
+      font-size: 43px;
+    }
+    .portland-title-text-left-line {
+    font-family: "Georgia", "Noto Serif", serif;
+    font-size: 43px;
+    position: relative;
+  }
+  	.hp-sideways-gradient {
+  		background:linear-gradient(to left,rgba(255,0,0,0)50%,rgba(0,0,0,1)80%);
+  /*	background:linear-gradient(83deg,rgba(0,0,0,1) 5%,rgba(0,0,0,0) 60%);*/
+  	 padding: 40px 40px 40px 0px;
+  }
+  .hp-sideways-text {
+  	padding: 0 40px 0 0px;
+  	max-width: 450px;
+      line-height: 1.6;
+  }
+  .top-text-box {
+  	padding:48px;
+  	border:solid #d73f09 1px;
+  	margin-top:-100px;
+  }
+  .hp-sideways-gradient {
+  	background:linear-gradient(83deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 100%);/*linear-gradient(to left, rgba(255,0,0,0), rgba(0,0,0,1));*/
+  	 padding: 80px 0px 60px 0px;
+  	         background-size: 80vw;
+          background-repeat: no-repeat;
+  }
+  .hp-sideways-text {
+  	padding: 0 60px 0 0px;
+  	 max-width: 450px;
+      line-height: 1.6;
+  }
+  }
+
+  /* ── Desktop (1024px+) ───────────────────────────────────── */
+  @media (min-width: 1024px) {
+    .portland-title-text,
+  .portland-title h2,
+  .portland-title-text-left-line {
+      font-size: 50px;
+    }
+    .portland-title-text-left-line {
+    font-family: "Georgia", "Noto Serif", serif;
+    font-size: 50px;
+    position: relative;
+  }
+
+  .portland-title-text-left-line::before {
+    content: '';
+    position: absolute;
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 2px;
+    background-color: #d73f09;
+    width: 100vw;
+    margin-right: 16px;
+  }
+  .portland-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .portland-title .line {
+    display: block;
+    width: 113px;
+    height: 2px;
+    background-color: #d73f09;
+    flex-shrink: 0;
+  }
+  .stat-bars-row {
+      align-items: flex-start;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .stat-red-bar {
+      border-radius: 0 0 0 17px;
+      padding-top: 10px;
+      background: #fff;
+      border-bottom: solid 30px #d73f09;
+    }
+
+    .stat-gray-bar {
+      border-radius: 0;
+      padding-top: 10px;
+      background: #fff;
+      border-bottom: solid 30px #bdbcba;
+    }
+
+    .stat-black-bar {
+      border-radius: 0 0 17px 0;
+      padding-top: 10px;
+      background: #fff;
+      border-bottom: solid 30px #000000;
+    }
+
+    .stat-red-bar,
+    .stat-gray-bar,
+    .stat-black-bar {
+      min-width: 0;
+    }
+  }
+  @media (min-width: 1250px) {
+  	.hp-sideways-gradient {
+  		background:linear-gradient(to left,rgba(255,0,0,0)50%,rgba(0,0,0,1)80%);
+  /*	background:linear-gradient(83deg,rgba(0,0,0,1) 5%,rgba(0,0,0,0) 60%);*/
+  	 padding: 40px 40px 40px 0px;
+  }
+  .hp-sideways-text {
+  	padding: 0 40px 0 0px;
+  	max-width: 450px;
+      line-height: 1.6;
+  }
+  .top-text-box {
+  	padding:48px;
+  	border:solid #d73f09 1px;
+  	margin-top:-100px;
+  }
+
+  .portland-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .portland-title .line {
+    display: block;
+    width: 113px;
+    height: 2px;
+    background-color: #d73f09;
+    flex-shrink: 0;
+  }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

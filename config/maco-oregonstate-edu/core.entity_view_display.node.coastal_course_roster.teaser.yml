@@ -1,0 +1,33 @@
+uuid: 712aba01-b342-4899-b476-27c4b93c836d
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.coastal_course_roster.body
+    - field.field.node.coastal_course_roster.layout_builder__layout
+    - node.type.coastal_course_roster
+  module:
+    - text
+    - user
+id: node.coastal_course_roster.teaser
+targetEntityType: node
+bundle: coastal_course_roster
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  layout_builder__layout: true

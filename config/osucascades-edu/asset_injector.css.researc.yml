@@ -1,0 +1,96 @@
+uuid: 6782c395-5a61-4a08-b2f0-91cfe090e451
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: researc
+label: Research
+code: |-
+  .image-padding {
+  	margin-top:0;
+  	transition: 0.3s!important;
+  }
+
+  .image-padding:hover {
+  	margin-top:-7px;
+  }
+
+  .research-lab-link::after{
+  	content: "";
+  	position: absolute;
+  	height:100%;
+  	width: 100%;
+  	z-index: 3;
+  	top: 0;
+  	left: 0;
+  }
+
+  .research-bar::after{
+  	content: "";
+  	position: absolute;
+  	border-bottom: 3px solid #000000ba;
+  	width: 50%;
+  	bottom: 50px;
+  	left: 0;
+  }
+
+  .orange-bar{
+  	width: 100px;
+  	height: 4px;
+  	background: #d73f09;
+  }
+
+  .research-stories{
+  	display: none;
+  }
+
+  .research-title{
+  	width: fit-content;
+  	position: absolute;
+  	bottom: 2rem;
+  	left: 100px;
+  	padding-left: 100px !important;
+  	padding-right: 100px !important;
+  }
+
+  @media (max-width: 768px){
+  	.research-title{
+  		position: initial !important;
+  		width: auto !important;
+  		padding-left: 0px !important;
+  		padding-right: 0px !important;
+  		margin-bottom: 0 !important;
+  	}
+  	
+  	.research-stats{
+  		padding-top: 1rem!important;
+  	}
+  }
+
+  @media (max-width: 575px){
+  	.research-stats{
+  		padding-top: 0rem!important;
+  	}
+  }
+
+  @media (max-width: 450px){
+  	.research-title h1{
+  		font-size: 2rem !important;
+  	}
+  }
+
+  @media (min-width: 1921px){
+  	.research-slider img{
+  		width: 100% !important;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

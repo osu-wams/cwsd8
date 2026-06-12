@@ -1,0 +1,120 @@
+uuid: 3ebaf8a6-9bbb-4d5e-8814-709aaa7420d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: event_page
+label: 'Event Page'
+code: |
+  .block-field-blocknodeeventsfield-event-page-hero {
+  	padding:0!important;
+  	margin:0!important;
+  }
+
+  .node--type-events .field--name-field-event-page-hero img {
+  	  object-fit: cover;
+      height: 500px;
+      width:100%;
+  }
+
+  .node--type-events .layout--twocol-section {
+  	max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 30px;
+  }
+
+  .node--type-events .layout__region--second {
+  	padding: 20px;
+    background: #f7f5f5;
+    text-align: center;
+  }
+
+  #block-madrone-page-title {
+  	    position: absolute;
+      top: 400px;
+      left: 50px;
+      z-index:5;
+  }
+
+  #block-madrone-page-title .block__content {
+    background: rgba(0,0,0,.8);
+    padding: 20px;	
+  }
+
+  #block-madrone-page-title h1 {
+  	font-size: 26px!important;
+      color: #fff;
+      margin: 0;
+  }
+
+  .node--type-events .block-field-blocknodeeventsbody {
+  	margin-top:40px!important;
+  }
+
+  .layout__region--second .block-layout-builder {
+  	padding:0!important;
+  	margin:0!important;
+  	line-height:1.5;
+  }
+
+  .layout__region--second .block-layout-builder p {
+  	margin:0!important;
+  }
+
+  .field--name-field-praxprelude {
+  	margin-top:20px;
+  }
+
+  .node--type-events .field--name-field-buy-tickets-link a {
+  	background:#003B5C;
+  	color:#fff;
+  	padding:10px 20px;
+  	text-decoration:none;
+  	display:block;
+  	margin:20px 0;
+  }
+
+  .node--type-events .field--name-field-buy-tickets-link a:hover {
+  	background:#d73f09;
+  }
+
+  .field--name-field-event-location {
+     line-height:1.2;
+  }
+
+  .layout__region--second .block-layout-builder p.eventdetaillabel {
+    font-weight:900;
+    margin-top:20px!important;
+  }
+
+  .field--name-field-gene {
+  	margin-top:20px;
+  }
+
+  .field--name-field-student-cost {
+  	margin-top:20px;
+  }
+
+  @media (max-width: 768px) {
+    .node--type-events .layout--twocol-section {
+      flex-direction: column-reverse;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      events: events
+contexts: {  }
+conditions_require_all: true

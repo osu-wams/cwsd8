@@ -1,0 +1,31 @@
+uuid: 09e0432c-7b0c-4d95-b178-0abab2236960
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_class_spec_salary_range
+    - node.type.classified_classification_specif
+    - taxonomy.vocabulary.salary_ranges
+    - taxonomy.vocabulary.salary_steps
+id: node.classified_classification_specif.field_class_spec_salary_range
+field_name: field_class_spec_salary_range
+entity_type: node
+bundle: classified_classification_specif
+label: 'Salary Range'
+description: 'References Two taxonomy vocabularies, one for Steps and one for Ranges. Search based upon the Step/Range number for the position, multiple are allowed as is the case for Ranges.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      salary_ranges: salary_ranges
+      salary_steps: salary_steps
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: salary_ranges
+field_type: entity_reference

@@ -1,0 +1,29 @@
+uuid: f0d39d12-5c72-427d-ab90-8ce6426ab497
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: remove_h4
+label: remove-h4
+code: |
+  //This is to remove the out-of-order H4 heading on user (people) pages
+  //to avoid accessibility issue.
+  document.querySelector('h4').remove();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: '/people/*'
+contexts: {  }
+conditions_require_all: true

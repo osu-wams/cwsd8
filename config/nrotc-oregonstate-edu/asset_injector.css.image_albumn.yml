@@ -1,0 +1,36 @@
+uuid: a0f2b63c-6456-4327-b967-118a2c1db816
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+    - system
+id: image_albumn
+label: 'Image Albumn'
+code: |-
+  .field--name-field-image-album-media {
+  	display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      image_album: image_album
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

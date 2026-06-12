@@ -1,0 +1,80 @@
+uuid: cca9e778-faaf-45e3-aff1-bfc1e65a0303
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: historical_context
+label: 'Historical Context'
+code: |
+  document.querySelectorAll('.timeline-wrapper').forEach(wrapper => {
+    const cards = wrapper.querySelectorAll('.assist-timeline-card');
+    const cardWidth = cards[0].offsetWidth + 16; // width + margin
+    const visibleCount = Math.floor(wrapper.offsetWidth / cardWidth);
+    const pageCount = Math.ceil(cards.length / visibleCount);
+
+    // Add arrows
+    const leftArrow = document.createElement('div');
+    leftArrow.className = 'timeline-arrow left';
+    leftArrow.textContent = '‹';
+    const rightArrow = document.createElement('div');
+    rightArrow.className = 'timeline-arrow right';
+    rightArrow.textContent = '›';
+    wrapper.parentElement.style.position = 'relative';
+    wrapper.parentElement.appendChild(leftArrow);
+    wrapper.parentElement.appendChild(rightArrow);
+
+    // Add dots
+    const dots = document.createElement('div');
+    dots.className = 'timeline-dots';
+    for (let i = 0; i < pageCount; i++) {
+      const dot = document.createElement('div');
+      dot.className = 'dot';
+      dot.addEventListener('click', () => {
+        wrapper.scrollTo({ left: i * wrapper.offsetWidth, behavior: 'smooth' });
+      });
+      dots.appendChild(dot);
+    }
+    wrapper.parentElement.appendChild(dots);
+
+    function updateUI() {
+      const index = Math.round(wrapper.scrollLeft / wrapper.offsetWidth);
+      dots.querySelectorAll('.dot').forEach((dot, i) => {
+        dot.classList.toggle('active', i === index);
+      });
+      leftArrow.style.display = wrapper.scrollLeft <= 0 ? 'none' : 'block';
+      rightArrow.style.display =
+        wrapper.scrollLeft + wrapper.offsetWidth >= wrapper.scrollWidth
+          ? 'none'
+          : 'block';
+    }
+
+    updateUI();
+
+    // Scroll events
+    wrapper.addEventListener('scroll', updateUI);
+
+    leftArrow.addEventListener('click', () => {
+      wrapper.scrollBy({ left: -wrapper.offsetWidth, behavior: 'smooth' });
+    });
+    rightArrow.addEventListener('click', () => {
+      wrapper.scrollBy({ left: wrapper.offsetWidth, behavior: 'smooth' });
+    });
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/51\r\n/node/31\r\n/node/201"
+contexts: {  }
+conditions_require_all: true

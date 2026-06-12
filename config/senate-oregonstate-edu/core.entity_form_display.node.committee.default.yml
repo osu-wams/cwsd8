@@ -17,11 +17,94 @@ dependencies:
     - field.field.node.committee.field_committee_values
     - field.field.node.committee.field_committee_vision
     - node.type.committee
+    - workflows.workflow.editorial
   module:
+    - content_moderation
+    - entitygroupfield
+    - field_group
     - file
     - link
     - path
     - text
+third_party_settings:
+  field_group:
+    group_committee_tabs:
+      children: {  }
+      label: 'Committee Tabs 1'
+      region: hidden
+      parent_name: ''
+      weight: 20
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        direction: vertical
+        width_breakpoint: 640
+    group_committee_statements:
+      children:
+        - field_committee_goals
+        - field_committee_mission
+        - field_committee_values
+        - field_committee_vision
+      label: 'Vision, Mission, Values, and Goals'
+      region: hidden
+      parent_name: ''
+      weight: 18
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_committee_ad_hoc:
+      children: {  }
+      label: 'Ad Hoc Committees and Task Forces'
+      region: hidden
+      parent_name: ''
+      weight: 19
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_committee_resources:
+      children: {  }
+      label: 'Resources & References'
+      region: hidden
+      parent_name: ''
+      weight: 21
+      format_type: tab
+      format_settings:
+        classes: ''
+        show_empty_fields: false
+        id: ''
+        label_as_html: true
+        formatter: closed
+        description: ''
+        required_fields: true
+    group_committee_tabs_2:
+      children: {  }
+      label: 'Committee Tabs 2'
+      region: hidden
+      parent_name: ''
+      weight: 22
+      format_type: tabs
+      format_settings:
+        classes: ''
+        show_empty_fields: true
+        id: ''
+        label_as_html: true
+        direction: vertical
+        width_breakpoint: 640
 id: node.committee.default
 targetEntityType: node
 bundle: committee
@@ -39,56 +122,58 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 10
+    weight: 9
     region: content
     settings: {  }
     third_party_settings: {  }
+  entitygroupfield:
+    type: entitygroupfield_select_widget
+    weight: 0
+    region: content
+    settings:
+      help_text: ''
+      label: 'Group name'
+      multiple: true
+      required: false
+    third_party_settings: {  }
   field_committee_ad_hoc:
     type: boolean_checkbox
-    weight: 10
+    weight: 16
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_committee_ad_hoc_status:
     type: boolean_checkbox
-    weight: 11
+    weight: 17
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   field_committee_category:
     type: options_select
-    weight: 41
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   field_committee_documents:
     type: file_generic
-    weight: 12
+    weight: 4
     region: content
     settings:
       progress_indicator: throbber
     third_party_settings: {  }
   field_committee_external_links:
     type: link_default
-    weight: 11
+    weight: 3
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
     third_party_settings: {  }
-  field_committee_goals:
-    type: text_textarea
-    weight: 10
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
   field_committee_guidelines:
     type: text_textarea
-    weight: 4
+    weight: 6
     region: content
     settings:
       rows: 10
@@ -96,72 +181,62 @@ content:
     third_party_settings: {  }
   field_committee_membership:
     type: options_select
-    weight: 7
+    weight: 8
     region: content
     settings: {  }
     third_party_settings: {  }
-  field_committee_mission:
-    type: text_textarea
-    weight: 8
-    region: content
-    settings:
-      rows: 5
-      placeholder: ''
-    third_party_settings: {  }
   field_committee_standing_rules:
     type: text_textarea
-    weight: 3
+    weight: 5
     region: content
     settings:
       rows: 10
       placeholder: ''
     third_party_settings: {  }
-  field_committee_values:
-    type: text_textarea
-    weight: 9
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
     region: content
-    settings:
-      rows: 5
-      placeholder: ''
+    settings: {  }
     third_party_settings: {  }
-  field_committee_vision:
-    type: text_textarea
-    weight: 7
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
     region: content
     settings:
-      rows: 10
       placeholder: ''
+      size: 60
     third_party_settings: {  }
   path:
     type: path
-    weight: 30
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 15
+    weight: 10
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   status:
     type: boolean_checkbox
-    weight: 120
+    weight: 15
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   sticky:
     type: boolean_checkbox
-    weight: 16
+    weight: 11
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   title:
     type: string_textfield
-    weight: -5
+    weight: 1
     region: content
     settings:
       size: 60
@@ -169,7 +244,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 5
+    weight: 7
     region: content
     settings:
       match_operator: CONTAINS
@@ -178,9 +253,16 @@ content:
       placeholder: ''
     third_party_settings: {  }
   url_redirects:
-    weight: 50
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
 hidden:
-  entitygroupfield: true
+  field_committee_goals: true
+  field_committee_mission: true
+  field_committee_values: true
+  field_committee_vision: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

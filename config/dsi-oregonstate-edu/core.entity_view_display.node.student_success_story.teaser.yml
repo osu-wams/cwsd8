@@ -1,0 +1,39 @@
+uuid: 13bc89ea-4678-4c02-82e0-d20a427db0a8
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.student_success_story.body
+    - field.field.node.student_success_story.field_cohort
+    - field.field.node.student_success_story.field_featured_image
+    - field.field.node.student_success_story.field_story_type
+    - field.field.node.student_success_story.field_tags
+    - node.type.student_success_story
+  module:
+    - text
+    - user
+id: node.student_success_story.teaser
+targetEntityType: node
+bundle: student_success_story
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_cohort: true
+  field_featured_image: true
+  field_story_type: true
+  field_tags: true

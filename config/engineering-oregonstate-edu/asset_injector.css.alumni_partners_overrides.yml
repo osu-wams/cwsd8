@@ -1,0 +1,40 @@
+uuid: 7152e165-76c5-4d5f-bbf5-1a6ae4fb8a9b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: alumni_partners_overrides
+label: 'Alumni partners overrides (horizontal profile cards)'
+code: |+
+  /* Styling horizontal transparent profile cards for Alumni Partners */
+
+  #views-bootstrap-engr-profile-block-7 .osu-bg-page-alt-1 {
+  	background-color: transparent !important;
+  	color: #fff !important;
+  }
+
+  /* More link styling */
+
+  #views-bootstrap-engr-profile-block-7 .osu-bg-page-alt-1 a,
+  #views-bootstrap-engr-profile-block-7 + .more-link a {
+  	color: #ccc;
+  }
+  #views-bootstrap-engr-profile-block-7 .osu-shadow {
+  	box-shadow: 0 2px 3px rgb(255 255 255 / 25%) !important;
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/alumni-partners/<front>\r\n/alumni-industry\r\n/alumni-partners"
+contexts: {  }
+conditions_require_all: true

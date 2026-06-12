@@ -1,0 +1,32 @@
+uuid: 7e254fb2-8146-4ded-8109-efca0e283080
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_schools2
+    - node.type.academic_program
+id: node.academic_program.field_schools2
+field_name: field_schools2
+entity_type: node
+bundle: academic_program
+label: 'School or Group'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      group: group
+    sort:
+      field: title
+      direction: ASC
+    membership_type: og_membership_type_default
+    behaviors:
+      views-select-list:
+        status: 1
+      og_behavior:
+        status: true
+field_type: entity_reference

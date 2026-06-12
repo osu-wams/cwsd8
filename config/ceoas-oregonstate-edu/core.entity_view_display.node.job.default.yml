@@ -1,0 +1,95 @@
+uuid: 9bc74f08-f5bb-48ae-9c9b-81c058069e82
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.job.field_application_deadline
+    - field.field.node.job.field_city_location
+    - field.field.node.job.field_description
+    - field.field.node.job.field_job_title_link_to_listing
+    - field.field.node.job.field_opportunity
+    - field.field.node.job.field_organization
+    - field.field.node.job.field_state
+    - node.type.job
+  module:
+    - datetime
+    - link
+    - user
+id: node.job.default
+targetEntityType: node
+bundle: job
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_application_deadline:
+    type: datetime_custom
+    label: above
+    settings:
+      timezone_override: America/Los_Angeles
+      date_format: 'M j, Y'
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_city_location:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_description:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_job_title_link_to_listing:
+    type: link
+    label: above
+    settings:
+      trim_length: 255
+      url_only: false
+      url_plain: false
+      rel: '0'
+      target: '0'
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_opportunity:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_organization:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_state:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: false
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+hidden:
+  entitygroupfield: true

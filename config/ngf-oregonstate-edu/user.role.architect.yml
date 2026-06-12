@@ -19,8 +19,8 @@ dependencies:
     - node.type.page
     - node.type.webform
     - taxonomy.vocabulary.tags
+    - workflows.workflow.editorial
   module:
-    - asset_injector
     - block
     - block_class
     - block_content
@@ -29,6 +29,7 @@ dependencies:
     - bootstrap_styles
     - captcha
     - config
+    - content_moderation
     - contextual
     - crop
     - date_ap_style
@@ -44,6 +45,7 @@ dependencies:
     - google_analytics
     - google_tag
     - group
+    - help
     - honeypot
     - image
     - layout_builder
@@ -54,6 +56,7 @@ dependencies:
     - media
     - media_bulk_upload
     - metatag
+    - moderation_sidebar
     - node
     - node_revision_delete
     - path
@@ -61,6 +64,7 @@ dependencies:
     - recaptcha
     - redirect
     - responsive_preview
+    - scheduler
     - search
     - section_library
     - shortcut
@@ -77,6 +81,7 @@ dependencies:
     - views_ui
     - webform
     - webform_node
+    - workflows
     - xmlsitemap
 _core:
   default_config_hash: lQy-vhvK23bmsS6UpHKtGIUGi6l0iSa4M2v5wiYKbo8
@@ -94,6 +99,7 @@ permissions:
   - 'access feed overview'
   - 'access files overview'
   - 'access group overview'
+  - 'access help pages'
   - 'access media overview'
   - 'access own webform configuration'
   - 'access responsive preview'
@@ -122,7 +128,6 @@ permissions:
   - 'administer blocks'
   - 'administer content types'
   - 'administer crop types'
-  - 'administer css assets injector'
   - 'administer display modes'
   - 'administer easy breadcrumb'
   - 'administer editoria11y checker'
@@ -140,7 +145,6 @@ permissions:
   - 'administer group_content form display'
   - 'administer honeypot'
   - 'administer image styles'
-  - 'administer js assets injector'
   - 'administer layout builder component attributes'
   - 'administer linkit profiles'
   - 'administer linkpurpose'
@@ -163,10 +167,12 @@ permissions:
   - 'administer redirect settings'
   - 'administer redirects'
   - 'administer responsive preview'
+  - 'administer scheduler'
   - 'administer search'
   - 'administer shortcuts'
   - 'administer simple_popup_blocks'
   - 'administer site configuration'
+  - 'administer sitewide alert entities'
   - 'administer smart date formats'
   - 'administer taxonomy'
   - 'administer taxonomy_term display'
@@ -184,6 +190,7 @@ permissions:
   - 'administer webform'
   - 'administer webform element access'
   - 'administer webform submission'
+  - 'administer workflows'
   - 'administer xmlsitemap'
   - 'bypass honeypot protection'
   - 'bypass node access'
@@ -285,6 +292,7 @@ permissions:
   - 'revert all sitewide alert revisions'
   - 'revert page revisions'
   - 'revert webform revisions'
+  - 'schedule publishing of nodes'
   - 'search content'
   - 'skip CAPTCHA'
   - 'switch shortcut sets'
@@ -293,7 +301,12 @@ permissions:
   - 'update media'
   - 'use advanced search'
   - 'use bulk_image bulk upload form'
-  - 'use exclude node title'
+  - 'use editorial transition archive'
+  - 'use editorial transition archived_draft'
+  - 'use editorial transition archived_published'
+  - 'use editorial transition create_new_draft'
+  - 'use editorial transition publish'
+  - 'use moderation sidebar'
   - 'use text format basic_html'
   - 'use text format full_html'
   - 'use text format restricted_html'
@@ -309,13 +322,16 @@ permissions:
   - 'view any kaltura media revisions'
   - 'view any local_video media revisions'
   - 'view any remote_video media revisions'
+  - 'view any unpublished content'
   - 'view any webform submission'
   - 'view editoria11y checker'
+  - 'view latest version'
   - 'view media'
   - 'view own unpublished content'
   - 'view own unpublished media'
   - 'view own webform submission'
   - 'view page revisions'
+  - 'view scheduled content'
   - 'view section library templates'
   - 'view the administration theme'
   - 'view unpublished sitewide alert entities'

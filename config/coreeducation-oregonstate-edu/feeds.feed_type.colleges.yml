@@ -1,0 +1,67 @@
+uuid: 2a1e03d3-101c-4b5e-8ce4-c383085e7b9c
+langcode: en
+status: true
+dependencies:
+  config:
+    - taxonomy.vocabulary.colleges
+  module:
+    - taxonomy
+label: Colleges
+id: colleges
+description: 'Creates the Top Level Colleges'
+help: 'Creates a Hierarchy of Terms to be used in College -> Units with the CSV Headers College, Unit'
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:taxonomy_term'
+processor_configuration:
+  values:
+    vid: colleges
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: false
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  college:
+    value: College
+    label: College
+    machine_name: college
+    type: csv
+  unit:
+    value: Unit
+    label: Unit
+    machine_name: unit
+    type: csv
+mappings:
+  -
+    target: parent
+    map:
+      target_id: college
+    settings:
+      reference_by: name
+      feeds_item: guid
+      autocreate: 1
+      autocreate_bundle: colleges
+  -
+    target: name
+    map:
+      value: unit
+    settings:
+      language: null
+    unique:
+      value: 1

@@ -1,0 +1,50 @@
+uuid: be741a59-55ba-4341-82ce-2346609ea921
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: view_more
+label: 'View more'
+code: |-
+  /*document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.directory-connect-card').forEach(function (card) {
+      const btn = card.querySelector('.view-more-btn');
+      const fullText = card.querySelector('.directory-connect-text-all');
+
+      if (!btn || !fullText) return;
+
+      btn.addEventListener('click', function () {
+        const isOpen = fullText.classList.toggle('is-visible');
+        btn.textContent = isOpen ? 'View Less' : 'View More';
+      });
+    });
+  });
+
+  */
+
+  document.addEventListener('click', function(e) {
+    const btn = e.target.closest('.view-more-btn');
+    if (!btn) return;
+    
+    const card = btn.closest('.directory-connect-card');
+    if (!card) return;
+    
+    const fullText = card.querySelector('.directory-connect-text-all');
+    if (!fullText) return;
+    
+    const isOpen = fullText.classList.toggle('is-visible');
+    btn.textContent = isOpen ? 'View Less' : 'View More';
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

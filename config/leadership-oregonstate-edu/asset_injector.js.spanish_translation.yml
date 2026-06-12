@@ -1,0 +1,123 @@
+uuid: 924e5c09-2132-4875-b9ae-713030f505f1
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: spanish_translation
+label: 'Spanish Translation'
+code: |-
+  const translations = {
+    // Site branding
+    'President\'s Commission on Latino/a/e Affairs': 'La Comisión Presidencial Latino/a/e',
+    'Leadership': 'Liderazgo',
+    
+    // Search
+    'Search': 'Buscar',
+    'Enter the terms you wish to search for.': 'Ingrese los términos que desea buscar',
+    'Open Search Page': 'Abrir página de búsqueda',
+    
+    // Breadcrumbs
+    'President\'s Commission On Latino/a/e Affairs': 'La Comisión Presidencial Latino/a/e',
+    'Inicio': 'Inicio', // Already in Spanish
+    'Contact Information': 'Información de Contacto'
+  };
+
+  function translateToSpanish() {
+    // Translate site name
+    const siteName = document.querySelector('.site-name__site-link--with-group');
+    if (siteName) {
+      const text = siteName.textContent.trim();
+      if (translations[text]) {
+        siteName.textContent = translations[text];
+      }
+    }
+    
+    // Translate group title
+    const groupTitle = document.querySelector('.site-name__group-link');
+    if (groupTitle) {
+      const text = groupTitle.textContent.trim();
+      if (translations[text]) {
+        groupTitle.textContent = translations[text];
+      }
+    }
+    
+    // Translate search placeholder
+    const searchInput = document.querySelector('#edit-keys');
+    if (searchInput) {
+      const placeholder = searchInput.getAttribute('placeholder');
+      if (translations[placeholder]) {
+        searchInput.setAttribute('placeholder', translations[placeholder]);
+      }
+      
+      const title = searchInput.getAttribute('title');
+      if (translations[title]) {
+        searchInput.setAttribute('title', translations[title]);
+      }
+    }
+    
+    // Translate search button screen reader text
+    const searchButtonText = document.querySelector('#edit-submit--2 .visually-hidden, #edit-submit .visually-hidden');
+    if (searchButtonText) {
+      const text = searchButtonText.textContent.trim();
+      if (translations[text]) {
+        searchButtonText.textContent = translations[text];
+      }
+    }
+    
+    // Translate mobile search link
+    const mobileSearchLink = document.querySelector('.d-lg-none a[href="/search"] .sr-only');
+    if (mobileSearchLink) {
+      const text = mobileSearchLink.textContent.trim();
+      if (translations[text]) {
+        mobileSearchLink.textContent = translations[text];
+      }
+    }
+    
+    // Translate breadcrumbs
+    document.querySelectorAll('.breadcrumb a').forEach(link => {
+      const text = link.textContent.trim();
+      if (translations[text]) {
+        link.textContent = translations[text];
+      }
+    });
+    
+    // Translate breadcrumb current page (non-link)
+    document.querySelectorAll('.breadcrumb > li:last-child').forEach(item => {
+      if (!item.querySelector('a')) {
+        const text = item.textContent.trim();
+        if (translations[text]) {
+          item.textContent = translations[text];
+        }
+      }
+    });
+    
+    const contact = document.querySelector('#block-generalcontactinformation h2');
+    if (contact) {
+      const text = contact.textContent.trim();
+      if (translations[text]) {
+        contact.textContent = translations[text];
+      }
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    translateToSpanish();
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/17521\r\n/node/17516\r\n/node/17511\r\n/node/17506\r\n/node/17501\r\n/node/17496\r\n/node/17491\r\n/node/17486"
+contexts: {  }
+conditions_require_all: true

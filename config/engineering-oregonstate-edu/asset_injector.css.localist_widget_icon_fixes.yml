@@ -1,0 +1,59 @@
+uuid: dd7a6743-ceb4-41a9-93d6-bb487f886277
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: localist_widget_icon_fixes
+label: 'Localist widget icon fixes'
+code: |
+  /*
+  * Pin icon
+  */
+
+  .osu-localist-widget-hl .osu-pin:after {
+  	content: "";
+  	width: 6px !important;
+  	height: 6px !important;
+  	background: #000 !important;
+  	border-radius: 50% !important;
+  	position: absolute;
+  	top: 4px !important;
+  	left: 3.7px !important;
+  }
+
+
+  /*
+  * Clock icon
+  */
+  .osu-localist-widget-hl .osu-clock:after {
+  	height: 6.8px !important;
+  	left: 6.5px !important;
+  	top: 2px;
+  	border: 1px solid #000;
+  	content: '';
+  	position: absolute;
+  }
+
+  .osu-localist-widget-hl .osu-clock:before {
+  	height: 6px !important;
+  	left: 8.9px !important;
+  	top: 5px;
+  	-webkit-transform: rotate(90deg);
+  	-moz-transform: rotate(90deg);
+  	-ms-transform: rotate(90deg);
+  	-o-transform: rotate(90deg);
+  	transform: rotate(90deg);
+  	border: 1px solid #000;
+  	content: '';
+  	position: absolute;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,34 @@
+uuid: f816e866-cfa4-43fe-9eb9-e5e0155f2b86
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: loc
+label: 'Localist Card Clock Icons'
+code: |
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.osu-event-specs').forEach(function (dl) {
+      const timeElement = dl.querySelector('dd.osu-event-date time');
+      const dtTime = dl.querySelector('dt.osu-event-date');
+      const ddTime = dl.querySelector('dd.osu-event-date');
+
+      if (!timeElement || !timeElement.textContent.trim()) {
+        if (dtTime) dtTime.style.display = 'none';
+        if (ddTime) ddTime.style.display = 'none';
+
+      }
+    });
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,29 @@
+uuid: 01c60cf4-5034-4a3a-9cf1-7f2d2f60987a
+langcode: en
+status: true
+dependencies:
+  config:
+    - feeds.feed_type.news_release
+    - field.storage.node.field_new_release_feed
+    - node.type.new_release
+id: node.new_release.field_new_release_feed
+field_name: field_new_release_feed
+entity_type: node
+bundle: new_release
+label: 'New release feed'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:feeds_feed'
+  handler_settings:
+    target_bundles:
+      news_release: news_release
+    sort:
+      field: queued
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,68 @@
+uuid: 1caf639f-4752-4ee1-958a-eee30c15c061
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.classified_classification_specif.body
+    - field.field.node.classified_classification_specif.feeds_item
+    - field.field.node.classified_classification_specif.field_class_number
+    - field.field.node.classified_classification_specif.field_class_spec_salary_range
+    - field.field.node.classified_classification_specif.field_grade
+    - node.type.classified_classification_specif
+  module:
+    - link
+    - text
+    - user
+id: node.classified_classification_specif.default
+targetEntityType: node
+bundle: classified_classification_specif
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_class_number:
+    type: string
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_class_spec_salary_range:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_grade:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true

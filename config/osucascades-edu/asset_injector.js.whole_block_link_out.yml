@@ -1,0 +1,37 @@
+uuid: c6bcc5c2-8fad-4600-af38-29922b268c91
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: whole_block_link_out
+label: 'Whole block link out'
+code: |-
+  (function ($, Drupal) {
+    Drupal.behaviors.clickableBlock = {
+      attach: function (context, settings) {
+        $('.clickable-block', context).once('clickable-block').on('click', function(e) {
+          if (!$(e.target).is('a')) {
+            window.location = $(this).data('url');
+          }
+        }).css('cursor', 'pointer');
+      }
+    };
+  })(jQuery, Drupal);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/2136776
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,26 @@
+uuid: 0924be96-367d-45bd-9e2e-83f54e66997e
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: ccr
+label: ccr
+logic: and
+conditions:
+  b224b4e5-8b06-4d40-84ce-81ff3f82de1a:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: b224b4e5-8b06-4d40-84ce-81ff3f82de1a
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page
+      webform: webform
+  14e971d5-419f-4500-8236-e5d74e376770:
+    id: request_path
+    negate: false
+    uuid: 14e971d5-419f-4500-8236-e5d74e376770
+    pages: '/ccr/*'
+allow_other_conditions: null

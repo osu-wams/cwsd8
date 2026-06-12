@@ -1,0 +1,89 @@
+uuid: ca0bbcd2-1340-4bec-992e-2680669de81a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: fr
+label: 'Front Page'
+code: |
+  div#content{
+      padding-left:4em;
+  }
+  h2#page-title{
+      padding-left:2em;
+  }
+
+  .paragraphs-items {
+      margin: 0;
+  }
+
+  .hero-image{
+      height: 75vh;/*was 100*/
+      width: 100vw;
+      position: relative;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-image: url("/sites/superfund.oregonstate.edu/files/2025-06/osu_srp_researchers_sampling_fidalgo_bay_hero.jpg");
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .hero-overlay{
+      position: absolute;
+      /*height: 20%;*/
+      width: 100%;
+      /*top: 40%; moved to superfund-style.css to allow for different widths*/
+      left: 0;
+      background: rgba(0,0,0,0.65);
+      color: white;
+      /* Moved to .hero-overlay for drupal 10
+      display: flex;
+      align-items: center;
+      justify-content: center;*/
+      flex-direction: column;
+      padding-top: 3em;
+      padding-bottom: 5em;
+  }
+  .hero-overlay-text{
+      width:60%;
+      margin-left:4em;
+      margin-right:auto;
+  }
+  /* .hero-overlay p and .hero-overlay h3 were moved to superfund-style.css to allow for different widths */
+
+  .paragraphs-items .paragraphs-item-paragraph-divider.p_divider_small {
+      height: 0.5em;
+  }
+
+  .paragraphs-items .paragraphs-item-paragraph-divider.p_divider_small {
+      height: 0.25em;
+  }
+
+  .front-page-h4{
+      font-size:1.75em !important;
+      line-height:1.1em;
+  }
+
+  .front-page-icon{
+      max-width:10em;
+      max-height:5em;
+      display: block;
+      /*margin: 0 auto;*/
+      padding-right: 2em;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/\r\n/node/1"
+contexts: {  }
+conditions_require_all: true

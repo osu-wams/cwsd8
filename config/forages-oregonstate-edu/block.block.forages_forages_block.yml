@@ -1,0 +1,43 @@
+uuid: 0473ed0f-db2d-4b5d-a03b-eff983b56502
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.forages
+  module:
+    - block_class
+    - block_visibility_groups
+    - node
+    - views
+  theme:
+    - madrone
+third_party_settings:
+  block_class:
+    classes: container
+id: forages_forages_block
+theme: madrone
+region: content
+weight: -4
+provider: null
+plugin: 'views_block:forages-block'
+settings:
+  id: 'views_block:forages-block'
+  label: ''
+  label_display: visible
+  provider: views
+  context_mapping: {  }
+  views_label: ''
+  items_per_page: none
+  exposed: {  }
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      forages: forages

@@ -1,0 +1,29 @@
+uuid: 70b0f2a0-126e-4a40-93fc-9b0df0c47991
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_media_affiliation
+    - media.type.image
+    - node.type.forages
+id: media.image.field_media_affiliation
+field_name: field_media_affiliation
+entity_type: media
+bundle: image
+label: Affiliation
+description: 'Associate this Media item with Content in the site. Can be used with Views to display media items contextually on pages referenced.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      forages: forages
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: forages
+field_type: entity_reference

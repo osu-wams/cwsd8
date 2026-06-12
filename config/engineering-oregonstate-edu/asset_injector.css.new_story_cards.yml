@@ -1,0 +1,336 @@
+uuid: 15b1f82e-a2d0-4020-92eb-65be543c25e4
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: new_story_cards
+label: 'Story card stylings and button effects (card fields, buttons and links, filters)'
+code: |-
+  /*===========================================
+  Custom stylings and overrides for Story cards
+  ===========================================*/
+
+
+  /*#views-bootstrap-engr-stories-block-11{*/
+  /*	margin-bottom: 80px;	*/
+  /*}*/
+
+  .story-card{
+  	border-radius: 5px;
+  	border: 1px solid #F8F9FA;
+  	background: #FFF;
+  	box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  	height: 100%;
+  	transition: .3s;
+  	position: relative;
+  	
+  }
+
+  .story-card .read-more-link a::before {
+  	content: "";
+  	position: absolute;
+  	inset: 0;
+  }
+
+  .story-card-wide{
+  	border-radius: 5px;
+  	border: 1px solid #F8F9FA;
+  	background: #FFF;
+  	box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  	transition: .3s;
+  }
+
+  .story-card:hover,
+  .story-card-wide:hover {
+  	background: #F9FCFD !important;
+  	transition: .3s;
+  	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+  	
+  .story-card a, .story-card-wide a, #views-bootstrap-engr-stories-block-7 a{
+  	text-decoration: none !important;
+  }
+
+  .story-body{
+  	color: #000;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: normal;
+  	padding: 0 30px 30px 30px !important;
+  	margin-bottom: 45px;
+
+  }
+
+  /*@media only screen and (max-width: 608px) {*/
+  /*  .story-card {*/
+  /*    height: 700px !important;*/
+  /*  }*/
+  /*}*/
+
+  /* Image effects */
+  .new-story-card-img img{
+  	width: 100%;
+  	border-radius: 5px 5px 0 0 !important;
+  	height: 250px;
+  	object-fit: cover;
+  }
+
+  .story-date{
+  	color: #006A8E; 
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	/* Main/Label */
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  	padding-top: 30px;
+  	padding-left: 30px;
+  }
+
+  .new-story-title{
+  	color:  #000;
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600 !important;
+  	line-height: normal;
+  	padding: 20px 30px 30px 30px;
+  }
+
+  .new-story-title{
+  	flex-grow: 1;
+  }
+
+  .story-card-content{
+  	display: flex;
+    flex-direction: column;
+    padding-bottom: 30px;
+    height: calc(100% - 250px);
+  }
+
+  .related-stories-header{
+  	color: #D73F09;
+  	font-family: Stratum2web;
+  	font-size: 64px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: normal;
+  	padding-top: 120px;
+  	padding-bottom: 70px;
+  }
+
+  /* Button Effects and hovers */
+
+  .read-more-stories-btn{
+  	background: #FFF;
+    color: #000;
+    border: 2px solid #000;
+    width: 320px;
+    font-weight: 600 !important;
+    letter-spacing: 1.6px;
+    height: 60px;
+    border-radius: 0;
+    text-transform: uppercase;
+    padding-top: 12px;
+  }
+
+  .read-more-stories-btn:hover{
+  	border: 2px solid #D73F09;
+  	background: #D73F09;
+  	color: #FFF;
+  }
+
+  .yellow-button{
+  	background: #003B5C;
+    color: #FFB500;
+    border: 2px solid #FFB500;
+    width: 320px;
+    font-weight: 600 !important;
+    letter-spacing: 1.6px;
+    height: 60px;
+    border-radius: 0;
+    text-transform: uppercase;
+    padding-top: 12px;
+  }
+
+  .yellow-button:hover{
+  	color: #000;
+  	background:#FFB500 ;
+    border: 2px solid #FFB500;
+  	
+  }
+
+  /* Anchor Link effects and hovers */
+
+  /* Read more link */
+  .read-more-link a {
+  	font-family: Stratum2Web;
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: normal;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	color: #D73F09;
+  	text-decoration: none !important;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 25px;
+    margin-right: 10px;
+    margin-top: 18px;
+    transition: 0.2s ease;
+    border-bottom: none;
+  }
+
+  .read-more-link {
+  	margin-top: auto;
+  	padding: 0px 30px 0px 30px;
+  }
+
+  /* Orange Arrow Links Hover State */
+  .read-more-link a:hover {
+  	padding-right: 35px;
+  	margin-right: 0px;
+  	border-bottom: none;
+  }
+
+  /* Orange Arrow Links Active State */
+  .read-more-link a:focus,
+  .read-more-link a:active {
+  	background-color: transparent !important;
+  	color: #BE3706 !important;
+  	padding-right: 35px !important;
+  	border-bottom: none !important;
+  }
+  .yellow-link{
+  	color: #FFB500;
+  	text-decoration: underline;
+  	text-decoration-color: #FFB500 !important;
+  	text-decoration-thickness: 1.5px !important;
+  	background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .yellow-link:hover{
+  	color: #FFB500 !important;
+  	text-decoration: underline !important;
+  	text-decoration-color:#FFB500 !important;
+  	text-decoration-thickness: 3px !important;
+  	background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+  .yellow-link:active{
+  	color: #FFB500 !important;
+  	text-decoration: underline !important;
+  	text-decoration-color:#FFB500 !important;
+  	text-decoration-thickness: 3px !important;
+  	background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .orange-link{
+  	color: #D73F09 !important;
+  	text-decoration: underline;
+  	text-decoration-color:#D73F09 !important;
+  	text-decoration-thickness: 1.5px !important;
+  	background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .orange-link:hover{
+  	color: #D73F09 !important;
+  	text-decoration: underline !important;
+  	text-decoration-color:#D73F09 !important;
+  	text-decoration-thickness: 3px !important;
+  	background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  .orange-link:active{
+  	color: #D73F09 !important;
+  	text-decoration: underline !important;
+  	text-decoration-color:#D73F09 !important;
+  	text-decoration-thickness: 3px !important;
+  	background-color:  hsl(0, 0%, 0%, 0) !important;
+  }
+
+  /* Doesn't display spacing on Program pages without stories */
+  .osu-toc-stop:not(:has(.story-card)) {
+     display: none;
+  }
+
+  .block-views-blockengr-stories-block-10 h2{
+  	color: #D73F09;
+
+  	/* Main/H2 */
+  	font-family: Stratum2web;
+  	font-size: 64px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 83.2px */
+  	/*margin-top: 120px;*/
+  	margin-bottom: 50px;
+  }
+
+  /*Story Filters Styling*/
+
+  .form-select{
+  	border-radius: 5px;
+  	border: 2px solid var(--Primary-Paddletail-Black, #000);
+  	width: 580px;
+  	height: 76px;
+  	flex-shrink: 0;
+  }
+
+  @media screen and (max-width: 768px) {
+  	.block-views-blockengr-stories-block-10 h2{
+  		font-size: 44px;
+  		line-height: 120%; 
+  	}
+  }
+
+  @media only screen and (max-width: 991px) and (min-width: 768px) { 
+  	.block-views-blockengr-stories-block-10 h2{
+  		font-size: 48px;
+  		line-height: 120%; 
+  	}
+  	
+  	/*.story-card {*/
+   /*   height: auto !important;*/
+   /* }*/
+  	
+  }
+
+  /*@media only screen and (max-width: 881px) and (min-width: 768px) {*/
+  /*	.story-card {*/
+  /*		height: auto !important;*/
+  /*	}*/
+  /*}*/
+
+  /*@media only screen and (max-width: 799px) and (min-width: 768px) {*/
+  /*	.story-card {*/
+  /*		height: auto !important;*/
+  /*	}*/
+  /*}*/
+
+  .pager{
+  	margin-bottom: 120px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/43511\r\n/node/45021\r\n/node/45051\r\n/discipline/*\r\n/academics/programs/*\r\n/node/47611\r\n/node/47676\r\n/node/43471\r\n/all-stories\r\n/node/54591"
+contexts: {  }
+conditions_require_all: true

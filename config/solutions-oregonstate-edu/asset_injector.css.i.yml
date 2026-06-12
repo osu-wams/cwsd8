@@ -1,0 +1,67 @@
+uuid: fc7ab0d8-529e-484e-8fba-87a1ecbe56c4
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: i
+label: Instagram
+code: |-
+  .relative{
+  	position: relative;
+  }
+
+  .absolute{
+  	position: absolute;
+  }
+
+  .instagram-photo img, .instagram-video video{
+  	object-fit: cover;
+  	height: 100%;
+  	width: 100%;
+  }
+
+  .instagram-video{
+  	display:none;
+  }
+
+  .instagram-feed-item:hover .instagram-photo img{
+  	display: none !important;
+  }
+
+  .instagram-feed-item:hover .instagram-video{
+  	display: block !important;
+  }
+
+  .instagram-link a{
+  	height: 100%;
+  	width: 100%;
+  	inset: 0;
+  	z-index: 2;
+  	text-indent: -9999px;
+  	overflow: hidden;
+  	position: absolute;
+  }
+
+  .instagram-height{
+  	aspect-ratio: 9 / 16;
+  	height: auto !important;
+  }
+
+  .h-100{
+  	height:100%;
+  }
+
+  .instagram-feed-home{
+  	overflow-x: hidden;
+  	overflow-y: hidden;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

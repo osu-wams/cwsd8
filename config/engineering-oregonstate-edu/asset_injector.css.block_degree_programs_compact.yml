@@ -1,0 +1,83 @@
+uuid: 766ffa31-6d97-4626-8229-1424a5e3f0f2
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: block_degree_programs_compact
+label: 'Block: degree programs compact (home and school pages)'
+code: |-
+  /* =========================================================================================================
+  Degree Programs compact block styling. Home and school pages.
+   ========================================================================================================= */
+
+  /* styling for each of the compact card itself */
+
+  div[class*=' block-views-blockdp-explore-our-programs-compact-block-'] .col-12 {
+  	display: flex;
+  }
+  div[class*=' block-views-blockdp-explore-our-programs-compact-block-'] .views-field-field-dp-discipline {
+  	font-size: 16px;
+  	display: flex;
+  	flex: 1;
+  	margin-bottom: 10px;
+  }
+
+  div[class*=' block-views-blockdp-explore-our-programs-compact-block-'] .views-field-field-dp-discipline > .field-content {
+  	display: flex;
+  	flex: 1;
+  }
+
+  div[class*=' block-views-blockdp-explore-our-programs-compact-block-'] h2 {
+  	border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+    margin-bottom: 18px;
+  }
+
+  div[class*=' block-views-blockdp-explore-our-programs-compact-block-'] h2.compact-title {
+  	border-bottom: 0;
+  	margin-top: 40px;
+  }
+
+  /** Style for the rest of the compact pages **/
+
+  div[class*=' block-views-blockdp-explore-our-programs-compact-block-'] .views-field-field-dp-discipline > .field-content > a {
+  	flex: 1;
+    justify-content: center;
+    display: flex;
+    border: 1px solid #777;
+    text-decoration: none;
+    padding: 8px 12px;
+    line-height: 20px;
+  }
+
+  /** Style just the main page **/
+
+  div[class*=' block-views-blockdp-explore-our-programs-compact-block-1'] .views-field-field-dp-discipline > .field-content > a {
+  	padding: 2px 6px;
+  }
+
+
+  div[class*=' block-views-blockdp-explore-our-programs-compact-block-'] .views-field-field-dp-discipline > .field-content > a:hover {
+  	background-color: #d73f09;
+  	color: #fff;
+  }
+
+  div[class*=' block-views-blockdp-explore-our-programs-compact-block-'] .views-field-field-dp-discipline > .field-content > a > p {
+  	align-self: center;	
+  	text-align: center;
+  }
+
+  div[class*=' block-views-blockdp-explore-our-programs-compact-block-'] .more-link {
+    text-align: center;	
+    margin-top: 10px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

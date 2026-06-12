@@ -1,0 +1,35 @@
+uuid: 14250547-7868-4ae4-809e-e05123836d8e
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: pcla_pop_up
+label: 'PCLA - Pop Up'
+code: |-
+  jQuery(document).ready(function($){
+
+  $( "#popup" ).delay( 100 ).fadeIn( );
+   
+  $( "#closepopup" ).click(function() {
+    $( "#popup" ).hide( );
+  });
+
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/PCLA\r\n/PCLA/*\r\n/pcla\r\n/pcla/*"
+contexts: {  }
+conditions_require_all: true

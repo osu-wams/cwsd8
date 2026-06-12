@@ -1,0 +1,83 @@
+uuid: 5ba22d9c-1e10-4909-9af0-5b7943901eae
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: dynamic_text
+label: 'dynamic text'
+code: |+
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const studentname = urlParams.get('studentname');
+  const studentmajor = urlParams.get('studentmajor');
+  const studentclass = urlParams.get('studentclass');
+
+  var text_title =studentname;
+  var imageLoader = document.getElementById('imageLoader');
+      
+  var canvas = document.getElementById('imageCanvas');
+
+  // var heightRatio = 1.77777778;
+  // canvas.height = canvas.width * heightRatio;
+
+  var ctx = canvas.getContext('2d');
+  var img = new Image();
+  img.crossOrigin="anonymous";
+
+  window.addEventListener('load', DrawPlaceholder)
+
+  function DrawPlaceholder() {
+      img.src = 'https://admissions.oregonstate.edu/sites/admissions.oregonstate.edu/files/styles/fluid_webp/public/2024-04/beavernation2024_800.jpg.webp';
+      img.onload = function() {
+          DrawOverlay(img);
+          DrawText();
+
+      };
+  }
+
+  function DrawOverlay(img) {
+      ctx.drawImage(img,0,0);
+
+  }
+
+  function DrawText() {
+      ctx.fillStyle = "#D73F09";
+      ctx.textBaseline = 'middle';
+      ctx.font = "bolder 55px 'Stratum2Web'";
+      ctx.textAlign = "center";
+      ctx.fillText(text_title.toUpperCase(), 540, 915, 810);
+      ctx.fillText(studentmajor.toUpperCase(), 540, 980, 810);
+      ctx.fillText(studentclass.toUpperCase(), 540, 1045, 810);
+      
+  }
+
+
+  function convertToImage() {
+      window.open(canvas.toDataURL('png'));
+  }
+  document.getElementById('download').onclick = function download() {
+          convertToImage();
+  }
+
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/dynamic-text-image-test\r\n/admissions-campaign-landing-page"
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

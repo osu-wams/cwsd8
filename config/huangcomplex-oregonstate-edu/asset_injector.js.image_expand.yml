@@ -1,0 +1,61 @@
+uuid: 820d2e9e-f9c5-4fb0-aa03-27942cf1452b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: image_expand
+label: 'Image Expand'
+code: |2-
+   const thumbnailContainers = document.querySelectorAll('.thumbnail-container'); // Select all containers
+      const modal = document.getElementById("myModal");
+      const modalImg = document.getElementById("expandedImg");
+      const closeBtn = document.querySelector(".close");
+      const modalContent = document.querySelector(".modal-content");
+
+      thumbnailContainers.forEach(thumbnailContainer => { // Loop through each container
+        thumbnailContainer.addEventListener('click', function() {
+          modal.style.display = "block";
+          modal.offsetWidth;
+          modal.classList.add("show");
+          modalContent.offsetWidth;
+          modalContent.classList.add("show");
+          modalImg.src = this.querySelector('.thumbnail').src.replace("thumbnail", "large_image");
+          modalImg.alt = this.querySelector('.thumbnail').alt;
+        });
+      });
+
+      closeBtn.onclick = function() {
+        modal.classList.remove("show");
+        modalContent.classList.remove("show");
+        setTimeout(() => {
+          modal.style.display = "none";
+        }, 300);
+      }
+
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.classList.remove("show");
+          modalContent.classList.remove("show");
+          setTimeout(() => {
+            modal.style.display = "none";
+          }, 300);
+        }
+      }
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/26
+contexts: {  }
+conditions_require_all: true

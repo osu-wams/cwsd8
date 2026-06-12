@@ -1,0 +1,154 @@
+uuid: f6e2002d-b4d8-4130-854c-4e5014568451
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.seminar_video_page.body
+    - field.field.node.seminar_video_page.field_in_the_know_month
+    - field.field.node.seminar_video_page.field_meta_tags
+    - field.field.node.seminar_video_page.field_opengraph_description
+    - field.field.node.seminar_video_page.field_opengraph_image
+    - field.field.node.seminar_video_page.field_opengraph_title
+    - field.field.node.seminar_video_page.field_osu_meta_image
+    - field.field.node.seminar_video_page.field_seminar_date
+    - field.field.node.seminar_video_page.field_seminar_speaker
+    - field.field.node.seminar_video_page.field_seminar_title
+    - field.field.node.seminar_video_page.layout_builder__layout
+    - node.type.seminar_video_page
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - metatag
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          0dfd6c53-2fcb-4724-9fb2-c1ae728edc7b:
+            uuid: 0dfd6c53-2fcb-4724-9fb2-c1ae728edc7b
+            region: content
+            configuration:
+              id: 'extra_field_block:node:seminar_video_page:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 1
+            additional: {  }
+          8bb0f4bc-8e47-458e-9173-9d993ce91d72:
+            uuid: 8bb0f4bc-8e47-458e-9173-9d993ce91d72
+            region: content
+            configuration:
+              id: 'field_block:node:seminar_video_page:field_meta_tags'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: metatag_empty_formatter
+                label: above
+                settings: {  }
+                third_party_settings: {  }
+            weight: 2
+            additional: {  }
+          d1b6d6cb-8bda-4c59-a2ec-bbbc28151b90:
+            uuid: d1b6d6cb-8bda-4c59-a2ec-bbbc28151b90
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:seminar_video_page:field_osu_meta_image'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: entity_reference_label
+                label: above
+                settings:
+                  link: true
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          11ba894a-d6f2-4b82-8f49-e50b6bdf2885:
+            uuid: 11ba894a-d6f2-4b82-8f49-e50b6bdf2885
+            region: content
+            configuration:
+              id: 'extra_field_block:node:seminar_video_page:content_moderation_control'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 3
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts:
+        - 'bootstrap_layout_builder:blb_col_1'
+        - 'bootstrap_layout_builder:blb_col_2'
+        - 'bootstrap_layout_builder:blb_col_3'
+        - 'bootstrap_layout_builder:blb_col_4'
+        - 'bootstrap_layout_builder:blb_col_5'
+        - 'bootstrap_layout_builder:blb_col_6'
+id: node.seminar_video_page.default
+targetEntityType: node
+bundle: seminar_video_page
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_in_the_know_month:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 102
+    region: content
+  field_meta_tags:
+    type: metatag_empty_formatter
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  field_osu_meta_image:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 111
+    region: blb_region_col_1
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  entitygroupfield: true
+  field_opengraph_description: true
+  field_opengraph_image: true
+  field_opengraph_title: true
+  field_seminar_date: true
+  field_seminar_speaker: true
+  field_seminar_title: true
+  layout_builder__layout: true

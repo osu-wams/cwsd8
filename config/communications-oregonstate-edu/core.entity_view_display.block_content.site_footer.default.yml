@@ -1,0 +1,62 @@
+uuid: 924695c7-7808-47ca-8c58-97cce00d8830
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.site_footer
+    - field.field.block_content.site_footer.body
+    - field.field.block_content.site_footer.layout_builder__layout
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - layout_discovery
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: true
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          961681c8-7b31-4151-99a0-5bb805e2ef9f:
+            uuid: 961681c8-7b31-4151-99a0-5bb805e2ef9f
+            region: content
+            configuration:
+              id: 'field_block:block_content:site_footer:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: block_content.site_footer.default
+targetEntityType: block_content
+bundle: site_footer
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  layout_builder__layout: true

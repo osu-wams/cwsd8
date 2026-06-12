@@ -1,0 +1,36 @@
+uuid: 5ef5c76e-f9a4-412c-bf7b-7da83588bc90
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: icon_link_card_block
+label: 'Icon Link Card Block'
+code: |2
+      const linkCardElements = document.querySelectorAll('.block-inline-blockicon-link-card-block');
+      linkCardElements.forEach(function(linkCard) {
+          linkCard.addEventListener('click', function() {
+              let link = linkCard.querySelector('a');
+              if (link) {
+                  window.location = link.getAttribute('href');
+              }
+          });
+      });
+      
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/43181\r\n/node/43191\r\n/node/43226\r\n/node/43236\r\n/node/43346\r\n/node/43251\r\n/node/43511"
+contexts: {  }
+conditions_require_all: true

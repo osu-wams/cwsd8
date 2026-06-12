@@ -7,9 +7,13 @@ dependencies:
     - field.storage.node.field_osu_story_cover_image
     - image.style.400x375
     - node.type.story
+    - taxonomy.vocabulary.osu_organization
+  content:
+    - 'taxonomy_term:osu_organization:c076d301-855c-4a53-860e-75c64d5901a1'
   module:
     - media
     - node
+    - taxonomy
     - user
     - views_bootstrap
 id: webinars
@@ -250,6 +254,52 @@ display:
             default_group: All
             default_group_multiple: {  }
             group_items: {  }
+        field_osu_organizations_target_id:
+          id: field_osu_organizations_target_id
+          table: node__field_osu_organizations
+          field: field_osu_organizations_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: not
+          value:
+            211: 211
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          vid: osu_organization
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
       style:
         type: default
       row:

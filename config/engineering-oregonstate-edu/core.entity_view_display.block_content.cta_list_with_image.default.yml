@@ -1,0 +1,89 @@
+uuid: 0c536dd4-6695-4088-8734-656715bceba3
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.cta_list_with_image
+    - field.field.block_content.cta_list_with_image.field_cta_list_image
+    - field.field.block_content.cta_list_with_image.field_cta_list_link
+    - field.field.block_content.cta_list_with_image.field_cta_list_title
+  module:
+    - field_group
+    - linkit
+third_party_settings:
+  field_group:
+    group_left_column:
+      children:
+        - field_cta_list_title
+        - field_cta_list_link
+      label: 'Left Column'
+      parent_name: ''
+      region: content
+      weight: 0
+      format_type: html_element
+      format_settings:
+        classes: cta-list-left-column
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_right_column:
+      children:
+        - field_cta_list_image
+      label: 'Right Column'
+      parent_name: ''
+      region: content
+      weight: 3
+      format_type: html_element
+      format_settings:
+        classes: cta-list-right-column
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: block_content.cta_list_with_image.default
+targetEntityType: block_content
+bundle: cta_list_with_image
+mode: default
+content:
+  field_cta_list_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_cta_list_link:
+    type: linkit
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+      linkit_profile: default
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_cta_list_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

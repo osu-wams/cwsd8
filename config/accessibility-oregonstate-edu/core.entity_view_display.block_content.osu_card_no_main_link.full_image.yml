@@ -1,0 +1,32 @@
+uuid: 284faf37-5046-4b91-9a62-390c28aee4c1
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.osu_card_no_main_link
+    - core.entity_view_mode.block_content.full_image
+    - field.field.block_content.osu_card_no_main_link.body
+    - field.field.block_content.osu_card_no_main_link.field_osu_card_image
+    - field.field.block_content.osu_card_no_main_link.layout_builder__layout
+    - image.style.x_large_scale_crop
+  module:
+    - media
+id: block_content.osu_card_no_main_link.full_image
+targetEntityType: block_content
+bundle: osu_card_no_main_link
+mode: full_image
+content:
+  field_osu_card_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: x_large_scale_crop
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  layout_builder__layout: true

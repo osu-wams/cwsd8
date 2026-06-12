@@ -1,0 +1,33 @@
+uuid: f16dcf09-cad2-4281-a306-e6ff8c7e0afa
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: default_faculty_spotlight
+label: default-faculty-spotlight
+logic: and
+conditions:
+  e7eb6636-9389-43a0-a8fe-04b031344397:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e7eb6636-9389-43a0-a8fe-04b031344397
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      academic_funding: academic_funding
+      announcement: announcement
+      events: events
+      highlight: highlight
+      job_posting: job_posting
+      news: news
+      page: page
+      program: program
+      webform: webform
+  5073d859-7ecf-4610-9f02-d029b5146727:
+    id: request_path
+    negate: false
+    uuid: 5073d859-7ecf-4610-9f02-d029b5146727
+    pages: /faculty-spotlight
+allow_other_conditions: null

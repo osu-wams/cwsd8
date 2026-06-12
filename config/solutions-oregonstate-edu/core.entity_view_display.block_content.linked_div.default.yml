@@ -1,0 +1,95 @@
+uuid: 44aded05-1af4-466c-a85b-01c235c400f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.linked_div
+    - field.field.block_content.linked_div.body
+    - field.field.block_content.linked_div.field_div_link
+  module:
+    - layout_builder
+    - layout_builder_restrictions
+    - linkit
+    - text
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          63765aab-7337-48ac-a29d-87618b5df014:
+            uuid: 63765aab-7337-48ac-a29d-87618b5df014
+            region: content
+            configuration:
+              id: 'field_block:block_content:linked_div:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_default
+                label: hidden
+                settings: {  }
+                third_party_settings: {  }
+            weight: 0
+            additional: {  }
+          05482966-845c-4996-9f61-91aa6ebd4f3e:
+            uuid: 05482966-845c-4996-9f61-91aa6ebd4f3e
+            region: content
+            configuration:
+              id: 'field_block:block_content:linked_div:field_div_link'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: linkit
+                label: hidden
+                settings:
+                  trim_length: 80
+                  url_only: false
+                  url_plain: false
+                  rel: ''
+                  target: ''
+                  linkit_profile: default
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+  layout_builder_restrictions:
+    allowed_block_categories: {  }
+    entity_view_mode_restriction:
+      allowed_layouts: {  }
+      denylisted_blocks: {  }
+      allowlisted_blocks: {  }
+      restricted_categories: {  }
+    entity_view_mode_restriction_by_region:
+      allowed_layouts: {  }
+id: block_content.linked_div.default
+targetEntityType: block_content
+bundle: linked_div
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_div_link:
+    type: linkit
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+      linkit_profile: default
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

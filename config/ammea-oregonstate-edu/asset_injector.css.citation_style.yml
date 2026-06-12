@@ -1,0 +1,39 @@
+uuid: 4c749185-724a-495d-8bb6-47bb3ecd5705
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: citation_style
+label: 'Citation Style'
+code: |-
+  .citation-itm { 
+    display: inline-block;
+  }
+
+  .pub_img {
+  	max-width: 150px; 
+  	width: 100%;
+  }
+
+  .pub-grid {
+  	display: grid; 
+  	grid-template-columns: 1fr 2fr; 
+  	gap: 1rem; 
+  	align-items: flex-start;
+  }
+
+  @media (max-width: 990px) { 
+  	.pub-grid {
+  		grid-template-columns: 1fr; 
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,53 @@
+uuid: 34819a53-3a29-4879-a4a6-94b2e360592c
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: accreditation_umbrella_image_sizing
+label: 'Accreditation Umbrella Image Sizing'
+code: |-
+  /* Desktop sizing */
+  .osu-bg-moondust.bg-image {
+  	background-image: url('/sites/engineering.oregonstate.edu/files/2026-04/solarsystem_desktop-cropped.svg') !important;
+  	background-position: right bottom !important;
+  	background-repeat: no-repeat !important;
+  	background-size: auto !important;
+  	background-color: #EAF5F6 !important;
+  }
+
+  /* Tablet sizing */
+  @media (min-width: 600px) and (max-width: 1024px) {
+    .osu-bg-moondust.bg-image {
+      background-image: url('/sites/engineering.oregonstate.edu/files/2026-04/solarsystem_desktop-cropped.svg') !important;
+      background-position: right bottom !important;
+      background-repeat: no-repeat !important;
+      background-size: auto !important;
+      padding-bottom: 500px !important;
+    }
+  }
+
+  /* Mobile sizing */
+  @media (max-width: 599px) {
+  	.osu-bg-moondust.bg-image {
+  		background-image: url('/sites/engineering.oregonstate.edu/files/2026-04/solarsystem_mobile.svg') !important;
+  		background-position: right bottom !important;
+  		background-repeat: no-repeat !important;
+  		background-size: auto !important;
+  		padding-bottom: 400px !important;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/54526
+contexts: {  }
+conditions_require_all: true

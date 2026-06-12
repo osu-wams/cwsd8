@@ -1,0 +1,27 @@
+uuid: 4f5cdd34-9ffb-41c7-a368-55a9251df17b
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: seminar_page
+label: 'Overall Seminars Page'
+code: |-
+  .field.field--name-field-photo.field--type-entity-reference.field--label-hidden.text-break.field__item
+  {
+  	padding-right:50px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /news/seminars
+contexts: {  }
+conditions_require_all: true

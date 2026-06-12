@@ -1,0 +1,38 @@
+uuid: 58c7c274-f902-457b-b919-689ef0b9d34c
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: default_make_a_gift
+label: default-make-a-gift
+logic: and
+conditions:
+  1cfff77f-c16d-44b5-91e9-424e6f99d8be:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 1cfff77f-c16d-44b5-91e9-424e6f99d8be
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      academic_funding: academic_funding
+      announcement: announcement
+      events: events
+      highlight: highlight
+      job_posting: job_posting
+      news: news
+      page: page
+      program: program
+      webform: webform
+  2004b12d-d6e6-4e28-a699-1889ba4a422f:
+    id: request_path
+    negate: false
+    uuid: 2004b12d-d6e6-4e28-a699-1889ba4a422f
+    pages: '/*make-gift'
+  98a56fa1-3f13-4fdc-925b-37c6d46765b9:
+    id: request_path
+    negate: true
+    uuid: 98a56fa1-3f13-4fdc-925b-37c6d46765b9
+    pages: "/spp/polisci/about-us/make-gift\r\n/spp/*\r\n/spp/polisci/*"
+allow_other_conditions: null

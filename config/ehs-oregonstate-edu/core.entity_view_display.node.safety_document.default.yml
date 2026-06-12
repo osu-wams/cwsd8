@@ -1,0 +1,55 @@
+uuid: 758553be-771d-46fb-9651-7b81ccdf8fe4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.safety_document.body
+    - field.field.node.safety_document.field_last_update
+    - field.field.node.safety_document.field_safety_number
+    - node.type.safety_document
+  module:
+    - datetime
+    - text
+    - user
+id: node.safety_document.default
+targetEntityType: node
+bundle: safety_document
+mode: default
+content:
+  body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_last_update:
+    type: datetime_default
+    label: hidden
+    settings:
+      timezone_override: ''
+      format_type: long
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_safety_number:
+    type: number_integer
+    label: hidden
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true

@@ -1,0 +1,59 @@
+uuid: 79374d25-fa3c-4261-97be-1938402c9e23
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: cce_all_pages_style_changes
+label: 'CCE all nodes (button styling, accent bar)'
+code: |-
+  /* =========================================================================================================
+  Styling for CCE group pages components 
+   ========================================================================================================= */
+
+  /* Global Button Styling */
+  .btn.osu-btn-primary {
+      border-radius: 0px;
+      background-color: transparent;
+      color: black;
+      border-color: black;
+  }
+
+  /* Controls the color of hover effect for button on all CCE pages */
+
+  .white-border-hover:hover {
+    border-color: white !important;
+  }
+
+  .btn.osu-btn-primary:hover {
+      background-color: #006A8E !important;
+      border-color: #006A8E !important;
+  }
+  .osu-btn-dark a :hover{
+  	 background-color: transparent !important;
+      border: 2px white solid !important;
+  }
+
+  /* Controls the color of the bar rendered at the top of school pages */
+
+  .school-accent-bar {
+    height: 3px;
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    background-color: #006A8E;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/11\r\n/group/11/*\r\n/CCE/*\r\n/CCE"
+contexts: {  }
+conditions_require_all: true

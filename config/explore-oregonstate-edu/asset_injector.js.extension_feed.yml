@@ -1,0 +1,122 @@
+uuid: ea4a6fb6-4c7c-4534-8d29-b775a8a195c2
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: extension_feed
+label: 'Extension Feed'
+code: |-
+  async function loadOSUNewsLayout() {
+      try {
+          const proxy = 'https://corsproxy.io/?';
+          const feedUrl = 'https://extension.oregonstate.edu/feed/osu/events';
+          const res = await fetch(proxy + encodeURIComponent(feedUrl));
+          if (!res.ok) throw new Error('RSS fetch failed');
+
+          const text = await res.text();
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(text, 'application/xml');
+          const items = xml.querySelectorAll('item');
+
+          if (items.length < 1) throw new Error('No news items');
+
+          const container = document.getElementById('news-container');
+          container.innerHTML = '';
+          
+          
+          
+          
+          
+  const regionalCounties = ['Columbia County', 'Tillamook County', 'Clatsop County', 'Curry County', 'Coos County', 'Lincoln County', 'Lane County', 'Douglas County'];
+
+  const filtered = [...items].filter(item => {
+      const comments = item.querySelector('comments')?.textContent?.trim() || '';
+      return regionalCounties.some(county => comments.includes(county));
+  });
+
+
+
+
+
+  for (let i = 0; i < Math.min(3, filtered.length); i++) {
+      const item = filtered[i];
+              const title = item.querySelector('title')?.textContent || '';
+              const link  = item.querySelector('link')?.textContent || '#';
+              const img   = item.querySelector('enclosure')?.getAttribute('url') || '';
+  						const rawDesc = item.querySelector('description')?.textContent || '';
+  						const textarea = document.createElement('textarea');
+  						textarea.innerHTML = rawDesc;
+  						const decoded = textarea.value;
+  						const stripped = decoded.replace(/<[^>]*>/g, ' ');
+  						const cleaned = stripped
+  						    .replace(/&[a-z]+;/gi, ' ')
+  						    .replace(/\s+/g, ' ')
+  						    .trim();
+  						const sentences = cleaned.match(/[^.!?]+[.!?]+/g) || [];
+  						const excerpt = cleaned.substring(0, 100).trim() + '...';
+  						const rawDate = item.querySelector('pubDate')?.textContent || '';
+  						const parts = rawDate.split(' - ');
+  						const start = parts[0]?.trim() ? new Date(parts[0].trim()) : null;
+  						const end = parts[1]?.trim() ? new Date(parts[1].trim()) : null;
+  						const today = new Date();
+  						
+  						const displayDate = (start && end && today >= start && today <= end)
+  						    ? today
+  						    : start;
+  						
+  						const day = displayDate ? displayDate.toLocaleDateString('en-US', { day: 'numeric' }) : '';
+  						const month = displayDate ? displayDate.toLocaleDateString('en-US', { month: 'short' }) : '';
+  						
+  						const date = day ? `${day}<br><span class="card-month">${month}</span>` : '';
+
+              const card = document.createElement('a');
+              card.href = link;
+              card.className = 'ex-event-card';
+              card.innerHTML = `
+                  <div class="image-container">
+  									${img
+  									    ? `<img src="${img}" alt="${title}" class="news-image" loading="lazy">`
+  									    : `<img src="/sites/explore.oregonstate.edu/files/2026-06/Extension-logo.png" alt="Default image" class="news-image">`}
+  									    
+  									<div class="card-content">
+                      <div class="news-title">${title}</div>
+                      <div class="card-date">${date}</div>
+                  	</div>
+                  </div>
+                  <div class="card-excerpt">${excerpt}</div>
+              `;
+              container.appendChild(card);
+
+              if (i < 2) {
+                  const divider = document.createElement('div');
+                  divider.className = 'news-divider';
+                  container.appendChild(divider);
+              }
+          }
+
+      } catch (err) {
+          console.error(err);
+          document.getElementById('news-container').innerHTML =
+              '<p class="error-message">Unable to load news right now. Please try again later.</p>';
+      }
+  }
+
+  loadOSUNewsLayout();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/186
+contexts: {  }
+conditions_require_all: true

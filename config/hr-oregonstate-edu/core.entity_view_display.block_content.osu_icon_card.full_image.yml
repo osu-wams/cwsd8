@@ -1,0 +1,32 @@
+uuid: 3feeb589-694e-48dd-bc9a-89aced3b1e17
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.osu_icon_card
+    - core.entity_view_mode.block_content.full_image
+    - field.field.block_content.osu_icon_card.body
+    - field.field.block_content.osu_icon_card.field_osu_card_image
+    - field.field.block_content.osu_icon_card.field_styles
+    - image.style.x_large_scale_crop
+  module:
+    - media
+id: block_content.osu_icon_card.full_image
+targetEntityType: block_content
+bundle: osu_icon_card
+mode: full_image
+content:
+  field_osu_card_image:
+    type: media_thumbnail
+    label: hidden
+    settings:
+      image_link: ''
+      image_style: x_large_scale_crop
+      image_loading:
+        attribute: lazy
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  body: true
+  field_styles: true

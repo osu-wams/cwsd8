@@ -1,0 +1,75 @@
+uuid: bc8e5146-ca53-4273-8587-8bff2dcb5fa8
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: academic_programs_view
+label: 'Academic Programs - View'
+code: |-
+  .ap-card__degree_level {
+  	border-top-left-radius: .5rem;
+    border-top-right-radius: .5rem;
+  }
+
+  .doctorate {
+  	background: #d73f09 !important;
+  }
+
+  .masters {
+    background: #006A8E !important;
+  }
+
+  .professional-development {
+  	background: #ffb500 !important;
+    color: #000 !important;
+  }
+
+  .bef-exposed-form {
+    border-bottom: .25rem solid rgb(var(--bs-primary-rgb));
+  }
+
+  .bef-exposed-form .form-radios {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .bef-exposed-form .form-radios > .form-item {
+    width: auto;
+  }
+
+  .bef-exposed-form .form-radios > .form-item > label {
+    background-color: rgb(var(--bs-dark-rgb));
+    color: rgb(var(--bs-secondary-rgb));
+    cursor: pointer;
+  	display: inline-block;
+    padding-block: .25rem;
+    padding-inline: .5rem;
+  }
+
+  .bef-exposed-form .form-radios > .form-item > input {
+  	display: none;
+  }
+
+  .bef-exposed-form .form-radios > .form-item > input[type="radio"]:checked+label {
+  	background-color: rgb(var(--bs-primary-rgb));
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: /academic-programs
+contexts: {  }
+conditions_require_all: true

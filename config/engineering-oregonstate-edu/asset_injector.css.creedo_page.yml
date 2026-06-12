@@ -1,0 +1,729 @@
+uuid: 609a8e81-1da9-432c-9754-5077463991b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: creedo_page
+label: 'Creedo Landing Page (project overview cards)'
+code: |-
+  .layout-content .group--unpublished {
+      background: #FFF;
+  }
+
+  /* lower font size for group page name */
+  h1.site-name__group-link__heading {
+      font-size: 18px;
+      color: #D73F09;
+  }
+
+  /* lower font size for group page name for child pages */
+  a.site-name__group-link.text-decoration-none.osu-text-osuorange.fw-bolder {
+      font-size: 18px;
+  }
+
+  /** Right Bottom **/
+  .img-bottom-right-yellow img {
+  	box-shadow: 15px 15px 0 #FFB500;
+  	margin-bottom: 25px;
+  	width: calc(100% - 15px);
+  }
+
+  @media only screen and (min-width: 1200px) {
+  	.img-sizing-desktop img {
+      max-width: fit-content;
+      height: 433px;
+  	}	
+  }
+
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+  	.background-container:has( .img-bottom-right-rogue-wave) {
+  		align-items: start !important;
+  	}
+  	.img-bottom-right-rogue-wave {
+  		padding-top: 48px;
+  	}
+  }
+
+  @media only screen and (max-width: 991px) {
+  	.img-bottom-right-rogue-wave {
+  		padding-bottom: 48px;
+  	}
+  }
+
+  @media only screen and (max-width: 767px) {
+  	.img-bottom-right-yellow {
+  		padding-top: 30px;
+  	}
+  }
+  /********************************************  
+
+  Hide Bullet Points 
+
+  *********************************************/
+
+  ul:not(.breadcrumb) {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  ul:not(.breadcrumb) li::marker,
+  ul:not(.breadcrumb) li::before {
+    content: "" !important;
+  }
+
+  .project-text > ul > li {
+      margin-bottom: 10px;
+  }
+
+  .field--name-field-project-overview-header {
+  	padding: 50px 50px 20px 50px;
+  }
+
+  .field--name-field-coe-project-overview-body {
+    padding: 0px 50px 50px 50px;
+  }
+
+  .project-title {
+      margin-bottom: 20px;
+  }
+
+  /****************************************** */
+
+  /*Typography for Project Overview Title | Blue Text*/
+
+  /*********************************************/
+  .field--name-field-project-overview-pi .field__label,
+  .field--name-field-project-overview-co-pi .field__label,
+  .field--name-field-project-overview-tag .field__label,
+  .field--name-field-project-overview-duration .field__label,
+  .field--name-field-project-overview-title .field__label,
+  .field--name-field-project-overview-desc .field__label,
+  .field--name-field-project-overview-resources .field__label,
+  .project-label {
+    color: var(--Secondary-Stratosphere, #006A8E);
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Open Sans";
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  /****************************************** 
+
+  Typography for Project Overview Body | Thin Text
+
+  ********************************************/
+  .field--name-field-project-overview-pi .field__items .field__item,
+  .field--name-field-project-overview-co-pi .field__items .field__item,
+  .field--name-field-project-overview-duration .field__item,
+  .field--name-field-project-overview-tag .field__item,
+  .project-text,
+  .project-tag {
+  	color: var(--Primary-Paddletail-Black, #000);
+    font-feature-settings: 'liga' off, 'clig' off;
+    font-family: "Open Sans";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 130%;
+    margin-bottom: 20px;
+  }
+
+  .project-tag:empty {
+    display: none;
+  }
+
+  /****************************************** 
+
+  Project Overview Tag Styling | Blue Box
+
+  ********************************************/
+  .field--name-field-project-overview-tag .field__item,
+  .project-tag {
+  	border-radius: 3px !important;
+    background-color: rgba(184, 221, 225, 0.3);
+    padding: 10px !important;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    width: max-content;
+  }
+
+  /********************************************
+
+  Border Top | Short Border Above Block
+
+  ********************************************/
+
+  .orange-border-top > div::before{
+  	content: "";
+    position: absolute;
+    width: 75px;
+    height: 6px !important;
+    background-color: #D73F09;
+    opacity: 1;
+  }
+
+  /******************************************* 
+
+  Project Overview Dropdown/Collapsible Section | Moondust Background
+
+  *********************************************/
+  .field--name-field-project-overview-dropdown {
+  	background: #F4F8FA;
+  }
+   
+  .collapsible-card {
+    border-radius: 5px;
+    background: #F4F8FA;
+    box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+    /*height: 100%;*/
+    /*transition: .3s;*/
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    margin-top: 30px;
+    /*transition: opacity 500ms,visibility 500ms,max-height 500ms;*/
+  }
+
+  /*.collapsible-card > div {*/
+  /*	height: 100%;*/
+  /*}*/
+
+  .card-intro {
+    padding: 50px;
+    background: #FFF;
+    height: calc(100% - 80px);
+  }
+
+  .card-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 50px 20px 50px;
+    background: #F4F8FA;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .card-label .blue-carrot{
+    padding: 8px;
+    border-radius: 50%;
+    background: #C6DAE7;
+    color: #006A8E;
+    transition: transform 0.2s ease;
+    background-image: url('data:image/svg+xml,<svg width="30" height="30" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="20" cy="20" r="20" fill="%23C6DAE7"/><path d="M11 17L20 26L29 17" stroke="%23006A8E" stroke-width="5" stroke-linecap="square"/></svg>');
+    width: 30px;
+    height: 30px;
+  }
+
+  .card-body {
+    margin: 0 50px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.8s ease, padding 0.8s ease;
+    /*transition: max-height 0.3s ease, padding 0.3s ease;*/
+  }
+  .collapsible-card:not(.collapsed) .card-body {
+    border-top: 2px solid #C6DAE7;
+    max-height: 100vh;
+    padding-top: 30px;
+    background-color: #F4F8FA;
+  }
+  .arrow {
+    transition: transform 0.2s ease;
+  }
+  .collapsible-card:not(.collapsed) .blue-carrot {
+    transform: rotate(180deg);
+  }
+
+  #views-bootstrap-project-cards-block-1 > div {
+  	height: auto;
+  }
+
+  #views-bootstrap-project-cards-block-1 .views-field {
+  	height: 100%;
+  }
+
+  .research-title,
+  .project-description {
+  	margin-bottom: 30px;
+  }
+
+  .project-links {
+    margin-bottom: 50px;
+  }
+
+  .project-links > ul > li {
+  	margin-bottom: 10px;
+  }
+
+  /*
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  	--COE Typography--
+  	
+  	Global typography styling. Created 4/2/2025.
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  */
+
+  .layout-content{
+  	background: #FFF;
+  }
+
+  .layout-content .node--unpublished {
+  	background: #FFF;
+  }
+
+  .container-fluid:has(.madrone-breadcrumb) { 
+    background-color: #FFF !important;
+  }
+
+  /* Override XL breakpoint default */
+  @media screen and (min-width: 1200px) {
+  	.col-xxl-8 {
+  		width: 66.66666667%;
+  	}
+  	.col-xxl-4 {
+  		width: 33.33333333%;
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Text Styling
+  	
+  	PURPOSE: Configurations of text styling
+  	==============================================================================================================================================================*/
+
+  :root {
+  	--Primary-Paddletail-Black: #000;
+  	--Primary-Beaver-Orange: #D73F09;
+  	--Primary-Bucktooth-White: #FFF;
+  	--Secondary-Luminance: #FFB500;
+  }
+
+  /* Main/H1 */
+  h1, .h1 {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: Stratum2Web;
+  	font-size: 96px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 96%; /* 92.16px */
+  }
+
+  /* Main/H2 */
+  h2, .h2 {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: Stratum2Web;
+  	font-size: 64px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 83.2px */
+  }
+
+  /* Main/H3 */
+  h3, .h3 {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: Stratum2Web;
+  	font-size: 36px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 46.8px */
+  }
+
+  /* Main/H4 */
+  h4, .h4 {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: Stratum2Web;
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  }
+
+  /* Main/H5 */
+  h5, .h5 {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: "Open Sans";
+  	font-size: 22px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 130%; /* 28.6px */
+  	letter-spacing: 1.1px;
+  	text-transform: uppercase;
+  }
+
+  /* Main/H5 */
+  h6, .h6 {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  }
+
+  @media screen and (max-width: 991px) {
+  	h1, .h1 {
+  		font-size: 72px;
+  	}
+  	h2, .h2 {
+  		font-size: 48px;
+  		line-height: 120%;
+  	}
+  	h5, .h5 {
+  		font-size: 18px;
+  		letter-spacing: 0.9px;
+  	}
+  }
+
+  @media screen and (max-width: 767px) {
+  	h1, .h1 {
+  		font-size: 56px;
+  		line-height: 120%;
+  	}
+  	h2, .h2 {
+  		font-size: 44px;
+  	}
+  }
+
+  /* Main/Body */
+  main {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 160%;
+  }
+
+  nav, nav a {
+  	color: #000;
+  }
+
+  .orange-text {
+  	color: var(--Primary-Beaver-Orange, #D73F09);
+  }
+
+  .white-text {
+  	color: var(--Primary-Bucktooth-White, #FFF);
+  }
+
+  .yellow-text {
+  	color: var(--Secondary-Luminance, #FFB500);
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Link Styling
+  	
+  	PURPOSE: Configurations of link styling
+  	==============================================================================================================================================================*/
+
+  /***************************************
+  	Arrow Links
+  	*************************************/
+
+  /* Arrow link styling */
+  .orange-arrow-link a,
+  .yellow-arrow-link a,
+  .black-arrow-link a{
+  	font-family: Stratum2Web;
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: normal;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	color: #D73F09 !important;
+  	text-decoration: none !important;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 25px;
+    margin-right: 10px;
+    margin-top: 18px;
+    transition: 0.2s ease;
+    border-bottom: none;
+  }
+
+  /* Yellow arrow override */
+  .yellow-arrow-link a {
+  	color: #FFB500 !important;
+  	background-image: url("/sites/engineering.oregonstate.edu/files/2025-02/arrow-right-yellow.svg") !important;
+  }
+
+  /* Black arrow override */
+  .black-arrow-link a {
+  	background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='27' height='20' viewBox='0 0 20 16' fill='none'><path d='M2 8H16' stroke='black' stroke-width='2.0' stroke-linecap='square' stroke-linejoin='round'/><path d='M12 14L18 8L12 2' stroke='black' stroke-width='2.0' stroke-linecap='square'/></svg>") !important;
+  	color: #000 !important;
+  }
+
+  /* Container spacing for arrow link */
+  .orange-arrow-link,
+  .yellow-arrow-link,
+  .black-arrow-link {
+  	margin-top: 18px;
+  }
+
+  /* Arrow link hover state */
+  .orange-arrow-link a:hover,
+  .yellow-arrow-link a:hover,
+  .black-arrow-link a:hover {
+  	padding-right: 35px;
+  	margin-right: 0px;
+  	border-bottom: none;
+  }
+
+  /* Orange arrow active/focus state */
+  .orange-arrow-link a:active,
+  .orange-arrow-link a:focus {
+  	background-color: transparent !important;
+  	color: #BE3706 !important;
+  	padding-right: 35px !important;
+  	border-bottom: none !important;
+  }
+
+  /* Yellow arrow active/focus state */
+  .yellow-arrow-link a:active,
+  .yellow-arrow-link a:focus {
+  	background-color: transparent !important;
+  	color: #D3832B !important;
+  	padding-right: 35px !important;
+  	border-bottom: none !important;
+  }
+
+  /* Black arrow active/focus state */
+  .black-arrow-link a:active,
+  .black-arrow-link a:focus {
+  	background-color: transparent !important;
+  	color: #000 !important;
+  	padding-right: 35px !important;
+  	border-bottom: none !important;
+  }
+
+  /***************************************
+  	Inline Links
+  	*************************************/
+
+  /* Apply to all links by default */
+  main a {
+  	color: #D73F09;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 160%; /* 28.8px */
+  	text-decoration: none;
+  	border-bottom: 3px solid transparent;
+  	transition: 0.2s ease;
+  	background-image: none;
+  }
+
+  /* Inline Links Hover */
+  main a:hover,
+  main a:focus {
+  	color: #BE3706;
+  	border-bottom: 3px solid #BE3706;
+  	padding-right: 0;
+  	text-decoration: none !important;
+  }
+
+  main a:active {
+  	background-color: transparent !important;
+  	color: #BE3706 !important;
+  }
+
+  .yellow-inline a {
+  	color: #FFB500;
+  }
+
+  .yellow-inline a:hover,
+  .yellow-inline a:focus {
+  	color: #FFB500;
+  	border-bottom: 3px solid #FFB500;
+  	padding-right: 0;
+  	text-decoration: none !important;
+  }
+
+  .yellow-inline a:active {
+  	background-color: transparent !important;
+  	color: #D3832B !important;
+  	border-bottom: 3px solid #D3832B;
+  }
+
+  /***************************************
+  	Button Link Styling
+  	*************************************/
+  	
+  .black-border, .black-fill, .orange-border, .orange-fill, .yellow-fill, .white-border, .white-fill {
+  	text-align: center;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: normal;
+  	letter-spacing: 0.9px;
+  	text-transform: uppercase;
+  	padding: 17px 0px;
+  	transition: 0.3s;
+  	display: block;
+  	margin-top: 20px;
+  }
+
+  .black-border, .black-fill,
+  .black-border:hover, .black-fill:hover {
+  	border: 2px solid #000;
+  }
+
+  .orange-border, .orange-fill,
+  .orange-border:hover, .orange-fill:hover {
+  	border: 2px solid #D73F09;
+  }
+
+  .yellow-fill, .yellow-fill:hover {
+  	border: 2px solid #FFB500;
+  }
+
+  .yellow-fill {
+  	background-color: #FFB500;
+  	color: #000;
+  }
+
+  .white-border, .white-fill:hover, .white-fill:focus {
+    background-color: transparent;
+    color: #FFF;
+  }
+
+  .white-border, .white-fill, .white-border:hover, .white-fill:hover {
+    border: 2px solid #FFF;
+  }
+
+  .white-fill, .white-border:hover, .white-border:focus {
+    background-color: #FFF;
+    color: #000 !important;
+    border-bottom: 2px solid #FFF;
+  }
+
+  .black-border,
+  .black-fill:hover, .black-fill:focus {
+  	background-color: #FFF;
+  	color: #000;
+  }
+
+  .yellow-fill:hover, .yellow-fill:focus {
+  	background-color: #000;
+  	color: #FFB500;
+  	border-bottom: 2px solid #FFB500; /* cancel out main a styling */
+  }
+  .orange-border,
+  .orange-fill:hover, .orange-fill:focus {
+  	background-color: #FFF;
+  	color: #D73F09;
+  	border-bottom: 2px solid #D73F09; /* cancel out main a styling */
+  }
+
+  .black-fill,
+  .black-border:hover, .black-border:focus {
+  	background-color: #000;
+  	color: #FFF;
+  	border-bottom: 2px solid #000; /* cancel out main a styling */
+  }
+
+  .orange-fill,
+  .orange-border:hover, .orange-border:focus {
+  	background-color: #D73F09;
+  	color: #FFF;
+  }
+
+  .black-border:active {
+  	background-color: #212529 !important;
+  	color: #FFF !important;
+  	border-color: #212529 !important;
+  }
+
+  .black-fill:active {
+  	background-color: #FFF;
+  	color: #212529;
+  	border-color: #212529;
+  }
+
+  .orange-border:active {
+  	background-color: #BE3706;
+  	color: #FFF;
+  	border-color: #BE3706;
+  }
+
+  .orange-fill:active {
+  	background-color: #FFF !important;
+  	color: #BE3706 !important;
+  	border-color: #BE3706;
+  }
+
+  .yellow-fill:active {
+  	background-color: #000 !important;
+  	color: #D3832B !important;
+  	border-color: #D3832B !important;
+  }
+
+  .button-container {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: space-between;
+  }
+
+  .fourth-width,
+  .third-width,
+  .half-width,
+  .full-width {
+  	width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+  	.fourth-width,
+  	.third-width,
+  	.half-width {
+  		width: calc(50% - 10px);
+  	}
+  }
+
+
+  @media screen and (min-width: 1200px) {
+  	.third-width {
+  		width: calc(33.3333% - 16px);
+  	}
+  	
+  	.fourth-width {
+      width: calc(25% - 18px);
+    }
+  }
+
+  @media screen and (max-width: 1199px) and (min-width: 768px) {
+  	.tablet-full-width {
+  		width: 100%;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47876\r\n/node/47886\r\n/group/86\r\n/node/53901"
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,26 @@
+uuid: 08ef75ae-1716-4105-87a6-6ec266a889b5
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: realm_child_unit_faq
+label: realm-child-unit-faq
+logic: and
+conditions:
+  cfa3a124-e2aa-403d-a29f-c5b40f877e98:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: cfa3a124-e2aa-403d-a29f-c5b40f877e98
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page
+      webform: webform
+  bf295c59-3336-4bc9-ac3f-3c153486a79e:
+    id: request_path
+    negate: false
+    uuid: bf295c59-3336-4bc9-ac3f-3c153486a79e
+    pages: "/parents/faq\r\n/smokefree/faq"
+allow_other_conditions: null

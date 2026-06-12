@@ -1,0 +1,37 @@
+uuid: ce2e4f7a-3f7c-4608-bd97-128ccdcb5b20
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_project_photos
+    - node.type.projects
+    - paragraphs.paragraphs_type.project_photos
+  module:
+    - entity_reference_revisions
+id: node.projects.field_project_photos
+field_name: field_project_photos
+entity_type: node
+bundle: projects
+label: 'Project Photos'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      project_photos: project_photos
+    negate: 0
+    target_bundles_drag_drop:
+      osu_accordion_item:
+        weight: 4
+        enabled: false
+      osu_accordion_section:
+        weight: 5
+        enabled: false
+      project_photos:
+        weight: 6
+        enabled: true
+field_type: entity_reference_revisions

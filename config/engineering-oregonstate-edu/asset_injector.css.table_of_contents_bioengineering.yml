@@ -1,0 +1,69 @@
+uuid: 460d761e-cccd-455a-a517-174632853743
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: table_of_contents_bioengineering
+label: 'Fall co-curricular information table of contents (toc, h2, a)'
+code: |-
+  /*===============================
+  TOC Styling
+  ===============================*/
+
+
+  /* Set background color of whole block */
+
+  .toc-js-block-toc-js-block {
+  	background-color: white;
+  }
+
+  /* Adds line separators under header text, sets header height */
+
+  .toc-h2 {
+  	line-height: 45px;
+  	border-bottom: 1px solid #b8b8b8;
+  }
+
+  /* Highlights when hovering over table of contents */
+
+  .toc-h2:hover {
+  	background-color: hsl(16,93%,70%);
+  	box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: color, background-color;
+    transition-property: color, background-color;
+  }
+
+  /* Set unordered list color on hover */
+
+  .toc-h2:hover ul {
+    color: white;
+  }
+
+  /* Removes underline under text */
+
+  .toc-h2 a{
+  	text-decoration: none;
+  }
+
+  /* Adds underline on hover */
+
+  .toc-h2 a:hover{
+  	text-decoration: underline;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/41841
+contexts: {  }
+conditions_require_all: true

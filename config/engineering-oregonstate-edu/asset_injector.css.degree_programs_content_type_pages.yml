@@ -1,0 +1,72 @@
+uuid: 272d3d5e-eea3-466f-971c-5dd0bd68a4f4
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: degree_programs_content_type_pages
+label: 'Degree programs content type pages (buttons, comma separated list, background)'
+code: |-
+  /* =========================================================================================================
+  Discipline content type pages styling. Buttons, blocks, background colors, etc.
+  ========================================================================================================= */
+
+
+  /** Transform Degree Type divs into comma separated list */
+
+  .field--name-field-dp-degree-type .field__items .field__item {
+  	display: inline;
+  }
+
+  .field--name-field-dp-degree-type .field__items .field__item + .field__item::before {
+  	content: ", ";
+  	margin-left: -5px;
+  }
+
+  .field--name-field-osu-organizations .field__items {
+  	display: block;
+  }
+
+  /** Apply Now button should stand out **/
+
+  .field--type-text-with-summary p .btn.osu-btn-primary {
+  	background-color: #000 !important;
+  	color: #fff !important;
+  	border-color: transparent;
+  	width: 230px;
+  	padding: 1em;
+    font-size: 1.2rem
+  }
+  .field--type-text-with-summary p:first-child .btn.osu-btn-primary {
+  	background-color: #d73f09 !important;
+  }
+  .node__content > .p-2.osu-shadow {
+  	z-index: 2;
+  	position: relative;
+  }
+  .node__content > .p-2:nth-child(2) {
+  	padding-top: 0 !important;
+  }
+
+  /** Add this class for light background on bootstrap columns */
+  .coe-discipline-light {
+  	background: #fff;
+  	padding: 15px 20px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      degree_programs: degree_programs
+contexts: {  }
+conditions_require_all: true

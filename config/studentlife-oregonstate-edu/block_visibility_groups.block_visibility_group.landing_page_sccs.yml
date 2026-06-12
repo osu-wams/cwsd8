@@ -1,0 +1,30 @@
+uuid: ed95114c-4106-481e-acb6-afb6193b6810
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: landing_page_sccs
+label: landing-page-sccs
+logic: and
+conditions:
+  e704b280-986c-4261-8ff0-dd91490fbd99:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: e704b280-986c-4261-8ff0-dd91490fbd99
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      page: page
+  04d1a277-b26a-4c3a-aa85-6d757d8bd313:
+    id: request_path
+    negate: false
+    uuid: 04d1a277-b26a-4c3a-aa85-6d757d8bd313
+    pages: /studentconduct
+  d96952b5-2830-4eb5-92eb-b01e0a8526be:
+    id: request_path
+    negate: true
+    uuid: d96952b5-2830-4eb5-92eb-b01e0a8526be
+    pages: "/main\r\n/main/*\r\n/group/*"
+allow_other_conditions: null

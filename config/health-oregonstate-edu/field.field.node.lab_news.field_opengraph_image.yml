@@ -1,0 +1,38 @@
+uuid: 9bc404ea-bdc9-4036-92b8-588f93e37a31
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_opengraph_image
+    - node.type.lab_news
+  module:
+    - image
+id: node.lab_news.field_opengraph_image
+field_name: field_opengraph_image
+entity_type: node
+bundle: lab_news
+label: 'OpenGraph image'
+description: 'Test your OpenGraph meta tags with <a href="https://developers.facebook.com/tools/debug/">Facebook Sharing Debugger</a> or <a href="https://www.opengraph.xyz/">OpenGraph</a> '
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:file'
+  handler_settings: {  }
+  file_directory: '[date:custom:Y]-[date:custom:m]'
+  file_extensions: 'png gif jpg jpeg webp'
+  max_filesize: '2 MB'
+  max_resolution: 1200x630
+  min_resolution: 600x257
+  alt_field: true
+  alt_field_required: true
+  title_field: false
+  title_field_required: false
+  default_image:
+    uuid: ''
+    alt: ''
+    title: ''
+    width: null
+    height: null
+field_type: image

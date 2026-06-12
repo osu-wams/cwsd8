@@ -1,0 +1,40 @@
+uuid: 29e18bb9-8717-40a2-944d-7e4adacee24f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: swap_logo
+label: 'swap logo and link'
+code: |+
+  var gearup_image = document.querySelector('img[src="/themes/custom/madrone/logo.svg"]'); 
+
+  gearup_image.src = '/sites/oregongearup.org/files/styles/fluid_webp/public/2024-07/gearup_logo2.png.webp';
+
+  var gearup_image_crest = document.querySelector('img[src="/themes/custom/madrone/assets/osu-logo-crest-only.svg"]'); 
+
+  gearup_image_crest.src = '/sites/oregongearup.org/files/styles/fluid_webp/public/2024-07/gearup-crest.png.webp';
+
+  var homepage_link = document.querySelector('a[href="https://oregonstate.edu/"]'); 
+
+  homepage_link.setAttribute('href','https://oregongearup.org');
+
+  document.getElementById('osu-logo-crest').setAttribute('href','https://oregongearup.org');
+
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

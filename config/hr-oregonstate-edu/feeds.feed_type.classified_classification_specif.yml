@@ -1,0 +1,115 @@
+uuid: e930efba-8c01-4303-8bd0-0f6745df7688
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.classified_classification_specif.body
+    - field.field.node.classified_classification_specif.field_class_number
+    - field.field.node.classified_classification_specif.field_class_spec_salary_range
+    - node.type.classified_classification_specif
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      0a9dd76c-5219-4b09-88d1-c5ead79fa256:
+        separator: '|'
+        limit: null
+        uuid: 0a9dd76c-5219-4b09-88d1-c5ead79fa256
+        plugin: explode
+        source: value
+        weight: 0
+        label: Explode
+      503ba005-7ee0-4d74-bce3-925376870428:
+        operation: ucwords
+        uuid: 503ba005-7ee0-4d74-bce3-925376870428
+        plugin: convert_case
+        source: title
+        weight: 0
+        label: 'Convert case'
+label: 'Classified Classification Specifications'
+id: classified_classification_specif
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: classified_classification_specif
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 0
+custom_sources:
+  title:
+    value: title
+    label: title
+    machine_name: title
+    type: csv
+  class_number:
+    value: class_number
+    label: class_number
+    machine_name: class_number
+    type: csv
+  description:
+    value: description
+    label: description
+    machine_name: description
+    type: csv
+  value:
+    value: value
+    label: value
+    machine_name: value
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique:
+      value: 1
+  -
+    target: field_class_number
+    map:
+      value: class_number
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: body
+    map:
+      value: description
+      summary: ''
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: field_class_spec_salary_range
+    map:
+      target_id: value
+    settings:
+      language: null
+      reference_by: name
+      autocreate: false
+      autocreate_bundle: salary_ranges
+      feeds_item: false

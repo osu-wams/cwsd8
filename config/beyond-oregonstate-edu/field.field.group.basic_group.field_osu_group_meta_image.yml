@@ -1,0 +1,32 @@
+uuid: ea491c9a-d4c9-4d68-b789-9efc62519f5f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.group.field_osu_group_meta_image
+    - group.type.basic_group
+    - media.type.image
+  enforced:
+    module:
+      - osu_groups_basic_group
+id: group.basic_group.field_osu_group_meta_image
+field_name: field_osu_group_meta_image
+entity_type: group
+bundle: basic_group
+label: 'Meta Image'
+description: "Media will be used in Metatag Images. <br />\r\n<em>This field is not rendered</em>"
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+      direction: ASC
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

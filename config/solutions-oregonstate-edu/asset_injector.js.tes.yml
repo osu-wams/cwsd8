@@ -1,0 +1,90 @@
+uuid: 9a01b008-ef49-4263-8660-ef1b24a5e032
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: tes
+label: 'News Releases'
+code: |-
+  async function loadOSUNewsLayout() {
+      try {
+          const proxy = 'https://corsproxy.io/?';
+          const feedUrl = 'https://news.oregonstate.edu/releases/feed';
+          const res = await fetch(proxy + encodeURIComponent(feedUrl));
+          if (!res.ok) throw new Error('RSS fetch failed');
+          const text = await res.text();
+          const parser = new DOMParser();
+          const xml = parser.parseFromString(text, 'application/xml');
+          const items = xml.querySelectorAll('item');
+          if (items.length < 1) throw new Error('No news items');
+          const container = document.getElementById('news-container');
+          container.innerHTML = '';
+          for (let i = 0; i < Math.min(4, items.length); i++) {
+              const item  = items[i];
+              const title = item.querySelector('title')?.textContent || '';
+              const link  = item.querySelector('link')?.textContent || '#';
+
+  						let img = item.querySelector('enclosure')?.getAttribute('url') || '';
+  						let imgAlt = title;
+  						const contentEncoded = item.getElementsByTagNameNS('*', 'encoded')[0]?.textContent || '';
+  						if (contentEncoded) {
+  						    const tempDiv = document.createElement('div');
+  						    tempDiv.innerHTML = contentEncoded;
+  						    const firstImg = tempDiv.querySelector('img');
+  						    if (firstImg) {
+  						        imgAlt = firstImg.getAttribute('alt') || title;
+  						    }
+  						}
+
+              const tag = item.querySelector('category')?.textContent || '';
+              const rawDate = item.querySelector('pubDate')?.textContent || '';
+              const date = rawDate
+                  ? new Date(rawDate).toLocaleDateString('en-US', {year: 'numeric', month: 'long', day: '2-digit'})
+                  : '';
+              const card = document.createElement('a');
+              card.href = link;
+              card.className = 'news-card';
+              card.innerHTML = `
+                  <div class="image-container">
+                      ${img
+                          ? `<img src="${img}" alt="${imgAlt}" class="news-image" loading="lazy">`
+                          : `<div class="no-image">No image</div>`}
+                      <div class="card-tag">${tag}</div>
+                  </div>
+                  <div class="card-content">
+                      <div class="news-title">${title}</div>
+                      <div class="card-date">${date}</div>
+                  </div>
+              `;
+              container.appendChild(card);
+              if (i < 2) {
+                  const divider = document.createElement('div');
+                  divider.className = 'news-divider';
+                  container.appendChild(divider);
+              }
+          }
+      } catch (err) {
+          console.error(err);
+          document.getElementById('news-container').innerHTML =
+              '<p class="error-message">Unable to load news right now. Please try again later.</p>';
+      }
+  }
+  loadOSUNewsLayout();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/2166
+contexts: {  }
+conditions_require_all: true

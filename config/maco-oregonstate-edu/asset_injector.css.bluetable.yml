@@ -1,0 +1,33 @@
+uuid: a95bf191-73f9-4725-90c3-fc61e5648eb6
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: bluetable
+label: BlueTable
+code: |
+  .osu-table-orange th {
+      background-color: #006A8E;  /* Change header background color */
+      border: 1px solid #006A8E;  /* Set border color */
+      color: white;  /* Set text color for header */
+      box-shadow: none;  /* Remove box shadow */
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      coastal_course_roster: coastal_course_roster
+      more_testing: more_testing
+contexts: {  }
+conditions_require_all: true

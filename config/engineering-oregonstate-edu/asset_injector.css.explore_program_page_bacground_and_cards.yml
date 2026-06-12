@@ -1,0 +1,590 @@
+uuid: fbe092a4-2076-43dd-9fdc-513e7e078114
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: explore_program_page_bacground_and_cards
+label: 'Explore Program Page (Background and Cards)'
+code: |
+  .block-views-blockexplore-programs-view-block-1{
+  	margin-top: 30px;
+  }
+
+    
+  @media only screen and (min-width: 1000px){
+  .explore-programs-description{
+  	width: 67%;
+  }
+  }
+
+  .explore-programs-card{
+  	border-radius: 5px !important;
+  	border: 1px solid var(--Useful-Lightest-Grey, #F8F9FA) !important;
+  	background: var(--Primary-Bucktooth-White, #FFF) !important;
+  	box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08) !important;
+  	background-color: #FFF !important;
+  	position: relative;
+  	transition: .3s;
+  }
+
+
+  .explore-programs-card:hover{
+  	background: #F9FCFD !important;
+  	transition: .3s;
+  	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+
+  .explore-programs-img img{
+  	min-height: 180px !important;
+  	max-height: 180px !important;
+  	width: 100% !important;
+  	object-fit: cover;
+  	border-radius: 5px 5px 0px 0px;
+  }
+
+  a h5.explore-programs-title, a:hover h5.explore-programs-title, a:active h5.explore-programs-title, a:focus h5.explore-programs-title {
+  	color: #000 !important;
+  	
+  	/* Main/H4 */
+  	font-family: Stratum2web;
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  	text-decoration: none !important;
+  	border-bottom: none !important;
+
+  }
+
+  @media screen and (max-width: 991px) {
+  	h5.explore-programs-title {
+  		font-size: 18px;
+  	}
+  }
+
+  .explore-programs-title a:hover{
+  	text-decoration: none !important;
+  }
+
+  .explore-programs-title a:active{
+  	background-color: #fff !important;
+  }
+
+  .explore-programs-title{
+  	margin-bottom: 10px;
+  }
+
+  a:has( h5.explore-programs-title), a:has( h5.explore-programs-title):hover, a:has( h5.explore-programs-title):active, a:has( h5.explore-programs-title):focus {
+  	text-decoration: none !important;
+  } 
+
+
+  .explore-programs-interdisciplinary{
+  	color: var(--Primary-Paddletail-Black, #000);
+  	/* Main/Notes */
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: italic;
+  	font-weight: 300;
+  	line-height: 130%; /* 15.6px */
+  }
+
+  .explore-programs-interdisciplinary p{
+  	padding-bottom: 20px;
+  }
+
+
+  .explore-programs-location{
+  	color: #006A8E;
+
+  	font-family: "Open Sans";
+  	font-size: 12px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 160%; /* 19.2px */
+  	letter-spacing: 0.6px;
+  	text-transform: uppercase;
+  	padding-right: 20px !important;
+  	word-spacing: 15px;
+  	position: absolute;
+  	bottom: 30px;
+  }
+
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    margin: 30px 30px 0px;
+    padding: 0px 0px;
+  }
+
+  /* Display chips in a flex-box */
+  .views-view-grid:has(.views-field-field-coe-degree-type-undergrad, 
+  .views-field-field-coe-degree-type-graduate) .field-content{
+  	display: flex;
+  	flex-wrap: wrap;
+  }
+
+  .Degree-types-text {
+  	color: #000 !important;
+  	font-family: "Open Sans";
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 300;
+  	line-height: 130%;
+  }
+
+  /* Light blue background for chip elements */
+  .Degree-types {
+  	border-radius: 3px !important;
+  	background-color: rgba(184, 221, 225, 0.3);
+  	padding: 10px !important;
+  	margin-bottom: 10px;
+  	margin-right: 10px;
+  	width: auto;
+  }
+
+  .degree-types-text{
+  	padding-left: 0px !important;
+  }
+
+  .degree-types-location p{
+  	border-radius: 3px !important;
+  	background-color: rgba(184, 221, 225, 0.3);
+  	padding: 10px !important;
+  	margin-bottom: 10px;
+  	margin-right: 10px;
+  }
+
+
+
+  /*
+  styling for the Degree Type and Location sidebar on discipline pages
+  */
+
+  .explore-programs-degree-types{
+  	display: flex;
+  	flex-wrap: wrap;
+  	margin-bottom: 30px;
+  	padding-bottom: 30px;
+  }
+
+  /*.degree-types{*/
+  /*	border-radius: 3px !important;*/
+  /*	background-color: rgba(184, 221, 225, 0.3);*/
+  /*	padding: 10px !important;*/
+  /*	margin-bottom: 10px !important;*/
+  /*	width: 33%;*/
+  /*	margin-right: 5px;*/
+  /*}*/
+
+  .Degree-types-text p{
+  	color: #000 !important;
+
+  	/* Main/Body Small */
+  	font-family: "Open Sans";
+  	font-size: 14px;
+  	font-style: normal;
+  	font-weight: 300;
+  	line-height: 130%; /* 18.2px */
+  	border-radius: 3px !important;
+  	background-color: rgba(184, 221, 225, 0.3);
+  	padding: 10px !important;
+  	width: 100%;
+  }
+
+  .views-label-field-degree-type-undergraduate{
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	/* Main/H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  }
+
+  .views-label-field-degree-type-graduate{
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	/* Main/H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  }
+
+
+
+  /*
+  THIS IS THE START OF THE FITLER FORM STYLING
+  */
+
+
+
+  /*remove theme margin top from filters*/
+  .views-exposed-form .my-3{
+  	margin-top: 0px !important;
+  }
+
+  .form-label{
+  	color: var(--Primary-Paddletail-Black, #000);
+
+  	/* Main/H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  	}
+
+  .form--inline input{
+  	border-radius: 5px;
+  	border: 2px solid var(--Primary-Paddletail-Black, #000);
+  	background: var(--Primary-Bucktooth-White, #FFF);
+  	height: 76px;
+  	transition: .3s;
+
+  }
+
+  .form--inline input:hover{
+  	background: #EAF5F6;
+  	border-color: #000;
+  	transition: .3s;
+  }
+
+
+  option{
+  	color: black !important;
+  }
+
+  /* Default styles for all screens */
+  .views-exposed-form .form--inline > .form-item {
+      float: left;
+      width: 100%; 
+      /* 100% width for mobile screens */
+  }
+
+  .views-exposed-form{
+  	margin-bottom: 100px;
+  	border-bottom: 1px solid #C6DAE7 !important;
+  }
+
+  /* Media query for screens larger than 768px */
+  @media (min-width: 992px) {
+      .views-exposed-form .form--inline > .form-item {
+          width: 32.6%; 
+      }
+  		.views-exposed-form .js-form-type-textfield{
+  			margin-bottom: 30px !important;
+  		}
+      /*.js-form-item-degree-levels, .js-form-item-field-coe-discipline-location-target-id{*/
+      /*	margin-right: 1%;*/
+      /*}*/
+  }
+
+  /* Reduces the top and bottom margins from the view filters*/
+  .views-exposed-form .form--inline > div.form-actions {
+    /* margin-block-start: 2.5rem; */
+    margin-block-start: 0rem;
+  }
+
+  .js-form-item-name {
+  	margin-right: 2%;
+  }
+
+
+  /* Remove top margin */
+  .mt-3 {
+    margin-top: 0rem !important;
+  }
+
+  /* Remove bottom margin */
+  .my-3, a.button {
+    margin-bottom: 0rem !important;
+  }
+
+
+  .js-form-item-combine{
+  	float: left !important;
+  	width: 100% !important;
+  }
+
+  #edit-submit-explore-programs-view{
+  	margin-bottom: 50px !important;
+  }
+
+  .js-form-item select{
+  	border-radius: 5px;
+  	border: 2px solid #000;
+  	background: #FFF;
+  }
+
+
+  .contextual-region .justify-content-center{
+  	justify-content: flex-start !important;
+  }
+
+  .contextual-region .d-flex {
+  	display: flex !important;
+  	flex-wrap: wrap;
+  	justify-content: space-between;
+  }
+
+
+  /*Apply filters button*/
+  .form-actions input{
+  	border: 2px solid #D73F09 !important;
+  	background: #D73F09 !important;
+  	color: #FFF !important;
+  	width: 320px;
+  	height: 60px;
+  	flex-shrink: 0;
+  	margin-top: 40px !important;
+  }
+
+  .form-actions input:hover, .form-actions input:focus {
+  	border: 2px solid #D73F09 !important;
+  	background-color: #FFF !important;
+  	color: #D73F09 !important;
+  	width: 320px;
+  	height: 60px;
+  	flex-shrink: 0;
+  }
+
+  .form-actions input:active{
+  	border: 2px solid #BE3706 !important;
+  	background-color: #FFF !important;
+  	color: #BE3706;
+  	width: 320px;
+  	height: 60px;
+  	flex-shrink: 0;
+  }
+
+
+  .views-exposed-form{
+  	margin-bottom: 50px;
+  }
+
+  /* Reduces the top and bottom margins from the view filters*/
+  .views-exposed-form .form--inline > div.form-actions {
+    /* margin-block-start: 2.5rem; */
+    margin-block-start: 0rem;
+  }
+
+  /* Remove top margin */
+  .mt-3 {
+    margin-top: 0rem !important;
+  }
+
+  /* Remove bottom margin */
+  .my-3, a.button {
+    margin-bottom: 0rem !important;
+  }
+
+  .js-form-item-combine{
+  	float: left !important;
+  	width: 100% !important;
+  }
+
+  @media only screen and (max-width: 767px){
+  .form-label{
+  	margin-bottom: 20px;
+  	margin-top: 20px;
+  }
+  }
+
+  #edit-submit-explore-programs-view{
+  	margin-top: 40px !important;
+  	width: 320px !important;
+  	color: var(--Primary-Bucktooth-White, #FFF) !important;
+  	text-align: center !important;
+  	font-family: "Open Sans" !important;
+  	font-size: 20px !important;
+  	font-style: normal !important;
+  	font-weight: 600 !important;
+  	line-height: normal !important;
+  	letter-spacing: 1px !important;
+  	text-transform: uppercase !important;
+  	border: 2px solid var(--Primary-Paddletail-Black, #000) !important;
+  	background: var(--Primary-Paddletail-Black, #000) !important;
+  }
+
+  #edit-submit-explore-programs-view:hover{
+  	margin-top: 40px !important;
+  	/*width: 320px;*/
+  	color: var(--Primary-Paddletail-Black, #000) !important;
+  	text-align: center !important;
+  	font-family: "Open Sans" !important;
+  	font-size: 20px !important;
+  	font-style: normal !important;
+  	font-weight: 600 !important;
+  	line-height: normal !important;
+  	letter-spacing: 1px !important;
+  	text-transform: uppercase !important;
+  	border: 2px solid var(--Primary-Paddletail-Black, #000) !important;
+  	background: var(--Primary-Bucktooth-White, #FFF) !important;
+  }
+
+  .btn.osu-btn-primary{
+  	letter-spacing: 1px;
+  }
+
+  /*.btn.osu-btn-primary:hover{*/
+  /*	color: #D73F09 !important;*/
+  /*}*/
+
+  .js-form-item select{
+  	border-radius: 5px;
+  	border: 2px solid #000;
+  	background-color: #FFF;
+  	height: 76px;
+  	transition: .3s;
+  }
+
+  .js-form-item select:active, .js-form-item select:hover{
+  	border-radius: 5px;
+  	background: #EAF5F6;
+  	border-color: #000;
+  	transition: .3s;
+  }
+
+  .js-form-item select:focus{
+  	border-color: #000;	
+  	
+  }
+
+  /*#edit-submit-explore-programs-view:hover{*/
+  /*	border: 2px solid var(--Primary-Paddletail-Black, #000) !important;*/
+  /*	background: #000 !important;*/
+  /*	color: #FFF !important;*/
+  	
+  /*}*/
+
+  /*@media only screen and (min-width: 786px) {*/
+  	
+  /*#edit-submit-explore-programs-view{*/
+  /*	margin-left: 20px;*/
+  /*}*/
+
+
+
+  @media only screen and (max-width: 1199px) {
+  	
+  #edit-submit-explore-programs-view{
+  	width: 98%;
+  }
+
+  }
+  /*.js-form-item-field-coe-dp-degree-level-target-id{*/
+  /*	margin-right: 1%;*/
+  /*}*/
+
+  .form-item-field-engr-video-date-pub-value{
+  	margin-right: 3.3%;
+  }
+
+  .form-item-field-engr-video-date-pub-value label{
+  	margin-top: 30px;
+  }
+
+  .form-item-field-event-video-type-target-id label{
+  	margin-top: 30px;
+  }
+
+  /*Video Library Filter Labels*/
+
+  .form--inline label{
+  	color: #000;
+  	
+  	/* Main/H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: 130%; /* 26px */
+  }
+
+  /*Video Library Submit Button*/
+  .form-actions input{
+  	border: 2px solid #000000 !important;
+  	font-family: "Open Sans";
+  	font-weight: 400;
+  	text-transform: uppercase;
+  	font-size: 20px;
+  	background: #000000 !important;
+  	color: #FFF !important;
+  	height: 60px;
+  	flex-shrink: 0;
+  }
+
+  .form-action input:hover{
+  	border: 2px solid #D73F09 !important;
+  	background: #FFF !important;
+  	color: #D73F09 !important;
+  }
+
+  .js-form-type-select select, .js-form-type-select select:hover{
+  	background-image: url(https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/2024-12/triangle-3.svg);
+  	background-repeat: no-repeat !important;
+  	background-size: 24px;
+  	padding-right: 20px;
+  	background-position: 98% 51%;
+  	
+  }
+
+
+
+  #edit-reset{
+  	border: 2px solid var(--Primary-Paddletail-Black, #000) !important;
+  	background: var(--Primary-Bucktooth-White, #FFF) !important;
+  	color: #000 !important;
+  	margin-top: 40px !important;
+  	margin-bottom: 50px !important;
+  	width: 320px;
+  }
+
+  #edit-reset:hover{
+  	border: 2px solid var(--Primary-Paddletail-Black, #000) !important;
+  	background: #000 !important;
+  	color: #FFF !important;
+  	border-radius: 0px;
+  	
+  }
+
+  @media only screen and (min-width: 1200px) {
+  	
+  #edit-reset{
+  	margin-left: 20px;
+  }
+
+  }
+
+  @media only screen and (max-width: 1199px) {
+  	
+  #edit-reset{
+  	width: 98%;
+  	margin-top: 0 !important;
+  }
+
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47196\r\n/academics/programs-0\r\n/academics/programs\r\n/CBEE/academics\r\n/CCE/academics\r\n/EECS/academics\r\n/MIME/academics\r\n/NSE/academics\r\n/academics/online-programs"
+contexts: {  }
+conditions_require_all: true

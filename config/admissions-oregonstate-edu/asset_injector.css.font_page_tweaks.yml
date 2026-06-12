@@ -1,0 +1,73 @@
+uuid: af50c6aa-ae59-43ca-8e26-8f7155461ccc
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: font_page_tweaks
+label: 'Front Page Tweaks'
+code: |
+  /* Tweak for top logo getting clipped on mobile DAC 3.8.2024 */
+
+  div.sf-accordion-toggle.sf-style-black a {
+    padding: 0 !important;
+  }
+
+  .your-path-wrapper {
+    & .your-path__block {
+      & .your-path__block-starts {
+        font-size: calc(3.5rem + 4.5vw);
+      }
+      & .your-path__block-here {
+        font-size: calc(6.5rem + 4.5vw);
+      }
+    }
+  }
+
+  .your-path__block {
+    font-size: calc(3.5rem + 4.5vw);
+  }
+
+  .your-path__block-here {
+    font-size: calc(6.5rem + 4.5vw);
+  }
+
+  @media screen and (min-width: 1200px ) {
+    .your-path-wrapper {
+      & .your-path__block {
+        & .your-path__block-starts {
+          font-size: 8.75rem;
+        }
+        & .your-path__block-here {
+          font-size: 12.5rem;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1200px ) {
+    .your-path__block-starts {
+      font-size: 8.75rem;
+    }
+    .your-path__block-here {
+      font-size: 12.5rem;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: '<front>'
+contexts: {  }
+conditions_require_all: true

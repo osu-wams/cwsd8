@@ -1,0 +1,29 @@
+uuid: a1faf16a-00a1-410f-b5c3-b93aa8c57ae5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_academic_discipline
+    - node.type.academic_program
+    - taxonomy.vocabulary.academic_discipline
+id: node.academic_program.field_academic_discipline
+field_name: field_academic_discipline
+entity_type: node
+bundle: academic_program
+label: 'Academic discipline'
+description: 'Which of the big 4 does this program belong to?'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      academic_discipline: academic_discipline
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

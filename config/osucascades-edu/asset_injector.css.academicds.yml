@@ -1,0 +1,159 @@
+uuid: 4eba965b-3e61-4f05-b7a1-cd94d9ceba59
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: academicds
+label: Academics
+code: |-
+  .node--unpublished, .group--unpublished {
+      background-color: #f7f5f5;
+  }
+
+
+  #scrollToTopBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(30, 33, 36, 0.5);
+    color: #ffffff;
+    border: none;
+    border-radius:5px;
+    padding: 10px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  /* Header title styles */
+  .header-title {
+    color: #fff;
+  }
+
+  /* Highlight text styles */
+  .highlight-text {
+    background-color: #d73f09;
+    padding: 5px 15px;
+    text-transform: uppercase;
+  /*  display: inline-block;*/
+    font-size: 3rem;
+    font-weight:500;
+    font-family: "Stratum2Web", serif;
+  }
+
+  .subhead-font {
+      	font-size:3rem;
+      	text-transform:uppercase;
+      }
+      
+  /* Tablet: 576px–991px */
+  @media (max-width: 991px) {
+    .highlight-text {
+      font-size: 40px;
+    }
+  }
+
+  /* Mobile: <576px */
+  @media (max-width: 575px) {
+    .highlight-text {
+      font-size: 28px;
+    }
+    .subhead-font {
+      	font-size:2.5rem;
+      	text-transform:uppercase;
+      }
+  }
+  /* Anchor-nav styles */
+    .anchor-nav {
+      font-size: 20px;
+      text-decoration: none;
+      font-family: "Stratum2Web", serif !important;
+      font-weight: 500;
+      color: inherit;
+      transition: color 0.3s ease;
+    }
+
+    /* Hover effect */
+    .anchor-nav:hover,
+    .anchor-nav:active {
+      color: #d73f09;
+    }
+
+    /* Separator and layout */
+    .separator {
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 10px;
+      padding-top: 7px;
+    }
+    .separator li:not(:last-child)::after {
+      content: "|";
+      margin: 0 10px;
+      color: #d73f09;
+      font-family: "Stratum2Web", serif;
+    }
+
+    /* Phone-specific styling */
+    @media (max-width: 576px) {
+      .anchor-nav {
+        font-size: 16px;
+        white-space: nowrap;
+      }
+      .separator li:not(:last-child)::after {
+        margin: 0 5px;
+        font-size: 16px;
+      }
+    }
+  @media (min-width: 1201px) {
+      .subhead-font {
+      	font-size:3.5rem;
+      	text-transform:uppercase;
+      }
+  }
+  .column-text {
+   column-count: 3;
+   column-gap: 1.5rem;
+   column-rule: 1px solid #dee2e6;
+   orphans: 3;
+   widows: 3;
+  }
+  @media (max-width: 767.98px) {
+   .column-text {
+     column-count: 1;
+    }
+   }
+   .icon-accordion-header {
+   	font-size: 24px;
+    color: #292929;
+    font-family: "Stratum2Web", serif;
+    line-height: 1;
+   }
+   .osu-academics-headings{
+    position: relative;
+    margin-top: 2.5rem;
+  }
+  .osu-academics-headings::before {
+    content: '';
+    width: 50px;
+    height: 4px;
+    position: absolute;
+    background-color: black;
+    top: -1rem;
+  }
+media: all
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/248106\r\n/node/248106/layout\r\n/group/245791"
+contexts: {  }
+conditions_require_all: false

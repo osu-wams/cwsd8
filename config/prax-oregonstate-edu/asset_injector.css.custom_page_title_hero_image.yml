@@ -1,0 +1,49 @@
+uuid: d40ff3e8-acd1-4a1e-821d-65eace77cf64
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: custom_page_title_hero_image
+label: 'PRAX Page Title - Hero Image'
+code: |-
+  .block--type-prax-page-title-hero {
+  	margin:-.5rem!important;
+  	padding:0!important;
+  	position:relative;
+  }
+
+  .field--name-field-prax-page-hero-image img {
+    width: 100%;
+      height: 500px;
+      object-fit: cover;
+  }
+      
+  .block--type-prax-page-title-hero .field--name-body {
+  	  position: absolute;
+      bottom: 50px;
+      left: 50px;
+      z-index: 1;
+      background:rgba(0,0,0,.8);
+      padding:20px;
+  }
+
+  .block--type-prax-page-title-hero .field--name-body h1 {
+      color: #fff!important;
+      font-size: 26px!important;
+      margin: 0!important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

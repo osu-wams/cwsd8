@@ -1,0 +1,251 @@
+uuid: ed8e7ea0-028a-4159-8754-41e9bde22b1a
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: web_design_projects
+label: Projects
+code: |-
+  .web-projects-btn{
+    position: relative;
+    z-index: 100;
+    display: block;
+    margin: auto;
+    width: 60%;
+    bottom: 4rem;
+  }
+  .web-projects-btn a{
+  	color: white!important;
+  }
+
+  .projects-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    perspective: 1200px;
+    overflow: hidden;
+    margin: 0;
+    margin-left: -25px;
+  }
+
+  .projects-container > .video-container-portfolio {
+    position: absolute;
+    width: 390px;
+    left: 50%;
+    margin-left: -175px;
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    transform-style: preserve-3d;
+  }
+
+  .projects-container > .video-container-portfolio article {
+    overflow: hidden;
+    transition: box-shadow 0.3s;
+    position: relative;
+  }
+
+  .projects-container > .video-container-portfolio.active article {
+  }
+
+  .projects-container > .video-container-portfolio:not(.active) {
+    pointer-events: auto;
+  }
+
+  .projects-container > .video-container-portfolio.active {
+    pointer-events: auto;
+    cursor: default;
+  }
+
+  .projects-container > .video-container-portfolio .block-field-blocknodeprojectsfield-project-image, .block-field-blocknodedam-creative-hpfield-dam-creative-service-text{
+    position: relative;
+  }
+
+  .projects-container > .video-container-portfolio .block-field-blocknodeprojectsfield-project-video{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 10;
+    margin: 0;
+    padding: 0;
+  }
+
+  .projects-container > .video-container-portfolio .block-field-blocknodeprojectsfield-project-video .block__content {
+    height: 100%;
+  }
+
+  .projects-container > .video-container-portfolio .block-field-blocknodeprojectsfield-project-video .field {
+    height: 100%;
+  }
+
+  .projects-container > .video-container-portfolio .block-field-blocknodeprojectsfield-project-video .field__item {
+    height: 100%;
+  }
+
+  /* Critical: Override the nested video-container-portfolio to prevent conflicts */
+  .projects-container > .video-container-portfolio .block-field-blocknodeprojectsfield-project-video .field__item > div.video-container-portfolio {
+   /* height: 100% !important;*/
+    width: 100% !important;
+    box-shadow: none !important;
+    transform: none !important;
+    position: static !important;
+    opacity: 1 !important;
+    z-index: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+  }
+
+  .projects-container > .video-container-portfolio .block-field-blocknodeprojectsfield-project-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .coverflow-nav {
+    position: absolute;
+    top: 40%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 20px;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .coverflow-btn {
+  	background-color:transparent;
+    pointer-events: auto;
+    color:white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 4rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+  }
+
+  .coverflow-btn:hover {
+    transform: scale(1.1);
+  }
+
+  .coverflow-btn:active {
+    transform: scale(0.95);
+  }
+
+  .coverflow-indicators {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 1000;
+  }
+
+  .coverflow-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #666;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0;
+  }
+
+  .coverflow-dot.active {
+    background: #d73f09;
+    border-color: #d73f09;
+    transform: scale(1.2);
+  }
+
+  .coverflow-dot:hover {
+    border-color: #d73f09;
+  }
+
+  @media (max-width: 768px) {
+    .projects-container {
+      height: 500px;
+    }
+    
+    .projects-container > .video-container-portfolio {
+      width: 280px;
+      margin-left: -140px;
+    }
+    
+    .coverflow-nav {
+      padding: 0 10px;
+    }
+    
+    .coverflow-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 4rem;
+    }
+  }
+  .request-button {
+      position: fixed;
+      bottom: 0;
+      right: 25px;
+      background-color: #d73f09;
+      color: white;
+      padding: 15px 20px;
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      cursor: pointer;
+      font-size: 16px;
+      font-family: Arial, sans-serif;
+      box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+      white-space: nowrap;
+      z-index: 1000;
+  }
+  .request-button:hover {
+      background-color: #b33607;
+  }
+  .bg-black {
+  	background-color:#000000;
+  }
+  .iframe-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 56.25%; /* 16:9 ratio = 9/16 * 100 = 56.25% */
+        height: 0;
+        overflow: hidden;
+      }
+
+      .iframe-container iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

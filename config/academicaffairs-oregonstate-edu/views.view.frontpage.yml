@@ -1,4 +1,4 @@
-uuid: e567a959-3eac-431b-b6ab-8f20429d7372
+uuid: fc2ca298-5a3f-4775-9d7a-922dabc390b1
 langcode: en
 status: true
 dependencies:
@@ -9,7 +9,7 @@ dependencies:
     - node
     - user
 _core:
-  default_config_hash: OEEnRQIjfIaCFRsz8U3VqDrE82ltQKlo8wNbQJRZXu0
+  default_config_hash: FB0p62bsuCrUCNdsvmKkh8AQ4ZP1nhnYYUPZx6AAxzg
 id: frontpage
 label: Frontpage
 module: node
@@ -24,13 +24,12 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: ''
+      title: Test
       fields: {  }
       pager:
         type: full
         options:
           offset: 0
-          pagination_heading_level: h4
           items_per_page: 10
           total_pages: 0
           id: 0
@@ -48,6 +47,7 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
+          pagination_heading_level: h4
       exposed_form:
         type: basic
         options:
@@ -99,7 +99,7 @@ display:
           plugin_id: title
           label: ''
           empty: true
-          title: Welcome!
+          title: 'Welcome to [site:name]'
       sorts:
         sticky:
           id: sticky
@@ -110,7 +110,7 @@ display:
           admin_label: ''
           entity_type: node
           entity_field: sticky
-          plugin_id: standard
+          plugin_id: boolean
           order: DESC
           expose:
             label: ''
@@ -249,9 +249,28 @@ display:
           replica: false
           query_tags: {  }
       relationships: {  }
+      css_class: container
       header: {  }
       footer: {  }
       display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_1:
+    id: block_1
+    display_title: Block
+    display_plugin: block
+    position: 3
+    display_options:
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
     cache_metadata:
       max-age: -1
       contexts:
@@ -286,28 +305,11 @@ display:
       path: rss.xml
       sitename_title: true
       displays:
-        page_1: page_1
         default: ''
     cache_metadata:
       max-age: -1
       contexts:
         - 'languages:language_interface'
-        - 'user.node_grants:view'
-        - user.permissions
-      tags: {  }
-  page_1:
-    id: page_1
-    display_title: Page
-    display_plugin: page
-    position: 1
-    display_options:
-      display_extenders: {  }
-      path: node
-    cache_metadata:
-      max-age: -1
-      contexts:
-        - 'languages:language_interface'
-        - url.query_args
         - 'user.node_grants:view'
         - user.permissions
       tags: {  }

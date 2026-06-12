@@ -1,0 +1,30 @@
+uuid: 89835dd3-69f6-41bd-9288-82444d43938c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_research_areas
+    - node.type.lab
+    - taxonomy.vocabulary.research_areas
+id: node.lab.field_research_areas
+field_name: field_research_areas
+entity_type: node
+bundle: lab
+label: 'Research Area(s)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      research_areas: research_areas
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

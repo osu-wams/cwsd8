@@ -1,0 +1,61 @@
+uuid: 1df24772-803e-4e19-bd27-91953e7e5cf4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.osu_tab_content.field_osu_paragraph_body
+    - field.field.paragraph.osu_tab_content.field_osu_paragraph_link
+    - field.field.paragraph.osu_tab_content.field_osu_tab_courses
+    - field.field.paragraph.osu_tab_content.field_osu_tab_title
+    - paragraphs.paragraphs_type.osu_tab_content
+  module:
+    - entity_reference_revisions
+    - link
+    - text
+    - text_field_formatter
+id: paragraph.osu_tab_content.default
+targetEntityType: paragraph
+bundle: osu_tab_content
+mode: default
+content:
+  field_osu_paragraph_body:
+    type: text_default
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_osu_paragraph_link:
+    type: link
+    label: hidden
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_osu_tab_courses:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_osu_tab_title:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h4
+      wrap_class: ''
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

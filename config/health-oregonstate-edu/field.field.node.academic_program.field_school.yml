@@ -1,0 +1,29 @@
+uuid: 47da652b-2fce-4d49-8f3a-eb5cfba7e936
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_school
+    - node.type.academic_program
+    - taxonomy.vocabulary.related_school_department_grou
+id: node.academic_program.field_school
+field_name: field_school
+entity_type: node
+bundle: academic_program
+label: School
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      related_school_department_grou: related_school_department_grou
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: osu_organization
+field_type: entity_reference

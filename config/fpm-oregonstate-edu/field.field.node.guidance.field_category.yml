@@ -1,0 +1,29 @@
+uuid: 3df496cc-b42f-4c4e-b73c-d3c768d11451
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - node.type.guidance
+    - taxonomy.vocabulary.guidance_types
+id: node.guidance.field_category
+field_name: field_category
+entity_type: node
+bundle: guidance
+label: Type
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      guidance_types: guidance_types
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

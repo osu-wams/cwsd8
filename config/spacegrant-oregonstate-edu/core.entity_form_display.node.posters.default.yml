@@ -17,9 +17,11 @@ dependencies:
     - field.field.node.posters.field_return_to_poster_session
     - image.style.thumbnail
     - node.type.posters
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - focal_point
-    - link
+    - linkit
     - path
     - text
 id: node.posters.default
@@ -60,12 +62,14 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_link_to_pdf:
-    type: link_default
+    type: linkit
     weight: 14
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   field_poster_image:
     type: image_focal_point
@@ -118,20 +122,38 @@ content:
       placeholder: ''
     third_party_settings: {  }
   field_return_to_poster_hall:
-    type: link_default
+    type: linkit
     weight: 16
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
     third_party_settings: {  }
   field_return_to_poster_session:
-    type: link_default
+    type: linkit
     weight: 5
     region: content
     settings:
       placeholder_url: ''
       placeholder_title: ''
+      linkit_profile: default
+      linkit_auto_link_text: false
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
     third_party_settings: {  }
   path:
     type: path
@@ -185,3 +207,7 @@ content:
     third_party_settings: {  }
 hidden:
   entitygroupfield: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

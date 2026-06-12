@@ -1,0 +1,37 @@
+uuid: 9a04733c-67b5-4909-a606-a476e436b7c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.multimedia_album
+    - field.storage.block_content.field_media_item
+    - paragraphs.paragraphs_type.media_item
+  module:
+    - entity_reference_revisions
+id: block_content.multimedia_album.field_media_item
+field_name: field_media_item
+entity_type: block_content
+bundle: multimedia_album
+label: 'Media Item'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      media_item: media_item
+    negate: 0
+    target_bundles_drag_drop:
+      media_item:
+        weight: 4
+        enabled: true
+      osu_accordion_item:
+        weight: 5
+        enabled: false
+      osu_accordion_section:
+        weight: 6
+        enabled: false
+field_type: entity_reference_revisions

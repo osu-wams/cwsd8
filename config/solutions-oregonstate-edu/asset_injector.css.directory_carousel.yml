@@ -1,0 +1,87 @@
+uuid: 7ca8892d-287b-4575-a368-6c7a795e4006
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: directory_carousel
+label: 'Directory Carousel'
+code: |-
+  .profile-image-container {
+    width: 100%;
+    height: 400px; /* or whatever height you want */
+    overflow: hidden;
+    position: relative;
+  }
+
+  .profile-image-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .directory-inner-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+  }
+
+  .profile-image {
+      position: relative;
+      width: 100%;
+      height: 250px; 
+      overflow: hidden;
+  }
+
+  /* Main profile image */
+  .profile-image > a > img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: relative;
+      z-index: 1;
+  }
+
+  /* Hover image positioned absolutely on top */
+  .hover-image {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      clip-path: circle(0% at 50% 50%);
+      transition: clip-path 0.8s ease-in-out;
+  }
+
+  .hover-image img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      display: block;
+  }
+
+  /* On hover, reveal the hover image */
+  .ripple-reveal:hover .hover-image {
+      clip-path: circle(150% at 50% 50%);
+  }
+
+  /* Ensure hover image is not hidden by default */
+  .hover-image-hidden {
+      display: block !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/1726\r\n/group/11"
+contexts: {  }
+conditions_require_all: true

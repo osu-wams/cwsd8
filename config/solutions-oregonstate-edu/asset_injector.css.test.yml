@@ -1,0 +1,47 @@
+uuid: 3febeb8b-c175-4f14-a570-82186bb3faae
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: test
+label: 'Test Page'
+code: |-
+  .gallery-item:hover{
+  	transform: scale(1.02);
+  }
+
+  .gallery-item{
+  	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  	transition: transform 0.3s ease;
+  }
+
+  #cboxContent {
+  	background: #ffffff00 !important;
+  }
+
+  #cboxWrapper {
+  	background: #ffffff00 !important;
+  }
+
+  #cboxTitle {
+  	display: none !important;
+  }
+
+  #cboxCurrent{
+  	display: none !important;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/1406
+contexts: {  }
+conditions_require_all: true

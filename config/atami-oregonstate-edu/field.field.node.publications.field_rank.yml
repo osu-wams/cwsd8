@@ -1,0 +1,29 @@
+uuid: c7ca7500-7e7c-4fac-955f-843cc184d9c0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_rank
+    - node.type.publications
+    - taxonomy.vocabulary.rank
+id: node.publications.field_rank
+field_name: field_rank
+entity_type: node
+bundle: publications
+label: Rank
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      rank: rank
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

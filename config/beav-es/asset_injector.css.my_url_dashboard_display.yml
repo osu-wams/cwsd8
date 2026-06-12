@@ -6,34 +6,50 @@ dependencies:
     - block_visibility_groups
 id: my_url_dashboard_display
 label: 'My URL Dashboard display'
-code: |
+code: |-
   #views-exposed-form-shurly-my-urls-block-1 {
     justify-content: start !important;
-    
+
+    .form--inline {
+      display: grid !important;
+      grid-template-columns: 1fr;
+      column-gap: 2rem !important;
+
+      @media(min-width: 1200px) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    #edit-source,
+    #edit-long-url--2 {
+      margin-top: 0 !important;
+      margin-bottom: 0 !important;
+    }
+
     .js-form-type-select {
-    display: flex;
-    flex-wrap: wrap;
-  }
+      display: flex;
+      flex-wrap: wrap;
+    }
 
     ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    padding-left: 0.5rem;
-  }
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      padding-left: 0.5rem;
+    }
 
     li {
-    	display: block;
+      display: block;
     }
-    
+
     .form-label {
-    	font-weight: bold;
+      font-weight: bold;
     }
   }
 
   .shurly .child {
-  	display: grid;
-  	grid-template-columns: 80% 20%;
+    display: grid;
+    grid-template-columns: 80% 20%;
   }
 media: all
 preprocess: true

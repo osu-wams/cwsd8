@@ -1,0 +1,29 @@
+uuid: 30ea9101-6987-4d11-8c3f-76b156edc287
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_academic_discipline
+    - node.type.coh_course
+    - taxonomy.vocabulary.academic_discipline
+id: node.coh_course.field_academic_discipline
+field_name: field_academic_discipline
+entity_type: node
+bundle: coh_course
+label: 'Academic discipline'
+description: 'Which of the big 4 does this program belong to?'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      academic_discipline: academic_discipline
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

@@ -1,0 +1,139 @@
+uuid: d3f36b63-9fae-41e0-9404-5215eba61526
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: homepage
+label: homepage
+code: |-
+  /* General Padding Adjustments */
+
+
+  .padding-space {
+    padding: 45px;
+  }
+
+  .padding-block {
+    padding: 40px;
+  }
+
+  /* Background Colors */
+  .blue-bgcolor {
+    background-color: #003b5c;
+  }
+
+  /* Blue Card Styling */
+  .blue-card-color {
+    background-color: #005b8f;
+    height: 350px;
+    width: 90%;
+    padding: 1rem;
+    margin: 1rem;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .blue-card-color:hover {
+    background-color: #007bbf; /* Slightly lighter blue */
+    transform: scale(1.05); /* Slightly enlarges the card */
+  }
+
+
+  /* Default Styling */
+  .offer-image {
+      width: 90%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      
+  }
+
+
+  .grid-container {
+              display: grid;
+              grid-template-columns: repeat(4, 1fr);
+              gap: 20px;
+              margin-left:1rem;
+              width: 100%;
+              justify-content: center;
+              padding: 20px;
+          }
+
+          .grid-item {
+              background-color: #005b8f;
+              color:white;
+              padding: 20px;
+              border-radius: 10px;
+              height: 400px;
+              width:90%;
+              text-align: left;
+              transition: background-color 0.3s ease, transform 0.3s ease;
+          }
+
+          .grid-item:hover {
+              background-color: #007bbf;
+              transform: scale(1.05);
+          }
+
+          .fs-5 {
+              font-size: 18px;
+              
+          }
+
+          .text-align-justify {
+              text-align: justify;
+          }
+
+          /* Responsive Design */
+          @media (max-width: 1024px) {
+              .grid-container {
+                  grid-template-columns: repeat(2, 1fr);
+                  width: 100%;
+              }
+          }
+
+          @media (max-width: 768px) {
+          	 .subheadding {
+  				        font-size: 22px!important;
+  				    }
+   
+      
+          	.homepage-background-parallax {
+  						    width: 100%;
+  						    height: 100%;
+  						    transform: scale(1.2);
+  						}
+              .grid-container {
+                  grid-template-columns: 1fr;
+                  width: 100%;
+              }
+          }
+  .subheadding{
+  font-weight: 600;
+  font-size: 2.25rem;
+  font-family: "Stratum2Web", serif;
+  }
+
+  .underline-text-style {
+      content: "";
+      /*position: absolute;*/
+      /*width: 75px;*/
+      height: 7px !important;
+      background-color: #D73F09;
+      opacity: 1;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/home\r\n"
+contexts: {  }
+conditions_require_all: true

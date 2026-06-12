@@ -1,0 +1,29 @@
+uuid: d4f30b66-3775-40b9-8341-30c83feff090
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: engr_hide_accordion_headers
+label: 'Degree Pages: hide accordion headers (hides H3)'
+code: |-
+  .paragraph--type--osu-accordion-section h3 {
+  	display: none;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      degree_programs: degree_programs
+contexts: {  }
+conditions_require_all: true

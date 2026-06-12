@@ -1,0 +1,43 @@
+uuid: 2ebf1e2d-d6a4-4e0a-82b4-aea111973250
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.course_profile.body
+    - field.field.node.course_profile.field_course_length
+    - field.field.node.course_profile.field_course_level
+    - field.field.node.course_profile.field_course_topic
+    - field.field.node.course_profile.field_modality
+    - field.field.node.course_profile.field_when_course
+    - field.field.node.course_profile.layout_builder__layout
+    - node.type.course_profile
+  module:
+    - text
+    - user
+id: node.course_profile.teaser
+targetEntityType: node
+bundle: course_profile
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_course_length: true
+  field_course_level: true
+  field_course_topic: true
+  field_modality: true
+  field_when_course: true
+  layout_builder__layout: true

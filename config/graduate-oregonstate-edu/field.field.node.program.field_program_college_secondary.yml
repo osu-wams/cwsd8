@@ -1,0 +1,29 @@
+uuid: 65ec0982-f97c-4ad1-bde5-83e992ecb68e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_college_secondary
+    - node.type.program
+    - taxonomy.vocabulary.colleges
+id: node.program.field_program_college_secondary
+field_name: field_program_college_secondary
+entity_type: node
+bundle: program
+label: 'Secondary College'
+description: 'If there is an additional academic College which co-administers this program, please indicate that college here.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      colleges: colleges
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

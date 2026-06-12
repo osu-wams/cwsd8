@@ -1,0 +1,29 @@
+uuid: 0b95d3fc-cd8c-4ca9-9d95-fcf2e16ac06a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_topic
+    - node.type.worksheet
+    - taxonomy.vocabulary.topic
+id: node.worksheet.field_topic
+field_name: field_topic
+entity_type: node
+bundle: worksheet
+label: Topic
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      topic: topic
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

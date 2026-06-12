@@ -1,0 +1,33 @@
+uuid: ba5fe07f-0ca8-41ca-9048-7513977fedb1
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_category
+    - node.type.software
+    - taxonomy.vocabulary.services
+  content:
+    - 'taxonomy_term:services:6d8f9cd8-5c1a-4a94-a57f-a5b3f9bd82c5'
+id: node.software.field_category
+field_name: field_category
+entity_type: node
+bundle: software
+label: Category
+description: 'Assign it to a service catalog category so that people can filter by this category and find all the relevant tools and services.'
+required: false
+translatable: false
+default_value:
+  -
+    target_uuid: 6d8f9cd8-5c1a-4a94-a57f-a5b3f9bd82c5
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      services: services
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

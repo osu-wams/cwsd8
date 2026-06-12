@@ -1,0 +1,104 @@
+uuid: 9371b9d3-036c-4c72-92ad-fc0d65bd7c5a
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.call_out_grid
+    - field.field.block_content.call_out_grid.field_call_out_facts
+    - field.field.block_content.call_out_grid.field_call_out_grid_background
+    - field.field.block_content.call_out_grid.field_call_out_grid_title
+  module:
+    - entity_reference_revisions
+    - field_group
+third_party_settings:
+  field_group:
+    group_call_out_background:
+      children:
+        - group_title_wrapper
+        - group_grid_wrapper
+      label: 'Call-out Background'
+      parent_name: ''
+      region: content
+      weight: 1
+      format_type: html_element
+      format_settings:
+        classes: call-out-grid-background
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_title_wrapper:
+      children:
+        - field_call_out_grid_title
+      label: 'Title Wrapper'
+      parent_name: group_call_out_background
+      region: content
+      weight: 20
+      format_type: html_element
+      format_settings:
+        classes: call-out-grid-title-wrapper
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+    group_grid_wrapper:
+      children:
+        - field_call_out_facts
+      label: 'Grid Wrapper'
+      parent_name: group_call_out_background
+      region: content
+      weight: 21
+      format_type: html_element
+      format_settings:
+        classes: call-out-grid-wrapper
+        show_empty_fields: false
+        id: ''
+        element: div
+        show_label: false
+        label_element: h3
+        label_element_classes: ''
+        attributes: ''
+        effect: none
+        speed: fast
+id: block_content.call_out_grid.default
+targetEntityType: block_content
+bundle: call_out_grid
+mode: default
+content:
+  field_call_out_facts:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 22
+    region: content
+  field_call_out_grid_background:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: full
+      link: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_call_out_grid_title:
+    type: string
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 21
+    region: content
+hidden: {  }

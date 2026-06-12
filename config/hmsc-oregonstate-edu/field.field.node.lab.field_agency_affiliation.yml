@@ -1,0 +1,30 @@
+uuid: 77ab6718-f0dd-4eb8-9b6c-d063079bdb42
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_agency_affiliation
+    - node.type.lab
+    - taxonomy.vocabulary.agency
+id: node.lab.field_agency_affiliation
+field_name: field_agency_affiliation
+entity_type: node
+bundle: lab
+label: Agency/Affiliation
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      agency: agency
+    sort:
+      field: name
+      direction: ASC
+    behaviors:
+      views-select-list:
+        status: 1
+field_type: entity_reference

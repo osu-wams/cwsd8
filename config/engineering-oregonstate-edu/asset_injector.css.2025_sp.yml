@@ -1,0 +1,214 @@
+uuid: bc11f007-3ffc-407f-9f1f-f010c0337381
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: 2025_sp
+label: '2025 Splash Page Custom Tophat (Repalce menu & headers) '
+code: |-
+  .coe-rfi-apply-header-left, .coe-rfi-apply-header-right {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .coe-rfi-apply-header-right {
+    justify-content: flex-end;
+  }
+
+  .coe-rfi-apply-menu img {
+  	height: 100px;
+  	width: 95px;
+  }
+
+  .coe-rfi-apply-menu header {
+  	display: flex;
+  	align-items: center;
+  	justify-content: space-between;
+  }
+
+  .coe-rfi-apply-menu a:has( img) {
+  	border-bottom: none;
+  }
+
+  .coe-rfi-apply-menu a:has( img):hover {
+  	border-bottom: none;	
+  }
+
+  .coe-rfi-apply-menu {
+  	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.08);
+  }
+
+  .coe-rfi-apply-menu-mobile-button {
+  	display: flex;
+  	flex-direction: column;
+  	gap: 8px;
+  	background: transparent;
+  	border: none;
+  }
+
+  .coe-rfi-apply-divider {
+    width: 1px;
+    height:120px;
+    background-color: #ECEDEE; /* use official OSU gray if defined */
+  }
+
+  .coe-rfi-apply-menu-mobile-button:active span {
+  	background-color: #BE3706;
+  }
+
+  .coe-rfi-apply-menu-mobile-button span {
+  	display: block;
+  	width: 40px;
+  	height: 5px;
+  	background-color: #D73F09;
+  	transition: color 0.3s;
+  }
+
+  .coe-rfi-apply-menu-mobile-button.close-button {
+    position: relative; /* just to anchor the spans */
+    margin-right: 10px;
+  }
+
+  .coe-rfi-apply-menu-mobile-button.close-button span {
+    position: absolute;
+    transform-origin: center;
+  }
+
+  .coe-rfi-apply-menu-mobile-button.close-button span:first-child {
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+
+  .coe-rfi-apply-menu-mobile-button.close-button span:nth-child(2) {
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+  .coe-rfi-apply-menu-mobile-button.close-button span:last-child {
+  	display: none;
+  }
+
+
+  /* Right side */
+  .coe-rfi-apply-header-right {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    gap: 24px;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.coe-rfi-apply-header-right {
+  		justify-content: space-between;
+  		padding: 20px 0;
+  	}
+  	.coe-rfi-apply-menu .col-12:has(.coe-rfi-apply-header-right) {
+  		border-top: 1px solid #ECEDEE;
+  	}
+  }
+
+  div:has(> #madrone-breadcrumb-container), div:has(> #madrone-primary-menu-container), header:has(> #madrone-header-container) {
+  	display: none;
+  }
+
+  /*.osu-title-container {*/
+  /*  display: flex;*/
+  /*  align-items: center;*/
+  /*  height: 100%;*/
+  /*  gap: 24px;*/
+  /*}*/
+
+  /*.osu-header {*/
+  /*  background-color: white;*/
+  /*  padding: 16px 24px;*/
+  /*  border-bottom: 1px solid #ddd;*/
+  /*}*/
+
+
+  /*.osu-header-inner {*/
+  /*  display: flex;*/
+  /*  align-items: center;*/
+  /*  gap: 24px;*/
+  /*}*/
+
+  /*.osu-logo {*/
+  /*  height: 70px;*/
+  /*  width: auto;*/
+  /*}*/
+
+  /*.osu-title {*/
+  /*  font-family: 'Stratum2', sans-serif;*/
+  /*  font-weight: 900;*/
+  /*  font-size: 32px;*/
+  /*  line-height: 1.3;*/
+  /*  letter-spacing: 2%;*/
+  /*  text-transform: uppercase;*/
+  /*  margin: 0;*/
+  /*  color:black;*/
+  /*}*/
+
+
+
+  /*.osu-link {*/
+  /*  font-family: 'Open Sans', sans-serif;*/
+  /*  font-weight: 600;*/
+  /*  font-size: 18px;*/
+  /*  line-height: 1;*/
+  /*  letter-spacing: 5%;*/
+  /*  text-transform: uppercase;*/
+  /*  text-align: right;*/
+
+  /*  display: inline-block;*/
+  /*  text-decoration: none;*/
+  /*  color: #1e1e1e;*/
+  /*}*/
+
+  /*.osu-button {*/
+  /*  font-family: 'Open Sans', sans-serif;*/
+  /*  font-weight: 600;*/
+  /*  font-size: 18px;*/
+  /*  line-height: 1;*/
+  /*  letter-spacing: 5%;*/
+  /*  text-transform: uppercase;*/
+  /*  text-align: center;*/
+
+  /*  background-color: #d73f09;*/
+  /*  color: white;*/
+  /*  padding: 12px 36px;*/
+  /*  height: 50px;*/
+  /*  display: inline-flex;*/
+  /*  align-items: center;*/
+  /*  justify-content: center;*/
+  /*  border: none;*/
+  /*  border-radius: 2px;*/
+  /*  text-decoration: none;*/
+  /*}*/
+
+  /*.osu-header-right {*/
+  /*  display: flex;*/
+  /*  align-items: center;*/
+  /*  gap: 24px;*/
+  /*  margin-left: auto;*/
+  /*}*/
+
+  /*.osu-header-inner {*/
+  /*  display: flex;*/
+  /*  align-items: center;*/
+  /*  max-width: 1280px;*/
+  /*  margin: 0 auto;*/
+  /*  padding: 16px 24px;*/
+  /*}*/
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/52446
+contexts: {  }
+conditions_require_all: true

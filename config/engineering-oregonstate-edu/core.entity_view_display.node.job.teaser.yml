@@ -1,0 +1,49 @@
+uuid: 7d4bec95-307d-42ed-8579-447d98359856
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.job.body
+    - field.field.node.job.feeds_item
+    - field.field.node.job.field_job_appointment_type
+    - field.field.node.job.field_job_classification_title
+    - field.field.node.job.field_job_closing_date
+    - field.field.node.job.field_job_full_consideration
+    - field.field.node.job.field_job_link
+    - field.field.node.job.field_job_opening_department
+    - field.field.node.job.field_job_posting_number
+    - field.field.node.job.field_job_posting_title
+    - node.type.job
+  module:
+    - text
+    - user
+id: node.job.teaser
+targetEntityType: node
+bundle: job
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  feeds_item: true
+  field_job_appointment_type: true
+  field_job_classification_title: true
+  field_job_closing_date: true
+  field_job_full_consideration: true
+  field_job_link: true
+  field_job_opening_department: true
+  field_job_posting_number: true
+  field_job_posting_title: true

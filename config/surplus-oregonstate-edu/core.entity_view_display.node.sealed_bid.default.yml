@@ -1,0 +1,77 @@
+uuid: 2f064505-29c0-444d-9287-acf5b8ee14d3
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.sealed_bid.field_bidding_closes
+    - field.field.node.sealed_bid.field_item_description
+    - field.field.node.sealed_bid.field_item_images
+    - field.field.node.sealed_bid.field_minimum_bid
+    - field.field.node.sealed_bid.field_pick_up_by
+    - node.type.sealed_bid
+  module:
+    - datetime
+    - text
+    - user
+id: node.sealed_bid.default
+targetEntityType: node
+bundle: sealed_bid
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_bidding_closes:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_item_description:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+  field_item_images:
+    type: entity_reference_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_minimum_bid:
+    type: number_decimal
+    label: above
+    settings:
+      thousand_separator: ''
+      decimal_separator: .
+      scale: 2
+      prefix_suffix: true
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_pick_up_by:
+    type: datetime_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden:
+  entitygroupfield: true

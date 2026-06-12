@@ -1,0 +1,29 @@
+uuid: ecc0871b-79a4-403f-a677-d8da21c15020
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_card_section
+    - node.type.content_card
+    - taxonomy.vocabulary.content_card_sections
+id: node.content_card.field_content_card_section
+field_name: field_content_card_section
+entity_type: node
+bundle: content_card
+label: Section
+description: 'By adding a section you can then call all related Content Cards with the same section together.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      content_card_sections: content_card_sections
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

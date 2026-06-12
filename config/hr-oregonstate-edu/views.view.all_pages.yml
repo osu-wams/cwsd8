@@ -1,0 +1,189 @@
+uuid: c65d70ed-08fc-4dc2-b78f-1eda783adba5
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type._position_profile
+    - node.type.announcement
+    - node.type.documents
+    - node.type.faq
+    - node.type.oeshtxt_help_text
+    - node.type.page
+    - node.type.pp_manual
+    - node.type.webform
+    - system.menu.menu-test-menu
+  module:
+    - node
+    - user
+id: all_pages
+label: 'All Pages'
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: 'All Pages'
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          plugin_id: field
+          label: ''
+          alter:
+            alter_text: false
+            make_link: false
+            absolute: false
+            word_boundary: false
+            ellipsis: false
+            strip_tags: false
+            trim: false
+            html: false
+          hide_empty: false
+          empty_zero: false
+          settings:
+            link_to_entity: 1
+      pager:
+        type: full
+        options:
+          items_per_page: 50
+          pagination_heading_level: h4
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+      cache:
+        type: tag
+        options: {  }
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: title
+          exposed: false
+          ui_name: ''
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          plugin_id: bundle
+          operator: in
+          value:
+            announcement: announcement
+            article: article
+            page: page
+            biblio: biblio
+            book: book
+            documents: documents
+            faq: faq
+            feature_story: feature_story
+            feed: feed
+            group: group
+            pp_manual: pp_manual
+            _position_profile: _position_profile
+            video: video
+            webform: webform
+            oeshtxt_help_text: oeshtxt_help_text
+          group: 1
+          exposed: true
+          expose:
+            operator_id: type_op
+            label: Type
+            description: ''
+            use_operator: false
+            operator: type_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: type
+            required: false
+            remember: true
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: anonymous
+              administrator: administrator
+              manager: manager
+              architect: architect
+              author: author
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          ui_name: ''
+      style:
+        type: default
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      display_extenders: {  }
+      style_plugin: default
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  page:
+    id: page
+    display_title: Page
+    display_plugin: page
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      path: all-pages
+      menu:
+        type: normal
+        title: 'All Pages'
+        menu_name: menu-test-menu
+        name: menu-test-menu
+      field:
+        title:
+          link_to_node: 1
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

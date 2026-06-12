@@ -1,0 +1,25 @@
+uuid: 5e03c3b0-3fad-4b93-8e26-6bdfecedb70b
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+    - system
+id: type_program
+label: type_program
+logic: and
+conditions:
+  3bf47056-59ba-40ab-845f-3c0684c3a00f:
+    id: 'entity_bundle:node'
+    negate: false
+    uuid: 3bf47056-59ba-40ab-845f-3c0684c3a00f
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      program: program
+  15273720-1e7e-4d27-809b-f49e3529dac2:
+    id: request_path
+    negate: false
+    uuid: 15273720-1e7e-4d27-809b-f49e3529dac2
+    pages: "/programs\r\n/programs/*"
+allow_other_conditions: null

@@ -1,0 +1,35 @@
+uuid: f545ffac-186f-474e-b317-be1182531b07
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_visibility_groups.block_visibility_group.coordinator_manual_sidebar
+    - system.menu.coordinator-manual---toc
+  module:
+    - block_visibility_groups
+    - system
+  theme:
+    - madrone
+id: madrone_sidebartableofcontents
+theme: madrone
+region: sidebar
+weight: 0
+provider: null
+plugin: 'system_menu_block:coordinator-manual---toc'
+settings:
+  id: 'system_menu_block:coordinator-manual---toc'
+  label: 'Sidebar - Table of Contents'
+  label_display: visible
+  provider: system
+  level: 1
+  depth: 0
+  expand_all_items: false
+visibility:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: coordinator_manual_sidebar
+  request_path:
+    id: request_path
+    negate: false
+    pages: /coordinator-manual

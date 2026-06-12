@@ -1,0 +1,81 @@
+uuid: 95bb15e0-32f2-4f09-8e3d-8cfb14e81267
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: 7_region_tabs
+label: '7 region overlay'
+code: |-
+  (function () {
+    const hideStyle = document.createElement('style');
+    hideStyle.id = 'overlay-hide';
+    hideStyle.textContent = `
+      body { background: #000 !important; }
+      body > *:not(#region-overlay) { visibility: hidden; }
+    `;
+    document.head.appendChild(hideStyle);
+
+    function selectRegion(regionName) {
+      const attempt = (tries) => {
+        const tabs = document.querySelectorAll('.tabs li a, [role="tab"], .tab-nav a, nav a');
+        for (const tab of tabs) {
+          if (tab.textContent.trim().toLowerCase().includes(regionName.toLowerCase())) {
+            tab.click();
+            return;
+          }
+        }
+        if (tries > 0) setTimeout(() => attempt(tries - 1), 150);
+      };
+      attempt(10);
+    }
+
+    function buildOverlay() {
+      const strips = document.querySelectorAll('.region-strip');
+      if (!strips.length) return;
+
+      const overlay = document.createElement('div');
+      overlay.id = 'region-overlay';
+
+      // Clone the strips into the overlay — leave originals in place
+      strips.forEach(strip => {
+        const clone = strip.cloneNode(true);
+        clone.style.cursor = 'pointer';
+        clone.addEventListener('click', () => {
+          overlay.style.opacity = '0';
+          const hideStyle = document.getElementById('overlay-hide');
+          if (hideStyle) hideStyle.remove();
+          setTimeout(() => overlay.remove(), 380);
+          selectRegion(clone.dataset.region);
+        });
+        overlay.appendChild(clone);
+      });
+
+      // Append directly to body so position:fixed works correctly
+      document.body.appendChild(overlay);
+      requestAnimationFrame(() => { overlay.style.opacity = '1'; });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', buildOverlay);
+    } else {
+      buildOverlay();
+    }
+  })();
+noscript: ''
+noscriptRegion: {  }
+jquery: true
+header: true
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /group/6/
+contexts: {  }
+conditions_require_all: true

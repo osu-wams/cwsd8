@@ -1,0 +1,158 @@
+uuid: c91e33c2-24e3-44fc-b6bc-10ea106964fe
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: heydoncss_cards
+label: 'HeydonCSS cards'
+code: |-
+  /*
+  * Prefixed by https://autoprefixer.github.io
+  * PostCSS: v8.4.14,
+  * Autoprefixer: v10.4.7
+  * Browsers: defaults
+  */
+
+  #scroll-to-top-button {
+  	position: fixed;
+  	right: 10px;
+  	bottom: 35px;
+  	opacity: 0;
+    padding: 0.5em;
+  	color: white;
+  	background: rgb(215, 63, 9);
+    font-size: 0.8rem;
+    cursor: pointer;
+    pointer-events: none;
+    transition: 0.3s ease-out;
+  }
+
+
+   .heydon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(302px, 1fr));
+    justify-content: center;
+    /*place-items: center;*/
+    grid-gap: 3rem;
+    padding: 0;
+  }
+
+
+  @media(min-width: 60rem) {
+  	#scroll-to-top-button {
+  		padding: 0.75em;
+  		font-size: 1.0rem;
+  	}
+
+  }
+
+  .heydon-card-component + .heydon-card-component {
+    margin-top: 0;
+  }
+
+
+  .heydon-card-component  {
+    --img-ratio: 2.35/1;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+     /*Supported for flexbox in modern browsers since April 2021 */
+    gap: 0.5rem;
+    max-width: 400px;
+    box-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.35);
+    border-radius: 0.5rem;
+    background: hsl(210, 16.7%, 97.6%);
+    pointer-events: none;
+    transition: 0.4s;
+    line-height: 1.5rem;
+    padding-bottom: 2em;
+  }
+
+  .heydon-card-component  > h4 {
+  	margin: 0;
+  	font-size: 1.2rem;
+  }
+
+
+  .heydon-card-component > :not(h2, h3, h4) {
+    font-size: 1rem;
+  }
+
+  .heydon-card-component > :not(:first-child) {
+  	  margin: 0 1.5rem;
+  }
+
+  .heydon-card-comopnent .badge {
+  	font-size: 0.9rem;
+  }
+
+  .heydon-card-component  img {
+    aspect-ratio: var(--img-ratio);
+    -o-object-fit: cover;
+       object-fit: cover;
+    width: 100%;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-block: 0 1em;
+    /*border-top-left-radius: 0.5rem;*/
+    /*border-top-right-radius: 0.5rem;*/
+  }
+
+  .heydon-card-component a::before {
+  	content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  .heydon-card-component a:hover {
+  	color: initial !important;
+  }
+
+
+  .heydon-card-component a:focus {
+      text-decoration: underline;
+  }
+
+  .heydon-card-component:focus-within {
+      box-shadow: 0 0 0 0.25rem;
+  }
+
+  .heydon-card-component:focus-within a:focus {
+      text-decoration: none;
+  }
+
+  .heydon-card-component + .heydon-card-component {
+      /*margin-top: 1.5rem;*/
+  }
+
+  .heydon-card-component .cta {
+    margin: auto 0 0.5rem 0;
+  	text-align: center;
+  	transition: 0.5s ease-out;
+  	pointer-events: auto;
+  }
+
+  .heydon-card-component a {
+  		pointer-events: auto;
+  }
+
+  .heydon-card-component:hover {
+  	background-color: white;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

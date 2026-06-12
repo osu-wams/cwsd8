@@ -1,0 +1,54 @@
+uuid: 8440344e-a8b2-4e51-8876-cb52dc95475b
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.base_field_override.data.domain.title
+    - eck.eck_type.data.domain
+  module:
+    - eck
+label: 'ECK Domain'
+id: eck_domain
+description: ''
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:data'
+processor_configuration:
+  values:
+    type: domain
+  langcode: en
+  insert_new: 1
+  update_existing: 0
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 6
+custom_sources:
+  domain:
+    value: Domain
+    label: Domain
+    machine_name: domain
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: domain
+    settings:
+      language: null
+    unique:
+      value: 1

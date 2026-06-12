@@ -1,0 +1,90 @@
+uuid: a7aa96e0-b35f-4d35-91d8-2227c0cd04c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.newsletter.body
+    - field.field.node.newsletter.field_date
+    - field.field.node.newsletter.field_featured_image
+    - field.field.node.newsletter.field_first_header
+    - field.field.node.newsletter.field_from_the_vice_provot
+    - field.field.node.newsletter.field_highlights
+    - field.field.node.newsletter.field_highlights_header
+    - field.field.node.newsletter.field_issue
+    - field.field.node.newsletter.field_newsletter_season
+    - field.field.node.newsletter.field_provost_image
+    - field.field.node.newsletter.field_volume
+    - node.type.newsletter
+  module:
+    - layout_builder
+    - layout_discovery
+    - text
+    - user
+third_party_settings:
+  layout_builder:
+    enabled: true
+    allow_custom: false
+    sections:
+      -
+        layout_id: layout_onecol
+        layout_settings:
+          label: ''
+        components:
+          9e6e7536-bef5-4b47-a7bd-e5e00c63bcb6:
+            uuid: 9e6e7536-bef5-4b47-a7bd-e5e00c63bcb6
+            region: content
+            configuration:
+              id: 'extra_field_block:node:newsletter:links'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+            weight: 0
+            additional: {  }
+          7e9c8164-832e-4fee-8a5c-2549cae66ae8:
+            uuid: 7e9c8164-832e-4fee-8a5c-2549cae66ae8
+            region: content
+            configuration:
+              id: 'field_block:node:newsletter:body'
+              label_display: '0'
+              context_mapping:
+                entity: layout_builder.entity
+              formatter:
+                type: text_summary_or_trimmed
+                label: hidden
+                settings:
+                  trim_length: 600
+                third_party_settings: {  }
+            weight: 1
+            additional: {  }
+        third_party_settings: {  }
+id: node.newsletter.teaser
+targetEntityType: node
+bundle: newsletter
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_date: true
+  field_featured_image: true
+  field_first_header: true
+  field_from_the_vice_provot: true
+  field_highlights: true
+  field_highlights_header: true
+  field_issue: true
+  field_newsletter_season: true
+  field_provost_image: true
+  field_volume: true

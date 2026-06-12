@@ -1,0 +1,29 @@
+uuid: 27841aa5-ad5b-4c4a-a975-fec831435332
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_shop_profile
+    - node.type.osu_profile
+    - taxonomy.vocabulary.shops
+id: node.osu_profile.field_shop_profile
+field_name: field_shop_profile
+entity_type: node
+bundle: osu_profile
+label: Shop
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      shops: shops
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

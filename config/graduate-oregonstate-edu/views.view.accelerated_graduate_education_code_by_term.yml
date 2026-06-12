@@ -1,0 +1,399 @@
+uuid: a09740e6-dbea-400f-ba84-79d1a2ff48d6
+langcode: en
+status: true
+dependencies:
+  module:
+    - taxonomy
+    - user
+id: accelerated_graduate_education_code_by_term
+label: 'Accelerated Graduate Education Code'
+module: views
+description: 'Terms managed using a vocabulary'
+tag: default
+base_table: taxonomy_term_field_data
+base_field: tid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: "Accelerated Master's Platform Codes"
+      fields:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          plugin_id: term_name
+          label: Code
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_type: strong
+          element_label_colon: false
+      pager:
+        type: none
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+      cache:
+        type: none
+      arguments:
+        uid:
+          id: uid
+          table: users_field_data
+          field: uid
+          relationship: field_voc_accel_advisors_target_id
+          plugin_id: user_uid
+          default_action: default
+          default_argument_type: current_user
+          summary_options:
+            items_per_page: 25
+          summary:
+            number_of_records: 0
+            format: default_summary
+      filters: {  }
+      style:
+        type: table
+        options:
+          columns:
+            name: name
+            field_program_name: field_program_name
+            field_voc_accel_degree_type: field_voc_accel_degree_type
+            field_term: field_term
+            field_voc_accel_campus: field_voc_accel_campus
+            field_voc_accel_deadline: field_voc_accel_deadline
+          default: '-1'
+          info:
+            name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_program_name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_voc_accel_degree_type:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_term:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_voc_accel_campus:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_voc_accel_deadline:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+      query:
+        type: views_query
+        options: {  }
+      relationships: {  }
+      use_more_always: false
+      display_extenders: {  }
+      style_plugin: table
+      style_options:
+        columns:
+          name: name
+          field_program_name: field_program_name
+          field_voc_accel_degree_type: field_voc_accel_degree_type
+          field_term: field_term
+          field_voc_accel_campus: field_voc_accel_campus
+          field_voc_accel_deadline: field_voc_accel_deadline
+        default: '-1'
+        info:
+          name:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_program_name:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_voc_accel_degree_type:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_term:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_voc_accel_campus:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_voc_accel_deadline:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user
+        - user.permissions
+      tags: {  }
+  block:
+    id: block
+    display_title: Block
+    display_plugin: block
+    position: 2
+    display_options:
+      fields:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          plugin_id: term_name
+          label: Code
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_type: strong
+          element_label_colon: false
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        css_class: false
+        fields: false
+      display_extenders: {  }
+      block_description: 'Accelerated Graduate Education Code by Taxonomy Term'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - user
+        - user.permissions
+      tags: {  }
+  page_1:
+    id: page_1
+    display_title: Page
+    display_plugin: page
+    position: 3
+    display_options:
+      fields:
+        name:
+          id: name
+          table: taxonomy_term_field_data
+          field: name
+          plugin_id: term_name
+          label: Code
+          alter:
+            word_boundary: false
+            ellipsis: false
+          element_label_colon: false
+        edit_term:
+          id: edit_term
+          table: taxonomy_term_field_data
+          field: edit_term
+          text: Edit
+      access:
+        type: role
+        options:
+          role:
+            content_author: content_author
+            site_architect: site_architect
+      style:
+        type: table
+        options:
+          grouping: {  }
+          row_class: ''
+          default_row_class: true
+          columns:
+            name: name
+            field_program_name: field_program_name
+            field_voc_accel_degree_type: field_voc_accel_degree_type
+            field_term: field_term
+            field_voc_accel_gradstart: field_voc_accel_gradstart
+            field_voc_accel_code_start: field_voc_accel_code_start
+            field_voc_accel_deadline: field_voc_accel_deadline
+            field_voc_accel_advisors: field_voc_accel_advisors
+            edit_term: edit_term
+          default: field_program_name
+          info:
+            name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_program_name:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_voc_accel_degree_type:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_term:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_voc_accel_gradstart:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_voc_accel_code_start:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_voc_accel_deadline:
+              sortable: false
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+            field_voc_accel_advisors:
+              align: ''
+              separator: ''
+              empty_column: false
+            edit_term:
+              align: ''
+              separator: ''
+              empty_column: false
+          override: true
+          sticky: true
+          summary: ''
+          empty_table: false
+          caption: ''
+          row_class_special: 1
+          class: ''
+      query:
+        type: views_query
+        options:
+          distinct: true
+      defaults:
+        access: false
+        query: false
+        style: false
+        row: false
+        fields: false
+        arguments: false
+      display_extenders: {  }
+      path: accelerated-codes
+      style_plugin: table
+      style_options:
+        grouping: {  }
+        row_class: ''
+        default_row_class: 1
+        row_class_special: 1
+        override: 1
+        sticky: 1
+        caption: ''
+        summary: ''
+        class: ''
+        columns:
+          name: name
+          field_program_name: field_program_name
+          field_voc_accel_degree_type: field_voc_accel_degree_type
+          field_term: field_term
+          field_voc_accel_gradstart: field_voc_accel_gradstart
+          field_voc_accel_code_start: field_voc_accel_code_start
+          field_voc_accel_deadline: field_voc_accel_deadline
+          field_voc_accel_advisors: field_voc_accel_advisors
+          edit_term: edit_term
+        info:
+          name:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_program_name:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_voc_accel_degree_type:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_term:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_voc_accel_gradstart:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_voc_accel_code_start:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_voc_accel_deadline:
+            sortable: 0
+            default_sort_order: asc
+            align: ''
+            separator: ''
+            empty_column: 0
+          field_voc_accel_advisors:
+            align: ''
+            separator: ''
+            empty_column: 0
+          edit_term:
+            align: ''
+            separator: ''
+            empty_column: 0
+        default: field_program_name
+        empty_table: 0
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - user.roles
+      tags: {  }

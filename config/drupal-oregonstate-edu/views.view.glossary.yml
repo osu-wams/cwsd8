@@ -1,6 +1,6 @@
-uuid: b0b73eea-15b1-4d49-9156-5bb5c68bb487
+uuid: 377ca1e1-ccb6-46a7-bb2a-181a3faeb0dc
 langcode: en
-status: false
+status: true
 dependencies:
   config:
     - system.menu.main
@@ -8,7 +8,7 @@ dependencies:
     - node
     - user
 _core:
-  default_config_hash: r-klgGeO4haVHqAwxW1HXZLzdzLSMUVC08OuTBrRh58
+  default_config_hash: sz_FoMz5aClG4jFy4UDlkenXQtgTUXohEDjWVBuHaro
 id: glossary
 label: Glossary
 module: node
@@ -75,58 +75,6 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-        name:
-          id: name
-          table: users_field_data
-          field: name
-          relationship: uid
-          group_type: group
-          admin_label: ''
-          entity_type: user
-          entity_field: name
-          plugin_id: field
-          label: Author
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          type: user_name
         changed:
           id: changed
           table: node_field_data
@@ -184,7 +132,7 @@ display:
             custom_date_format: ''
             timezone: ''
             tooltip:
-              date_format: long
+              date_format: ''
               custom_date_format: ''
             time_diff:
               enabled: false
@@ -224,7 +172,7 @@ display:
       access:
         type: perm
         options:
-          perm: 'access content'
+          perm: 'access administration pages'
       cache:
         type: tag
         options: {  }
@@ -371,6 +319,7 @@ display:
           admin_label: author
           plugin_id: standard
           required: false
+      css_class: 'container glossary'
       use_ajax: true
       header: {  }
       footer: {  }
@@ -436,8 +385,13 @@ display:
         type: views_query
         options: {  }
       defaults:
+        css_class: false
         arguments: false
-      display_extenders: {  }
+      css_class: container
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
       displays:
         default: default
         page_1: page_1
@@ -461,12 +415,35 @@ display:
       query:
         type: views_query
         options: {  }
-      display_extenders: {  }
+      defaults:
+        css_class: false
+        header: false
+      css_class: 'container glossary'
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: '<h1 class="text-align-center">Glossary</h1> '
+            format: full_html
+          tokenize: false
+      display_extenders:
+        metatag_display_extender:
+          metatags:
+            title: Glossary
+          tokenize: false
       path: glossary
       menu:
         type: normal
         title: Glossary
         weight: 0
+        enabled: false
         menu_name: main
         parent: ''
     cache_metadata:

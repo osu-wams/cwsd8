@@ -1,0 +1,123 @@
+uuid: fe5a3eb9-3981-45f1-bbfd-7be10cbaeee9
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: view_degree_program_cards
+label: 'COE degree program cards (card, a, h3, button)'
+code: |
+  /*================================
+  Program Card Styling
+  ================================*/
+
+
+   /* Sets border styling and spacing, specifies animation for hover effect */
+   
+  .program-card {
+  	border: 1px solid #ccc;
+    padding: 12px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    transition: transform 330ms ease-in-out;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Applies hover effect */
+
+  .program-card:hover {
+  	transform: scale(1.1);
+  }
+
+  /* Typography for h3 in card */
+
+  .program-card a h3 {
+    font-family: "Stratum2Web",serif;
+  	font-size: 20px;
+  	font-weight: 600;	
+  	padding-top: 8px;
+  	text-decoration: none !important;
+  }
+
+  /* Remove link underline */
+
+  .program-card a:link {
+  	text-decoration: none !important;
+  }
+
+  /* Align link inside of card */
+
+  .program-card .link-wrapper {
+  	display: flex;
+  	justify-content: space-between;
+  	gap: 10px;
+  	margin-top: auto;
+  }
+
+  /* Add proper padding and text to button */
+
+  .program-card .link-wrapper .btn.osu-btn-primary {
+  	padding: .3rem .8rem;
+  	font-size: 16px; /** size adjustment to fit bitter at smaller sizes which caused a bug where gutter wasn't seen **/
+  }
+
+
+  /*===========================================
+  Display Type for Containers around Cards
+  ===========================================*/
+
+
+  /** Equal Height Cards **/
+
+  [id*="views-bootstrap-dp-explore-our-programs-compact-block"] .views-field-nothing {
+  	height: 100%;
+  	display: flex;
+  }
+
+  [id*="views-bootstrap-dp-explore-our-programs-compact-block"]  .views-field-nothing > .field-content {
+  	display: flex;
+  	flex: 1;
+  }
+
+  [class*="block-views-blockdp-explore-our-programs-compact-block"] .form-item.col-12 {
+  	display: block;
+  }
+
+  [class*="block-views-blockdp-explore-our-programs-compact-block"] .views-exposed-form .form-select,
+  [class*="block-views-blockdp-explore-our-programs-compact-block"] .views-exposed-form .form-text {
+  	margin-top: 0 !important;
+  }
+
+  [class*="block-views-blockdp-explore-our-programs-compact-block"] .views-exposed-form .row {
+  	justify-content: center;
+  }
+
+  @media (min-width: 768px) {
+  	[class*="block-views-blockdp-explore-our-programs-compact-block"] .col-md-4 {
+  		width: 40%;
+  	}
+  }
+
+  /** hide apply/submit button */
+  [class*="block-views-blockdp-explore-our-programs-compact-block"] .form-actions {
+    display: flex;
+    justify-content:center;
+    gap: .5rem;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/academics/degrees\r\n/*/*/degrees\r\n/*/academics\r\n/node/14171\r\n/node/2946\r\n/node/40571\r\n/node/40661\r\n/node/40911\r\n/node/41731"
+contexts: {  }
+conditions_require_all: true

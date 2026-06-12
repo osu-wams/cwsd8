@@ -1,0 +1,29 @@
+uuid: 80c46940-664d-4eaf-a0e1-0bd073a5bdca
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faq_topic
+    - node.type.frequently_asked_question
+    - taxonomy.vocabulary.faq_topics
+id: node.frequently_asked_question.field_faq_topic
+field_name: field_faq_topic
+entity_type: node
+bundle: frequently_asked_question
+label: Topic
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      faq_topics: faq_topics
+    sort:
+      field: _none
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

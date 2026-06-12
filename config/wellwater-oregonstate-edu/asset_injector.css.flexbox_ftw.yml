@@ -1,0 +1,48 @@
+uuid: 9645a633-2632-480a-9575-af9dfe1f151f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: flexbox_ftw
+label: 'Flexbox ftw'
+code: |-
+  /* ya basic 3 column that turns to 3 rows under some ch value. ch value classes located in next commented section  */
+
+  .flex-ya-basic-3 {
+     display: flex;
+     flex-wrap: wrap; /* Allow items to wrap onto new lines */
+     gap: 2rem;
+  }
+
+  .flex-ya-basic-3 > * { /* Target direct children of the container */
+    flex: 1 1 30%;  /* Allow items to grow and shrink, set initial width to 30% */
+    min-width: 200px; /* Optional: Ensure minimum width for smaller screens */
+  }
+
+  .flex-ya-basic-3::after { /* Create the pseudo-element */
+    content: '';
+    flex: 1 1 30%;         /* Match the flex properties of the other items */
+    visibility: hidden;    /* Make it invisible */
+  }
+
+  @media (max-width: 140ch) {
+    .flex-ya-basic-3 {
+      flex-direction: column; /* Change to column layout */
+      align-items: center;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

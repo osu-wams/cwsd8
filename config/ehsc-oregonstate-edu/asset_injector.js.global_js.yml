@@ -1,0 +1,75 @@
+uuid: b379b60b-e85b-49dc-872b-b2b141d745ae
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: global_js
+label: 'Global JS'
+code: |-
+  /*const menuHomeLink = document.getElementById("main-standardfront-page").getElementsByClassName("nav-link");
+  for (var i = 0; i < menuHomeLink.length; i++) {
+  	menuHomeLink[i].innerHTML = '';
+  	var menuHomeIcon = document.createElement('span');
+  	menuHomeIcon.className = 'fa';
+  	menuHomeIcon.classList.add('fas');
+  	menuHomeIcon.classList.add('fa-house-chimney');
+  	menuHomeIcon.classList.add('fa-1x');
+  	menuHomeLink[i].appendChild(menuHomeIcon);
+  	menuHomeLink[i].classList.add('fa-home-icon')
+  }	*/
+  	//fa-house-chimney fas fa-1x
+  	
+
+  /*	
+  const breadCrumbItem = document.querySelector('[aria-labelledby="system-breadcrumb"').getElementsByClassName('breadcrumb-item')[0];
+  breadCrumbItem.classList.add('breadcrumb-shortened');
+  breadCrumbItem.getElementsByTagName('a')[0].innerHTML = 'PNW-CTEHR';
+  */
+
+  const breadcrumbWrapper = document.querySelector('[aria-labelledby="system-breadcrumb"]');
+
+  if (breadcrumbWrapper) {
+    const breadCrumbItem = breadcrumbWrapper.getElementsByClassName('breadcrumb-item')[0];
+    
+    if (breadCrumbItem) {
+      breadCrumbItem.classList.add('breadcrumb-shortened');
+      
+      const breadCrumbLink = breadCrumbItem.getElementsByTagName('a')[0];
+      if (breadCrumbLink) {
+        breadCrumbLink.innerHTML = 'PNW-CTEHR';
+      }
+    }
+  }
+
+
+  // Select both menus
+  const menus = document.querySelectorAll('#superfish-main a, #superfish-main--2 a');
+
+  menus.forEach(link => {
+    if (link.textContent.trim().startsWith('> ')) {
+      // Remove the carrot + space
+      link.textContent = link.textContent.replace(/^>\s*/, '');
+      // Add your class
+      link.classList.add('second-level-sub-item');
+    }
+  });
+
+  //Remove any ampty H3s
+  document.querySelectorAll('h3').forEach(h3 => {
+    if (!h3.innerText.trim()) {
+      h3.remove();
+    }
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: false
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

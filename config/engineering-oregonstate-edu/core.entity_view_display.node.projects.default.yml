@@ -1,0 +1,100 @@
+uuid: 894a33c8-be70-403f-a9d2-4f6b5329d88f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.projects.body
+    - field.field.node.projects.field_coe_co_principal
+    - field.field.node.projects.field_coe_principal_investigator
+    - field.field.node.projects.field_coe_project_overview_link
+    - field.field.node.projects.field_coe_project_overview_tag
+    - field.field.node.projects.field_coe_project_overview_time
+    - field.field.node.projects.field_project_overview_desc
+    - field.field.node.projects.field_project_overview_sponsor
+    - field.field.node.projects.field_research_title
+    - node.type.projects
+  module:
+    - datetime_range
+    - link
+    - text
+    - user
+id: node.projects.default
+targetEntityType: node
+bundle: projects
+mode: default
+content:
+  content_moderation_control:
+    settings: {  }
+    third_party_settings: {  }
+    weight: -20
+    region: content
+  field_coe_co_principal:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_coe_principal_investigator:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_coe_project_overview_link:
+    type: link
+    label: above
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    weight: 6
+    region: content
+  field_coe_project_overview_tag:
+    type: entity_reference_label
+    label: above
+    settings:
+      link: true
+    third_party_settings: {  }
+    weight: 3
+    region: content
+  field_coe_project_overview_time:
+    type: daterange_default
+    label: above
+    settings:
+      timezone_override: ''
+      format_type: medium
+      from_to: both
+      separator: '-'
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_project_overview_desc:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 5
+    region: content
+  field_project_overview_sponsor:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 7
+    region: content
+  field_research_title:
+    type: text_default
+    label: above
+    settings: {  }
+    third_party_settings: {  }
+    weight: 4
+    region: content
+hidden:
+  body: true
+  entitygroupfield: true
+  links: true

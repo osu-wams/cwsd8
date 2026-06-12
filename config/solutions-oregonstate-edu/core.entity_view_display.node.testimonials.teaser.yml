@@ -1,0 +1,37 @@
+uuid: 83d4cc3f-851a-420a-8d6d-7b4f8cd63030
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.testimonials.body
+    - field.field.node.testimonials.field_image
+    - field.field.node.testimonials.field_mss_project_type
+    - field.field.node.testimonials.field_position
+    - node.type.testimonials
+  module:
+    - text
+    - user
+id: node.testimonials.teaser
+targetEntityType: node
+bundle: testimonials
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_image: true
+  field_mss_project_type: true
+  field_position: true

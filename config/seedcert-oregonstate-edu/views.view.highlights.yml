@@ -1,0 +1,214 @@
+uuid: 5425db64-6b22-4685-a8a4-9ba9b55e91a7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_image_highlight
+    - field.storage.node.field_link_highlight
+    - field.storage.node.field_summary_highlight
+    - field.storage.node.field_weight_highlight
+    - image.style.270_wide_scale
+    - node.type.highlight
+  module:
+    - image
+    - link
+    - node
+    - options
+    - text
+    - user
+id: highlights
+label: Highlights
+module: views
+description: ''
+tag: default
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Master
+    display_plugin: default
+    position: 1
+    display_options:
+      title: Highlights
+      fields:
+        field_link_highlight:
+          id: field_link_highlight
+          table: node__field_link_highlight
+          field: field_link_highlight
+          plugin_id: field
+          label: ''
+          exclude: true
+          element_label_colon: false
+          click_sort_column: url
+          type: link
+          settings: {  }
+        field_image_highlight:
+          id: field_image_highlight
+          table: node__field_image_highlight
+          field: field_image_highlight
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: ''
+            make_link: true
+            path: '{{ field_link_highlight }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image
+          settings:
+            image_link: ''
+            image_style: 270_wide_scale
+            image_loading:
+              attribute: lazy
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_summary_highlight:
+          id: field_summary_highlight
+          table: node__field_summary_highlight
+          field: field_summary_highlight
+          plugin_id: field
+          label: ''
+          element_label_colon: false
+        field_weight_highlight:
+          id: field_weight_highlight
+          table: node__field_weight_highlight
+          field: field_weight_highlight
+          plugin_id: field
+          exclude: true
+          empty_zero: true
+          type: list_key
+      pager:
+        type: some
+        options:
+          items_per_page: 5
+      exposed_form:
+        type: basic
+      access:
+        type: perm
+      cache:
+        type: none
+      sorts:
+        field_weight_highlight_value:
+          id: field_weight_highlight_value
+          table: node__field_weight_highlight
+          field: field_weight_highlight_value
+          plugin_id: standard
+          order: DESC
+        random:
+          id: random
+          table: views
+          field: random
+          plugin_id: random
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          operator: '='
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            highlight: highlight
+      style:
+        type: default
+      row:
+        type: fields
+      query:
+        type: views_query
+        options: {  }
+      use_more_always: false
+      display_extenders: {  }
+      style_plugin: default
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_image_highlight'
+        - 'config:field.storage.node.field_link_highlight'
+        - 'config:field.storage.node.field_summary_highlight'
+        - 'config:field.storage.node.field_weight_highlight'
+  block:
+    id: block
+    display_title: Block
+    display_plugin: block
+    position: 2
+    display_options:
+      query:
+        type: views_query
+        options: {  }
+      defaults:
+        hide_admin_links: false
+      display_extenders: {  }
+    cache_metadata:
+      max-age: 0
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_image_highlight'
+        - 'config:field.storage.node.field_link_highlight'
+        - 'config:field.storage.node.field_summary_highlight'
+        - 'config:field.storage.node.field_weight_highlight'

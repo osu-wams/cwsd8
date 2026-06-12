@@ -1,0 +1,45 @@
+uuid: d42c2c12-586c-4d8d-b242-82a9cc1830c9
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.partners.body
+    - field.field.node.partners.field_available_through
+    - field.field.node.partners.field_logo
+    - field.field.node.partners.field_product_type
+    - field.field.node.partners.field_relationship_to_osu
+    - field.field.node.partners.field_thumbnail_logo
+    - field.field.node.partners.field_vendor_contact_information
+    - field.field.node.partners.layout_builder__layout
+    - node.type.partners
+  module:
+    - text
+    - user
+id: node.partners.teaser
+targetEntityType: node
+bundle: partners
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_available_through: true
+  field_logo: true
+  field_product_type: true
+  field_relationship_to_osu: true
+  field_thumbnail_logo: true
+  field_vendor_contact_information: true
+  layout_builder__layout: true

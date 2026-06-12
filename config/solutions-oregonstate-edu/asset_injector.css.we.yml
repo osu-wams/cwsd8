@@ -1,0 +1,104 @@
+uuid: 2b14700d-ddfb-4729-98c4-7453c41c5792
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: we
+label: 'Websites hover'
+code: |-
+  @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&display=swap');
+  .video-container {
+        position: relative;
+        max-width: 390px;
+        width: 100%; /* Adjust as needed */
+        height: 479px; /* Adjust as needed */
+        display: inline-block; /* Allows multiple containers side by side */
+      }
+
+      .thumbnail, .hover-video {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: cover;
+      }
+
+      .hover-video {
+        display: none;
+      }
+
+      .video-container:hover .hover-video {
+        display: block;
+      }
+
+      .video-container:hover .thumbnail {
+        display: none;
+      }
+      body {
+              min-height: 200vh; /* Ensures page is scrollable */
+          }
+   .fade-heading {
+              padding: 20px;
+              text-align: center;
+          }
+
+          .fade-heading h2 {
+              color: white;
+              margin: 0; /* Remove default h1 margin */
+          }
+
+          .fade-heading .fade-text {
+              opacity: 0; /* Span text initially hidden */
+              transition: opacity 1s ease-in-out; /* Smooth fade-in for span */
+              display: inline-block; /* Ensure proper rendering */
+          }
+
+          .fade-heading .fade-text.visible {
+              opacity: 1; /* Span text fades in */
+          }
+  h2, .h2 {
+      font-weight: 500;
+  }
+  .gray-text {
+  	color:#8C8C8C;
+  }
+  .testimonial-image {
+  }
+  .orange-circle {
+      width: 80px;
+      height: 80px;
+      border: 3px solid #D73F09;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin:0 auto -50px auto;
+  }
+  .line-height-testimonial {
+  	line-height:1.5;
+  }
+  .testimonial {
+  font-family: 'Caveat', cursive;
+  font-size:21px;
+  }
+
+  .testimonial-view h2 {
+  	display:none;
+  }
+
+  .testimonial-view .carousel .carousel-indicators{
+  	background-color: #d73f0900 !important;
+  	/*bottom: -50px;*/
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

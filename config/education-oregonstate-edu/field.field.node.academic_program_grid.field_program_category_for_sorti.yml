@@ -1,0 +1,31 @@
+uuid: 912fbf69-e65d-4335-abb9-72344b3a8d91
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_program_category_for_sorti
+    - node.type.academic_program_grid
+    - taxonomy.vocabulary.program_grid_category
+_core:
+  default_config_hash: jdZk-r0FZNVRJ8nwxgqs08QF1bISDMNx5YWNMvYBZ7o
+id: node.academic_program_grid.field_program_category_for_sorti
+field_name: field_program_category_for_sorti
+entity_type: node
+bundle: academic_program_grid
+label: 'Program Category (for sorting)'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      program_grid_category: program_grid_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

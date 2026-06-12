@@ -1,0 +1,333 @@
+uuid: 82b6e311-8a1c-4d39-95db-cb29cbd61ea4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.gold_star_project_member.body
+    - field.field.node.gold_star_project_member.field_gspm_awards
+    - field.field.node.gold_star_project_member.field_gspm_born
+    - field.field.node.gold_star_project_member.field_gspm_branch
+    - field.field.node.gold_star_project_member.field_gspm_buried
+    - field.field.node.gold_star_project_member.field_gspm_class_of
+    - field.field.node.gold_star_project_member.field_gspm_conflict
+    - field.field.node.gold_star_project_member.field_gspm_died
+    - field.field.node.gold_star_project_member.field_gspm_fraternity
+    - field.field.node.gold_star_project_member.field_gspm_given_name
+    - field.field.node.gold_star_project_member.field_gspm_image
+    - field.field.node.gold_star_project_member.field_gspm_last_name
+    - field.field.node.gold_star_project_member.field_gspm_mia_kia
+    - field.field.node.gold_star_project_member.field_gspm_mia_pow_date
+    - field.field.node.gold_star_project_member.field_gspm_rank
+    - node.type.gold_star_project_member
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      39cd9243-ad48-423b-b7be-69fdb4a7281c:
+        separator: ' | '
+        limit: null
+        uuid: 39cd9243-ad48-423b-b7be-69fdb4a7281c
+        plugin: explode
+        source: mia_kia
+        weight: 0
+        label: Explode
+      19a27de5-5b07-4ead-b13c-1293b0a48437:
+        uuid: 19a27de5-5b07-4ead-b13c-1293b0a48437
+        plugin: strtotime
+        source: born
+        weight: 0
+        label: 'String to Unix Timestamp'
+      53c649a7-33e6-4d4d-b433-0cc20dc28167:
+        date_format: Y-m-d
+        uuid: 53c649a7-33e6-4d4d-b433-0cc20dc28167
+        plugin: timetodate
+        source: born
+        weight: 1
+        label: 'Unix timestamp to Date'
+      9d9f359f-dd8f-4b00-b6aa-d741dece6189:
+        uuid: 9d9f359f-dd8f-4b00-b6aa-d741dece6189
+        plugin: strtotime
+        source: mia_pow_date
+        weight: 0
+        label: 'String to Unix Timestamp'
+      724bbf24-2e43-4553-98f9-1a97028b426e:
+        date_format: Y-m-d
+        uuid: 724bbf24-2e43-4553-98f9-1a97028b426e
+        plugin: timetodate
+        source: mia_pow_date
+        weight: 1
+        label: 'Unix timestamp to Date'
+      0c2d55a6-1ae1-4a6d-adfe-ad04ca979025:
+        uuid: 0c2d55a6-1ae1-4a6d-adfe-ad04ca979025
+        plugin: strtotime
+        source: died
+        weight: 0
+        label: 'String to Unix Timestamp'
+      b4d85768-8f94-451c-803d-c92270b5c8b1:
+        date_format: Y-m-d
+        uuid: b4d85768-8f94-451c-803d-c92270b5c8b1
+        plugin: timetodate
+        source: died
+        weight: 1
+        label: 'Unix timestamp to Date'
+label: 'Gold Star Member Import'
+id: gold_star_member_import
+description: 'Importing data from Drupal 7 Export'
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: gold_star_project_member
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  authorize: true
+  revision: true
+  expire: -1
+  owner_feed_author: false
+  owner_id: 6
+custom_sources:
+  title:
+    value: Title
+    label: Title
+    machine_name: title
+    type: csv
+  rank:
+    value: Rank
+    label: Rank
+    machine_name: rank
+    type: csv
+  last_name:
+    value: 'Last Name'
+    label: 'Last Name'
+    machine_name: last_name
+    type: csv
+  first_and_middle_name:
+    value: 'First and Middle Name'
+    label: 'First and Middle Name'
+    machine_name: first_and_middle_name
+    type: csv
+  class_of:
+    value: 'Class of'
+    label: 'Class of'
+    machine_name: class_of
+    type: csv
+  branch:
+    value: Branch
+    label: Branch
+    machine_name: branch
+    type: csv
+  image:
+    value: Image
+    label: Image
+    machine_name: image
+    type: csv
+  mia_kia:
+    value: MIA/KIA
+    label: MIA/KIA
+    machine_name: mia_kia
+    type: csv
+  conflict:
+    value: Conflict
+    label: Conflict
+    machine_name: conflict
+    type: csv
+  born:
+    value: Born
+    label: Born
+    machine_name: born
+    type: csv
+  mia_pow_date:
+    value: MIA-POW-Date
+    label: MIA-POW-Date
+    machine_name: mia_pow_date
+    type: csv
+  died:
+    value: Died
+    label: Died
+    machine_name: died
+    type: csv
+  fraternity:
+    value: Fraternity
+    label: Fraternity
+    machine_name: fraternity
+    type: csv
+  awards:
+    value: Awards
+    label: Awards
+    machine_name: awards
+    type: csv
+  buried:
+    value: Buried
+    label: Buried
+    machine_name: buried
+    type: csv
+  biography:
+    value: Biography
+    label: Biography
+    machine_name: biography
+    type: csv
+  published_status:
+    value: 'Published status'
+    label: 'Published status'
+    machine_name: published_status
+    type: csv
+  post_date:
+    value: 'Post date'
+    label: 'Post date'
+    machine_name: post_date
+    type: csv
+  image_name:
+    value: 'Image Name'
+    label: 'Image Name'
+    machine_name: image_name
+    type: csv
+mappings:
+  -
+    target: title
+    map:
+      value: title
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gspm_rank
+    map:
+      target_id: rank
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: military_rank
+  -
+    target: field_gspm_last_name
+    map:
+      value: last_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gspm_given_name
+    map:
+      value: first_and_middle_name
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gspm_image
+    map:
+      target_id: image_name
+    settings:
+      language: ''
+      reference_by: name
+      feeds_item: guid
+      autocreate: 0
+      autocreate_bundle: image
+  -
+    target: field_gspm_class_of
+    map:
+      value: class_of
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gspm_branch
+    map:
+      target_id: branch
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: service_branch
+  -
+    target: field_gspm_mia_kia
+    map:
+      value: mia_kia
+    settings:
+      language: null
+  -
+    target: field_gspm_conflict
+    map:
+      target_id: conflict
+    settings:
+      language: ''
+      reference_by: name
+      autocreate: 1
+      autocreate_bundle: military_conflicts
+  -
+    target: field_gspm_born
+    map:
+      value: born
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_gspm_mia_pow_date
+    map:
+      value: mia_pow_date
+    settings:
+      language: null
+      timezone: UTC
+  -
+    target: field_gspm_died
+    map:
+      value: died
+    settings:
+      language: ''
+      timezone: UTC
+  -
+    target: field_gspm_fraternity
+    map:
+      value: fraternity
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gspm_awards
+    map:
+      value: awards
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: field_gspm_buried
+    map:
+      value: buried
+    settings:
+      language: null
+    unique: {  }
+  -
+    target: body
+    map:
+      value: biography
+      summary: ''
+    settings:
+      language: ''
+      format: full_html
+  -
+    target: status
+    map:
+      value: published_status
+    settings:
+      language: null
+  -
+    target: created
+    map:
+      value: post_date
+    settings:
+      language: null
+      timezone: UTC

@@ -1,0 +1,67 @@
+uuid: b12f9566-511d-480c-9447-0d916ad28b68
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: training
+label: Training
+code: |
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Shared iframe style */
+  .responsive-iframe {
+    width: 100%;
+    height: 315px;
+    max-width: 560px;
+    border: none;
+  }
+
+  /* Common heading style for each block */
+  .video-block-1 h3,
+  .video-block-2 h3,
+  .video-block-3 h3,
+  .video-block-4 h3 {
+    text-align: center;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+
+  /* Individual block wrappers */
+  .video-block-1,
+  .video-block-2,
+  .video-block-3,
+  .video-block-4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem auto;
+    padding: 1rem;
+  }
+
+  /* Responsive behavior */
+  @media screen and (max-width: 1040px) {
+    .video-block-1,
+    .video-block-2,
+    .video-block-3,
+    .video-block-4 {
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/151
+contexts: {  }
+conditions_require_all: true

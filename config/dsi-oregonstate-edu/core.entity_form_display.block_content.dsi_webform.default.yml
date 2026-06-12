@@ -1,0 +1,52 @@
+uuid: 197f87d3-d012-411b-8a9d-ce869860b01c
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.dsi_webform
+    - field.field.block_content.dsi_webform.body
+    - field.field.block_content.dsi_webform.field_dsi_form
+    - field.field.block_content.dsi_webform.field_form_title
+  module:
+    - text
+    - webform
+id: block_content.dsi_webform.default
+targetEntityType: block_content
+bundle: dsi_webform
+mode: default
+content:
+  body:
+    type: text_textarea_with_summary
+    weight: 2
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_dsi_form:
+    type: webform_entity_reference_select
+    weight: 3
+    region: content
+    settings:
+      default_data: true
+      webforms: {  }
+    third_party_settings: {  }
+  field_form_title:
+    type: string_textfield
+    weight: 1
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  info:
+    type: string_textfield
+    weight: 0
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+hidden: {  }

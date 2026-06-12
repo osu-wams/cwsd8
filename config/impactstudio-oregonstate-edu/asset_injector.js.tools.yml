@@ -1,0 +1,55 @@
+uuid: 119c4ff1-c7be-4350-ad3e-1c97b8416083
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: tools
+label: Tools
+code: |
+  document.addEventListener("DOMContentLoaded", () => {
+      let cards = document.querySelectorAll(".card");
+
+      cards.forEach(card => {
+          card.addEventListener("click", (event) => {
+              // Close all other expanded cards
+              cards.forEach(otherCard => {
+                  if (otherCard !== card) {
+                      otherCard.classList.remove("expanded");
+                  }
+              });
+
+              // Toggle the clicked card
+              card.classList.toggle("expanded");
+
+              // Stop click from propagating to the document
+              event.stopPropagation();
+          });
+      });
+
+      // Close the expanded card when clicking outside
+      document.addEventListener("click", (event) => {
+          cards.forEach(card => {
+              if (!card.contains(event.target)) {
+                  card.classList.remove("expanded");
+              }
+          });
+      });
+  });
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/16
+contexts: {  }
+conditions_require_all: true

@@ -1,0 +1,35 @@
+uuid: 18f02682-273a-402e-95f6-87a7179913d5
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: clinical_education_program_table
+label: 'Clinical Education Program table'
+code: |-
+  .table-striped > tbody > tr:nth-of-type(odd) > *, .osu-table-orange > tbody > tr:nth-of-type(odd) > *, .osu-table > tbody > tr:nth-of-type(odd) > *, table:not(.table,.osu-table,.osu-table-orange) > tbody > tr:nth-of-type(odd) > * {
+      --bs-table-color-type: var(--bs-table-striped-color);
+      --bs-table-bg-type: none;
+  }
+  .table-dark, .osu-table > thead, table:not(.table,.osu-table,.osu-table-orange) > thead {
+      --bs-table-color: #fff;
+      --bs-table-bg: #212529;
+      --bs-table-border-color: none;
+  }
+  .table, .osu-table-orange, .osu-table, table:not(.table,.osu-table,.osu-table-orange), table:not(.table,.osu-table,table:not(.table,.osu-table,.osu-table-orange),.osu-table-orange) {
+      --bs-table-border-color: #fff;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/2137071\r\n/node/2137071/layout"
+contexts: {  }
+conditions_require_all: true

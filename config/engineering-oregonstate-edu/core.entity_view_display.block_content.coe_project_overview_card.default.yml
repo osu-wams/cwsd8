@@ -1,0 +1,48 @@
+uuid: 3ad40136-b989-4e1d-b7a8-529e529cff7d
+langcode: en
+status: true
+dependencies:
+  config:
+    - block_content.type.coe_project_overview_card
+    - field.field.block_content.coe_project_overview_card.field_coe_project_overview_body
+    - field.field.block_content.coe_project_overview_card.field_project_overview_dropdown
+    - field.field.block_content.coe_project_overview_card.field_project_overview_header
+  module:
+    - entity_reference_revisions
+    - text_field_formatter
+id: block_content.coe_project_overview_card.default
+targetEntityType: block_content
+bundle: coe_project_overview_card
+mode: default
+content:
+  field_coe_project_overview_body:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+  field_project_overview_dropdown:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 2
+    region: content
+  field_project_overview_header:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h6
+      wrap_class: ''
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: 0
+    third_party_settings: {  }
+    weight: 0
+    region: content
+hidden: {  }

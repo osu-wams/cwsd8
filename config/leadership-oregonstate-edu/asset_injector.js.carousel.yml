@@ -1,0 +1,93 @@
+uuid: a591cea3-b2a1-4de4-82e0-ed7a479fc594
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: carousel
+label: Carousel
+code: |-
+  const slides = document.querySelectorAll('.carousel-slide');
+  const slideContainer = document.querySelector('.carousel-slide-container');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+  const dotsContainer = document.querySelector('.carousel-dots');
+  const carouselContainer = document.querySelector('.carousel-container');
+
+  let slideIndex = 0;
+  let autoplayInterval;
+
+  const createDots = () => {
+      for (let i = 0; i < slides.length; i++) {
+          const dot = document.createElement('span');
+          dot.classList.add('carousel-dot');
+          if (i === 0) dot.classList.add('active');
+          dot.addEventListener('click', () => {
+              slideIndex = i;
+              showSlide();
+              stopAutoplay();
+          });
+          dotsContainer.appendChild(dot);
+      }
+  };
+
+  const showSlide = () => {
+      // Update slide container position
+      slideContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+      // Update active slide
+      slides.forEach((slide, index) => {
+          slide.classList.toggle('active', index === slideIndex);
+      });
+
+      // Update dots
+      const dots = document.querySelectorAll('.carousel-dot');
+      dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === slideIndex);
+      });
+  };
+
+  const nextSlide = () => {
+      slideIndex = (slideIndex + 1) % slides.length;
+      showSlide();
+  };
+
+  const prevSlide = () => {
+      slideIndex = (slideIndex - 1 + slides.length) % slides.length;
+      showSlide();
+  };
+
+  const startAutoplay = () => {
+      autoplayInterval = setInterval(nextSlide, 5000);
+  };
+
+  const stopAutoplay = () => {
+      clearInterval(autoplayInterval);
+  };
+
+  nextBtn.addEventListener('click', nextSlide);
+  prevBtn.addEventListener('click', prevSlide);
+
+  carouselContainer.addEventListener('mouseover', stopAutoplay);
+  carouselContainer.addEventListener('mouseout', startAutoplay);
+
+  createDots();
+  showSlide();
+  startAutoplay();
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/16851\r\n/node/18026"
+contexts: {  }
+conditions_require_all: true

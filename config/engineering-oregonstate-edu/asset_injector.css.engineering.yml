@@ -1,0 +1,30 @@
+uuid: 48f09650-84b4-4f61-b367-72501baa747f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: engineering
+label: 'Engineering Summit Agenda Background'
+code: |
+  .node__content{
+  	background-image: url(/sites/engineering.oregonstate.edu/files/2026-03/square_grid_1920x1920_50.svg) !important;
+  	background-position: center;
+  	background-repeat: repeat-x;
+  	background-repeat: repeat-y;
+  	background-size: contain;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/54321
+contexts: {  }
+conditions_require_all: true

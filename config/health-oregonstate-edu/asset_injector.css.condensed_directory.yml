@@ -1,0 +1,31 @@
+uuid: 772068ba-5021-4299-8ee1-1783b9d6cb5f
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: condensed_directory
+label: 'Condensed directory'
+code: |-
+
+  .views-field-field-preferred-name {
+  	min-width:30ch;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/directory/list-condensed\r\n"
+contexts: {  }
+conditions_require_all: true

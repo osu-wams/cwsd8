@@ -6,7 +6,9 @@ dependencies:
     - field.field.node.from_the_president.body
     - field.field.node.from_the_president.field_pres_msg_subject
     - node.type.from_the_president
+    - workflows.workflow.editorial
   module:
+    - content_moderation
     - path
     - text
 id: node.from_the_president.default
@@ -37,6 +39,20 @@ content:
     settings:
       size: 80
       placeholder: ''
+    third_party_settings: {  }
+  moderation_state:
+    type: moderation_state_default
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  osu_a11y_remediation_email:
+    type: email_default
+    weight: 50
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
     third_party_settings: {  }
   path:
     type: path
@@ -90,3 +106,7 @@ content:
     third_party_settings: {  }
 hidden:
   entitygroupfield: true
+  publish_on: true
+  publish_state: true
+  unpublish_on: true
+  unpublish_state: true

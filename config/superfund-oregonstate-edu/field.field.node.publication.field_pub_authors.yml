@@ -1,0 +1,29 @@
+uuid: 5ac292c2-7adb-44de-85c7-98a2573c72dd
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pub_authors
+    - node.type.publication
+    - taxonomy.vocabulary.authors_and_researchers
+id: node.publication.field_pub_authors
+field_name: field_pub_authors
+entity_type: node
+bundle: publication
+label: Authors
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      authors_and_researchers: authors_and_researchers
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: authors_and_researchers
+field_type: entity_reference

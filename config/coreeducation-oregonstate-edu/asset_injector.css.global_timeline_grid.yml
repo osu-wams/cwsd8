@@ -1,0 +1,45 @@
+uuid: 7d0b71c4-e39b-4216-acda-375ee9a9c3b8
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: global_timeline_grid
+label: 'Global - Timeline Grid'
+code: |-
+  .coreed-timeline__item {
+  	border-top: 2px solid var(--bs-primary);
+  }
+
+  @media screen and (min-width: 992px) {
+  		.coreed-timeline__item {
+  		border-top: 2px solid var(--bs-primary);
+  		border-left: 2px solid var(--bs-primary);
+  	}
+  	
+  	.coreed-timeline__item:nth-child(-n+2) {
+  		border-top: none;
+  	}
+  	
+  	.coreed-timeline__item:nth-child(odd) {
+  		border-left: none;
+  	}
+  	
+  	.coreed-timeline__item:first-child {
+  		border-left: none;
+  	}
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

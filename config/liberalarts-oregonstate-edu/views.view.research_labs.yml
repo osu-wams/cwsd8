@@ -1,0 +1,853 @@
+uuid: 4d108a8e-056d-4e09-9216-8a7411e9ec94
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_lab_description
+    - field.storage.node.field_lab_link
+    - field.storage.node.field_research_lead
+    - field.storage.node.field_research_lead_link
+    - field.storage.node.field_research_lead_photo
+    - field.storage.node.field_rl_lastname
+    - image.style.800x800_directory_square
+    - node.type.sps_lab
+  module:
+    - image
+    - link
+    - node
+    - text
+    - user
+    - views_bootstrap
+id: research_labs
+label: 'Research Labs'
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+display:
+  default:
+    id: default
+    display_title: Default
+    display_plugin: default
+    position: 0
+    display_options:
+      title: 'Research Labs'
+      fields:
+        field_research_lead_link:
+          id: field_research_lead_link
+          table: node__field_research_lead_link
+          field: field_research_lead_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: true
+            url_plain: true
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_research_lead_photo:
+          id: field_research_lead_photo
+          table: node__field_research_lead_photo
+          field: field_research_lead_photo
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<div align="center">{{ field_research_lead_photo }}</div>'
+            make_link: true
+            path: '{{ field_research_lead_link }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image
+          settings:
+            image_link: ''
+            image_style: 800x800_directory_square
+            image_loading:
+              attribute: lazy
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: false
+            ellipsis: false
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_rl_lastname:
+          id: field_rl_lastname
+          table: node__field_rl_lastname
+          field: field_rl_lastname
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          settings:
+            link_to_entity: false
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_research_lead:
+          id: field_research_lead
+          table: node__field_research_lead
+          field: field_research_lead
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<div class="name">{{ field_research_lead }}</div>'
+            make_link: true
+            path: '{{ field_research_lead_link }}'
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: false
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        nothing:
+          id: nothing
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<div class="program">{{ title }}</div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+        field_lab_description:
+          id: field_lab_description
+          table: node__field_lab_description
+          field: field_lab_description
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<div class="lab-description">{{ field_lab_description }}</div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_lab_link:
+          id: field_lab_link
+          table: node__field_lab_link
+          field: field_lab_link
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: true
+            text: '<div class="views-field-field-lab-link"><div class="link"><a button="" class="btn btn-default" href="{{ field_lab_link__uri }}" type="button">Learn more about this Lab</a></div></div>'
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        nothing_1:
+          id: nothing_1
+          table: views
+          field: nothing
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: custom
+          label: ''
+          exclude: false
+          alter:
+            alter_text: true
+            text: "<div class=\"osu-bg-page-alt-1 osu-img-full osu-min-h-400 osu-shadow rounded-bottom\">\r\n{{ field_research_lead_photo }}\r\n<div class=\"dir-name\">{{ field_research_lead }}</div> \r\n  {{ nothing }} \r\n  {{ field_lab_description }}\r\n  {{ field_lab_link }}\r\n</div>"
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: false
+      pager:
+        type: some
+        options:
+          offset: 0
+          items_per_page: 100
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      empty: {  }
+      sorts:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        field_rl_lastname_value:
+          id: field_rl_lastname_value
+          table: node__field_rl_lastname
+          field: field_rl_lastname_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+      arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          operator: in
+          value:
+            sps_lab: sps_lab
+          group: 1
+          exposed: false
+          expose:
+            operator_id: ''
+            label: ''
+            description: ''
+            use_operator: false
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: ''
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+      style:
+        type: views_bootstrap_grid
+        options:
+          grouping: {  }
+          row_class: g-5
+          default_row_class: true
+          grid_class: ''
+          col_xs: col-12
+          col_sm: col-sm-6
+          col_md: none
+          col_lg: col-lg-3
+          col_xl: none
+          col_xxl: none
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: pb-5
+          hide_empty: false
+      query:
+        type: views_query
+        options:
+          query_comment: ''
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_tags: {  }
+      relationships: {  }
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "<p><a class=\"btn btn-default color-active\" href=\"\" target=\"\">Sorted by: Researcher</a>&nbsp;&nbsp; <a class=\"btn btn-primary\" href=\"/sps/psychology-research-labs-sort-by-lab\">Sort by: Lab Name</a></p>\r\n\r\n<style>\r\n\r\n/* round corners and make all in row the same height*/  \r\n.osu-bg-page-alt-1, .image-style-_00x800-directory-square  {\r\n    border-top-right-radius: var(--bs-border-radius) !important;\r\n    border-top-left-radius: var(--bs-border-radius) !important;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\ndiv.g-5 {display: flex;}\r\ndiv.g-5 > div {display:flex; align-self: stretch;}\r\ndiv.g-5 > div > span {display: flex;}\r\n\r\n\r\n.name {\r\n    background-color: #d73f09;\r\n    padding: 25px 0 25px 25px;\r\n}\r\n.name a {\r\n    font-family: 'Stratum2Web', sans-serif;\r\n    font-size: 1.5rem;\r\n    line-height: 1.6rem;\r\n    font-weight: 500;\r\n    color: #fff;\r\n    text-decoration: none;\r\n}\r\n\r\n\r\n.dir-name {\r\n\tbackground-color: #d73f09;\r\n\t}\r\n\t\r\n\t.dir-name a{\r\n\tfont-family: 'Stratum2Web',sans-serif;\r\n\tfont-size: 1.5rem;\r\n\tline-height: 1.6rem;\r\n\tfont-weight: 500;\r\n\tcolor: #fff;\r\n\ttext-decoration: none;\r\n\t}\r\n\r\nheader {width:100%;}\r\n\r\n.lab-description {\r\n  font-size: 16px;\r\n  padding: 10px 30px;\r\n}\r\n\r\n.btn-default {\r\n  background-color: #e0e0e0 !important;\r\n}\r\n\r\n\r\n.view-header > p:nth-child(1) {margin:1.5%}\r\n\r\n.views-exposed-form {\r\n  padding: 0em 0.85em;\r\n}\r\n\t\r\n\t\r\ndiv.views-exposed-widget:nth-child(2) {display:none;}\t\r\n\t\r\n\r\n\r\n.views-field-field-research-lead-photo div.field-content div img {\r\n  object-fit: cover;\r\n  width: 100%; \t\r\n  aspect-ratio: 1 / 1;\r\n  border-radius: 25px 25px 0px 0px;\t\r\n}\r\n\r\n.block-views-blockresearch-labs-block-1 h3 {\r\n  width: 100%;\r\n  padding: .85em;\r\n  margin: 1.5em 1.7em .75em .4em;\r\n  background-color: #adadad;\r\n  color: #fff;\r\n}\r\n\t\r\n.contextual-region > h3:nth-child(1) {\r\n  margin: 0em 1.7em .75em .4em;\r\n}\t\r\n\t\r\n\r\n\r\n#edit-tid-wrapper, #edit-tid-1-wrapper{\r\n  display: block;\t\r\n  padding: 20px!important;\r\n  border: 1px solid;\r\n  margin-right: 10px;\r\n  border-color: #58595b;\r\n}\r\n\r\n\r\n\r\n.block-views-blockresearch-labs-block-1 {\r\n\tpadding-left: 0%;\r\n\tpadding-right: 0%;\r\n}\r\n\r\n.view-header {\r\n        margin-right: 75px;\r\n    }\r\n\r\n.view-header p {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n\t\r\n.clicked {\r\n    background-color: #444 !important;\r\n}\r\n\r\n\r\n\t\r\n.link {\r\n    margin: 0px 0px 0 0px;\r\n}\t\r\n\r\n.views-field-field-program-link {\r\n    margin-left: 25px;\r\n}\r\n\r\n.block-views-blockresearch-labs-block-1 .contextual-region {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n\tpadding-left: 0%;\r\npadding-bottom: 5em;\r\n}\r\n\r\n\r\n\r\n.block-views-blockresearch-labs-block-1 .item {\r\n    margin: 0px 10px 40px 10px;\r\n    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),\r\n      0 2px 2px hsl(0deg 0% 0% / 0.075),\r\n      0 4px 4px hsl(0deg 0% 0% / 0.075),\r\n      0 8px 8px hsl(0deg 0% 0% / 0.075),\r\n      0 16px 16px hsl(0deg 0% 0% / 0.075);\r\n    display: flex;\r\n    flex-direction: column;\r\n\tborder-radius: 25px;\r\n}\r\n\r\n.block-views-blockresearch-labs-block-1 .item {\r\n    flex-basis: 100%;\r\n}\r\n\r\n.block-views-blockresearch-labs-block-1 .name {\r\n\r\nfont-family: 'Stratum2Web',sans-serif;\r\nfont-size: 1.6rem;\r\nline-height: 1.8rem;\r\nfont-weight: 500;\r\ncolor: #fff;\r\ntext-decoration: none;\r\nbackground-color: #d73f09; \r\npadding: 20px 25px 21px 25px;\r\n\r\n\r\n}\r\n\t\r\n.block-views-blockresearch-labs-block-1 .name a {\r\ncolor: #fff;\r\ntext-decoration: none;\r\n}\t\r\n\r\n.program {\r\n  color: #d73f09;\r\n  font-family: 'Stratum2Web',sans-serif;\r\n  font-size: 24px;\r\n  margin: 8px 25px 8px 25px;\r\n  line-height: 1;\r\n  border-bottom: 1px dotted #d73f09;\r\n  padding-bottom: 10px;\t\r\n  padding-top: 7px;\r\n}\r\n\t\r\n.program a { \r\n\ttext-decoration: none;\r\n\tcolor: #d73f09; \r\n\t}\t\r\n\t\r\n.program .year {\r\nfont-family: 'Open sans',sans-serif;\r\nfont-size: 16px;\r\nline-height: 1.6;\r\n\t}\t\r\n\r\n\r\n.block-views-blockresearch-labs-block-1 .views-field-field-lab-description {\r\n\tfont-size: 16px;\r\n\tpadding: 10px 30px;\r\n}\r\n\r\n\t.views-field-field-lab-link\t{\r\n\t\tmargin-top: auto;\r\n\t}\r\n\t\r\n\t\r\n.link {\r\n  padding: 20px 0px 20px 0px;\r\n  border-top: 1px solid rgba(0,0,0,.125);\r\n  text-align: center;\t\r\n}\t\r\n\t\r\n.block-views-blockresearch-labs-block-1 .btn {border-radius: 8px;}\r\n\t\r\n\t\r\n\t\r\n.paragraphs-items .field-item .field-item {\r\n  padding: 0px!important;\r\n}\r\ndiv.content {\r\n  margin: 0px!important;\r\n}\r\n\r\n\r\n\r\n</style>"
+            format: full_html
+          tokenize: false
+      footer: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_lab_description'
+        - 'config:field.storage.node.field_lab_link'
+        - 'config:field.storage.node.field_research_lead'
+        - 'config:field.storage.node.field_research_lead_link'
+        - 'config:field.storage.node.field_research_lead_photo'
+        - 'config:field.storage.node.field_rl_lastname'
+  block_1:
+    id: block_1
+    display_title: Block
+    display_plugin: block
+    position: 1
+    display_options:
+      sorts:
+        field_rl_lastname_value:
+          id: field_rl_lastname_value
+          table: node__field_rl_lastname
+          field: field_rl_lastname_value
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+          order: ASC
+          expose:
+            label: ''
+            field_identifier: ''
+          exposed: false
+      defaults:
+        sorts: false
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      block_description: 'Research Labs'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_lab_description'
+        - 'config:field.storage.node.field_lab_link'
+        - 'config:field.storage.node.field_research_lead'
+        - 'config:field.storage.node.field_research_lead_link'
+        - 'config:field.storage.node.field_research_lead_photo'
+        - 'config:field.storage.node.field_rl_lastname'
+  block_2:
+    id: block_2
+    display_title: 'sort by lab name'
+    display_plugin: block
+    position: 1
+    display_options:
+      title: 'sort by lab name'
+      defaults:
+        title: false
+        header: false
+      display_description: ''
+      header:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: text
+          empty: false
+          content:
+            value: "<p><a class=\"btn btn-primary\" href=\"/school-psychological-science/psychology/faculty-and-staff/research-labs\" target=\"\">Sort by: Researcher</a>&nbsp;&nbsp; <a class=\"btn btn-default color-active\" href=\"#\">Sorted by: Lab Name</a></p>\r\n\r\n<style>\r\n\r\n/* round corners and make all in row the same height*/  \r\n.osu-bg-page-alt-1, .image-style-_00x800-directory-square  {\r\n    border-top-right-radius: var(--bs-border-radius) !important;\r\n    border-top-left-radius: var(--bs-border-radius) !important;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\ndiv.g-5 {display: flex;}\r\ndiv.g-5 > div {display:flex; align-self: stretch;}\r\ndiv.g-5 > div > span {display: flex;}\r\n\r\n\r\n.name {\r\n    background-color: #d73f09;\r\n    padding: 25px 0 25px 25px;\r\n}\r\n.name a {\r\n    font-family: 'Stratum2Web', sans-serif;\r\n    font-size: 1.5rem;\r\n    line-height: 1.6rem;\r\n    font-weight: 500;\r\n    color: #fff;\r\n    text-decoration: none;\r\n}\r\n\r\n\r\n.dir-name {\r\n\tbackground-color: #d73f09;\r\n\t}\r\n\t\r\n\t.dir-name a{\r\n\tfont-family: 'Stratum2Web',sans-serif;\r\n\tfont-size: 1.5rem;\r\n\tline-height: 1.6rem;\r\n\tfont-weight: 500;\r\n\tcolor: #fff;\r\n\ttext-decoration: none;\r\n\t}\r\n\r\nheader {width:100%;}\r\n\r\n.lab-description {\r\n  font-size: 16px;\r\n  padding: 10px 30px;\r\n}\r\n\r\n.btn-default {\r\n  background-color: #e0e0e0 !important;\r\n}\r\n\r\n\r\n.view-header > p:nth-child(1) {margin:1.5%}\r\n\r\n.views-exposed-form {\r\n  padding: 0em 0.85em;\r\n}\r\n\t\r\n\t\r\ndiv.views-exposed-widget:nth-child(2) {display:none;}\t\r\n\t\r\n\r\n\r\n.views-field-field-research-lead-photo div.field-content div img {\r\n  object-fit: cover;\r\n  width: 100%; \t\r\n  aspect-ratio: 1 / 1;\r\n  border-radius: 25px 25px 0px 0px;\t\r\n}\r\n\r\n.block-views-blockresearch-labs-block-1 h3 {\r\n  width: 100%;\r\n  padding: .85em;\r\n  margin: 1.5em 1.7em .75em .4em;\r\n  background-color: #adadad;\r\n  color: #fff;\r\n}\r\n\t\r\n.contextual-region > h3:nth-child(1) {\r\n  margin: 0em 1.7em .75em .4em;\r\n}\t\r\n\t\r\n\r\n\r\n#edit-tid-wrapper, #edit-tid-1-wrapper{\r\n  display: block;\t\r\n  padding: 20px!important;\r\n  border: 1px solid;\r\n  margin-right: 10px;\r\n  border-color: #58595b;\r\n}\r\n\r\n\r\n\r\n.block-views-blockresearch-labs-block-1 {\r\n\tpadding-left: 0%;\r\n\tpadding-right: 0%;\r\n}\r\n\r\n.view-header {\r\n        margin-right: 75px;\r\n    }\r\n\r\n.view-header p {\r\n    font-weight: bold;\r\n}\r\n\r\n\r\n\t\r\n.clicked {\r\n    background-color: #444 !important;\r\n}\r\n\r\n\r\n\t\r\n.link {\r\n    margin: 0px 0px 0 0px;\r\n}\t\r\n\r\n.views-field-field-program-link {\r\n    margin-left: 25px;\r\n}\r\n\r\n.block-views-blockresearch-labs-block-1 .contextual-region {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n\tpadding-left: 0%;\r\npadding-bottom: 5em;\r\n}\r\n\r\n\r\n\r\n.block-views-blockresearch-labs-block-1 .item {\r\n    margin: 0px 10px 40px 10px;\r\n    box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),\r\n      0 2px 2px hsl(0deg 0% 0% / 0.075),\r\n      0 4px 4px hsl(0deg 0% 0% / 0.075),\r\n      0 8px 8px hsl(0deg 0% 0% / 0.075),\r\n      0 16px 16px hsl(0deg 0% 0% / 0.075);\r\n    display: flex;\r\n    flex-direction: column;\r\n\tborder-radius: 25px;\r\n}\r\n\r\n.block-views-blockresearch-labs-block-1 .item {\r\n    flex-basis: 100%;\r\n}\r\n\r\n\r\n\r\n.program {\r\n  color: #d73f09;\r\n  font-family: 'Stratum2Web',sans-serif;\r\n  font-size: 24px;\r\n  margin: 8px 25px 8px 25px;\r\n  line-height: 1;\r\n  border-bottom: 1px dotted #d73f09;\r\n  padding-bottom: 10px;\t\r\n  padding-top: 7px;\r\n}\r\n\t\r\n.program a { \r\n\ttext-decoration: none;\r\n\tcolor: #d73f09; \r\n\t}\t\r\n\t\r\n.program .year {\r\nfont-family: 'Open sans',sans-serif;\r\nfont-size: 16px;\r\nline-height: 1.6;\r\n\t}\t\r\n\r\n\r\n.block-views-blockresearch-labs-block-1 .views-field-field-lab-description {\r\n\tfont-size: 16px;\r\n\tpadding: 10px 30px;\r\n}\r\n\r\n\t.views-field-field-lab-link\t{\r\n\t\tmargin-top: auto;\r\n\t}\r\n\t\r\n\t\r\n.link {\r\n  padding: 20px 0px 20px 0px;\r\n  border-top: 1px solid rgba(0,0,0,.125);\r\n  text-align: center;\t\r\n}\t\r\n\t\r\n.block-views-blockresearch-labs-block-1 .btn {border-radius: 8px;}\r\n\t.block-views-blockresearch-labs-block-2 .btn {border-radius: 8px;}\r\n\t\r\n\t\r\n.paragraphs-items .field-item .field-item {\r\n  padding: 0px!important;\r\n}\r\ndiv.content {\r\n  margin: 0px!important;\r\n}\r\n\r\n\r\n\r\n</style>"
+            format: full_html
+          tokenize: false
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+      block_description: 'sort by lab name'
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags:
+        - 'config:field.storage.node.field_lab_description'
+        - 'config:field.storage.node.field_lab_link'
+        - 'config:field.storage.node.field_research_lead'
+        - 'config:field.storage.node.field_research_lead_link'
+        - 'config:field.storage.node.field_research_lead_photo'
+        - 'config:field.storage.node.field_rl_lastname'

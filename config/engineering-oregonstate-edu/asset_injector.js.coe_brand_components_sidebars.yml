@@ -1,0 +1,83 @@
+uuid: b6557ed3-e8ff-4ce7-a9b1-893f5fb9fa09
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: coe_brand_components_sidebars
+label: 'COE Brand Components (Sidebars)'
+code: |-
+  const getMobileToggle = (classname) => {
+  	return document.querySelector(`.${classname} .sidebar-mobile-toggle`);
+  }
+
+  const mobileToggle = (obj, classname) => {
+    obj.classList.toggle("active");
+    const content = document.getElementsByClassName(classname);
+    Array.from(content).forEach((e) => {
+      if (e.style.maxHeight) {
+      	e.style.maxHeight = e.scrollHeight + "px";
+        setTimeout(() => {e.style.maxHeight = null;}, 10);
+      } else {
+        e.style.maxHeight = e.scrollHeight + "px";
+        setTimeout(() => {
+        	e.style.maxHeight = "none";
+        }, 500);
+      }
+    });
+  }
+
+  const defaultOpen = (classname) => {
+    const content = document.getElementsByClassName(classname);
+     Array.from(content).forEach((e) => {
+      e.style.maxHeight = e.scrollHeight + "px";
+    });
+  }
+
+  const rfiOverview = getMobileToggle("rfi-overview-headline");
+  const faq = getMobileToggle("faq-headline");
+  const helpfulLinks = getMobileToggle("helpful-links-headline");
+
+  const programDetails = getMobileToggle("program-details-headline");
+  const nextSteps = getMobileToggle("next-steps-headline");
+
+
+  if (helpfulLinks && helpfulLinks.classList.contains('active')) {
+  	defaultOpen('helpful-links-hidden-content');
+  }
+  if (programDetails && programDetails.classList.contains('active')) {
+  	defaultOpen('program-details-hidden-content');
+  }
+  if (nextSteps && nextSteps.classList.contains('active')) {
+  	defaultOpen('next-steps-hidden-content');
+  }
+
+  rfiOverview && rfiOverview.addEventListener("click", function () {mobileToggle(this, 'rfi-overview-hidden-content')});
+  faq && faq.addEventListener("click", function () {mobileToggle(this, 'faq-hidden-content')});
+  helpfulLinks && helpfulLinks.addEventListener("click", function () {mobileToggle(this, 'helpful-links-hidden-content')});
+
+  programDetails && programDetails.addEventListener("click", function () {mobileToggle(this, 'program-details-hidden-content')})
+  nextSteps && nextSteps.addEventListener("click", function () {mobileToggle(this, 'next-steps-hidden-content')})
+
+  // No tab selected by default on RFI page
+  const activeRFITab = document.querySelector(".rfi-tabs .nav-link.active");
+  const activeRFITabContent = document.querySelector(".rfi-tabs .tab-pane.active");
+  activeRFITab && activeRFITab.classList.toggle("active");
+  activeRFITabContent && activeRFITabContent.classList.toggle("active");
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/47741\r\n/node/52851\r\n/option/test-option"
+contexts: {  }
+conditions_require_all: true

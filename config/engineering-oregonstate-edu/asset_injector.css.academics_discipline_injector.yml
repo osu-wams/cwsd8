@@ -1,0 +1,605 @@
+uuid: f129ee38-fcbc-4143-a703-cbb1ef8c2dec
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: academics_discipline_injector
+label: 'Academics Discipline Injector'
+code: |-
+  /*
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  	--DISCIPLINE PAGES--
+  	
+  	Discipline Content Types Styling
+  ==================================================================================================================================================================
+  ==================================================================================================================================================================
+  */
+
+  /*================================================================================================================================================================
+  	SECTION: Hero Section Styling
+  	
+  	PURPOSE: Styling for hero section on discipline pages
+  	==============================================================================================================================================================*/
+
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Hero Background Image alignment
+  	
+  	Used to customize position of hero background image
+  	----------------------------------------------------------------------------*/
+  /* Desktop positioning for background image */
+  .hero-background-pattern img {
+  	z-index: 1;
+    position: absolute;
+    top: 0;
+    right: max(0px, calc(calc(100vw - 1440px) / 2));
+  	width: 1030px;
+  	max-width: 1600px;
+  	height: 500px;
+  	object-fit: cover;
+  	object-position: right top;
+  }
+
+  /* Size background pattern */
+  .hero-background-pattern {
+  	height: 100%;
+  	width: 100%;
+  }
+
+  figure:has(.media--view-mode-frameless), .media--view-mode-frameless img {
+    width: auto !important;
+  }
+
+  /* Small desktop size of background pattern */
+  @media only screen and (max-width: 1399px) {
+  	.hero-background-pattern img {
+      right: max(0px, calc(calc(100vw - 1255px) / 2));
+      height: 515px;
+      width: 930px;
+  	}
+  }
+
+  /* Large tablet size of background pattern */
+  @media only screen and (max-width: 1199px) {
+  	.hero-background-pattern img {
+      right: max(0px, calc(calc(100vw - 1110px) / 2));
+      width: 858px;
+      height: 505px;
+  	}
+  }
+
+  /* Tablet size of background pattern */
+  @media only screen and (max-width: 991px) {
+  	.hero-background-pattern img {
+  		right: 0;
+  		width: min(800px, calc(100% - 100px));
+  		height: 400px;
+  	}
+  }
+
+  /* Mobile size of background pattern*/
+  @media only screen and (max-width: 767px) {
+      .hero-background-pattern img {
+          right: 0;
+          width: min(800px, calc(100% - 100px));
+          height: 450px;
+      }
+  }
+
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Hero Image
+  	
+  	Used to style hero cover image
+  	----------------------------------------------------------------------------*/
+  .field--name-field-dp-hero-image img {
+  	object-fit: cover;
+  	width: 100%;
+  	height: auto;
+  	position: relative;
+  	z-index: 0;
+  }
+
+  /*------------------------------------------------------------------------------
+  	Sub-Section: Tablet and Mobile Styling
+  	
+  	Used to change configurations of hero section on lower breakpoints
+  	----------------------------------------------------------------------------*/
+
+  /***************************************
+  	Tablet Styling
+  	*************************************/
+  @media screen and (max-width: 991px) {
+  	.field--name-field-dp-hero-tagline h5 {
+  		margin-top: 10px;
+  		padding-top: 30px;
+  		position: relative;
+  	}
+  	.block-field-blocknodedegree-programsfield-dp-hero-tagline {
+  		padding-bottom: 20px;
+  	}
+    /* Swap background pattern on tablet */
+  	.hero-background-pattern {
+  		background-image: url(/sites/engineering.oregonstate.edu/files/2024-09/discipline_hero_tablet.svg);
+  	}
+  }
+
+  /***************************************
+  	Mobile Styling
+  	*************************************/
+  @media screen and (max-width: 767px) {
+  	.block-field-blocknodedegree-programsfield-dp-hero-tagline {
+  		padding-bottom: 2.5rem;
+  	}
+  	/* Swap background pattern on mobile */
+  	.hero-background-pattern {
+  		background-image: url(/sites/engineering.oregonstate.edu/files/2024-09/discipline_hero_mobile.svg);
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Campus Feature Styling
+  	
+  	PURPOSE: Discipline page campus feature section, background and spacing
+  	==============================================================================================================================================================*/
+
+  /* Spacing between all text elements in campus feature */
+  .field--name-field-dp-campus-feature .field--name-field-coe-text-w-link-text {
+  	margin: 20px 0 30px;
+  }
+
+  /* Set background of paragraph type */
+  .dp-campus-column {
+  	padding: 80px;
+    background-color: #212529; 
+    background-image: url("/sites/engineering.oregonstate.edu/files/2025-02/campus-feature-bg.svg");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+  }
+
+  /* Mobile styling of background and spacing */
+  @media screen and (max-width: 767px) {
+  	.dp-campus-column {
+      padding-left: 32px;
+  		padding-right: 32px;
+  		background-image: url("/sites/engineering.oregonstate.edu/files/2025-02/campus-feature-bg-mobile.svg");
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Discipline Research Areas Styling
+  	
+  	PURPOSE: Styling of Research Areas Cards on discipline pages
+  	==============================================================================================================================================================*/
+
+  /***************************************
+  	Research Areas Spacing
+  	*************************************/
+
+  /* Section headline spacing */
+  .field--name-field-dp-research-areas-headline h2 {
+  	padding-bottom: 12px;
+  	width: 90%;
+  }
+
+  /* Research area card header spacing */
+  .field--name-field-dp-research-areas .paragraph--type--coe-text-with-links .field--name-field-coe-text-with-link h3, .field--name-field-dp-research-areas .paragraph--type--coe-faculty-research-area .field--name-field-coe-text-with-link h3 {
+  	padding-top: 30px;
+  }
+
+  /* Research area card link spacing */
+  .field--name-field-dp-research-areas .field--name-field-coe-text-w-link-link {
+  	margin-top: 0;
+  	margin-bottom: 70px;
+  }
+
+  /* Desktop card spacing */
+  @media only screen and (min-width: 1200px) {
+  	.field--name-field-dp-research-areas .paragraph--type--coe-text-with-links,
+  	.field--name-field-dp-research-areas .paragraph--type--coe-faculty-research-area {
+  		margin-right: 70px !important;	
+  	}
+  }
+
+
+  /* Tablet card spacing */
+  @media only screen and (min-width: 768px) and (max-width: 1199px) {
+      .field--name-field-dp-research-areas .paragraph--type--coe-text-with-links,
+      .field--name-field-dp-research-areas .paragraph--type--coe-faculty-research-area {
+  	    margin-right: 5%;
+      }
+  }
+
+
+  /***************************************
+  	Research Area Body Width
+  	*************************************/
+  	
+  @media only screen and (min-width: 605px){
+  .field--name-field-dp-research-areas-body{
+  	width: 75%;
+  }
+  }
+
+  /***************************************
+  	Research Area Card Divider Styling
+  	*************************************/
+
+  /* Create divider as a before element on card header */
+  .field--name-field-dp-research-areas .paragraph--type--coe-text-with-links .field--name-field-coe-text-with-link::before,
+  .field--name-field-dp-research-areas .paragraph--type--coe-faculty-research-area .field--name-field-coe-text-with-link::before {
+  	content: "";
+  	position: absolute;
+  	width: 75px;
+  	height: 7px !important;
+  	background-color: #D73F09;
+  	opacity: 1;
+  }
+
+  /* Div with header and divider has relative position */
+  .field--name-field-dp-research-areas .paragraph--type--coe-text-with-links .field--name-field-coe-text-with-link,
+  .field--name-field-dp-research-areas .paragraph--type--coe-faculty-research-area .field--name-field-coe-text-with-link{
+  	position: relative;
+  }
+
+  /***************************************
+  	Research Area Card Flex Layout
+  	*************************************/
+  @media only screen and (min-width: 768px) {
+    .field--name-field-dp-research-areas {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .field--name-field-dp-research-areas > .field__item {
+    	width: 50%;
+    }
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Engineering Solution Section
+  	
+  	PURPOSE: Styling for discipline's Engineering Solutions section
+  	==============================================================================================================================================================*/
+
+
+  .field--name-field-dp-engineering-solutions .field--name-field-coe-2-col-img-txt-headline h3 {
+  	margin-bottom: 16px;
+  }
+  /* Set layout of engineering solution section */
+  .field--name-field-dp-engineering-solutions .paragraph--type--coe-image-with-text {
+  	display: flex;
+  	flex-direction: row-reverse;
+  	justify-content: space-between;
+  	align-items: center;
+  }
+
+  /* Set width of image and text blocks */
+  .field--name-field-dp-engineering-solutions .paragraph--type--coe-image-with-text > div {
+  	width: calc(50% - 10px);
+  }
+
+  /* Remove bottom spacing of last list item for even columns center align*/
+  .field--name-field-dp-engineering-solutions ul > li:last-child {
+  	padding-bottom: 0px;
+  }
+
+  /* Remove bottom spacing of list for even columns center align */
+  .field--name-field-dp-engineering-solutions ul {
+  	margin-bottom: 0px;
+  }
+
+  /******************
+  Image Styling
+  *****************/
+
+  /* Positions container relatively for absolutely positioned child background image */
+  .field--name-field-dp-engineering-solutions {
+     position: relative; 
+  }
+
+  /* Size of content image */
+  .field--name-field-dp-engineering-solutions img{
+  	width: 100%;
+  	height: 600px;
+    object-fit: cover;
+  }
+
+  /* Adds background image */
+  .field--name-field-dp-engineering-solutions .paragraph::after {
+  	content: url("/sites/engineering.oregonstate.edu/files/2025-02/engineering-solutions-bg.svg");
+  	position: absolute; 
+    bottom: -120px;
+    height: 179px;
+    right: 80px;
+  }
+
+  /***********************
+  Tablet Styling
+  ************************/
+  @media only screen and (max-width: 1199px) {
+  	.field--name-field-dp-engineering-solutions .paragraph::after {
+  		content: url("/sites/engineering.oregonstate.edu/files/2025-02/engineering-solutions-bg.svg");
+  		position: absolute; 
+      bottom: -115px; /* Indexing to overlap pattern on image */
+    	height: 179px;
+  	}
+  }
+
+  /***************
+  Mobile Styling
+  *****************/
+  @media only screen and (max-width: 768px) {
+  	/* Switch to column layout on mobile */
+  	.field--name-field-dp-engineering-solutions .paragraph--type--coe-image-with-text {
+  		flex-direction: column-reverse;
+  	}
+  	
+  	/* Full width image and text blocks */
+  	.field--name-field-dp-engineering-solutions .paragraph--type--coe-image-with-text > div {
+  		width: 100%;
+  	}
+  	
+  	/* Resize content image */
+  	.field--name-field-dp-eng-solutions-image img {
+  		height: 450px;
+  	}
+  	
+  	/* Hide Pattern on Mobile */
+  	.field--name-field-dp-engineering-solutions .paragraph::after {
+  		content: none;
+  	}
+  	
+  	/* Add spacing between text and image in column layout */
+  	.field--name-field-dp-engineering-solutions .field--name-field-coe-2-col-img-txt-body {
+  		margin-bottom: 32px;
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Newsletter Section
+  	
+  	PURPOSE: Styling for discipline's Newsletter section
+  	==============================================================================================================================================================*/
+
+  /* Newsletter section background */
+  .discipline-newsletter-section {
+    background-color: #003B5C;
+    background-image: url("/sites/engineering.oregonstate.edu/files/2025-02/newsletter_background.svg");
+    background-size: 80%;
+    background-position: left 600px top 40px;
+    background-repeat: no-repeat;
+  }
+
+  /* Newsleter headline styling */
+  .discipline-newsletter-section .field--name-field-coe-text-with-link h2 {
+  	max-width: 55%;
+  	margin-top: 96px;
+  }
+
+  .discipline-newsletter-section .field--name-field-coe-text-w-link-link {
+  	margin-top : 32px;
+  	margin-bottom : 96px;
+  }
+
+  .discipline-newsletter-section .field--name-field-coe-text-w-link-text {
+  	margin-top: 20px;
+  	width: 33%;
+  }
+
+  @media only screen and (max-width: 993px) and (min-width: 768px) {
+  	/* Background Image update*/
+  	.discipline-newsletter-section {
+      background-size: 90%;
+      background-position: left 420px top 140px;
+  	}
+  	
+  	.discipline-newsletter-section .field--name-field-coe-text-with-link h2 {
+  		max-width: 70%;
+  	}
+  	
+  	.discipline-newsletter-section .field--name-field-coe-text-w-link-text {
+  		width: 50%;
+  	}
+  }
+
+  @media only screen and (max-width: 767px) {
+  	.discipline-newsletter-section .field--name-field-coe-text-w-link-link {
+  		margin-bottom: 220px; 
+  	}
+
+  	/* Make Header Full Width */
+  	.discipline-newsletter-section .field--name-field-coe-text-with-link h2 {
+      max-width: 100%;
+  	}
+
+  	/* Background Image update */
+  	.discipline-newsletter-section {
+  	  background-size: 150%;
+  	  background-position: left 64px top 38ch;
+  	}
+  	
+  	.discipline-newsletter-section .field--name-field-coe-text-w-link-text {
+  		width: 100%;
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Related Stories
+  	
+  	PURPOSE: Related stories configuration
+  	==============================================================================================================================================================*/
+  	
+  .dp-related-stories-section:not(:has(.grid)) {
+  	display: none;
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Program Features Headline
+  	
+  	PURPOSE: Program features background image configuration
+  	==============================================================================================================================================================*/
+  	
+  .program-features-headline-image:not(:has(+ .block-field-blocknodedegree-programsfield-dp-program-features-header)) {
+      display: none;
+  }
+
+  .field--name-field-dp-program-features-header {
+  	margin-top: -210px;
+  	height: 210px;
+  	display: flex;
+  	align-items: center;
+  }
+
+  .field--name-field-dp-program-features-header h2 {
+  	z-index: 1;
+  }
+
+  .block-field-blocknodedegree-programsfield-dp-program-features-header {
+  	margin-bottom: 112px;
+  }
+
+  /* Positions background image properly */
+  .program-features-headline-image img {
+  	opacity: 0.5;
+  	height: 210px;
+  	margin-left: -5%;
+  	object-fit: cover;
+  	object-position: 0% 0%;
+  	min-width: 105%;
+  }
+
+  @media (max-width: 991px) {
+  	.field--name-field-dp-program-features-header {
+  		margin-top: -155px;
+  		height: 155px;
+  	}
+      /** MXC specificity or prefix below **/
+  	.program-features-headline-image img {
+  		height: 155px !important;
+  	}
+  }
+
+  @media (max-width: 767px) {
+  	.field--name-field-dp-program-features-header {
+  		margin-top: 0;
+  		height: auto;
+  	}
+  	.program-features-headline-image img {
+  		display: none;
+  	}
+  	.block-field-blocknodedegree-programsfield-dp-program-features-header {
+  		margin-bottom: 80px;
+  	}
+  }
+
+  /*================================================================================================================================================================
+  	SECTION: Simple Column Related Resources cards
+  	
+  	PURPOSE: Style the cards for Related Resources
+  	==============================================================================================================================================================*/
+  	
+  .simple-column-cards{
+  	border-radius: 5px;
+  	border: 1px solid var(--Useful-Light-Grey, #F8F9FA);
+  	background: var(--Primary-Bucktooth-White, #FFF);
+  	box-shadow: 2px 4px 8px 0px rgba(0, 0, 0, 0.08);
+  	transition: 0.2s;
+  }
+
+  .simple-column-cards:hover{
+  	border-radius: 5px;
+  	border: 1px solid var(--Useful-Grey-Shades-Lightest-Grey, #F8F9FA);
+  	background: var(--useful-seafoam-shades-seafoam-8, #F9FCFD);
+  	box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
+  }
+  .simple-column-cards:active{
+  	border-radius: 5px;
+  	border: 1px solid var(--useful-seafoam-shades-seafoam-20, #F1F8F9);
+  	background: var(--useful-seafoam-shades-seafoam-20, #F1F8F9);
+  }
+
+  .card-body {
+    position: relative;
+    /*background-image: url('/sites/engineering.oregonstate.edu/files/2025-07/72e8d638766a0ae28dcb239edda79a0ae4b85070.png');*/
+    background-image: url('/sites/engineering.oregonstate.edu/files/2025-07/pattern.svg');
+    background-repeat: no-repeat;
+    background-position: top center;
+    background-size: contain;
+  	padding: 30px;
+    z-index: 0;
+  }
+
+  .card-text{
+  	padding-top: 15px;
+  }
+
+  .simple-column-cards .orange-arrow-link{
+  	padding-top: 35px;
+  }
+
+  .related-resources h2 {
+  	color: #d73f09;
+  	margin-bottom: 55px;
+  }
+
+  .related-resources .more-link {
+  	border: none;
+  	width: 100%;
+  	padding: 0;
+  	text-align: left;
+  }
+
+  .related-resources:has(#views-bootstrap-related-resources-simple-columns-filtered-block-1 > :nth-child(2)) .more-link {
+  	text-align: center;
+  }
+
+  @media screen and (max-width: 991px) {
+  	.related-resources .more-link {
+  		text-align: center;
+  	}
+  }
+
+  .related-resources .more-link a {
+  	border: 2px solid black;
+  	padding: 16px 36px;
+  	transition: 0.3s;
+  	color: var(--Primary-Paddletail-Black, #000);
+  	text-align: center;
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: normal;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	display: inline-block;
+  }
+
+  .related-resources .more-link a:hover, .related-resources .more-link a:active, .related-resources .more-link a:focus {
+  	color: #FFF;
+  	background-color: black;
+  }
+
+  .related-resources {
+  	display: none;
+  }
+
+  .related-resources:has(#views-bootstrap-related-resources-simple-columns-filtered-block-1 > :first-child) {
+  	display: block;
+  }
+  	
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/academics/programs/aerospace-engineering\r\n/academics/programs/architectural-engineering\r\n/academics/programs/artificial-intelligence\r\n/academics/programs/bioengineering\r\n/academics/programs/biological-ecological-engineering\r\n/academics/programs/chemical-engineering\r\n/academics/programs/civil-engineering\r\n/academics/programs/computer-science\r\n/academics/programs/construction-engineering-management\r\n/academics/programs/cybersecurity\r\n/academics/programs/electrical-computer-engineering\r\n/academics/programs/energy-systems-engineering\r\n/academics/programs/engineering-management\r\n/academics/programs/engineering-science\r\n/academics/programs/environmental-engineering\r\n/academics/programs/geomatics-engineering\r\n/academics/programs/humanitarian-engineering\r\n/academics/programs/industrial-engineering\r\n/academics/programs/materials-science\r\n/academics/programs/mechanical-engineering\r\n/academics/programs/mechatronics-manufacturing-engineering\r\n/academics/programs/nuclear-engineering\r\n/academics/programs/outdoor-products\r\n/academics/programs/radiation-health-physics\r\n/academics/programs/robotics\r\n/academics/programs/water-resources-engineering\r\n/node/54591"
+contexts: {  }
+conditions_require_all: true

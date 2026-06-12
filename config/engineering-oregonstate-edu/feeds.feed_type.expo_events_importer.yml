@@ -1,0 +1,130 @@
+uuid: 06159be5-209d-4942-bcb6-d24196aa73cc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.node.2024_senior_projects.field_engr_expo_project_id
+    - field.field.node.2024_senior_projects.field_engr_expo_team_members
+    - node.type.2024_senior_projects
+  module:
+    - feeds_tamper
+    - node
+third_party_settings:
+  feeds_tamper:
+    tampers:
+      0d04bfea-d2d2-4564-8779-e5bf387f0e1f:
+        separator: ', '
+        limit: null
+        uuid: 0d04bfea-d2d2-4564-8779-e5bf387f0e1f
+        plugin: explode
+        source: team_members
+        weight: 0
+        label: Explode
+label: 'Expo events importer'
+id: expo_events_importer
+description: 'Expo events importer. '
+help: ''
+import_period: -1
+fetcher: upload
+fetcher_configuration:
+  allowed_extensions: 'txt csv tsv xml opml'
+  directory: 'private://feeds'
+parser: csv
+parser_configuration:
+  delimiter: ','
+  no_headers: false
+  line_limit: 100
+processor: 'entity:node'
+processor_configuration:
+  values:
+    type: 2024_senior_projects
+  langcode: en
+  insert_new: 1
+  update_existing: 2
+  update_non_existent: _keep
+  skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
+  authorize: true
+  revision: false
+  expire: -1
+  owner_feed_author: false
+  owner_id: 1
+custom_sources:
+  a:
+    value: A
+    label: A
+    machine_name: a
+    type: csv
+  b:
+    value: B
+    label: B
+    machine_name: b
+    type: csv
+  c:
+    value: C
+    label: C
+    machine_name: c
+    type: csv
+  d:
+    value: D
+    label: D
+    machine_name: d
+    type: csv
+  e:
+    value: E
+    label: E
+    machine_name: e
+    type: csv
+  project_id:
+    value: 'Project ID'
+    label: 'Project ID'
+    machine_name: project_id
+    type: csv
+  project_title:
+    value: 'Project Title'
+    label: 'Project Title'
+    machine_name: project_title
+    type: csv
+  location:
+    value: Location
+    label: Location
+    machine_name: location
+    type: csv
+  table:
+    value: Table
+    label: Table
+    machine_name: table
+    type: csv
+  team_members:
+    value: 'Team Members'
+    label: 'Team Members'
+    machine_name: team_members
+    type: csv
+  project_engr_expo_title:
+    value: 'Project Title'
+    label: 'Project Title'
+    machine_name: project_engr_expo_title
+    type: csv
+mappings:
+  -
+    target: field_engr_expo_project_id
+    map:
+      value: project_id
+    settings:
+      language: ''
+    unique:
+      value: 1
+  -
+    target: field_engr_expo_team_members
+    map:
+      value: team_members
+    settings:
+      language: ''
+  -
+    target: title
+    map:
+      value: project_engr_expo_title
+    settings:
+      language: null
+    unique: {  }

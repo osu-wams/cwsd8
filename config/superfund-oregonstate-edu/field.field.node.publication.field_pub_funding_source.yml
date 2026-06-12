@@ -1,0 +1,29 @@
+uuid: 427e04d6-8c70-4629-90ad-a34bd1388d8c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_pub_funding_source
+    - node.type.publication
+    - taxonomy.vocabulary.funding_sources
+id: node.publication.field_pub_funding_source
+field_name: field_pub_funding_source
+entity_type: node
+bundle: publication
+label: 'Publication Funding Sources'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      funding_sources: funding_sources
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
