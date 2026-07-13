@@ -19,7 +19,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 )]
 #[CLI\FieldLabels(labels: ['wid' => 'Webform ID', 'status' => 'Webform Status', 'archive' => 'Archived'])]
 #[CLI\Formatter(returnType: RowsOfFields::class, defaultFormatter: 'table')]
-final class WebformFileUploadReport extends Command
+final class WebformFileUploadReportCommand extends Command
 {
     use AutowireTrait;
     use FormatterTrait;
