@@ -40,12 +40,6 @@ final class WebformFileUploadReport extends Command
         return Command::SUCCESS;
     }
 
-    #[Override]
-    protected function configure(): void
-    {
-        return parent::configure();
-    }
-
     /**
      * Finds all webforms that accept file/media uploads.
      */
