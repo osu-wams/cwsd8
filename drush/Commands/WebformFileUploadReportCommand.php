@@ -2,6 +2,7 @@
 
 namespace Drush\Commands;
 
+use Consolidation\OutputFormatters\FormatterManager;
 use Consolidation\OutputFormatters\StructuredData\RowsOfFields;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drush\Attributes as CLI;
@@ -27,6 +28,7 @@ final class WebformFileUploadReportCommand extends Command
     public const string NAME = 'osu:webform-file-upload-report';
 
     public function __construct(
+        private readonly FormatterManager $formatterManager,
         private readonly EntityTypeManagerInterface $entityTypeManager,
     ) {
         parent::__construct();
@@ -67,7 +69,7 @@ final class WebformFileUploadReportCommand extends Command
                 ];
             }
         }
-        return (new RowsOfFields($rows));
+        return new RowsOfFields($rows);
     }
 
 }
