@@ -1,5 +1,5 @@
 diff --git a/group.services.yml b/group.services.yml
-index c319dfcbd521e13aeaeece13e345d0c965fd2346..802b35c3098cbbaad483df101447d16c52a60700 100644
+index f7cdfad244bb0a2c31122c1022b7ce4a523e6ab7..fda7eee538c63275c16995546573177e6cd88959 100644
 --- a/group.services.yml
 +++ b/group.services.yml
 @@ -1,6 +1,7 @@
@@ -98,7 +98,7 @@ index 4fd4b1f3eb1175722d479ec82cdd5930c713aa9d..1586716cf60a021f75bf69c44e9f2054
  
      return ['group' => $context];
 diff --git a/src/Context/GroupRouteContextTrait.php b/src/Context/GroupRouteContextTrait.php
-index 99e9a41c342cdc3a827418c1db1d7f8472529f33..b23b8b9671b13e1ad12826c0e84bb45903ca511f 100644
+index 99e9a41c342cdc3a827418c1db1d7f8472529f33..9fc21069323897df670b79830e71ccae25f1260a 100644
 --- a/src/Context/GroupRouteContextTrait.php
 +++ b/src/Context/GroupRouteContextTrait.php
 @@ -2,6 +2,7 @@
@@ -149,9 +149,9 @@ index 99e9a41c342cdc3a827418c1db1d7f8472529f33..b23b8b9671b13e1ad12826c0e84bb459
 +      });
 +      if (!empty($entities)) {
 +        foreach ($entities as $entity) {
-+          /** @var \Drupal\group\Entity\Storage\GroupRelationshipStorageInterface $group_relationship_storage */
-+          $group_relationship_storage = $this->getEntityTypeManager()->getStorage('group_relationship');
-+          foreach ($group_relationship_storage->loadByEntity($entity) as $group_relationship) {
++          /** @var \Drupal\group\Entity\Storage\GroupRelationshipStorageInterface $group_content_storage */
++          $group_content_storage = $this->getEntityTypeManager()->getStorage('group_content');
++          foreach ($group_content_storage->loadByEntity($entity) as $group_relationship) {
 +            return $group_relationship->getGroup();
 +          }
 +        }
@@ -163,7 +163,7 @@ index 99e9a41c342cdc3a827418c1db1d7f8472529f33..b23b8b9671b13e1ad12826c0e84bb459
 +
  }
 diff --git a/tests/src/Unit/RouteGroupCacheContextTest.php b/tests/src/Unit/RouteGroupCacheContextTest.php
-index 52ec24b94fa66140148851b7980e4271455a2629..659c686461d12e0f6cbb7db0f16383327616fa8f 100644
+index 52ec24b94fa66140148851b7980e4271455a2629..4d9c5e0d36dd7d0d90625c0de6821f13ecf282ce 100644
 --- a/tests/src/Unit/RouteGroupCacheContextTest.php
 +++ b/tests/src/Unit/RouteGroupCacheContextTest.php
 @@ -9,7 +9,11 @@ use Drupal\Core\Routing\RouteMatchInterface;
@@ -210,7 +210,7 @@ index 52ec24b94fa66140148851b7980e4271455a2629..659c686461d12e0f6cbb7db0f1638332
 +
 +    $storage = $this->prophesize(GroupRelationshipStorageInterface::class);
 +    $storage->loadByEntity($user)->willReturn([$group_relationship->reveal()]);
-+    $this->entityTypeManager->getStorage('group_relationship')->willReturn($storage->reveal());
++    $this->entityTypeManager->getStorage('group_content')->willReturn($storage->reveal());
 +
 +    $parameters = new ParameterBag(['user' => $user]);
 +    $this->currentRouteMatch->getParameters()->willReturn($parameters);
