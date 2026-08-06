@@ -982,7 +982,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-3 pb-3\">\r\n  <div class=\"fst-italic fs-7\">{{ created }}</div>\r\n  <div><strong><a href=\"{{ field_osu_story_external_url }}\" class=\"story-card__link osu-link-orange osu-link-tracking\">{{ title }}</a></strong></div>\r\n<div class=\"stories-tags-sm\">{{ field_tags }}</div>\r\n<div class=\"fs-7\">{{ body }}</div>\r\n</div>\r\n"
+            text: "{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-3 pb-3\">\r\n  <div class=\"fst-italic fs-7\">{{ created }}</div>\r\n  <div><strong><a href=\"{{ field_osu_story_external_url }}\" class=\"stretched-link story-card__link osu-link-orange osu-link-tracking\">{{ title }}</a></strong></div>\r\n<div class=\"stories-tags-sm\">{{ field_tags }}</div>\r\n<div class=\"fs-7\">{{ body }}</div>\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -1415,7 +1415,7 @@ display:
         type: views_bootstrap_grid
         options:
           grouping: {  }
-          row_class: 'mb-3 story-card osustory-card'
+          row_class: 'mb-3 osustory-card'
           default_row_class: true
           grid_class: mb-3
           col_xs: col-12
@@ -1438,7 +1438,7 @@ display:
         sorts: false
         filters: false
         filter_groups: false
-      css_class: 'all-stories container mb-4'
+      css_class: 'all-stories mb-4'
       display_description: 'Page display of all stories in the site.'
       display_extenders:
         metatag_display_extender:
@@ -1864,7 +1864,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div><h2 class=\"text-uppercase fs-6 osu-text-bucktoothwhite mb-3 featuredstory-box\">Featured Story</h2>\r\n      <h3 class=\"display-1 fs-1 osu-text-body fw700\">{{ title }}</h3>\r\n<div class=\"osu-text-bucktoothwhite pb-4\">{{ body }}</div>\r\n<div class=\"featuredstories-whiteline\"></div>\r\n<a href=\"{{ field_osu_story_external_url }}\" class=\"no-underline fw700 story-card__link text-uppercase osu-link-tracking osu-text-bucktoothwhite featuredstories-readmore\">Read Full Story →</a></div>\r\n"
+            text: "<div><h2 class=\"text-uppercase fs-6 osu-text-bucktoothwhite mb-3 osu-bg-osuorange m-auto w-fit py-1 px-2\">Featured Story</h2>\r\n      <h3 class=\"display-1 fs-1 osu-text-bucktoothwhite font-stratum2web fw-bold\">{{ title }}</h3>\r\n<p class=\"osu-text-bucktoothwhite pb-4 d-none d-md-block\">{{ body }}</p>\r\n<a href=\"{{ field_osu_story_external_url }}\" class=\"text-decoration-none fw-bold story-card__link text-uppercase osu-link-tracking osu-text-bucktoothwhite featuredstories-readmore border-top border-white border-1 pt-2\">Read Full Story →</a></div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -1988,11 +1988,15 @@ display:
           breakpoints: md
           display: fields
           image: field_osu_story_cover_image
-          title: nothing
+          title: ''
           description: nothing
       row:
         type: fields
-        options: {  }
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
       defaults:
         css_class: false
         pager: false
@@ -2002,7 +2006,7 @@ display:
         fields: false
         sorts: false
         arguments: false
-      css_class: 'osufeatured-stories carousel-dark'
+      css_class: 'osufeatured-stories carousel'
       display_description: ''
       display_extenders:
         metatag_display_extender:
@@ -2436,7 +2440,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<a href=\"{{ field_osu_story_external_url }}\" class=\"story-card__link no-underline osu-link-tracking\">{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-2 pb-3\">\r\n  <div class=\"topstories-title\"><span class=\"fs-7 text-uppercase\">{{ field_tags }}</span><span class=\"fw700\">{{ title }}</span></div>\r\n</div></a>\r\n"
+            text: "<a href=\"{{ field_osu_story_external_url }}\" class=\"story-card__link no-underline osu-link-tracking\">{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-2 pb-3\">\r\n  <div class=\"topstories-tag osu-text-bucktoothwhite position-absolute bottom-5 me-3\"><span class=\"fs-7 text-uppercase\">{{ field_tags }}</span><span class=\"fw-bold\">{{ title }}</span></div>\r\n</div></a>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -3029,7 +3033,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-3 pb-3\">\r\n  <div class=\"fst-italic fs-7\">{{ created }}</div>\r\n  <div><strong><a href=\"{{ field_osu_story_external_url }}\" class=\"story-card__link osu-link-orange osu-link-tracking\">{{ title }}</a></strong></div>\r\n<div class=\"stories-tags-sm\">{{ field_tags }}</div>\r\n<div class=\"fs-7\">{{ body }}</div>\r\n</div>\r\n"
+            text: "{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-3 pb-3\">\r\n  <div class=\"fst-italic fs-7\">{{ created }}</div>\r\n  <div><strong><a href=\"{{ field_osu_story_external_url }}\" class=\"stretched-link story-card__link osu-link-orange osu-link-tracking\">{{ title }}</a></strong></div>\r\n<div class=\"stories-tags-sm\">{{ field_tags }}</div>\r\n<div class=\"fs-7\">{{ body }}</div>\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -3260,7 +3264,7 @@ display:
         type: views_bootstrap_grid
         options:
           grouping: {  }
-          row_class: 'mb-3 story-card osustory-card'
+          row_class: 'mb-3 osustory-card'
           default_row_class: true
           grid_class: mb-3
           col_xs: col-12
@@ -4149,7 +4153,7 @@ display:
             preserve_tags: ''
             html: false
           element_type: ''
-          element_class: w-100
+          element_class: 'w-100 rounded-0'
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
@@ -4508,7 +4512,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-2 pb-3\">\r\n  <div><strong><a href=\"{{ field_osu_story_external_url }}\" class=\"story-card__link osu-link-orange no-underline pt-2 pb-2\">{{ title }}</a></strong></div>\r\n<div class=\"fs-7\">{{ body }}</div>\r\n</div>\r\n"
+            text: "{{ field_osu_story_cover_image }}\r\n<div class=\"px-3 pt-2 pb-3\">\r\n  <div><strong><a href=\"{{ field_osu_story_external_url }}\" class=\"stretched-link story-card__link osu-link-orange no-underline pt-2 pb-2\">{{ title }}</a></strong></div>\r\n<div class=\"fs-7\">{{ body }}</div>\r\n</div>\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -4539,7 +4543,7 @@ display:
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: 'h-100 osu-bg-page-alt-1 osu-shadow position-relative'
+          element_wrapper_class: 'h-100 osu-bg-page-alt-1 osu-shadow position-relative rounded-0'
           element_default_classes: true
           empty: ''
           hide_empty: false
@@ -4631,7 +4635,7 @@ display:
         type: views_bootstrap_grid
         options:
           grouping: {  }
-          row_class: 'gy-4 story-card osustory-card'
+          row_class: 'gy-4 osustory-card'
           default_row_class: true
           grid_class: ''
           col_xs: col-12

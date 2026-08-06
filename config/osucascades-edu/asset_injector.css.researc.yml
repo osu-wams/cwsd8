@@ -6,83 +6,77 @@ dependencies:
     - block_visibility_groups
 id: researc
 label: Research
-code: |-
-  .image-padding {
-  	margin-top:0;
-  	transition: 0.3s!important;
-  }
-
-  .image-padding:hover {
-  	margin-top:-7px;
-  }
-
-  .research-lab-link::after{
-  	content: "";
-  	position: absolute;
-  	height:100%;
-  	width: 100%;
-  	z-index: 3;
-  	top: 0;
-  	left: 0;
-  }
-
-  .research-bar::after{
-  	content: "";
-  	position: absolute;
-  	border-bottom: 3px solid #000000ba;
-  	width: 50%;
-  	bottom: 50px;
-  	left: 0;
-  }
-
-  .orange-bar{
-  	width: 100px;
-  	height: 4px;
-  	background: #d73f09;
-  }
+code: |
+  /*==============================================================================
+  					Hidden Research Stories (remove when there is content)
+  ==============================================================================*/
 
   .research-stories{
   	display: none;
   }
 
-  .research-title{
-  	width: fit-content;
-  	position: absolute;
-  	bottom: 2rem;
-  	left: 100px;
-  	padding-left: 100px !important;
-  	padding-right: 100px !important;
-  }
-
-  @media (max-width: 768px){
-  	.research-title{
-  		position: initial !important;
-  		width: auto !important;
-  		padding-left: 0px !important;
-  		padding-right: 0px !important;
-  		margin-bottom: 0 !important;
-  	}
-  	
-  	.research-stats{
-  		padding-top: 1rem!important;
-  	}
-  }
-
-  @media (max-width: 575px){
-  	.research-stats{
-  		padding-top: 0rem!important;
-  	}
-  }
-
-  @media (max-width: 450px){
-  	.research-title h1{
-  		font-size: 2rem !important;
-  	}
-  }
+  /*==============================================================================
+  						Force image slider full width on large screens
+  ==============================================================================*/
 
   @media (min-width: 1921px){
   	.research-slider img{
   		width: 100% !important;
+  	}
+  }
+
+  .research-slider img{
+  	min-height: 500px;
+  	object-fit: cover;
+  }
+
+  /*==============================================================================
+  												Hero Banner Slider Text
+  ==============================================================================*/
+
+  @media (min-width: 900px){
+  	.research-slider .views-field-body{
+  		position: absolute;
+  	  bottom: 3rem;
+  	  left: 3rem;
+  	  width: 33%;
+  	}
+  	
+  	.research-slider .views-field.views-field-body::before{
+  		content: 'Research';
+  		background: #d73f09;
+  		color: white;
+  		font-family: 'Stratum2Web';
+  		font-size: 4rem;
+  		font-weight: 700;
+  		text-transform: uppercase;
+  		padding: 5px 15px;
+  		max-width: 100%;
+  	}
+  }
+
+  @media (max-width: 900px){
+  	.research-slider .views-field-body{
+  		margin-bottom: 1.5rem;
+  	}
+  	
+  	.research-slider .views-field.views-field-field-carousel-image::before{
+      content: 'Research';
+      background: #d73f09;
+      color: white;
+      font-family: 'Stratum2Web';
+      font-size: 3rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 5px 15px;
+      text-align: center;
+      position: absolute;
+      z-index: 2;
+      bottom: 2rem;
+      margin: auto 0;
+      display: block;
+      height: fit-content;
+      left: 2rem;
   	}
   }
 media: all

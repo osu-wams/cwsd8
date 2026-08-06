@@ -1,0 +1,39 @@
+uuid: a249cd02-e0e9-4455-a67c-1712a35ed5fe
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.full
+    - field.field.node.scientific_instruments.body
+    - field.field.node.scientific_instruments.field_access_button
+    - field.field.node.scientific_instruments.field_dept_building
+    - field.field.node.scientific_instruments.field_highlights
+    - field.field.node.scientific_instruments.field_image
+    - node.type.scientific_instruments
+  module:
+    - user
+id: node.scientific_instruments.full
+targetEntityType: node
+bundle: scientific_instruments
+mode: full
+content:
+  field_image:
+    type: entity_reference_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  body: true
+  entitygroupfield: true
+  field_access_button: true
+  field_dept_building: true
+  field_highlights: true

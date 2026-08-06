@@ -4,24 +4,13 @@ status: true
 dependencies:
   module:
     - block_visibility_groups
+    - system
 id: story
 label: Story
-code: |
-  .fw100{
-  	font-weight: 100 !important;
-  }
-
-  .fw700{
-  	font-weight:700 !important;
-  }
-
-  .fw800{
-  	font-weight: 800 !important;
-  }
-
-  .no-underline{
-  	text-decoration: none !important;
-  }
+code: |-
+  /*==============================================================================
+  											Story Titles (on full content)
+  ==============================================================================*/
 
   .osustory-title{
   	font-size: calc(3rem + 2.1vw) !important;
@@ -35,50 +24,18 @@ code: |
   	}
   }
 
-  .block-field-blocknodestoryfield-osu-story-cover-image{
-  	margin-bottom: 0px !important;
-  }
+  /*==============================================================================
+  							Comma between quote author name and title fields
+  ==============================================================================*/
 
-  .font-italic{
-  	font-style: italic;
-  }
-
-  .field--name-field-key-takeaways .field__item::before {
-    color: #423e3c;
-    content: "\f054 ";
-    display: inline-block;
-    font-family: "Font Awesome 6 Free", "Font Awesome 5 Free";
-    font-weight: 900;
-    letter-spacing: normal;
-  }
-
-  .field--name-field-key-takeaways .field__item{
-  	margin-bottom: 10px;
-  }
-
-  .flex{
-  	display:flex;
-  }
-
-  .flex-wrap{
-  	flex-wrap: wrap;
-  }
-
-  .block-field-blocknodestoryfield-quote {
-  	flex-basis: 100%;
-  }
-
-  .block-field-blocknodestoryfield-quote-author, .block-field-blockblock-contentstory-quotefield-author{
-  	font-weight: 800;
-  }
-
-  .block-field-blocknodestoryfield-quote-author .block__content{
-  	width: fit-content;
-  }
-
-  .block-field-blocknodestoryfield-quote-author .block__content .field__item::after, .block-field-blockblock-contentstory-quotefield-author .block__content .field__item::after{
+  .block-field-blocknodestoryfield-quote-author .block__content .field__item::after, 
+  .block-field-blockblock-contentstory-quotefield-author .block__content .field__item::after{
   	content: ", ";
   }
+
+  /*==============================================================================
+  										Quotes image sizing and positioning
+  ==============================================================================*/
 
   .story-bg-quotes article img{
     width: auto;
@@ -94,14 +51,25 @@ code: |
   	font-size: 0.8rem;
   }
 
-  .related-stories .osustory-card > div, .all-stories .osustory-card > div {
-    border-radius: 0px !important;
+  /*==============================================================================
+  									Quotes author + title mobile styling
+  ==============================================================================*/
+
+  @media (max-width: 420px){
+  	.block-field-blocknodestoryfield-quote-author{
+  		position: relative;
+  		text-shadow: 1px 1px 5px black;
+  		padding-bottom: 0 !important;
+  	}
+  	
+  	.block-field-blocknodestoryfield-quote-title{
+  		padding-left: 48px !important;
+  	}
   }
 
-  .related-stories .osustory-card img, .all-stories .osustory-card img {
-    border-top-left-radius: 0px !important;
-    border-top-right-radius: 0px !important;
-  }
+  /*==============================================================================
+  										Story Tags (On All Stories section)
+  ==============================================================================*/
 
   .stories-tags-sm ul{
   	display: flex;
@@ -128,45 +96,12 @@ code: |
   	content: "" !important;
   }
 
-  .featuredstory-box{
-  	background: #d73f09;
-  	width: fit-content;
-  	margin: auto;
-  	padding-top: 5px;
-  	padding-bottom: 5px;
-  	padding-left: 10px;
-  	padding-right: 10px;
-  }
-
-  .featuredstories-whiteline{
-  	height: 1px;
-  	width: 150px;
-  	background: white;
-  	margin: auto;
-
-  }
-
-  .story-topic-hover:hover{
-  	margin-top: -3px;
-  }
-
-  .story-topic-hover img{
-  	width:250px;
-  	height:250px;
-  	max-height: 250px !important;
-  	max-width: 250px !important;
-  	object-fit:cover;
-  }
-
-  @media (max-width:550px){
-  	.osufeatured-stories .carousel .carousel-caption p{
-  		display:none !important;
-  	}
-  }
+  /*==============================================================================
+  										Carousel indicators styling
+  ==============================================================================*/
 
   .osufeatured-stories .carousel .carousel-indicators{
   	background-color: #d73f0900 !important;
-  	bottom: -50px !important;
   }
 
   .osufeatured-stories .carousel .carousel-indicators button{
@@ -175,20 +110,15 @@ code: |
   	border-radius: 50% !important;
   }
 
+  /*==============================================================================
+  								Featured story banner and caption sizing
+  ==============================================================================*/
+
   .osufeatured-stories .carousel-inner img{
   	width: 100%;
     height: 700px;
     object-fit: cover;
     filter: brightness(0.7);
-  }
-
-  .osufeatured-stories .carousel .carousel-caption h3{
-  	color: white !important;
-  	font-family: 'Stratum2Web' !important;
-  }
-
-  .osufeatured-stories .carousel .carousel-caption h3:nth-child(1){
-  	display: none!important;
   }
 
   .osufeatured-stories .carousel .carousel-caption {
@@ -200,11 +130,37 @@ code: |
   	align-items: center;
   }
 
-  .featured-white-line{
-  	width: 100px;
-    height: 3px;
-    margin: auto;
+  @media (max-width: 991px){
+  	.osufeatured-stories .carousel-inner img{
+  	  height: 500px;
+  	}
+  	
+  	.osufeatured-stories .carousel .carousel-caption {
+  		height: 400px;
+  	}
   }
+
+  @media (max-width: 768px){
+  	.osufeatured-stories .carousel-inner img{
+  	  height: 400px;
+  	}
+  	
+  	.osufeatured-stories .carousel .carousel-caption {
+  		height: 300px;
+  	}
+  }
+
+  /*==============================================================================
+  								Featured story extra title hidden
+  ==============================================================================*/
+
+  .osufeatured-stories .carousel .carousel-caption h3:nth-child(1){
+  	display: none!important;
+  }
+
+  /*==============================================================================
+  											Top Stories Image Filter
+  ==============================================================================*/
 
   .osutop-stories img{
   	filter:brightness(0.5);
@@ -215,22 +171,23 @@ code: |
   	filter:brightness(0.8);
   }
 
-  .topstories-title{
-  	color: #fff !important;
-  	position: absolute;
-    bottom: 50px;
-    margin-right: 1rem;
-  }
+  /*==============================================================================
+  									Story tags (On top stories section)
+  ==============================================================================*/
 
-  .topstories-title ul {
+  .topstories-tag ul {
   	padding-left: 0 !important;
   	margin-bottom: 0 !important;
   	font-family: "Stratum2Web";
   }
 
-  .topstories-title ul li::marker {
+  .topstories-tag ul li::marker {
   	content: "" !important;
   }
+
+  /*==============================================================================
+  														Topic Images 
+  ==============================================================================*/
 
   .round-image img {
   	border-radius: 50%;
@@ -243,6 +200,14 @@ code: |
   .story-topic-hover:hover{
   	margin-top: -10px;
   	cursor: pointer;
+  }
+
+  .story-topic-hover img{
+  	width:250px;
+  	height:250px;
+  	max-height: 250px !important;
+  	max-width: 250px !important;
+  	object-fit:cover;
   }
 
   @media (max-width: 1576px){
@@ -308,17 +273,23 @@ code: |
   	}
   }
 
-  .block-field-blocknodestoryfield-q-a .block__content .field__item .paragraph, .block-field-blockblock-contentstory-sectionfield-section{
+  /*==============================================================================
+  											Margin bottom between Q & A's
+  ==============================================================================*/
+
+  .block-field-blocknodestoryfield-q-a .block__content .field__item .paragraph, 
+  .block-field-blockblock-contentstory-sectionfield-section{
   	margin-bottom: 2rem;
   }
 
-  .block-field-blocknodestoryfield-q-a .block__content .field__item .field--name-field-p-accordion-title, .block-field-blockblock-contentstory-sectionfield-section .field--name-field-section .field--name-field-p-accordion-title{
+  /*==============================================================================
+  											Question font size
+  ==============================================================================*/
+
+  .block-field-blocknodestoryfield-q-a .block__content .field__item .field--name-field-p-accordion-title, 
+  .block-field-blockblock-contentstory-sectionfield-section .field--name-field-section .field--name-field-p-accordion-title{
   	font-weight: bold;
   	font-size: calc(1.265625rem + 0.1875vw) !important;
-  }
-
-  .all-stories.container{
-  	max-width: 100% !important;
   }
 media: all
 preprocess: true
@@ -327,5 +298,9 @@ conditions:
     id: condition_group
     negate: false
     block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/group/245986\r\n/our-stories/*"
 contexts: {  }
 conditions_require_all: true
