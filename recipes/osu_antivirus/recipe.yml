@@ -1,0 +1,19 @@
+name: "OSU Antivirus"
+description: "Setup and Configure Antivirus protection on Oregon State University Drupal sites."
+type: "Administration"
+install:
+  - clamav
+config:
+  actions:
+    clamav.settings:
+      simpleConfigUpdate:
+        enabled: true
+        scan_mode: 1
+        mode_executable:
+          executable_path: "/usr/bin/clamscan"
+    user.role.dx_administrator:
+      grantPermission: "administer clamav"
+    user.role.architect:
+      grantPermission: "administer clamav"
+    user.role.manage_site_configuration:
+      grantPermission: "administer clamav"
