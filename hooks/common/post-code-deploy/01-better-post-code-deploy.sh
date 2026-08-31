@@ -18,14 +18,14 @@ process_chunk() {
 
   for (( i=start; i<end && i<TOTAL_DOMAINS; i++ )); do
     local DOMAIN="${DOMAIN_ARRAY[$i]}"
-    echo "Updating ${DOMAIN}"
-    if ! drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" updatedb -y; then
-      echo "ERROR: updatedb failed for ${DOMAIN}" >&2
+    echo "[$DOMAIN] Starting update"
+    if ! drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" updatedb -y 2>&1 | sed "s/^/[$DOMAIN] /"; then
+      echo "[$DOMAIN] ERROR: updatedb failed" >&2
     fi
-    if ! drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" cr; then
-      echo "ERROR: cr failed for ${DOMAIN}" >&2
+    if ! drush --root="${app_root}" @"${site}"."${target_env}" -l "${DOMAIN}" cr 2>&1 | sed "s/^/[$DOMAIN] /"; then
+      echo "[$DOMAIN] ERROR: cache rebuild failed" >&2
     fi
-    echo "Finished Updating ${DOMAIN}"
+    echo "[$DOMAIN] Finished"
   done
 }
 
