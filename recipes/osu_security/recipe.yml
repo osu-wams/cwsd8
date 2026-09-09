@@ -1,6 +1,6 @@
-name: 'OSU Security'
-description: 'Recipe for OSU Standard gameplay'
-type: 'Administration'
+name: "OSU Security"
+description: "Recipe for OSU Standard gameplay"
+type: "Administration"
 install:
   - captcha
   - recaptcha
@@ -13,13 +13,21 @@ config:
           csp:
             checkbox: TRUE
             upgrade-req: TRUE
-            default-src: "'self' 'unsafe-inline' 'unsafe-eval' data: blob: *"
+            default-src: "'self' data: blob: https: *"
+            script-src: "'self' 'unsafe-inline' 'unsafe-eval' https:"
+            object-src: none
+            style-src: "'self' 'unsafe-inline' https: data:"
+            font-src: "'self' https: data:"
+            connect-src: "'self' https:"
+            report-uri: /report-csp-violation
+          x_xss:
+            select: 3
         seckit_ssl:
           hsts: TRUE
           hsts_max_age: 10368000
         seckit_various:
           referrer_policy: TRUE
-          referrer_policy_policy: 'no-referrer-when-downgrade'
+          referrer_policy_policy: "no-referrer-when-downgrade"
     captcha.settings:
       simpleConfigUpdate:
         default_challenge: "recaptcha/reCAPTCHA"
