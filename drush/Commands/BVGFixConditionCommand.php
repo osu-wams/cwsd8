@@ -3,7 +3,7 @@
 namespace Drush\Commands;
 
 use Drupal\Core\Config\ConfigFactoryInterface;
-use Drupal\Core\DependencyInjection\AutowireTrait;
+use Drush\Commands\AutowireTrait;
 use Drush\Style\DrushStyle;
 use Override;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -28,7 +28,7 @@ final class BVGFixConditionCommand extends Command
     }
 
     #[Override]
-    public function execute(InputInterface $input, OutputInterface $output)
+    public function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->doExecute($input, $output);
         $io = new DrushStyle($input, $output);
@@ -38,7 +38,7 @@ final class BVGFixConditionCommand extends Command
     /**
      * Update every Block Visibility Group to fix an issue from migrations.
      */
-    public function doExecute(InputInterface $input, OutputInterface $output)
+    public function doExecute(InputInterface $input, OutputInterface $output): void
     {
         $io = new DrushStyle($input, $output);
         $blockVisibilityGroups = $this->configFactory->listAll('block_visibility_groups.block_visibility_group.');
