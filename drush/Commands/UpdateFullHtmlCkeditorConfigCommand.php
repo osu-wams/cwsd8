@@ -16,7 +16,7 @@ use Symfony\Component\Console\Output\OutputInterface;
     name: self::NAME,
     description: 'Update Full HTML CKEditor Config for a site.'
 )]
-class UpdateFullHtmlCkeditorConfigCommand extends Command
+final class UpdateFullHtmlCkeditorConfigCommand extends Command
 {
     use AutowireTrait;
 
@@ -84,7 +84,7 @@ class UpdateFullHtmlCkeditorConfigCommand extends Command
         $editorSettings['plugins']['ckeditor_link_styles_linkStyles']['styles'] = $defaultEditor['settings']['plugins']['ckeditor_link_styles_linkStyles']['styles'];
         $editor->set('settings', $editorSettings);
         $editor->save();
-        // We have to update the ALlowed HTML Tags when we make changes to the Styles dropdown.
+        // We have to update the Allowed HTML Tags when we make changes to the Styles dropdown.
         $filter = $editor->getFilterFormat();
         $filterFilters = $filter->get('filters');
         $allowedHtmlTags = $filterFilters['filter_html']['settings']['allowed_html'];
