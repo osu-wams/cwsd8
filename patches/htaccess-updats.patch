@@ -1,8 +1,8 @@
 diff --git a/.htaccess b/.htaccess
-index 4031da475cf..2bf5682e6aa 100644
+index 4031da475cf..8862edeca7f 100644
 --- a/.htaccess
 +++ b/.htaccess
-@@ -22,6 +22,13 @@ DirectoryIndex index.php index.html index.htm
+@@ -22,6 +22,16 @@ DirectoryIndex index.php index.html index.htm
  AddType image/svg+xml svg svgz
  AddEncoding gzip svgz
  
@@ -10,13 +10,16 @@ index 4031da475cf..2bf5682e6aa 100644
 +AddType image/webp .webp
 +
 +# Add avif MIME type
-+AddType image/avif avif
-+AddType image/avif-sequence avifs
++AddType image/avif .avif
++AddType image/avif-sequence .avifs
++
++# Add JPEG-XL MIME type
++AddType image/jxl .jxl
 +
  # Most of the following PHP settings cannot be changed at runtime. See
  # sites/default/default.settings.php and
  # Drupal\Core\DrupalKernel::bootEnvironment() for settings that can be
-@@ -113,6 +120,40 @@ AddEncoding gzip svgz
+@@ -113,6 +123,40 @@ AddEncoding gzip svgz
    # uncomment the following line:
    # RewriteBase /
  
@@ -57,7 +60,7 @@ index 4031da475cf..2bf5682e6aa 100644
    # Redirect common PHP files to their new locations.
    RewriteCond %{REQUEST_URI} ^(.*)?/(install\.php) [OR]
    RewriteCond %{REQUEST_URI} ^(.*)?/(rebuild\.php)
-@@ -184,3 +622,9 @@ AddEncoding gzip svgz
+@@ -184,3 +228,9 @@ AddEncoding gzip svgz
    # Disable Proxy header, since it's an attack vector.
    RequestHeader unset Proxy
  </IfModule>
