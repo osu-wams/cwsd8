@@ -9,7 +9,7 @@ TAG_LATEST=$(MAJOR_VERSION)-latest
 TAG_WEB_SERVER=$(MAJOR_VERSION)-apache
 IMAGE_LATEST=$(IMAGE):$(TAG_LATEST)
 IMAGE_PRODUCTION=$(IMAGE):$(TAG_WEB_SERVER)
-IMAGE_DEVELOPMENT=$(IMAGE)$(TAG_WEB_SERVER)-dev
+IMAGE_DEVELOPMENT=$(IMAGE):$(TAG_WEB_SERVER)-dev
 COMPOSER_AUTH_FILE := $(HOME)/.config/composer/auth.json
 
 .DEFAULT_GOAL := help
@@ -35,7 +35,6 @@ build-development: ## Build image, tagged with git SHA + :local
 		--secret id=composer_auth,src=$(COMPOSER_AUTH_FILE) \
 		--target=development --platform=linux/amd64 \
 		--tag=$(IMAGE_DEVELOPMENT) .
-		--tag $(IMAGE) --tag $(LOCAL_IMAGE) .
 	@echo "built $(IMAGE_DEVELOPMENT)"
 
 push: ## Push Tagged Images to Docker Registry
