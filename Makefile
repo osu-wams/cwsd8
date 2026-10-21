@@ -41,5 +41,5 @@ push: ## Push Tagged Images to Docker Registry
 	docker push $(IMAGE_PRODUCTION); \
 	docker push $(IMAGE_DEVELOPMENT)
 	@echo "digest for task definition:"
-	@docker inspect --format='{{index .RepoDigests 0}}' $(IMAGE)
+	@docker inspect --format='{{index .RepoDigests 0}}' $(IMAGE_PRODUCTION) $(IMAGE_DEVELOPMENT)
 
