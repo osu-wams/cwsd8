@@ -1,0 +1,37 @@
+uuid: 266b6024-09cf-421d-ae56-d6cae2b597ba
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_faq
+    - node.type.service
+    - paragraphs.paragraphs_type.osu_accordion_section
+  module:
+    - entity_reference_revisions
+id: node.service.field_faq
+field_name: field_faq
+entity_type: node
+bundle: service
+label: FAQ
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    target_bundles:
+      osu_accordion_section: osu_accordion_section
+    negate: 0
+    target_bundles_drag_drop:
+      2_column:
+        weight: 4
+        enabled: false
+      osu_accordion_item:
+        weight: 5
+        enabled: false
+      osu_accordion_section:
+        weight: 6
+        enabled: true
+field_type: entity_reference_revisions

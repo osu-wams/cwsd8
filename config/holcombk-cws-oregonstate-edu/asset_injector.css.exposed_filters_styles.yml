@@ -1,0 +1,94 @@
+uuid: 5ccbbd5f-2fb5-47b0-bdf8-7d9a36b8f38d
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: exposed_filters_styles
+label: 'Exposed Filters Styles'
+code: |+
+  /* should have the container and my-5 class added */
+
+  .views-exposed-form {
+    max-width: 1320px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 48px;
+    margin-bottom: 48px;
+  }
+
+  .views-exposed-form label.form-label {
+    font-weight: 400;
+    font-size: 1.5rem;
+  }
+  /* remove the row class. classes to add are in the Google sheet */
+  .views-exposed-form .row {
+  	margin:0!important;
+  	column-gap: 3rem;
+    justify-content: center;
+    /* align-items: end; */
+  }
+
+  /* remove the col classes from the js-form-item */
+  .views-exposed-form .col-md-4,
+  .views-exposed-form .col-12 {
+  	width: auto!important;
+  }
+
+  /* toggle for all or none for list BEF settings for   */
+  .views-exposed-form .bef-toggle {
+    background-color: #d73f09;
+    color: #fff;
+    border-radius: 1.5rem;
+    padding: 6px 24px;
+    display: inline-block;
+    margin-block: .4rem;
+  }
+
+  /* inline settings. people can select things to be inline. there isn't any spacing provided */
+
+  .bef-exposed-form .form--inline > .form-item {
+    margin-right: 1.4rem;
+  }
+
+  /* styles for links option */
+
+  .bef-links {
+    background-color: transparent;
+    border: 0!important;
+  }
+
+  .bef-links ul {
+    display: flex;
+    column-gap: 4rem;
+    flex-wrap: wrap;
+    padding-left: 0!important;
+  }
+
+  .bef-links ul li a {
+    background-color: #d73f09;
+    border-radius: 1.5rem;
+    padding: 6px 24px;
+    display: inline-block;
+    margin-block: .4rem;
+    color: #fff;
+  }
+
+  .bef-links ul li::marker {
+    content: ''!important;
+  }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /directory
+contexts: {  }
+conditions_require_all: true

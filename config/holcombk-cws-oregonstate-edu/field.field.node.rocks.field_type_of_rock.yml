@@ -1,0 +1,29 @@
+uuid: 12ffcbf0-fde6-4696-8cc0-5b4ec72ffecf
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_type_of_rock
+    - node.type.rocks
+    - taxonomy.vocabulary.types_of_rocks
+id: node.rocks.field_type_of_rock
+field_name: field_type_of_rock
+entity_type: node
+bundle: rocks
+label: 'Type of rock'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      types_of_rocks: types_of_rocks
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

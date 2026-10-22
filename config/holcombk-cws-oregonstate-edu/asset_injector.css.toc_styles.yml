@@ -1,0 +1,63 @@
+uuid: da640bd7-cc6c-42c8-a430-2820e6d2edcb
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: toc_styles
+label: 'TOC styles'
+code: |-
+  .block-system-main-block ul:not(.nav, .navbar, .list-unstyled, .contextual-links, .vertical-tabs__menu, .pager__items) > li::marker {
+    content: ''!important;
+  }
+
+  .block-toc-js-block li {
+    padding: 5px 15px;
+  }
+
+  .block-toc-js-block .toc-active {
+    background-color: #d73f09;
+  }
+
+  .block-toc-js-block .toc-active a {
+  	color: #fff;
+  }
+
+  .toc-h1 + .toc-h2 {
+    margin-left: 10px;
+  }
+
+  .toc-h2 + .toc-h3 {
+    margin-left: 15px;
+  }
+
+  .toc-h3 + .toc-h4 {
+    margin-left: 20px;
+  }
+
+  .toc-h4 + .toc-h5 {
+    margin-left: 25px;
+  }
+
+  .toc-h5 + .toc-h6 {
+    margin-left: 30px;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    theme:
+      madrone: madrone
+    negate: false
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/196
+contexts: {  }
+conditions_require_all: true

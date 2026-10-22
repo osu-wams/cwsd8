@@ -1,0 +1,62 @@
+uuid: 323c38f9-5420-4546-b32e-fa9caae63018
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: counters
+label: Counters
+code: |+
+  /* 1) Use a single counter name 'item' at each <ol> level */
+  ol.hier {
+    counter-reset: item;            /* start the sequence for this <ol> */
+    /* Keep the native markers so ::marker can replace content accessibly */
+    list-style: decimal;            /* or list-style-type: decimal; */
+    padding-inline-start: 1.75rem; 
+  }
+
+  /* 2) Each <li> increments the counter */
+  ol.hier li {
+    counter-increment: item;
+  }
+
+  /* 3) Every nested <ol> resets the counter for its own sequence */
+  ol.hier ol {
+    counter-reset: item;
+  }
+
+  /* 4) Compose hierarchical numbers with counters(item, ".") and show them in the marker */
+  ol.hier li::marker {
+    /* e.g., "1", "1.1", "1.1.1" */
+    content: counters(item, ".") ". ";
+  }
+
+  ol.no-counters,
+  ol.no-counters ol {
+  	counter-reset: none;
+  }
+
+  ol.no-counters li {
+  	counter-increment: none;
+  }
+
+  /* 5) Progressive enhancement fallback if ::marker isn't supported */
+  @supports not (selector(::marker)) {
+    ol.hier li::before {
+      content: counters(item, ".") ". ";
+    }
+
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: madrone
+contexts: {  }
+conditions_require_all: true

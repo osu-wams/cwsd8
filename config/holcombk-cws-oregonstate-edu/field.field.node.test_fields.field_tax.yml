@@ -1,0 +1,29 @@
+uuid: 8175bd55-90a9-4e4f-a832-ad1ba9f7efee
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_tax
+    - node.type.test_fields
+    - taxonomy.vocabulary.types_of_rocks
+id: node.test_fields.field_tax
+field_name: field_tax
+entity_type: node
+bundle: test_fields
+label: tax
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      types_of_rocks: types_of_rocks
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

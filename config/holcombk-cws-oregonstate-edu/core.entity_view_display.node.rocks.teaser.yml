@@ -1,0 +1,35 @@
+uuid: 05fed41b-07ec-427d-8777-9da3209983cd
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.rocks.body
+    - field.field.node.rocks.field_rock_quantity
+    - field.field.node.rocks.field_type_of_rock
+    - node.type.rocks
+  module:
+    - text
+    - user
+id: node.rocks.teaser
+targetEntityType: node
+bundle: rocks
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_rock_quantity: true
+  field_type_of_rock: true

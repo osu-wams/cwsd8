@@ -1,0 +1,54 @@
+uuid: 11368e56-c9ad-42b3-8136-b8f3712a6fbc
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: scroll_snap
+label: 'Scroll Snap'
+code: |-
+  .scroll-snap-container {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    height: 400px;
+  }
+
+  .scroll-snap-child {
+    scroll-snap-align: start;
+    min-block-size: 400px;
+    scroll-snap-stop: always;
+    color: #fff;
+    font-size: 4rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .scroll-snap-child:nth-child(1) {
+    background-color: #2F4858;
+  }
+
+  .scroll-snap-child:nth-child(2) {
+    background-color: #33658A;
+  }
+
+  .scroll-snap-child:nth-child(3) {
+    background-color: #86BBD8;
+  }
+
+  .scroll-snap-child:nth-child(4) {
+    background-color: #F6AE2D;
+  }
+
+  .scroll-snap-child:nth-child(5) {
+    background-color: #F26419;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

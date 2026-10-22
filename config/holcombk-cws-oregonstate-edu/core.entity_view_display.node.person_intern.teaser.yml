@@ -1,0 +1,33 @@
+uuid: 50205b93-10ae-4f84-8a7f-e7447dc06582
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - field.field.node.person_intern.body
+    - field.field.node.person_intern.field_test
+    - node.type.person_intern
+  module:
+    - text
+    - user
+id: node.person_intern.teaser
+targetEntityType: node
+bundle: person_intern
+mode: teaser
+content:
+  body:
+    type: text_summary_or_trimmed
+    label: hidden
+    settings:
+      trim_length: 600
+    third_party_settings: {  }
+    weight: 101
+    region: content
+  links:
+    settings: {  }
+    third_party_settings: {  }
+    weight: 100
+    region: content
+hidden:
+  entitygroupfield: true
+  field_test: true

@@ -1,0 +1,137 @@
+uuid: 71efbcf2-2eb0-47d5-8a52-5c5e062a572c
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - ''
+_core:
+  default_config_hash: XIYL1KF7ND2XQRa5AxvEcp8vgCN2kUGiuBNhCgxrPME
+id: views_ui
+label: 'View Edit Page'
+routes:
+  -
+    route_name: entity.view.edit_form
+  -
+    route_name: entity.view.edit_display_form
+tips:
+  overview:
+    id: overview
+    plugin: text
+    label: 'View Overview'
+    weight: -100
+    position: auto
+    selector: ''
+    body: "<p>This is where you edit the settings of a view. Views are incredibly versatile: you can create views to display all the profiles or another custom content type in an attractive layout with searching and filtering. Or you can create administrative views that help you manage content or groups with bulk operations.</p>\r\n"
+  view_displays:
+    id: view_displays
+    plugin: text
+    label: 'View Displays'
+    weight: -99
+    position: bottom
+    selector: '#views-display-top'
+    body: "<p>A view display is a specific way to present data from a view. It defines how the view's content is formatted and shown, such as in a table, grid, or list. Each view can have multiple displays, allowing you to reuse the same data in different formats and contexts. The display you are editing is highlighted.</p>\r\n<p><strong>Note:</strong> If you have multiple displays, you want to be careful when editing and check if you are making changes for just the one display or every display in the view.</p>"
+  view_administration:
+    id: view_administration
+    plugin: text
+    label: 'View Administration'
+    weight: -98
+    position: bottom-start
+    selector: '#views-display-extra-actions'
+    body: '<p>Perform administrative tasks including adding a description, re-ordering the displays and duplicating the entire view. Click the drop-down arrow to view all the available options.</p>'
+  output_formatting:
+    id: output_formatting
+    plugin: text
+    label: 'Format Overview'
+    weight: -97
+    position: right
+    selector: .format
+    body: '<p>The settings here in this section control the appearance your view takes on the page.</p>'
+  choose_your_format:
+    id: choose_your_format
+    plugin: text
+    label: 'Choose Your Format'
+    weight: -96
+    position: right
+    selector: '.format a[id$="-style"] '
+    body: "<p>This is where you pick what format you want to output all of your items. The Bootstrap options are helpful for getting layout, styling and functionality quickly.*</p>\r\n<p>For example, say you have a custom content type called \"Resources\" that includes a photo, a link and short description. If you wanted to display these as a grid of cards, you'd want to select the <strong>Bootstrap Cards</strong> option to get started.</p>\r\n<p>*Refer to the <a href=\"https://www.drupal.org/docs/extending-drupal/contributed-modules/contributed-module-documentation/views-bootstrap-for-bootstrap-5\" target=\"_blank\">Views Bootstrap for Bootstrap 5 documentation</a> for more details on how these work.</p>\r\n"
+  settings_for_format:
+    id: settings_for_format
+    plugin: text
+    label: 'Settings for Format'
+    weight: -95
+    position: right
+    selector: '.format a[id$="-style-options"]'
+    body: "<p>The settings will change depending on the format selected. This is where leaning on the documentation, asking Copilot or coming to Open Lab will come in. However, there are a couple settings that are common across most display options.</p> \r\n<ol>\r\n<li>Grouping based on a field added. <br> Common use cases: collecting items based on a taxonomy term or a date. For example, say you wanted to show a profile of each of your interns by year. You could do this by grouping.</li>\r\n<li>This is where you can add CSS classes to each item to style it further via the row class field. <br>Common use case: You want to center the text of each of your profiles. You could add the \"text-center\" class.</li>\r\n</ol>"
+  show_settings:
+    id: show_settings
+    plugin: text
+    label: 'Choose between fields and view modes'
+    weight: -94
+    position: right
+    selector: '.format [id^="views"][id$="row"]'
+    body: "<p>In the show section, you are controlling what each item will display and how. To return to our graduation profile example, this is controlling what each profile will display, like a photo, name, etc.</p>\r\n<p>You can choose show either:</p>\r\n<ul>\r\n<li><strong>Content</strong>, which will allow you leverage view modes, a configuration that defines how content is displayed in different contexts. You can leverage Layout Builder in view modes and choose which fields to show.\r\n<ul>\r\n<li>By default, there are two view modes: default and teaser. These can be configured under Structure > Display modes > View modes. </li>\r\n<li>Choose this option if you want to work with Layout Builder to construct each item. </li>\r\n</ul></li>\r\n<li><strong>Fields</strong>, which allow you to choose directly from the view which fields to include. </li>\r\n<ul>\r\n<li>Choose this option if you want to leverage re-writing of fields, more field manipulation or would prefer to work only in the view and go through the extra steps of creating a view mode.</li>\r\n</ul></li>\r\n</ul>"
+  fields:
+    id: fields
+    plugin: text
+    label: Fields
+    weight: -93
+    position: right
+    selector: .views-ui-display-tab-bucket.field
+    body: '<p>If this view uses fields, they are listed here. You can click on a field to configure it.</p>'
+  field_actions:
+    id: field_actions
+    plugin: text
+    label: 'Field Actions'
+    weight: -92
+    position: right
+    selector: '.field .views-ui-settings-bucket-operations'
+    body: '<p>You can add additional fields or click the drop-down arrow to rearrange or delete fields.</p>'
+  filters:
+    id: filters
+    plugin: text
+    label: 'Filter Criteria'
+    weight: -91
+    position: right
+    selector: .views-ui-display-tab-bucket.filter
+    body: "<p>Add filters to limit the results in the output. E.g., to only show content that is <em>published</em>, you would add a filter for <em>Published</em> and select <em>Yes</em>. At a bare minimum, this is the filter we recommend, otherwise, you will expose your unpublished content to the public side of the site.</p>\r\n<p><strong>Exposed filters</strong<br>\r\nFilters can be exposed to the public side to create search fields and drop downs. If you are using these options there are two recommendations:</p>\r\n<ol>\r\n<li>Create the display as a page, as this will provide the smoothest functionality for the end user.</li>\r\n<li>Use Better Exposed Filters in the \"Advanced\" column.</li>\r\n</ol>\r\n "
+  filter_actions:
+    id: filter_actions
+    plugin: text
+    label: 'Filter Actions'
+    weight: -90
+    position: right
+    selector: '.views-ui-display-tab-bucket.filter .dropbutton-widget'
+    body: "<p>You can add additional filters for fine-tuning what you want to display. Click the drop-down arrow to create filter groups and tap into the operator functionality (and/or), rearrange filters and remove filters. The order of filters matter and it starts at the top. If a piece of content doesn't match one the first filter, it will be excluded and no other filters will act on it.</p>\r\n<p>For example, if you have a profile that is unpublished but categorized as \"Support Staff\" and you have a filter for showing only the published profiles and the ones that are tagged as Support Staff. Your first filter checks for published profiles only, then it wouldn't display the unpublished profile, despite it being tagged as support staff.</p>"
+  sort_criteria:
+    id: sort_criteria
+    plugin: text
+    label: 'Sort Criteria'
+    weight: -89
+    position: right
+    selector: .views-ui-display-tab-bucket.sort
+    body: "<p>Control the order in which the results are output. Click on an active sort rule to configure it. You can add multiple sorts and arrange them in order to achieve specific results.</p>\r\n<p>For example, you could sort by last name, then first name.</p>"
+  sort_actions:
+    id: sort_actions
+    plugin: text
+    label: 'Sort Actions'
+    weight: -88
+    position: right
+    selector: '.sort .views-ui-settings-bucket-operations '
+    body: '<p>Add, rearrange or remove sorting rules. The order of the sort matters. It will sort from top to bottom. So if you have first name and then last name, it will sort by first name first, then by last name.</p>'
+  preview:
+    id: preview
+    plugin: text
+    label: Preview
+    weight: -87
+    position: top-start
+    selector: '#preview-submit'
+    body: "<p>Show a preview of the view output. If you are using a Bootstrap format option or have CSS written for your view, it won't render correctly. This preview option is best for checking functionality of your view, rather than a preview of what it will display as.</p>"
+  save:
+    id: save
+    plugin: text
+    label: Save
+    weight: -10
+    position: right
+    selector: '#edit-actions-submit'
+    body: "Don't forget to save your work!"

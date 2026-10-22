@@ -1,0 +1,27 @@
+uuid: 0d1b7f1b-624d-4ef3-869b-f3dc33cb3c77
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+id: grid_4_columns
+label: 'Grid 4 columns'
+code: |2-
+      @media (min-width:992px) {
+      .four-fr {
+          grid-template-columns: repeat(4, 1fr);
+      }
+  }
+
+  .grid-full-width {
+      grid-column: -1/1;
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+contexts: {  }
+conditions_require_all: true

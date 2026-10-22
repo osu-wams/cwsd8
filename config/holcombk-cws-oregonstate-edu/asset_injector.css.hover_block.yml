@@ -1,0 +1,62 @@
+uuid: d1f3667f-d7eb-42c8-9aa4-5884b84e1c50
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: hover_block
+label: 'Hover Scale Block'
+code: |-
+  .block-inline-blockhover-card {
+    position: relative;
+    transition: all 0.4s ease;
+    height: 100%;
+  }
+
+  .block-inline-blockhover-card>.block__content,
+  .hover-card {
+    height: 100%;
+  }
+
+  .block-inline-blockhover-card i {
+    font-size: 4rem;
+  }
+
+  .block-inline-blockhover-card .field--name-field-hover-card-link a {
+    color: #d73f09;
+    font-family: "Open Sans", sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  .block-inline-blockhover-card .field--name-field-hover-card-link a:hover {
+    text-decoration: underline;
+  }
+
+  .block-inline-blockhover-card .field--name-field-hover-card-link a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  @media (hover: hover) {
+    .block-inline-blockhover-card:hover {
+      transform: scale(1.06);
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    theme:
+      madrone: madrone
+    negate: false
+contexts: {  }
+conditions_require_all: true

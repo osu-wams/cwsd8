@@ -1,0 +1,47 @@
+uuid: 1c7d102f-49d7-4c03-ad02-95f195f75428
+langcode: en
+status: false
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: tour_start_delayed
+label: 'Delayed Tour Start'
+code: |-
+  (function (Drupal, drupalSettings) {
+    Drupal.behaviors.delayedTourStart = {
+      attach: function (context, settings) {
+        if (!context.querySelector('body').classList.contains('delayed-tour-init')) {
+          context.querySelector('body').classList.add('delayed-tour-init');
+
+          const params = new URLSearchParams(window.location.search);
+          if (params.has('tour')) {
+            // Wait for full page load
+            window.addEventListener('load', function () {
+              if (Drupal.tour && typeof Drupal.tour.start === 'function') {
+                Drupal.tour.start();
+              } else {
+                console.warn('Tour API not available.');
+              }
+            });
+          }
+        }
+      }
+    };
+  })(Drupal, drupalSettings);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    negate: false
+    theme: claro
+contexts: {  }
+conditions_require_all: true

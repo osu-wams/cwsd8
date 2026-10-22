@@ -1,0 +1,119 @@
+uuid: fad0e71f-aa37-443c-952a-9699c29fb069
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: story_styles
+label: 'Story Styles'
+code: |-
+  .stories-page-container {
+    display: grid;
+    gap: 2rem;
+    margin: 2rem;
+  }
+
+  .block-views-blockfeature-stories-block .block__content>div {
+    display: flex;
+    justify-content: center;
+  }
+
+  .block-views-blockfeature-stories-block h2 {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+
+  .story-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, .25);
+    position: relative;
+    margin-bottom: 2rem;
+  }
+
+  .story-card img {
+    border-radius: 10px 10px 0 0;
+    max-width: 100%;
+  }
+
+  .story-card a {
+    color: #d73f09;
+    text-decoration: none;
+    padding: 10px 20px 20px;
+    display: block;
+  }
+
+  .story-card a::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .story-card a:hover {
+    text-decoration: underline;
+  }
+
+  .feature-story-container .views-row--1 {
+    grid-row: 1/3;
+  }
+
+  .more-link {
+    text-align: center;
+    grid-column: 1/-1;
+  }
+
+  .pager {
+    grid-column: 1/-1;
+    margin-top: 3rem;
+  }
+
+  @media (min-width:768px) {
+    .stories-page-container {
+      grid-template-columns: repeat(2, 1fr);
+      margin: 4rem;
+    }
+
+  }
+
+  @media (min-width: 1200px) {
+    .feature-story-container {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2rem;
+      max-width: 1600px;
+    }
+
+    .story-card {
+      margin-bottom: 0;
+    }
+
+    .feature-story-container .views-row--1 img {
+      height: 600px;
+      object-fit: cover;
+    }
+
+    .stories-page-container {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  @media (min-width: 1800px) {
+    .stories-page-container {
+      margin: 3rem 20rem;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  current_theme:
+    id: current_theme
+    theme:
+      madrone: madrone
+    negate: false
+contexts: {  }
+conditions_require_all: true

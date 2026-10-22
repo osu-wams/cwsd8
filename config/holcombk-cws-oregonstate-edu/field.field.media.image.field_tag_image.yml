@@ -1,0 +1,29 @@
+uuid: 87fad0ef-f271-4f6c-b44e-d3e098a6b27e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_tag_image
+    - media.type.image
+    - taxonomy.vocabulary.image_tagging
+id: media.image.field_tag_image
+field_name: field_tag_image
+entity_type: media
+bundle: image
+label: 'Tag Image'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      image_tagging: image_tagging
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference
