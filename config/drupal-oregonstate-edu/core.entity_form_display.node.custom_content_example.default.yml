@@ -4,13 +4,62 @@ status: true
 dependencies:
   config:
     - field.field.node.custom_content_example.body
+    - field.field.node.custom_content_example.field_address
+    - field.field.node.custom_content_example.field_address_country
+    - field.field.node.custom_content_example.field_address_zone
+    - field.field.node.custom_content_example.field_boolean
+    - field.field.node.custom_content_example.field_chart
+    - field.field.node.custom_content_example.field_date
+    - field.field.node.custom_content_example.field_date_range
+    - field.field.node.custom_content_example.field_email
+    - field.field.node.custom_content_example.field_entity_reference
+    - field.field.node.custom_content_example.field_file_upload
+    - field.field.node.custom_content_example.field_file_upload_image
+    - field.field.node.custom_content_example.field_formatted_text
+    - field.field.node.custom_content_example.field_icon
+    - field.field.node.custom_content_example.field_link
+    - field.field.node.custom_content_example.field_media
+    - field.field.node.custom_content_example.field_meta_tags_example
+    - field.field.node.custom_content_example.field_number_decimal
+    - field.field.node.custom_content_example.field_number_float
+    - field.field.node.custom_content_example.field_number_integer
+    - field.field.node.custom_content_example.field_osu_icon
+    - field.field.node.custom_content_example.field_paragraphs
+    - field.field.node.custom_content_example.field_plain_text
+    - field.field.node.custom_content_example.field_plain_text_long
+    - field.field.node.custom_content_example.field_reference_other
+    - field.field.node.custom_content_example.field_selection_list_float
+    - field.field.node.custom_content_example.field_selection_list_integer
+    - field.field.node.custom_content_example.field_selection_list_text
+    - field.field.node.custom_content_example.field_smart_date_range
+    - field.field.node.custom_content_example.field_telephone_number
+    - field.field.node.custom_content_example.field_text_formatted_long
+    - field.field.node.custom_content_example.field_text_formatted_long_with_s
+    - field.field.node.custom_content_example.field_timestamp
+    - field.field.node.custom_content_example.field_ui_icons
     - field.field.node.custom_content_example.layout_builder__layout
+    - image.style.thumbnail
     - node.type.custom_content_example
     - workflows.workflow.editorial
   module:
+    - address
+    - charts
     - content_moderation
+    - datetime
+    - datetime_range
+    - file
+    - fontawesome
+    - link
+    - media_library
+    - metatag
+    - osu_icon_field
+    - paragraphs
     - path
+    - smart_date
+    - svg_image
+    - telephone
     - text
+    - ui_icons_field
 id: node.custom_content_example.default
 targetEntityType: node
 bundle: custom_content_example
@@ -31,6 +80,269 @@ content:
     weight: 10
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_address:
+    type: address_default
+    weight: 145
+    region: content
+    settings:
+      wrapper_type: fieldset
+    third_party_settings: {  }
+  field_address_country:
+    type: address_country_default
+    weight: 146
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_address_zone:
+    type: address_zone_default
+    weight: 147
+    region: content
+    settings:
+      show_label_field: false
+    third_party_settings: {  }
+  field_boolean:
+    type: boolean_checkbox
+    weight: 149
+    region: content
+    settings:
+      display_label: true
+    third_party_settings: {  }
+  field_chart:
+    type: chart_config_default
+    weight: 150
+    region: content
+    settings:
+      change_default_library: true
+    third_party_settings: {  }
+  field_date:
+    type: datetime_default
+    weight: 141
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_date_range:
+    type: daterange_default
+    weight: 142
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_email:
+    type: email_default
+    weight: 151
+    region: content
+    settings:
+      placeholder: ''
+      size: 60
+    third_party_settings: {  }
+  field_entity_reference:
+    type: entity_reference_autocomplete
+    weight: 132
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_file_upload:
+    type: file_generic
+    weight: 135
+    region: content
+    settings:
+      progress_indicator: throbber
+    third_party_settings: {  }
+  field_file_upload_image:
+    type: image_image
+    weight: 136
+    region: content
+    settings:
+      progress_indicator: throbber
+      preview_image_style: thumbnail
+    third_party_settings: {  }
+  field_formatted_text:
+    type: text_textfield
+    weight: 126
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_icon:
+    type: fontawesome_icon_widget
+    weight: 148
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_link:
+    type: link_default
+    weight: 152
+    region: content
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+  field_media:
+    type: media_library_widget
+    weight: 134
+    region: content
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+  field_meta_tags_example:
+    type: metatag_firehose
+    weight: 153
+    region: content
+    settings:
+      sidebar: true
+      use_details: true
+    third_party_settings: {  }
+  field_number_decimal:
+    type: number
+    weight: 130
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_number_float:
+    type: number
+    weight: 131
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_number_integer:
+    type: number
+    weight: 129
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_osu_icon:
+    type: osu_icon_widget
+    weight: 154
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_paragraphs:
+    type: paragraphs
+    weight: 137
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
+  field_plain_text:
+    type: string_textfield
+    weight: 124
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_plain_text_long:
+    type: string_textarea
+    weight: 125
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_reference_other:
+    type: entity_reference_autocomplete
+    weight: 133
+    region: content
+    settings:
+      match_operator: CONTAINS
+      match_limit: 10
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+  field_selection_list_float:
+    type: options_select
+    weight: 140
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_selection_list_integer:
+    type: options_select
+    weight: 139
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_selection_list_text:
+    type: options_select
+    weight: 138
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_smart_date_range:
+    type: smartdate_inline
+    weight: 143
+    region: content
+    settings:
+      modal: false
+      default_duration: 60
+      default_duration_increments: |-
+        30
+        60|1 hour
+        90
+        120|2 hours
+        custom
+      show_extra: false
+      hide_date: true
+      allday: true
+      remove_seconds: false
+      duration_overlay: true
+      separator: to
+    third_party_settings: {  }
+  field_telephone_number:
+    type: telephone_default
+    weight: 155
+    region: content
+    settings:
+      placeholder: ''
+    third_party_settings: {  }
+  field_text_formatted_long:
+    type: text_textarea
+    weight: 127
+    region: content
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+  field_text_formatted_long_with_s:
+    type: text_textarea_with_summary
+    weight: 128
+    region: content
+    settings:
+      rows: 9
+      summary_rows: 3
+      placeholder: ''
+      show_summary: false
+    third_party_settings: {  }
+  field_timestamp:
+    type: datetime_timestamp
+    weight: 144
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_ui_icons:
+    type: icon_widget
+    weight: 156
+    region: content
+    settings:
+      icon_selector: icon_autocomplete
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default

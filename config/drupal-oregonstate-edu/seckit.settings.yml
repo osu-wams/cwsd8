@@ -7,22 +7,22 @@ seckit_xss:
       x: false
       webkit: false
     report-only: false
-    default-src: "'self' 'unsafe-inline' 'unsafe-eval' data: blob: *"
-    script-src: ''
-    object-src: ''
-    style-src: ''
+    default-src: "'self' data: blob: https: *"
+    script-src: "'self' 'unsafe-inline' 'unsafe-eval' https:"
+    object-src: none
+    style-src: "'self' 'unsafe-inline' https: data:"
     img-src: ''
     media-src: ''
     frame-src: ''
     frame-ancestors: ''
     child-src: ''
-    font-src: ''
-    connect-src: ''
+    font-src: "'self' https: data:"
+    connect-src: "'self' https:"
     report-uri: /report-csp-violation
     upgrade-req: true
     policy-uri: ''
   x_xss:
-    select: 0
+    select: 3
 seckit_csrf:
   origin: false
   origin_whitelist: ''

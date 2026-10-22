@@ -1,0 +1,51 @@
+uuid: 25a13e94-1267-48e5-b7db-3a46aca07c65
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - system
+id: theme_update
+label: 'theme update'
+code: |-
+  .osu-hover-scale-img img,
+  .osu-hover-scale-icon .fa-solid,
+  .osu-hover-scale-icon, .fas {
+  	transition: transform 0.2s ease-in-out;
+  }
+
+  .osu-hover-scale-img:hover img,
+  .osu-hover-scale-icon:hover .fa-solid,
+  .osu-hover-scale-icon:hover .fas {
+  	transform: scale(1.05);
+  }
+
+  .osu-minimal-link,
+  .osu-minimal-link > a {
+  	text-decoration: none;
+  	
+  	&:active {
+  		background-color: transparent !important;
+  		text-decoration: underline;
+  }
+  }
+
+  .osu-bg-before-dark-ellipse::before {
+  	content: '';
+  	position: absolute;
+  	inset: 0;
+  	background: radial-gradient(ellipse at top right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.6) 60%, rgba(0, 0, 0, 0.85) 100%);	
+  }
+media: all
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: false
+    pages: /node/946
+contexts: {  }
+conditions_require_all: true

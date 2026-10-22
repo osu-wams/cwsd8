@@ -3,7 +3,7 @@ langcode: en
 status: true
 dependencies:
   module:
-    - file
+    - image
     - options
     - section_library
     - user
@@ -104,8 +104,8 @@ display:
           label: Image
           exclude: false
           alter:
-            alter_text: true
-            text: '<img src="{{ image__target_id }}" />'
+            alter_text: false
+            text: ''
             make_link: false
             path: ''
             absolute: false
@@ -143,8 +143,12 @@ display:
           empty_zero: false
           hide_alter_empty: true
           click_sort_column: target_id
-          type: file_url_plain
-          settings: {  }
+          type: image
+          settings:
+            image_link: ''
+            image_style: ''
+            image_loading:
+              attribute: lazy
           group_column: ''
           group_columns: {  }
           group_rows: true
