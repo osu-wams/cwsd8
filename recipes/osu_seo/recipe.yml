@@ -1,0 +1,160 @@
+name: OSU SEO
+description: 'Provides "Search Engine Optimizations" defaults for OSU Drupal'
+install:
+  - metatag
+  - metatag_open_graph
+  - metatag_twitter_cards
+  - metatag_views
+  - schema_article
+  - schema_metatag
+  - schema_organization
+  - schema_person
+  - schema_web_page
+  - schema_web_site
+  - token_or
+  - yoast_seo
+config:
+  strict: true
+  import:
+    metatag:
+      - metatag.metatag_defaults.403.yml
+      - metatag.metatag_defaults.404.yml
+      - metatag.metatag_defaults.taxonomy_term.yml
+      - metatag.metatag_defaults.user.yml
+  actions:
+    user.role.content_authors:
+      grantPermission: "use yoast seo"
+    user.role.manage_content:
+      grantPermission: "use yoast seo"
+    user.role.manage_site_configuration:
+      grantPermission: "administer yoast seo"
+    user.role.architect:
+      grantPermissions:
+        - "use yoast seo"
+        - "administer yoast seo"
+    user.role.dx_administrator:
+      grantPermissions:
+        - "use yoast seo"
+        - "administer yoast seo"
+    core.entity_form_display.node.page.default:
+      setComponents:
+        - name: field_seo_title
+          options:
+            type: string_textfield
+            weight: 0
+            region: content
+            settings:
+              size: 60
+              placeholder: ""
+            third_party_settings: {}
+        - name: field_seo_description
+          options:
+            type: string_textarea
+            weight: 1
+            region: content
+            settings:
+              rows: 5
+              placeholder: ""
+            third_party_settings: {}
+        - name: field_osu_meta_image
+          options:
+            type: media_library_widget
+            weight: 2
+            region: content
+            settings:
+              media_types: {}
+            third_party_settings: {}
+        - name: field_seo_analysis
+          options:
+            type: yoast_seo_widget
+            weight: 3
+            region: content
+            settings:
+              edit_title: false
+              edit_description: false
+              render_theme: null
+              render_view_mode: default
+            third_party_settings: {}
+      setThirdPartySetting:
+        module: field_group
+        key: group_seo
+        value:
+          children:
+            - field_seo_description
+            - field_seo_title
+            - field_osu_meta_image
+            - field_seo_analysis
+          label: "Search Engine Optimization (SEO) Information"
+          region: content
+          parent_name: ""
+          weight: 32
+          format_type: details
+          format_settings:
+            classes: ""
+            show_empty_fields: false
+            id: ""
+            label_as_html: false
+            open: false
+            description: ""
+            required_fields: true
+    core.entity_form_display.node.story.default:
+      setComponents:
+        - name: field_seo_title
+          options:
+            type: string_textfield
+            weight: 0
+            region: content
+            settings:
+              size: 60
+              placeholder: ""
+            third_party_settings: {}
+        - name: field_seo_description
+          options:
+            type: string_textarea
+            weight: 1
+            region: content
+            settings:
+              rows: 5
+              placeholder: ""
+            third_party_settings: {}
+        - name: field_osu_meta_image
+          options:
+            type: media_library_widget
+            weight: 2
+            region: content
+            settings:
+              media_types: {}
+            third_party_settings: {}
+        - name: field_seo_analysis
+          options:
+            type: yoast_seo_widget
+            weight: 3
+            region: content
+            settings:
+              edit_title: false
+              edit_description: false
+              render_theme: null
+              render_view_mode: default
+            third_party_settings: {}
+      setThirdPartySetting:
+        module: field_group
+        key: group_seo
+        value:
+          children:
+            - field_seo_description
+            - field_seo_title
+            - field_osu_meta_image
+            - field_seo_analysis
+          label: "Search Engine Optimization (SEO) Information"
+          region: content
+          parent_name: ""
+          weight: 32
+          format_type: details
+          format_settings:
+            classes: ""
+            show_empty_fields: false
+            id: ""
+            label_as_html: false
+            open: false
+            description: ""
+            required_fields: true
