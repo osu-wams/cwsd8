@@ -9,7 +9,7 @@ site="$1"
 target_env="$2"
 app_root="/var/www/html/docroot"
 sites_folder="${app_root}/sites"
-NUM_JOBS=$(nproc --all)  # Number of child processes to spawn
+NUM_JOBS=${NUM_JOBS:-4}  # Number of child processes to spawn
 
 # Function to process a chunk of domains
 process_chunk() {
