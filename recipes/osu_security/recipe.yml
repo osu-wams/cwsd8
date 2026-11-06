@@ -9,25 +9,20 @@ config:
   actions:
     seckit.settings:
       simpleConfigUpdate:
-        seckit_xss:
-          csp:
-            checkbox: TRUE
-            upgrade-req: TRUE
-            default-src: "'self' data: blob: https: *"
-            script-src: "'self' 'unsafe-inline' 'unsafe-eval' https:"
-            object-src: none
-            style-src: "'self' 'unsafe-inline' https: data:"
-            font-src: "'self' https: data:"
-            connect-src: "'self' https:"
-            report-uri: /report-csp-violation
-          x_xss:
-            select: 3
-        seckit_ssl:
-          hsts: TRUE
-          hsts_max_age: 10368000
-        seckit_various:
-          referrer_policy: TRUE
-          referrer_policy_policy: "no-referrer-when-downgrade"
+        seckit_xss.csp.checkbox: TRUE
+        seckit_xss.csp.upgrade-req: TRUE
+        seckit_xss.csp.default-src: "'self' data: blob: https: *"
+        seckit_xss.csp.script-src: "'self' 'unsafe-inline' 'unsafe-eval' https:"
+        seckit_xss.csp.object-src: none
+        seckit_xss.csp.style-src: "'self' 'unsafe-inline' https: data:"
+        seckit_xss.csp.font-src: "'self' https: data:"
+        seckit_xss.csp.connect-src: "'self' https:"
+        seckit_xss.csp.report-uri: /report-csp-violation
+        seckit_xss.x_xss.select: 3
+        seckit_ssl.hsts: TRUE
+        seckit_ssl.hsts_max_age: 10368000
+        seckit_various.referrer_policy: TRUE
+        seckit_various.referrer_policy_policy: "no-referrer-when-downgrade"
     captcha.settings:
       simpleConfigUpdate:
         default_challenge: "recaptcha/reCAPTCHA"
