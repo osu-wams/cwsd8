@@ -3,11 +3,10 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - system
 id: global_buttons_styling
-label: 'GLOBAL button styling, form buttons, etc. (submit button)'
-code: |
+label: 'LEGACY OSU Button Override (GLOBAL)'
+code: |-
   /* ================================================
   Global button styling and form buttons
   =================================================== */
@@ -27,23 +26,9 @@ code: |
       background-color:#d73f09;
       color:black;
   }
-
-  /** Form submit buttons */
-
-  .form-actions [type=submit] {
-  	border-radius: 0;
-  }
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
-  current_theme:
-    id: current_theme
-    negate: false
-    theme: madrone
   request_path:
     id: request_path
     negate: true

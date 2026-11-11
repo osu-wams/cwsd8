@@ -501,19 +501,6 @@ display:
             field_identifier: ''
           exposed: false
       filters:
-        status:
-          id: status
-          table: node_field_data
-          field: status
-          entity_type: node
-          entity_field: status
-          plugin_id: boolean
-          value: '1'
-          group: 1
-          expose:
-            operator: ''
-            operator_limit_selection: false
-            operator_list: {  }
         type:
           id: type
           table: node_field_data
@@ -593,6 +580,23 @@ display:
         options:
           offset: 0
           items_per_page: 3
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            engr_statistic: engr_statistic
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: views_bootstrap_grid
         options:
@@ -612,6 +616,8 @@ display:
         pager: false
         style: false
         row: false
+        filters: false
+        filter_groups: false
       display_description: 'Statistics view to display 3 stats cards'
       display_extenders:
         metatag_display_extender:
@@ -652,6 +658,23 @@ display:
         options:
           offset: 0
           items_per_page: 2
+      filters:
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            engr_statistic: engr_statistic
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
       style:
         type: views_bootstrap_grid
         options:
@@ -671,6 +694,8 @@ display:
         pager: false
         style: false
         row: false
+        filters: false
+        filter_groups: false
       display_description: 'Statistics view to display 2 stats cards'
       display_extenders:
         metatag_display_extender:
@@ -1179,6 +1204,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
               field_engr_stat_type_value:
                 plugin_id: default
                 advanced:
@@ -1194,6 +1220,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
       sorts:
         field_osu_organizations_target_id:
           id: field_osu_organizations_target_id

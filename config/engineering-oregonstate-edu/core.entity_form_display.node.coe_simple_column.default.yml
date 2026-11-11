@@ -5,6 +5,7 @@ dependencies:
   config:
     - field.field.node.coe_simple_column.body
     - field.field.node.coe_simple_column.field_coe_article_conclusion
+    - field.field.node.coe_simple_column.field_hero_modular_article
     - field.field.node.coe_simple_column.field_meta_tags
     - field.field.node.coe_simple_column.field_sc_hero_body
     - field.field.node.coe_simple_column.field_sc_hero_button
@@ -15,6 +16,7 @@ dependencies:
     - field.field.node.coe_simple_column.field_sc_related_resources
     - field.field.node.coe_simple_column.field_sc_toc_body
     - field.field.node.coe_simple_column.field_sc_topic_type
+    - field.field.node.coe_simple_column.field_subtitle
     - node.type.coe_simple_column
     - workflows.workflow.editorial
   module:
@@ -31,6 +33,8 @@ third_party_settings:
     group_sc_hero_section:
       children:
         - title
+        - field_subtitle
+        - field_hero_modular_article
         - field_sc_hero_body
         - field_sc_hero_button
         - group_sc_hero_image_section
@@ -55,7 +59,7 @@ third_party_settings:
       label: 'Hero Image Section'
       region: content
       parent_name: group_sc_hero_section
-      weight: 4
+      weight: 6
       format_type: details
       format_settings:
         classes: ''
@@ -106,6 +110,24 @@ content:
         convert: '0'
         duplicate: duplicate
     third_party_settings: {  }
+  field_hero_modular_article:
+    type: paragraphs
+    weight: 3
+    region: content
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      closed_mode: summary
+      autocollapse: none
+      closed_mode_threshold: 0
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+      features:
+        collapse_edit_all: collapse_edit_all
+        duplicate: duplicate
+    third_party_settings: {  }
   field_meta_tags:
     type: metatag_firehose
     weight: 12
@@ -116,7 +138,7 @@ content:
     third_party_settings: {  }
   field_sc_hero_body:
     type: text_textarea
-    weight: 2
+    weight: 4
     region: content
     settings:
       rows: 5
@@ -124,7 +146,7 @@ content:
     third_party_settings: {  }
   field_sc_hero_button:
     type: link_default
-    weight: 3
+    weight: 5
     region: content
     settings:
       placeholder_url: ''
@@ -132,7 +154,7 @@ content:
     third_party_settings: {  }
   field_sc_hero_caption:
     type: string_textfield
-    weight: 4
+    weight: 5
     region: content
     settings:
       size: 60
@@ -208,6 +230,14 @@ content:
     weight: 14
     region: content
     settings: {  }
+    third_party_settings: {  }
+  field_subtitle:
+    type: string_textfield
+    weight: 2
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default

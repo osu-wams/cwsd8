@@ -3361,6 +3361,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
               field_osu_organizations_target_id:
                 plugin_id: default
                 advanced:
@@ -3374,6 +3375,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
       sorts:
         created:
           id: created
@@ -3836,68 +3838,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_coe_story_body_components:
-          id: field_coe_story_body_components
-          table: node__field_coe_story_body_components
-          field: field_coe_story_body_components
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: ''
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 150
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: true
-            trim: true
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: paragraph_summary
-          settings: {  }
-          group_column: ''
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         body:
           id: body
           table: node__body
@@ -3943,7 +3883,7 @@ display:
           element_wrapper_type: ''
           element_wrapper_class: ''
           element_default_classes: true
-          empty: '{{ field_coe_story_body_components }}'
+          empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
@@ -3951,6 +3891,68 @@ display:
           type: text_default
           settings: {  }
           group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_coe_story_body_components:
+          id: field_coe_story_body_components
+          table: node__field_coe_story_body_components
+          field: field_coe_story_body_components
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: ''
+          exclude: true
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 150
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: true
+            trim: true
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: false
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: '{{ body }}'
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: paragraph_summary
+          settings: {  }
+          group_column: ''
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -3972,7 +3974,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"new-story-card-img\">\r\n{{ field_osu_story_cover_image }}\r\n</div>\r\n<div class=\"pt-2 story-card-text\">\r\n  <div class=\"new-story-title\">{{ title }}</div>\r\n  <div class=\"story-body\">{{ body }}</div>\r\n<p class=\"orange-arrow-link\"><a href=\"{{ view_node }}\" aria-label=\"Read about '{{ title }}'\">Read more</a> </p>\r\n</div>\r\n\r\n"
+            text: "<div class=\"vertical-card\" data-nosnippet><div class=\"h-250-img\">\r\n{{ field_osu_story_cover_image }}\r\n</div>\r\n<div class=\"card-body\">\r\n  <h3 class=\"h6\">{{ title }}</h3>\r\n  <p class=\"card-text\">{{ field_coe_story_body_components }}</p>\r\n<p class=\"card-arrow-link\"><a class=\"stretched-link\" href=\"{{ view_node }}\" aria-label=\"Read more about '{{ title }}'\">Read more</a> </p>\r\n</div>\r\n</div>\r\n\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -3997,13 +3999,13 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: ''
+          element_type: '0'
           element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: 'h-100 osu-bg-page-alt-1 osu-shadow position-relative'
+          element_wrapper_class: h-100
           element_default_classes: true
           empty: ''
           hide_empty: false
@@ -4096,7 +4098,7 @@ display:
         type: views_bootstrap_grid
         options:
           grouping: {  }
-          row_class: 'gy-4 related-story-card'
+          row_class: gy-4
           default_row_class: true
           grid_class: ''
           col_xs: col-12
@@ -6041,7 +6043,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"new-story-card-img\">\r\n{{ field_osu_story_cover_image }}\r\n</div>\r\n<div class=\"pt-2 story-card-text\">\r\n  <div class=\"new-story-title\">{{ title }}</div>\r\n  <div class=\"story-body\">{{ body }}</div>\r\n<p class=\"orange-arrow-link\"><a href=\"{{ view_node }}\" aria-label=\"Read about '{{ title }}'\">Read more</a> </p>\r\n</div>\r\n\r\n"
+            text: "<div class=\"new-story-card-img\">\r\n{{ field_osu_story_cover_image }}\r\n</div>\r\n<div class=\"pt-2 story-card-text\">\r\n  <div class=\"new-story-title\">{{ title }}</div>\r\n  <div class=\"story-body\">{{ body }}</div>\r\n<p class=\"orange-arrow-link\"><a href=\"{{ view_node }}\" aria-label=\"Read more about '{{ title }}'\">Read more</a> </p>\r\n</div>\r\n\r\n"
             make_link: false
             path: ''
             absolute: false
@@ -6679,7 +6681,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: "<div class=\"new-story-card-img\">\r\n{{ field_story_thumbnail }}\r\n</div>\r\n<div class=\"pt-2 story-card-text\">\r\n  <div class=\"new-story-title\">{{ title }}</div>\r\n  <div class=\"story-body\">{{ body }} </div>\r\n<p class=\"orange-arrow-link\"><a href=\"{{ view_node }}\" aria-label=\"Read about '{{ title }}'\">Read more</a> </p>\r\n</div>\r\n\r\n"
+            text: "<div class=\"vertical-card\" data-nosnippet>\r\n<div class=\"h-250-img\">\r\n{{ field_story_thumbnail }}\r\n</div>\r\n<div class=\"card-body\">\r\n  <h3 class=\"h6\">{{ title }}</h3>\r\n  <p class=\"card-text\">{{ body }}</p>\r\n<p class=\"card-arrow-link\"><a class=\"stretched-link\" href=\"{{ view_node }}\" aria-label=\"Read more about '{{ title }}'\">Read more</a> </p>\r\n</div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -6704,13 +6706,13 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: ''
+          element_type: '0'
           element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
           element_wrapper_type: ''
-          element_wrapper_class: 'h-100 osu-bg-page-alt-1 osu-shadow position-relative'
+          element_wrapper_class: h-100
           element_default_classes: true
           empty: ''
           hide_empty: false
@@ -6726,7 +6728,7 @@ display:
         type: views_bootstrap_grid
         options:
           grouping: {  }
-          row_class: 'gy-4 related-story-card'
+          row_class: gy-4
           default_row_class: true
           grid_class: ''
           col_xs: col-12
@@ -9083,6 +9085,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
               field_osu_organizations_target_id:
                 plugin_id: default
                 advanced:
@@ -9096,6 +9099,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
       arguments:
         field_tags_target_id:
           id: field_tags_target_id
@@ -10499,6 +10503,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
               field_osu_organizations_target_id:
                 plugin_id: default
                 advanced:
@@ -10512,6 +10517,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
       arguments:
         field_tags_target_id:
           id: field_tags_target_id
@@ -12183,6 +12189,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
               field_osu_organizations_target_id:
                 plugin_id: default
                 advanced:
@@ -12196,6 +12203,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
       arguments:
         field_tags_target_id:
           id: field_tags_target_id

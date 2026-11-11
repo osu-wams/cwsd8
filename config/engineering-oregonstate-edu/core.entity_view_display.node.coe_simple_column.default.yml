@@ -6,6 +6,7 @@ dependencies:
     - block_content.type.basic
     - field.field.node.coe_simple_column.body
     - field.field.node.coe_simple_column.field_coe_article_conclusion
+    - field.field.node.coe_simple_column.field_hero_modular_article
     - field.field.node.coe_simple_column.field_meta_tags
     - field.field.node.coe_simple_column.field_sc_hero_body
     - field.field.node.coe_simple_column.field_sc_hero_button
@@ -16,8 +17,10 @@ dependencies:
     - field.field.node.coe_simple_column.field_sc_related_resources
     - field.field.node.coe_simple_column.field_sc_toc_body
     - field.field.node.coe_simple_column.field_sc_topic_type
+    - field.field.node.coe_simple_column.field_subtitle
     - node.type.coe_simple_column
     - views.view.related_resources_simple_columns_filtered
+    - views.view.story_content_type_title
   module:
     - bootstrap_layout_builder
     - entity_reference_revisions
@@ -749,7 +752,7 @@ third_party_settings:
               block_id: 61521
               block_revision_id: 153601
               block_serialized: null
-            weight: 0
+            weight: 2
             additional:
               bootstrap_styles:
                 block_style:
@@ -975,29 +978,19 @@ third_party_settings:
           remove_gutters: '0'
           context_mapping: {  }
         components:
-          79c0dded-b3ac-48e6-90c4-6037f15c821c:
-            uuid: 79c0dded-b3ac-48e6-90c4-6037f15c821c
+          28c5237f-8243-40d1-b83e-b3e1a3e4ae43:
+            uuid: 28c5237f-8243-40d1-b83e-b3e1a3e4ae43
             region: blb_region_col_1
             configuration:
-              id: 'field_block:node:coe_simple_column:title'
+              id: 'views_block:story_content_type_title-block_2'
               label: 'In-line Block'
               label_display: '0'
-              provider: layout_builder
-              context_mapping:
-                entity: layout_builder.entity
-                view_mode: view_mode
-              formatter:
-                type: text_field_formatter
-                label: hidden
-                settings:
-                  link_to_entity: 0
-                  wrap_tag: h1
-                  wrap_class: ''
-                  wrap_attributes: ''
-                  override_link_label: ''
-                  token: ''
-                third_party_settings: {  }
-            weight: 0
+              provider: views
+              context_mapping: {  }
+              views_label: ''
+              items_per_page: none
+              exposed: {  }
+            weight: 2
             additional:
               bootstrap_styles:
                 block_style:
@@ -1104,6 +1097,114 @@ third_party_settings:
                   class: ''
                   style: ''
                   data: ''
+          bd3c1a12-9a01-49d8-a3d0-a2c5de532943:
+            uuid: bd3c1a12-9a01-49d8-a3d0-a2c5de532943
+            region: blb_region_col_1
+            configuration:
+              id: 'field_block:node:coe_simple_column:field_hero_modular_article'
+              label: 'Hero Modular Article'
+              label_display: '0'
+              provider: layout_builder
+              context_mapping:
+                entity: layout_builder.entity
+                view_mode: view_mode
+              formatter:
+                type: entity_reference_revisions_entity_view
+                label: hidden
+                settings:
+                  view_mode: default
+                third_party_settings: {  }
+            weight: 3
+            additional:
+              bootstrap_styles:
+                block_style:
+                  background:
+                    background_type: null
+                  background_color:
+                    class: null
+                  background_media:
+                    image:
+                      media_id: null
+                    video:
+                      media_id: null
+                    background_options:
+                      background_position: center
+                      background_repeat: no-repeat
+                      background_attachment: not_fixed
+                      background_size: cover
+                  text_color:
+                    class: null
+                  text_alignment:
+                    class: null
+                  padding:
+                    class: _none
+                  padding_left:
+                    class: _none
+                  padding_top:
+                    class: _none
+                  padding_right:
+                    class: _none
+                  padding_bottom:
+                    class: _none
+                  margin:
+                    class: _none
+                  margin_left:
+                    class: _none
+                  margin_top:
+                    class: mt-4
+                  margin_right:
+                    class: _none
+                  margin_bottom:
+                    class: _none
+                  border:
+                    border_style:
+                      class: null
+                    border_width:
+                      class: _none
+                    border_color:
+                      class: null
+                    rounded_corners:
+                      class: _none
+                    border_left_style:
+                      class: null
+                    border_left_width:
+                      class: _none
+                    border_left_color:
+                      class: null
+                    border_top_style:
+                      class: null
+                    border_top_width:
+                      class: _none
+                    border_top_color:
+                      class: null
+                    border_right_style:
+                      class: null
+                    border_right_width:
+                      class: _none
+                    border_right_color:
+                      class: null
+                    border_bottom_style:
+                      class: null
+                    border_bottom_width:
+                      class: _none
+                    border_bottom_color:
+                      class: null
+                    rounded_corner_top_left:
+                      class: _none
+                    rounded_corner_top_right:
+                      class: _none
+                    rounded_corner_bottom_left:
+                      class: _none
+                    rounded_corner_bottom_right:
+                      class: _none
+                  box_shadow:
+                    class: null
+                  items_alignment:
+                    class: null
+                  scroll_effects:
+                    class: null
+                  min_height:
+                    class: 0
         third_party_settings: {  }
       -
         layout_id: 'bootstrap_layout_builder:blb_col_2'
@@ -1251,7 +1352,7 @@ third_party_settings:
                   rel: '0'
                   target: '0'
                 third_party_settings: {  }
-            weight: 1
+            weight: 2
             additional:
               bootstrap_styles:
                 block_style:
@@ -1374,7 +1475,7 @@ third_party_settings:
                 label: hidden
                 settings: {  }
                 third_party_settings: {  }
-            weight: 0
+            weight: 1
             additional:
               bootstrap_styles:
                 block_style:
@@ -1601,20 +1702,39 @@ third_party_settings:
               provider: toc_js
               context_mapping: {  }
               title: 'Find What You Need'
+              title_tag: h2
+              title_classes: 'toc-title,h2'
               selectors: h2
               selectors_minimum: '1'
               container: .coe-simple-column-body
               prefix: toc
               list_type: ul
+              list_classes: ''
+              li_classes: ''
+              inheritable_classes: ''
               classes: ''
+              heading_classes: ''
+              skip_invisible_headings: 0
+              use_heading_html: 0
+              heading_cleanup_selector: '.visually-hidden, .sr-only'
+              collapsible_items: 0
+              collapsible_expanded: 1
               back_to_top: 0
               back_to_top_label: 'Back to top'
+              back_to_top_selector: ''
+              heading_focus: 0
+              back_to_toc: 0
+              back_to_toc_label: 'Back to table of contents'
+              back_to_toc_classes: visually-hidden-focusable
               smooth_scrolling: 1
               scroll_to_offset: '100'
               highlight_on_scroll: 1
               highlight_offset: '100'
               sticky: 1
               sticky_offset: '50'
+              toc_container: ''
+              ajax_page_updates: 0
+              observable_selector: ''
               sticky_stop: '.article-footer, .related-resources'
               sticky_stop_padding: '128'
             weight: 0
@@ -2531,6 +2651,15 @@ content:
     third_party_settings: {  }
     weight: -20
     region: blb_region_col_1
+  field_hero_modular_article:
+    type: entity_reference_revisions_entity_view
+    label: above
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 134
+    region: blb_region_col_1
   field_meta_tags:
     type: metatag_empty_formatter
     label: above
@@ -2623,3 +2752,4 @@ content:
 hidden:
   entitygroupfield: true
   field_coe_article_conclusion: true
+  field_subtitle: true

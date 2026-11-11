@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
-    - system
+    - node
 id: academics_discipline_injector
-label: 'Academics Discipline Injector'
+label: 'Content Type - Discipline'
 code: |-
   /*
   ==================================================================================================================================================================
@@ -184,6 +183,14 @@ code: |-
   	width: 90%;
   }
 
+  /* If the button block doesn't exist, add top margin to the research headline */
+  .layout-builder__layout:not(:has(.dp-main-description-buttons))
+  .block-field-blocknodedegree-programsfield-dp-main-desc-body {
+      margin-bottom: 90px;
+  }
+
+
+
   /* Research area card header spacing */
   .field--name-field-dp-research-areas .paragraph--type--coe-text-with-links .field--name-field-coe-text-with-link h3, .field--name-field-dp-research-areas .paragraph--type--coe-faculty-research-area .field--name-field-coe-text-with-link h3 {
   	padding-top: 30px;
@@ -193,6 +200,12 @@ code: |-
   .field--name-field-dp-research-areas .field--name-field-coe-text-w-link-link {
   	margin-top: 0;
   	margin-bottom: 70px;
+  }
+
+  /* Add margin only when there is NO link field */
+  .field--name-field-dp-research-areas .paragraph--type--coe-text-with-links:not(:has(.field--name-field-coe-text-w-link-link))
+  .field--name-field-coe-text-w-link-text {
+      margin-bottom: 70px;
   }
 
   /* Desktop card spacing */
@@ -520,7 +533,7 @@ code: |-
   	background: var(--useful-seafoam-shades-seafoam-20, #F1F8F9);
   }
 
-  .card-body {
+  .simple-column-cards .card-body {
     position: relative;
     /*background-image: url('/sites/engineering.oregonstate.edu/files/2025-07/72e8d638766a0ae28dcb239edda79a0ae4b85070.png');*/
     background-image: url('/sites/engineering.oregonstate.edu/files/2025-07/pattern.svg');
@@ -593,13 +606,12 @@ code: |-
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     negate: false
-    block_visibility_group: ''
-  request_path:
-    id: request_path
-    negate: false
-    pages: "/academics/programs/aerospace-engineering\r\n/academics/programs/architectural-engineering\r\n/academics/programs/artificial-intelligence\r\n/academics/programs/bioengineering\r\n/academics/programs/biological-ecological-engineering\r\n/academics/programs/chemical-engineering\r\n/academics/programs/civil-engineering\r\n/academics/programs/computer-science\r\n/academics/programs/construction-engineering-management\r\n/academics/programs/cybersecurity\r\n/academics/programs/electrical-computer-engineering\r\n/academics/programs/energy-systems-engineering\r\n/academics/programs/engineering-management\r\n/academics/programs/engineering-science\r\n/academics/programs/environmental-engineering\r\n/academics/programs/geomatics-engineering\r\n/academics/programs/humanitarian-engineering\r\n/academics/programs/industrial-engineering\r\n/academics/programs/materials-science\r\n/academics/programs/mechanical-engineering\r\n/academics/programs/mechatronics-manufacturing-engineering\r\n/academics/programs/nuclear-engineering\r\n/academics/programs/outdoor-products\r\n/academics/programs/radiation-health-physics\r\n/academics/programs/robotics\r\n/academics/programs/water-resources-engineering\r\n/node/54591"
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      degree_programs: degree_programs
 contexts: {  }
 conditions_require_all: true

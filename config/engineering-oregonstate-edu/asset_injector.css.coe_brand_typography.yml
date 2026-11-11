@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - system
 id: coe_brand_typography
-label: 'COE Brand Typography and Links'
+label: 'COE Brand - Base Styling'
 code: |
   /*
   ==================================================================================================================================================================
@@ -42,6 +41,9 @@ code: |
   	.col-xxl-4 {
   		width: 33.33333333%;
   	}
+  	.col-xxl-6:not(.col-xl-12) {
+  		width: 50%;
+  	}
   }
 
   /*================================================================================================================================================================
@@ -58,7 +60,7 @@ code: |
   	--Secondary-Seafoam: #B8DDE1;
   	--Secondary-Star-Canvas: #003B5C;
   	--Secondary-Rogue-Wave: #0D5257;
-  	--Useful-Seafoam-Shades-Seafoam-Active: #ACCBCF
+  	--Useful-Seafoam-Shades-Seafoam-Active: #ACCBCF;
   }
 
   /* Main/H1 */
@@ -110,16 +112,16 @@ code: |
   h5, .h5 {
   	color: var(--Primary-Paddletail-Black, #000);
   	font-family: "Open Sans";
-  	font-size: 22px;
+  	font-size: 18px;
   	font-style: normal;
   	font-weight: 700;
-  	line-height: 130%; /* 28.6px */
-  	letter-spacing: 1.1px;
+  	line-height: 130%; /* 23.4px */
+  	letter-spacing: 0.9px;
   	text-transform: uppercase;
   }
 
   /* Main/H6 */
-  h6, .h6,
+  h6, .h6, main h6 a, main .h6 a,
   .field--name-field-document-card-link a{
   	color: var(--Primary-Paddletail-Black, #000);
   	font-family: "Open Sans";
@@ -156,7 +158,7 @@ code: |
   }
 
   .large-body {
-  	font-size: 22px;
+  	font-size: 22px !important;
   }
 
   .strong-body {
@@ -191,9 +193,10 @@ code: |
   	line-height: 130%;
   }
 
-  .body-small em {
-  	font-weight: 300;
-  	font-style: italic;
+  .body-small em,
+  em.body-small{
+  	font-weight: 300 !important;
+  	font-style: italic !important;
   }
 
   /* Main/Body p but strong for accessibility purposes */
@@ -268,6 +271,10 @@ code: |
   	color: var(--Secondary-Star-Canvas, #003B5C);
   }
 
+  main .seafoam-text{
+  	color: var(--Secondary-Seafoam, #B8DDE1);
+  }
+
   main .black-text,
   .tab-wrapper-paragraph__tab-link
   {
@@ -292,7 +299,8 @@ code: |
   .orange-arrow-link a,
   .yellow-arrow-link a,
   .black-arrow-link a,
-  .white-arrow-link a{
+  .white-arrow-link a,
+  .rogue-wave-arrow-link a{
   	font-family: Stratum2Web;
   	font-size: 20px;
   	font-style: normal;
@@ -313,6 +321,11 @@ code: |
     border-bottom: none;
   }
 
+  .seafoam-bg .orange-arrow-link a {
+  	color: var(--useful-orange-over-blues-orange-active, #BE3706) !important;
+  	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16' fill='none'%3E%3Cpath d='M1.25 7.76782H15.25' stroke='%23BE3706' stroke-width='2.5' stroke-linecap='square' stroke-linejoin='round'/%3E%3Cpath d='M11.25 13.7678L17.25 7.76782L11.25 1.76782' stroke='%23BE3706' stroke-width='2.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  }
+
   /* Yellow arrow override */
   .yellow-arrow-link a {
   	color: #FFB500 !important;
@@ -331,11 +344,18 @@ code: |
   	color: #FFF !important;
   }
 
+  /* Rogue wave arrow override */
+  .rogue-wave-arrow-link a{
+  	background-image: url("/sites/engineering.oregonstate.edu/files/2026-10/arrow-6.svg") !important;
+  	color: #0D5257 !important;
+  }
+
   /* Container spacing for arrow link */
   .orange-arrow-link,
   .yellow-arrow-link,
   .black-arrow-link,
-  .white-arrow-link
+  .white-arrow-link,
+  .rogue-wave-arrow-link
   {
   	margin-top: 18px;
   }
@@ -344,7 +364,8 @@ code: |
   .orange-arrow-link a:hover,
   .yellow-arrow-link a:hover,
   .black-arrow-link a:hover,
-  .white-arrow-link a:hover {
+  .white-arrow-link a:hover,
+  .rogue-wave-arrow-link a:hover{
   	padding-right: 35px;
   	margin-right: 0px;
   	border-bottom: none;
@@ -352,12 +373,20 @@ code: |
 
   /* Orange arrow active/focus state */
   .orange-arrow-link a:active,
-  .orange-arrow-link a:focus {
+  .orange-arrow-link a:focus{
   	background-color: transparent !important;
   	color: #BE3706 !important;
   	padding-right: 35px !important;
   	border-bottom: none !important;
+    background-image: url(/sites/engineering.oregonstate.edu/files/2026-08/arrow-right-brown.c4e9b645_0.svg);
   }
+
+  .seafoam-bg .orange-arrow-link a:active,
+  .seafoam-bg .orange-arrow-link a:active {
+  	color: #A63207 !important;
+  	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='16' viewBox='0 0 20 16' fill='none'%3E%3Cpath d='M1.25 7.76782H15.25' stroke='%23A63207' stroke-width='2.5' stroke-linecap='square' stroke-linejoin='round'/%3E%3Cpath d='M11.25 13.7678L17.25 7.76782L11.25 1.76782' stroke='%23A63207' stroke-width='2.5' stroke-linecap='square'/%3E%3C/svg%3E");
+  }
+
 
   /* Yellow arrow active/focus state */
   .yellow-arrow-link a:active,
@@ -384,6 +413,16 @@ code: |
   	color: #000 !important;
   	padding-right: 35px !important;
   	border-bottom: none !important;
+  }
+
+  /* Rogue wave arrow active/focus state */
+  .rogue-wave-arrow-link a:active,
+  .rogue-wave-arrow-link a:focus{
+  	background-color: transparent !important;
+  	color: #0D5257 !important;
+  	padding-right: 35px !important;
+  	border-bottom: none !important;
+  	
   }
 
   /***************************************
@@ -529,6 +568,18 @@ code: |
 
   .coe-button-dark-grey-bg {
   	--transparent-bg-color: #212529;
+  }
+
+  .coe-button-white-bg {
+  	--transparent-bg-color: #FFF !important;
+  }
+
+  .coe-button-rogue-wave-bg {
+  	--transparent-bg-color: #0D5257;
+  }
+
+  .coe-button-hop-bine-bg {
+  	--transparent-bg-color: #F7F5EA;
   }
 
   	
@@ -924,50 +975,77 @@ code: |
   	}
   }
 
+  /*************************************************************
+  	Card Styling
+  *************************************************************/
+
+  .coe-brand-card{
+  	border-radius: 5px;
+  	background: var(--Primary-Bucktooth-White, #FFF);
+  	box-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.08);
+  	transition: .3s;
+  }
+
+  .coe-brand-card:hover{
+  	background: #F9FCFD !important;
+  	box-shadow: 0 0 4px 0 rgba(0,0,0,0.08) !important;
+  	transition: .3s;
+  }
+
   /*------------------------------------------------------------------------------
   	Sub-Section: Orange Bullet Point Styling
   	
-  	Styling for orange bullet points
+  	Variants: .bullets-yellow, .bullets-white, .bullets-black
   	----------------------------------------------------------------------------*/
-
-  /* Bullet point icon setup */
-  main ul > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item)::before {
-  	content: '' !important;
-  	display: inline-block;
-  	width: 1.8ch;
-  	height: 1.8ch;
-  	position: absolute;
-  	left: 0;
-  	top: 0.5ch;
-    background-size: contain;
-    background-repeat: no-repeat;
-  	background-position: top left;
-  }
-
-  /* Sets orange bullet point icon */
-  main ul > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item)::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="%23D73F09" stroke-width="4" stroke-linecap="square"/></svg>');
-  }
-
-  /* Sets yellow bullet point icon */
-  main ul.bullets-yellow > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item)::before {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="%23FFB500" stroke-width="4" stroke-linecap="square"/></svg>');
-  }
-
-  /* Bullet point spacing */
-  main ul > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item) {
-    position: relative; /* Allows positioning of the pseudo-element */
-    padding-left: 20px; /* Space for the bullet */
-    padding-bottom: 18px;
-  	list-style: none;
-  }
-
-  main ul > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item)::marker {
-  	content: "" !important;
-  }
 
   main ul {
   	padding-left: 0;
+  	margin-bottom: 0;
+  	--bullet-color: #D73F09;
+  }
+
+  main ul.bullets-yellow { --bullet-color: #FFB500; }
+  main ul.bullets-white  { --bullet-color: #FFF; }
+  main ul.bullets-black  { --bullet-color: #000; }
+
+  @media (forced-colors: active) {
+  	main ul { --bullet-color: CanvasText !important; }
+  }
+
+  main .list-unstyled > ul {
+  	list-style: none;
+  }
+
+  main ul:not(.list-unstyled, .list-unstyled > ul) > li:not(.nav-item, .toc-h2, .toc-h3, .pager__item) {
+  	position: relative;
+  	padding-left: 20px;
+  	list-style: none;
+  }
+
+  main ul:not(.list-unstyled, .list-unstyled > ul) > li:not(.nav-item, .toc-h2, .toc-h3, .pager__item)::marker {
+  	content: "" !important;
+  }
+
+  main ul:not(.list-unstyled, .list-unstyled > ul) > li:not(.nav-item, .toc-h2, .toc-h3, .pager__item)::before {
+  	--bullet-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 20"><path d="M3 17L10 10L3 3" fill="none" stroke="black" stroke-width="4" stroke-linecap="square"/></svg>');
+  	content: '' !important;
+  	position: absolute;
+  	left: 0;
+  	top: 0.5ch;
+  	width: 1.8ch;
+  	height: 1.8ch;
+  	background-color: var(--bullet-color);
+  	-webkit-mask: var(--bullet-icon) top left / contain no-repeat;
+  	mask: var(--bullet-icon) top left / contain no-repeat;
+  	forced-color-adjust: none;
+  }
+
+  main ul:not(.list-unstyled, .list-unstyled > ul) > li:not(.nav-item, .toc-h2, .toc-h3, .pager__item) > ul {
+  	margin-top: 10px;
+  }
+
+  main ul:is(:not(.list-unstyled, .list-unstyled > ul), .list-spacing) > li:not(.nav-item, .toc-h2, .toc-h3, .pager__item, :last-child) {
+  	padding-bottom: 18px;
   }
 
   /*------------------------------------------------------------------------------
@@ -975,7 +1053,7 @@ code: |
   	----------------------------------------------------------------------------*/
 
 
-  @media screen and (max-width: 414px) {
+  @media screen and (max-width: 439px) {
   	.long-h1 {
   		font-size: 44px;
   		line-height: 120%;
@@ -983,12 +1061,18 @@ code: |
 
   }
 
-  @media screen and (min-width: 414px) and (max-width: 1012px) {
+  @media screen and (min-width: 440px) and (max-width: 767px) {
+  	.long-h1 {
+  		font-size: 55px;
+  		line-height: 120%;
+  	}
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 1012px) {
   	.long-h1 {
   		font-size: 70px;
   		line-height: 120%;
   	}
-
   }
 
   /*------------------------------------------------------------------------------
@@ -1004,17 +1088,9 @@ code: |
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
   request_path:
     id: request_path
     negate: false
-    pages: "/node/47741\r\n/node/1011\r\n/node/33636\r\n/node/996\r\n/node/2096\r\n/node/40436\r\n/node/1976\r\n/node/1716\r\n/node/1421\r\n/node/1731\r\n/node/3266\r\n/node/40446\r\n/node/47811\r\n/node/2076\r\n/node/33641\r\n/node/40461\r\n/node/2081\r\n/node/47881\r\n/node/2186\r\n/node/2101\r\n/node/47911\r\n/node/5006\r\n/node/3766\r\n/simple-column/*\r\n/node/48026\r\n/node/47176\r\n/node/48156\r\n/node/47886\r\n/node/34301\r\n/test/simple-tabs-related-resources-test\r\n/test/discover-engineering\r\n/academics/discover-engineering/*\r\n/academics/discover-engineering\r\n/node/45261\r\n/node/52196\r\n/node/52201\r\n/node/41131\r\n/node/52226\r\n/node/52391\r\n/all-stories/*\r\n/node/45161\r\n/node/52441\r\n/node/52446\r\n/node/52576\r\n/node/52646\r\n/node/52646/*\r\n/test/home-test\r\n/node/411/latest\r\n/node/52851\r\n/node/52856\r\n/node/411\r\n/node/52896\r\n/test/coe-brand-blocks\r\n/access-denied\r\n/node/43471\r\n/node/43266\r\n/node/53026\r\n/node/53061\r\n/node/53066\r\n/node/53081\r\n/node/53091\r\n/node/43346\r\n/node/43236\r\n/node/43251\r\n/node/53236\r\n/node/34306\r\n/node/53291\r\n/research/wave-lab/*\r\n/research/wave-lab\r\n/node/53451\r\n/node/5161\r\n/node/53481\r\n/node/53486\r\n/node/53476\r\n/node/32766\r\n/node/53511\r\n/node/53516\r\n/node/53521\r\n/node/53526\r\n/node/53531\r\n/node/53536\r\n/node/53541\r\n/node/53566\r\n/node/53576\r\n/node/53581\r\n/node/32771\r\n/node/32786\r\n/node/32781\r\n/node/53691\r\n/node/53696\r\n/node/32776\r\n/node/5201\r\n/node/86\r\n/node/1511\r\n/node/1441\r\n/node/1651/latest\r\n/node/5221\r\n/node/53736\r\n/node/53741\r\n/node/53756\r\n/node/53761\r\n/node/3061\r\n/node/3086\r\n/node/45071\r\n/node/3091\r\n/node/3686\r\n/node/3071\r\n/node/3376\r\n/node/41871\r\n/node/41866\r\n/node/1436\r\n/node/3131\r\n/node/45076\r\n/node/3361\r\n/node/3316\r\n/node/3536\r\n/node/5176\r\n/node/5361\r\n/node/1\r\n/node/1016\r\n/node/32046\r\n/node/1561\r\n/node/3981\r\n/node/3026\r\n/node/3661\r\n/node/4451\r\n/node/34416\r\n/node/4081\r\n/node/3021\r\n/node/3531\r\n/node/3481\r\n/node/40456\r\n/node/3756\r\n/node/3761\r\n/node/3771\r\n/node/3271\r\n/node/40441\r\n/node/1536\r\n/node/1001\r\n/node/1006\r\n/all-stories\r\n/node/3526\r\n/node/3056\r\n/node/4441\r\n/node/3521\r\n/node/3776\r\n/node/951\r\n/node/33656\r\n/node/39871\r\n/node/42611\r\n/node/42346\r\n/node/33651\r\n/node/33646\r\n/node/54106\r\n/node/42611\r\n/test/amp-learn-more-section\r\n/node/54141\r\n/node/54146\r\n/node/54176\r\n/node/54221\r\n/node/54236\r\n/test/meng-page-faq-section-test\r\n/node/45161/latest\r\n/node/1256\r\n/node/1406\r\n/node/54301\r\n/node/54306\r\n/node/43511\r\n/node/42631\r\n/node/54321\r\n/node/54326\r\n/node/47176/latest\r\n/node/43001\r\n/node/441\r\n/node/991\r\n/node/3541\r\n/node/43176\r\n/research/robotics/*\r\n/research/artificial-intelligence/*\r\n/node/45821\r\n/node/54526\r\n/node/54526/latest\r\n/node/41131/latest\r\n/node/54651\r\n/node/54626\r\n/node/54656\r\n/node/54686\r\n/node/54691\r\n/node/54696\r\n/node/46831\r\n/node/3541/latest\r\n/people/*"
-  current_theme:
-    id: current_theme
-    negate: false
-    theme: madrone
+    pages: "/node/47741\r\n/node/1011\r\n/node/33636\r\n/node/996\r\n/node/2096\r\n/node/40436\r\n/node/1976\r\n/node/1716\r\n/node/1421\r\n/node/1731\r\n/node/3266\r\n/node/40446\r\n/node/47811\r\n/node/2076\r\n/node/33641\r\n/node/40461\r\n/node/2081\r\n/node/47881\r\n/node/2186\r\n/node/2101\r\n/node/47911\r\n/node/5006\r\n/node/3766\r\n/simple-column/*\r\n/node/48026\r\n/node/47176\r\n/node/48156\r\n/node/47886\r\n/node/34301\r\n/test/simple-tabs-related-resources-test\r\n/test/discover-engineering\r\n/academics/discover-engineering/*\r\n/academics/discover-engineering\r\n/node/45261\r\n/node/52196\r\n/node/52201\r\n/node/41131\r\n/node/52226\r\n/node/52391\r\n/all-stories/*\r\n/node/45161\r\n/node/52441\r\n/node/52446\r\n/node/52576\r\n/node/52646\r\n/node/52646/*\r\n/test/home-test\r\n/node/411/latest\r\n/node/52851\r\n/node/52856\r\n/node/411\r\n/node/52896\r\n/test/coe-brand-blocks\r\n/access-denied\r\n/node/43471\r\n/node/43266\r\n/node/53026\r\n/node/53061\r\n/node/53066\r\n/node/53081\r\n/node/53091\r\n/node/43346\r\n/node/43236\r\n/node/43251\r\n/node/53236\r\n/node/34306\r\n/node/53291\r\n/research/wave-lab/*\r\n/research/wave-lab\r\n/node/53451\r\n/node/5161\r\n/node/53481\r\n/node/53486\r\n/node/53476\r\n/node/32766\r\n/node/53511\r\n/node/53516\r\n/node/53521\r\n/node/53526\r\n/node/53531\r\n/node/53536\r\n/node/53541\r\n/node/53566\r\n/node/53576\r\n/node/53581\r\n/node/32771\r\n/node/32786\r\n/node/32781\r\n/node/53691\r\n/node/53696\r\n/node/32776\r\n/node/5201\r\n/node/86\r\n/node/1511\r\n/node/1441\r\n/node/1651/latest\r\n/node/5221\r\n/node/53736\r\n/node/53741\r\n/node/53756\r\n/node/53761\r\n/node/3061\r\n/node/3086\r\n/node/45071\r\n/node/3091\r\n/node/3686\r\n/node/3071\r\n/node/3376\r\n/node/41871\r\n/node/41866\r\n/node/1436\r\n/node/3131\r\n/node/45076\r\n/node/3361\r\n/node/3316\r\n/node/3536\r\n/node/5176\r\n/node/5361\r\n/node/1\r\n/node/1016\r\n/node/32046\r\n/node/1561\r\n/node/3981\r\n/node/3026\r\n/node/3661\r\n/node/4451\r\n/node/34416\r\n/node/4081\r\n/node/3021\r\n/node/3531\r\n/node/3481\r\n/node/40456\r\n/node/3756\r\n/node/3761\r\n/node/3771\r\n/node/3271\r\n/node/40441\r\n/node/1536\r\n/node/1001\r\n/node/1006\r\n/all-stories\r\n/node/3526\r\n/node/3056\r\n/node/4441\r\n/node/3521\r\n/node/3776\r\n/node/951\r\n/node/33656\r\n/node/39871\r\n/node/42611\r\n/node/42346\r\n/node/33651\r\n/node/33646\r\n/node/54106\r\n/node/42611\r\n/test/amp-learn-more-section\r\n/node/54141\r\n/node/54146\r\n/node/54176\r\n/node/54221\r\n/node/54236\r\n/test/meng-page-faq-section-test\r\n/node/45161/latest\r\n/node/1256\r\n/node/1406\r\n/node/54301\r\n/node/54306\r\n/node/43511\r\n/node/42631\r\n/node/54321\r\n/node/54326\r\n/node/47176/latest\r\n/node/43001\r\n/node/441\r\n/node/991\r\n/node/3541\r\n/node/43176\r\n/research/robotics/*\r\n/research/artificial-intelligence/*\r\n/node/45821\r\n/node/54526\r\n/node/54526/latest\r\n/node/41131/latest\r\n/node/54651\r\n/node/54626\r\n/node/54656\r\n/node/54686\r\n/node/54691\r\n/node/54696\r\n/node/46831\r\n/node/3541/latest\r\n/about/directory/*\r\n/node/58636\r\n/node/14311\r\n/node/81\r\n/EECS/MyEECS/EECS-guidance-drafting-ai-use-policies\r\n/node/34756\r\n/node/58806\r\n/node/58826\r\n/node/34746\r\n/node/58836\r\n/node/196\r\n/node/58846\r\n/research/civil-construction-engineering/*\r\n/node/58851\r\n/node/3386\r\n/node/4121\r\n/node/3916\r\n/node/3936\r\n/node/42631/latest\r\n/node/47311\r\n/node/33666\r\n/node/59441\r\n/node/59446\r\n/node/59456\r\n/test/cybercorps-people-view\r\n/node/59466\r\n/node/59451\r\n/node/39871/latest\r\n/node/3426\r\n/node/45816\r\n/node/391\r\n/node/34161\r\n/node/366\r\n/node/59511\r\n/node/59516\r\n/node/34156\r\n/node/59596\r\n/node/1901\r\n/node/59611\r\n/node/59616\r\n/node/42221\r\n/node/91\r\n/node/47611\r\n/node/47676\r\n/node/47681\r\n/node/59666\r\n/node/53901\r\n/node/59781\r\n/node/38806\r\n/node/59791\r\n/node/59811\r\n/node/59826"
 contexts: {  }
 conditions_require_all: true

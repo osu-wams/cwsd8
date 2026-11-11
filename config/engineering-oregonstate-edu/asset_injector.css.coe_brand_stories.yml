@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - system
 id: coe_brand_stories
-label: 'COE Brand Stories'
+label: 'COE Brand - Stories'
 code: |-
   /* ==============================================
   Story: Story by section styling IS
@@ -81,6 +80,19 @@ code: |-
   	.story-by-container .container {
   		padding-right: 36px;
   	}
+  }
+
+
+  .subtitle {
+    display: block;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  @media (min-width: 992px) {
+    .subtitle {
+      width: 82%;
+    }
   }
 
   /* ==============================================
@@ -271,11 +283,11 @@ code: |-
     box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;
   }
 
-  .story-related-researcher-card:focus {z
-    /*background-color: #F9FCFD !important;*/
-    /*border: 2px solid #D73F09 !important;*/
-    /*box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;*/
-    border-radius: 5px;
+  .story-related-researcher-card:focus {
+  	/*background-color: #F9FCFD !important;*/
+  	/*border: 2px solid #D73F09 !important;*/
+  	/*box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.08) !important;*/
+  	border-radius: 5px;
   	border: 1px solid var(--Useful-Grey-Shades-Lightest-Grey, #F8F9FA);
   	background: var(--useful-seafoam-shades-seafoam-8, #F9FCFD);
   }
@@ -485,8 +497,6 @@ code: |-
   	border: 2px solid #000;
   }
 
-  .
-
   /*********************************
   * Photo Handling for Stories
   *********************************/
@@ -522,6 +532,7 @@ code: |-
   .media--view-mode-left-50-50,
   .view-mode--left_50_50 > figcaption {
   	width: 50%;
+  	color: #000 !important;
   }
 
   .media--view-mode-left-50-50 img {
@@ -708,16 +719,22 @@ code: |-
   		right: 0px;
   	}
   }
+
+
+  /************************************************************
+  Story Iframe Styling
+  ************************************************************/
+  main iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+  }
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
   request_path:
     id: request_path
     negate: false
-    pages: "/all-stories/*\r\n<front>\r\n/academics/programs/aerospace-engineering\r\n/academics/programs/architectural-engineering\r\n/academics/programs/artificial-intelligence\r\n/academics/programs/bioengineering\r\n/academics/programs/biological-ecological-engineering\r\n/academics/programs/chemical-engineering\r\n/academics/programs/civil-engineering\r\n/academics/programs/computer-science\r\n/academics/programs/construction-engineering-management\r\n/academics/programs/cybersecurity\r\n/academics/programs/electrical-computer-engineering\r\n/academics/programs/energy-systems-engineering\r\n/academics/programs/engineering-management\r\n/academics/programs/engineering-science\r\n/academics/programs/environmental-engineering\r\n/academics/programs/geomatics-engineering\r\n/academics/programs/humanitarian-engineering\r\n/academics/programs/industrial-engineering\r\n/academics/programs/materials-science\r\n/academics/programs/mechanical-engineering\r\n/academics/programs/mechatronics-manufacturing-engineering\r\n/academics/programs/nuclear-engineering\r\n/academics/programs/outdoor-products\r\n/academics/programs/radiation-health-physics\r\n/academics/programs/robotics\r\n/academics/programs/water-resources-engineering\r\n/node/51991/latest\r\n/node/54591"
+    pages: "/all-stories/*\r\n<front>\r\n/academics/programs/aerospace-engineering\r\n/academics/programs/architectural-engineering\r\n/academics/programs/artificial-intelligence\r\n/academics/programs/bioengineering\r\n/academics/programs/biological-ecological-engineering\r\n/academics/programs/chemical-engineering\r\n/academics/programs/civil-engineering\r\n/academics/programs/computer-science\r\n/academics/programs/construction-engineering-management\r\n/academics/programs/cybersecurity\r\n/academics/programs/electrical-computer-engineering\r\n/academics/programs/energy-systems-engineering\r\n/academics/programs/engineering-management\r\n/academics/programs/engineering-science\r\n/academics/programs/environmental-engineering\r\n/academics/programs/geomatics-engineering\r\n/academics/programs/humanitarian-engineering\r\n/academics/programs/industrial-engineering\r\n/academics/programs/materials-science\r\n/academics/programs/mechanical-engineering\r\n/academics/programs/mechatronics-manufacturing-engineering\r\n/academics/programs/nuclear-engineering\r\n/academics/programs/outdoor-products\r\n/academics/programs/radiation-health-physics\r\n/academics/programs/robotics\r\n/academics/programs/water-resources-engineering\r\n/node/51991/latest\r\n/node/54591\r\n/node/58731"
 contexts: {  }
 conditions_require_all: true

@@ -20,6 +20,7 @@ dependencies:
     - field.field.node.story.field_osu_story_realtime_seo
     - field.field.node.story.field_story_key_takeaways_2
     - field.field.node.story.field_story_thumbnail
+    - field.field.node.story.field_subtitle
     - field.field.node.story.field_tags
     - node.type.story
     - workflows.workflow.editorial
@@ -63,7 +64,7 @@ third_party_settings:
       label: 'External Link'
       region: content
       parent_name: group_hero_area
-      weight: 5
+      weight: 6
       format_type: details
       format_settings:
         classes: ''
@@ -76,6 +77,7 @@ third_party_settings:
     group_hero_area:
       children:
         - title
+        - field_subtitle
         - field_c_engr_story_author
         - group_use_this_field_to_link_to
         - group_stories_hero_image_area
@@ -95,13 +97,14 @@ third_party_settings:
         required_fields: true
     group_deprecrated:
       children:
+        - body
         - entitygroupfield
         - field_c_engr_audience
         - field_c_engr_related_research
       label: Deprecrated
       region: content
       parent_name: ''
-      weight: 10
+      weight: 11
       format_type: details
       format_settings:
         classes: ''
@@ -120,7 +123,7 @@ third_party_settings:
       label: 'Hero Image Area'
       region: content
       parent_name: group_hero_area
-      weight: 6
+      weight: 7
       format_type: details
       format_settings:
         classes: ''
@@ -133,7 +136,6 @@ third_party_settings:
     group_stories_story_content:
       children:
         - field_coe_story_body_components
-        - body
       label: 'Main Body Content'
       region: content
       parent_name: ''
@@ -145,7 +147,7 @@ third_party_settings:
         id: ''
         label_as_html: false
         open: false
-        description: ''
+        description: 'Always use H2 (with h3 class) for sections, and H3 (with h4 class) for sub-sections.'
         required_fields: true
     group_stories_key_takeaways:
       children:
@@ -153,7 +155,7 @@ third_party_settings:
       label: 'Key Takeaways'
       region: content
       parent_name: group_hero_area
-      weight: 7
+      weight: 8
       format_type: details
       format_settings:
         classes: ''
@@ -182,13 +184,13 @@ content:
     third_party_settings: {  }
   created:
     type: datetime_timestamp
-    weight: 9
+    weight: 10
     region: content
     settings: {  }
     third_party_settings: {  }
   entitygroupfield:
     type: entitygroupfield_select_widget
-    weight: 11
+    weight: 15
     region: content
     settings:
       help_text: ''
@@ -208,7 +210,7 @@ content:
     third_party_settings: {  }
   field_c_engr_audience:
     type: entity_reference_autocomplete
-    weight: 12
+    weight: 16
     region: content
     settings:
       match_operator: CONTAINS
@@ -218,7 +220,7 @@ content:
     third_party_settings: {  }
   field_c_engr_discipline:
     type: entity_reference_autocomplete
-    weight: 12
+    weight: 13
     region: content
     settings:
       match_operator: CONTAINS
@@ -228,7 +230,7 @@ content:
     third_party_settings: {  }
   field_c_engr_related_research:
     type: entity_reference_autocomplete
-    weight: 13
+    weight: 17
     region: content
     settings:
       match_operator: CONTAINS
@@ -238,7 +240,7 @@ content:
     third_party_settings: {  }
   field_c_engr_story_author:
     type: string_textfield
-    weight: 4
+    weight: 5
     region: content
     settings:
       size: 60
@@ -266,7 +268,7 @@ content:
     third_party_settings: {  }
   field_hero_photo_by:
     type: string_textfield
-    weight: 6
+    weight: 7
     region: content
     settings:
       size: 60
@@ -274,7 +276,7 @@ content:
     third_party_settings: {  }
   field_hero_photo_caption:
     type: string_textfield
-    weight: 7
+    weight: 8
     region: content
     settings:
       size: 60
@@ -282,7 +284,7 @@ content:
     third_party_settings: {  }
   field_meta_tags:
     type: metatag_firehose
-    weight: 7
+    weight: 8
     region: content
     settings:
       sidebar: true
@@ -290,7 +292,7 @@ content:
     third_party_settings: {  }
   field_osu_organizations:
     type: entity_reference_autocomplete
-    weight: 13
+    weight: 14
     region: content
     settings:
       match_operator: CONTAINS
@@ -315,7 +317,7 @@ content:
     third_party_settings: {  }
   field_osu_story_realtime_seo:
     type: yoast_seo_widget
-    weight: 26
+    weight: 18
     region: content
     settings:
       edit_title: true
@@ -338,9 +340,17 @@ content:
     settings:
       media_types: {  }
     third_party_settings: {  }
+  field_subtitle:
+    type: string_textfield
+    weight: 4
+    region: content
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
   field_tags:
     type: entity_reference_autocomplete
-    weight: 14
+    weight: 15
     region: content
     settings:
       match_operator: CONTAINS
@@ -350,13 +360,13 @@ content:
     third_party_settings: {  }
   moderation_state:
     type: moderation_state_default
-    weight: 12
+    weight: 13
     region: content
     settings: {  }
     third_party_settings: {  }
   osu_a11y_remediation_email:
     type: email_default
-    weight: 50
+    weight: 19
     region: content
     settings:
       placeholder: ''
@@ -364,31 +374,31 @@ content:
     third_party_settings: {  }
   path:
     type: path
-    weight: 6
+    weight: 7
     region: content
     settings: {  }
     third_party_settings: {  }
   promote:
     type: boolean_checkbox
-    weight: 4
+    weight: 5
     region: content
     settings:
       display_label: true
     third_party_settings: {  }
   publish_on:
     type: datetime_timestamp_no_default
-    weight: 13
+    weight: 14
     region: content
     settings: {  }
     third_party_settings: {  }
   publish_state:
     type: scheduler_moderation
-    weight: 14
+    weight: 15
     region: content
     settings: {  }
     third_party_settings: {  }
   scheduler_settings:
-    weight: 11
+    weight: 12
     region: content
     settings: {  }
     third_party_settings: {  }
@@ -409,7 +419,7 @@ content:
     third_party_settings: {  }
   uid:
     type: entity_reference_autocomplete
-    weight: 8
+    weight: 9
     region: content
     settings:
       match_operator: CONTAINS
@@ -419,18 +429,18 @@ content:
     third_party_settings: {  }
   unpublish_on:
     type: datetime_timestamp_no_default
-    weight: 15
+    weight: 16
     region: content
     settings: {  }
     third_party_settings: {  }
   unpublish_state:
     type: scheduler_moderation
-    weight: 16
+    weight: 17
     region: content
     settings: {  }
     third_party_settings: {  }
   url_redirects:
-    weight: 5
+    weight: 6
     region: content
     settings: {  }
     third_party_settings: {  }

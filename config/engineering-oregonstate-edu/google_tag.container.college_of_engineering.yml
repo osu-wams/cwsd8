@@ -3,42 +3,50 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
+    - system
 id: college_of_engineering
 label: 'College of Engineering'
 weight: 0
-container_id: GTM-NNJTHXK
-hostname: www.googletagmanager.com
-data_layer: dataLayer
-include_classes: false
-whitelist_classes: |-
-  google
-  nonGooglePixels
-  nonGoogleScripts
-  nonGoogleIframes
-blacklist_classes: |-
-  customScripts
-  customPixels
-include_environment: false
-environment_id: ''
-environment_token: ''
-path_toggle: 'exclude listed'
-path_list: |-
-  /admin*
-  /batch*
-  /node/add*
-  /node/*/edit
-  /node/*/delete
-  /user/*/edit*
-  /user/*/cancel*
-role_toggle: 'exclude listed'
-role_list: {  }
-status_toggle: 'exclude listed'
-status_list: |-
-  403
-  404
+tag_container_ids:
+  - GTM-NNJTHXK
+  - G-LDRC9SJDTS
+advanced_settings:
+  consent_mode: false
+  gtm:
+    GTM-NNJTHXK:
+      data_layer: dataLayer
+      include_classes: false
+      allowlist_classes: |-
+        google
+        nonGooglePixels
+        nonGoogleScripts
+        nonGoogleIframes
+      blocklist_classes: |-
+        customScripts
+        customPixels
+      include_environment: false
+      environment_id: ''
+      environment_token: ''
+dimensions_metrics: {  }
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
+  request_path:
+    id: request_path
+    negate: true
+    pages: "/admin*\r\n/batch*\r\n/node/add*\r\n/node/*/edit\r\n/node/*/delete\r\n/user/*/edit*\r\n/user/*/cancel*"
+  response_code:
+    id: response_code
+    negate: true
+    response_codes: |-
+      403
+      404
+events:
+  search: {  }
+  generate_lead:
+    value: ''
+    currency: ''
+  custom: {  }
+  webform_purchase: {  }
+  sign_up:
+    method: CMS
+  login:
+    method: CMS

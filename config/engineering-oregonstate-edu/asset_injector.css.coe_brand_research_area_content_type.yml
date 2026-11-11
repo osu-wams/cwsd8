@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
+    - node
     - system
 id: coe_brand_research_area_content_type
-label: 'COE Brand Research Area Content Type'
+label: 'Content Type - Research Area'
 code: |-
   .coe-research-hero > .container > .layout > .col-12 { 
   	display: flex; 
@@ -28,32 +28,43 @@ code: |-
   /*
   Labs section
   */
-  @media (min-width: 991px){
-  .paragraph--type--coe-image-and-text{
-  	display: flex;
-  	justify-content: space-between;
-  	align-items: center;
-  }
+
+  @media (min-width: 992px) {
+    .paragraph--type--coe-image-and-text {
+      display: flex !important;
+      flex-direction: row !important;
+      flex-wrap: nowrap !important;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    .paragraph--type--coe-image-and-text > .field--name-field-coe-text-image-text {
+      width: 50% !important;
+      max-width: 50% !important;
+      flex: 0 0 50% !important;
+    }
+
   }
 
-  @media (max-width: 991px){
-  .field--name-field-media-image{
-  	margin-top: 50px;
-  }
+  @media (max-width: 991px) {
+    .field--name-field-coe-research-area-sections .paragraph--type--coe-image-and-text .field--name-field-media-image {
+      margin-top: 50px;
+    }
   }
 
-
-  .field--name-field-coe-image-style{
-  	display: none;
+  .field--name-field-coe-image-style {
+    display: none;
   }
 
   .field--name-field-coe-research-area-sections > .field__item { 
-  	margin-bottom: 60px; 
+    margin-bottom: 80px; 
   }
 
-  .field--name-field-coe-text-image-text h2{
-  	margin-bottom: 20px;
+  .field--name-field-coe-text-image-text h2 {
+    margin-bottom: 20px;
   }
+
+
 
   /************************************************************************
 
@@ -142,16 +153,94 @@ code: |-
   	margin-bottom: 25px;
   	width: calc(100% - 15px);
   }
+
+  .field--name-field-image-w-text-entry {
+  	display: flex;
+  	flex-wrap: wrap;
+  	justify-content: space-between;
+  	row-gap: 50px;
+  }
+
+  .field--name-field-image-w-text-entry > .field__item {
+  	width: calc(50% - 10px);
+  }
+
+  @media screen and (max-width: 991px) {
+  	.field--name-field-image-w-text-entry > .field__item {
+  		width: 100%;
+  	}
+  }
+
+  .field--name-field-image-w-text-entry > .field__item img {
+  	object-fit: cover;
+  	height: 300px;
+  	object-position: center;
+  	width: 100%;
+  	margin-bottom: 20px;
+  }
+
+  .field--name-field-image-w-text-entry > .field__item h3 {
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-family: Stratum2Web;
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  }
+
+  .field--name-field-image-w-text-entry > .field__item .field--name-field-coe-2-col-img-txt-link a{
+  	font-family: Stratum2Web;
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 500;
+  	line-height: normal;
+  	letter-spacing: 1px;
+  	text-transform: uppercase;
+  	color: #D73F09 !important;
+  	text-decoration: none !important;
+  	background-image: url(/modules/custom/osu_custom_blocks/dist/arrow-right-red.c4e9b645.svg);
+    background-position: 100%;
+    background-repeat: no-repeat;
+    background-size: 20px;
+    padding-right: 25px;
+    margin-right: 10px;
+    margin-top: 18px;
+    transition: 0.2s ease;
+    border-bottom: none;
+  }
+
+  .field--name-field-image-w-text-entry > .field__item .field--name-field-coe-2-col-img-txt-link a:hover {
+  	padding-right: 35px;
+  	margin-right: 0px;
+  	border-bottom: none;
+  }
+
+  .field--name-field-image-w-text-entry > .field__item .field--name-field-coe-2-col-img-txt-link a:focus,
+  .field--name-field-image-w-text-entry > .field__item .field--name-field-coe-2-col-img-txt-link a:active {
+  	background-color: transparent !important;
+  	color: #BE3706 !important;
+  	padding-right: 35px !important;
+  	border-bottom: none !important;
+  }
+
+  .field--name-field-image-w-text-entry > .field__item .field--name-field-coe-2-col-img-txt-link {
+  	margin-top: 20px;
+  }
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     negate: false
-    block_visibility_group: ''
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      research_area: research_area
   request_path:
     id: request_path
-    negate: false
-    pages: "/research/robotics/*\r\n/research/artificial-intelligence/*"
+    negate: true
+    pages: '/*/edit'
 contexts: {  }
 conditions_require_all: true

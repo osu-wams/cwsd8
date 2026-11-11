@@ -11,9 +11,7 @@ dependencies:
     - field.field.node.osu_profile.field_c_engr_external_links
     - field.field.node.osu_profile.field_c_engr_fax
     - field.field.node.osu_profile.field_c_engr_secondary_title
-    - field.field.node.osu_profile.field_c_engr_teaching
     - field.field.node.osu_profile.field_c_engr_title
-    - field.field.node.osu_profile.field_field_c_engr_labs
     - field.field.node.osu_profile.field_osu_organizations
     - field.field.node.osu_profile.field_profile_biography
     - field.field.node.osu_profile.field_profile_email
@@ -42,6 +40,7 @@ id: engr_profiles
 description: ''
 help: ''
 import_period: -1
+import_period_per_feed: false
 fetcher: upload
 fetcher_configuration:
   allowed_extensions: 'txt csv tsv xml opml'
@@ -60,7 +59,10 @@ processor_configuration:
   update_existing: 2
   update_non_existent: _keep
   skip_hash_check: false
+  skip_validation: false
+  skip_validation_types: {  }
   authorize: true
+  revision: false
   expire: -1
   owner_feed_author: false
   owner_id: 46
@@ -245,6 +247,7 @@ mappings:
       language: ''
       reference_by: name
       autocreate: '1'
+      autocreate_bundle: classification
   -
     target: field_profile_biography
     map:
@@ -252,13 +255,6 @@ mappings:
     settings:
       language: ''
       format: full_html
-  -
-    target: field_c_engr_teaching
-    map:
-      value: teaching
-    settings:
-      language: null
-    unique: {  }
   -
     target: field_c_engr_external_links
     map:
@@ -281,13 +277,7 @@ mappings:
       language: ''
       reference_by: name
       autocreate: '1'
-  -
-    target: field_field_c_engr_labs
-    map:
-      value: lab
-    settings:
-      language: ''
-      format: full_html
+      autocreate_bundle: affiliations
   -
     target: field_osu_organizations
     map:
@@ -296,3 +286,4 @@ mappings:
       language: null
       reference_by: name
       autocreate: false
+      autocreate_bundle: osu_organization

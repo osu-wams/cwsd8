@@ -1,0 +1,96 @@
+uuid: 6b4da418-75a0-4e75-a493-06424ee8b14b
+langcode: en
+status: true
+dependencies: {  }
+id: legacy_groups
+label: 'LEGACY Groups'
+code: |-
+  /*=====================================
+  	Group Theming
+  	
+  	Based on each group's menu class (number = group ID),
+  	(these are on every page in the group).
+  	
+  	KEEP IN SYNC WITH BELOW
+  ======================================*/
+
+  /* NSE (group 1) */
+  :root:has(.menu--group-menu-link-content-1) {
+  	--school-color: #00859B;
+  	--school-hover-text: #FFF;
+  }
+
+  /* CBEE (group 6) */
+  :root:has(.menu--group-menu-link-content-6) {
+  	--school-color: #AA9D2E;
+  	--school-hover-text: #000;
+  	--school-brand-size: 1.1rem;
+  }
+
+  /* CCE (group 11) */
+  :root:has(.menu--group-menu-link-content-11) {
+  	--school-color: #006A8E;
+  	--school-hover-text: #FFF;
+  }
+
+  /* EECS (group 16) */
+  :root:has(.menu--group-menu-link-content-16) {
+  	--school-color: #FFB500;
+  	--school-hover-text: #000;
+  	--school-brand-size: 1.3rem;
+  }
+
+  /* MIME (group 21) */
+  :root:has(.menu--group-menu-link-content-21) {
+  	--school-color: #0D5257;
+  	--school-hover-text: #FFF;
+  	--school-brand-size: 1.1rem;
+  }
+
+  /* CoRIS (group 51) */
+  :root:has(.menu--group-menu-link-content-51) {
+  	--school-brand-size: 1.1rem;
+  }
+
+  /*=====================================
+  	Group Theming Styles
+
+  	KEEP IN SYNC WITH ABOVE
+  ======================================*/
+
+  /* Group site name in the header (CBEE, EECS, MIME, CoRIS) */
+  :root:has(:is(.menu--group-menu-link-content-6, .menu--group-menu-link-content-16, .menu--group-menu-link-content-21, .menu--group-menu-link-content-51)) .block-system-branding-block a {
+  	font-size: var(--school-brand-size);
+  }
+
+  /* Primary buttons (NSE, CBEE, CCE, EECS, MIME) */
+  :root:has(:is(.menu--group-menu-link-content-1, .menu--group-menu-link-content-6, .menu--group-menu-link-content-11, .menu--group-menu-link-content-16, .menu--group-menu-link-content-21)) .btn.osu-btn-primary {
+  	border-radius: 0;
+  	background-color: transparent;
+  	color: #000;
+  	border-color: #000;
+  }
+
+  :root:has(:is(.menu--group-menu-link-content-1, .menu--group-menu-link-content-6, .menu--group-menu-link-content-11, .menu--group-menu-link-content-16, .menu--group-menu-link-content-21)) .btn.osu-btn-primary:is(:hover, :focus-visible) {
+  	background-color: var(--school-color) !important;
+  	border-color: var(--school-color) !important;
+  	color: var(--school-hover-text) !important;
+  }
+
+  .white-border-hover:hover {
+  	border-color: #FFF !important;
+  }
+
+  /* School accent bar at the top of the page */
+  .school-accent-bar {
+  	height: 3px;
+  	position: absolute;
+  	left: 0;
+  	right: 0;
+  	background-color: var(--school-color);
+  }
+media: all
+preprocess: true
+conditions: {  }
+contexts: {  }
+conditions_require_all: true

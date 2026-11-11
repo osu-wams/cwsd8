@@ -1,0 +1,42 @@
+uuid: 12fa7a23-312a-40ad-9530-8100b7ee637d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: discover_engine
+label: 'Discover Engineering TOC Block [Simple Column]'
+code: |-
+  const checkToc = () => {
+    let toc = document.getElementById('toc-js-block');
+    if (!toc || !toc.classList.contains('sticky')) return;
+    const BUFFER = 50; // breathing room below the TOC, in px
+
+    function check() {
+      let top = parseFloat(getComputedStyle(toc).top) || 0;
+      let tooTall = toc.scrollHeight + top + BUFFER > window.innerHeight;
+      toc.classList.toggle('toc-too-tall', tooTall);
+    }
+
+    check();
+    window.addEventListener('resize', check);
+    if ('ResizeObserver' in window) new ResizeObserver(check).observe(toc);
+    new MutationObserver(check).observe(toc, { childList: true, subtree: true });
+  };
+
+  document.addEventListener('DOMContentLoaded', checkToc);
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: false
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      coe_simple_column: coe_simple_column
+contexts: {  }
+conditions_require_all: true
