@@ -1,0 +1,38 @@
+uuid: 9c2db618-19db-4695-b8bb-2ed9d3a82cda
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.coe_2_column_image_w_text.field_header
+    - field.field.paragraph.coe_2_column_image_w_text.field_image_w_text_entry
+    - paragraphs.paragraphs_type.coe_2_column_image_w_text
+  module:
+    - entity_reference_revisions
+    - text_field_formatter
+id: paragraph.coe_2_column_image_w_text.default
+targetEntityType: paragraph
+bundle: coe_2_column_image_w_text
+mode: default
+content:
+  field_header:
+    type: text_field_formatter
+    label: hidden
+    settings:
+      wrap_tag: h2
+      wrap_class: mb-5
+      wrap_attributes: ''
+      override_link_label: ''
+      link_to_entity: false
+    third_party_settings: {  }
+    weight: 0
+    region: content
+  field_image_w_text_entry:
+    type: entity_reference_revisions_entity_view
+    label: hidden
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    weight: 1
+    region: content
+hidden: {  }

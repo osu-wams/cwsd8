@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - system
 id: coe_brand_blocks
-label: 'COE Brand Blocks'
+label: 'COE Brand - Blocks'
 code: |-
   /*
   ==================================================================================================================================================================
@@ -1063,8 +1062,8 @@ code: |-
   }
 
 
-  .coe-brand-people-card:hover,
-  .block--type-people-cards:hover{
+  .coe-brand-people-card:not(.no-hover):hover,
+  .block--type-people-cards:not(.no-hover):hover{
   	background: #F9FCFD !important;
   	transition: .3s;
   	box-shadow: 0px 1px 3px 0px rgba(0,0,0,0.08) !important;
@@ -1121,12 +1120,18 @@ code: |-
     border-color: transparent; 
   }
 
+  /* This centers the card content */
   .block--type-document-card .block__content {
+    display: grid;
+    height: 100%;
+  }
+
+  .block--type-document-card .layout__region--content {
     display: flex;
     align-items: center;          /* vertical centering */
     justify-content: space-between; /* push text left, icon right */
-    height: 100%;
     text-align: left;
+    height: 100%;
   }
 
   /* Make full block clickable */
@@ -1155,8 +1160,10 @@ code: |-
 
   .field--name-field-document-card-icons{
   	padding-top: 5px;
+  	padding-left: 20px;
   }
 
+  .field--name-field-document-card-link span,
   .field--name-field-document-card-link a:hover,
   .field--name-field-document-card-link a:active,
   .field--name-field-document-card-link a:focus{
@@ -1263,6 +1270,10 @@ code: |-
   	cursor: pointer;
   }
 
+  .field--name-field-coe-accordion-sections > .field__item:first-child .field--name-field-coe-acc-section-titl {
+    margin-top: 0;
+  }
+
   .field--name-field-coe-accordion-title h3{
   	margin-bottom: 0px;
   }
@@ -1270,9 +1281,10 @@ code: |-
 
   .block--type-coe-accordion:has( .coe-acc-small) .field--name-field-coe-acc-section-titl,
   .block--type-coe-accordion:has( .coe-acc-small) .field--name-field-coe-accordion-title{
-  	font-weight: 600;
-  	font-family: 'Open Sans';
-  	font-size: 20px;
+  	font-weight: 600 !important;
+  	font-family: 'Open Sans' !important;
+  	font-size: 20px !important;
+
   }
 
 
@@ -1296,8 +1308,10 @@ code: |-
   .field--name-field-coe-accordion-section-body {
     max-height: 0;
     overflow: hidden;
-    transition: max-height 0.5s ease-out;
+  	transition: max-height 0.5s ease-out;
+  	display: none;
   }
+
 
   .field--name-field-coe-accordion-section-body > *:first-child {
   	padding-top: 50px;
@@ -1370,11 +1384,18 @@ code: |-
   /* Small typography font styling + thinner border */
   .block--type-coe-black-accordions:has(.coe-acc-small) .field--name-field-coe-acc-section-titl,
   .block--type-coe-black-accordions:has(.coe-acc-small) .field--name-field-coe-accordion-title{
-  	font-weight: 600;
-  	font-family: 'Open Sans';
-  	font-size: 20px;
-  	font-style: normal;
+  	/*font-weight: 600;*/
+  	/*font-family: 'Open Sans';*/
+  	/*font-size: 20px;*/
+  	/*font-style: normal;*/
   	border-bottom: 3px solid black;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 700;
+  	line-height: 130%; /* 23.4px */
+  	letter-spacing: 0.9px;
+  	text-transform: uppercase;
   }
 
   /*================================================================================================================================================================
@@ -1544,8 +1565,8 @@ code: |-
   #views-bootstrap-academics-degrees-simple-display-block-3 .views-field-title:has( a:active),
   #views-bootstrap-academics-degrees-simple-display-block-5 .views-field-title:has( a:hover),
   #views-bootstrap-academics-degrees-simple-display-block-5 .views-field-title:has( a:active),
-  .block-inline-blockprograms-list .field--name-body:( a:hover),
-  .block-inline-blockprograms-list .field--name-body:( a:active){
+  .block-inline-blockprograms-list .field--name-body:has( a:hover),
+  .block-inline-blockprograms-list .field--name-body:has( a:active){
   	border-top: 1px solid transparent;
   }
 
@@ -1605,9 +1626,9 @@ code: |-
   	 border-top: 2px solid #00859B;
   }
 
-  .views-field-field-coe-degree-type-graduate,
-  .views-field-field-coe-discipline-location,
-  .views-field-field-coe-graduate-locations{
+  .Degree-type-simple-display.views-field-field-coe-degree-type-graduate,
+  .Degree-type-simple-display.views-field-field-coe-discipline-location,
+  .Degree-type-simple-display.views-field-field-coe-graduate-locations{
   	color: var(--Secondary-Stratosphere, #006A8E);
   	font-feature-settings: 'liga' off, 'clig' off;
   	/* Main/Label */
@@ -1624,9 +1645,9 @@ code: |-
   #views-bootstrap-academics-degrees-simple-display-block-2,
   #views-bootstrap-academics-degrees-simple-display-block-3,
   #views-bootstrap-academics-degrees-simple-display-block-5,
-  .views-field-field-coe-degree-type-graduate,
-  .views-field-field-coe-discipline-location,
-  .views-field-field-coe-graduate-locations,
+  .Degree-type-simple-display.views-field-field-coe-degree-type-graduate,
+  .Degree-type-simple-display.views-field-field-coe-discipline-location,
+  .Degree-type-simple-display.views-field-field-coe-graduate-locations,
   .block-inline-blockprograms-list{
     margin-top: 10px !important;
     padding-bottom: 20px !important;
@@ -1667,6 +1688,8 @@ code: |-
   	width: 100%;
   	margin-left: calc(50% - 50vw);
   	margin-right: calc(50% - 50vw);
+  	
+  	touch-action: pan-y;
   }
 
   .animated-ticker-content {
@@ -1678,9 +1701,12 @@ code: |-
   	animation: animated-ticker-scroll var(--ticker-animation-time) linear infinite;
   }
 
+  /* Min and max width are now required to override the new "width: auto !important;" rule from central */
   .animated-ticker-content img {
   	object-fit: contain;
   	width: var(--ticker-image-width);
+  	min-width: var(--ticker-image-width);
+  	max-width: var(--ticker-image-width);
   	height: var(--ticker-image-height);
   	margin: 0 max(var(--ticker-image-min-margin), calc((100vw / var(--ticker-image-count) / 2) - (var(--ticker-image-width) / 2))); /* Ensures images are evenly spread out */
   }
@@ -1730,13 +1756,171 @@ code: |-
   		animation-play-state: paused;
   	}
   }
+
+
+  /*==============================================================================
+  	Spotify Iframes
+  	============================================================================*/	
+  iframe.spotify {
+  	display: block;
+    height: 80px;
+    min-height: unset;
+    border-radius: 12px;
+  }
+
+  @media (max-width: 540px) {
+  	iframe.spotify {
+  	  height: 152px;
+  	}
+  }
+
+
+
+
+
+  /*================================================================================================================================================================
+    SECTION: Quote With Image Block
+
+    PURPOSE: Styling for the inline Quote With Image block
+    ==============================================================================================================================================================*/
+
+  .block-inline-blockquote-with-image {
+    width: 100%;
+  }
+
+  .block-inline-blockquote-with-image .block__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* Image */
+  .block-inline-blockquote-with-image .field--name-field-quote-image {
+    width: 80%;
+  }
+
+  .block-inline-blockquote-with-image .field--name-field-quote-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
+  }
+
+  /* Quote box */
+  .block-inline-blockquote-with-image fieldset {
+    width: calc(100% - 100px);
+    margin: -100px 0 0 100px;
+    padding: 50px 50px 50px;
+    position: relative;
+    z-index: 1;
+    border: 3px solid #D73F09;
+    background: #FFF;
+  }
+
+  /* Hide empty legend */
+  .block-inline-blockquote-with-image legend {
+    display: none;
+  }
+
+  /* Quote */
+  .block-inline-blockquote-with-image .field--name-field-quotation {
+    display: flex;
+    flex-direction: column;
+
+    color: #000;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 600;
+    line-height: 130%;
+    margin-bottom: 30px;
+  }
+
+  /* Quote icon */
+  .block-inline-blockquote-with-image .field--name-field-quotation::before {
+    content: url("/sites/engineering.oregonstate.edu/files/2025-02/quote_icon.svg");
+    text-align: right;
+    margin-top: -75px;
+  }
+
+  /* Attribution */
+  .block-inline-blockquote-with-image .field--name-field-attribution-name {
+    display: inline;
+
+    color: #D73F09;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 160%;
+    letter-spacing: 0.9px;
+    text-transform: uppercase;
+  }
+
+  .block-inline-blockquote-with-image:has(.field--name-field-attribution-description) .field--name-field-attribution-name::after {
+  	content: ",";
+  }
+
+  .block-inline-blockquote-with-image .field--name-field-attribution-description {
+  	display: inline;
+  	margin: 0;
+  }
+
+  .block-inline-blockquote-with-image .field--name-field-attribution-description p {
+  	display: inline;
+  	margin: 0;
+
+  	color: var(--Primary-Paddletail-Black, #000);
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 400;
+  	line-height: 160%;
+  }
+
+  /* Mobile */
+  @media screen and (max-width: 767px) {
+  	.block-inline-blockquote-with-image .field--name-field-quote-image {
+  		width: 100%;
+  	}
+
+  	.block-inline-blockquote-with-image .field--name-field-quote-image img {
+  		width: 100%;
+  		max-height: none;
+  	}
+
+  	.block-inline-blockquote-with-image fieldset {
+  		width: calc(100% - 40px);
+  		margin: -50px 20px 0;
+  		padding: 5px 40px 40px;
+  	}
+
+  	.block-inline-blockquote-with-image .field--name-field-quotation {
+  		gap: 0;
+  	}
+
+  	.block-inline-blockquote-with-image .field--name-field-quotation::before {
+  		margin-top: -40px;
+  		margin-right: -50px;
+  		transform: scale(0.83);
+  	}
+  }
+
+  @media screen and (min-width: 768px) and (max-width: 991px){
+  	
+  	
+  	/* Quote box */
+  	.block-inline-blockquote-with-image fieldset {
+  	  width: calc(100% - 100px);
+  	  margin: -100px 0 0 125px;
+  	  padding: 50px 50px 50px;
+  	  position: relative;
+  	  z-index: 1;
+  	  border: 3px solid #D73F09;
+  	  background: #FFF;
+  	}
+  	
+  }
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
   request_path:
     id: request_path
     negate: true

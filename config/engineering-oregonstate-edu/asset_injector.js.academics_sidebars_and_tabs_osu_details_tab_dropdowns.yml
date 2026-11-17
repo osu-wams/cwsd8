@@ -91,7 +91,7 @@ code: |-
   engagement && engagement.addEventListener("click", function () {mobileToggle(this, 'engagement-hidden-content')});
   relatedPrograms && relatedPrograms.addEventListener("click", function () {mobileToggle(this, 'relatedPrograms-hidden-content')});
 
-  window.addEventListener("resize", function() {
+  const setTabWrapperHeight = () => {
   	const tabWrapper = document.querySelector(".tab-wrapper-paragraph__tabs");
   	const tabContent = document.querySelector(".tab-wrapper-paragraph__tab-content--active");
     if (tabWrapper && tabContent) {
@@ -114,16 +114,19 @@ code: |-
   	  	tabWrapper.style.height = null;
   	  }
     }
-  });
-  window.addEventListener("load", function() {
-  	const tabWrapper = document.querySelector(".tab-wrapper-paragraph__tabs");
-  	const tabContent = document.querySelector(".tab-wrapper-paragraph__tab-content--active");
-  	const activeTabHeight = document.querySelector(".tab-wrapper-paragraph__tab-content--active .tab-paragraph").offsetHeight + 20;
-    if (tabWrapper && tabContent) {
-    	if(tabWrapper.offsetHeight < activeTabHeight) { tabWrapper.style.height = activeTabHeight + "px"; }
-  		tabContent.style.maxHeight = activeTabHeight + "px";
-    }
-  });
+  }
+
+  window.addEventListener("resize", setTabWrapperHeight);
+  window.addEventListener("load", setTabWrapperHeight);
+
+  // const ro = new ResizeObserver(entries => {
+  //   for (const entry of entries) {
+  //     // borderBoxSize includes padding + border; margins you still add manually
+  //     const h = entry.borderBoxSize?.[0]?.blockSize ?? entry.contentRect.height;
+  //     setTabWrapperHeight();
+  //   }
+  // });
+  // ro.observe(document.getElementsByClassName("tab-wrapper-paragraph__tab"));
 noscript: ''
 noscriptRegion: {  }
 jquery: false
@@ -139,4 +142,4 @@ conditions:
     negate: false
     pages: "/academics/programs/*\r\n/discipline/*\r\n/test/academics-0\r\n/node/36"
 contexts: {  }
-conditions_require_all: true
+conditions_require_all: false

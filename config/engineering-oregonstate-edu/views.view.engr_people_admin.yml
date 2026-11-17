@@ -1,38 +1,59 @@
 uuid: c5b085a1-5bbe-4234-a60e-7490b0e5f062
 langcode: en
-status: true
+status: false
 dependencies:
   config:
+    - field.storage.node.feeds_item
+    - field.storage.node.field__research_expertise
+    - field.storage.node.field_c_engr_advising
     - field.storage.node.field_c_engr_affiliations
-    - field.storage.node.field_c_engr_assistants
     - field.storage.node.field_c_engr_awards
     - field.storage.node.field_c_engr_classification
     - field.storage.node.field_c_engr_degrees
+    - field.storage.node.field_c_engr_discipline
     - field.storage.node.field_c_engr_endowed_title
     - field.storage.node.field_c_engr_external_links
     - field.storage.node.field_c_engr_fax
-    - field.storage.node.field_c_engr_research_interests
+    - field.storage.node.field_c_engr_hide_from_directory
     - field.storage.node.field_c_engr_secondary_title
-    - field.storage.node.field_c_engr_teaching
     - field.storage.node.field_c_engr_title
-    - field.storage.node.field_field_c_engr_labs
+    - field.storage.node.field_engr_c_accepting_student
+    - field.storage.node.field_engr_c_assistants
+    - field.storage.node.field_engr_research_website
+    - field.storage.node.field_meta_tags
     - field.storage.node.field_osu_organizations
     - field.storage.node.field_profile_address
     - field.storage.node.field_profile_biography
+    - field.storage.node.field_profile_cards_weight
     - field.storage.node.field_profile_email
     - field.storage.node.field_profile_first_name
+    - field.storage.node.field_profile_image
+    - field.storage.node.field_profile_labs
     - field.storage.node.field_profile_last_name
     - field.storage.node.field_profile_middle_name
     - field.storage.node.field_profile_office_phone
     - field.storage.node.field_profile_pronouns
+    - field.storage.node.field_profile_publications
+    - field.storage.node.field_research_groups
     - node.type.osu_profile
+    - user.role.administrator
+    - user.role.architect
+    - user.role.sub_architect
   module:
     - address
+    - csv_serialization
+    - entity_reference_revisions
+    - feeds
     - link
+    - metatag
     - node
+    - rest
+    - serialization
+    - svg_image
     - telephone
     - text
     - user
+    - views_data_export
 id: engr_people_admin
 label: 'ENGR People Admin'
 module: views
@@ -47,7 +68,7 @@ display:
     display_plugin: default
     position: 0
     display_options:
-      title: 'ENGR People Admin'
+      title: 'ENGR People Admin - Data Export'
       fields:
         operations:
           id: operations
@@ -775,69 +796,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_c_engr_assistants:
-          id: field_c_engr_assistants
-          table: node__field_c_engr_assistants
-          field: field_c_engr_assistants
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: Assistant(s)
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         field_c_engr_awards:
           id: field_c_engr_awards
           table: node__field_c_engr_awards
@@ -1220,68 +1178,6 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
-        field_field_c_engr_labs:
-          id: field_field_c_engr_labs
-          table: node__field_field_c_engr_labs
-          field: field_field_c_engr_labs
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: Labs
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: text_default
-          settings: {  }
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
         field_profile_office_phone:
           id: field_profile_office_phone
           table: node__field_profile_office_phone
@@ -1354,132 +1250,6 @@ display:
           admin_label: ''
           plugin_id: field
           label: Pronouns
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_c_engr_research_interests:
-          id: field_c_engr_research_interests
-          table: node__field_c_engr_research_interests
-          field: field_c_engr_research_interests
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: 'Research Interests'
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: target_id
-          type: entity_reference_label
-          settings:
-            link: true
-          group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_c_engr_teaching:
-          id: field_c_engr_teaching
-          table: node__field_c_engr_teaching
-          field: field_c_engr_teaching
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: Teaching
           exclude: false
           alter:
             alter_text: false
@@ -1611,6 +1381,908 @@ display:
           multi_type: separator
           separator: ', '
           field_api_classes: false
+        field__research_expertise:
+          id: field__research_expertise
+          table: node__field__research_expertise
+          field: field__research_expertise
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: '  Research Expertise'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_engr_c_accepting_student:
+          id: field_engr_c_accepting_student
+          table: node__field_engr_c_accepting_student
+          field: field_engr_c_accepting_student
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Accepting Student'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: default
+            format_custom_false: ''
+            format_custom_true: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_c_engr_advising:
+          id: field_c_engr_advising
+          table: node__field_c_engr_advising
+          field: field_c_engr_advising
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Additional Text (not exposed on Profile)'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_engr_c_assistants:
+          id: field_engr_c_assistants
+          table: node__field_engr_c_assistants
+          field: field_engr_c_assistants
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Assistant(s)
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_revisions_entity_view
+          settings:
+            view_mode: default
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_c_engr_discipline:
+          id: field_c_engr_discipline
+          table: node__field_c_engr_discipline
+          field: field_c_engr_discipline
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Disciplines
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: entity_reference_label
+          settings:
+            link: true
+          group_column: target_id
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        feeds_item:
+          id: feeds_item
+          table: node__feeds_item
+          field: feeds_item
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Feeds item'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: feeds_item_url
+          settings:
+            url_plain: false
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_c_engr_hide_from_directory:
+          id: field_c_engr_hide_from_directory
+          table: node__field_c_engr_hide_from_directory
+          field: field_c_engr_hide_from_directory
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Hide from Directory'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: boolean
+          settings:
+            format: default
+            format_custom_false: ''
+            format_custom_true: ''
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_profile_image:
+          id: field_profile_image
+          table: node__field_profile_image
+          field: field_profile_image
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Image
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: target_id
+          type: image
+          settings:
+            image_link: ''
+            image_style: ''
+            image_loading:
+              attribute: lazy
+            svg_attributes:
+              width: null
+              height: null
+            svg_render_as_image: true
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_meta_tags:
+          id: field_meta_tags
+          table: node__field_meta_tags
+          field: field_meta_tags
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Meta Tags'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: metatag_empty_formatter
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_profile_cards_weight:
+          id: field_profile_cards_weight
+          table: node__field_profile_cards_weight
+          field: field_profile_cards_weight
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Profile_cards_weight
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: number_integer
+          settings:
+            thousand_separator: ''
+            prefix_suffix: true
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_research_groups:
+          id: field_research_groups
+          table: node__field_research_groups
+          field: field_research_groups
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Research Groups'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_engr_research_website:
+          id: field_engr_research_website
+          table: node__field_engr_research_website
+          field: field_engr_research_website
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Research Website'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: 80
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_profile_publications:
+          id: field_profile_publications
+          table: node__field_profile_publications
+          field: field_profile_publications
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: Publications
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: text_default
+          settings: {  }
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+        field_profile_labs:
+          id: field_profile_labs
+          table: node__field_profile_labs
+          field: field_profile_labs
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: field
+          label: 'Labs (new)'
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: uri
+          type: link
+          settings:
+            trim_length: null
+            url_only: false
+            url_plain: false
+            rel: '0'
+            target: '0'
+          group_column: ''
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
       pager:
         type: full
         options:
@@ -1644,9 +2316,12 @@ display:
           sort_asc_label: Asc
           sort_desc_label: Desc
       access:
-        type: perm
+        type: role
         options:
-          perm: 'access content'
+          role:
+            sub_architect: sub_architect
+            architect: architect
+            administrator: administrator
       cache:
         type: tag
         options: {  }
@@ -1737,6 +2412,26 @@ display:
             field_c_engr_research_interests: field_c_engr_research_interests
             field_c_engr_teaching: field_c_engr_teaching
             created: created
+            field__research_expertise: field__research_expertise
+            field_engr_c_accepting_student: field_engr_c_accepting_student
+            field_c_engr_advising: field_c_engr_advising
+            field_engr_c_assistants: field_engr_c_assistants
+            field_c_engr_assistants_1: field_c_engr_assistants_1
+            field_coe_profile_teaching: field_coe_profile_teaching
+            field_c_engr_discipline: field_c_engr_discipline
+            feeds_item: feeds_item
+            field_c_engr_hide_from_directory: field_c_engr_hide_from_directory
+            field_profile_image: field_profile_image
+            field_meta_tags: field_meta_tags
+            field_profile_primary_title: field_profile_primary_title
+            field_profile_cards_weight: field_profile_cards_weight
+            field_publications: field_publications
+            field_research_groups: field_research_groups
+            field_c_engr_research_interests_1: field_c_engr_research_interests_1
+            field_c_engr_research_interest: field_c_engr_research_interest
+            field_engr_research_website: field_engr_research_website
+            field_short_bio: field_short_bio
+            field_talened_people_description: field_talened_people_description
           default: '-1'
           info:
             operations:
@@ -1894,6 +2589,126 @@ display:
               separator: ''
               empty_column: false
               responsive: ''
+            field__research_expertise:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_engr_c_accepting_student:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_c_engr_advising:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_engr_c_assistants:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_c_engr_assistants_1:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_coe_profile_teaching:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_c_engr_discipline:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            feeds_item:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_c_engr_hide_from_directory:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_profile_image:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_meta_tags:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_profile_primary_title:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_profile_cards_weight:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_publications:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_research_groups:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_c_engr_research_interests_1:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_c_engr_research_interest:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_engr_research_website:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_short_bio:
+              sortable: true
+              default_sort_order: asc
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
+            field_talened_people_description:
+              align: ''
+              separator: ''
+              empty_column: false
+              responsive: ''
           override: true
           sticky: false
           summary: ''
@@ -1921,30 +2736,262 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
+        - 'config:field.storage.node.feeds_item'
+        - 'config:field.storage.node.field__research_expertise'
+        - 'config:field.storage.node.field_c_engr_advising'
         - 'config:field.storage.node.field_c_engr_affiliations'
-        - 'config:field.storage.node.field_c_engr_assistants'
         - 'config:field.storage.node.field_c_engr_awards'
         - 'config:field.storage.node.field_c_engr_classification'
         - 'config:field.storage.node.field_c_engr_degrees'
+        - 'config:field.storage.node.field_c_engr_discipline'
         - 'config:field.storage.node.field_c_engr_endowed_title'
         - 'config:field.storage.node.field_c_engr_external_links'
         - 'config:field.storage.node.field_c_engr_fax'
-        - 'config:field.storage.node.field_c_engr_research_interests'
+        - 'config:field.storage.node.field_c_engr_hide_from_directory'
         - 'config:field.storage.node.field_c_engr_secondary_title'
-        - 'config:field.storage.node.field_c_engr_teaching'
         - 'config:field.storage.node.field_c_engr_title'
-        - 'config:field.storage.node.field_field_c_engr_labs'
+        - 'config:field.storage.node.field_engr_c_accepting_student'
+        - 'config:field.storage.node.field_engr_c_assistants'
+        - 'config:field.storage.node.field_engr_research_website'
+        - 'config:field.storage.node.field_meta_tags'
         - 'config:field.storage.node.field_osu_organizations'
         - 'config:field.storage.node.field_profile_address'
         - 'config:field.storage.node.field_profile_biography'
+        - 'config:field.storage.node.field_profile_cards_weight'
         - 'config:field.storage.node.field_profile_email'
         - 'config:field.storage.node.field_profile_first_name'
+        - 'config:field.storage.node.field_profile_image'
+        - 'config:field.storage.node.field_profile_labs'
         - 'config:field.storage.node.field_profile_last_name'
         - 'config:field.storage.node.field_profile_middle_name'
         - 'config:field.storage.node.field_profile_office_phone'
         - 'config:field.storage.node.field_profile_pronouns'
+        - 'config:field.storage.node.field_profile_publications'
+        - 'config:field.storage.node.field_research_groups'
+  data_export_1:
+    id: data_export_1
+    display_title: 'Data export'
+    display_plugin: data_export
+    position: 2
+    display_options:
+      style:
+        type: data_export
+        options:
+          formats:
+            csv: csv
+          csv_settings:
+            delimiter: ','
+            enclosure: '"'
+            escape_char: \
+            strip_tags: true
+            trim: true
+            encoding: utf8
+            utf8_bom: '0'
+            use_serializer_encode_only: false
+            output_header: true
+          xml_settings:
+            encoding: UTF-8
+            root_node_name: response
+            item_node_name: item
+            format_output: false
+      row:
+        type: data_field
+        options:
+          field_options:
+            operations:
+              alias: ''
+              raw_output: false
+            title:
+              alias: ''
+              raw_output: false
+            field_profile_first_name:
+              alias: ''
+              raw_output: false
+            field_profile_middle_name:
+              alias: ''
+              raw_output: false
+            field_profile_last_name:
+              alias: ''
+              raw_output: false
+            field_profile_email:
+              alias: ''
+              raw_output: false
+            field_osu_organizations:
+              alias: ''
+              raw_output: false
+            field_c_engr_title:
+              alias: ''
+              raw_output: false
+            field_c_engr_secondary_title:
+              alias: ''
+              raw_output: false
+            field_c_engr_endowed_title:
+              alias: ''
+              raw_output: false
+            field_profile_address:
+              alias: ''
+              raw_output: false
+            field_c_engr_affiliations:
+              alias: ''
+              raw_output: false
+            field_c_engr_assistants:
+              alias: ''
+              raw_output: false
+            field_c_engr_awards:
+              alias: ''
+              raw_output: false
+            field_profile_biography:
+              alias: ''
+              raw_output: false
+            field_c_engr_classification:
+              alias: ''
+              raw_output: false
+            field_c_engr_degrees:
+              alias: ''
+              raw_output: false
+            field_c_engr_external_links:
+              alias: ''
+              raw_output: false
+            field_c_engr_fax:
+              alias: ''
+              raw_output: false
+            field_field_c_engr_labs:
+              alias: ''
+              raw_output: false
+            field_profile_office_phone:
+              alias: ''
+              raw_output: false
+            field_profile_pronouns:
+              alias: ''
+              raw_output: false
+            field_c_engr_research_interests:
+              alias: ''
+              raw_output: false
+            field_c_engr_teaching:
+              alias: ''
+              raw_output: false
+            created:
+              alias: ''
+              raw_output: false
+            field__research_expertise:
+              alias: ''
+              raw_output: false
+            field_engr_c_accepting_student:
+              alias: ''
+              raw_output: false
+            field_c_engr_advising:
+              alias: ''
+              raw_output: false
+            field_engr_c_assistants:
+              alias: ''
+              raw_output: false
+            field_c_engr_assistants_1:
+              alias: ''
+              raw_output: false
+            field_coe_profile_teaching:
+              alias: ''
+              raw_output: false
+            field_c_engr_discipline:
+              alias: ''
+              raw_output: false
+            feeds_item:
+              alias: ''
+              raw_output: false
+            field_c_engr_hide_from_directory:
+              alias: ''
+              raw_output: false
+            field_profile_image:
+              alias: ''
+              raw_output: false
+            field_meta_tags:
+              alias: ''
+              raw_output: false
+            field_profile_primary_title:
+              alias: ''
+              raw_output: false
+            field_profile_cards_weight:
+              alias: ''
+              raw_output: false
+            field_publications:
+              alias: ''
+              raw_output: false
+            field_research_groups:
+              alias: ''
+              raw_output: false
+            field_c_engr_research_interests_1:
+              alias: ''
+              raw_output: false
+            field_c_engr_research_interest:
+              alias: ''
+              raw_output: false
+            field_engr_research_website:
+              alias: ''
+              raw_output: false
+            field_short_bio:
+              alias: ''
+              raw_output: false
+            field_talened_people_description:
+              alias: ''
+              raw_output: false
+      display_extenders:
+        metatag_display_extender:
+          metatags: {  }
+          tokenize: false
+        ajax_history: {  }
+      path: engr-people-admin/csv
+      auth: {  }
+      displays:
+        page_1: page_1
+        default: '0'
+      filename: '[date:html_datetime]-[view:title].csv'
+      automatic_download: false
+      export_filesystem: private
+      custom_redirect_path: false
+      redirect_to_display: none
+      include_query_params: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - request_format
+        - 'user.node_grants:view'
+        - user.roles
+      tags:
+        - 'config:field.storage.node.feeds_item'
+        - 'config:field.storage.node.field__research_expertise'
+        - 'config:field.storage.node.field_c_engr_advising'
+        - 'config:field.storage.node.field_c_engr_affiliations'
+        - 'config:field.storage.node.field_c_engr_awards'
+        - 'config:field.storage.node.field_c_engr_classification'
+        - 'config:field.storage.node.field_c_engr_degrees'
+        - 'config:field.storage.node.field_c_engr_discipline'
+        - 'config:field.storage.node.field_c_engr_endowed_title'
+        - 'config:field.storage.node.field_c_engr_external_links'
+        - 'config:field.storage.node.field_c_engr_fax'
+        - 'config:field.storage.node.field_c_engr_hide_from_directory'
+        - 'config:field.storage.node.field_c_engr_secondary_title'
+        - 'config:field.storage.node.field_c_engr_title'
+        - 'config:field.storage.node.field_engr_c_accepting_student'
+        - 'config:field.storage.node.field_engr_c_assistants'
+        - 'config:field.storage.node.field_engr_research_website'
+        - 'config:field.storage.node.field_meta_tags'
+        - 'config:field.storage.node.field_osu_organizations'
+        - 'config:field.storage.node.field_profile_address'
+        - 'config:field.storage.node.field_profile_biography'
+        - 'config:field.storage.node.field_profile_cards_weight'
+        - 'config:field.storage.node.field_profile_email'
+        - 'config:field.storage.node.field_profile_first_name'
+        - 'config:field.storage.node.field_profile_image'
+        - 'config:field.storage.node.field_profile_labs'
+        - 'config:field.storage.node.field_profile_last_name'
+        - 'config:field.storage.node.field_profile_middle_name'
+        - 'config:field.storage.node.field_profile_office_phone'
+        - 'config:field.storage.node.field_profile_pronouns'
+        - 'config:field.storage.node.field_profile_publications'
+        - 'config:field.storage.node.field_research_groups'
   page_1:
     id: page_1
     display_title: Page
@@ -1965,27 +3012,37 @@ display:
         - 'languages:language_interface'
         - url.query_args
         - 'user.node_grants:view'
-        - user.permissions
+        - user.roles
       tags:
+        - 'config:field.storage.node.feeds_item'
+        - 'config:field.storage.node.field__research_expertise'
+        - 'config:field.storage.node.field_c_engr_advising'
         - 'config:field.storage.node.field_c_engr_affiliations'
-        - 'config:field.storage.node.field_c_engr_assistants'
         - 'config:field.storage.node.field_c_engr_awards'
         - 'config:field.storage.node.field_c_engr_classification'
         - 'config:field.storage.node.field_c_engr_degrees'
+        - 'config:field.storage.node.field_c_engr_discipline'
         - 'config:field.storage.node.field_c_engr_endowed_title'
         - 'config:field.storage.node.field_c_engr_external_links'
         - 'config:field.storage.node.field_c_engr_fax'
-        - 'config:field.storage.node.field_c_engr_research_interests'
+        - 'config:field.storage.node.field_c_engr_hide_from_directory'
         - 'config:field.storage.node.field_c_engr_secondary_title'
-        - 'config:field.storage.node.field_c_engr_teaching'
         - 'config:field.storage.node.field_c_engr_title'
-        - 'config:field.storage.node.field_field_c_engr_labs'
+        - 'config:field.storage.node.field_engr_c_accepting_student'
+        - 'config:field.storage.node.field_engr_c_assistants'
+        - 'config:field.storage.node.field_engr_research_website'
+        - 'config:field.storage.node.field_meta_tags'
         - 'config:field.storage.node.field_osu_organizations'
         - 'config:field.storage.node.field_profile_address'
         - 'config:field.storage.node.field_profile_biography'
+        - 'config:field.storage.node.field_profile_cards_weight'
         - 'config:field.storage.node.field_profile_email'
         - 'config:field.storage.node.field_profile_first_name'
+        - 'config:field.storage.node.field_profile_image'
+        - 'config:field.storage.node.field_profile_labs'
         - 'config:field.storage.node.field_profile_last_name'
         - 'config:field.storage.node.field_profile_middle_name'
         - 'config:field.storage.node.field_profile_office_phone'
         - 'config:field.storage.node.field_profile_pronouns'
+        - 'config:field.storage.node.field_profile_publications'
+        - 'config:field.storage.node.field_research_groups'

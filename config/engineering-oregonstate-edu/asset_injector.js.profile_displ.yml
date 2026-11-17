@@ -1,0 +1,60 @@
+uuid: 6b6e818f-aa57-4375-908d-ed05340d0cb4
+langcode: en
+status: true
+dependencies:
+  module:
+    - block_visibility_groups
+    - node
+id: profile_displ
+label: 'Semantic List Field Replacement'
+code: |-
+  function convertToList(selector, itemSelector, { ordered = false, preserveClasses = false } = {}) {
+  	const tag = ordered ? 'ol' : 'ul';
+
+  	document.querySelectorAll(selector).forEach(field => {
+  		const items = field.querySelectorAll(itemSelector);
+  		if (!items.length) return;
+
+  		const list = document.createElement(tag);
+  		const fragment = document.createDocumentFragment();
+
+  		items.forEach(item => {
+  			const li = document.createElement('li');
+  			if (preserveClasses) li.className = item.className;
+  			li.innerHTML = item.innerHTML;
+  			fragment.appendChild(li);
+  		});
+
+  		list.appendChild(fragment);
+  		field.replaceChildren(list);
+  	});
+  }
+
+  /*===========================================================================
+  	Using This Injector
+  	
+  	1) Add a line below with your relevant selector(s).
+  	2) Add your page condition to the restricted pages list.
+  ============================================================================*/
+  convertToList('.field--name-field-c-engr-degrees', '.field__item');
+  convertToList('.field--name-field-engr-osa-degrees', '.field__item');
+noscript: ''
+noscriptRegion: {  }
+jquery: false
+header: false
+preprocess: true
+conditions:
+  condition_group:
+    id: condition_group
+    negate: false
+    block_visibility_group: ''
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      engr_oregon_stater_awards: engr_oregon_stater_awards
+      osu_profile: osu_profile
+contexts: {  }
+conditions_require_all: true

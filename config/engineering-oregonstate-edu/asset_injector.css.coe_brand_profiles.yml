@@ -3,10 +3,10 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - node
+    - system
 id: coe_brand_profiles
-label: 'COE Brand Profiles'
+label: 'Content Type - Profiles'
 code: |+
   /*
   ==================================================================================================================================================================
@@ -38,6 +38,7 @@ code: |+
   	padding-bottom: 50px;
   	padding-right: 12px;
   	padding-left: 12px;
+  	grid-auto-flow: dense;
   }
 
   div:has(> .container > .profile-grid) {
@@ -46,6 +47,10 @@ code: |+
 
   .block-views-blockengr-profile-block-40, .contact-col {
   	padding: 30px 0 0;
+  }
+
+  .block-views-blockengr-profile-block-40:has( .engr-titles) {
+  	padding-bottom: 16px;
   }
 
   /* Dissolve the first wrapper col so its children are direct grid items */
@@ -76,7 +81,7 @@ code: |+
 
   .block-views-blockengr-profile-block-40 {
   	grid-column: 2;
-  	grid-row: 4;
+  	/*grid-row: 4;*/
   }
 
   /* Identity and contact auto-place into row 3, side by side */
@@ -87,8 +92,8 @@ code: |+
     flex-direction: column;
     gap: 1rem;
     padding: 0;
-    grid-row: 5;
-    padding-top: 16px;
+    /*grid-row: 5;*/
+    /*padding-top: 16px;*/
   }
 
   .contact-col {
@@ -97,7 +102,7 @@ code: |+
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    grid-row: 4 / 7;
+    grid-row: span 3;
   }
 
   #block-views-blockengr-profile-block-40 > div {
@@ -125,6 +130,7 @@ code: |+
   	.identity-col, .contact-col {
   		grid-row: auto;
   		padding-top: 32px;
+  		grid-row: 11;
   	}
   	.block-views-blockengr-profile-block-40 {
   		padding-top: 12px;
@@ -232,15 +238,14 @@ code: |+
   .field--name-field-c-engr-awards .field__item,
   .field--name-field-research-groups .field__item,
   .field--name-field-engr-research-website .field__item,
-  .field--name-field-field-c-engr-labs .field__item,
-  .field--name-field-field-c-engr-labs .field__item,
-  .field--name-field-publications .field__item
+  .field--name-field-profile-labs .field__item,
+  .field--name-field-profile-publications .field__item
   {
   	display: block !important;
-    position: relative; 
-    padding-left: 20px; 
-    padding-bottom: 18px;
-  	list-style: none !important; 
+  	position: relative;
+  	padding-left: 20px;
+  	padding-bottom: 18px;
+  	list-style: none !important;
   }
 
   /* Adds bullet icon */
@@ -248,20 +253,19 @@ code: |+
   .field--name-field-c-engr-awards .field__item::before,
   .field--name-field-research-groups .field__item::before,
   .field--name-field-engr-research-website .field__item::before,
-  .field--name-field-field-c-engr-labs .field__item::before,
-  .field--name-field-field-c-engr-labs .field__item::before,
-  .field--name-field-publications .field__item::before
+  .field--name-field-profile-labs .field__item::before,
+  .field--name-field-profile-publications .field__item::before
   {
   	content: '' !important;
-    display: inline-block;
-    width: 1.8ch;
+  	display: inline-block;
+  	width: 1.8ch;
   	height: 1.8ch;
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="%23D73F09" stroke-width="4" stroke-linecap="square"/></svg>') no-repeat center center;
-    background-size: contain;
-    background-position: top left;
-    position: absolute;
+  	background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="13" height="20" viewBox="0 0 13 20" fill="none"><path d="M3 17L10 10L3 3" stroke="%23D73F09" stroke-width="4" stroke-linecap="square"/></svg>') no-repeat center center;
+  	background-size: contain;
+  	background-position: top left;
+  	position: absolute;
   	left: 0;
-    top: 0.5ch;
+  	top: 0.5ch;
   }
 
 
@@ -370,7 +374,9 @@ code: |+
   	display: none;
   }
 
-  .main-profile-body:not(:has(.field--name-field-coe-profile-documents)) .block:has(.documents-header) {
+  /*.main-profile-body:not(:has(.field--name-field-coe-profile-documents)) .block:has(.documents-header),*/
+  .main-profile-body:not(:has(.paragraph--type--docume)) .block:has(.documents-header)
+  {
   	display: none;
   }
 
@@ -412,12 +418,16 @@ code: |+
   Body Spacing
 
   **********************************************************/
-  .main-profile-body-col-1 > div:first-of-type {
-    margin-top: 0 !important;
-  }
+  /*.main-profile-body-col-1 > div:first-of-type {*/
+  /*  margin-top: 0 !important;*/
+  /*}*/
 
   .main-profile-body-col-2 > div:last-of-type {
     margin-bottom: 0 !important;
+  }
+
+  .main-profile-body-col-2:not(:has( .sidebar)) {
+  	display: none;
   }
 
   /*================================================================================================================================================================
@@ -427,7 +437,8 @@ code: |+
   	==============================================================================================================================================================*/
 
 
-  .field--name-field-coe-profile-documents .field__item {
+  .field--name-field-coe-profile-documents .field__item,
+  .paragraph--type--docume {
     position: relative;
     border-radius: 5px;
     border: 2px solid rgba(0,133,155,0.12); /* subtle High-Tide border */
@@ -438,22 +449,102 @@ code: |+
     transition: 0.3s ease;
   }
 
-  .field--name-field-coe-profile-documents .field__item:hover {
+  /*NEW STYLING */
+  .paragraph--type--docume:hover {
     box-shadow: inset 0 0 0 3px var(--Secondary-High-Tide, #00859B);
     border-color: transparent; 
   }
 
-  .field--name-field-coe-profile-documents .field__item:active {
+  .paragraph--type--docume:active {
     box-shadow: inset 0 0 0 3px #003B5C;
     border-color: transparent; 
   }
 
-  .field--name-field-coe-profile-documents .field__item .file {
+  .paragraph--type--docume {
     display: flex;
-    align-items: center;          /* vertical centering */
+    align-items: center;
+    justify-content: space-between;
+  }
+
+
+
+  /* Make full block clickable */
+  .block-field-blocknodeosu-profilefield-profile-documents .field--name-field-document-card-link a::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  /* Icons */
+  .link-icon::before {
+    content: url("/sites/engineering.oregonstate.edu/files/2025-11/link%20icon.svg");
+  }
+  .link-icon span {
+    display: none;
+  }
+
+  .download-icon::before{
+  	content: url("/sites/engineering.oregonstate.edu/files/2025-11/download%20icon.svg");
+  }
+
+  .download-icon span {
+    display: none;
+  }
+
+  .field--name-field-document-card-icon {
+  	padding-top: 5px;
+  }
+
+  .field--name-field-document-card-link a:hover,
+  .field--name-field-document-card-link a:active,
+  .field--name-field-document-card-link a:focus{
+  	color: var(--Primary-Paddletail-Black, #000) !important;
+  	font-feature-settings: 'liga' off, 'clig' off;
+  	
+  	 /*Main/H6 */
+  	font-family: "Open Sans";
+  	font-size: 20px;
+  	font-style: normal;
+  	font-weight: 600;
+  	border-bottom: none;
+  }
+
+  .field--name-field-document-card-link a{
+  	border-bottom: none;
+  }
+
+  @media (max-width: 991px) {
+  .block--type-document-card{
+  	margin-bottom: 16px;
+  }
+  }
+  @media (min-width: 1200px) {
+    .h-lg-100 {
+      height: 100% !important;
+    }
+  }
+
+  /*New styling end*/
+
+  .field--name-field-coe-profile-documents .field__item:hover{
+    box-shadow: inset 0 0 0 3px var(--Secondary-High-Tide, #00859B);
+    border-color: transparent; 
+  }
+
+  .field--name-field-coe-profile-documents .field__item:active{
+    box-shadow: inset 0 0 0 3px #003B5C;
+    border-color: transparent; 
+  }
+
+  .field--name-field-coe-profile-documents .field__item .file,
+  .field--name-field-profile-documents{
+    display: flex;
+    align-items: stretch;          /* vertical centering */
     justify-content: space-between; /* push text left, icon right */
     height: 100%;
-    text-align: left;
+    flex-wrap: wrap;
+    row-gap: 16px;
   }
 
   /* Make full block clickable */
@@ -506,13 +597,17 @@ code: |+
     text-transform: none;
   }
 
-  .field--name-field-coe-profile-documents > .field__item {
+  .field--name-field-coe-profile-documents > .field__item,
+  .field--name-field-profile-documents > .field__item {
   	width: calc(50% - 10px);	
   }
 
   @media (max-width: 991px) {
   .field--name-field-coe-profile-documents .field__item {
   	margin-bottom: 16px;
+  	width: 100%;
+  }
+  .field--name-field-profile-documents > .field__item {
   	width: 100%;
   }
   }
@@ -524,10 +619,10 @@ code: |+
   }
 
   .moondust-background:not(
-    :has(.block-views-blockengr-profile-related-stories-related-people-stories-block,
+    :has(.block-views-blockengr-profile-related-stories-block-1,
          .block-views-blockengr-videos-profiles-related-video,
          .block-views-blockengr-videos-block-4,
-         .block-views-blockpodcast-series-episode-cards-block-2)
+         .block-views-blockpodcast-series-episode-cards-block-3)
   ) {
     display: none !important;
   }
@@ -623,13 +718,14 @@ code: |+
     object-fit: cover;
     width: 100%;
   }
-  .new-story-title{
+  .related-story-card .new-story-title{
     color:  #000;
     font-family: "Open Sans";
     font-size: 20px;
     font-style: normal;
     font-weight: 600 !important;
     line-height: normal;
+    margin-bottom: 0px !important;
     padding: 30px !important;
   }
 
@@ -916,7 +1012,7 @@ code: |+
   /* Show header if Videos OR Podcasts view exists */
   .layout-builder__layout:has(
     .block-views-blockengr-videos-profiles-related-video,
-    .block-views-blockpodcast-series-episode-cards-block-2
+    .block-views-blockpodcast-series-episode-cards-block-3
   ) .related-media-header {
     display: block;
   }
@@ -946,7 +1042,7 @@ code: |+
     .profile-degrees,
     .profile-awards,
     .profile-teaching,
-    .field--name-field-coe-profile-documents,
+    .field--name-field-profile-documents,
     /* Research */
     .profile-research-interests,
     .profile-research-groups,
@@ -980,12 +1076,8 @@ code: |+
   }
 
 media: all
-preprocess: false
+preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
   'entity_bundle:node':
     id: 'entity_bundle:node'
     negate: false
@@ -993,5 +1085,9 @@ conditions:
       node: '@node.node_route_context:node'
     bundles:
       osu_profile: osu_profile
+  request_path:
+    id: request_path
+    negate: true
+    pages: '/*/edit'
 contexts: {  }
 conditions_require_all: true

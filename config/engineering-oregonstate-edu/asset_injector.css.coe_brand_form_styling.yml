@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - system
 id: coe_brand_form_styling
-label: 'COE Brand Form Styling'
+label: 'COE Brand - Forms'
 code: |-
   /*
   ==================================================================================================================================================================
@@ -24,7 +23,7 @@ code: |-
   	PURPOSE: Configurations of simple tabs buttons
   	==============================================================================================================================================================*/
 
-  .views-view-bootstrap-tab div.nav-tabs {
+  .views-bootstrap-tabs div.nav-tabs {
   	all: unset;
   	display: flex;
   	justify-content: space-between !important;
@@ -120,7 +119,8 @@ code: |-
 
   .form_container input, .form_container select, .form_container textarea, 
   #webform-submission-2025-strategic-planning-feedback-node-52576-add-form .form-control, 
-  #webform-submission-2025-strategic-planning-feedback-node-52576-add-form .form-select {
+  #webform-submission-2025-strategic-planning-feedback-node-52576-add-form .form-select,
+  .form-control input{
   	height: 76px						!important;
   	border-radius: 5px			!important;
   	border: 2px solid black	!important;
@@ -177,9 +177,11 @@ code: |-
   	background-color: #ECF5F5 !important;
   }
 
+  .js-form-item-name-first label, .js-form-item-name-last label, .js-form-item-email label, .fieldset-legend, 
+  .js-form-type-textfield label, .form-item-phone-number label,
   label:not([for|="edit-is-your-idea-related-to-artificial-intelligence"]), .form_label, .form_label em, .form_label em font,
-  #edit-is-your-idea-related-to-artificial-intelligence--wrapper-legend{
-  	color: black !important;
+  #edit-is-your-idea-related-to-artificial-intelligence--wrapper-legend {
+  	color: #000 !important;
   	font-family: "Open Sans";
   	font-size: 20px;
   	font-style: normal;
@@ -284,7 +286,8 @@ code: |-
     box-sizing: border-box;
   }
 
-  .form_container input[type="checkbox"] {
+  .form_container input[type="checkbox"],
+  .js-webform-type-checkbox input[type="checkbox"] {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none !important;
@@ -535,26 +538,26 @@ code: |-
   	transition: height 0.4s;
   }
 
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-0.active form) .tab-content,
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-1.active form) .tab-content {
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-0.active form) .tab-content,
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-1.active form) .tab-content {
   	height: 100%;
   }
 
 
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-0.active form) .form-content,
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-1.active form) .form-content,
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-1 form):has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-0 form) .form-content {
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-0.active form) .form-content,
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-1.active form) .form-content,
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-1 form):has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-0 form) .form-content {
   	display: block;
   }
 
   main:has( .form-loading) .grad-thank-you,
   main:has( .form-loading) .undergrad-thank-you,
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-0.active form) .undergrad-thank-you,
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-1.active form) .grad-thank-you,
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-0.active) .grad-thank-you,
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-1.active) .undergrad-thank-you,
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-1 form):has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-0 form) .grad-thank-you,
-  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-1 form):has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-0 form) .undergrad-thank-you {
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-0.active form) .undergrad-thank-you,
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-1.active form) .grad-thank-you,
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-0.active) .grad-thank-you,
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-1.active) .undergrad-thank-you,
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-1 form):has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-0 form) .grad-thank-you,
+  main:has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-1 form):has(#tab-views-bootstrap-tab-views-bootstrap-engr-simple-tabs-block-1-key-0 form) .undergrad-thank-you {
   	display: none;
   }
 
@@ -756,13 +759,9 @@ code: |-
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
   request_path:
     id: request_path
     negate: false
-    pages: "/node/47741\r\n/node/52576"
+    pages: "/node/47741\r\n/node/52576\r\n/node/46831\r\n/node/46811\r\n/node/59666"
 contexts: {  }
 conditions_require_all: true

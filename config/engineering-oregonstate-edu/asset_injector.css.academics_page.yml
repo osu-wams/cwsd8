@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - system
 id: academics_page
-label: 'Academics Page'
+label: 'Academics - Page'
 code: |-
   /* ==================================================================================================================================================================
   ==================================================================================================================================================================
@@ -257,16 +256,20 @@ code: |-
   		width: calc(100% - 15px); 
   	}
   }
+
+  /*Adjusts margin top on mobile screens for buttons that are side by side on this page*/
+
+  @media (max-width: 600px) {
+  	.btn.osu-btn-primary {
+  		margin-top: 15px !important;
+  	}
+  }
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
   request_path:
     id: request_path
     negate: false
-    pages: "/test/academics-0\r\n/academics"
+    pages: /academics
 contexts: {  }
 conditions_require_all: true

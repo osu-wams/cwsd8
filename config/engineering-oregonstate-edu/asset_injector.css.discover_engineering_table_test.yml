@@ -1,0 +1,76 @@
+uuid: af701fa9-bae3-483c-ab3a-51b2cebdafdb
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+id: discover_engineering_table_test
+label: 'COE Brand - Tables (in-progress)'
+code: |-
+  table,
+  table thead,
+  table tbody,
+  table tfoot,
+  table tr,
+  table td,
+  table th {
+    border-style: solid !important;
+    border-color: #E3EDF3 !important;
+    border-width: 0 !important;
+    table-layout: fixed !important;
+  }
+  table {
+    border-width: 1px !important;
+  }
+  table td,
+  table th {
+    padding: 20px !important;
+    border-width: 0 1px 0 0 !important;
+  }
+  table tr > *:last-child {
+    border-right: 0 !important;
+  }
+  table thead tr > * {
+    background: #FFFFFF !important;
+    font-weight: 600 !important;
+    border-bottom: 6px solid #E3EDF3 !important;
+    border-bottom-width: 6px !important;
+    --bs-table-bg-type: #FFFFFF !important;
+    color: var(--Primary-Paddletail-Black, #000) !important;
+    font-family: "Open Sans" !important;
+    font-size: 20px !important;
+    font-style: normal !important;
+    line-height: 130% !important;
+  }
+
+  table thead em {
+    color: var(--Primary-Paddletail-Black, #000) !important;
+    font-family: "Open Sans" !important;
+    font-size: 12px !important;
+    font-style: italic !important;
+    font-weight: 300 !important;
+    line-height: 130% !important;
+  }
+
+  table tbody tr:nth-of-type(odd) > * {
+    background: #F9FBFD !important;
+    --bs-table-bg-type: #F9FBFD !important;
+  }
+  table tbody tr:nth-of-type(even) > * {
+    background: #FFFFFF !important;
+    --bs-table-bg-type: #FFFFFF !important;
+  }
+
+  table tbody tr:hover > * {
+    --bs-table-bg-state: transparent !important;
+    --bs-table-color-state: inherit !important;
+  }
+media: all
+preprocess: true
+conditions:
+  request_path:
+    id: request_path
+    negate: false
+    pages: "/node/58701\r\n/node/58876\r\n/node/3386\r\n/node/59756\r\n/node/59761\r\n/node/59746"
+contexts: {  }
+conditions_require_all: true

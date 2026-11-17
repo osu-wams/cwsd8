@@ -1,13 +1,10 @@
 uuid: 0138dd72-f4c3-48b2-8ae5-a963f21a5b60
 langcode: en
 status: true
-dependencies:
-  module:
-    - block_visibility_groups
-    - system
+dependencies: {  }
 id: coe_brand_icons
-label: 'COE Brand Icons'
-code: |-
+label: 'COE Brand - Icons'
+code: |
   /* ==========================================================================
      Global COE Brand Icons
      
@@ -86,16 +83,69 @@ code: |-
   .icon-coe-pause-luminance {
   	--coe-icon-bg-img: url("/sites/engineering.oregonstate.edu/files/2026-05/pause-luminance.svg");;
   }
+
+  /*==============================================
+  	Social Media Icons
+  ================================================*/
+  /* Icon buttons */
+  [class$="-social-media-icons"] .fa-2x {
+    background-color: transparent;
+    border-radius: 50%;
+    width: 44px;  /* Set a fixed width */
+    height: 44px; /* Set equal height */
+    display: flex; /* Use flexbox for centering */
+    align-items: center; /* Center vertically */
+    justify-content: center; /* Center horizontally */
+    transition: all 0.5s ease;
+    margin-left: -10px;
+    font-size: 24px;
+  }
+
+  .black-social-media-icons .fa-2x {
+  	color: #000 !important;
+  }
+
+  .orange-social-media-icons .fa-2x {
+  	color: #d73f09 !important;
+  }
+
+  .black-social-media-icons a:hover .fa-2x,
+  .black-social-media-icons a:focus .fa-2x {
+    background-color: #000;
+    color: #fff !important;
+  }
+
+  .orange-social-media-icons a:hover .fa-2x,
+  .orange-social-media-icons a:focus .fa-2x {
+    background-color: #d73f09;
+    color: #fff !important;
+  }
+
+
+  [class$="-social-media-icons"] {
+  	display: flex;
+  	gap: 10px;
+  }
+
+  [class$="-social-media-icons"] a {
+  	border-bottom: none !important;
+  }
+
+  /* Mobile tweaks */
+  @media screen and (max-width: 767px) {
+    /* Allow icons to wrap */
+    [class$="-social-media-icons"] {
+      flex-wrap: wrap;
+    }
+
+    /* Larger icon size */
+    [class$="-social-media-icons"] .fa-2x {
+      font-size: 32px;
+      margin-left: -7px;
+    }
+  }
 media: all
 preprocess: true
-conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
-  current_theme:
-    id: current_theme
-    negate: false
-    theme: madrone
+conditions: {  }
 contexts: {  }
 conditions_require_all: true

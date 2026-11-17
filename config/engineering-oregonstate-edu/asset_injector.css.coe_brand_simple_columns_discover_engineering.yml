@@ -1,0 +1,79 @@
+uuid: 3967eaf7-3dfd-458e-9e4f-a819df35ce5d
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: coe_brand_simple_columns_discover_engineering
+label: 'Content Type - Simple Column'
+code: |
+  /* the anchored h2 never carries the gap itself */
+  span[id^="toc-"] + h2 { margin-top: 0; }
+
+  /* case 1: anchor follows a sibling — gap comes from that sibling */
+  .field--name-field-coe-article-module-body > *:has(+ span[id^="toc-"]) {
+    margin-bottom: 120px;
+  }
+
+  /* case 2: anchor starts the module — gap comes from the module wrapper */
+  .field--name-field-coe-article-module > .field__item:has(> .paragraph > .field__item > span[id^="toc-"]:first-child) {
+    margin-top: 120px;
+  }
+
+
+  /* the anchored h2 never carries the gap itself */
+  span[id^="toc-"] + h2 { margin-top: 0; }
+
+  /* case 1: anchor follows a sibling – gap comes from that sibling */
+  .field--name-field-coe-article-module-body > *:has(+ span[id^="toc-"]) {
+    margin-bottom: 120px;
+  }
+
+  /* case 2: anchor starts the module – gap comes from the module wrapper */
+  .field--name-field-coe-article-module > .field__item:has(> .paragraph > .field__item > span[id^="toc-"]:first-child) {
+    margin-top: 120px;
+  }
+
+
+  /* TOC.js: stretch the TOC block to the full column so sticky has room to travel */
+  @media (min-width: 1400px) {
+    .layout-builder__layout > div:has(> .block-toc-js-block) {
+      display: flex;
+      flex-direction: column;
+    }
+    .layout-builder__layout > div > .block-toc-js-block {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .block-toc-js-block > .block__content {
+      flex: 1 1 auto;
+      padding-bottom: 50px; /* TOC stops 50px above the next section */
+    }
+  }
+
+  /* Too tall for the screen (class set by the JS injector): don't stick */
+  #toc-js-block.sticky.toc-too-tall {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+
+  /* Below xxl the TOC stacks full width, so never stick */
+  @media (max-width: 1199px) {
+    #toc-js-block.sticky {
+      position: static;
+    }
+  }
+media: all
+preprocess: true
+conditions:
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
+    negate: false
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      coe_simple_column: coe_simple_column
+contexts: {  }
+conditions_require_all: true

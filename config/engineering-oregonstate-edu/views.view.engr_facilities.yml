@@ -9,8 +9,16 @@ dependencies:
     - field.storage.node.field_engr_faci_type
     - image.style.navigation_300_x_400_
     - node.type.facilities
-    - system.menu.global-secondary-menu
     - taxonomy.vocabulary.osu_organization
+  content:
+    - 'taxonomy_term:osu_organization:2abd7874-0676-4404-95d1-60a8f565cf28'
+    - 'taxonomy_term:osu_organization:44b3c81c-c6aa-48b2-8254-48902f55cdd2'
+    - 'taxonomy_term:osu_organization:555f197c-7c6e-4617-9d51-d198ee8a3abe'
+    - 'taxonomy_term:osu_organization:81f35017-4e49-4bcc-a63e-90b5cc551516'
+    - 'taxonomy_term:osu_organization:8cd2ec38-2a8d-40a2-8fd8-6dfb200b0ad6'
+    - 'taxonomy_term:osu_organization:b5c3706b-8f09-46e2-bdad-891ff74a34d3'
+    - 'taxonomy_term:osu_organization:f3036909-5058-4b4b-abd4-445e56e25261'
+    - 'taxonomy_term:osu_organization:fbdbded8-03f6-4536-ab75-2e50352cda5d'
   module:
     - better_exposed_filters
     - media
@@ -515,6 +523,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
               field_engr_faci_organization_target_id:
                 plugin_id: default
                 advanced:
@@ -530,6 +539,7 @@ display:
                   is_secondary: false
                   hide_label: false
                   field_classes: ''
+                  no_reset: false
       access:
         type: perm
         options:
@@ -706,6 +716,7 @@ display:
           grouping: {  }
           row_class: pb-3
           default_row_class: true
+          grid_class: ''
           col_xs: col-12
           col_sm: col-sm-12
           col_md: col-md-6
@@ -1317,10 +1328,10 @@ display:
         - 'config:field.storage.node.field_engr_faci_photo'
         - 'config:field.storage.node.field_engr_faci_purpose'
         - 'config:field.storage.node.field_engr_faci_type'
-  page_1:
-    id: page_1
-    display_title: Page
-    display_plugin: page
+  block_3:
+    id: block_3
+    display_title: 'COE Brand Facilities'
+    display_plugin: block
     position: 2
     display_options:
       title: Facilities
@@ -1546,7 +1557,7 @@ display:
             more_link: false
             more_link_text: ''
             more_link_path: ''
-            strip_tags: false
+            strip_tags: true
             trim: true
             preserve_tags: ''
             html: false
@@ -1706,7 +1717,7 @@ display:
           exclude: false
           alter:
             alter_text: true
-            text: " <div class=\"osu-bg-page-alt-1 h-100 rounded-bottom  card\">\r\n<a href=\"{{ view_node }} \"><div class =\"card-img\">{{ field_engr_faci_photo }} </div>\r\n<div class=\"p-3\">\r\n  <h2 class=\"fw-bolder text-break\">\r\n    {{ title }} \r\n  </h2>\r\n</div>\r\n</a>\r\n<div class=\"px-3\">\r\n  {{ field_engr_faci_purpose }}\r\n</div>\r\n</div>"
+            text: "<div class=\"vertical-card\"><div class=\"h-250-img\">\r\n{{ field_engr_faci_photo }} \r\n</div>\r\n<div class=\"card-body\">\r\n  <h2 class=\"h4\">{{ title }}</h2>\r\n  <p class=\"card-text\">{{ field_engr_faci_purpose }} </p>\r\n<p class=\"card-arrow-link\"><a class=\"stretched-link\" href=\"{{ view_node }}\" aria-label=\"Explore '{{ title }}'\">Explore the facility</a> </p>\r\n</div>\r\n</div>"
             make_link: false
             path: ''
             absolute: false
@@ -1731,43 +1742,308 @@ display:
             trim: false
             preserve_tags: ''
             html: false
-          element_type: ''
+          element_type: '0'
           element_class: ''
           element_label_type: ''
           element_label_class: ''
           element_label_colon: false
-          element_wrapper_type: ''
-          element_wrapper_class: h-100
-          element_default_classes: true
+          element_wrapper_type: '0'
+          element_wrapper_class: ''
+          element_default_classes: false
           empty: ''
           hide_empty: false
           empty_zero: false
           hide_alter_empty: false
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: 'Clear Filters'
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          text_input_required: 'Select any filter and click on Apply to see results'
+          text_input_required_format: full_html
+          bef:
+            general:
+              autosubmit: false
+              auto_submit_sort_only: false
+              autosubmit_breakpoint: ''
+              autosubmit_exclude_textfield: false
+              autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
+              autosubmit_hide: false
+              input_required: false
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              secondary_open: false
+              reset_button_always_show: false
+            filter:
+              combine:
+                plugin_id: default
+                advanced:
+                  placeholder_text: ''
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  open_by_default: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+                  no_reset: false
+              field_engr_faci_organization_target_id:
+                plugin_id: default
+                advanced:
+                  sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
+                  rewrite:
+                    filter_rewrite_values: ''
+                    filter_rewrite_values_key: false
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  open_by_default: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+                  no_reset: false
       arguments: {  }
+      filters:
+        status:
+          id: status
+          table: node_field_data
+          field: status
+          entity_type: node
+          entity_field: status
+          plugin_id: boolean
+          value: '1'
+          group: 1
+          expose:
+            operator: ''
+            operator_limit_selection: false
+            operator_list: {  }
+        combine:
+          id: combine
+          table: views
+          field: combine
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: combine
+          operator: contains
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: combine_op
+            label: Search
+            description: ''
+            use_operator: false
+            operator: combine_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: combine
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              administrator: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          fields:
+            title: title
+            field_engr_faci_type: field_engr_faci_type
+            field_engr_faci_purpose: field_engr_faci_purpose
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          value:
+            facilities: facilities
+          group: 1
+          expose:
+            operator_limit_selection: false
+            operator_list: {  }
+        field_engr_faci_organization_target_id:
+          id: field_engr_faci_organization_target_id
+          table: node__field_engr_faci_organization
+          field: field_engr_faci_organization_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          plugin_id: taxonomy_index_tid
+          operator: or
+          value:
+            346: 346
+            141: 141
+            146: 146
+            161: 161
+            151: 151
+            156: 156
+            136: 136
+            341: 341
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_engr_faci_organization_target_id_op
+            label: 'Schools / Department'
+            description: ''
+            use_operator: false
+            operator: field_engr_faci_organization_target_id_op
+            operator_limit_selection: false
+            operator_list: {  }
+            identifier: field_engr_faci_organization_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              content_authors: '0'
+              group_content_author: '0'
+              group_content_plus: '0'
+              alert_author: '0'
+              manage_content: '0'
+              manage_asset_injector: '0'
+              manage_blocks: '0'
+              manage_layout_templates: '0'
+              manage_menus: '0'
+              manage_taxonomy: '0'
+              manage_users: '0'
+              manage_webforms: '0'
+              sub_architect: '0'
+              dx_administrator: '0'
+              manage_site_configuration: '0'
+              architect: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: true
+          group_info:
+            label: 'Schools / Department'
+            description: ''
+            identifier: field_engr_faci_organization_target_id
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items:
+              1:
+                title: 'Biological and Ecological Engineering'
+                operator: or
+                value:
+                  346: '346'
+              2:
+                title: 'Chemical, Biological and Environmental Engineering'
+                operator: or
+                value:
+                  141: '141'
+              3:
+                title: 'Civil and Construction Engineering'
+                operator: or
+                value:
+                  146: '146'
+              4:
+                title: 'College of Engineering'
+                operator: or
+                value:
+                  161: '161'
+              5:
+                title: 'Electrical Engineering and Computer Science'
+                operator: or
+                value:
+                  151: '151'
+              6:
+                title: 'Mechanical, Industrial, and Manufacturing Engineering'
+                operator: or
+                value:
+                  156: '156'
+              7:
+                title: 'Nuclear Science and Engineering'
+                operator: or
+                value:
+                  136: '136'
+              8:
+                title: Interdisciplinary
+                operator: or
+                value:
+                  341: '341'
+          reduce_duplicates: false
+          vid: osu_organization
+          type: select
+          hierarchy: false
+          limit: true
+          error_message: true
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      style:
+        type: views_bootstrap_grid
+        options:
+          grouping: {  }
+          row_class: gy-4
+          default_row_class: true
+          grid_class: ''
+          col_xs: col-12
+          col_sm: col-sm-12
+          col_md: col-md-6
+          col_lg: col-lg-4
+          col_xl: none
+          col_xxl: none
+      row:
+        type: fields
+        options:
+          default_field_elements: true
+          inline: {  }
+          separator: ''
+          hide_empty: false
       defaults:
         title: false
         css_class: false
+        exposed_form: false
+        style: false
+        row: false
         fields: false
         arguments: false
-      css_class: 'container pb-3'
+        filters: false
+        filter_groups: false
+      css_class: 'related-stories mb-7'
       display_description: 'Display cards of facilities'
       display_extenders:
         metatag_display_extender:
           metatags: {  }
           tokenize: false
-        ajax_history:
-          enable_history: false
-      path: research/facilities
-      menu:
-        type: normal
-        title: Facilities
-        description: ''
-        weight: -49
-        enabled: true
-        expanded: false
-        menu_name: global-secondary-menu
-        parent: ''
-        context: '0'
+        ajax_history: {  }
     cache_metadata:
       max-age: -1
       contexts:

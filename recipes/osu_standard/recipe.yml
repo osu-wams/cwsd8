@@ -7,3 +7,18 @@ recipes:
   - osu_editorial_workflow
   - osu_security
   - osu_tours
+
+config:
+  actions:
+    cas.settings:
+      simpleConfigUpdate:
+        server.version: "2.0"
+        server.hostname: "login.oregonstate.edu"
+        server.path: "/cas"
+        forced_login.enabled: true
+        forced_login.pages: "/user/login\r\n/login\r\n/admin"
+        logout.cas_logout: true
+        user_accounts.email_hostname: "oregonstate.edu"
+        login_link_enabled: true
+        login_link_label: "OSU Login"
+        login_success_message: "Welcome!"

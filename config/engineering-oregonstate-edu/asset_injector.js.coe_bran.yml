@@ -1,9 +1,7 @@
 uuid: 486cde81-fd7e-4f26-abbf-97f2748ed563
 langcode: en
 status: true
-dependencies:
-  module:
-    - block_visibility_groups
+dependencies: {  }
 id: coe_bran
 label: 'COE Brand Blocks'
 code: |
@@ -13,20 +11,37 @@ code: |
   const coe_accordions = document.querySelectorAll(".paragraph--type--coe-accordion-content");
 
   coe_accordions.forEach((el) => {
-  	const acc_button = el.querySelector(".field--name-field-coe-acc-section-titl, .field--name-field-coe-accordion-title");
-  	const acc_content = el.querySelector(".field--name-field-coe-accordion-section-body");
-  	acc_button && acc_button.addEventListener("click", function () {
-  		el.classList.toggle("accordion-open");
-      if (acc_content.style.maxHeight) {
-      	acc_content.style.maxHeight = acc_content.scrollHeight + "px";
-        setTimeout(() => {acc_content.style.maxHeight = null;}, 10);
+    const btn = el.querySelector(".field--name-field-coe-acc-section-titl, .field--name-field-coe-accordion-title");
+    const content = el.querySelector(".field--name-field-coe-accordion-section-body");
+    if (!btn || !content) return;
+
+    btn.addEventListener("click", () => {
+      const opening = !el.classList.contains("accordion-open");
+      el.classList.toggle("accordion-open", opening);
+
+      if (opening) {
+        content.style.display = "block";        // give it a layout box first
+        const target = content.scrollHeight;    // now a real number
+        content.style.maxHeight = "0px";
+        content.offsetHeight;                   // force reflow: commit the 0px start state
+        content.style.maxHeight = target + "px";
       } else {
-        acc_content.style.maxHeight = acc_content.scrollHeight + "px";
-        setTimeout(() => {
-        	acc_content.style.maxHeight = "none";
-        }, 500);
+        content.style.maxHeight = content.scrollHeight + "px"; // replace "none" with a number
+        content.offsetHeight;                   // force reflow
+        content.style.maxHeight = "0px";
       }
-  	})
+    });
+
+    content.addEventListener("transitionend", (e) => {
+      if (e.target !== content || e.propertyName !== "max-height") return;
+
+      if (el.classList.contains("accordion-open")) {
+        content.style.maxHeight = "none";       // let content resize freely while open
+      } else {
+        content.style.display = "";             // back to CSS default (none) only after collapse
+        content.style.maxHeight = "";
+      }
+    });
   });
 
   /*==============================
@@ -35,7 +50,7 @@ code: |
   const tickerButtons = document.querySelectorAll(".animated-ticker-button");
 
   tickerButtons.forEach(button => {
-  	const tickerContent = button.parentElement.querySelector(".animated-ticker-content");
+  	const tickerContent = button.closest(".animated-ticker")?.querySelector(".animated-ticker-content");
 
   	if (!tickerContent) return;
 
@@ -69,10 +84,6 @@ noscriptRegion: {  }
 jquery: false
 header: false
 preprocess: true
-conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
+conditions: {  }
 contexts: {  }
 conditions_require_all: true

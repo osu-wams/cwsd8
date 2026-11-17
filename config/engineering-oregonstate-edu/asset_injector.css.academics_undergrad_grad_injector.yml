@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
-    - system
+    - node
 id: academics_undergrad_grad_injector
-label: 'Academics Undergrad/Grad Injector'
+label: 'Content Type - Programs'
 code: |
   /*
   ==================================================================================================================================================================
@@ -767,13 +766,13 @@ code: |
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
+  'entity_bundle:node':
+    id: 'entity_bundle:node'
     negate: false
-    block_visibility_group: ''
-  request_path:
-    id: request_path
-    negate: false
-    pages: "/academics/programs/*/undergraduate\r\n/academics/programs/*/graduate"
+    context_mapping:
+      node: '@node.node_route_context:node'
+    bundles:
+      graduate_program: graduate_program
+      undergraduate_program: undergraduate_program
 contexts: {  }
 conditions_require_all: true

@@ -3,11 +3,10 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - system
 id: feature_story_prax
-label: 'Feature Story PRAx and Tallwood'
-code: |-
+label: 'LEGACY Feature Story PRAx and Tallwood'
+code: |
   .layout-content {
   	background-color: #FFF !important;
   }
@@ -29,7 +28,7 @@ code: |-
   	line-height: 160%; /* 28.8px */
   }
 
-  main h3 {
+  main h2 {
   	margin-bottom: 0px;
   }
 
@@ -45,18 +44,49 @@ code: |-
       padding-bottom: 0px;
   }
 
+  .neg-top-380 h1.header-text {
+  	margin-top: -380px;
+  }
+
+  .neg-top-300 h1.header-text {
+  	margin-top: -300px;
+  }
+
   .tallwood-header h1.header-text {
-  	margin-top: -340px;
+  	position: relative;
+  	z-index: 1;
   }
 
-  .tallwood-hero-gradient {
-  	background: linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%), url('/sites/engineering.oregonstate.edu/files/2024-12/tallwood-hero-image.jpg');
-  	background-position: center;
-  	background-size: cover;
-  }
-
-  .tallwood-tablet-hero-image img {
+  .tallwood-hero-image img {
+  	display: block;
   	width: 100%;
+  	height: auto;
+  	max-height: 700px;
+  	object-fit: cover;
+  	object-position: center;
+  }
+
+  .tallwood-hero-image .field--type-image {
+  	position: relative;
+  	overflow: hidden;
+  }
+
+  .tallwood-hero-image .field--type-image::after {
+  	content: "";
+  	position: absolute;
+  	inset: 0;
+  	background: linear-gradient(0deg, #000 0%, rgba(0, 0, 0, 0.00) 100%);
+  	pointer-events: none;
+  }
+
+  @media screen and (max-width: 1200px) {
+  	.tallwood-hero-image-scaling img{
+      transform: scale(1.4);
+      transform-origin: center 35%;
+  	}
+  	.tallwood-hero-image .field--type-image::after{
+  		background: none;
+  	}
   }
 
   /* scaling hero image down for mobile so that image is fully shown */
@@ -106,7 +136,7 @@ code: |-
   }
 
   @media screen and (max-width: 767px) {
-  	h1.header-text, .tallwood-header h1.header-text {
+  	h1.header-text, .tallwood-header {
   		margin-top: 0px;
   		padding-bottom: 0px;
   		font-size: 56px;
@@ -175,7 +205,7 @@ code: |-
   	
   }
 
-  .two-column-img-text h3 {
+  .two-column-img-text h2 {
   	padding-top: 0px;
   }
 
@@ -269,16 +299,6 @@ code: |-
   /* Padding/Spacing between key takeaways bullet points */ 
   li.key-takeaway {
       padding-bottom: 20px;
-  }
-
-  /* Use for Header threes throughout the story */
-  main h3 {
-      color: #000;
-      font-family: Stratum2Web;
-      font-size: 36px;
-      font-style: normal;
-      font-weight: 900;
-      line-height: 130%;
   }
 
   /* Quote Block Container */
@@ -410,15 +430,6 @@ code: |-
       padding: 32px;
   }
 
-  .story-footer h6 {
-  	color: #000;
-  	font-family: "Open Sans";
-  	font-size: 20px;
-  	font-style: normal;
-  	font-weight: 600;
-  	line-height: 130%; /* 26px */
-  }
-
   .photos-by-footer,
   .date-footer {
   	margin-top: 30px;
@@ -474,7 +485,7 @@ code: |-
   }
 
   /*PRAx Student Fellows section */
-  h5.header-names {
+  .header-names {
       color: var(--Primary-Beaver-Orange, #D73F09);
       font-feature-settings: 'liga' off, 'clig' off;
       font-family: "Open Sans";
@@ -620,13 +631,9 @@ code: |-
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
   request_path:
     id: request_path
     negate: false
-    pages: "/node/46596\r\n/node/46606"
+    pages: "/node/46596\r\n/node/46596/latest\r\n/node/46606\r\n/node/46606/latest"
 contexts: {  }
 conditions_require_all: true

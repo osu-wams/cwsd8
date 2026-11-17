@@ -3,6 +3,10 @@ langcode: en
 status: true
 dependencies:
   config:
+    - block_content.type.basic
+    - block_content.type.osu_accordion
+    - block_content.type.osu_card
+    - block_content.type.osu_menu_bar_item
     - core.entity_view_display.group.basic_group.default
     - core.entity_view_display.node.page.default
     - filter.format.full_html
@@ -15,6 +19,7 @@ dependencies:
     - node.type.page
     - workflows.workflow.editorial
   module:
+    - block_content
     - captcha
     - content_moderation
     - contextual
@@ -44,6 +49,7 @@ label: 'Manage Content'
 weight: -4
 is_admin: null
 permissions:
+  - 'access block library'
   - 'access content overview'
   - 'access contextual links'
   - 'access entity usage statistics'
@@ -59,9 +65,13 @@ permissions:
   - 'configure editable basic_group group layout overrides'
   - 'configure editable page node layout overrides'
   - 'create and edit custom blocks'
+  - 'create basic block content'
   - 'create document media'
   - 'create image media'
   - 'create kaltura media'
+  - 'create osu_accordion block content'
+  - 'create osu_card block content'
+  - 'create osu_menu_bar_item block content'
   - 'create osu_simple_tabs content'
   - 'create page content'
   - 'create remote_video media'
@@ -98,6 +108,10 @@ permissions:
   - 'mark as hidden in editoria11y'
   - 'mark as ok in editoria11y'
   - 'revert all revisions'
+  - 'revert any basic block content revisions'
+  - 'revert any osu_accordion block content revisions'
+  - 'revert any osu_card block content revisions'
+  - 'revert any osu_menu_bar_item block content revisions'
   - 'revert osu_simple_tabs revisions'
   - 'revert page revisions'
   - 'schedule publishing of nodes'
@@ -118,6 +132,10 @@ permissions:
   - 'use views bulk edit'
   - 'view all media revisions'
   - 'view all revisions'
+  - 'view any basic block content history'
+  - 'view any osu_accordion block content history'
+  - 'view any osu_card block content history'
+  - 'view any osu_menu_bar_item block content history'
   - 'view any unpublished content'
   - 'view editoria11y checker'
   - 'view latest version'

@@ -7,25 +7,21 @@ dependencies:
     - system
 id: rfi_form_transition
 label: 'RFI Form Transition'
-code: |
+code: |+
   (function () {
     document.addEventListener('DOMContentLoaded', function () {
       const tabs = document.querySelectorAll('[data-bs-toggle="tab"]');
-
       tabs.forEach(function (tab) {
         tab.addEventListener('shown.bs.tab', function (event) {
           console.log('Tab clicked:', tab.getAttribute('data-bs-target'));
-
           document.querySelectorAll('.tab-pane').forEach(function (pane) {
             pane.classList.remove('tab-animate');
           });
-
           const targetSelector = tab.getAttribute('data-bs-target');
           const targetPane = document.querySelector(targetSelector);
-
           if (targetPane) {
             console.log('Animating:', targetSelector);
-        
+
             setTimeout(() => {
               targetPane.classList.add('tab-animate');
             }, 10);
@@ -34,6 +30,7 @@ code: |
       });
     });
   })();
+
 noscript: ''
 noscriptRegion: {  }
 jquery: false
@@ -47,6 +44,6 @@ conditions:
   request_path:
     id: request_path
     negate: false
-    pages: /node/47741
+    pages: "/node/47741\r\n/node/59576"
 contexts: {  }
 conditions_require_all: true

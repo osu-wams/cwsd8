@@ -1,34 +1,70 @@
 uuid: f816e866-cfa4-43fe-9eb9-e5e0155f2b86
 langcode: en
 status: true
-dependencies:
-  module:
-    - block_visibility_groups
+dependencies: {  }
 id: loc
-label: 'Localist Card Clock Icons'
-code: |
-  document.addEventListener('DOMContentLoaded', function () {
-    document.querySelectorAll('.osu-event-specs').forEach(function (dl) {
-      const timeElement = dl.querySelector('dd.osu-event-date time');
-      const dtTime = dl.querySelector('dt.osu-event-date');
-      const ddTime = dl.querySelector('dd.osu-event-date');
-
-      if (!timeElement || !timeElement.textContent.trim()) {
-        if (dtTime) dtTime.style.display = 'none';
-        if (ddTime) ddTime.style.display = 'none';
-
-      }
-    });
-  });
+label: 'Localist Cards'
+code: |-
+  (function () {
+  	'use strict';
+  	
+  	// Hide the date row in event specs when the date is missing or empty.
+  	function hideEmptyDates(root) {
+  	  root.querySelectorAll('.osu-event-specs').forEach((dl) => {
+  	    const timeEl = dl.querySelector('dd.osu-event-date time');
+  	    if (timeEl && timeEl.textContent.trim()) return;
+  	
+  	    const dt = dl.querySelector('dt.osu-event-date');
+  	    const dd = dl.querySelector('dd.osu-event-date');
+  	    if (dt) dt.style.display = 'none';
+  	    if (dd) dd.style.display = 'none';
+  	  });
+  	}
+  	
+  	// Change card title headings from h2 to the level set in data-heading-level.
+  	function getHeadingLevel(wrapper) {
+  	  const level = parseInt(wrapper.getAttribute('data-heading-level'), 10);
+  	  return level >= 3 && level <= 6 ? level : null; // h2 is the template default
+  	}
+  	
+  	function swapHeadings(wrapper, level) {
+  	  wrapper.querySelectorAll('h2.osu-card-title').forEach((h) => {
+  	    const n = document.createElement('h' + level);
+  	    for (const attr of h.attributes) n.setAttribute(attr.name, attr.value);
+  	    n.append(...h.childNodes);
+  	    h.replaceWith(n);
+  	  });
+  	}
+  	
+  	function init() {
+  	  // Event specs rendered outside a widget.
+  	  hideEmptyDates(document);
+  	
+  	  // Widgets render asynchronously, so apply the fixes now and whenever content arrives.
+  	  document.querySelectorAll('.localist-widget').forEach((wrapper) => {
+  	    const level = getHeadingLevel(wrapper);
+  	
+  	    const run = () => {
+  	      hideEmptyDates(wrapper);
+  	      if (level) swapHeadings(wrapper, level);
+  	    };
+  	
+  	    run();
+  	    new MutationObserver(run).observe(wrapper, { childList: true, subtree: true });
+  	  });
+  	}
+  	
+  	if (document.readyState === 'loading') {
+  	  document.addEventListener('DOMContentLoaded', init);
+  	} else {
+  	  init();
+  	}
+  })();
 noscript: ''
 noscriptRegion: {  }
 jquery: false
 header: false
 preprocess: true
-conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
+conditions: {  }
 contexts: {  }
 conditions_require_all: true

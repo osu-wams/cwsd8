@@ -3,15 +3,14 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - system
 id: 404_page_styling
-label: '404 Page Styling'
-code: |-
-  /* Lightbulb Page */
+label: 'COE Brand - 404'
+code: |
+  /* 404 Page */
 
   /*=================
-  	Typography
+  	Colors
   ===================*/
   :root {
   	--Primary-Paddletail-Black: #000;
@@ -21,8 +20,26 @@ code: |-
   	--Secondary-Seafoam: #B8DDE1;
   }
 
+  /*=================
+  	Headers
+  ===================*/
+
+  /* COE Brand h4 */
+  .error-options {
+  	color: var(--Secondary-Seafoam, #B8DDE1);
+  	font-family: Stratum2Web;
+  	font-size: 24px;
+  	font-style: normal;
+  	font-weight: 900;
+  	line-height: 130%; /* 31.2px */
+  	letter-spacing: 1.2px;
+  	text-transform: uppercase;
+  }
+
   /* COE Brand h1 (slightly smaller) */
-  h1 {
+  .error-msg,
+  .error-code {
+  	display: block;
   	color: var(--Primary-Bucktooth-White, #FFF);
   	font-family: Stratum2Web;
   	font-size: 72px;
@@ -33,40 +50,18 @@ code: |-
   	margin-bottom: 20px;
   }
 
-  /* COE Brand h4 */
-  .h4 {
-  	color: var(--Primary-Paddletail-Black, #000);
-  	font-family: Stratum2Web;
-  	font-size: 24px;
-  	font-style: normal;
-  	font-weight: 900;
-  	line-height: 130%; /* 31.2px */
-  	letter-spacing: 1.2px;
-  	text-transform: uppercase;
-  }
-
-  .errorMsg,
-  .errorCode {
-  	display: block;
-  }
-
   /* COE Brand h3 */
-  .errorCode {
+  .error-code {
   	color: var(--Secondary-Luminance, #FFB500);
   	font-size: 36px;
   	line-height: 130%; /* 46.8px */
   	margin-bottom: 10px;
   }
 
-  /* Seafoam Text */
-  .text-seafoam {
-  	color: var(--Secondary-Seafoam, #B8DDE1) !important;
-  }
-
   /* Tablet and Mobile changes */
   @media screen and (max-width: 992px) {
   	/* COE Brand h2 */
-  	.errorMsg {
+  	.error-msg {
   		font-size: 64px;
   		line-height: 130%; /* 83.2px */
   	}
@@ -74,42 +69,114 @@ code: |-
 
   @media screen and (max-width: 767px) {
   	/* COE Brand h3 */
-  	.errorMsg {
+  	.error-msg {
   		font-size: 36px;
   		line-height: 130%; /* 46.8px */
   	}
 
   	/* COE Brand h4 */
-  	.errorCode {
+  	.error-code {
   		font-size: 24px;
   		line-height: 130%; /* 31.2px */
   		letter-spacing: 1.2px;
   	}
-  	
-  	/* Seafoam Button Wide */
+  }
+
+  /*=============================
+  	Seafoam Button
+  =============================*/
+  a.seafoam-border,
+  .seafoam-border a {
+  	text-align: center;
+  	font-family: "Open Sans";
+  	font-size: 18px;
+  	font-style: normal;
+  	font-weight: 600;
+  	line-height: normal;
+  	letter-spacing: 0.9px;
+  	text-transform: uppercase;
+  	padding: 17px 10px;
+  	transition: 0.3s;
+  	display: block;
+  	margin-top: 20px;
+  	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  }
+
+  a.seafoam-border:not([class$="-width"]),
+  .seafoam-border a:not([class$="-width"]) {
+  	min-width: 320px;
+  	width: max-content;
+  }
+
+  a.seafoam-border, .seafoam-border a {
+  	color: var(--Secondary-Seafoam, #B8DDE1) !important;
+  	border: 2px solid var(--Secondary-Seafoam, #B8DDE1);
+  }
+
+  /* Hover/Focus State */
+  a.seafoam-border:hover,
+  .seafoam-border a:hover,
+  a.seafoam-border:focus,
+  .seafoam-border a:focus {
+  	background-color: var(--Secondary-Seafoam, #B8DDE1);
+  	color: var(--Secondary-Rogue-Wave, #0D5257) !important;
+  	border-bottom: 2px solid var(--Secondary-Seafoam, #B8DDE1); /* cancel out main a styling */
+  }
+
+  /* Active State */
+  a.seafoam-border:active,
+  .seafoam-border a:active {
+  	border: 2px solid var(--Useful-Seafoam-Shades-Seafoam-Active, #ACCBCF);
+  	background-color: var(--Useful-Seafoam-Shades-Seafoam-Active, #ACCBCF) !important;
+  	color: var(--Secondary-Rogue-Wave, #0D5257) !important;
+  }
+
+  /* Mobile Changes */
+  @media screen and (max-width: 767px) {
+  	a.seafoam-border,
+  	.seafoam-border a {
+  		width: 100%;
+  		min-width: 0;
+  	}
+
+  	/* Wide Button */
   	.seafoam-border {
   		width: 90vw !important;
   	}
   }
 
-  /*===================
+  /*=============================
   	Bottom Section
-  ===================== */
-
+  =============================*/
+  /* Explore Link */
   .error-explore-link {
   	max-width: 250px;
   	margin-left: auto;
   }
 
-  /* Hide mobile and tablet circuit images on desktop */
-  .circuit-mobile {
-  	display: none;
-  }
-  .circuit-tablet {
-  	display: none;
+  /* Yellow Border Bar */
+  .error-bar {
+  	border-bottom: 10px solid var(--Secondary-Luminance, #FFB500);
   }
 
+  /* Circuit Pattern */
+  .error-circuit-pattern {
+  	background-image: url('/sites/engineering.oregonstate.edu/files/2026-04/circuit-cropped.svg');
+  	background-position: bottom center;
+  	background-repeat: no-repeat;
+  	background-size: contain;
+  	aspect-ratio: 3024 / 936;
+  }
+
+  /* Tablet and Mobile changes */
   @media screen and (max-width: 992px) {
+  	.error-circuit-pattern {
+  		background-image: url('/sites/engineering.oregonstate.edu/files/2026-05/circuit-desktop-cropped.svg');
+  		aspect-ratio: 3029 / 1303;
+  	}
+
   	.col-xxl-8.col-lg-8 {
   		order: 2 !important;
   	}
@@ -125,25 +192,12 @@ code: |-
   	}
   }
 
-  @media screen and (min-width: 768px) and (max-width: 992px) {
-  	/* Swap desktop and tablet images */
-  	.circuit-desktop {
-  		display: none;
-  	}
-  	.circuit-tablet {
-  		display: block;
-  	}
-  }
-
   @media screen and (max-width: 767px) {
-  	/* Swap desktop and mobile images */
-  	.circuit-desktop {
-  		display: none;
+  	.error-circuit-pattern {
+  		background-image: url('/sites/engineering.oregonstate.edu/files/2026-04/circuit-tablet-cropped1.svg');
+  		aspect-ratio: 2034 / 1651;
   	}
-  	.circuit-mobile {
-  		display: block;
-  	}
-    
+
   	.col-xxl-4.col-lg-4 {
   		margin-top: 90px;
   	}
@@ -154,14 +208,28 @@ code: |-
   	}
   }
 
-  /* Bottom yellow bar */
-  .error-bar {
-  	border-bottom: 10px solid var(--Secondary-Luminance, #FFB500);
+  /*=============================
+  	Breadcrumbs and Lightbulb
+  =============================*/
+  div.container-fluid:has(.madrone-breadcrumb) {
+  	background-color: #212529 !important;
   }
 
-  /*=================
-  	Lightbulb
-  ===================*/
+  .breadcrumb {
+  	--bs-breadcrumb-divider-color: white;
+  	--bs-breadcrumb-active-color: white;
+  }
+
+  .breadcrumb-item,
+  .breadcrumb-item > a {
+  	color: white;
+  }
+
+  .breadcrumb-item > a:hover {
+  	text-decoration: underline white !important;
+  }
+
+  /* Lightbulb Wrapper */
   .bulb-wrap {
   	position: absolute;
   	/* Exact height of the breadcrumb section */
@@ -240,30 +308,10 @@ code: |-
   	opacity: 0;
   }
 
-  /*=================
-  	Breadcrumbs
-  ===================*/
-  div.container-fluid:has(.madrone-breadcrumb) {
-  	background-color: #212529 !important;
-  }
 
-  .breadcrumb {
-  	--bs-breadcrumb-divider-color: white;
-  	--bs-breadcrumb-active-color: white;
-  }
-
-  .breadcrumb-item,
-  .breadcrumb-item > a {
-  	color: white;
-  }
-
-  .breadcrumb-item > a:hover {
-  	text-decoration: underline white !important;
-  }
-
-  /*========================
-  	COE Brand Typograhpy
-  ==========================*/
+  /*=============================
+  	COE Brand Links
+  =============================*/
   /* Apply to all links by default */
   main a {
   	color: #D73F09;
@@ -311,9 +359,9 @@ code: |-
   }
 
 
-
-
-
+  /*=============================
+  	COE Brand Bullet Points
+  =============================*/
   /* Bullet point icon setup */
   main ul > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item)::before {
   	content: '' !important;
@@ -340,9 +388,9 @@ code: |-
 
   /* Bullet point spacing */
   main ul > li:not(.nav-item):not(.toc-h3):not(.toc-h2):not(.pager__item) {
-    position: relative; /* Allows positioning of the pseudo-element */
-    padding-left: 20px; /* Space for the bullet */
-    padding-bottom: 18px;
+  	position: relative; /* Allows positioning of the pseudo-element */
+  	padding-left: 20px; /* Space for the bullet */
+  	padding-bottom: 18px;
   	list-style: none;
   }
 
@@ -353,73 +401,9 @@ code: |-
   main ul {
   	padding-left: 0;
   }
-
-
-
-
-  /* Button Styles */
-  a.seafoam-border,
-  .seafoam-border a {
-  	text-align: center;
-  	font-family: "Open Sans";
-  	font-size: 18px;
-  	font-style: normal;
-  	font-weight: 600;
-  	line-height: normal;
-  	letter-spacing: 0.9px;
-  	text-transform: uppercase;
-  	padding: 17px 10px;
-  	transition: 0.3s;
-  	display: block;
-  	margin-top: 20px;
-  	display: flex;
-  	justify-content: center;
-  	align-items: center;
-  }
-
-  a.seafoam-border:not([class$="-width"]),
-  .seafoam-border a:not([class$="-width"]) {
-  	min-width: 320px;
-  	width: max-content;
-  }
-
-  @media screen and (max-width: 767px) {
-  	a.seafoam-border,
-  	.seafoam-border a,
-  	a.seafoam-border:not([class$="-width"]),
-  	.seafoam-border a:not([class$="-width"]) {
-  		width: 100%;
-  		min-width: 0;
-  	}
-  }
-
-  a.seafoam-border, .seafoam-border a {
-  	color: var(--Secondary-Seafoam, #B8DDE1) !important;
-  	border: 2px solid var(--Secondary-Seafoam, #B8DDE1);
-  }
-
-  a.seafoam-border:hover,
-  .seafoam-border a:hover,
-  a.seafoam-border:focus,
-  .seafoam-border a:focus {
-  	background-color: var(--Secondary-Seafoam, #B8DDE1);
-  	color: var(--Secondary-Rogue-Wave, #0D5257) !important;
-  	border-bottom: 2px solid var(--Secondary-Seafoam, #B8DDE1); /* cancel out main a styling */
-  }
-
-  a.seafoam-border:active,
-  .seafoam-border a:active {
-  	border: 2px solid var(--Useful-Seafoam-Shades-Seafoam-Active, #ACCBCF);
-  	background-color: var(--Useful-Seafoam-Shades-Seafoam-Active, #ACCBCF) !important;
-  	color: var(--Secondary-Rogue-Wave, #0D5257) !important;
-  }
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
   response_status:
     id: response_status
     negate: false

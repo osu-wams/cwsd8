@@ -3,10 +3,9 @@ langcode: en
 status: true
 dependencies:
   module:
-    - block_visibility_groups
     - system
 id: events_video_library_form_videos_form_fields
-label: 'Events Video Library Form (videos, form fields)'
+label: 'Events Video Library'
 code: |-
   .layout-content{
   	background: #fff;
@@ -22,13 +21,6 @@ code: |-
 
   .ytp-impression-link{
   	display: none !important;
-  }
-
-  .block-system-main-block{
-
-  	background-image: url(https://engineering.oregonstate.edu/sites/engineering.oregonstate.edu/files/2025-01/video-library-hero-pattern-desktop-2.svg);
-  	background-position: center top;
-  	background-repeat: no-repeat;
   }
 
   .Event-video-library-filters .d-flex {
@@ -59,9 +51,6 @@ code: |-
   .views-exposed-form{
   	border-bottom: 1px solid #C6DAE7;
   }
-
-
-
 
 
   h1{
@@ -101,25 +90,31 @@ code: |-
   	float: left;
   }
 
-  @media only screen and (max-width: 767px) {
+
+  #edit-i-m-interested-in-recruiting-or-hiring-students label{
+  	color: var(--Primary-Paddletail-Black, #000);
   	
-  #edit-submit-event-video{
-  	margin-top: 50px !important;
-  	width: 98%;
-  	border: 2px solid #D73F09 !important;
-  	background: #D73F09 !important;
-  }
-
-  }
-
-
-  .js-form-item-name-first label, .js-form-item-name-last label, .js-form-item-email label, .fieldset-legend{
-  	color: #000 !important;
+  	/* Main/Body */
   	font-family: "Open Sans";
-  	font-size: 20px;
+  	font-size: 18px !important;
   	font-style: normal;
-  	font-weight: 600;
-  	line-height: 130%; /* 26px */
+  	font-weight: 400 !important;
+  	line-height: 160% !important; /* 28.8px */
+  }
+
+  /*.js-form-item-name-first label, .js-form-item-name-last label, .js-form-item-email label, .fieldset-legend, */
+  /*.js-form-type-textfield label, .form-item-phone-number label{*/
+  /*	color: #000 !important;*/
+  /*	font-family: "Open Sans";*/
+  /*	font-size: 20px;*/
+  /*	font-style: normal;*/
+  /*	font-weight: 600;*/
+  	/*line-height: 130%;*/
+  /*}*/
+
+  .form-label,
+  legend{
+  	margin-bottom: 0px;
   }
 
   .webform-options-display-two-columns {
@@ -147,53 +142,71 @@ code: |-
       align-items: start;
   }
 
-  /*.fieldset-wrapper input[type="checkbox"], .js-webform-checkboxes  {*/
-  /*	border-radius: 5px !important;*/
-  /*	border: 2px solid #000 !important;*/
-  /*	background: #FFF !important;*/
-  /*	height: 76px;*/
-  /*	padding-left: 30px;*/
-  /*	padding-right: 30px;*/
-  /*	color: #000;*/
-  /*	font-family: "Open Sans";*/
-  /*	font-size: 18px;*/
-  /*	font-style: normal;*/
-  /*	font-weight: 400;*/
-  /*	line-height: 160%;*/
+
+  /*
+  * Label and checkbox on same line
+  */
+
+  /*.form-type-checkbox,*/
+  /*.js-webform-type-checkbox {*/
+  /*  display: flex !important;*/
+  /*  align-items: flex-start !important;*/
+  /*  gap: 10px !important;*/
+  /*}*/
+
+  /*.js-webform-type-checkbox input[type="checkbox"] {*/
+  /*  flex: 0 0 auto !important;*/
+  /*  margin: 4px 0 0 !important;*/
   /*}*/
 
 
-  .form-checkbox{
-  	border-radius: 5px;
-  	border: 2px solid var(--Primary-Paddletail-Black, #000);
-  	background: var(--Primary-Bucktooth-White, #FFF);
-  	width: 32px;
-  	height: 32px;
-  	flex-shrink: 0;
+  /*.js-webform-type-checkbox label {*/
+  /*  display: block !important;*/
+  /*  flex: 1 1 auto !important;*/
+  /*  min-width: 0 !important;*/
+  /*  margin: 0 !important;*/
+  /*  padding-top: .3rem;*/
+  /*}*/
+
+
+  /*.form-checkbox{*/
+  /*	border-radius: 5px;*/
+  /*	border: 2px solid var(--Primary-Paddletail-Black, #000);*/
+  /*	background: var(--Primary-Bucktooth-White, #FFF);*/
+  /*	width: 32px;*/
+  /*	height: 32px;*/
+  /*	flex-shrink: 0;*/
+  /*}*/
+
+  /*.form-check-input:focus{*/
+  /*	border: 2px solid #000;*/
+  /*	outline: none;*/
+  /*	box-shadow: none; */
+  /*}*/
+
+  /*.form-check-input[type="checkbox"]:checked {*/
+  /*	border-color: #000;*/
+  /*}*/
+
+  /*.form-check-input[type="checkbox"]:checked:before {*/
+  /*	content: "";*/
+  /*  display: block;*/
+  /*  width: 28px;*/
+  /*  height: 28px;*/
+  /*  background: black;*/
+  /*  border: 2px solid white;*/
+  /*  border-radius: 0.25em;*/
+  /*  box-sizing: border-box;*/
+  /*}*/
+
+  .form-item{
+  	padding-bottom: 20px;
   }
 
-  .form-check-input:focus{
-  	border: 2px solid #000;
-  	outline: none;
-  	box-shadow: none; 
-  }
-
-  .form-check-input[type="checkbox"]:checked {
-  	border-color: #000;
-  }
-
-  .form-check-input[type="checkbox"]:checked:before {
-  	content: "";
-    display: block;
-    width: 28px;
-    height: 28px;
-    background: black;
-    border: 2px solid white;
-    border-radius: 0.25em;
-    box-sizing: border-box;
-  }
-
-  .form-label {
+  #edit-first-and-last-name-last,
+  .js-webform-type-tel,
+  .webform-type-email,
+  .webform-type-textfield{
   	margin-bottom: 0.5rem;
   	margin-top: .5rem;
 
@@ -233,8 +246,12 @@ code: |-
   }
 
   .form-actions {
-  		margin-top: 48px !important;
+  		/*margin-top: 48px !important;*/
   		margin-bottom: 128px !important;
+  }
+
+  .evl-submission-second-form .form-actions {
+  	margin-bottom: 48px !important;
   }
 
   .new-returning-visitor-new-visitor input{
@@ -250,6 +267,10 @@ code: |-
   	float: right;
   }
 
+  #edit-i-m-interested-in-1-other{
+  	width: 100%;
+  	float: left !important;
+  }
 
   #edit-are-you-a-new-or-returning-visitor--wrapper{
   	margin-top: 50px !important;
@@ -468,22 +489,6 @@ code: |-
   	width: 100% !important;
   }
 
-  #edit-submit-event-video{
-  	margin-top: 50px !important;
-  	width: 320px;
-  	color: #ffffff !important;
-    background: #D73F09 !important;
-    border: 2px solid #D73F09 !important;
-  }
-
-  #edit-submit-event-video:hover{
-  	margin-top: 50px !important;
-  	width: 320px;
-  	color: #D73F09 !important;
-    background: #fff !important;
-    border: 2px solid #D73F09 !important;
-  }
-
   .btn.osu-btn-primary{
   	text-align: center;
   	font-family: "Open Sans";
@@ -493,7 +498,6 @@ code: |-
   	line-height: normal;
   	letter-spacing: 0.9px;
   	text-transform: uppercase;
-  	padding: 17px 10px;
   	transition: 0.3s;
   	display: block;
   	margin-top: 20px;
@@ -505,6 +509,13 @@ code: |-
   	color: #FFF;
   }
 
+  .btn.osu-btn-primary.black-border{
+  	border: 2px solid #000 !important;
+  	background: #FFF !important;
+  	color: #000 !important;
+  }
+
+
   .btn.osu-btn-primary:hover,
   .btn.osu-btn-primary:focus,
   .btn.osu-btn-primary:active {
@@ -513,9 +524,32 @@ code: |-
   	color: #000 !important;
   }
 
-  /*.btn.osu-btn-primary:hover{*/
-  /*	color: #D73F09 !important;*/
-  /*}*/
+  .btn.osu-btn-primary.black-border:hover,
+  .btn.osu-btn-primary.black-border:active,
+  .btn.osu-btn-primary.black-border:focus{
+  	border: 2px solid #000 !important;
+  	background: #000 !important;
+  	color: #fff !important;
+  }
+
+  .form-actions input{
+  	min-width: 380px;
+  	width: max-content;
+  }
+
+
+  @media screen and (max-width: 767px) {
+  	
+  	a.white-fill:not([class$="-width"]),
+  .white-fill a:not([class$="-width"]){
+  	width: 100%;
+  	min-width: 0;
+  }
+  }
+
+  .btn.osu-btn-primary:hover{
+  	color: #D73F09 !important;
+  }
 
   .js-form-item select{
   	border-radius: 5px;
@@ -637,10 +671,6 @@ code: |-
   /*  box-sizing: border-box;*/
   /*}*/
 
-  .form-actions input{
-  	width: 380px;
-  }
-
   .form-actions input:hover, .form-actions input:focus {
   	border: 2px solid #D73F09 !important;
   	background: #D73F09 !important;
@@ -671,12 +701,12 @@ code: |-
     flex-shrink: 0;
   }
 
-  /*.contextual-region .justify-content-center{*/
-  /*	justify-content: flex-start !important;*/
-  /*}*/
+  .form-item-field-event-video-type-target-id {
+  	margin-bottom: 48px !important;
+  }
 
   /* Mobile-first styling for screens smaller than 768px */
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
   		h1{
       color: var(--Primary-Beaver-Orange, #D73F09);
       font-feature-settings: 'liga' off, 'clig' off;
@@ -685,6 +715,11 @@ code: |-
       font-style: normal;
       font-weight: 900;
       line-height: 120%;
+  		}
+  		
+  		.form-actions input {
+  				width: 100% !important;
+  				min-width: 0 !important;
   		}
   		
       .views-exposed-form .form--inline > .form-item {
@@ -723,13 +758,9 @@ code: |-
 media: all
 preprocess: true
 conditions:
-  condition_group:
-    id: condition_group
-    negate: false
-    block_visibility_group: ''
   request_path:
     id: request_path
     negate: false
-    pages: "/webform/event-video-library\r\n/test/event-video-library-0\r\n/node/46831\r\n/node/46811"
+    pages: "/webform/event-video-library\r\n/test/event-video-library-0\r\n/node/46831\r\n/node/46811\r\n/node/59776\r\n/node/59666"
 contexts: {  }
 conditions_require_all: true

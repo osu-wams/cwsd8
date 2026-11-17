@@ -8,7 +8,6 @@ dependencies:
     - field.storage.node.field_profile_email
     - field.storage.node.field_profile_image
     - field.storage.node.field_profile_office_phone
-    - field.storage.node.field_profile_primary_title
     - field.storage.node.field_profile_pronouns
     - image.style.medium
     - image.style.profile_image
@@ -473,6 +472,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 20
           total_pages: null
           id: 0
@@ -490,7 +490,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
-          pagination_heading_level: h4
       exposed_form:
         type: bef
         options:
@@ -506,45 +505,47 @@ display:
           bef:
             general:
               autosubmit: true
+              auto_submit_sort_only: false
+              autosubmit_breakpoint: ''
               autosubmit_exclude_textfield: false
               autosubmit_textfield_delay: 500
+              autosubmit_textfield_minimum_length: 3
               autosubmit_hide: false
               input_required: false
               allow_secondary: false
               secondary_label: 'Advanced options'
               secondary_open: false
               reset_button_always_show: false
-              autosubmit_textfield_minimum_length: 3
-              autosubmit_breakpoint: ''
-              auto_submit_sort_only: false
             filter:
               title:
                 plugin_id: default
                 advanced:
-                  placeholder_text: Name
-                  collapsible: false
-                  is_secondary: false
-                  collapsible_disable_automatic_open: false
-                  hide_label: false
-                  field_classes: ''
-                  open_by_default: false
                   sort_options_method: alphabetical_asc
                   sort_options_natural: true
+                  placeholder_text: Name
+                  collapsible: false
+                  collapsible_disable_automatic_open: false
+                  open_by_default: false
+                  is_secondary: false
+                  hide_label: false
+                  field_classes: ''
+                  no_reset: false
               field_osu_organizations_target_id:
                 plugin_id: default
                 advanced:
                   sort_options: false
+                  sort_options_method: alphabetical_asc
+                  sort_options_natural: true
                   rewrite:
                     filter_rewrite_values: ''
                     filter_rewrite_values_key: false
                   collapsible: false
-                  is_secondary: false
                   collapsible_disable_automatic_open: false
+                  open_by_default: false
+                  is_secondary: false
                   hide_label: false
                   field_classes: ''
-                  open_by_default: false
-                  sort_options_method: alphabetical_asc
-                  sort_options_natural: true
+                  no_reset: false
       access:
         type: perm
         options:
@@ -1004,69 +1005,6 @@ display:
             image_loading:
               attribute: lazy
           group_column: target_id
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_profile_primary_title:
-          id: field_profile_primary_title
-          table: node__field_profile_primary_title
-          field: field_profile_primary_title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: 'Primary Title'
-          exclude: true
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
-          group_column: value
           group_columns: {  }
           group_rows: true
           delta_limit: 0
@@ -1622,6 +1560,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 20
           total_pages: null
           id: 0
@@ -1639,7 +1578,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
-          pagination_heading_level: h4
       sorts:
         title:
           id: title
@@ -1836,11 +1774,6 @@ display:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          override: 1
-          sticky: 1
-          caption: ''
-          summary: ''
-          description: ''
           columns:
             field_profile_image: field_profile_image
             field_profile_primary_title: field_profile_primary_title
@@ -1851,74 +1784,79 @@ display:
             field_profile_office_phone: field_profile_office_phone
             field_profile_address: field_profile_address
             nothing: nothing
+          default: '-1'
           info:
             field_profile_image:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             field_profile_primary_title:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             field_profile_pronouns:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             field_osu_organizations:
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             title:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             field_profile_email:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             field_profile_office_phone:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             field_profile_address:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
             nothing:
               align: ''
               separator: ''
-              empty_column: 0
+              empty_column: false
               responsive: ''
-          default: '-1'
-          empty_table: 0
-          responsive: 1
+          override: true
+          sticky: true
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+          responsive: true
           bootstrap_styles:
-            striped: striped
             bordered: bordered
+            sm: '0'
             hover: hover
-            sm: 0
+            striped: striped
       row:
         type: fields
         options:
@@ -1977,7 +1915,6 @@ display:
         - 'config:field.storage.node.field_profile_email'
         - 'config:field.storage.node.field_profile_image'
         - 'config:field.storage.node.field_profile_office_phone'
-        - 'config:field.storage.node.field_profile_primary_title'
         - 'config:field.storage.node.field_profile_pronouns'
   page_1:
     id: page_1
@@ -2042,69 +1979,6 @@ display:
           type: string
           settings:
             link_to_entity: true
-          group_column: value
-          group_columns: {  }
-          group_rows: true
-          delta_limit: 0
-          delta_offset: 0
-          delta_reversed: false
-          delta_first_last: false
-          multi_type: separator
-          separator: ', '
-          field_api_classes: false
-        field_profile_primary_title:
-          id: field_profile_primary_title
-          table: node__field_profile_primary_title
-          field: field_profile_primary_title
-          relationship: none
-          group_type: group
-          admin_label: ''
-          plugin_id: field
-          label: Title
-          exclude: false
-          alter:
-            alter_text: false
-            text: ''
-            make_link: false
-            path: ''
-            absolute: false
-            external: false
-            replace_spaces: false
-            path_case: none
-            trim_whitespace: false
-            alt: ''
-            rel: ''
-            link_class: ''
-            prefix: ''
-            suffix: ''
-            target: ''
-            nl2br: false
-            max_length: 0
-            word_boundary: true
-            ellipsis: true
-            more_link: false
-            more_link_text: ''
-            more_link_path: ''
-            strip_tags: false
-            trim: false
-            preserve_tags: ''
-            html: false
-          element_type: ''
-          element_class: ''
-          element_label_type: ''
-          element_label_class: ''
-          element_label_colon: true
-          element_wrapper_type: ''
-          element_wrapper_class: ''
-          element_default_classes: true
-          empty: ''
-          hide_empty: false
-          empty_zero: false
-          hide_alter_empty: true
-          click_sort_column: value
-          type: string
-          settings:
-            link_to_entity: false
           group_column: value
           group_columns: {  }
           group_rows: true
@@ -2307,6 +2181,7 @@ display:
         type: full
         options:
           offset: 0
+          pagination_heading_level: h4
           items_per_page: 20
           total_pages: null
           id: 0
@@ -2324,7 +2199,6 @@ display:
             offset: false
             offset_label: Offset
           quantity: 9
-          pagination_heading_level: h4
       sorts:
         title:
           id: title
@@ -2520,59 +2394,59 @@ display:
           grouping: {  }
           row_class: ''
           default_row_class: true
-          override: 1
-          sticky: 1
-          caption: ''
-          summary: ''
-          description: ''
           columns:
             title: title
             field_profile_primary_title: field_profile_primary_title
             field_osu_organizations: field_osu_organizations
             field_profile_email: field_profile_email
             field_profile_office_phone: field_profile_office_phone
+          default: '-1'
           info:
             title:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 1
+              empty_column: true
               responsive: ''
             field_profile_primary_title:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 1
+              empty_column: true
               responsive: ''
             field_osu_organizations:
               align: ''
               separator: ''
-              empty_column: 1
+              empty_column: true
               responsive: ''
             field_profile_email:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 1
+              empty_column: true
               responsive: ''
             field_profile_office_phone:
-              sortable: 0
+              sortable: false
               default_sort_order: asc
               align: ''
               separator: ''
-              empty_column: 1
+              empty_column: true
               responsive: ''
-          default: '-1'
-          empty_table: 0
-          responsive: 1
+          override: true
+          sticky: true
+          summary: ''
+          empty_table: false
+          caption: ''
+          description: ''
+          responsive: true
           bootstrap_styles:
-            striped: striped
             bordered: bordered
+            sm: '0'
             hover: hover
-            sm: 0
+            striped: striped
       row:
         type: fields
         options:
@@ -2620,4 +2494,3 @@ display:
         - 'config:field.storage.node.field_osu_organizations'
         - 'config:field.storage.node.field_profile_email'
         - 'config:field.storage.node.field_profile_office_phone'
-        - 'config:field.storage.node.field_profile_primary_title'

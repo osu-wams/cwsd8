@@ -1,0 +1,360 @@
+diff --git a/bootstrap_layout_builder.libraries.yml b/bootstrap_layout_builder.libraries.yml
+index eb989d1..c86f92b 100644
+--- a/bootstrap_layout_builder.libraries.yml
++++ b/bootstrap_layout_builder.libraries.yml
+@@ -5,3 +5,9 @@ layout_builder_form_style:
+       css/layout-tab-styles.css: { }
+   js:
+     js/layout-tab-scripts.js: { }
++
++# items_alignment
++plugin.items_alignment.build:
++  css:
++    theme:
++      css/blb_example_classes/positioning-items-alignment.css: { }
+diff --git a/css/blb_example_classes/positioning-items-alignment.css b/css/blb_example_classes/positioning-items-alignment.css
+new file mode 100644
+index 0000000..40d3979
+--- /dev/null
++++ b/css/blb_example_classes/positioning-items-alignment.css
+@@ -0,0 +1,19 @@
++.blb-items-alignment-start {
++  align-items: flex-start;
++}
++
++.blb-items-alignment-end {
++  align-items: flex-end;
++}
++
++.blb-items-alignment-center {
++  align-items: center;
++}
++
++.blb-items-alignment-baseline {
++  align-items: baseline;
++}
++
++.blb-items-alignment-stretch {
++  align-items: stretch;
++}
+diff --git a/css/layout-tab-styles.css b/css/layout-tab-styles.css
+index e622a31..5bb538f 100644
+--- a/css/layout-tab-styles.css
++++ b/css/layout-tab-styles.css
+@@ -1,3 +1,32 @@
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label {
++  font-size: 0;
++  text-indent: -999em;
++}
++
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon {
++  margin-bottom: 0;
++}
++
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon[class*="start"] {
++  background-image: url("../images/plugins/items-alignment/align-start.svg");
++}
++
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon[class*="end"] {
++  background-image: url("../images/plugins/items-alignment/align-end.svg");
++}
++
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon[class*="baseline"] {
++  background-image: url("../images/plugins/items-alignment/align-baseline.svg");
++}
++
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon[class*="stretch"] {
++  background-image: url("../images/plugins/items-alignment/align-stretch.svg");
++}
++
++#drupal-off-canvas .field-items-alignment .fieldset-wrapper > div > div input + label .input-icon[class*="center"] {
++  background-image: url("../images/plugins/items-alignment/align-center.svg");
++}
++
+ #drupal-off-canvas .blb_breakpoint_cols label {
+   position: relative;
+   display: flex !important;
+diff --git a/images/plugins/items-alignment/align-baseline.svg b/images/plugins/items-alignment/align-baseline.svg
+new file mode 100644
+index 0000000..1a34337
+--- /dev/null
++++ b/images/plugins/items-alignment/align-baseline.svg
+@@ -0,0 +1,2 @@
++<svg id="eT1M7S32ol61" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 524 423" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="translate(-23 9.19833)"><line x1="127.02735" y1="0" x2="-127.02735" y2="0" transform="matrix(1.89995 0 0 5 285 391.083)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><text dx="0" dy="0" font-size="12" font-weight="400" transform="matrix(18.7244 0 0 18.7244 132.691 372.986)" fill="#5c606b" stroke-width="0"><tspan y="0" font-family="&quot;eT1M7S32ol61:::Lora&quot;" font-size="24.9375" font-weight="400" font-style="normal" fill="#5c606b" stroke-width="0"><![CDATA[A]]></tspan><tspan font-family="&quot;eT1M7S32ol61:::Lora&quot;" font-size="24.9375" font-weight="400" font-style="normal" fill="#5c606b" stroke-width="0"><![CDATA[
++      ]]></tspan><tspan x="0" y="49.875" font-family="&quot;eT1M7S32ol61:::Lora&quot;" font-size="24.9375" font-weight="400" font-style="normal" fill="#5c606b" stroke-width="0"><![CDATA[ ]]></tspan></text></g><style><![CDATA[@font-face {font-family: 'eT1M7S32ol61:::Lora';font-style: normal;font-weight: 400;src: url(data:font/ttf;charset=utf-8;base64,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) format('truetype');}]]></style></svg>
+\ No newline at end of file
+diff --git a/images/plugins/items-alignment/align-center.svg b/images/plugins/items-alignment/align-center.svg
+new file mode 100644
+index 0000000..103c2b8
+--- /dev/null
++++ b/images/plugins/items-alignment/align-center.svg
+@@ -0,0 +1 @@
++<svg id="el6dXjc5Iua1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 570 427.5" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="matrix(-1 0 0 1 605.000008-28.024704)"><line x1="-300.235457" y1="0" x2="300.235457" y2="0" transform="matrix(.95 0 0 8 320 241.268995)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.15 336.86759 74.211845)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.5746 144.199954 41.725709)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/></g></svg>
+\ No newline at end of file
+diff --git a/images/plugins/items-alignment/align-end.svg b/images/plugins/items-alignment/align-end.svg
+new file mode 100644
+index 0000000..c39a5cc
+--- /dev/null
++++ b/images/plugins/items-alignment/align-end.svg
+@@ -0,0 +1 @@
++<svg id="eVqNGXOlDdc1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 570 427.5" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="matrix(-1 0 0 1 605.000008-28.024704)"><line x1="-300.235457" y1="0" x2="300.235457" y2="0" transform="matrix(.95 0 0 8 320 431.312)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.15 337.782 108.2151)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.5746 144.201 41.22)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/></g></svg>
+\ No newline at end of file
+diff --git a/images/plugins/items-alignment/align-start.svg b/images/plugins/items-alignment/align-start.svg
+new file mode 100644
+index 0000000..9008fa5
+--- /dev/null
++++ b/images/plugins/items-alignment/align-start.svg
+@@ -0,0 +1 @@
++<svg id="eDQoHgiG5WV1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 570 427.5" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="matrix(-1 0 0-1 605.224 456.872)"><line x1="-300.235457" y1="0" x2="300.235457" y2="0" transform="matrix(.95 0 0 8 320 431.312)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.15 337.782 108.2151)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.5746 144.201 41.22)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/></g></svg>
+\ No newline at end of file
+diff --git a/images/plugins/items-alignment/align-stretch.svg b/images/plugins/items-alignment/align-stretch.svg
+new file mode 100644
+index 0000000..b576560
+--- /dev/null
++++ b/images/plugins/items-alignment/align-stretch.svg
+@@ -0,0 +1 @@
++<svg id="e1IxlX6veBW1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 570 427.5" shape-rendering="geometricPrecision" text-rendering="geometricPrecision"><g transform="matrix(-1 0 0-1 605.224 456.872)"><line x1="-300.235457" y1="0" x2="300.235457" y2="0" transform="matrix(.95 0 0 8 320 431.312)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><line x1="-300.235457" y1="0" x2="300.235457" y2="0" transform="matrix(.95 0 0 8 320 51.2151)" fill="#5c606b" stroke="#5c606b" stroke-width="3"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.5746 337.782 41.2151)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/><rect width="88.1757" height="155.402" rx="10" ry="10" transform="matrix(1.70115 0 0 2.5746 144.201 41.22)" fill="#5c606b" stroke="#5c606b" stroke-miterlimit="1"/></g></svg>
+\ No newline at end of file
+diff --git a/images/plugins/positioning-icon.svg b/images/plugins/positioning-icon.svg
+new file mode 100644
+index 0000000..4771100
+--- /dev/null
++++ b/images/plugins/positioning-icon.svg
+@@ -0,0 +1,17 @@
++<svg id="e8zPZ2iS9bJ1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 33 33"
++     shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="24" height="21">
++  <g transform="matrix(0-1 1 0-1.496262 34.494499)">
++    <path
++          d="M3.60539,14.403527c-.66014.002626-1.1943.537809-1.19561,1.197954-.00124.318339.12402.624135.34824.850114s.52903.353631.84737.354873h1.90359L0.35381,21.952259C0.12733,22.177539,0,22.483803,0,22.803244s.12733.625705.35381.850984c.23762.234385.56209.359249.89553.344616.30266-.009039.59073-.132135.80645-.344616l5.15751-5.16454v1.912968c.00258.659245.53636,1.19303,1.19561,1.195601.65924-.002571,1.19303-.536356,1.1956-1.195601v-4.801175c-.00134-.660137-.53547-1.19531-1.1956-1.197954h-4.80352Z"
++          transform="matrix(-.707107-.707107-.707107 0.707107 34.969322-2.370901)"/>
++    <path
++          d="M3.60539,14.403527c-.66014.002626-1.1943.537809-1.19561,1.197954-.00124.318339.12402.624135.34824.850114s.52903.353631.84737.354873h1.90359L0.35381,21.952259C0.12733,22.177539,0,22.483803,0,22.803244s.12733.625705.35381.850984c.23762.234385.56209.359249.89553.344616.30266-.009039.59073-.132135.80645-.344616l5.15751-5.16454v1.912968c.00258.659245.53636,1.19303,1.19561,1.195601.65924-.002571,1.19303-.536356,1.1956-1.195601v-4.801175c-.00134-.660137-.53547-1.19531-1.1956-1.197954h-4.80352Z"
++          transform="matrix(.707107-.707107-.707107-.707107 38.359344 34.973404)"/>
++    <path
++          d="M3.60539,14.403527c-.66014.002626-1.1943.537809-1.19561,1.197954-.00124.318339.12402.624135.34824.850114s.52903.353631.84737.354873h1.90359L0.35381,21.952259C0.12733,22.177539,0,22.483803,0,22.803244s.12733.625705.35381.850984c.23762.234385.56209.359249.89553.344616.30266-.009039.59073-.132135.80645-.344616l5.15751-5.16454v1.912968c.00258.659245.53636,1.19303,1.19561,1.195601.65924-.002571,1.19303-.536356,1.1956-1.195601v-4.801175c-.00134-.660137-.53547-1.19531-1.1956-1.197954h-4.80352Z"
++          transform="matrix(.707107 0.707107 0.707107-.707107 1.026597 38.363426)"/>
++    <path
++          d="M3.60539,14.403527c-.66014.002626-1.1943.537809-1.19561,1.197954-.00124.318339.12402.624135.34824.850114s.52903.353631.84737.354873h1.90359L0.35381,21.952259C0.12733,22.177539,0,22.483803,0,22.803244s.12733.625705.35381.850984c.23762.234385.56209.359249.89553.344616.30266-.009039.59073-.132135.80645-.344616l5.15751-5.16454v1.912968c.00258.659245.53636,1.19303,1.19561,1.195601.65924-.002571,1.19303-.536356,1.1956-1.195601v-4.801175c-.00134-.660137-.53547-1.19531-1.1956-1.197954h-4.80352Z"
++          transform="matrix(-.707107 0.707107 0.707107 0.707107-2.370348 1.029441)"/>
++  </g>
++</svg>
+diff --git a/scss/blb_example_classes/positioning-items-alignment.scss b/scss/blb_example_classes/positioning-items-alignment.scss
+new file mode 100644
+index 0000000..40d3979
+--- /dev/null
++++ b/scss/blb_example_classes/positioning-items-alignment.scss
+@@ -0,0 +1,19 @@
++.blb-items-alignment-start {
++  align-items: flex-start;
++}
++
++.blb-items-alignment-end {
++  align-items: flex-end;
++}
++
++.blb-items-alignment-center {
++  align-items: center;
++}
++
++.blb-items-alignment-baseline {
++  align-items: baseline;
++}
++
++.blb-items-alignment-stretch {
++  align-items: stretch;
++}
+diff --git a/scss/layout-tab-styles.scss b/scss/layout-tab-styles.scss
+index c14eb65..76e147c 100644
+--- a/scss/layout-tab-styles.scss
++++ b/scss/layout-tab-styles.scss
+@@ -1,7 +1,7 @@
+ @import "variables";
+ @import "mixins";
+-
+ #drupal-off-canvas {
++  @import "themes/plugins/items-alignment";
+ 
+   // Container Type
+   //.blb_container_type {
+diff --git a/scss/themes/plugins/_items-alignment.scss b/scss/themes/plugins/_items-alignment.scss
+new file mode 100644
+index 0000000..6e5de28
+--- /dev/null
++++ b/scss/themes/plugins/_items-alignment.scss
+@@ -0,0 +1,30 @@
++$items_alignment_icon_path: '../images/plugins/items-alignment/';
++
++.field-items-alignment .fieldset-wrapper > div > div {
++  input {
++    + label {
++      font-size: 0;
++      text-indent: -999em;
++
++      .input-icon {
++        margin-bottom: 0;
++
++        &[class*="start"] {
++          background-image: url($items_alignment_icon_path + 'align-start.svg');
++        }
++        &[class*="end"] {
++          background-image: url($items_alignment_icon_path + 'align-end.svg');
++        }
++        &[class*="baseline"] {
++          background-image: url($items_alignment_icon_path + 'align-baseline.svg');
++        }
++        &[class*="stretch"] {
++          background-image: url($items_alignment_icon_path + 'align-stretch.svg');
++        }
++        &[class*="center"] {
++          background-image: url($items_alignment_icon_path + 'align-center.svg');
++        }
++      }
++    }
++  }
++}
+diff --git a/src/Plugin/BootstrapStyles/Style/ItemsAlignment.php b/src/Plugin/BootstrapStyles/Style/ItemsAlignment.php
+new file mode 100644
+index 0000000..192c762
+--- /dev/null
++++ b/src/Plugin/BootstrapStyles/Style/ItemsAlignment.php
+@@ -0,0 +1,100 @@
++<?php
++
++namespace Drupal\bootstrap_layout_builder\Plugin\BootstrapStyles\Style;
++
++use Drupal\bootstrap_styles\Style\StylePluginBase;
++use Drupal\Core\Form\FormStateInterface;
++
++/**
++ * Style ItemsAlignment class.
++ *
++ * @package Drupal\bootstrap_layout_builder\Plugin\Style
++ *
++ * @Style(
++ *   id = "items_alignment",
++ *   title = @Translation("Items Alignment"),
++ *   group_id = "positioning",
++ *   weight = 0
++ * )
++ */
++class ItemsAlignment extends StylePluginBase {
++
++  /**
++   * {@inheritDoc}
++   */
++  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
++    $config = $this->config();
++
++    $form['positioning']['items_alignment'] = [
++      '#type' => 'textarea',
++      '#default_value' => $config->get('items_alignment'),
++      '#title' => $this->t('Items Alignment'),
++      '#cols' => 60,
++      '#rows' => 5,
++    ];
++
++    return $form;
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function submitConfigurationForm(array &$form, FormStateInterface $form_state) {
++    $this->config()
++      ->set('items_alignment', $form_state->getValue('items_alignment'))
++      ->save();
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function buildStyleFormElements(array &$form, FormStateInterface $form_state, $storage) {
++    $form['items_alignment'] = [
++      '#type' => 'radios',
++      '#title' => $this->t('Items Alignment'),
++      '#options' => $this->getStyleOptions('items_alignment'),
++      '#default_value' => $storage['items_alignment']['class'] ?? NULL,
++      '#validated' => TRUE,
++      '#attributes' => [
++        'class' => ['field-items-alignment', 'bs_input-boxes'],
++      ],
++    ];
++
++    // Add icons to the container types.
++    foreach ($form['items_alignment']['#options'] as $key => $value) {
++      $form['items_alignment']['#options'][$key] = '<span class="input-icon ' . $key . '"></span>' . $value;
++    }
++
++    return $form;
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function submitStyleFormElements(array $group_elements) {
++    return [
++      'items_alignment' => [
++        'class' => $group_elements['items_alignment'],
++      ],
++    ];
++  }
++
++  /**
++   * {@inheritDoc}
++   */
++  public function build(array $build, array $storage, $theme_wrapper = NULL) {
++    $classes = [];
++    if (isset($storage['items_alignment']['class'])) {
++      $classes[] = $storage['items_alignment']['class'];
++    }
++
++    // Add the classes to the build.
++    $build = $this->addClassesToBuild($build, $classes);
++
++    // Attach blb-classes to the build.
++    $build['#attached']['library'][] = 'bootstrap_layout_builder/plugin.items_alignment.build';
++
++    return $build;
++  }
++
++}
+diff --git a/src/Plugin/BootstrapStyles/StylesGroup/Positioning.php b/src/Plugin/BootstrapStyles/StylesGroup/Positioning.php
+new file mode 100644
+index 0000000..648835c
+--- /dev/null
++++ b/src/Plugin/BootstrapStyles/StylesGroup/Positioning.php
+@@ -0,0 +1,34 @@
++<?php
++
++namespace Drupal\bootstrap_layout_builder\Plugin\BootstrapStyles\StylesGroup;
++
++use Drupal\bootstrap_styles\StylesGroup\StylesGroupPluginBase;
++use Drupal\Core\Form\FormStateInterface;
++
++/**
++ * Style group Positioning class.
++ *
++ * @package Drupal\bootstrap_layout_builder\Plugin\StylesGroup
++ *
++ * @StylesGroup(
++ *   id = "positioning",
++ *   title = @Translation("Positioning"),
++ *   weight = 6,
++ *   icon = "bootstrap_layout_builder/images/plugins/positioning-icon.svg"
++ * )
++ */
++class Positioning extends StylesGroupPluginBase {
++
++  /**
++   * {@inheritdoc}
++   */
++  public function buildConfigurationForm(array $form, FormStateInterface $form_state) {
++    $form['positioning'] = [
++      '#type' => 'details',
++      '#title' => $this->t('Positioning'),
++      '#open' => FALSE,
++    ];
++    return $form;
++  }
++
++}
