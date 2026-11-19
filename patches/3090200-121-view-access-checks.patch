@@ -1,0 +1,1267 @@
+diff --git a/src/ParagraphAccessControlHandler.php b/src/ParagraphAccessControlHandler.php
+index 00891aef477b665d53d6c9159d57b37a37f8c944..6609b9d33c8a5d73a265e8806ac794a9549458c7 100644
+--- a/src/ParagraphAccessControlHandler.php
++++ b/src/ParagraphAccessControlHandler.php
+@@ -7,10 +7,12 @@ use Drupal\Core\Entity\EntityAccessControlHandler;
+ use Drupal\Core\Entity\EntityHandlerInterface;
+ use Drupal\Core\Entity\EntityInterface;
+ use Drupal\Core\Entity\EntityTypeInterface;
++use Drupal\Core\Entity\EntityTypeManagerInterface;
++use Drupal\Core\Entity\RevisionableInterface;
+ use Drupal\Core\Session\AccountInterface;
+ use Drupal\Core\Access\AccessResult;
+-use Drupal\paragraphs_library\Entity\LibraryItem;
+ use Drupal\paragraphs_library\LibraryItemInterface;
++use Drupal\Core\TypedData\TranslatableInterface;
+ use Symfony\Component\DependencyInjection\ContainerInterface;
+ 
+ /**
+@@ -28,16 +30,46 @@ class ParagraphAccessControlHandler extends EntityAccessControlHandler implement
+   protected $configFactory;
+ 
+   /**
+-   * Constructs a TranslatorAccessControlHandler object.
++   * The entity type manager.
++   *
++   * @var \Drupal\Core\Entity\EntityTypeManagerInterface
++   */
++  protected $entityTypeManager;
++
++  /**
++   * Memoized parent-revision lookups, cleared by resetCache().
++   *
++   * Keyed by "{parent_type}:{parent_id}:{field_name}:{child_revision_id}";
++   * values are the resolved parent revision id (int) or 0 for "no match".
++   *
++   * @var array<string, int>
++   */
++  protected $hostRevisionCache = [];
++
++  /**
++   * The inline block usage service, if Layout Builder is installed.
++   *
++   * @var \Drupal\layout_builder\InlineBlockUsageInterface|null
++   */
++  protected $inlineBlockUsage;
++
++  /**
++   * Constructs a ParagraphAccessControlHandler object.
+    *
+    * @param \Drupal\Core\Entity\EntityTypeInterface $entity_type
+    *   The entity type definition.
+    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
+    *   The config object factory.
++   * @param \Drupal\Core\Entity\EntityTypeManagerInterface $entity_type_manager
++   *   The entity type manager.
++   * @param \Drupal\layout_builder\InlineBlockUsageInterface|null $inline_block_usage
++   *   The inline block usage service, if Layout Builder is installed.
+    */
+-  public function __construct(EntityTypeInterface $entity_type, ConfigFactoryInterface $config_factory) {
++  public function __construct(EntityTypeInterface $entity_type, ConfigFactoryInterface $config_factory, EntityTypeManagerInterface $entity_type_manager, $inline_block_usage = NULL) {
+     parent::__construct($entity_type);
+     $this->configFactory = $config_factory;
++    $this->entityTypeManager = $entity_type_manager;
++    $this->inlineBlockUsage = $inline_block_usage;
+   }
+ 
+   /**
+@@ -46,7 +78,9 @@ class ParagraphAccessControlHandler extends EntityAccessControlHandler implement
+   public static function createInstance(ContainerInterface $container, EntityTypeInterface $entity_type) {
+     return new static(
+       $entity_type,
+-      $container->get('config.factory')
++      $container->get('config.factory'),
++      $container->get('entity_type.manager'),
++      $container->has('inline_block.usage') ? $container->get('inline_block.usage') : NULL
+     );
+   }
+ 
+@@ -54,7 +88,6 @@ class ParagraphAccessControlHandler extends EntityAccessControlHandler implement
+    * {@inheritdoc}
+    */
+   protected function checkAccess(EntityInterface $paragraph, $operation, AccountInterface $account) {
+-    // Allowed when the operation is not view or the status is true.
+     /** @var \Drupal\paragraphs\Entity\Paragraph $paragraph */
+     $config = $this->configFactory->get('paragraphs.settings');
+     if ($operation === 'view') {
+@@ -63,21 +96,226 @@ class ParagraphAccessControlHandler extends EntityAccessControlHandler implement
+     else {
+       $access_result = AccessResult::allowed();
+     }
+-    if ($paragraph->getParentEntity() != NULL) {
+-      // Delete permission on the paragraph, should just depend on 'update'
+-      // access permissions on the parent.
+-      $operation = ($operation == 'delete') ? 'update' : $operation;
+-      $parent = $paragraph->getParentEntity();
+-      if (!$parent instanceof LibraryItemInterface || $operation !== 'view') {
+-        $parent_access = $parent->access($operation, $account, TRUE);
+-        $access_result = $access_result->andIf($parent_access);
++
++    $parent = $paragraph->getParentEntity();
++    if ($parent == NULL) {
++      return $access_result;
++    }
++
++    // Delete permission on the paragraph should just depend on 'update'
++    // access permissions on the parent.
++    $operation = ($operation == 'delete') ? 'update' : $operation;
++
++    // Library items carry their own access semantics and do not participate
++    // in the revision-aware host resolution below.
++    if ($parent instanceof LibraryItemInterface) {
++      if ($operation !== 'view') {
++        $access_result = $access_result->andIf($parent->access($operation, $account, TRUE));
+       }
+       elseif (!$parent->isPublished()) {
+-        // Replicate the \Drupal\paragraphs_library\LibraryItemAccessControlHandler::checkAccess() access check.
++        // Replicate the LibraryItemAccessControlHandler::checkAccess() access
++        // check.
+         $access_result = $access_result->andIf(AccessResult::allowedIfHasPermission($account, $parent->getEntityType()->getAdminPermission()));
+       }
++      return $access_result;
++    }
++
++    // For all other (revisionable) hosts, check access against the specific
++    // revision that actually references this paragraph rather than the default
++    // revision returned by getParentEntity(). Under content moderation or
++    // after a revert, the default revision can yield the wrong access decision
++    // and strand the paragraph behind an inaccessible revision (#3090200).
++    // resolveAccessHost() walks past any intermediate paragraph parents to
++    // reach the true host entity. Crucially this *replaces* the
++    // default-revision parent check rather than being combined with it: an
++    // andIf() against the default revision would let an inaccessible default
++    // revision mask the correct decision.
++    // resolveAccessHost() falls back to the default parent when no referencing
++    // revision can be found.
++    $host = $this->resolveAccessHost($paragraph) ?? $parent;
++
++    // A default paragraph revision that is only referenced by a host revision
++    // older than the host's default revision was removed from the host. Check
++    // the default revision instead, so an unpublished host doesn't grant
++    // access through an older published revision. A newer (forward draft)
++    // host revision is kept.
++    if ($paragraph->isDefaultRevision() && $host instanceof RevisionableInterface && !$host->isDefaultRevision()) {
++      $default_host = $this->entityTypeManager->getStorage($host->getEntityTypeId())->load($host->id());
++      if ($default_host instanceof RevisionableInterface && $host->getRevisionId() < $default_host->getRevisionId()) {
++        // Check the default revision in the paragraph's language.
++        $host = $this->applyTranslation($default_host, $paragraph);
++      }
++    }
++
++    // Non-reusable (Layout Builder inline) block_content entities return
++    // forbidden when no access dependency is set, which is the case outside
++    // the Layout Builder rendering context. For view, skip the parent access
++    // check and rely solely on the paragraph's own published status (#3090200).
++    // For update and delete, check the entity whose layout uses the block, as
++    // \Drupal\layout_builder\EventSubscriber\SetInlineBlockDependency does.
++    // Without usage, the block's own access check applies.
++    // Reusable block_content blocks have their own meaningful access control
++    // and must not be skipped.
++    if ($host->getEntityTypeId() === 'block_content' && method_exists($host, 'isReusable') && !$host->isReusable()) {
++      if ($operation === 'view') {
++        return $access_result;
++      }
++      $usage = $this->inlineBlockUsage ? $this->inlineBlockUsage->getUsage($host->id()) : NULL;
++      $layout_entity = $usage ? $this->entityTypeManager->getStorage($usage->layout_entity_type)->load($usage->layout_entity_id) : NULL;
++      if ($layout_entity) {
++        $host = $this->applyTranslation($layout_entity, $paragraph);
++      }
++    }
++
++    return $access_result->andIf($host->access($operation, $account, TRUE));
++  }
++
++  /**
++   * Resolves the top-level host entity used for parent access checks.
++   *
++   * Walks the parent chain past any intermediate paragraph parents to the
++   * first non-paragraph entity. At each hop, tries to load the specific
++   * revision of the parent that references the current entity, so the
++   * resolved host reflects content-moderation drafts and reverted revisions
++   * rather than always the default revision.
++   *
++   * @param \Drupal\Core\Entity\EntityInterface $paragraph
++   *   The paragraph whose access is being checked.
++   *
++   * @return \Drupal\Core\Entity\EntityInterface|null
++   *   The host entity (possibly a non-default revision), or NULL if there is
++   *   no resolvable host.
++   */
++  protected function resolveAccessHost(EntityInterface $paragraph) {
++    $current = $paragraph;
++    // Guard against pathological cycles in malformed data.
++    $depth = 0;
++    while ($current instanceof ParagraphInterface && $depth++ < 50) {
++      $parent = $current->getParentEntity();
++      if ($parent === NULL) {
++        return NULL;
++      }
++      // For revisionable parents, swap to the revision that actually
++      // references $current — otherwise the default revision lookup from
++      // getParentEntity() can yield the wrong access decision (#3090200).
++      // Resolve at every hop so nested-paragraph chains aren't anchored to
++      // a default outer-paragraph revision either.
++      $parent = $this->loadReferencingRevision($parent, $current) ?? $parent;
++      if ($parent->getEntityTypeId() === 'paragraph') {
++        $current = $parent;
++        continue;
++      }
++      return $parent;
++    }
++    return NULL;
++  }
++
++  /**
++   * Loads the parent revision that references the given child paragraph.
++   *
++   * @param \Drupal\Core\Entity\EntityInterface $parent
++   *   The parent entity (typically the default revision from getParentEntity).
++   * @param \Drupal\paragraphs\ParagraphInterface $child
++   *   The paragraph attached to $parent via its parent field.
++   *
++   * @return \Drupal\Core\Entity\EntityInterface|null
++   *   The most recent parent revision whose entity_reference_revisions field
++   *   targets the child's revision id, or NULL if none was found (or the
++   *   parent isn't revisionable).
++   */
++  protected function loadReferencingRevision(EntityInterface $parent, ParagraphInterface $child) {
++    $parent_type = $parent->getEntityType();
++    if (!$parent_type->isRevisionable()) {
++      return NULL;
++    }
++    $field_name = $child->get('parent_field_name')->value;
++    $child_revision_id = $child->getRevisionId();
++    if (!$field_name || !$child_revision_id) {
++      return NULL;
+     }
+-    return $access_result;
++
++    // Fast path: the parent we already have in hand may already be the
++    // revision that references this child. Saves the entity query in the
++    // common case where the default revision *is* the referencing revision.
++    if ($parent->hasField($field_name)
++        && $this->parentReferencesChildRevision($parent, $field_name, $child_revision_id)) {
++      return $this->applyTranslation($parent, $child);
++    }
++
++    $storage = $this->entityTypeManager->getStorage($parent->getEntityTypeId());
++    $cache_key = $parent->getEntityTypeId() . ':' . $parent->id() . ':' . $field_name . ':' . $child_revision_id;
++    if (array_key_exists($cache_key, $this->hostRevisionCache)) {
++      $revision_id = $this->hostRevisionCache[$cache_key];
++      if (!$revision_id) {
++        return NULL;
++      }
++      $loaded = $storage->loadRevision($revision_id);
++      return $loaded ? $this->applyTranslation($loaded, $child) : NULL;
++    }
++
++    $id_key = $parent_type->getKey('id');
++    $revision_key = $parent_type->getKey('revision');
++    $revision_ids = $storage->getQuery()
++      ->accessCheck(FALSE)
++      ->allRevisions()
++      ->condition($id_key, $parent->id())
++      ->condition($field_name . '.target_revision_id', $child_revision_id)
++      ->sort($revision_key, 'DESC')
++      ->range(0, 1)
++      ->execute();
++    if (!$revision_ids) {
++      $this->hostRevisionCache[$cache_key] = 0;
++      return NULL;
++    }
++    $revision_id = (int) key($revision_ids);
++    $this->hostRevisionCache[$cache_key] = $revision_id;
++    $loaded = $storage->loadRevision($revision_id);
++    return $loaded ? $this->applyTranslation($loaded, $child) : NULL;
++  }
++
++  /**
++   * Checks whether $parent's ERR field references $child_revision_id.
++   *
++   * @param \Drupal\Core\Entity\EntityInterface $parent
++   *   The already-loaded parent entity.
++   * @param string $field_name
++   *   The entity_reference_revisions field on the parent that references
++   *   paragraphs.
++   * @param int $child_revision_id
++   *   The paragraph revision id to look for.
++   *
++   * @return bool
++   *   TRUE if the parent references the child revision id, FALSE otherwise.
++   */
++  protected function parentReferencesChildRevision(EntityInterface $parent, $field_name, $child_revision_id) {
++    foreach ($parent->get($field_name) as $item) {
++      if ((int) $item->target_revision_id === (int) $child_revision_id) {
++        return TRUE;
++      }
++    }
++    return FALSE;
++  }
++
++  /**
++   * Returns the child-language translation of the parent, if available.
++   *
++   * Mirrors Paragraph::getParentEntity()'s translation handling so the
++   * revision-aware lookup doesn't strip language context.
++   */
++  protected function applyTranslation(EntityInterface $entity, ParagraphInterface $child) {
++    $langcode = $child->language()->getId();
++    if ($entity instanceof TranslatableInterface && $entity->hasTranslation($langcode)) {
++      return $entity->getTranslation($langcode);
++    }
++    return $entity;
++  }
++
++  /**
++   * {@inheritdoc}
++   */
++  public function resetCache() {
++    parent::resetCache();
++    $this->hostRevisionCache = [];
+   }
+ 
+   /**
+diff --git a/tests/src/Kernel/ParagraphsAccessTest.php b/tests/src/Kernel/ParagraphsAccessTest.php
+index 5070db656e7d94efea76b1baa097c60f2128e107..180becbb0132b6b40490cd3bc1f5851c1d930645 100644
+--- a/tests/src/Kernel/ParagraphsAccessTest.php
++++ b/tests/src/Kernel/ParagraphsAccessTest.php
+@@ -3,11 +3,21 @@
+ namespace Drupal\Tests\paragraphs\Kernel;
+ 
+ use Drupal\Core\Access\AccessResult;
+-use Drupal\Core\Access\AccessResultInterface;
+-use Drupal\Core\Cache\CacheableMetadata;
+ use Drupal\Core\Cache\Context\CacheContextsManager;
+-use Drupal\Core\DependencyInjection\ContainerBuilder;
++use Drupal\Core\Field\FieldStorageDefinitionInterface;
++use Drupal\field\Entity\FieldConfig;
++use Drupal\file\Entity\File;
++use Drupal\field\Entity\FieldStorageConfig;
+ use Drupal\KernelTests\KernelTestBase;
++use Drupal\language\Entity\ConfigurableLanguage;
++use Drupal\block_content\Entity\BlockContent;
++use Drupal\block_content\Entity\BlockContentType;
++use Drupal\node\Entity\Node;
++use Drupal\node\Entity\NodeType;
++use Drupal\paragraphs\Entity\Paragraph;
++use Drupal\paragraphs\Entity\ParagraphsType;
++use Drupal\Tests\content_moderation\Traits\ContentModerationTestTrait;
++use Drupal\Tests\user\Traits\UserCreationTrait;
+ use PHPUnit\Framework\Attributes\DataProvider;
+ use PHPUnit\Framework\Attributes\Group;
+ use PHPUnit\Framework\Attributes\RunTestsInSeparateProcesses;
+@@ -21,13 +31,24 @@ use Symfony\Component\HttpFoundation\Request;
+ #[Group('paragraphs')]
+ class ParagraphsAccessTest extends KernelTestBase {
+ 
++  use ContentModerationTestTrait;
++  use UserCreationTrait;
++
+   /**
+    * {@inheritdoc}
+    */
+   protected static $modules = [
+     'paragraphs',
+     'user',
++    'system',
++    'field',
++    'file',
++    'node',
+     'entity_reference_revisions',
++    'block_content',
++    'content_moderation',
++    'workflows',
++    'filter',
+   ];
+ 
+   /**
+@@ -69,4 +90,889 @@ class ParagraphsAccessTest extends KernelTestBase {
+     ];
+   }
+ 
++  /**
++   * Tests that a node parent's access decision gates the paragraph.
++   *
++   * @covers ::checkAccess
++   */
++  public function testCheckAccessParentEntityNode(): void {
++    $this->setUpAccessFixtures();
++    $user = $this->createUser();
++
++    $paragraph = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'top-level',
++    ]);
++    $paragraph->save();
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'field_paragraphs' => [$paragraph],
++    ]);
++    $node->save();
++
++    $paragraph = $this->reload($paragraph);
++
++    // The user has no 'access content', so node-level access is denied and
++    // that must propagate to the paragraph for view, update, and delete.
++    $this->assertFalse($paragraph->access('view', $user));
++    $this->assertFalse($paragraph->access('update', $user));
++    $this->assertFalse($paragraph->access('delete', $user));
++  }
++
++  /**
++   * Tests that a paragraph parent walks up to the host for access checks.
++   *
++   * Issue #3090200: when a paragraph is nested inside another paragraph, the
++   * access check must still consult the top-level host entity. Otherwise,
++   * private content (e.g. files) in inner paragraphs could be exposed to
++   * users who cannot access the host.
++   *
++   * @covers ::checkAccess
++   * @covers ::resolveAccessHost
++   */
++  public function testCheckAccessParentEntityParagraph(): void {
++    $this->setUpAccessFixtures();
++    $user = $this->createUser();
++
++    $inner = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'inner',
++    ]);
++    $inner->save();
++    $outer = Paragraph::create([
++      'type' => 'nested_paragraph',
++      'field_nested' => [$inner],
++    ]);
++    $outer->save();
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'field_paragraphs' => [$outer],
++    ]);
++    $node->save();
++
++    $inner = $this->reload($inner);
++    $outer = $this->reload($outer);
++
++    // Outer paragraph's parent is the (forbidden) node.
++    $this->assertFalse($outer->access('view', $user));
++    $this->assertFalse($outer->access('update', $user));
++    $this->assertFalse($outer->access('delete', $user));
++
++    // Inner paragraph's parent chain walks up to the same forbidden node,
++    // so it must also be denied. Anything else is a security regression --
++    // inner paragraphs would otherwise expose host-restricted content.
++    $this->assertFalse($inner->access('view', $user));
++    $this->assertFalse($inner->access('update', $user));
++    $this->assertFalse($inner->access('delete', $user));
++  }
++
++  /**
++   * Tests that delete is gated by the host's update access, not bypassed.
++   *
++   * @covers ::checkAccess
++   */
++  public function testCheckAccessDeleteIsGatedByParentUpdate(): void {
++    $this->setUpAccessFixtures();
++    // A user with view-only access on the host.
++    $viewer = $this->createUser(['access content']);
++
++    $inner = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'inner',
++    ]);
++    $inner->save();
++    $outer = Paragraph::create([
++      'type' => 'nested_paragraph',
++      'field_nested' => [$inner],
++    ]);
++    $outer->save();
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'field_paragraphs' => [$outer],
++    ]);
++    $node->save();
++
++    $inner = $this->reload($inner);
++
++    // The viewer can view the host but cannot edit it. Delete on the
++    // paragraph maps to 'update' on the host, so it must be denied.
++    $this->assertTrue($inner->access('view', $viewer));
++    $this->assertFalse($inner->access('update', $viewer));
++    $this->assertFalse($inner->access('delete', $viewer));
++  }
++
++  /**
++   * Tests that the view check honors the paragraph's own published status.
++   *
++   * Even when the user has full parent access, the paragraph's own
++   * unpublished flag must still gate view access.
++   *
++   * @covers ::checkAccess
++   */
++  public function testCheckAccessUnpublishedInnerParagraph(): void {
++    $this->setUpAccessFixtures();
++    $editor = $this->createUser([
++      'access content',
++      'edit any paragraphed_test content',
++    ]);
++
++    $inner = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'inner',
++      'status' => FALSE,
++    ]);
++    $inner->save();
++    $outer = Paragraph::create([
++      'type' => 'nested_paragraph',
++      'field_nested' => [$inner],
++    ]);
++    $outer->save();
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'field_paragraphs' => [$outer],
++    ]);
++    $node->save();
++
++    $inner = $this->reload($inner);
++
++    // Parent access is allowed for the editor, but the paragraph's own
++    // unpublished status hides it from view.
++    $this->assertFalse($inner->access('view', $editor));
++    // Update isn't gated by published status, only by parent access.
++    $this->assertTrue($inner->access('update', $editor));
++    $this->assertTrue($inner->access('delete', $editor));
++  }
++
++  /**
++   * Tests that access is checked against the parent revision referencing it.
++   *
++   * Issue #3090200: the access check must locate the parent revision that
++   * actually references the paragraph (not just the default revision), so a
++   * reverted or content-moderation-draft scenario doesn't strand paragraphs
++   * behind an inaccessible default revision.
++   *
++   * Here we exercise the revision lookup directly: a node with two revisions
++   * referencing two different paragraph revisions. We verify that loading
++   * the older paragraph revision still finds the correct (older) node
++   * revision for the access check.
++   *
++   * @covers ::resolveAccessHost
++   * @covers ::loadReferencingRevision
++   */
++  public function testCheckAccessUsesReferencingRevision(): void {
++    $this->setUpAccessFixtures();
++    $editor = $this->createUser([
++      'access content',
++      'edit any paragraphed_test content',
++    ]);
++
++    $paragraph = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'v1',
++    ]);
++    $paragraph->save();
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'field_paragraphs' => [$paragraph],
++    ]);
++    $node->save();
++    $first_paragraph_revision_id = $paragraph->getRevisionId();
++    $first_node_revision_id = $node->getRevisionId();
++
++    // Create a new paragraph revision and a new node revision referencing it.
++    $paragraph = $this->reload($paragraph);
++    $paragraph->set('field_text', 'v2');
++    $paragraph->setNewRevision(TRUE);
++    $paragraph->save();
++    $node = $this->reload($node);
++    $node->set('field_paragraphs', [$paragraph]);
++    $node->setNewRevision(TRUE);
++    $node->save();
++    $second_node_revision_id = $node->getRevisionId();
++
++    $this->assertNotSame($first_node_revision_id, $second_node_revision_id);
++
++    // Load the old paragraph revision and resolve its host. The resolver
++    // must pick the node revision that actually references this paragraph
++    // revision, not the default revision.
++    $handler = \Drupal::entityTypeManager()->getAccessControlHandler('paragraph');
++    $reflection = new \ReflectionMethod($handler, 'resolveAccessHost');
++    $reflection->setAccessible(TRUE);
++    $old_paragraph = \Drupal::entityTypeManager()
++      ->getStorage('paragraph')
++      ->loadRevision($first_paragraph_revision_id);
++
++    $host = $reflection->invoke($handler, $old_paragraph);
++    $this->assertNotNull($host);
++    $this->assertSame('node', $host->getEntityTypeId());
++    $this->assertSame($first_node_revision_id, $host->getRevisionId());
++
++    // The lookup is memoized and resetCache() clears it.
++    $cache = new \ReflectionProperty($handler, 'hostRevisionCache');
++    $this->assertNotEmpty($cache->getValue($handler));
++    $handler->resetCache();
++    $this->assertSame([], $cache->getValue($handler));
++
++    // And the access decision still works correctly on that resolved host.
++    $this->assertTrue($old_paragraph->access('view', $editor));
++    $this->assertTrue($old_paragraph->access('update', $editor));
++  }
++
++  /**
++   * Tests resolution against a content_moderation draft of the host.
++   *
++   * Issue #3090200's user-visible scenario: content_moderation makes the
++   * published revision the default, so a newer draft revision (which
++   * actually references the edited paragraph revision) is *not* what
++   * getParentEntity() returns. The access check must still pick the draft
++   * node revision, otherwise the paragraph appears under the wrong host
++   * revision and edit/view decisions diverge from reality.
++   *
++   * @covers ::resolveAccessHost
++   * @covers ::loadReferencingRevision
++   */
++  public function testCheckAccessUsesModeratedDraftRevision(): void {
++    $this->setUpAccessFixtures();
++    $this->installEntitySchema('content_moderation_state');
++    $this->installConfig(['content_moderation', 'filter']);
++    $workflow = $this->createEditorialWorkflow();
++    $workflow->getTypePlugin()->addEntityTypeAndBundle('node', 'paragraphed_test');
++    $workflow->save();
++
++    // Published revision: node rev 1 references paragraph rev 1.
++    $paragraph = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'v1',
++    ]);
++    $paragraph->save();
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'field_paragraphs' => [$paragraph],
++      'moderation_state' => 'published',
++    ]);
++    $node->save();
++    $published_node_revision_id = $node->getRevisionId();
++
++    // Draft revision: edit the paragraph and save the node as a draft.
++    $paragraph = $this->reload($paragraph);
++    $paragraph->set('field_text', 'v2');
++    $paragraph->setNewRevision(TRUE);
++    $paragraph->save();
++    $draft_paragraph_revision_id = $paragraph->getRevisionId();
++    $node = $this->reload($node);
++    $node->set('field_paragraphs', [$paragraph]);
++    $node->set('moderation_state', 'draft');
++    $node->save();
++    $draft_node_revision_id = $node->getRevisionId();
++    $this->assertNotSame($published_node_revision_id, $draft_node_revision_id);
++
++    // Default revision is still the published one — that's the moderation
++    // bug surface area: getParentEntity() will load the *published* node.
++    $default_node = \Drupal::entityTypeManager()
++      ->getStorage('node')
++      ->loadUnchanged($node->id());
++    $this->assertSame($published_node_revision_id, $default_node->getRevisionId());
++
++    // resolveAccessHost on the draft paragraph revision must pick the draft
++    // node revision, not the default (published) one.
++    $handler = \Drupal::entityTypeManager()->getAccessControlHandler('paragraph');
++    $reflection = new \ReflectionMethod($handler, 'resolveAccessHost');
++    $reflection->setAccessible(TRUE);
++    $draft_paragraph = \Drupal::entityTypeManager()
++      ->getStorage('paragraph')
++      ->loadRevision($draft_paragraph_revision_id);
++
++    $host = $reflection->invoke($handler, $draft_paragraph);
++    $this->assertNotNull($host);
++    $this->assertSame('node', $host->getEntityTypeId());
++    $this->assertSame($draft_node_revision_id, $host->getRevisionId());
++  }
++
++  /**
++   * Public-API counterpart to testCheckAccessUsesModeratedDraftRevision.
++   *
++   * Issue #3090200's regression surface is `$paragraph->access(...)` returning
++   * the wrong answer on a moderation draft. The resolver-level test above
++   * proves we *picked* the right node revision; this one proves that
++   * decision reaches callers through the standard access API and tracks the
++   * draft node revision's access rather than the default (published) one.
++   *
++   * @covers ::checkAccess
++   */
++  public function testAccessApiHonorsModeratedDraftRevision(): void {
++    $this->setUpAccessFixtures();
++    $this->installEntitySchema('content_moderation_state');
++    $this->installConfig(['content_moderation', 'filter']);
++    $workflow = $this->createEditorialWorkflow();
++    $workflow->getTypePlugin()->addEntityTypeAndBundle('node', 'paragraphed_test');
++    $workflow->save();
++
++    $editor = $this->createUser([
++      'access content',
++      'edit any paragraphed_test content',
++      'view any unpublished content',
++      // content_moderation gates edit on having access to a transition out
++      // of the current state.
++      'use editorial transition create_new_draft',
++      'use editorial transition publish',
++    ]);
++    $stranger = $this->createUser(['access content']);
++
++    $paragraph = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'v1',
++    ]);
++    $paragraph->save();
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'field_paragraphs' => [$paragraph],
++      'moderation_state' => 'published',
++    ]);
++    $node->save();
++
++    $paragraph = $this->reload($paragraph);
++    $paragraph->set('field_text', 'v2');
++    $paragraph->setNewRevision(TRUE);
++    $paragraph->save();
++    $draft_paragraph_revision_id = $paragraph->getRevisionId();
++    $node = $this->reload($node);
++    $node->set('field_paragraphs', [$paragraph]);
++    $node->set('moderation_state', 'draft');
++    $node->save();
++    $draft_node_revision_id = $node->getRevisionId();
++
++    $draft_paragraph = \Drupal::entityTypeManager()
++      ->getStorage('paragraph')
++      ->loadRevision($draft_paragraph_revision_id);
++    $draft_node = \Drupal::entityTypeManager()
++      ->getStorage('node')
++      ->loadRevision($draft_node_revision_id);
++
++    // The editor can edit the draft node revision; therefore the public
++    // access API on the draft paragraph revision must also allow update.
++    // If we had regressed to checking the *default* (published) node
++    // revision and node_access denied edits to it, these would diverge.
++    $this->assertTrue($draft_node->access('update', $editor));
++    $this->assertTrue($draft_paragraph->access('update', $editor));
++    $this->assertTrue($draft_paragraph->access('delete', $editor));
++
++    // Stranger has no edit permission; access must be denied through the
++    // resolved (draft) host, not bypassed.
++    $this->assertFalse($draft_paragraph->access('update', $stranger));
++    $this->assertFalse($draft_paragraph->access('delete', $stranger));
++  }
++
++  /**
++   * Tests that an inaccessible default revision does not mask the fix.
++   *
++   * Issue #3090200's regression: the access check must be made against the
++   * revision that actually references the paragraph, *instead of* (not in
++   * addition to) the default revision. Here a historical paragraph revision
++   * belongs to a published node revision (rev1), but a later save makes the
++   * node's default revision unpublished (rev2). A user with only
++   * 'access content' must still be able to view the historical paragraph,
++   * because the revision that references it is published.
++   *
++   * If checkAccess() andIf()-ed the default (unpublished) revision's access on
++   * top of the resolved revision's access, the default revision would mask the
++   * correct decision and deny view -- reproducing the original bug.
++   *
++   * @covers ::checkAccess
++   */
++  public function testCheckAccessDefaultRevisionDoesNotMaskResolvedRevision(): void {
++    $this->setUpAccessFixtures();
++    $viewer = $this->createUser(['access content']);
++
++    // rev1: published, references the first paragraph revision.
++    $paragraph = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'v1',
++    ]);
++    $paragraph->save();
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'status' => 1,
++      'field_paragraphs' => [$paragraph],
++    ]);
++    $node->save();
++    $first_paragraph_revision_id = $paragraph->getRevisionId();
++    $first_node_revision_id = $node->getRevisionId();
++
++    // rev2 (new default): unpublished, references a new paragraph revision.
++    $paragraph = $this->reload($paragraph);
++    $paragraph->set('field_text', 'v2');
++    $paragraph->setNewRevision(TRUE);
++    $paragraph->save();
++    $node = $this->reload($node);
++    $node->set('field_paragraphs', [$paragraph]);
++    $node->set('status', 0);
++    $node->setNewRevision(TRUE);
++    $node->save();
++
++    // The default revision is now the unpublished rev2 -- the trap.
++    $default_node = \Drupal::entityTypeManager()
++      ->getStorage('node')
++      ->loadUnchanged($node->id());
++    $this->assertFalse((bool) $default_node->isPublished());
++
++    $old_paragraph = \Drupal::entityTypeManager()
++      ->getStorage('paragraph')
++      ->loadRevision($first_paragraph_revision_id);
++
++    // The resolver picks the published rev1...
++    $handler = \Drupal::entityTypeManager()->getAccessControlHandler('paragraph');
++    $reflection = new \ReflectionMethod($handler, 'resolveAccessHost');
++    $reflection->setAccessible(TRUE);
++    $host = $reflection->invoke($handler, $old_paragraph);
++    $this->assertSame($first_node_revision_id, $host->getRevisionId());
++
++    // ...and that decision must reach callers: viewing the historical
++    // paragraph is allowed because its referencing revision is published,
++    // even though the default revision is not.
++    $this->assertTrue($old_paragraph->access('view', $viewer));
++  }
++
++  /**
++   * Tests that revisionable non-node hosts (block_content) are resolved too.
++   *
++   * The bug report explicitly calls out block_content + Layout Builder. The
++   * fix should be host-agnostic; this test confirms loadReferencingRevision
++   * works for a non-node revisionable host.
++   *
++   * @covers ::resolveAccessHost
++   * @covers ::loadReferencingRevision
++   */
++  public function testCheckAccessUsesBlockContentRevision(): void {
++    $this->setUpAccessFixtures();
++    $this->installEntitySchema('block_content');
++
++    BlockContentType::create([
++      'id' => 'basic',
++      'label' => 'basic',
++      'revision' => TRUE,
++    ])->save();
++    FieldStorageConfig::create([
++      'field_name' => 'field_paragraphs',
++      'entity_type' => 'block_content',
++      'type' => 'entity_reference_revisions',
++      'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
++      'settings' => ['target_type' => 'paragraph'],
++    ])->save();
++    FieldConfig::create([
++      'field_name' => 'field_paragraphs',
++      'entity_type' => 'block_content',
++      'bundle' => 'basic',
++      'settings' => [
++        'handler' => 'default:paragraph',
++        'handler_settings' => ['target_bundles' => NULL],
++      ],
++    ])->save();
++
++    $paragraph = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'v1',
++    ]);
++    $paragraph->save();
++    $block = BlockContent::create([
++      'info' => 'Host block',
++      'type' => 'basic',
++      'field_paragraphs' => [$paragraph],
++    ]);
++    $block->save();
++    $first_block_revision_id = $block->getRevisionId();
++    $first_paragraph_revision_id = $paragraph->getRevisionId();
++
++    // New paragraph revision attached to a new block revision.
++    $paragraph = $this->reload($paragraph);
++    $paragraph->set('field_text', 'v2');
++    $paragraph->setNewRevision(TRUE);
++    $paragraph->save();
++    $block = $this->reload($block);
++    $block->set('field_paragraphs', [$paragraph]);
++    $block->setNewRevision(TRUE);
++    $block->save();
++    $second_block_revision_id = $block->getRevisionId();
++    $this->assertNotSame($first_block_revision_id, $second_block_revision_id);
++
++    $handler = \Drupal::entityTypeManager()->getAccessControlHandler('paragraph');
++    $reflection = new \ReflectionMethod($handler, 'resolveAccessHost');
++    $reflection->setAccessible(TRUE);
++    $old_paragraph = \Drupal::entityTypeManager()
++      ->getStorage('paragraph')
++      ->loadRevision($first_paragraph_revision_id);
++
++    $host = $reflection->invoke($handler, $old_paragraph);
++    $this->assertNotNull($host);
++    $this->assertSame('block_content', $host->getEntityTypeId());
++    $this->assertSame($first_block_revision_id, $host->getRevisionId());
++  }
++
++  /**
++   * Reloads an entity from storage to pick up parent references on save.
++   */
++  protected function reload($entity) {
++    return \Drupal::entityTypeManager()
++      ->getStorage($entity->getEntityTypeId())
++      ->loadUnchanged($entity->id());
++  }
++
++  /**
++   * Installs schemas, fields, and types used by the checkAccess tests.
++   */
++  protected function setUpAccessFixtures(): void {
++    $cache_contexts_manager = $this->prophesize(CacheContextsManager::class);
++    $cache_contexts_manager->assertValidTokens()->willReturn(TRUE);
++    $cache_contexts_manager->reveal();
++    $this->container->set('cache_contexts_manager', $cache_contexts_manager);
++
++    $this->installEntitySchema('user');
++    $this->installEntitySchema('node');
++    $this->installEntitySchema('paragraph');
++    $this->installSchema('node', ['node_access']);
++    $this->installConfig(['paragraphs']);
++
++    // Reserve uid 1 so subsequent createUser() calls don't return the super
++    // admin (whose access bypass would short-circuit every check below).
++    $this->createUser([], NULL, TRUE);
++
++    NodeType::create([
++      'type' => 'paragraphed_test',
++      'name' => 'paragraphed_test',
++    ])->save();
++
++    ParagraphsType::create([
++      'id' => 'text_paragraph',
++      'label' => 'text_paragraph',
++    ])->save();
++    ParagraphsType::create([
++      'id' => 'nested_paragraph',
++      'label' => 'nested_paragraph',
++    ])->save();
++
++    // Plain text field on text_paragraph.
++    FieldStorageConfig::create([
++      'field_name' => 'field_text',
++      'entity_type' => 'paragraph',
++      'type' => 'string',
++    ])->save();
++    FieldConfig::create([
++      'field_name' => 'field_text',
++      'entity_type' => 'paragraph',
++      'bundle' => 'text_paragraph',
++    ])->save();
++
++    // Nested paragraph reference on nested_paragraph.
++    FieldStorageConfig::create([
++      'field_name' => 'field_nested',
++      'entity_type' => 'paragraph',
++      'type' => 'entity_reference_revisions',
++      'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
++      'settings' => ['target_type' => 'paragraph'],
++    ])->save();
++    FieldConfig::create([
++      'field_name' => 'field_nested',
++      'entity_type' => 'paragraph',
++      'bundle' => 'nested_paragraph',
++      'settings' => [
++        'handler' => 'default:paragraph',
++        'handler_settings' => ['target_bundles' => NULL],
++      ],
++    ])->save();
++
++    // Paragraphs reference field on the node.
++    FieldStorageConfig::create([
++      'field_name' => 'field_paragraphs',
++      'entity_type' => 'node',
++      'type' => 'entity_reference_revisions',
++      'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
++      'settings' => ['target_type' => 'paragraph'],
++    ])->save();
++    FieldConfig::create([
++      'field_name' => 'field_paragraphs',
++      'entity_type' => 'node',
++      'bundle' => 'paragraphed_test',
++      'settings' => [
++        'handler' => 'default:paragraph',
++        'handler_settings' => ['target_bundles' => NULL],
++      ],
++    ])->save();
++  }
++
++  /**
++   * Tests paragraph access when parent is a non-reusable block_content.
++   *
++   * Regression for #3090200: the bug manifests outside the Layout Builder
++   * rendering pipeline — e.g. REST, JSON:API, Views, or programmatic
++   * $paragraph->access() calls. In those contexts the block_content entity
++   * is loaded from storage with no access dependency set. The old code called
++   * $block->access('view') unconditionally, which
++   * BlockContentAccessControlHandler returns as forbidden for all accounts
++   * when no dependency is set ("Non-reusable blocks must set an access
++   * dependency for access control."). This caused published paragraphs inside
++   * Layout Builder inline blocks to be inaccessible outside the render path.
++   *
++   * The fix detects a non-reusable block_content host and skips the parent
++   * access check, delegating solely to the paragraph's own published status.
++   * Update and delete follow update access on the layout entity that uses the
++   * block, and are denied without such usage.
++   *
++   * @covers ::checkAccess
++   */
++  public function testCheckAccessNonReusableBlockContentParent(): void {
++    $this->setUpAccessFixtures();
++    $this->enableModules(['block', 'contextual', 'layout_discovery', 'layout_builder']);
++    $this->installSchema('layout_builder', ['inline_block_usage']);
++    $this->installEntitySchema('block_content');
++
++    BlockContentType::create([
++      'id' => 'inline_block_type',
++      'label' => 'Inline block type',
++      'revision' => TRUE,
++    ])->save();
++    FieldStorageConfig::create([
++      'field_name' => 'field_paragraphs',
++      'entity_type' => 'block_content',
++      'type' => 'entity_reference_revisions',
++      'cardinality' => FieldStorageDefinitionInterface::CARDINALITY_UNLIMITED,
++      'settings' => ['target_type' => 'paragraph'],
++    ])->save();
++    FieldConfig::create([
++      'field_name' => 'field_paragraphs',
++      'entity_type' => 'block_content',
++      'bundle' => 'inline_block_type',
++      'settings' => [
++        'handler' => 'default:paragraph',
++        'handler_settings' => ['target_bundles' => NULL],
++      ],
++    ])->save();
++
++    $anonymous = $this->createUser(['access content']);
++
++    $paragraph = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'inline content',
++      'status' => TRUE,
++    ]);
++    $paragraph->save();
++
++    // Create the block as non-reusable — exactly as Layout Builder does for
++    // inline blocks. No access dependency is set, simulating what happens
++    // outside the Layout Builder rendering context (REST, JSON:API, Views,
++    // programmatic access checks).
++    $block = BlockContent::create([
++      'info' => 'LB inline block',
++      'type' => 'inline_block_type',
++      'reusable' => FALSE,
++      'field_paragraphs' => [$paragraph],
++    ]);
++    $block->save();
++
++    $paragraph = $this->reload($paragraph);
++
++    // Sanity check: the block itself is forbidden outside LB context because
++    // no access dependency has been set.
++    $this->assertTrue($block->access('view', $anonymous) === FALSE);
++
++    // The paragraph must be viewable. The fix skips the parent access check
++    // for non-reusable block_content and relies on the paragraph's own
++    // published status. Without the fix, the forbidden block access propagates
++    // to the paragraph and this assertion fails.
++    $this->assertTrue($paragraph->access('view', $anonymous));
++
++    // An unpublished paragraph inside the same non-reusable block must still
++    // be denied — the paragraph's own status governs.
++    $unpublished = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'hidden content',
++      'status' => FALSE,
++    ]);
++    $unpublished->save();
++    $block->set('field_paragraphs', [$paragraph, $unpublished]);
++    $block->save();
++    $unpublished = $this->reload($unpublished);
++    $this->assertFalse($unpublished->access('view', $anonymous));
++
++    // The view skip must not grant update or delete. Without Layout Builder
++    // usage, the block's own (forbidden) access applies.
++    $paragraph = $this->reload($paragraph);
++    $editor = $this->createUser(['access content', 'edit any paragraphed_test content']);
++    foreach (['update', 'delete'] as $operation) {
++      $this->assertFalse($paragraph->access($operation, $anonymous));
++      $this->assertFalse($paragraph->access($operation, $editor));
++    }
++
++    // With usage, update access on the layout entity decides.
++    $node = Node::create([
++      'title' => 'Layout host',
++      'type' => 'paragraphed_test',
++    ]);
++    $node->save();
++    $this->container->get('inline_block.usage')->addUsage($block->id(), $node);
++    $this->container->get('entity_type.manager')->getAccessControlHandler('paragraph')->resetCache();
++    foreach (['update', 'delete'] as $operation) {
++      $this->assertFalse($paragraph->access($operation, $anonymous));
++      $this->assertTrue($paragraph->access($operation, $editor));
++    }
++    $this->assertTrue($paragraph->access('view', $anonymous));
++  }
++
++  /**
++   * Tests a removed paragraph when the host's default revision is unpublished.
++   *
++   * The paragraph is removed and the host unpublished in the same save. The
++   * paragraph's default revision is then only referenced by the older,
++   * published host revision. Viewing it, or downloading its private file,
++   * must follow the host's default revision and be denied.
++   *
++   * @covers ::checkAccess
++   */
++  public function testCheckAccessRemovedParagraphUnpublishedHost(): void {
++    $this->setUpAccessFixtures();
++    $this->installEntitySchema('file');
++    $this->installSchema('file', ['file_usage']);
++    FieldStorageConfig::create([
++      'field_name' => 'field_file',
++      'entity_type' => 'paragraph',
++      'type' => 'file',
++      'settings' => ['uri_scheme' => 'private'],
++    ])->save();
++    FieldConfig::create([
++      'field_name' => 'field_file',
++      'entity_type' => 'paragraph',
++      'bundle' => 'text_paragraph',
++    ])->save();
++    $viewer = $this->createUser(['access content']);
++
++    $file = File::create(['uri' => 'private://secret.txt']);
++    $file->setPermanent();
++    $file->save();
++    $paragraph = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_file' => $file,
++    ]);
++    $paragraph->save();
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'status' => 1,
++      'field_paragraphs' => [$paragraph],
++    ]);
++    $node->save();
++    $paragraph = $this->reload($paragraph);
++    $this->assertTrue($paragraph->access('view', $viewer));
++    $this->assertTrue($file->access('download', $viewer));
++
++    // Remove the paragraph and unpublish the host in a new revision.
++    $node = $this->reload($node);
++    $node->set('field_paragraphs', []);
++    $node->set('status', 0);
++    $node->setNewRevision(TRUE);
++    $node->save();
++    $this->assertFalse($this->reload($node)->access('view', $viewer));
++
++    $entity_type_manager = \Drupal::entityTypeManager();
++    $entity_type_manager->getAccessControlHandler('paragraph')->resetCache();
++    $entity_type_manager->getAccessControlHandler('file')->resetCache();
++    $paragraph = $this->reload($paragraph);
++    $this->assertTrue($paragraph->isDefaultRevision());
++    $this->assertFalse($this->reload($file)->access('download', $viewer));
++    $this->assertFalse($paragraph->access('view', $viewer));
++  }
++
++  /**
++   * Tests a paragraph that was only added in a forward draft revision.
++   *
++   * A new paragraph's first revision is always its default revision, but only
++   * the draft host revision references it. Users who can only view the
++   * published host revision must not get access to it.
++   *
++   * @covers ::checkAccess
++   */
++  public function testCheckAccessParagraphAddedInForwardDraft(): void {
++    $this->setUpAccessFixtures();
++    $this->installEntitySchema('content_moderation_state');
++    $this->installConfig(['content_moderation', 'filter']);
++    $workflow = $this->createEditorialWorkflow();
++    $workflow->getTypePlugin()->addEntityTypeAndBundle('node', 'paragraphed_test');
++    $workflow->save();
++    $viewer = $this->createUser(['access content']);
++
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'moderation_state' => 'published',
++    ]);
++    $node->save();
++
++    // Add a new paragraph in a draft revision.
++    $paragraph = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'draft only',
++    ]);
++    $paragraph->save();
++    $node = $this->reload($node);
++    $node->set('field_paragraphs', [$paragraph]);
++    $node->set('moderation_state', 'draft');
++    $node->save();
++
++    \Drupal::entityTypeManager()->getAccessControlHandler('paragraph')->resetCache();
++    $paragraph = $this->reload($paragraph);
++    $this->assertTrue($paragraph->isDefaultRevision());
++    $this->assertFalse($paragraph->access('view', $viewer));
++  }
++
++  /**
++   * Tests a removed paragraph whose host is only unpublished in one language.
++   *
++   * The fallback to the host's default revision must keep the language of
++   * the paragraph, otherwise the published default language would grant
++   * access to the paragraph's translation.
++   *
++   * @covers ::checkAccess
++   */
++  public function testCheckAccessRemovedParagraphUnpublishedTranslation(): void {
++    $this->setUpAccessFixtures();
++    $this->enableModules(['language']);
++    $this->installConfig(['language']);
++    ConfigurableLanguage::createFromLangcode('de')->save();
++    $viewer = $this->createUser(['access content']);
++
++    $paragraph = Paragraph::create([
++      'type' => 'text_paragraph',
++      'field_text' => 'en',
++    ]);
++    $paragraph->addTranslation('de', ['field_text' => 'de']);
++    $paragraph->save();
++    $node = Node::create([
++      'title' => 'Host',
++      'type' => 'paragraphed_test',
++      'status' => 1,
++      'field_paragraphs' => [$paragraph],
++    ]);
++    $node->addTranslation('de', ['title' => 'Host de', 'status' => 1]);
++    $node->save();
++    $this->assertTrue($this->reload($paragraph)->getTranslation('de')->access('view', $viewer));
++
++    // Remove the paragraph and unpublish only the German translation.
++    $node = $this->reload($node);
++    $node->set('field_paragraphs', []);
++    $node->getTranslation('de')->set('status', 0);
++    $node->setNewRevision(TRUE);
++    $node->save();
++
++    \Drupal::entityTypeManager()->getAccessControlHandler('paragraph')->resetCache();
++    $paragraph = $this->reload($paragraph);
++    $this->assertTrue($paragraph->isDefaultRevision());
++    $this->assertTrue($paragraph->access('view', $viewer));
++    $this->assertFalse($paragraph->getTranslation('de')->access('view', $viewer));
++  }
++
+ }
